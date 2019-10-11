@@ -36,14 +36,13 @@ All results presented in the paper arise out of two experiments:
 1. __Experiment 1:__ Run ProSynth (in both modes), ALPS, and Difflog on all benchmarks, with the standard set of
    candidate rules. ProSynth (in both modes) and Difflog are each run 32 times to capture variance in running times.
 
-   The data from this experiment is used to produce Tables 2 and 3, and Figures 6 and 8 in the main paper. The data is
-   also used to produce Figure 2 in the supplementary data provided as part of our response to the reviewers.
+   The data from this experiment is used to produce __Tables 2 and 3__, and __Figures 6 and 8__ in the main paper. The
+   data is also used to produce __Figure 2__ in the supplementary data provided as part of our response to the
+   reviewers.
 
 2. __Experiment 2:__ Run ProSynth (in `nprov-Delta` mode) on the `scc` and `1-object-1-type` benchmarks. Here, we vary
    the size of the set of candidate rules, and measure its effect on the time needed to synthesize the program. Each
    experiment is repeated 8 times to capture variance in running times.
 
-   The data from this experiment is used to produce Figure 7 in the main paper, and Figure 2 in the supplementary data
-   provided to the reviewers.
-
-
+   The data from this experiment is used to produce __Figure 7__ in the main paper, and __Figure 1__ in the
+   supplementary data provided to the reviewers.
