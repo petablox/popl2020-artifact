@@ -15,6 +15,16 @@ This artifact contains all three tools (ProSynth, ALPS, and Difflog), benchmark 
 experiments described in the paper. In this document, we will describe the outline of these experiments, how to run
 them, and also describe how one may use ProSynth to solve Datalog synthesis problems of their own.
 
+Hardware and Estimated Time for Reproduction
+--------------------------------------------
+
+__TODO:__ How long do the experiments take to reproduce?
+
+We conducted our experiments on a server with an 18-core Xeon 6154 CPU clocked at 3 GHz and with 394 GB of RAM. However,
+we only used the multiple cores to simultaneously run multiple experiments and iterate quickly. Furthermore, all
+benchmarks are CPU-bound rather than memory-bound. We expect similar results to be obtained on workstations and laptops
+with more modest memory resources.
+
 Structure of the Experiments
 ----------------------------
 
@@ -35,3 +45,5 @@ All results presented in the paper arise out of two experiments:
 
    The data from this experiment is used to produce Figure 7 in the main paper, and Figure 2 in the supplementary data
    provided to the reviewers.
+
+
