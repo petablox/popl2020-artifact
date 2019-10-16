@@ -1,0 +1,172 @@
+.type level
+.type S_key
+.type F_name
+.type C_name
+.type F_key
+.type S_name
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Junior(v0: level)
+.input Junior
+
+.decl focus(v0: F_name)
+.input focus
+
+.decl Class(v0: C_name, v1: F_key)
+.input Class
+
+.decl Enroll(v0: S_key, v1: C_name)
+.input Enroll
+
+.decl Faculty(v0: F_key, v1: F_name)
+.input Faculty
+
+.decl Student(v0: S_key, v1: S_name, v2: level)
+.input Student
+
+.decl invent_F(v0: F_key)
+.decl invent_C(v0: C_name)
+.decl invent_K(v0: S_key)
+.decl ans(v0: S_name)
+.decl Junior_exists(v0: level, r: number)
+.output Junior_exists
+
+.decl focus_exists(v0: F_name, r: number)
+.output focus_exists
+
+.decl Class_exists(v0: C_name, v1: F_key, r: number)
+.output Class_exists
+
+.decl Enroll_exists(v0: S_key, v1: C_name, r: number)
+.output Enroll_exists
+
+.decl Faculty_exists(v0: F_key, v1: F_name, r: number)
+.output Faculty_exists
+
+.decl Student_exists(v0: S_key, v1: S_name, v2: level, r: number)
+.output Student_exists
+
+.decl invent_F_exists(v0: F_key, r: number)
+.output invent_F_exists
+
+.decl invent_C_exists(v0: C_name, r: number)
+.output invent_C_exists
+
+.decl invent_K_exists(v0: S_key, r: number)
+.output invent_K_exists
+
+.decl ans_exists(v0: S_name, r: number)
+.output ans_exists
+
+
+
+invent_F(v0) :- invent_F(v0), Rule(0).
+invent_F_exists(v0, r) :- invent_F(v0), r = 0, Rule(0).
+invent_F_exists(v0, r) :- invent_F_exists(v0, r), Rule(r), Rule(0).
+invent_F(v0) :- invent_F(v0), invent_F(v0), Rule(1).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F(v0), r = 1, Rule(1).
+invent_F_exists(v0, r) :- invent_F_exists(v0, r), invent_F(v0), Rule(r), Rule(1).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F_exists(v0, r), Rule(r), Rule(1).
+invent_F(v0) :- invent_F(v0), invent_F(v0), invent_F(v0), Rule(2).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F(v0), invent_F(v0), r = 2, Rule(2).
+invent_F_exists(v0, r) :- invent_F_exists(v0, r), invent_F(v0), invent_F(v0), Rule(r), Rule(2).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F_exists(v0, r), invent_F(v0), Rule(r), Rule(2).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F(v0), invent_F_exists(v0, r), Rule(r), Rule(2).
+invent_F(v0) :- invent_F(v0), invent_F(v1), invent_F(v1), Rule(3).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F(v1), invent_F(v1), r = 3, Rule(3).
+invent_F_exists(v0, r) :- invent_F_exists(v0, r), invent_F(v1), invent_F(v1), Rule(r), Rule(3).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F_exists(v1, r), invent_F(v1), Rule(r), Rule(3).
+invent_F_exists(v0, r) :- invent_F(v0), invent_F(v1), invent_F_exists(v1, r), Rule(r), Rule(3).
+invent_F(v0) :- invent_F(v1), invent_F(v1), invent_F(v0), Rule(4).
+invent_F_exists(v0, r) :- invent_F(v1), invent_F(v1), invent_F(v0), r = 4, Rule(4).
+invent_F_exists(v0, r) :- invent_F_exists(v1, r), invent_F(v1), invent_F(v0), Rule(r), Rule(4).
+invent_F_exists(v0, r) :- invent_F(v1), invent_F_exists(v1, r), invent_F(v0), Rule(r), Rule(4).
+invent_F_exists(v0, r) :- invent_F(v1), invent_F(v1), invent_F_exists(v0, r), Rule(r), Rule(4).
+invent_F(v0) :- invent_F(v1), invent_F(v0), invent_F(v1), Rule(5).
+invent_F_exists(v0, r) :- invent_F(v1), invent_F(v0), invent_F(v1), r = 5, Rule(5).
+invent_F_exists(v0, r) :- invent_F_exists(v1, r), invent_F(v0), invent_F(v1), Rule(r), Rule(5).
+invent_F_exists(v0, r) :- invent_F(v1), invent_F_exists(v0, r), invent_F(v1), Rule(r), Rule(5).
+invent_F_exists(v0, r) :- invent_F(v1), invent_F(v0), invent_F_exists(v1, r), Rule(r), Rule(5).
+invent_C(v0) :- invent_C(v0), Rule(6).
+invent_C_exists(v0, r) :- invent_C(v0), r = 6, Rule(6).
+invent_C_exists(v0, r) :- invent_C_exists(v0, r), Rule(r), Rule(6).
+invent_C(v0) :- invent_C(v0), invent_C(v0), Rule(7).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C(v0), r = 7, Rule(7).
+invent_C_exists(v0, r) :- invent_C_exists(v0, r), invent_C(v0), Rule(r), Rule(7).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C_exists(v0, r), Rule(r), Rule(7).
+invent_C(v0) :- invent_C(v0), invent_C(v0), invent_C(v0), Rule(8).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C(v0), invent_C(v0), r = 8, Rule(8).
+invent_C_exists(v0, r) :- invent_C_exists(v0, r), invent_C(v0), invent_C(v0), Rule(r), Rule(8).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C_exists(v0, r), invent_C(v0), Rule(r), Rule(8).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C(v0), invent_C_exists(v0, r), Rule(r), Rule(8).
+invent_C(v0) :- invent_C(v0), invent_C(v1), invent_C(v1), Rule(9).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C(v1), invent_C(v1), r = 9, Rule(9).
+invent_C_exists(v0, r) :- invent_C_exists(v0, r), invent_C(v1), invent_C(v1), Rule(r), Rule(9).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C_exists(v1, r), invent_C(v1), Rule(r), Rule(9).
+invent_C_exists(v0, r) :- invent_C(v0), invent_C(v1), invent_C_exists(v1, r), Rule(r), Rule(9).
+invent_C(v0) :- invent_C(v1), invent_C(v1), invent_C(v0), Rule(10).
+invent_C_exists(v0, r) :- invent_C(v1), invent_C(v1), invent_C(v0), r = 10, Rule(10).
+invent_C_exists(v0, r) :- invent_C_exists(v1, r), invent_C(v1), invent_C(v0), Rule(r), Rule(10).
+invent_C_exists(v0, r) :- invent_C(v1), invent_C_exists(v1, r), invent_C(v0), Rule(r), Rule(10).
+invent_C_exists(v0, r) :- invent_C(v1), invent_C(v1), invent_C_exists(v0, r), Rule(r), Rule(10).
+invent_C(v0) :- invent_C(v1), invent_C(v0), invent_C(v1), Rule(11).
+invent_C_exists(v0, r) :- invent_C(v1), invent_C(v0), invent_C(v1), r = 11, Rule(11).
+invent_C_exists(v0, r) :- invent_C_exists(v1, r), invent_C(v0), invent_C(v1), Rule(r), Rule(11).
+invent_C_exists(v0, r) :- invent_C(v1), invent_C_exists(v0, r), invent_C(v1), Rule(r), Rule(11).
+invent_C_exists(v0, r) :- invent_C(v1), invent_C(v0), invent_C_exists(v1, r), Rule(r), Rule(11).
+invent_K(v0) :- invent_K(v0), Rule(12).
+invent_K_exists(v0, r) :- invent_K(v0), r = 12, Rule(12).
+invent_K_exists(v0, r) :- invent_K_exists(v0, r), Rule(r), Rule(12).
+invent_K(v0) :- invent_K(v0), invent_K(v0), Rule(13).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K(v0), r = 13, Rule(13).
+invent_K_exists(v0, r) :- invent_K_exists(v0, r), invent_K(v0), Rule(r), Rule(13).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K_exists(v0, r), Rule(r), Rule(13).
+invent_K(v0) :- invent_K(v0), invent_K(v0), invent_K(v0), Rule(14).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K(v0), invent_K(v0), r = 14, Rule(14).
+invent_K_exists(v0, r) :- invent_K_exists(v0, r), invent_K(v0), invent_K(v0), Rule(r), Rule(14).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K_exists(v0, r), invent_K(v0), Rule(r), Rule(14).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K(v0), invent_K_exists(v0, r), Rule(r), Rule(14).
+invent_K(v0) :- invent_K(v0), invent_K(v1), invent_K(v1), Rule(15).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K(v1), invent_K(v1), r = 15, Rule(15).
+invent_K_exists(v0, r) :- invent_K_exists(v0, r), invent_K(v1), invent_K(v1), Rule(r), Rule(15).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K_exists(v1, r), invent_K(v1), Rule(r), Rule(15).
+invent_K_exists(v0, r) :- invent_K(v0), invent_K(v1), invent_K_exists(v1, r), Rule(r), Rule(15).
+invent_K(v0) :- invent_K(v1), invent_K(v1), invent_K(v0), Rule(16).
+invent_K_exists(v0, r) :- invent_K(v1), invent_K(v1), invent_K(v0), r = 16, Rule(16).
+invent_K_exists(v0, r) :- invent_K_exists(v1, r), invent_K(v1), invent_K(v0), Rule(r), Rule(16).
+invent_K_exists(v0, r) :- invent_K(v1), invent_K_exists(v1, r), invent_K(v0), Rule(r), Rule(16).
+invent_K_exists(v0, r) :- invent_K(v1), invent_K(v1), invent_K_exists(v0, r), Rule(r), Rule(16).
+invent_K(v0) :- invent_K(v1), invent_K(v0), invent_K(v1), Rule(17).
+invent_K_exists(v0, r) :- invent_K(v1), invent_K(v0), invent_K(v1), r = 17, Rule(17).
+invent_K_exists(v0, r) :- invent_K_exists(v1, r), invent_K(v0), invent_K(v1), Rule(r), Rule(17).
+invent_K_exists(v0, r) :- invent_K(v1), invent_K_exists(v0, r), invent_K(v1), Rule(r), Rule(17).
+invent_K_exists(v0, r) :- invent_K(v1), invent_K(v0), invent_K_exists(v1, r), Rule(r), Rule(17).
+ans(v0) :- ans(v0), Rule(18).
+ans_exists(v0, r) :- ans(v0), r = 18, Rule(18).
+ans_exists(v0, r) :- ans_exists(v0, r), Rule(r), Rule(18).
+ans(v0) :- ans(v0), ans(v0), Rule(19).
+ans_exists(v0, r) :- ans(v0), ans(v0), r = 19, Rule(19).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v0), Rule(r), Rule(19).
+ans_exists(v0, r) :- ans(v0), ans_exists(v0, r), Rule(r), Rule(19).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(20).
+ans_exists(v0, r) :- ans(v0), ans(v0), ans(v0), r = 20, Rule(20).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v0), ans(v0), Rule(r), Rule(20).
+ans_exists(v0, r) :- ans(v0), ans_exists(v0, r), ans(v0), Rule(r), Rule(20).
+ans_exists(v0, r) :- ans(v0), ans(v0), ans_exists(v0, r), Rule(r), Rule(20).
+ans(v0) :- ans(v0), ans(v1), ans(v1), Rule(21).
+ans_exists(v0, r) :- ans(v0), ans(v1), ans(v1), r = 21, Rule(21).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v1), ans(v1), Rule(r), Rule(21).
+ans_exists(v0, r) :- ans(v0), ans_exists(v1, r), ans(v1), Rule(r), Rule(21).
+ans_exists(v0, r) :- ans(v0), ans(v1), ans_exists(v1, r), Rule(r), Rule(21).
+ans(v0) :- ans(v1), ans(v1), ans(v0), Rule(22).
+ans_exists(v0, r) :- ans(v1), ans(v1), ans(v0), r = 22, Rule(22).
+ans_exists(v0, r) :- ans_exists(v1, r), ans(v1), ans(v0), Rule(r), Rule(22).
+ans_exists(v0, r) :- ans(v1), ans_exists(v1, r), ans(v0), Rule(r), Rule(22).
+ans_exists(v0, r) :- ans(v1), ans(v1), ans_exists(v0, r), Rule(r), Rule(22).
+ans(v0) :- ans(v1), ans(v0), ans(v1), Rule(23).
+ans_exists(v0, r) :- ans(v1), ans(v0), ans(v1), r = 23, Rule(23).
+ans_exists(v0, r) :- ans_exists(v1, r), ans(v0), ans(v1), Rule(r), Rule(23).
+ans_exists(v0, r) :- ans(v1), ans_exists(v0, r), ans(v1), Rule(r), Rule(23).
+ans_exists(v0, r) :- ans(v1), ans(v0), ans_exists(v1, r), Rule(r), Rule(23).

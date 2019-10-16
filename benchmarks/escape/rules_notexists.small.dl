@@ -1,0 +1,67 @@
+.type H
+.type F
+.type M
+.type V
+.type Z
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl MmethArg(v0: M, v1: Z, v2: V)
+.input MmethArg
+.decl MmethRet(v0: M, v1: Z, v2: V)
+.input MmethRet
+.decl VH(v0: V, v1: H)
+.input VH
+.decl HFH(v0: H, v1: F, v2: H)
+.input HFH
+
+.decl MmethArg_notexists(v0: M, v1: Z, v2: V, v3: number)
+.output MmethArg_notexists
+.decl MmethRet_notexists(v0: M, v1: Z, v2: V, v3: number)
+.output MmethRet_notexists
+.decl VH_notexists(v0: V, v1: H, v2: number)
+.output VH_notexists
+.decl HFH_notexists(v0: H, v1: F, v2: H, v3: number)
+.output HFH_notexists
+
+.decl rMH_notexists(v0: M, v1: H, v2: number)
+.output rMH_notexists
+.decl rRH_notexists(v0: M, v1: H, v2: number)
+.output rRH_notexists
+.decl rHH_notexists(v0: H, v1: H, v2: number)
+.output rHH_notexists
+
+MmethArg_notexists(v0, v1, v2, ruleIndex) :- MmethArg(v0, v1, v2), Rule(ruleIndex).
+MmethRet_notexists(v0, v1, v2, ruleIndex) :- MmethRet(v0, v1, v2), Rule(ruleIndex).
+VH_notexists(v0, v1, ruleIndex) :- VH(v0, v1), Rule(ruleIndex).
+HFH_notexists(v0, v1, v2, ruleIndex) :- HFH(v0, v1, v2), Rule(ruleIndex).
+rRH_notexists(v0, v3, ruleIndex) :- MmethRet_notexists(v0, v1, v2, ruleIndex), VH_notexists(v2, v3, ruleIndex), ruleIndex != 28, Rule(28).
+rHH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rHH_notexists(v2, v0, ruleIndex), ruleIndex != 3, Rule(3).
+rMH_notexists(v0, v3, ruleIndex) :- MmethArg_notexists(v0, v1, v2, ruleIndex), VH_notexists(v2, v3, ruleIndex), ruleIndex != 17, Rule(17).
+rMH_notexists(v2, v1, ruleIndex) :- rMH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v1, ruleIndex), ruleIndex != 19, Rule(19).
+rRH_notexists(v3, v2, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), rRH_notexists(v3, v0, ruleIndex), ruleIndex != 6, Rule(6).
+rMH_notexists(v2, v1, ruleIndex) :- rRH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v1, ruleIndex), ruleIndex != 15, Rule(15).
+rRH_notexists(v0, v1, ruleIndex) :- rMH_notexists(v0, v1, ruleIndex), ruleIndex != 0, Rule(0).
+rMH_notexists(v3, v2, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), rMH_notexists(v3, v0, ruleIndex), ruleIndex != 13, Rule(13).
+rRH_notexists(v0, v3, ruleIndex) :- MmethArg_notexists(v0, v1, v2, ruleIndex), VH_notexists(v2, v3, ruleIndex), ruleIndex != 12, Rule(12).
+rHH_notexists(v3, v2, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), rHH_notexists(v3, v0, ruleIndex), ruleIndex != 21, Rule(21).
+rMH_notexists(v0, v3, ruleIndex) :- MmethRet_notexists(v0, v1, v2, ruleIndex), VH_notexists(v2, v3, ruleIndex), ruleIndex != 4, Rule(4).
+rHH_notexists(v0, v2, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), ruleIndex != 18, Rule(18).
+rRH_notexists(v2, v1, ruleIndex) :- rMH_notexists(v0, v1, ruleIndex), rMH_notexists(v2, v1, ruleIndex), ruleIndex != 7, Rule(7).
+rRH_notexists(v2, v1, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), rMH_notexists(v2, v1, ruleIndex), ruleIndex != 5, Rule(5).
+rMH_notexists(v3, v2, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), rRH_notexists(v3, v0, ruleIndex), ruleIndex != 25, Rule(25).
+rMH_notexists(v0, v1, ruleIndex) :- rRH_notexists(v0, v1, ruleIndex), ruleIndex != 26, Rule(26).
+rHH_notexists(v0, v3, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), rHH_notexists(v2, v3, ruleIndex), ruleIndex != 14, Rule(14).
+rHH_notexists(v0, v2, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rHH_notexists(v1, v2, ruleIndex), ruleIndex != 1, Rule(1).
+rMH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rMH_notexists(v2, v0, ruleIndex), ruleIndex != 10, Rule(10).
+rRH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v0, ruleIndex), ruleIndex != 27, Rule(27).
+rRH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rMH_notexists(v2, v1, ruleIndex), ruleIndex != 20, Rule(20).
+rRH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rMH_notexists(v2, v0, ruleIndex), ruleIndex != 22, Rule(22).
+rMH_notexists(v2, v0, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v0, ruleIndex), ruleIndex != 9, Rule(9).
+rMH_notexists(v2, v1, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v1, ruleIndex), ruleIndex != 16, Rule(16).
+rMH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v0, ruleIndex), ruleIndex != 2, Rule(2).
+rRH_notexists(v0, v1, ruleIndex) :- rMH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v1, ruleIndex), ruleIndex != 23, Rule(23).
+rRH_notexists(v2, v0, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rMH_notexists(v2, v0, ruleIndex), ruleIndex != 8, Rule(8).
+rMH_notexists(v2, v1, ruleIndex) :- rHH_notexists(v0, v1, ruleIndex), rRH_notexists(v2, v1, ruleIndex), ruleIndex != 11, Rule(11).
+rRH_notexists(v3, v2, ruleIndex) :- HFH_notexists(v0, v1, v2, ruleIndex), rMH_notexists(v3, v0, ruleIndex), ruleIndex != 24, Rule(24).

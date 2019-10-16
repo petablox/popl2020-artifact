@@ -1,0 +1,199 @@
+.type B
+.type D
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl cont(v0: D)
+.input cont
+.decl offset(v0: D)
+.input offset
+.decl fetch(v0: D, v1: B)
+.input fetch
+.decl putOn(v0: B, v1: D)
+.input putOn
+
+.decl inv(v0: D, v1: D)
+.output inv
+
+.decl buildWall(v0: D, v1: D)
+.output buildWall
+
+buildWall(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(9).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v2), Rule(59).
+inv(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v0), Rule(53).
+inv(v1, v0) :- buildWall(v0, v1), putOn(v2, v0), Rule(107).
+inv(v0, v1) :- buildWall(v0, v1), inv(v2, v1), Rule(159).
+inv(v2, v0) :- buildWall(v0, v1), offset(v1), buildWall(v2, v0), Rule(154).
+buildWall(v0, v2) :- cont(v0), fetch(v0, v1), putOn(v1, v2), Rule(102).
+inv(v0, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(24).
+inv(v1, v2) :- inv(v0, v1), offset(v0), buildWall(v1, v2), Rule(162).
+buildWall(v1, v0) :- cont(v0), inv(v1, v0), Rule(83).
+inv(v2, v0) :- buildWall(v0, v1), buildWall(v2, v0), Rule(35).
+inv(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v1), Rule(111).
+buildWall(v2, v1) :- inv(v0, v1), inv(v2, v1), Rule(173).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), offset(v0), Rule(29).
+inv(v0, v2) :- buildWall(v0, v1), offset(v1), buildWall(v0, v2), Rule(122).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), offset(v1), Rule(62).
+buildWall(v1, v2) :- buildWall(v0, v1), inv(v0, v2), Rule(148).
+inv(v0, v2) :- inv(v0, v1), inv(v1, v2), offset(v0), Rule(7).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v1, v2), Rule(30).
+buildWall(v0, v2) :- fetch(v0, v1), putOn(v1, v2), Rule(70).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(36).
+buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v0), Rule(89).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v0), Rule(124).
+inv(v0, v1) :- buildWall(v0, v1), cont(v1), Rule(25).
+buildWall(v0, v2) :- fetch(v0, v1), inv(v2, v0), Rule(135).
+inv(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v1, v2), Rule(84).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), cont(v1), Rule(19).
+inv(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v1), Rule(163).
+inv(v0, v2) :- fetch(v0, v1), putOn(v1, v2), offset(v2), Rule(40).
+inv(v0, v1) :- buildWall(v0, v1), offset(v0), Rule(136).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(11).
+buildWall(v1, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(99).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v1), Rule(110).
+buildWall(v1, v2) :- buildWall(v0, v1), offset(v0), inv(v1, v2), Rule(22).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), offset(v1), Rule(139).
+buildWall(v1, v2) :- buildWall(v0, v1), buildWall(v0, v2), Rule(146).
+inv(v1, v2) :- buildWall(v0, v1), offset(v0), buildWall(v1, v2), Rule(140).
+buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v1), Rule(133).
+buildWall(v1, v2) :- inv(v0, v1), offset(v0), inv(v1, v2), Rule(160).
+inv(v0, v1) :- buildWall(v0, v1), cont(v0), Rule(129).
+inv(v0, v1) :- buildWall(v0, v1), fetch(v1, v2), Rule(6).
+inv(v1, v2) :- buildWall(v0, v1), inv(v0, v2), Rule(145).
+inv(v0, v2) :- inv(v0, v1), offset(v1), buildWall(v0, v2), Rule(77).
+inv(v1, v0) :- buildWall(v0, v1), fetch(v1, v2), Rule(75).
+buildWall(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(15).
+inv(v1, v2) :- cont(v0), inv(v1, v0), buildWall(v1, v2), Rule(121).
+inv(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v0), Rule(42).
+inv(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v1, v2), Rule(44).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(17).
+inv(v0, v1) :- buildWall(v0, v1), putOn(v2, v0), Rule(137).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v2), Rule(119).
+buildWall(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v0, v2), Rule(39).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), cont(v2), Rule(134).
+buildWall(v2, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(172).
+inv(v0, v2) :- fetch(v0, v1), putOn(v1, v2), Rule(56).
+buildWall(v1, v0) :- buildWall(v0, v1), fetch(v1, v2), Rule(46).
+buildWall(v1, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(45).
+buildWall(v2, v0) :- inv(v0, v1), offset(v1), inv(v2, v0), Rule(142).
+inv(v0, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(118).
+buildWall(v2, v1) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(117).
+inv(v0, v2) :- fetch(v0, v1), inv(v2, v0), Rule(54).
+inv(v2, v1) :- inv(v0, v1), offset(v0), buildWall(v2, v1), Rule(50).
+buildWall(v1, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(123).
+buildWall(v0, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(114).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(106).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v0), Rule(141).
+buildWall(v2, v1) :- inv(v0, v1), inv(v1, v2), Rule(103).
+buildWall(v1, v0) :- inv(v0, v1), putOn(v2, v0), Rule(128).
+inv(v0, v2) :- cont(v0), fetch(v0, v1), putOn(v1, v2), Rule(55).
+buildWall(v0, v2) :- fetch(v0, v1), putOn(v1, v2), offset(v2), Rule(61).
+buildWall(v1, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(125).
+inv(v1, v2) :- cont(v0), inv(v0, v1), buildWall(v1, v2), Rule(51).
+inv(v0, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(138).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(66).
+inv(v2, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(28).
+inv(v0, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(82).
+buildWall(v2, v0) :- fetch(v0, v1), inv(v2, v0), Rule(73).
+inv(v1, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(12).
+inv(v0, v2) :- buildWall(v0, v1), inv(v2, v1), Rule(152).
+inv(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v0), Rule(5).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v1), Rule(60).
+buildWall(v0, v1) :- inv(v0, v1), offset(v0), Rule(100).
+buildWall(v0, v2) :- fetch(v0, v1), fetch(v2, v1), Rule(85).
+inv(v1, v2) :- putOn(v0, v1), putOn(v0, v2), Rule(176).
+buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v0), Rule(14).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(27).
+inv(v2, v1) :- inv(v0, v1), inv(v1, v2), Rule(177).
+inv(v2, v0) :- cont(v0), putOn(v1, v0), fetch(v2, v1), Rule(108).
+buildWall(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(132).
+buildWall(v0, v2) :- inv(v0, v1), inv(v1, v2), offset(v0), Rule(90).
+inv(v2, v1) :- buildWall(v0, v1), inv(v0, v2), Rule(87).
+inv(v0, v2) :- fetch(v0, v1), offset(v0), putOn(v1, v2), Rule(151).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), cont(v0), Rule(1).
+inv(v2, v1) :- cont(v0), inv(v0, v1), buildWall(v2, v1), Rule(131).
+inv(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v0), Rule(88).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v2, v1), Rule(65).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v1), Rule(63).
+inv(v1, v0) :- inv(v0, v1), putOn(v2, v0), Rule(76).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), Rule(0).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v0), Rule(16).
+buildWall(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v1, v2), Rule(112).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(37).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v2), Rule(156).
+buildWall(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(113).
+buildWall(v0, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(34).
+inv(v2, v0) :- buildWall(v0, v1), cont(v1), buildWall(v2, v0), Rule(155).
+inv(v1, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(33).
+buildWall(v2, v0) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(150).
+buildWall(v1, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(157).
+inv(v2, v0) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(116).
+inv(v1, v2) :- buildWall(v0, v1), buildWall(v1, v2), Rule(174).
+buildWall(v2, v0) :- fetch(v0, v1), putOn(v1, v2), Rule(147).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), cont(v1), Rule(58).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), cont(v2), Rule(8).
+inv(v2, v1) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(48).
+inv(v1, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(13).
+buildWall(v0, v1) :- inv(v0, v1), offset(v1), Rule(78).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(170).
+buildWall(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v1, v2), Rule(165).
+buildWall(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v0), Rule(64).
+buildWall(v1, v0) :- buildWall(v0, v1), putOn(v2, v0), Rule(79).
+inv(v2, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(158).
+inv(v2, v0) :- buildWall(v0, v1), inv(v2, v1), Rule(32).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v2, v1), Rule(105).
+inv(v2, v0) :- inv(v0, v1), offset(v1), buildWall(v2, v0), Rule(115).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), offset(v0), Rule(74).
+inv(v0, v1) :- buildWall(v0, v1), putOn(v2, v1), Rule(69).
+buildWall(v0, v1) :- inv(v0, v1), putOn(v2, v0), Rule(3).
+inv(v0, v1) :- buildWall(v0, v1), offset(v1), Rule(10).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v2, v1), Rule(126).
+inv(v1, v2) :- buildWall(v0, v1), buildWall(v0, v2), Rule(20).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(175).
+inv(v0, v2) :- buildWall(v0, v1), cont(v1), buildWall(v0, v2), Rule(23).
+buildWall(v1, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(153).
+buildWall(v2, v1) :- inv(v0, v1), inv(v2, v0), offset(v1), Rule(127).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), cont(v0), Rule(52).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v1), Rule(161).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(169).
+buildWall(v1, v2) :- inv(v0, v1), inv(v1, v2), Rule(96).
+buildWall(v2, v0) :- inv(v0, v1), inv(v2, v0), Rule(97).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v1), Rule(94).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(95).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v1, v2), Rule(101).
+inv(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(167).
+buildWall(v2, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(49).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), cont(v2), Rule(67).
+buildWall(v0, v2) :- inv(v0, v1), offset(v1), inv(v0, v2), Rule(57).
+buildWall(v0, v1) :- cont(v0), inv(v0, v1), Rule(47).
+buildWall(v0, v2) :- fetch(v0, v1), offset(v0), putOn(v1, v2), Rule(86).
+inv(v0, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(68).
+inv(v2, v1) :- cont(v0), inv(v1, v0), buildWall(v2, v1), Rule(109).
+buildWall(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v0), Rule(26).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v0), Rule(98).
+buildWall(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(81).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(2).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), offset(v1), Rule(31).
+inv(v1, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(168).
+inv(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v0), Rule(93).
+buildWall(v2, v0) :- buildWall(v0, v1), inv(v2, v1), Rule(164).
+buildWall(v0, v1) :- inv(v0, v1), putOn(v2, v1), Rule(18).
+inv(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(171).
+inv(v0, v2) :- fetch(v0, v1), fetch(v2, v1), Rule(41).
+buildWall(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v1), Rule(144).
+buildWall(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v1), Rule(71).
+buildWall(v1, v2) :- putOn(v0, v1), putOn(v0, v2), Rule(143).
+inv(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v0), Rule(21).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v0, v2), Rule(92).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), Rule(166).
+inv(v2, v0) :- fetch(v0, v1), putOn(v1, v2), Rule(38).
+buildWall(v2, v0) :- cont(v0), putOn(v1, v0), fetch(v2, v1), Rule(104).
+buildWall(v1, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(130).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), cont(v2), Rule(149).
+buildWall(v1, v2) :- cont(v0), inv(v1, v0), inv(v1, v2), Rule(80).
+inv(v1, v2) :- buildWall(v0, v1), cont(v0), buildWall(v1, v2), Rule(43).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v2), Rule(72).
+buildWall(v2, v0) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(91).
+buildWall(v2, v0) :- buildWall(v0, v1), offset(v1), inv(v2, v0), Rule(120).
+buildWall(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v0, v2), Rule(4).

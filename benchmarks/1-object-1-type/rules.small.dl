@@ -1,0 +1,51 @@
+.type H
+.type F
+.type M
+.type T
+.type V
+.type Z
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl invocation(v0: H, v1: M)
+.input invocation
+.decl store(v0: V, v1: F, v2: V)
+.input store
+.decl assign(v0: T, v1: V, v2: V, v3: T, v4: V, v5: V)
+.input assign
+.decl actual(v0: H, v1: Z, v2: V)
+.input actual
+.decl points_initial(v0: V, v1: H)
+.input points_initial
+.decl formal(v0: M, v1: Z, v2: V)
+.input formal
+.decl enclosing_type(v0: V, v1: T)
+.input enclosing_type
+.decl receiver_formal(v0: H, v1: V)
+.input receiver_formal
+.decl receiver_actual(v0: M, v1: V)
+.input receiver_actual
+.decl load(v0: V, v1: F, v2: V)
+.input load
+
+
+.decl pointsto_objcont(v0: V, v1: V, v2: H)
+.output pointsto_objcont
+.decl pointsto(v0: T, v1: V, v2: V, v3: H)
+.output pointsto
+.decl heappointsto(v0: H, v1: F, v2: H)
+.output heappointsto
+
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), receiver_formal(v1, v2), Rule(10).
+pointsto_objcont(v2, v0, v1) :- points_initial(v0, v1), store(v2, v3, v0), Rule(6).
+pointsto_objcont(v3, v2, v0) :- actual(v0, v1, v2), points_initial(v3, v0), Rule(11).
+pointsto_objcont(v0, v3, v2) :- pointsto_objcont(v0, v1, v2), receiver_formal(v2, v3), Rule(2).
+pointsto_objcont(v2, v0, v3) :- load(v0, v1, v2), points_initial(v2, v3), Rule(0).
+pointsto_objcont(v1, v3, v2) :- pointsto_objcont(v0, v1, v2), receiver_formal(v2, v3), Rule(4).
+pointsto_objcont(v2, v0, v1) :- points_initial(v0, v1), receiver_formal(v1, v2), Rule(8).
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), points_initial(v2, v1), Rule(9).
+pointsto_objcont(v2, v0, v1) :- points_initial(v0, v1), pointsto_objcont(v2, v0, v3), Rule(5).
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), store(v2, v3, v0), Rule(1).
+pointsto_objcont(v0, v2, v3) :- load(v0, v1, v2), points_initial(v2, v3), Rule(3).
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), pointsto_objcont(v2, v0, v3), Rule(7).

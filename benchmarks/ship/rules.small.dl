@@ -1,0 +1,80 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl CustomerCity(v0: V, v1: V)
+.input CustomerCity
+.decl HasOrdered(v0: V, v1: V)
+.input HasOrdered
+.decl ProductName(v0: V, v1: V)
+.input ProductName
+
+
+.decl ShipTo(v0: V, v1: V)
+.output ShipTo
+
+ShipTo(v3, v1) :- ProductName(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(59).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(55).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), HasOrdered(v2, v3), Rule(43).
+ShipTo(v2, v3) :- HasOrdered(v0, v1), HasOrdered(v1, v2), ProductName(v0, v3), Rule(21).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ProductName(v1, v3), Rule(37).
+ShipTo(v3, v2) :- HasOrdered(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(56).
+ShipTo(v3, v1) :- ProductName(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(18).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), ProductName(v0, v3), Rule(16).
+ShipTo(v3, v2) :- HasOrdered(v0, v1), ProductName(v0, v2), ProductName(v1, v3), Rule(31).
+ShipTo(v2, v3) :- HasOrdered(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(30).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ProductName(v2, v0), ProductName(v2, v3), Rule(40).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), ShipTo(v2, v3), Rule(26).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), HasOrdered(v1, v2), ProductName(v0, v3), Rule(4).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), HasOrdered(v2, v3), Rule(29).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), ProductName(v0, v2), ProductName(v1, v3), Rule(46).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ShipTo(v1, v3), Rule(9).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), HasOrdered(v1, v2), ShipTo(v0, v3), Rule(42).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), ProductName(v2, v3), Rule(27).
+ShipTo(v3, v2) :- HasOrdered(v0, v1), ProductName(v0, v2), ShipTo(v1, v3), Rule(49).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(11).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), HasOrdered(v2, v3), Rule(62).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), HasOrdered(v2, v3), Rule(6).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), CustomerCity(v2, v3), Rule(12).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), ProductName(v2, v3), Rule(50).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), HasOrdered(v2, v3), Rule(38).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ShipTo(v2, v3), Rule(1).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ProductName(v2, v3), Rule(25).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), CustomerCity(v2, v3), Rule(0).
+ShipTo(v3, v2) :- ProductName(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(45).
+ShipTo(v2, v3) :- ProductName(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(63).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(52).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), ShipTo(v0, v3), Rule(58).
+ShipTo(v2, v3) :- HasOrdered(v0, v1), HasOrdered(v1, v2), ShipTo(v0, v3), Rule(23).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(34).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), ProductName(v2, v3), Rule(39).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), ShipTo(v2, v3), Rule(7).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), ShipTo(v2, v3), Rule(47).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(32).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(33).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ShipTo(v2, v0), ProductName(v2, v3), Rule(17).
+ShipTo(v3, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(2).
+ShipTo(v3, v1) :- ProductName(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(28).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), HasOrdered(v2, v3), Rule(3).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(10).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), CustomerCity(v2, v3), Rule(41).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(48).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(53).
+ShipTo(v3, v1) :- ProductName(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(60).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), HasOrdered(v1, v3), Rule(35).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(20).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), ProductName(v0, v2), ShipTo(v1, v3), Rule(61).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), ProductName(v2, v3), Rule(44).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), HasOrdered(v2, v3), Rule(51).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), ShipTo(v2, v3), Rule(57).
+ShipTo(v1, v3) :- ProductName(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(5).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(36).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), ProductName(v2, v3), Rule(8).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(22).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), HasOrdered(v0, v3), Rule(19).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), HasOrdered(v2, v3), Rule(24).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), HasOrdered(v2, v3), Rule(15).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), HasOrdered(v2, v3), Rule(13).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), CustomerCity(v2, v3), Rule(54).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ProductName(v2, v0), ShipTo(v2, v3), Rule(14).

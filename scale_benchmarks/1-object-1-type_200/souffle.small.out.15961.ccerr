@@ -1,0 +1,597 @@
+souffle.small.out.cpp:4495:19: warning: unused variable 'rel_9_points_initial_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_points_initial_op_ctxt,rel_9_points_initial->createContext());
+                  ^
+souffle.small.out.cpp:4520:19: warning: unused variable 'rel_9_points_initial_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_points_initial_op_ctxt,rel_9_points_initial->createContext());
+                  ^
+souffle.small.out.cpp:4545:19: warning: unused variable 'rel_2_actual_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_actual_op_ctxt,rel_2_actual->createContext());
+                  ^
+souffle.small.out.cpp:4570:19: warning: unused variable 'rel_8_load_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_load_op_ctxt,rel_8_load->createContext());
+                  ^
+souffle.small.out.cpp:4595:19: warning: unused variable 'rel_9_points_initial_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_points_initial_op_ctxt,rel_9_points_initial->createContext());
+                  ^
+souffle.small.out.cpp:4644:19: warning: unused variable 'rel_9_points_initial_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_points_initial_op_ctxt,rel_9_points_initial->createContext());
+                  ^
+souffle.small.out.cpp:4669:19: warning: unused variable 'rel_8_load_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_load_op_ctxt,rel_8_load->createContext());
+                  ^
+souffle.small.out.cpp:4694:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4721:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4748:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4776:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4800:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4827:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4852:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4879:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4906:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4931:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4958:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:4985:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5012:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5037:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5065:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5089:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5116:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5143:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5170:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5197:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5224:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5252:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5276:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5301:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5328:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5354:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:5376:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5403:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5430:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5457:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5484:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5511:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5538:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5565:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5592:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5618:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:5640:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5667:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5694:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5719:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5746:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5773:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5800:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5827:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5854:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5880:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:5902:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5929:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5956:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:5983:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6010:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6037:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6064:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6090:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:6112:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6138:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:6160:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6187:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6214:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6241:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6267:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:6289:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6315:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:6337:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6364:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6391:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6418:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6445:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6472:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6499:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6526:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6553:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6577:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:6599:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6626:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6653:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6678:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6704:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:6726:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6753:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6780:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6807:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6834:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6861:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6888:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6915:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6942:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6969:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:6994:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7020:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7044:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7070:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:7092:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7119:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7146:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7173:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7200:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7227:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7255:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7279:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7306:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7332:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:7355:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7379:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7405:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:7427:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7452:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7479:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7506:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7531:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7558:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7585:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7610:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7637:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7662:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7688:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7712:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7739:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7766:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7793:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7820:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7847:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7874:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7901:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7928:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7953:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:7980:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8006:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:8028:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8055:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8082:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8108:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:8130:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8157:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8184:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8211:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8238:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8263:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8290:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8317:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8344:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8371:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8396:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8423:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8450:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8477:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8504:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8531:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8558:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8583:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8607:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:8629:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8656:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8683:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8710:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8737:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8764:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8790:19: warning: unused variable 'rel_8_load_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_load_op_ctxt,rel_8_load->createContext());
+                  ^
+souffle.small.out.cpp:8810:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8835:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8862:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8890:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8914:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8942:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8966:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:8993:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9020:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9044:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9065:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9087:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9112:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9137:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9163:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9185:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9211:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9233:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9260:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9287:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9314:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9341:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9368:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9395:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9421:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9442:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9464:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9490:19: warning: unused variable 'rel_3_assign_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_assign_op_ctxt,rel_3_assign->createContext());
+                  ^
+souffle.small.out.cpp:9512:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9539:19: warning: unused variable 'rel_4_enclosing_type_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_enclosing_type_op_ctxt,rel_4_enclosing_type->createContext());
+                  ^
+souffle.small.out.cpp:9571:19: warning: unused variable 'rel_14_delta_pointsto_objcont_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_14_delta_pointsto_objcont_op_ctxt,rel_14_delta_pointsto_objcont->createContext());
+                  ^
+souffle.small.out.cpp:9602:19: warning: unused variable 'rel_14_delta_pointsto_objcont_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_14_delta_pointsto_objcont_op_ctxt,rel_14_delta_pointsto_objcont->createContext());
+                  ^
+souffle.small.out.cpp:9631:19: warning: unused variable 'rel_9_points_initial_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_points_initial_op_ctxt,rel_9_points_initial->createContext());
+                  ^
+souffle.small.out.cpp:9662:19: warning: unused variable 'rel_9_points_initial_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_points_initial_op_ctxt,rel_9_points_initial->createContext());
+                  ^

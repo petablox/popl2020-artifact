@@ -1,0 +1,26 @@
+.type ID
+.type Name
+.type Age
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl family(v0: ID, v1: Name, v2: Age, v3: ID)
+.input family
+
+
+.decl Out(v0: ID, v1: Name)
+.output Out
+
+Out(v0, v5) :- family(v0, v1, v2, v3), family(v4, v5, v6, v3), Rule(9).
+Out(v0, v1) :- family(v0, v1, v2, v3), family(v0, v4, v5, v6), Rule(10).
+Out(v0, v1) :- family(v0, v1, v2, v3), family(v4, v5, v6, v0), Rule(11).
+Out(v4, v1) :- Out(v0, v1), family(v0, v2, v3, v4), Rule(8).
+Out(v0, v2) :- Out(v0, v1), family(v0, v2, v3, v4), Rule(1).
+Out(v2, v1) :- Out(v0, v1), family(v2, v1, v3, v4), Rule(2).
+Out(v0, v3) :- Out(v0, v1), family(v2, v3, v4, v0), Rule(3).
+Out(v4, v1) :- Out(v0, v1), family(v2, v1, v3, v4), Rule(7).
+Out(v0, v5) :- family(v0, v1, v2, v3), family(v4, v5, v6, v0), Rule(5).
+Out(v2, v1) :- Out(v0, v1), family(v2, v3, v4, v0), Rule(4).
+Out(v4, v1) :- family(v0, v1, v2, v3), family(v4, v5, v6, v0), Rule(0).
+Out(v0, v5) :- family(v0, v1, v2, v3), family(v4, v5, v2, v6), Rule(6).

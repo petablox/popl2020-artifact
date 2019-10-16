@@ -1,0 +1,89 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl CustomerCity(v0: V, v1: V)
+.input CustomerCity
+.decl HasOrdered(v0: V, v1: V)
+.input HasOrdered
+.decl ProductName(v0: V, v1: V)
+.input ProductName
+
+.decl CustomerCity_notexists(v0: V, v1: V, v2: number)
+.output CustomerCity_notexists
+.decl HasOrdered_notexists(v0: V, v1: V, v2: number)
+.output HasOrdered_notexists
+.decl ProductName_notexists(v0: V, v1: V, v2: number)
+.output ProductName_notexists
+
+.decl ShipTo_notexists(v0: V, v1: V, v2: number)
+.output ShipTo_notexists
+
+CustomerCity_notexists(v0, v1, ruleIndex) :- CustomerCity(v0, v1), Rule(ruleIndex).
+HasOrdered_notexists(v0, v1, ruleIndex) :- HasOrdered(v0, v1), Rule(ruleIndex).
+ProductName_notexists(v0, v1, ruleIndex) :- ProductName(v0, v1), Rule(ruleIndex).
+ShipTo_notexists(v3, v1, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 59, Rule(59).
+ShipTo_notexists(v1, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ShipTo_notexists(v2, v0, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 55, Rule(55).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v2, v0, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 43, Rule(43).
+ShipTo_notexists(v2, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v1, v2, ruleIndex), ProductName_notexists(v0, v3, ruleIndex), ruleIndex != 21, Rule(21).
+ShipTo_notexists(v3, v2, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), ProductName_notexists(v1, v3, ruleIndex), ruleIndex != 37, Rule(37).
+ShipTo_notexists(v3, v2, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v1, v3, ruleIndex), ruleIndex != 56, Rule(56).
+ShipTo_notexists(v3, v1, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 18, Rule(18).
+ShipTo_notexists(v2, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v1, v2, ruleIndex), ProductName_notexists(v0, v3, ruleIndex), ruleIndex != 16, Rule(16).
+ShipTo_notexists(v3, v2, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ProductName_notexists(v1, v3, ruleIndex), ruleIndex != 31, Rule(31).
+ShipTo_notexists(v2, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v1, v2, ruleIndex), ShipTo_notexists(v0, v3, ruleIndex), ruleIndex != 30, Rule(30).
+ShipTo_notexists(v1, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v2, v0, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 40, Rule(40).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 26, Rule(26).
+ShipTo_notexists(v2, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v1, v2, ruleIndex), ProductName_notexists(v0, v3, ruleIndex), ruleIndex != 4, Rule(4).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 29, Rule(29).
+ShipTo_notexists(v3, v2, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ProductName_notexists(v1, v3, ruleIndex), ruleIndex != 46, Rule(46).
+ShipTo_notexists(v3, v2, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), ShipTo_notexists(v1, v3, ruleIndex), ruleIndex != 9, Rule(9).
+ShipTo_notexists(v2, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v1, v2, ruleIndex), ShipTo_notexists(v0, v3, ruleIndex), ruleIndex != 42, Rule(42).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 27, Rule(27).
+ShipTo_notexists(v3, v2, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ShipTo_notexists(v1, v3, ruleIndex), ruleIndex != 49, Rule(49).
+ShipTo_notexists(v3, v2, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v1, v3, ruleIndex), ruleIndex != 11, Rule(11).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v2, v0, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 62, Rule(62).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 6, Rule(6).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), CustomerCity_notexists(v2, v3, ruleIndex), ruleIndex != 12, Rule(12).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v2, v0, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 50, Rule(50).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 38, Rule(38).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 1, Rule(1).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 25, Rule(25).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), CustomerCity_notexists(v2, v3, ruleIndex), ruleIndex != 0, Rule(0).
+ShipTo_notexists(v3, v2, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v1, v3, ruleIndex), ruleIndex != 45, Rule(45).
+ShipTo_notexists(v2, v3, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ProductName_notexists(v1, v2, ruleIndex), ShipTo_notexists(v0, v3, ruleIndex), ruleIndex != 63, Rule(63).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 52, Rule(52).
+ShipTo_notexists(v2, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v1, v2, ruleIndex), ShipTo_notexists(v0, v3, ruleIndex), ruleIndex != 58, Rule(58).
+ShipTo_notexists(v2, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v1, v2, ruleIndex), ShipTo_notexists(v0, v3, ruleIndex), ruleIndex != 23, Rule(23).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 34, Rule(34).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v2, v0, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 39, Rule(39).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v2, v0, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 7, Rule(7).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 47, Rule(47).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 32, Rule(32).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 33, Rule(33).
+ShipTo_notexists(v1, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ShipTo_notexists(v2, v0, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 17, Rule(17).
+ShipTo_notexists(v3, v1, ruleIndex) :- ShipTo_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 2, Rule(2).
+ShipTo_notexists(v3, v1, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 28, Rule(28).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 3, Rule(3).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 10, Rule(10).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), CustomerCity_notexists(v2, v3, ruleIndex), ruleIndex != 41, Rule(41).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 48, Rule(48).
+ShipTo_notexists(v2, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v1, v2, ruleIndex), ShipTo_notexists(v0, v3, ruleIndex), ruleIndex != 53, Rule(53).
+ShipTo_notexists(v3, v1, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 60, Rule(60).
+ShipTo_notexists(v3, v2, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v1, v3, ruleIndex), ruleIndex != 35, Rule(35).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 20, Rule(20).
+ShipTo_notexists(v3, v2, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ShipTo_notexists(v1, v3, ruleIndex), ruleIndex != 61, Rule(61).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ProductName_notexists(v2, v0, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 44, Rule(44).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 51, Rule(51).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), HasOrdered_notexists(v2, v0, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 57, Rule(57).
+ShipTo_notexists(v1, v3, ruleIndex) :- ProductName_notexists(v0, v1, ruleIndex), ShipTo_notexists(v2, v0, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 5, Rule(5).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v2, v0, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 36, Rule(36).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 8, Rule(8).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v0, v2, ruleIndex), ProductName_notexists(v2, v3, ruleIndex), ruleIndex != 22, Rule(22).
+ShipTo_notexists(v2, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v1, v2, ruleIndex), HasOrdered_notexists(v0, v3, ruleIndex), ruleIndex != 19, Rule(19).
+ShipTo_notexists(v1, v3, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v2, v0, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 24, Rule(24).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 15, Rule(15).
+ShipTo_notexists(v3, v1, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ShipTo_notexists(v0, v2, ruleIndex), HasOrdered_notexists(v2, v3, ruleIndex), ruleIndex != 13, Rule(13).
+ShipTo_notexists(v3, v1, ruleIndex) :- CustomerCity_notexists(v0, v1, ruleIndex), CustomerCity_notexists(v0, v2, ruleIndex), CustomerCity_notexists(v2, v3, ruleIndex), ruleIndex != 54, Rule(54).
+ShipTo_notexists(v1, v3, ruleIndex) :- HasOrdered_notexists(v0, v1, ruleIndex), ProductName_notexists(v2, v0, ruleIndex), ShipTo_notexists(v2, v3, ruleIndex), ruleIndex != 14, Rule(14).

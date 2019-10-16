@@ -1,0 +1,36 @@
+.type yrq
+.type date
+
+.decl Rule(n: number)
+.input Rule
+
+.decl LE20130201(v0: date)
+.input LE20130201
+
+.decl GE20130215(v0: date)
+.input GE20130215
+
+.decl input1(v0: yrq, v1: date, v2: date)
+.input input1
+
+.decl LE20130201_notexists(v0: date, r: number)
+.output LE20130201_notexists
+
+.decl GE20130215_notexists(v0: date, r: number)
+.output GE20130215_notexists
+
+.decl input1_notexists(v0: yrq, v1: date, v2: date, r: number)
+.output input1_notexists
+
+.decl ans_notexists(v0: yrq, r: number)
+.output ans_notexists
+
+LE20130201_notexists(v0, r) :- LE20130201(v0), Rule(r).
+GE20130215_notexists(v0, r) :- GE20130215(v0), Rule(r).
+input1_notexists(v0, v1, v2, r) :- input1(v0, v1, v2), Rule(r).
+ans_notexists(v0, r) :- ans_notexists(v0, r), Rule(r), r != 0, Rule(0).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v0, r), Rule(r), r != 1, Rule(1).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v0, r), ans_notexists(v0, r), Rule(r), r != 2, Rule(2).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v1, r), ans_notexists(v1, r), Rule(r), r != 3, Rule(3).
+ans_notexists(v0, r) :- ans_notexists(v1, r), ans_notexists(v1, r), ans_notexists(v0, r), Rule(r), r != 4, Rule(4).
+ans_notexists(v0, r) :- ans_notexists(v1, r), ans_notexists(v0, r), ans_notexists(v1, r), Rule(r), r != 5, Rule(5).

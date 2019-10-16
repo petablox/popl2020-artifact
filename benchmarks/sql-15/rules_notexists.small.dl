@@ -1,0 +1,183 @@
+.type meets_at
+.type C_name
+.type S_key
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl class(v0: C_name, v1: meets_at)
+.input class
+.decl LT(v0: C_name, v1: C_name)
+.input LT
+.decl enroll(v0: S_key, v1: C_name)
+.input enroll
+
+.decl class_notexists(v0: C_name, v1: meets_at, v2: number)
+.output class_notexists
+.decl LT_notexists(v0: C_name, v1: C_name, v2: number)
+.output LT_notexists
+.decl enroll_notexists(v0: S_key, v1: C_name, v2: number)
+.output enroll_notexists
+
+.decl inv_notexists(v0: S_key, v1: C_name, v2: meets_at, v3: number)
+.output inv_notexists
+
+.decl ans_notexists(v0: S_key, v1: number)
+.output ans_notexists
+
+class_notexists(v0, v1, ruleIndex) :- class(v0, v1), Rule(ruleIndex).
+LT_notexists(v0, v1, ruleIndex) :- LT(v0, v1), Rule(ruleIndex).
+enroll_notexists(v0, v1, ruleIndex) :- enroll(v0, v1), Rule(ruleIndex).
+inv_notexists(v4, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), enroll_notexists(v4, v3, ruleIndex), ruleIndex != 64, Rule(64).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 73, Rule(73).
+inv_notexists(v2, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), inv_notexists(v2, v1, v4, ruleIndex), ruleIndex != 10, Rule(10).
+inv_notexists(v3, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v0, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 129, Rule(129).
+inv_notexists(v2, v1, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), inv_notexists(v4, v1, v3, ruleIndex), ruleIndex != 78, Rule(78).
+inv_notexists(v3, v0, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v0, v4, ruleIndex), ruleIndex != 83, Rule(83).
+inv_notexists(v2, v0, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v0, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 20, Rule(20).
+inv_notexists(v2, v1, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 42, Rule(42).
+inv_notexists(v4, v1, v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v2, v3, ruleIndex), enroll_notexists(v4, v2, ruleIndex), ruleIndex != 79, Rule(79).
+inv_notexists(v3, v1, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), enroll_notexists(v3, v0, ruleIndex), ruleIndex != 69, Rule(69).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), LT_notexists(v2, v1, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 74, Rule(74).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v1, ruleIndex), enroll_notexists(v3, v0, ruleIndex), ruleIndex != 143, Rule(143).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), enroll_notexists(v2, v4, ruleIndex), ruleIndex != 97, Rule(97).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v4, v1, ruleIndex), ruleIndex != 56, Rule(56).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), ruleIndex != 32, Rule(32).
+ans_notexists(v2, ruleIndex) :- ans_notexists(v0, ruleIndex), enroll_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 137, Rule(137).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), enroll_notexists(v2, v4, ruleIndex), ruleIndex != 133, Rule(133).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v0, v2, ruleIndex), ruleIndex != 135, Rule(135).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v2, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 51, Rule(51).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v0, v2, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 104, Rule(104).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 28, Rule(28).
+inv_notexists(v0, v1, v4, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 5, Rule(5).
+inv_notexists(v3, v1, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v0, v2, ruleIndex), inv_notexists(v3, v0, v2, ruleIndex), ruleIndex != 93, Rule(93).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 60, Rule(60).
+inv_notexists(v3, v0, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v0, v2, ruleIndex), enroll_notexists(v3, v1, ruleIndex), ruleIndex != 130, Rule(130).
+inv_notexists(v2, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 59, Rule(59).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), LT_notexists(v1, v0, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 111, Rule(111).
+inv_notexists(v2, v3, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), enroll_notexists(v2, v3, ruleIndex), ruleIndex != 4, Rule(4).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 95, Rule(95).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 33, Rule(33).
+inv_notexists(v2, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 3, Rule(3).
+inv_notexists(v3, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 115, Rule(115).
+ans_notexists(v3, ruleIndex) :- ans_notexists(v0, ruleIndex), inv_notexists(v0, v1, v2, ruleIndex), enroll_notexists(v3, v1, ruleIndex), ruleIndex != 140, Rule(140).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v1, v2, ruleIndex), enroll_notexists(v3, v1, ruleIndex), ruleIndex != 24, Rule(24).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v1, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 109, Rule(109).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v0, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 127, Rule(127).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v4, v2, ruleIndex), ruleIndex != 65, Rule(65).
+inv_notexists(v3, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 145, Rule(145).
+inv_notexists(v2, v4, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v4, v1, ruleIndex), ruleIndex != 76, Rule(76).
+inv_notexists(v2, v0, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 119, Rule(119).
+ans_notexists(v1, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), enroll_notexists(v1, v0, ruleIndex), enroll_notexists(v1, v2, ruleIndex), ruleIndex != 46, Rule(46).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), inv_notexists(v2, v1, v4, ruleIndex), ruleIndex != 100, Rule(100).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), ruleIndex != 102, Rule(102).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), enroll_notexists(v2, v0, ruleIndex), ruleIndex != 132, Rule(132).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 122, Rule(122).
+ans_notexists(v1, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), inv_notexists(v1, v0, v2, ruleIndex), enroll_notexists(v1, v3, ruleIndex), ruleIndex != 9, Rule(9).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 34, Rule(34).
+ans_notexists(v0, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v2, v3, ruleIndex), ruleIndex != 124, Rule(124).
+ans_notexists(v2, ruleIndex) :- ans_notexists(v0, ruleIndex), enroll_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 113, Rule(113).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), LT_notexists(v1, v2, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 40, Rule(40).
+inv_notexists(v3, v2, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v1, ruleIndex), enroll_notexists(v3, v0, ruleIndex), ruleIndex != 45, Rule(45).
+inv_notexists(v2, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 37, Rule(37).
+ans_notexists(v1, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), inv_notexists(v1, v0, v2, ruleIndex), ruleIndex != 66, Rule(66).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v1, ruleIndex), ruleIndex != 57, Rule(57).
+inv_notexists(v3, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 36, Rule(36).
+inv_notexists(v2, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 17, Rule(17).
+ans_notexists(v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), inv_notexists(v4, v0, v3, ruleIndex), ruleIndex != 136, Rule(136).
+inv_notexists(v2, v0, v5, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), inv_notexists(v4, v1, v5, ruleIndex), ruleIndex != 67, Rule(67).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), ruleIndex != 7, Rule(7).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 149, Rule(149).
+ans_notexists(v0, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v1, v2, ruleIndex), ruleIndex != 86, Rule(86).
+inv_notexists(v2, v0, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), ans_notexists(v2, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 138, Rule(138).
+inv_notexists(v2, v3, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), ruleIndex != 77, Rule(77).
+inv_notexists(v2, v0, v4, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 147, Rule(147).
+inv_notexists(v4, v0, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v2, v3, ruleIndex), inv_notexists(v4, v1, v3, ruleIndex), ruleIndex != 85, Rule(85).
+inv_notexists(v2, v1, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 15, Rule(15).
+ans_notexists(v4, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), enroll_notexists(v4, v3, ruleIndex), ruleIndex != 126, Rule(126).
+ans_notexists(v2, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), enroll_notexists(v2, v4, ruleIndex), ruleIndex != 6, Rule(6).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v1, v2, ruleIndex), ruleIndex != 38, Rule(38).
+ans_notexists(v4, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v3, ruleIndex), inv_notexists(v4, v0, v3, ruleIndex), ruleIndex != 54, Rule(54).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v1, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 16, Rule(16).
+ans_notexists(v4, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), LT_notexists(v1, v3, ruleIndex), enroll_notexists(v4, v3, ruleIndex), ruleIndex != 43, Rule(43).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v4, v2, ruleIndex), ruleIndex != 13, Rule(13).
+inv_notexists(v3, v0, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v4, v2, ruleIndex), ruleIndex != 117, Rule(117).
+ans_notexists(v3, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 18, Rule(18).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), LT_notexists(v0, v2, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 82, Rule(82).
+inv_notexists(v3, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v0, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 1, Rule(1).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v0, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 44, Rule(44).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 105, Rule(105).
+ans_notexists(v2, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 61, Rule(61).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), ruleIndex != 112, Rule(112).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v0, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 88, Rule(88).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), LT_notexists(v1, v0, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 41, Rule(41).
+inv_notexists(v3, v1, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v0, v2, ruleIndex), enroll_notexists(v3, v1, ruleIndex), ruleIndex != 52, Rule(52).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 80, Rule(80).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v0, v1, ruleIndex), ruleIndex != 70, Rule(70).
+inv_notexists(v3, v0, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v1, v2, ruleIndex), ruleIndex != 72, Rule(72).
+inv_notexists(v3, v0, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), enroll_notexists(v3, v0, ruleIndex), ruleIndex != 47, Rule(47).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v1, ruleIndex), ruleIndex != 107, Rule(107).
+inv_notexists(v3, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), inv_notexists(v3, v0, v4, ruleIndex), ruleIndex != 128, Rule(128).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), ruleIndex != 21, Rule(21).
+inv_notexists(v3, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v3, v4, v1, ruleIndex), ruleIndex != 139, Rule(139).
+inv_notexists(v3, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v0, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 26, Rule(26).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), LT_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 27, Rule(27).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), inv_notexists(v2, v0, v4, ruleIndex), ruleIndex != 11, Rule(11).
+inv_notexists(v2, v4, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), enroll_notexists(v2, v4, ruleIndex), ruleIndex != 121, Rule(121).
+ans_notexists(v4, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), LT_notexists(v3, v1, ruleIndex), inv_notexists(v4, v3, v5, ruleIndex), ruleIndex != 19, Rule(19).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v0, v2, ruleIndex), ruleIndex != 92, Rule(92).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), ruleIndex != 91, Rule(91).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), ruleIndex != 55, Rule(55).
+inv_notexists(v0, v1, v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 23, Rule(23).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 39, Rule(39).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 106, Rule(106).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 2, Rule(2).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), enroll_notexists(v2, v4, ruleIndex), ruleIndex != 48, Rule(48).
+ans_notexists(v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 148, Rule(148).
+inv_notexists(v0, v2, v4, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), enroll_notexists(v0, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 90, Rule(90).
+inv_notexists(v2, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), inv_notexists(v2, v1, v4, ruleIndex), ruleIndex != 134, Rule(134).
+inv_notexists(v2, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), inv_notexists(v2, v0, v4, ruleIndex), ruleIndex != 99, Rule(99).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), LT_notexists(v2, v0, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 50, Rule(50).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), ruleIndex != 142, Rule(142).
+inv_notexists(v3, v0, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v0, v2, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 98, Rule(98).
+ans_notexists(v1, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), enroll_notexists(v1, v0, ruleIndex), inv_notexists(v1, v2, v3, ruleIndex), ruleIndex != 14, Rule(14).
+inv_notexists(v3, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v0, v4, ruleIndex), ruleIndex != 31, Rule(31).
+inv_notexists(v4, v1, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v2, v3, ruleIndex), inv_notexists(v4, v0, v3, ruleIndex), ruleIndex != 58, Rule(58).
+ans_notexists(v4, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v2, v3, ruleIndex), enroll_notexists(v4, v2, ruleIndex), ruleIndex != 30, Rule(30).
+ans_notexists(v2, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), ruleIndex != 29, Rule(29).
+ans_notexists(v4, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), class_notexists(v3, v2, ruleIndex), enroll_notexists(v4, v3, ruleIndex), ruleIndex != 116, Rule(116).
+ans_notexists(v3, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), enroll_notexists(v3, v1, ruleIndex), enroll_notexists(v3, v4, ruleIndex), ruleIndex != 68, Rule(68).
+inv_notexists(v2, v4, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), class_notexists(v4, v3, ruleIndex), ruleIndex != 12, Rule(12).
+inv_notexists(v0, v1, v4, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), enroll_notexists(v0, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 35, Rule(35).
+ans_notexists(v4, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), LT_notexists(v3, v1, ruleIndex), enroll_notexists(v4, v3, ruleIndex), ruleIndex != 62, Rule(62).
+inv_notexists(v2, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), inv_notexists(v3, v0, v4, ruleIndex), ruleIndex != 71, Rule(71).
+ans_notexists(v3, ruleIndex) :- inv_notexists(v0, v1, v2, ruleIndex), enroll_notexists(v3, v1, ruleIndex), ruleIndex != 131, Rule(131).
+inv_notexists(v3, v1, v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 96, Rule(96).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 75, Rule(75).
+ans_notexists(v4, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v2, v3, ruleIndex), inv_notexists(v4, v0, v3, ruleIndex), ruleIndex != 141, Rule(141).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 101, Rule(101).
+ans_notexists(v2, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 108, Rule(108).
+inv_notexists(v3, v1, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v4, v2, ruleIndex), ruleIndex != 63, Rule(63).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 89, Rule(89).
+inv_notexists(v2, v0, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 84, Rule(84).
+inv_notexists(v2, v0, v3, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 144, Rule(144).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), LT_notexists(v1, v0, ruleIndex), enroll_notexists(v2, v1, ruleIndex), ruleIndex != 0, Rule(0).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), ruleIndex != 81, Rule(81).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), LT_notexists(v1, v2, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 120, Rule(120).
+ans_notexists(v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), enroll_notexists(v0, v2, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 125, Rule(125).
+inv_notexists(v3, v1, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v0, v2, ruleIndex), ruleIndex != 53, Rule(53).
+ans_notexists(v2, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 114, Rule(114).
+inv_notexists(v0, v1, v2, ruleIndex) :- ans_notexists(v0, ruleIndex), class_notexists(v1, v2, ruleIndex), enroll_notexists(v0, v1, ruleIndex), ruleIndex != 94, Rule(94).
+ans_notexists(v2, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, v3, ruleIndex), ruleIndex != 103, Rule(103).
+inv_notexists(v2, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), inv_notexists(v2, v3, v1, ruleIndex), ruleIndex != 87, Rule(87).
+inv_notexists(v3, v0, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 123, Rule(123).
+inv_notexists(v0, v3, v2, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v1, v2, ruleIndex), class_notexists(v3, v2, ruleIndex), ruleIndex != 25, Rule(25).
+inv_notexists(v2, v3, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v3, ruleIndex), inv_notexists(v4, v3, v1, ruleIndex), ruleIndex != 146, Rule(146).
+ans_notexists(v1, ruleIndex) :- LT_notexists(v0, v0, ruleIndex), enroll_notexists(v1, v0, ruleIndex), ruleIndex != 118, Rule(118).
+inv_notexists(v3, v2, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), class_notexists(v2, v1, ruleIndex), inv_notexists(v3, v2, v4, ruleIndex), ruleIndex != 150, Rule(150).
+inv_notexists(v2, v1, v5, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, v3, ruleIndex), inv_notexists(v4, v1, v5, ruleIndex), ruleIndex != 110, Rule(110).
+inv_notexists(v3, v1, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v1, v2, ruleIndex), inv_notexists(v3, v0, v4, ruleIndex), ruleIndex != 8, Rule(8).
+inv_notexists(v3, v0, v2, ruleIndex) :- LT_notexists(v0, v1, ruleIndex), class_notexists(v0, v2, ruleIndex), inv_notexists(v3, v1, v4, ruleIndex), ruleIndex != 151, Rule(151).
+ans_notexists(v3, ruleIndex) :- class_notexists(v0, v1, ruleIndex), LT_notexists(v2, v0, ruleIndex), enroll_notexists(v3, v2, ruleIndex), ruleIndex != 152, Rule(152).
+inv_notexists(v2, v3, v1, ruleIndex) :- class_notexists(v0, v1, ruleIndex), enroll_notexists(v2, v0, ruleIndex), inv_notexists(v2, v3, v4, ruleIndex), ruleIndex != 22, Rule(22).
+inv_notexists(v0, v1, v3, ruleIndex) :- enroll_notexists(v0, v1, ruleIndex), inv_notexists(v0, v2, v3, ruleIndex), ruleIndex != 49, Rule(49).

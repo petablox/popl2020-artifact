@@ -1,0 +1,112 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Edge(v0: V, v1: V)
+.input Edge
+
+.decl Edge_notexists(v0: V, v1: V, v2: number)
+.output Edge_notexists
+
+.decl Leg_notexists(v0: V, v1: V, v2: number)
+.output Leg_notexists
+.decl inv_notexists(v0: V, v1: V, v2: number)
+.output inv_notexists
+.decl SameClique_notexists(v0: V, v1: V, v2: number)
+.output SameClique_notexists
+
+Edge_notexists(v0, v1, ruleIndex) :- Edge(v0, v1), Rule(ruleIndex).
+Leg_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 8, Rule(8).
+Leg_notexists(v0, v1, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 64, Rule(64).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 81, Rule(81).
+inv_notexists(v1, v0, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 79, Rule(79).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 14, Rule(14).
+SameClique_notexists(v0, v2, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v1, v2, ruleIndex), ruleIndex != 51, Rule(51).
+inv_notexists(v0, v2, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v2, ruleIndex), ruleIndex != 90, Rule(90).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 87, Rule(87).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 58, Rule(58).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v2, v1, ruleIndex), ruleIndex != 26, Rule(26).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 91, Rule(91).
+inv_notexists(v2, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 63, Rule(63).
+inv_notexists(v0, v1, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), ruleIndex != 89, Rule(89).
+Leg_notexists(v2, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 48, Rule(48).
+inv_notexists(v1, v0, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 56, Rule(56).
+Leg_notexists(v2, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 41, Rule(41).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 82, Rule(82).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 84, Rule(84).
+Leg_notexists(v0, v1, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 16, Rule(16).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 23, Rule(23).
+SameClique_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 66, Rule(66).
+Leg_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 30, Rule(30).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 57, Rule(57).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), ruleIndex != 86, Rule(86).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v1, v0, ruleIndex), ruleIndex != 46, Rule(46).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 39, Rule(39).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 68, Rule(68).
+inv_notexists(v2, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 69, Rule(69).
+inv_notexists(v0, v2, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 54, Rule(54).
+SameClique_notexists(v1, v0, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 83, Rule(83).
+Leg_notexists(v0, v2, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v2, ruleIndex), ruleIndex != 76, Rule(76).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), ruleIndex != 53, Rule(53).
+Leg_notexists(v0, v1, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), ruleIndex != 49, Rule(49).
+SameClique_notexists(v2, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 36, Rule(36).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 75, Rule(75).
+inv_notexists(v2, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 9, Rule(9).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 45, Rule(45).
+SameClique_notexists(v2, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 13, Rule(13).
+SameClique_notexists(v0, v2, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v2, ruleIndex), ruleIndex != 5, Rule(5).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 12, Rule(12).
+inv_notexists(v0, v2, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v1, v2, ruleIndex), ruleIndex != 0, Rule(0).
+inv_notexists(v0, v2, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v2, ruleIndex), ruleIndex != 24, Rule(24).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), ruleIndex != 70, Rule(70).
+SameClique_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), ruleIndex != 3, Rule(3).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 33, Rule(33).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 44, Rule(44).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 17, Rule(17).
+SameClique_notexists(v0, v2, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 73, Rule(73).
+Leg_notexists(v2, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 2, Rule(2).
+SameClique_notexists(v0, v2, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v2, ruleIndex), ruleIndex != 55, Rule(55).
+Leg_notexists(v0, v2, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v1, v2, ruleIndex), ruleIndex != 43, Rule(43).
+inv_notexists(v1, v0, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 50, Rule(50).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 65, Rule(65).
+inv_notexists(v0, v1, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 6, Rule(6).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 92, Rule(92).
+inv_notexists(v0, v1, ruleIndex) :- SameClique_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 85, Rule(85).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 71, Rule(71).
+Leg_notexists(v2, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 40, Rule(40).
+Leg_notexists(v0, v2, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v2, ruleIndex), ruleIndex != 1, Rule(1).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v2, v1, ruleIndex), ruleIndex != 80, Rule(80).
+Leg_notexists(v1, v0, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 19, Rule(19).
+SameClique_notexists(v1, v0, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 88, Rule(88).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v1, v0, ruleIndex), ruleIndex != 60, Rule(60).
+SameClique_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 31, Rule(31).
+SameClique_notexists(v1, v0, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 21, Rule(21).
+Leg_notexists(v1, v0, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 22, Rule(22).
+SameClique_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 20, Rule(20).
+SameClique_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 61, Rule(61).
+Leg_notexists(v1, v0, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 25, Rule(25).
+inv_notexists(v2, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 37, Rule(37).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 11, Rule(11).
+Leg_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 72, Rule(72).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 15, Rule(15).
+inv_notexists(v1, v0, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v1, v0, ruleIndex), ruleIndex != 28, Rule(28).
+Leg_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), ruleIndex != 62, Rule(62).
+Leg_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 27, Rule(27).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v1, v0, ruleIndex), ruleIndex != 18, Rule(18).
+Leg_notexists(v2, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 77, Rule(77).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 34, Rule(34).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 59, Rule(59).
+Leg_notexists(v1, v0, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 32, Rule(32).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 78, Rule(78).
+inv_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), ruleIndex != 47, Rule(47).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v2, v1, ruleIndex), ruleIndex != 67, Rule(67).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), ruleIndex != 38, Rule(38).
+Leg_notexists(v1, v0, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 74, Rule(74).
+Leg_notexists(v0, v2, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 35, Rule(35).
+SameClique_notexists(v2, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 29, Rule(29).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), Edge_notexists(v1, v0, ruleIndex), ruleIndex != 10, Rule(10).
+SameClique_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v1, v0, ruleIndex), ruleIndex != 4, Rule(4).
+inv_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), inv_notexists(v2, v1, ruleIndex), ruleIndex != 42, Rule(42).
+Leg_notexists(v0, v1, ruleIndex) :- Edge_notexists(v0, v1, ruleIndex), SameClique_notexists(v2, v1, ruleIndex), ruleIndex != 7, Rule(7).
+SameClique_notexists(v0, v1, ruleIndex) :- Leg_notexists(v0, v1, ruleIndex), Leg_notexists(v2, v1, ruleIndex), ruleIndex != 52, Rule(52).

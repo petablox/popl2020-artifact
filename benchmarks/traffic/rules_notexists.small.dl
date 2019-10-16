@@ -1,0 +1,60 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl GreenSignal(v0: V)
+.input GreenSignal
+.decl HasTraffic(v0: V)
+.input HasTraffic
+.decl Intersect(v0: V, v1: V)
+.input Intersect
+
+.decl GreenSignal_notexists(v0: V, v1: number)
+.output GreenSignal_notexists
+.decl HasTraffic_notexists(v0: V, v1: number)
+.output HasTraffic_notexists
+.decl Intersect_notexists(v0: V, v1: V, v2: number)
+.output Intersect_notexists
+
+.decl inv_notexists(v0: V, v1: V, v2: number)
+.output inv_notexists
+.decl Crashes_notexists(v0: V, v1: number)
+.output Crashes_notexists
+
+GreenSignal_notexists(v0, ruleIndex) :- GreenSignal(v0), Rule(ruleIndex).
+HasTraffic_notexists(v0, ruleIndex) :- HasTraffic(v0), Rule(ruleIndex).
+Intersect_notexists(v0, v1, ruleIndex) :- Intersect(v0, v1), Rule(ruleIndex).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), inv_notexists(v0, v1, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 2, Rule(2).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 10, Rule(10).
+inv_notexists(v1, v0, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), ruleIndex != 31, Rule(31).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), inv_notexists(v0, v1, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 12, Rule(12).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 6, Rule(6).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), inv_notexists(v1, v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 19, Rule(19).
+inv_notexists(v0, v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), ruleIndex != 23, Rule(23).
+inv_notexists(v0, v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), ruleIndex != 32, Rule(32).
+inv_notexists(v0, v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), ruleIndex != 26, Rule(26).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 14, Rule(14).
+inv_notexists(v1, v0, ruleIndex) :- Crashes_notexists(v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), ruleIndex != 1, Rule(1).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 27, Rule(27).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 5, Rule(5).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), inv_notexists(v1, v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 7, Rule(7).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), inv_notexists(v0, v1, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 9, Rule(9).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 22, Rule(22).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 21, Rule(21).
+inv_notexists(v1, v0, ruleIndex) :- Crashes_notexists(v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), ruleIndex != 8, Rule(8).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), inv_notexists(v0, v1, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 24, Rule(24).
+inv_notexists(v0, v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), Crashes_notexists(v1, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), ruleIndex != 13, Rule(13).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 4, Rule(4).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), inv_notexists(v1, v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 30, Rule(30).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 15, Rule(15).
+inv_notexists(v0, v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), ruleIndex != 0, Rule(0).
+inv_notexists(v0, v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), ruleIndex != 11, Rule(11).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), Intersect_notexists(v1, v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 29, Rule(29).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), inv_notexists(v1, v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 20, Rule(20).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), inv_notexists(v1, v0, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 18, Rule(18).
+Crashes_notexists(v1, ruleIndex) :- GreenSignal_notexists(v0, ruleIndex), inv_notexists(v1, v0, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 28, Rule(28).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 17, Rule(17).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), inv_notexists(v0, v1, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 25, Rule(25).
+Crashes_notexists(v1, ruleIndex) :- HasTraffic_notexists(v0, ruleIndex), inv_notexists(v0, v1, ruleIndex), GreenSignal_notexists(v1, ruleIndex), ruleIndex != 16, Rule(16).
+Crashes_notexists(v1, ruleIndex) :- Crashes_notexists(v0, ruleIndex), Intersect_notexists(v0, v1, ruleIndex), HasTraffic_notexists(v1, ruleIndex), ruleIndex != 3, Rule(3).

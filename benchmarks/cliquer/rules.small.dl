@@ -1,0 +1,109 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Edge(v0: V, v1: V)
+.input Edge
+
+
+.decl Leg(v0: V, v1: V)
+.output Leg
+.decl inv(v0: V, v1: V)
+.output inv
+.decl SameClique(v0: V, v1: V)
+.output SameClique
+
+Leg(v0, v1) :- inv(v0, v1), inv(v2, v1), Rule(8).
+Leg(v0, v1) :- SameClique(v0, v1), SameClique(v2, v1), Rule(64).
+Leg(v0, v1) :- Edge(v0, v1), inv(v2, v1), Rule(81).
+inv(v1, v0) :- Edge(v0, v1), SameClique(v1, v0), Rule(79).
+inv(v0, v1) :- Leg(v0, v1), SameClique(v2, v1), Rule(14).
+SameClique(v0, v2) :- Edge(v0, v1), Edge(v1, v2), Rule(51).
+inv(v0, v2) :- SameClique(v0, v1), SameClique(v1, v2), Rule(90).
+inv(v0, v1) :- Edge(v0, v1), SameClique(v1, v0), Rule(87).
+SameClique(v0, v1) :- Leg(v0, v1), Leg(v1, v0), Rule(58).
+Leg(v0, v1) :- Edge(v0, v1), Edge(v2, v1), Rule(26).
+inv(v0, v1) :- Edge(v0, v1), Leg(v1, v0), Rule(91).
+inv(v2, v1) :- inv(v0, v1), SameClique(v2, v1), Rule(63).
+inv(v0, v1) :- SameClique(v0, v1), Rule(89).
+Leg(v2, v1) :- Edge(v0, v1), inv(v2, v1), Rule(48).
+inv(v1, v0) :- inv(v0, v1), SameClique(v1, v0), Rule(56).
+Leg(v2, v1) :- Leg(v0, v1), inv(v2, v1), Rule(41).
+Leg(v0, v1) :- Edge(v0, v1), Leg(v1, v0), Rule(82).
+inv(v0, v1) :- Leg(v0, v1), Leg(v1, v0), Rule(84).
+Leg(v0, v1) :- SameClique(v0, v1), SameClique(v1, v0), Rule(16).
+inv(v0, v1) :- Leg(v0, v1), Leg(v2, v1), Rule(23).
+SameClique(v0, v1) :- inv(v0, v1), SameClique(v1, v0), Rule(66).
+Leg(v0, v1) :- inv(v0, v1), SameClique(v1, v0), Rule(30).
+SameClique(v0, v1) :- Leg(v0, v1), SameClique(v1, v0), Rule(57).
+Leg(v0, v1) :- Edge(v0, v1), Rule(86).
+SameClique(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(46).
+SameClique(v0, v1) :- Edge(v0, v1), inv(v2, v1), Rule(39).
+SameClique(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(68).
+inv(v2, v1) :- Edge(v0, v1), Leg(v2, v1), Rule(69).
+inv(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(54).
+SameClique(v1, v0) :- Edge(v0, v1), Leg(v1, v0), Rule(83).
+Leg(v0, v2) :- SameClique(v0, v1), SameClique(v1, v2), Rule(76).
+SameClique(v0, v1) :- Edge(v0, v1), Rule(53).
+Leg(v0, v1) :- SameClique(v0, v1), Rule(49).
+SameClique(v2, v1) :- Edge(v0, v1), inv(v2, v1), Rule(36).
+SameClique(v0, v1) :- Edge(v0, v1), SameClique(v2, v1), Rule(75).
+inv(v2, v1) :- Leg(v0, v1), SameClique(v2, v1), Rule(9).
+SameClique(v0, v1) :- Leg(v0, v1), inv(v1, v0), Rule(45).
+SameClique(v2, v1) :- Edge(v0, v1), Leg(v2, v1), Rule(13).
+SameClique(v0, v2) :- SameClique(v0, v1), SameClique(v1, v2), Rule(5).
+Leg(v0, v1) :- Edge(v0, v1), SameClique(v1, v0), Rule(12).
+inv(v0, v2) :- Edge(v0, v1), Edge(v1, v2), Rule(0).
+inv(v0, v2) :- Leg(v0, v1), Leg(v1, v2), Rule(24).
+inv(v0, v1) :- Edge(v0, v1), Rule(70).
+SameClique(v0, v1) :- inv(v0, v1), Rule(3).
+Leg(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(33).
+inv(v0, v1) :- Edge(v0, v1), Leg(v2, v1), Rule(44).
+inv(v0, v1) :- Leg(v0, v1), SameClique(v1, v0), Rule(17).
+SameClique(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(73).
+Leg(v2, v1) :- Edge(v0, v1), SameClique(v2, v1), Rule(2).
+SameClique(v0, v2) :- Leg(v0, v1), Leg(v1, v2), Rule(55).
+Leg(v0, v2) :- Edge(v0, v1), Edge(v1, v2), Rule(43).
+inv(v1, v0) :- Leg(v0, v1), SameClique(v1, v0), Rule(50).
+inv(v0, v1) :- Edge(v0, v1), SameClique(v2, v1), Rule(65).
+inv(v0, v1) :- SameClique(v0, v1), SameClique(v1, v0), Rule(6).
+inv(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(92).
+inv(v0, v1) :- SameClique(v0, v1), SameClique(v2, v1), Rule(85).
+SameClique(v0, v1) :- Edge(v0, v1), Leg(v1, v0), Rule(71).
+Leg(v2, v1) :- inv(v0, v1), SameClique(v2, v1), Rule(40).
+Leg(v0, v2) :- Leg(v0, v1), Leg(v1, v2), Rule(1).
+inv(v0, v1) :- Edge(v0, v1), Edge(v2, v1), Rule(80).
+Leg(v1, v0) :- Edge(v0, v1), SameClique(v1, v0), Rule(19).
+SameClique(v1, v0) :- Leg(v0, v1), inv(v1, v0), Rule(88).
+inv(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(60).
+SameClique(v0, v1) :- inv(v0, v1), inv(v2, v1), Rule(31).
+SameClique(v1, v0) :- Edge(v0, v1), inv(v1, v0), Rule(21).
+Leg(v1, v0) :- Edge(v0, v1), inv(v1, v0), Rule(22).
+SameClique(v0, v1) :- inv(v0, v1), inv(v1, v0), Rule(20).
+SameClique(v0, v1) :- inv(v0, v1), SameClique(v2, v1), Rule(61).
+Leg(v1, v0) :- Leg(v0, v1), inv(v1, v0), Rule(25).
+inv(v2, v1) :- Edge(v0, v1), SameClique(v2, v1), Rule(37).
+SameClique(v0, v1) :- Edge(v0, v1), Leg(v2, v1), Rule(11).
+Leg(v0, v1) :- inv(v0, v1), SameClique(v2, v1), Rule(72).
+inv(v0, v1) :- Leg(v0, v1), inv(v2, v1), Rule(15).
+inv(v1, v0) :- Edge(v0, v1), Leg(v1, v0), Rule(28).
+Leg(v0, v1) :- inv(v0, v1), Rule(62).
+Leg(v0, v1) :- inv(v0, v1), inv(v1, v0), Rule(27).
+inv(v0, v1) :- Leg(v0, v1), inv(v1, v0), Rule(18).
+Leg(v2, v1) :- Leg(v0, v1), SameClique(v2, v1), Rule(77).
+Leg(v0, v1) :- Edge(v0, v1), Leg(v2, v1), Rule(34).
+SameClique(v0, v1) :- Leg(v0, v1), inv(v2, v1), Rule(59).
+Leg(v1, v0) :- Leg(v0, v1), SameClique(v1, v0), Rule(32).
+SameClique(v0, v1) :- Leg(v0, v1), SameClique(v2, v1), Rule(78).
+inv(v0, v1) :- Leg(v0, v1), Rule(47).
+SameClique(v0, v1) :- Edge(v0, v1), Edge(v2, v1), Rule(67).
+SameClique(v0, v1) :- Leg(v0, v1), Rule(38).
+Leg(v1, v0) :- inv(v0, v1), SameClique(v1, v0), Rule(74).
+Leg(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(35).
+SameClique(v2, v1) :- Leg(v0, v1), inv(v2, v1), Rule(29).
+Leg(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(10).
+SameClique(v0, v1) :- Edge(v0, v1), SameClique(v1, v0), Rule(4).
+inv(v0, v1) :- Edge(v0, v1), inv(v2, v1), Rule(42).
+Leg(v0, v1) :- Edge(v0, v1), SameClique(v2, v1), Rule(7).
+SameClique(v0, v1) :- Leg(v0, v1), Leg(v2, v1), Rule(52).

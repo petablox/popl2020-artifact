@@ -1,0 +1,9 @@
+{name: './scale_benchmarks/1-object-1-type_100_1', z3: 1, souffle: 1, runtime: 0.056079864501953125, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_200_1', z3: 1, souffle: 1, runtime: 0.06177210807800293, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_300_1', z3: 1, souffle: 1, runtime: 0.08530211448669434, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_400_1', z3: 1, souffle: 1, runtime: 0.12621116638183594, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_500_1', z3: 1, souffle: 1, runtime: 0.17747092247009277, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_600_1', z3: 1, souffle: 1, runtime: 0.1408541202545166, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_700_1', z3: 1, souffle: 1, runtime: 0.19122314453125, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_800_1', z3: 1, souffle: 1, runtime: 0.20864486694335938, setting_delta: 1}
+{name: './scale_benchmarks/1-object-1-type_900_1', z3: 1, souffle: 1, runtime: 0.22870206832885742, setting_delta: 1}

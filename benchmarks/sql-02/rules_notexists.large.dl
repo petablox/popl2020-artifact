@@ -1,0 +1,27 @@
+.type Age
+.type Name
+.type ID
+
+.decl Rule(n: number)
+.input Rule
+
+.decl family(v0: ID, v1: Name, v2: Age, v3: ID)
+.input family
+
+.decl family_notexists(v0: ID, v1: Name, v2: Age, v3: ID, r: number)
+.output family_notexists
+
+.decl Out_notexists(v0: ID, v1: Name, r: number)
+.output Out_notexists
+
+
+
+family_notexists(v0, v1, v2, v3, r) :- family(v0, v1, v2, v3), Rule(r).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 1, Rule(1).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v2, r), Out_notexists(v0, v2, r), Rule(r), r != 3, Rule(3).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v0, v2, r), Out_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v0, v1, r), Out_notexists(v0, v2, r), Rule(r), r != 5, Rule(5).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v3, v2, r), Out_notexists(v3, v1, r), Rule(r), r != 6, Rule(6).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v3, v1, r), Out_notexists(v3, v2, r), Rule(r), r != 7, Rule(7).

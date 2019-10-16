@@ -1,0 +1,123 @@
+.type T
+.type C
+.type S
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Active(v0: S)
+.input Active
+.decl Inactive(v0: S)
+.input Inactive
+.decl Input1(v0: T, v1: S, v2: C)
+.input Input1
+
+.decl Active_notexists(v0: S, v1: number)
+.output Active_notexists
+.decl Inactive_notexists(v0: S, v1: number)
+.output Inactive_notexists
+.decl Input1_notexists(v0: T, v1: S, v2: C, v3: number)
+.output Input1_notexists
+
+.decl inv1_notexists(v0: T, v1: C, v2: number)
+.output inv1_notexists
+.decl inv2_notexists(v0: T, v1: C, v2: number)
+.output inv2_notexists
+
+.decl ans_notexists(v0: T, v1: C, v2: C, v3: number)
+.output ans_notexists
+
+Active_notexists(v0, ruleIndex) :- Active(v0), Rule(ruleIndex).
+Inactive_notexists(v0, ruleIndex) :- Inactive(v0), Rule(ruleIndex).
+Input1_notexists(v0, v1, v2, ruleIndex) :- Input1(v0, v1, v2), Rule(ruleIndex).
+ans_notexists(v3, v2, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 11, Rule(11).
+inv2_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v1, v3, ruleIndex), ruleIndex != 38, Rule(38).
+inv1_notexists(v0, v2, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), inv2_notexists(v0, v2, ruleIndex), ruleIndex != 45, Rule(45).
+inv2_notexists(v0, v1, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), ruleIndex != 1, Rule(1).
+inv1_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 46, Rule(46).
+inv2_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v1, v3, ruleIndex), ruleIndex != 36, Rule(36).
+inv1_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v1, v3, ruleIndex), ruleIndex != 14, Rule(14).
+inv1_notexists(v0, v3, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 21, Rule(21).
+inv2_notexists(v0, v4, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), Input1_notexists(v3, v1, v4, ruleIndex), ruleIndex != 35, Rule(35).
+inv1_notexists(v0, v4, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ans_notexists(v3, v1, v4, ruleIndex), ruleIndex != 37, Rule(37).
+inv1_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 53, Rule(53).
+inv1_notexists(v0, v1, ruleIndex) :- inv2_notexists(v0, v1, ruleIndex), inv2_notexists(v0, v2, ruleIndex), ruleIndex != 10, Rule(10).
+inv2_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 75, Rule(75).
+ans_notexists(v3, v2, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 80, Rule(80).
+inv1_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 15, Rule(15).
+inv2_notexists(v3, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 28, Rule(28).
+inv1_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 30, Rule(30).
+inv2_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 54, Rule(54).
+inv2_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), ruleIndex != 58, Rule(58).
+inv1_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 25, Rule(25).
+inv2_notexists(v3, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 18, Rule(18).
+inv2_notexists(v0, v1, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), inv2_notexists(v0, v2, ruleIndex), ruleIndex != 79, Rule(79).
+inv1_notexists(v3, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 81, Rule(81).
+inv1_notexists(v3, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 48, Rule(48).
+ans_notexists(v0, v1, v2, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), inv1_notexists(v0, v2, ruleIndex), ruleIndex != 42, Rule(42).
+ans_notexists(v0, v2, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ruleIndex != 26, Rule(26).
+ans_notexists(v0, v1, v2, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), inv2_notexists(v0, v2, ruleIndex), ruleIndex != 63, Rule(63).
+inv2_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), ruleIndex != 32, Rule(32).
+inv1_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 27, Rule(27).
+inv2_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 89, Rule(89).
+inv1_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 44, Rule(44).
+inv1_notexists(v3, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 2, Rule(2).
+inv1_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 74, Rule(74).
+inv2_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 24, Rule(24).
+ans_notexists(v0, v1, v2, ruleIndex) :- inv2_notexists(v0, v1, ruleIndex), inv2_notexists(v0, v2, ruleIndex), ruleIndex != 22, Rule(22).
+ans_notexists(v0, v2, v1, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), inv2_notexists(v0, v2, ruleIndex), ruleIndex != 49, Rule(49).
+inv2_notexists(v0, v3, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 84, Rule(84).
+inv1_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 19, Rule(19).
+inv1_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ruleIndex != 17, Rule(17).
+inv2_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ruleIndex != 71, Rule(71).
+ans_notexists(v3, v1, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 77, Rule(77).
+inv2_notexists(v0, v4, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), ans_notexists(v3, v2, v4, ruleIndex), ruleIndex != 78, Rule(78).
+inv2_notexists(v3, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 8, Rule(8).
+inv2_notexists(v3, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 59, Rule(59).
+inv2_notexists(v3, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 52, Rule(52).
+inv2_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 90, Rule(90).
+inv1_notexists(v3, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 9, Rule(9).
+inv2_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 50, Rule(50).
+inv1_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v1, v3, ruleIndex), ruleIndex != 13, Rule(13).
+inv1_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 23, Rule(23).
+inv2_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), ruleIndex != 88, Rule(88).
+inv2_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v1, v3, ruleIndex), ruleIndex != 60, Rule(60).
+inv1_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v1, v3, ruleIndex), ruleIndex != 73, Rule(73).
+inv1_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), ruleIndex != 57, Rule(57).
+inv2_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 86, Rule(86).
+inv1_notexists(v0, v4, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), ans_notexists(v3, v2, v4, ruleIndex), ruleIndex != 7, Rule(7).
+inv1_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 87, Rule(87).
+inv1_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 29, Rule(29).
+inv2_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 43, Rule(43).
+inv1_notexists(v0, v1, ruleIndex) :- inv2_notexists(v0, v1, ruleIndex), ruleIndex != 65, Rule(65).
+inv1_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), ruleIndex != 69, Rule(69).
+inv2_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 33, Rule(33).
+inv1_notexists(v3, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 64, Rule(64).
+inv2_notexists(v0, v1, ruleIndex) :- inv1_notexists(v0, v1, ruleIndex), inv1_notexists(v0, v2, ruleIndex), ruleIndex != 5, Rule(5).
+inv2_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 20, Rule(20).
+inv2_notexists(v3, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 6, Rule(6).
+inv1_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 82, Rule(82).
+inv1_notexists(v0, v4, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), Input1_notexists(v3, v1, v4, ruleIndex), ruleIndex != 39, Rule(39).
+inv2_notexists(v3, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 3, Rule(3).
+inv1_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ruleIndex != 12, Rule(12).
+inv2_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 34, Rule(34).
+inv2_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v2, ruleIndex), ruleIndex != 76, Rule(76).
+inv1_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), ruleIndex != 70, Rule(70).
+inv1_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v1, v3, ruleIndex), ruleIndex != 67, Rule(67).
+inv2_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv2_notexists(v1, v3, ruleIndex), ruleIndex != 31, Rule(31).
+inv1_notexists(v0, v3, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v0, v3, ruleIndex), ruleIndex != 40, Rule(40).
+inv2_notexists(v0, v3, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 72, Rule(72).
+inv1_notexists(v3, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv2_notexists(v3, v1, ruleIndex), ruleIndex != 55, Rule(55).
+inv2_notexists(v0, v4, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ans_notexists(v3, v2, v4, ruleIndex), ruleIndex != 61, Rule(61).
+inv2_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 51, Rule(51).
+inv1_notexists(v0, v4, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ans_notexists(v3, v2, v4, ruleIndex), ruleIndex != 4, Rule(4).
+ans_notexists(v3, v1, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 56, Rule(56).
+inv1_notexists(v1, v2, ruleIndex) :- Inactive_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 16, Rule(16).
+inv2_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ruleIndex != 85, Rule(85).
+inv2_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 62, Rule(62).
+inv1_notexists(v3, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 0, Rule(0).
+inv1_notexists(v0, v1, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v3, v1, ruleIndex), ruleIndex != 68, Rule(68).
+inv2_notexists(v0, v2, ruleIndex) :- Input1_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 41, Rule(41).
+inv2_notexists(v0, v4, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), ans_notexists(v3, v1, v4, ruleIndex), ruleIndex != 83, Rule(83).
+inv2_notexists(v0, v2, ruleIndex) :- ans_notexists(v0, v1, v2, ruleIndex), inv1_notexists(v0, v3, ruleIndex), ruleIndex != 66, Rule(66).
+inv1_notexists(v1, v2, ruleIndex) :- Active_notexists(v0, ruleIndex), Input1_notexists(v1, v0, v2, ruleIndex), inv1_notexists(v3, v2, ruleIndex), ruleIndex != 47, Rule(47).

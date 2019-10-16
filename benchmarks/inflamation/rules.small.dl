@@ -1,0 +1,102 @@
+.type T
+.type P
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl not_nausea(v0: P)
+.input not_nausea
+.decl not_lumbar_pain(v0: P)
+.input not_lumbar_pain
+.decl urine_pushing(v0: P)
+.input urine_pushing
+.decl gte38(v0: T)
+.input gte38
+.decl not_micturition_pain(v0: P)
+.input not_micturition_pain
+.decl not_burning_urethra(v0: P)
+.input not_burning_urethra
+.decl micturition_pain(v0: P)
+.input micturition_pain
+.decl lumbar_pain(v0: P)
+.input lumbar_pain
+.decl nausea(v0: P)
+.input nausea
+.decl not_urine_pushing(v0: P)
+.input not_urine_pushing
+.decl burning_urethra(v0: P)
+.input burning_urethra
+.decl temparature(v0: P, v1: T)
+.input temparature
+
+
+.decl inflamation(v0: P)
+.output inflamation
+
+inflamation(v0) :- not_lumbar_pain(v0), not_nausea(v0), Rule(62).
+inflamation(v0) :- not_burning_urethra(v0), temparature(v0, v1), Rule(49).
+inflamation(v0) :- temparature(v0, v1), temparature(v0, v2), Rule(50).
+inflamation(v0) :- lumbar_pain(v0), not_nausea(v0), Rule(53).
+inflamation(v0) :- temparature(v0, v1), urine_pushing(v0), Rule(56).
+inflamation(v0) :- burning_urethra(v0), urine_pushing(v0), Rule(24).
+inflamation(v0) :- nausea(v0), not_burning_urethra(v0), Rule(36).
+inflamation(v0) :- urine_pushing(v0), Rule(63).
+inflamation(v0) :- nausea(v0), not_urine_pushing(v0), Rule(1).
+inflamation(v1) :- gte38(v0), temparature(v1, v0), Rule(41).
+inflamation(v0) :- not_burning_urethra(v0), not_nausea(v0), Rule(23).
+inflamation(v0) :- not_micturition_pain(v0), temparature(v0, v1), Rule(65).
+inflamation(v0) :- not_lumbar_pain(v0), Rule(64).
+inflamation(v0) :- not_nausea(v0), temparature(v0, v1), Rule(38).
+inflamation(v0) :- not_lumbar_pain(v0), not_micturition_pain(v0), Rule(34).
+inflamation(v0) :- micturition_pain(v0), not_nausea(v0), Rule(7).
+inflamation(v0) :- not_urine_pushing(v0), urine_pushing(v0), Rule(15).
+inflamation(v0) :- not_burning_urethra(v0), urine_pushing(v0), Rule(31).
+inflamation(v0) :- burning_urethra(v0), not_nausea(v0), Rule(44).
+inflamation(v0) :- not_lumbar_pain(v0), temparature(v0, v1), Rule(6).
+inflamation(v0) :- burning_urethra(v0), micturition_pain(v0), Rule(18).
+inflamation(v0) :- lumbar_pain(v0), not_micturition_pain(v0), Rule(21).
+inflamation(v0) :- burning_urethra(v0), lumbar_pain(v0), Rule(58).
+inflamation(v0) :- lumbar_pain(v0), not_urine_pushing(v0), Rule(10).
+inflamation(v0) :- lumbar_pain(v0), Rule(43).
+inflamation(v0) :- lumbar_pain(v0), not_burning_urethra(v0), Rule(54).
+inflamation(v0) :- not_micturition_pain(v0), urine_pushing(v0), Rule(14).
+inflamation(v0) :- micturition_pain(v0), not_micturition_pain(v0), Rule(47).
+inflamation(v0) :- lumbar_pain(v0), temparature(v0, v1), Rule(32).
+inflamation(v0) :- lumbar_pain(v0), nausea(v0), Rule(51).
+inflamation(v0) :- burning_urethra(v0), nausea(v0), Rule(11).
+inflamation(v0) :- not_urine_pushing(v0), temparature(v0, v1), Rule(8).
+inflamation(v0) :- not_lumbar_pain(v0), not_urine_pushing(v0), Rule(19).
+inflamation(v0) :- micturition_pain(v0), nausea(v0), Rule(52).
+inflamation(v0) :- micturition_pain(v0), not_burning_urethra(v0), Rule(29).
+inflamation(v0) :- burning_urethra(v0), not_urine_pushing(v0), Rule(46).
+inflamation(v0) :- nausea(v0), not_nausea(v0), Rule(66).
+inflamation(v0) :- not_urine_pushing(v0), Rule(20).
+inflamation(v0) :- nausea(v0), not_lumbar_pain(v0), Rule(25).
+inflamation(v0) :- not_micturition_pain(v0), Rule(60).
+inflamation(v0) :- not_nausea(v0), urine_pushing(v0), Rule(0).
+inflamation(v0) :- micturition_pain(v0), not_lumbar_pain(v0), Rule(57).
+inflamation(v0) :- not_burning_urethra(v0), not_micturition_pain(v0), Rule(40).
+inflamation(v0) :- nausea(v0), not_micturition_pain(v0), Rule(13).
+inflamation(v0) :- not_micturition_pain(v0), not_urine_pushing(v0), Rule(9).
+inflamation(v0) :- lumbar_pain(v0), urine_pushing(v0), Rule(17).
+inflamation(v0) :- burning_urethra(v0), not_micturition_pain(v0), Rule(27).
+inflamation(v0) :- not_burning_urethra(v0), not_lumbar_pain(v0), Rule(45).
+inflamation(v0) :- micturition_pain(v0), urine_pushing(v0), Rule(37).
+inflamation(v0) :- burning_urethra(v0), Rule(61).
+inflamation(v0) :- lumbar_pain(v0), not_lumbar_pain(v0), Rule(42).
+inflamation(v0) :- burning_urethra(v0), temparature(v0, v1), Rule(5).
+inflamation(v0) :- burning_urethra(v0), not_lumbar_pain(v0), Rule(26).
+inflamation(v0) :- not_micturition_pain(v0), not_nausea(v0), Rule(3).
+inflamation(v0) :- nausea(v0), temparature(v0, v1), Rule(4).
+inflamation(v0) :- nausea(v0), Rule(28).
+inflamation(v0) :- lumbar_pain(v0), micturition_pain(v0), Rule(48).
+inflamation(v0) :- nausea(v0), urine_pushing(v0), Rule(30).
+inflamation(v0) :- not_burning_urethra(v0), Rule(59).
+inflamation(v0) :- not_nausea(v0), not_urine_pushing(v0), Rule(16).
+inflamation(v0) :- micturition_pain(v0), not_urine_pushing(v0), Rule(2).
+inflamation(v0) :- burning_urethra(v0), not_burning_urethra(v0), Rule(22).
+inflamation(v0) :- not_lumbar_pain(v0), urine_pushing(v0), Rule(39).
+inflamation(v0) :- micturition_pain(v0), temparature(v0, v1), Rule(33).
+inflamation(v0) :- micturition_pain(v0), Rule(55).
+inflamation(v0) :- not_burning_urethra(v0), not_urine_pushing(v0), Rule(35).
+inflamation(v0) :- not_nausea(v0), Rule(12).

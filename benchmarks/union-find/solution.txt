@@ -1,0 +1,20 @@
+.type E
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl eq(v0: E, v1: E)
+.input eq
+.decl union(v0: E, v1: E)
+.input union
+.decl find(v0: E, v1: E)
+.input find
+
+
+.decl sameset(v0: E, v1: E)
+.output sameset
+
+sameset(x, y) :- eq(x, y).
+sameset(x, z) :- sameset(x, y), union(y, z).
+sameset(x, z) :- sameset(x, y), find(y, z).
+sameset(x, y) :- sameset(y, x).

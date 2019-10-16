@@ -1,0 +1,7 @@
+*MmethArg(M,Z,V)
+*MmethRet(M,Z,V)
+*VH(V,H)
+*HFH(H,F,H)
+rMH(M,H)
+rRH(M,H)
+rHH(H,H)

@@ -1,0 +1,173 @@
+.type meets_at
+.type C_name
+.type S_key
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl class(v0: C_name, v1: meets_at)
+.input class
+.decl LT(v0: C_name, v1: C_name)
+.input LT
+.decl enroll(v0: S_key, v1: C_name)
+.input enroll
+
+.decl inv(v0: S_key, v1: C_name, v2: meets_at)
+.output inv
+
+.decl ans(v0: S_key)
+.output ans
+
+inv(v4, v0, v1) :- class(v0, v1), inv(v2, v3, v1), enroll(v4, v3), Rule(64).
+inv(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(73).
+inv(v2, v0, v4) :- LT(v0, v1), inv(v2, v0, v3), inv(v2, v1, v4), Rule(10).
+inv(v3, v1, v4) :- LT(v0, v1), LT(v2, v0), inv(v3, v2, v4), Rule(129).
+inv(v2, v1, v3) :- LT(v0, v1), inv(v2, v0, v3), inv(v4, v1, v3), Rule(78).
+inv(v3, v0, v2) :- LT(v0, v1), class(v1, v2), inv(v3, v0, v4), Rule(83).
+inv(v2, v0, v3) :- LT(v0, v1), LT(v1, v0), inv(v2, v1, v3), Rule(20).
+inv(v2, v1, v3) :- LT(v0, v1), enroll(v2, v0), inv(v2, v0, v3), Rule(42).
+inv(v4, v1, v3) :- enroll(v0, v1), inv(v0, v2, v3), enroll(v4, v2), Rule(79).
+inv(v3, v1, v2) :- LT(v0, v1), class(v1, v2), enroll(v3, v0), Rule(69).
+ans(v3) :- enroll(v0, v1), LT(v2, v1), enroll(v3, v2), Rule(74).
+ans(v3) :- class(v0, v1), inv(v2, v0, v1), enroll(v3, v0), Rule(143).
+ans(v2) :- class(v0, v1), inv(v2, v0, v3), enroll(v2, v4), Rule(97).
+inv(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), inv(v3, v4, v1), Rule(56).
+inv(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), Rule(32).
+ans(v2) :- ans(v0), enroll(v0, v1), inv(v2, v1, v3), Rule(137).
+ans(v2) :- LT(v0, v1), inv(v2, v0, v3), enroll(v2, v4), Rule(133).
+ans(v3) :- LT(v0, v0), class(v1, v2), inv(v3, v0, v2), Rule(135).
+ans(v3) :- LT(v0, v1), LT(v1, v2), enroll(v3, v2), Rule(51).
+ans(v3) :- LT(v0, v1), LT(v0, v2), enroll(v3, v2), Rule(104).
+ans(v2) :- class(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(28).
+inv(v0, v1, v4) :- inv(v0, v1, v2), inv(v3, v1, v4), Rule(5).
+inv(v3, v1, v2) :- LT(v0, v1), class(v0, v2), inv(v3, v0, v2), Rule(93).
+ans(v2) :- LT(v0, v1), inv(v2, v0, v3), Rule(60).
+inv(v3, v0, v2) :- LT(v0, v1), class(v0, v2), enroll(v3, v1), Rule(130).
+inv(v2, v0, v4) :- LT(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(59).
+ans(v2) :- LT(v0, v0), LT(v1, v0), inv(v2, v1, v3), Rule(111).
+inv(v2, v3, v1) :- class(v0, v1), enroll(v2, v0), enroll(v2, v3), Rule(4).
+ans(v2) :- LT(v0, v1), enroll(v2, v1), inv(v2, v1, v3), Rule(95).
+ans(v3) :- LT(v0, v1), LT(v1, v2), inv(v3, v2, v4), Rule(33).
+inv(v2, v0, v4) :- LT(v0, v1), enroll(v2, v0), inv(v3, v1, v4), Rule(3).
+inv(v3, v1, v4) :- LT(v0, v1), LT(v2, v1), inv(v3, v2, v4), Rule(115).
+ans(v3) :- ans(v0), inv(v0, v1, v2), enroll(v3, v1), Rule(140).
+ans(v3) :- enroll(v0, v1), inv(v0, v1, v2), enroll(v3, v1), Rule(24).
+ans(v3) :- LT(v0, v1), LT(v2, v1), enroll(v3, v2), Rule(109).
+ans(v3) :- LT(v0, v1), LT(v2, v0), enroll(v3, v2), Rule(127).
+ans(v3) :- LT(v0, v1), class(v1, v2), inv(v3, v4, v2), Rule(65).
+inv(v3, v0, v4) :- LT(v0, v1), enroll(v2, v0), inv(v3, v1, v4), Rule(145).
+inv(v2, v4, v1) :- class(v0, v1), enroll(v2, v0), inv(v3, v4, v1), Rule(76).
+inv(v2, v0, v3) :- LT(v0, v1), enroll(v2, v0), inv(v2, v1, v3), Rule(119).
+ans(v1) :- LT(v0, v0), enroll(v1, v0), enroll(v1, v2), Rule(46).
+ans(v2) :- LT(v0, v1), inv(v2, v0, v3), inv(v2, v1, v4), Rule(100).
+ans(v2) :- class(v0, v1), inv(v2, v3, v1), enroll(v2, v3), Rule(102).
+inv(v2, v0, v1) :- class(v0, v1), enroll(v2, v3), enroll(v2, v0), Rule(132).
+ans(v3) :- class(v0, v1), class(v2, v1), inv(v3, v2, v4), Rule(122).
+ans(v1) :- LT(v0, v0), inv(v1, v0, v2), enroll(v1, v3), Rule(9).
+ans(v2) :- LT(v0, v1), inv(v2, v1, v3), Rule(34).
+ans(v0) :- enroll(v0, v1), inv(v0, v2, v3), Rule(124).
+ans(v2) :- ans(v0), enroll(v0, v1), enroll(v2, v1), Rule(113).
+ans(v3) :- enroll(v0, v1), LT(v1, v2), enroll(v3, v2), Rule(40).
+inv(v3, v2, v1) :- class(v0, v1), class(v2, v1), enroll(v3, v0), Rule(45).
+inv(v2, v1, v4) :- LT(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(37).
+ans(v1) :- LT(v0, v0), inv(v1, v0, v2), Rule(66).
+ans(v3) :- class(v0, v1), class(v2, v1), inv(v3, v2, v1), Rule(57).
+inv(v3, v0, v4) :- LT(v0, v1), LT(v1, v2), inv(v3, v2, v4), Rule(36).
+inv(v2, v1, v4) :- LT(v0, v1), enroll(v2, v0), inv(v3, v1, v4), Rule(17).
+ans(v4) :- LT(v0, v1), inv(v2, v1, v3), inv(v4, v0, v3), Rule(136).
+inv(v2, v0, v5) :- LT(v0, v1), inv(v2, v0, v3), inv(v4, v1, v5), Rule(67).
+ans(v2) :- class(v0, v1), enroll(v2, v0), inv(v2, v3, v1), Rule(7).
+ans(v2) :- LT(v0, v1), enroll(v2, v0), inv(v2, v1, v3), Rule(149).
+ans(v0) :- enroll(v0, v1), inv(v0, v1, v2), Rule(86).
+inv(v2, v0, v3) :- LT(v0, v1), ans(v2), inv(v2, v1, v3), Rule(138).
+inv(v2, v3, v1) :- class(v0, v1), inv(v2, v0, v1), enroll(v2, v3), Rule(77).
+inv(v2, v0, v4) :- class(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(147).
+inv(v4, v0, v3) :- LT(v0, v1), class(v2, v3), inv(v4, v1, v3), Rule(85).
+inv(v2, v1, v3) :- LT(v0, v1), inv(v2, v0, v3), Rule(15).
+ans(v4) :- class(v0, v1), inv(v2, v3, v1), enroll(v4, v3), Rule(126).
+ans(v2) :- enroll(v0, v1), inv(v2, v1, v3), enroll(v2, v4), Rule(6).
+ans(v3) :- LT(v0, v1), class(v1, v2), inv(v3, v1, v2), Rule(38).
+ans(v4) :- class(v0, v1), class(v2, v3), inv(v4, v0, v3), Rule(54).
+ans(v3) :- class(v0, v1), class(v2, v1), enroll(v3, v2), Rule(16).
+ans(v4) :- inv(v0, v1, v2), LT(v1, v3), enroll(v4, v3), Rule(43).
+ans(v3) :- enroll(v0, v1), class(v1, v2), inv(v3, v4, v2), Rule(13).
+inv(v3, v0, v2) :- LT(v0, v1), class(v1, v2), inv(v3, v4, v2), Rule(117).
+ans(v3) :- inv(v0, v1, v2), inv(v3, v1, v4), Rule(18).
+ans(v3) :- class(v0, v1), LT(v0, v2), enroll(v3, v2), Rule(82).
+inv(v3, v0, v4) :- LT(v0, v1), LT(v2, v0), inv(v3, v2, v4), Rule(1).
+ans(v2) :- LT(v0, v1), LT(v1, v0), inv(v2, v1, v3), Rule(44).
+ans(v2) :- LT(v0, v1), enroll(v2, v0), inv(v2, v0, v3), Rule(105).
+ans(v2) :- enroll(v0, v1), enroll(v2, v1), Rule(61).
+ans(v2) :- LT(v0, v0), class(v0, v1), inv(v2, v3, v1), Rule(112).
+ans(v3) :- LT(v0, v1), LT(v2, v0), inv(v3, v2, v4), Rule(88).
+ans(v2) :- LT(v0, v0), LT(v1, v0), enroll(v2, v1), Rule(41).
+inv(v3, v1, v2) :- LT(v0, v1), class(v0, v2), enroll(v3, v1), Rule(52).
+ans(v2) :- class(v0, v1), inv(v2, v0, v3), Rule(80).
+ans(v3) :- class(v0, v1), enroll(v2, v0), inv(v3, v0, v1), Rule(70).
+inv(v3, v0, v2) :- LT(v0, v1), class(v1, v2), inv(v3, v1, v2), Rule(72).
+inv(v3, v0, v2) :- LT(v0, v1), class(v1, v2), enroll(v3, v0), Rule(47).
+ans(v2) :- class(v0, v1), inv(v2, v0, v1), Rule(107).
+inv(v3, v1, v4) :- LT(v0, v1), enroll(v2, v1), inv(v3, v0, v4), Rule(128).
+ans(v2) :- class(v0, v1), inv(v2, v0, v1), enroll(v2, v3), Rule(21).
+inv(v3, v0, v1) :- class(v0, v1), enroll(v2, v0), inv(v3, v4, v1), Rule(139).
+inv(v3, v0, v4) :- LT(v0, v1), LT(v0, v2), inv(v3, v2, v4), Rule(26).
+ans(v3) :- enroll(v0, v1), LT(v2, v1), inv(v3, v2, v4), Rule(27).
+inv(v2, v0, v1) :- class(v0, v1), enroll(v2, v3), inv(v2, v0, v4), Rule(11).
+inv(v2, v4, v1) :- class(v0, v1), inv(v2, v0, v3), enroll(v2, v4), Rule(121).
+ans(v4) :- inv(v0, v1, v2), LT(v3, v1), inv(v4, v3, v5), Rule(19).
+ans(v3) :- LT(v0, v1), class(v1, v2), inv(v3, v0, v2), Rule(92).
+inv(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), inv(v2, v3, v1), Rule(91).
+ans(v2) :- class(v0, v1), enroll(v2, v0), Rule(55).
+inv(v0, v1, v3) :- enroll(v0, v1), inv(v2, v1, v3), Rule(23).
+ans(v2) :- LT(v0, v1), inv(v2, v0, v3), inv(v2, v1, v3), Rule(39).
+ans(v2) :- class(v0, v1), enroll(v2, v0), inv(v2, v0, v3), Rule(106).
+ans(v2) :- LT(v0, v1), enroll(v2, v1), Rule(2).
+ans(v2) :- LT(v0, v1), inv(v2, v1, v3), enroll(v2, v4), Rule(48).
+ans(v3) :- LT(v0, v1), LT(v2, v1), inv(v3, v2, v4), Rule(148).
+inv(v0, v2, v4) :- enroll(v0, v1), enroll(v0, v2), inv(v3, v2, v4), Rule(90).
+inv(v2, v0, v4) :- LT(v0, v1), enroll(v2, v3), inv(v2, v1, v4), Rule(134).
+inv(v2, v1, v4) :- LT(v0, v1), enroll(v2, v3), inv(v2, v0, v4), Rule(99).
+ans(v3) :- class(v0, v1), LT(v2, v0), inv(v3, v2, v4), Rule(50).
+inv(v2, v0, v1) :- class(v0, v1), inv(v2, v0, v3), Rule(142).
+inv(v3, v0, v4) :- LT(v0, v1), class(v0, v2), inv(v3, v1, v4), Rule(98).
+ans(v1) :- LT(v0, v0), enroll(v1, v0), inv(v1, v2, v3), Rule(14).
+inv(v3, v1, v4) :- LT(v0, v1), class(v1, v2), inv(v3, v0, v4), Rule(31).
+inv(v4, v1, v3) :- LT(v0, v1), class(v2, v3), inv(v4, v0, v3), Rule(58).
+ans(v4) :- enroll(v0, v1), inv(v0, v2, v3), enroll(v4, v2), Rule(30).
+ans(v2) :- class(v0, v1), inv(v2, v3, v1), Rule(29).
+ans(v4) :- inv(v0, v1, v2), class(v3, v2), enroll(v4, v3), Rule(116).
+ans(v3) :- inv(v0, v1, v2), enroll(v3, v1), enroll(v3, v4), Rule(68).
+inv(v2, v4, v1) :- class(v0, v1), inv(v2, v0, v3), class(v4, v3), Rule(12).
+inv(v0, v1, v4) :- enroll(v0, v1), enroll(v0, v2), inv(v3, v2, v4), Rule(35).
+ans(v4) :- inv(v0, v1, v2), LT(v3, v1), enroll(v4, v3), Rule(62).
+inv(v2, v1, v4) :- LT(v0, v1), enroll(v2, v1), inv(v3, v0, v4), Rule(71).
+ans(v3) :- inv(v0, v1, v2), enroll(v3, v1), Rule(131).
+inv(v3, v1, v4) :- LT(v0, v1), LT(v1, v2), inv(v3, v2, v4), Rule(96).
+ans(v2) :- LT(v0, v0), LT(v0, v1), enroll(v2, v1), Rule(75).
+ans(v4) :- LT(v0, v1), class(v2, v3), inv(v4, v0, v3), Rule(141).
+ans(v2) :- LT(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(101).
+ans(v2) :- enroll(v0, v1), enroll(v2, v1), inv(v2, v1, v3), Rule(108).
+inv(v3, v1, v2) :- LT(v0, v1), class(v1, v2), inv(v3, v4, v2), Rule(63).
+ans(v2) :- LT(v0, v1), enroll(v2, v0), enroll(v2, v1), Rule(89).
+inv(v2, v0, v3) :- LT(v0, v1), enroll(v2, v1), inv(v2, v1, v3), Rule(84).
+inv(v2, v0, v3) :- LT(v0, v1), inv(v2, v1, v3), Rule(144).
+ans(v2) :- LT(v0, v1), LT(v1, v0), enroll(v2, v1), Rule(0).
+ans(v2) :- LT(v0, v1), enroll(v2, v0), Rule(81).
+ans(v3) :- enroll(v0, v1), LT(v1, v2), inv(v3, v2, v4), Rule(120).
+ans(v3) :- enroll(v0, v1), enroll(v0, v2), enroll(v3, v2), Rule(125).
+inv(v3, v1, v2) :- LT(v0, v1), class(v1, v2), inv(v3, v0, v2), Rule(53).
+ans(v2) :- LT(v0, v0), LT(v0, v1), inv(v2, v1, v3), Rule(114).
+inv(v0, v1, v2) :- ans(v0), class(v1, v2), enroll(v0, v1), Rule(94).
+ans(v2) :- enroll(v0, v1), inv(v2, v1, v3), Rule(103).
+inv(v2, v0, v1) :- class(v0, v1), inv(v2, v3, v1), Rule(87).
+inv(v3, v0, v1) :- class(v0, v1), class(v2, v1), inv(v3, v2, v4), Rule(123).
+inv(v0, v3, v2) :- enroll(v0, v1), inv(v0, v1, v2), class(v3, v2), Rule(25).
+inv(v2, v3, v1) :- class(v0, v1), enroll(v2, v3), inv(v4, v3, v1), Rule(146).
+ans(v1) :- LT(v0, v0), enroll(v1, v0), Rule(118).
+inv(v3, v2, v1) :- class(v0, v1), class(v2, v1), inv(v3, v2, v4), Rule(150).
+inv(v2, v1, v5) :- LT(v0, v1), inv(v2, v0, v3), inv(v4, v1, v5), Rule(110).
+inv(v3, v1, v2) :- LT(v0, v1), class(v1, v2), inv(v3, v0, v4), Rule(8).
+inv(v3, v0, v2) :- LT(v0, v1), class(v0, v2), inv(v3, v1, v4), Rule(151).
+ans(v3) :- class(v0, v1), LT(v2, v0), enroll(v3, v2), Rule(152).
+inv(v2, v3, v1) :- class(v0, v1), enroll(v2, v0), inv(v2, v3, v4), Rule(22).
+inv(v0, v1, v3) :- enroll(v0, v1), inv(v0, v2, v3), Rule(49).

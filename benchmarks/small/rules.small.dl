@@ -1,0 +1,54 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Mother(v0: V, v1: V)
+.input Mother
+.decl Father(v0: V, v1: V)
+.input Father
+
+
+.decl inv(v0: V, v1: V)
+.output inv
+.decl Ancestor(v0: V, v1: V)
+.output Ancestor
+
+Ancestor(v0, v1) :- Mother(v0, v1), Rule(1).
+Ancestor(v2, v1) :- Ancestor(v0, v1), Mother(v2, v0), Rule(34).
+Ancestor(v2, v1) :- Father(v0, v1), inv(v2, v0), Rule(12).
+inv(v0, v2) :- Mother(v0, v1), inv(v1, v2), Rule(10).
+Ancestor(v2, v1) :- Ancestor(v0, v1), inv(v2, v0), Rule(5).
+Ancestor(v0, v2) :- Ancestor(v0, v1), Mother(v1, v2), Rule(8).
+inv(v2, v1) :- Mother(v0, v1), inv(v2, v0), Rule(21).
+Ancestor(v2, v1) :- Ancestor(v0, v1), Father(v2, v0), Rule(28).
+inv(v2, v1) :- Ancestor(v0, v1), Mother(v2, v0), Rule(3).
+inv(v2, v1) :- Ancestor(v0, v1), inv(v2, v0), Rule(24).
+Ancestor(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(17).
+inv(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(36).
+Ancestor(v0, v2) :- Ancestor(v0, v1), Father(v1, v2), Rule(30).
+Ancestor(v0, v1) :- inv(v0, v1), Rule(6).
+Ancestor(v0, v2) :- Father(v0, v1), inv(v1, v2), Rule(33).
+Ancestor(v0, v2) :- Father(v0, v1), Father(v1, v2), Rule(37).
+inv(v0, v2) :- Ancestor(v0, v1), Ancestor(v1, v2), Rule(31).
+inv(v0, v2) :- Father(v0, v1), Father(v1, v2), Rule(26).
+inv(v2, v1) :- Father(v0, v1), Mother(v2, v0), Rule(20).
+Ancestor(v0, v2) :- Mother(v0, v1), Mother(v1, v2), Rule(27).
+Ancestor(v0, v2) :- Ancestor(v0, v1), Ancestor(v1, v2), Rule(13).
+Ancestor(v2, v1) :- Father(v0, v1), Mother(v2, v0), Rule(29).
+inv(v0, v2) :- Father(v0, v1), Mother(v1, v2), Rule(25).
+inv(v0, v2) :- Father(v0, v1), inv(v1, v2), Rule(19).
+Ancestor(v2, v1) :- Mother(v0, v1), inv(v2, v0), Rule(14).
+inv(v0, v2) :- Ancestor(v0, v1), Mother(v1, v2), Rule(4).
+inv(v0, v2) :- Ancestor(v0, v1), inv(v1, v2), Rule(16).
+inv(v0, v1) :- Ancestor(v0, v1), Rule(11).
+inv(v0, v2) :- Mother(v0, v1), Mother(v1, v2), Rule(0).
+inv(v0, v1) :- Father(v0, v1), Rule(15).
+Ancestor(v0, v2) :- Father(v0, v1), Mother(v1, v2), Rule(2).
+inv(v2, v1) :- Ancestor(v0, v1), Father(v2, v0), Rule(9).
+Ancestor(v0, v2) :- Ancestor(v0, v1), inv(v1, v2), Rule(32).
+inv(v0, v1) :- Mother(v0, v1), Rule(7).
+Ancestor(v0, v1) :- Father(v0, v1), Rule(35).
+Ancestor(v0, v2) :- Mother(v0, v1), inv(v1, v2), Rule(22).
+inv(v0, v2) :- Ancestor(v0, v1), Father(v1, v2), Rule(23).
+inv(v2, v1) :- Father(v0, v1), inv(v2, v0), Rule(18).

@@ -1,0 +1,52 @@
+.type part_id
+.type part_name
+.type supplier_key
+
+.decl Rule(n: number)
+.input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+
+.decl input2(v0: part_id, v1: part_name)
+.input input2
+
+.decl ans(v0: part_name)
+.decl input1_exists(v0: supplier_key, v1: part_id, r: number)
+.output input1_exists
+
+.decl input2_exists(v0: part_id, v1: part_name, r: number)
+.output input2_exists
+
+.decl ans_exists(v0: part_name, r: number)
+.output ans_exists
+
+
+
+ans(v0) :- ans(v0), Rule(0).
+ans_exists(v0, r) :- ans(v0), r = 0, Rule(0).
+ans_exists(v0, r) :- ans_exists(v0, r), Rule(r), Rule(0).
+ans(v0) :- ans(v0), ans(v0), Rule(1).
+ans_exists(v0, r) :- ans(v0), ans(v0), r = 1, Rule(1).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v0), Rule(r), Rule(1).
+ans_exists(v0, r) :- ans(v0), ans_exists(v0, r), Rule(r), Rule(1).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(2).
+ans_exists(v0, r) :- ans(v0), ans(v0), ans(v0), r = 2, Rule(2).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v0), ans(v0), Rule(r), Rule(2).
+ans_exists(v0, r) :- ans(v0), ans_exists(v0, r), ans(v0), Rule(r), Rule(2).
+ans_exists(v0, r) :- ans(v0), ans(v0), ans_exists(v0, r), Rule(r), Rule(2).
+ans(v0) :- ans(v0), ans(v1), ans(v1), Rule(3).
+ans_exists(v0, r) :- ans(v0), ans(v1), ans(v1), r = 3, Rule(3).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v1), ans(v1), Rule(r), Rule(3).
+ans_exists(v0, r) :- ans(v0), ans_exists(v1, r), ans(v1), Rule(r), Rule(3).
+ans_exists(v0, r) :- ans(v0), ans(v1), ans_exists(v1, r), Rule(r), Rule(3).
+ans(v0) :- ans(v1), ans(v1), ans(v0), Rule(4).
+ans_exists(v0, r) :- ans(v1), ans(v1), ans(v0), r = 4, Rule(4).
+ans_exists(v0, r) :- ans_exists(v1, r), ans(v1), ans(v0), Rule(r), Rule(4).
+ans_exists(v0, r) :- ans(v1), ans_exists(v1, r), ans(v0), Rule(r), Rule(4).
+ans_exists(v0, r) :- ans(v1), ans(v1), ans_exists(v0, r), Rule(r), Rule(4).
+ans(v0) :- ans(v1), ans(v0), ans(v1), Rule(5).
+ans_exists(v0, r) :- ans(v1), ans(v0), ans(v1), r = 5, Rule(5).
+ans_exists(v0, r) :- ans_exists(v1, r), ans(v0), ans(v1), Rule(r), Rule(5).
+ans_exists(v0, r) :- ans(v1), ans_exists(v0, r), ans(v1), Rule(r), Rule(5).
+ans_exists(v0, r) :- ans(v1), ans(v0), ans_exists(v1, r), Rule(r), Rule(5).

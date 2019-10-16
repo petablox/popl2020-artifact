@@ -1,0 +1,4 @@
+*.cpp
+*.out
+*.csv
+Rule.facts

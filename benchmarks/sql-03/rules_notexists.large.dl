@@ -1,0 +1,28 @@
+.type Y
+.type Number
+.type X
+.type Value
+
+.decl Rule(n: number)
+.input Rule
+
+.decl In(v0: X, v1: Y, v2: Number, v3: Value)
+.input In
+
+.decl In_notexists(v0: X, v1: Y, v2: Number, v3: Value, r: number)
+.output In_notexists
+
+.decl Out_notexists(v0: Number, v1: Value, r: number)
+.output Out_notexists
+
+
+
+In_notexists(v0, v1, v2, v3, r) :- In(v0, v1, v2, v3), Rule(r).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 1, Rule(1).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v2, r), Out_notexists(v0, v2, r), Rule(r), r != 3, Rule(3).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v0, v2, r), Out_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v0, v1, r), Out_notexists(v0, v2, r), Rule(r), r != 5, Rule(5).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v3, v2, r), Out_notexists(v3, v1, r), Rule(r), r != 6, Rule(6).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v3, v1, r), Out_notexists(v3, v2, r), Rule(r), r != 7, Rule(7).

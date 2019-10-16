@@ -1,0 +1,43 @@
+.type date
+.type yrq
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl LE20130201(v0: date)
+.input LE20130201
+.decl GE20130215(v0: date)
+.input GE20130215
+.decl input1(v0: yrq, v1: date, v2: date)
+.input input1
+
+
+.decl ans(v0: yrq)
+.output ans
+
+ans(v3) :- ans(v0), input1(v0, v1, v2), input1(v3, v2, v4), Rule(7).
+ans(v3) :- GE20130215(v0), input1(v1, v2, v0), input1(v3, v2, v4), Rule(6).
+ans(v3) :- ans(v0), input1(v0, v1, v2), input1(v3, v4, v1), Rule(18).
+ans(v2) :- LE20130201(v0), LE20130201(v1), input1(v2, v0, v1), Rule(15).
+ans(v3) :- GE20130215(v0), input1(v1, v2, v0), input1(v3, v4, v2), Rule(10).
+ans(v1) :- GE20130215(v0), input1(v1, v0, v2), input1(v3, v2, v4), Rule(3).
+ans(v1) :- LE20130201(v0), input1(v1, v0, v2), input1(v3, v2, v4), Rule(0).
+ans(v3) :- GE20130215(v0), input1(v1, v0, v2), input1(v3, v2, v4), Rule(25).
+ans(v5) :- input1(v0, v1, v2), input1(v3, v4, v1), input1(v5, v4, v6), Rule(24).
+ans(v2) :- GE20130215(v0), LE20130201(v1), input1(v2, v1, v0), Rule(22).
+ans(v1) :- LE20130201(v0), input1(v1, v2, v0), input1(v1, v3, v4), Rule(13).
+ans(v1) :- LE20130201(v0), input1(v1, v0, v2), input1(v1, v3, v4), Rule(9).
+ans(v3) :- LE20130201(v0), input1(v1, v0, v2), input1(v3, v2, v4), Rule(4).
+ans(v2) :- GE20130215(v0), LE20130201(v1), input1(v2, v0, v1), Rule(16).
+ans(v3) :- ans(v0), input1(v0, v1, v2), input1(v3, v4, v2), Rule(14).
+ans(v1) :- LE20130201(v0), input1(v1, v2, v0), input1(v3, v4, v2), Rule(8).
+ans(v5) :- input1(v0, v1, v2), input1(v3, v4, v1), input1(v5, v6, v4), Rule(21).
+ans(v3) :- GE20130215(v0), input1(v1, v0, v2), input1(v3, v4, v2), Rule(19).
+ans(v3) :- LE20130201(v0), input1(v1, v0, v2), input1(v3, v4, v2), Rule(17).
+ans(v1) :- GE20130215(v0), input1(v1, v2, v0), input1(v1, v3, v4), Rule(12).
+ans(v3) :- LE20130201(v0), input1(v1, v2, v0), input1(v3, v4, v2), Rule(20).
+ans(v3) :- ans(v0), input1(v0, v1, v2), input1(v3, v1, v4), Rule(5).
+ans(v1) :- GE20130215(v0), input1(v1, v2, v0), input1(v3, v4, v2), Rule(1).
+ans(v1) :- GE20130215(v0), input1(v1, v0, v2), input1(v1, v3, v4), Rule(2).
+ans(v3) :- LE20130201(v0), input1(v1, v2, v0), input1(v3, v2, v4), Rule(23).
+ans(v2) :- GE20130215(v0), GE20130215(v1), input1(v2, v0, v1), Rule(11).

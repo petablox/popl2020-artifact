@@ -1,0 +1,28 @@
+.type ID
+.type Item
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl A(v0: ID, v1: Item)
+.input A
+.decl B(v0: Item, v1: Item)
+.input B
+
+.decl A_notexists(v0: ID, v1: Item, v2: number)
+.output A_notexists
+.decl B_notexists(v0: Item, v1: Item, v2: number)
+.output B_notexists
+
+.decl Out_notexists(v0: ID, v1: Item, v2: number)
+.output Out_notexists
+
+A_notexists(v0, v1, ruleIndex) :- A(v0, v1), Rule(ruleIndex).
+B_notexists(v0, v1, ruleIndex) :- B(v0, v1), Rule(ruleIndex).
+Out_notexists(v0, v2, ruleIndex) :- A_notexists(v0, v1, ruleIndex), B_notexists(v2, v1, ruleIndex), ruleIndex != 6, Rule(6).
+Out_notexists(v2, v0, ruleIndex) :- B_notexists(v0, v1, ruleIndex), Out_notexists(v2, v1, ruleIndex), ruleIndex != 1, Rule(1).
+Out_notexists(v0, v1, ruleIndex) :- A_notexists(v0, v1, ruleIndex), Out_notexists(v0, v2, ruleIndex), ruleIndex != 4, Rule(4).
+Out_notexists(v0, v2, ruleIndex) :- A_notexists(v0, v1, ruleIndex), B_notexists(v1, v2, ruleIndex), ruleIndex != 2, Rule(2).
+Out_notexists(v0, v1, ruleIndex) :- A_notexists(v0, v1, ruleIndex), A_notexists(v0, v2, ruleIndex), ruleIndex != 0, Rule(0).
+Out_notexists(v0, v1, ruleIndex) :- A_notexists(v0, v1, ruleIndex), B_notexists(v1, v2, ruleIndex), ruleIndex != 3, Rule(3).
+Out_notexists(v2, v1, ruleIndex) :- B_notexists(v0, v1, ruleIndex), Out_notexists(v2, v0, ruleIndex), ruleIndex != 5, Rule(5).

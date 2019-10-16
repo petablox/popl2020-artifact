@@ -1,0 +1,22 @@
+.type ID
+.type Item
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl A(v0: ID, v1: Item)
+.input A
+.decl B(v0: Item, v1: Item)
+.input B
+
+
+.decl Out(v0: ID, v1: Item)
+.output Out
+
+Out(v0, v2) :- A(v0, v1), B(v2, v1), Rule(6).
+Out(v2, v0) :- B(v0, v1), Out(v2, v1), Rule(1).
+Out(v0, v1) :- A(v0, v1), Out(v0, v2), Rule(4).
+Out(v0, v2) :- A(v0, v1), B(v1, v2), Rule(2).
+Out(v0, v1) :- A(v0, v1), A(v0, v2), Rule(0).
+Out(v0, v1) :- A(v0, v1), B(v1, v2), Rule(3).
+Out(v2, v1) :- B(v0, v1), Out(v2, v0), Rule(5).

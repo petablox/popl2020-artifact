@@ -1,0 +1,55 @@
+.type H
+.type F
+.type M
+.type V
+.type Z
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl MmethArg(v0: M, v1: Z, v2: V)
+.input MmethArg
+.decl MmethRet(v0: M, v1: Z, v2: V)
+.input MmethRet
+.decl VH(v0: V, v1: H)
+.input VH
+.decl HFH(v0: H, v1: F, v2: H)
+.input HFH
+
+
+.decl rMH(v0: M, v1: H)
+.output rMH
+.decl rRH(v0: M, v1: H)
+.output rRH
+.decl rHH(v0: H, v1: H)
+.output rHH
+
+rRH(v0, v3) :- MmethRet(v0, v1, v2), VH(v2, v3), Rule(28).
+rHH(v2, v1) :- rHH(v0, v1), rHH(v2, v0), Rule(3).
+rMH(v0, v3) :- MmethArg(v0, v1, v2), VH(v2, v3), Rule(17).
+rMH(v2, v1) :- rMH(v0, v1), rRH(v2, v1), Rule(19).
+rRH(v3, v2) :- HFH(v0, v1, v2), rRH(v3, v0), Rule(6).
+rMH(v2, v1) :- rRH(v0, v1), rRH(v2, v1), Rule(15).
+rRH(v0, v1) :- rMH(v0, v1), Rule(0).
+rMH(v3, v2) :- HFH(v0, v1, v2), rMH(v3, v0), Rule(13).
+rRH(v0, v3) :- MmethArg(v0, v1, v2), VH(v2, v3), Rule(12).
+rHH(v3, v2) :- HFH(v0, v1, v2), rHH(v3, v0), Rule(21).
+rMH(v0, v3) :- MmethRet(v0, v1, v2), VH(v2, v3), Rule(4).
+rHH(v0, v2) :- HFH(v0, v1, v2), Rule(18).
+rRH(v2, v1) :- rMH(v0, v1), rMH(v2, v1), Rule(7).
+rRH(v2, v1) :- VH(v0, v1), rMH(v2, v1), Rule(5).
+rMH(v3, v2) :- HFH(v0, v1, v2), rRH(v3, v0), Rule(25).
+rMH(v0, v1) :- rRH(v0, v1), Rule(26).
+rHH(v0, v3) :- HFH(v0, v1, v2), rHH(v2, v3), Rule(14).
+rHH(v0, v2) :- rHH(v0, v1), rHH(v1, v2), Rule(1).
+rMH(v2, v1) :- rHH(v0, v1), rMH(v2, v0), Rule(10).
+rRH(v2, v1) :- rHH(v0, v1), rRH(v2, v0), Rule(27).
+rRH(v2, v1) :- rHH(v0, v1), rMH(v2, v1), Rule(20).
+rRH(v2, v1) :- rHH(v0, v1), rMH(v2, v0), Rule(22).
+rMH(v2, v0) :- rHH(v0, v1), rRH(v2, v0), Rule(9).
+rMH(v2, v1) :- VH(v0, v1), rRH(v2, v1), Rule(16).
+rMH(v2, v1) :- rHH(v0, v1), rRH(v2, v0), Rule(2).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v2, v1), Rule(23).
+rRH(v2, v0) :- rHH(v0, v1), rMH(v2, v0), Rule(8).
+rMH(v2, v1) :- rHH(v0, v1), rRH(v2, v1), Rule(11).
+rRH(v3, v2) :- HFH(v0, v1, v2), rMH(v3, v0), Rule(24).

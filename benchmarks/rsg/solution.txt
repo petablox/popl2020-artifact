@@ -1,0 +1,2 @@
+RSG(x,y) :- FLAT(x,y).
+RSG(x,y) :- UP(x, a), RSG(b, a), DOWN(b, y).

@@ -1,0 +1,83 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Up(v0: V, v1: V)
+.input Up
+.decl Down(v0: V, v1: V)
+.input Down
+.decl Flat(v0: V, v1: V)
+.input Flat
+
+
+.decl Rsg(v0: V, v1: V)
+.output Rsg
+
+Rsg(v3, v1) :- Down(v0, v1), Rsg(v0, v2), Up(v3, v2), Rule(12).
+Rsg(v3, v1) :- Flat(v0, v1), Rsg(v0, v2), Up(v3, v2), Rule(45).
+Rsg(v3, v1) :- Down(v0, v1), Flat(v0, v2), Rsg(v3, v2), Rule(1).
+Rsg(v2, v3) :- Down(v0, v1), Up(v2, v1), Up(v0, v3), Rule(15).
+Rsg(v0, v3) :- Flat(v0, v1), Flat(v2, v1), Rsg(v2, v3), Rule(8).
+Rsg(v3, v1) :- Down(v0, v1), Flat(v0, v2), Flat(v3, v2), Rule(14).
+Rsg(v0, v3) :- Down(v0, v1), Down(v2, v1), Rsg(v2, v3), Rule(17).
+Rsg(v2, v3) :- Down(v0, v1), Flat(v2, v1), Flat(v0, v3), Rule(23).
+Rsg(v2, v3) :- Down(v0, v1), Flat(v2, v1), Rsg(v0, v3), Rule(6).
+Rsg(v0, v3) :- Down(v0, v1), Rsg(v2, v1), Down(v2, v3), Rule(64).
+Rsg(v0, v3) :- Down(v0, v1), Rsg(v2, v1), Rsg(v2, v3), Rule(4).
+Rsg(v0, v3) :- Down(v0, v1), Flat(v2, v1), Down(v2, v3), Rule(52).
+Rsg(v0, v3) :- Down(v0, v1), Up(v2, v1), Flat(v2, v3), Rule(16).
+Rsg(v3, v1) :- Down(v0, v1), Rsg(v0, v2), Flat(v3, v2), Rule(28).
+Rsg(v0, v3) :- Flat(v0, v1), Rsg(v2, v1), Flat(v2, v3), Rule(62).
+Rsg(v3, v1) :- Down(v0, v1), Up(v0, v2), Rsg(v3, v2), Rule(33).
+Rsg(v0, v3) :- Rsg(v0, v1), Rsg(v2, v1), Rsg(v2, v3), Rule(50).
+Rsg(v3, v2) :- Down(v0, v1), Flat(v0, v2), Rsg(v3, v1), Rule(26).
+Rsg(v2, v3) :- Flat(v0, v1), Rsg(v2, v1), Up(v0, v3), Rule(61).
+Rsg(v2, v3) :- Flat(v0, v1), Rsg(v2, v1), Rsg(v0, v3), Rule(63).
+Rsg(v0, v1) :- Down(v0, v1), Rule(30).
+Rsg(v2, v3) :- Flat(v0, v1), Up(v2, v1), Up(v0, v3), Rule(42).
+Rsg(v3, v2) :- Flat(v0, v1), Rsg(v0, v2), Up(v3, v1), Rule(2).
+Rsg(v3, v1) :- Down(v0, v1), Up(v0, v2), Up(v3, v2), Rule(46).
+Rsg(v0, v3) :- Flat(v0, v1), Rsg(v2, v1), Rsg(v2, v3), Rule(37).
+Rsg(v3, v1) :- Down(v0, v1), Rsg(v0, v2), Rsg(v3, v2), Rule(60).
+Rsg(v0, v3) :- Down(v0, v1), Down(v2, v1), Down(v2, v3), Rule(44).
+Rsg(v0, v1) :- Up(v0, v1), Rule(65).
+Rsg(v0, v3) :- Flat(v0, v1), Up(v2, v1), Rsg(v2, v3), Rule(32).
+Rsg(v0, v3) :- Down(v0, v1), Flat(v2, v1), Up(v2, v3), Rule(11).
+Rsg(v0, v3) :- Rsg(v0, v1), Up(v2, v1), Rsg(v2, v3), Rule(5).
+Rsg(v0, v3) :- Down(v0, v1), Down(v2, v1), Up(v2, v3), Rule(7).
+Rsg(v0, v3) :- Down(v0, v1), Flat(v2, v1), Rsg(v2, v3), Rule(31).
+Rsg(v3, v1) :- Flat(v0, v1), Flat(v0, v2), Rsg(v3, v2), Rule(22).
+Rsg(v0, v3) :- Up(v0, v1), Up(v2, v1), Up(v2, v3), Rule(36).
+Rsg(v3, v1) :- Flat(v0, v1), Up(v0, v2), Up(v3, v2), Rule(40).
+Rsg(v0, v3) :- Down(v0, v1), Rsg(v2, v1), Up(v2, v3), Rule(21).
+Rsg(v3, v2) :- Down(v0, v1), Rsg(v0, v2), Up(v3, v1), Rule(38).
+Rsg(v3, v1) :- Flat(v0, v1), Rsg(v0, v2), Rsg(v3, v2), Rule(9).
+Rsg(v3, v1) :- Flat(v0, v1), Flat(v0, v2), Up(v3, v2), Rule(24).
+Rsg(v0, v3) :- Down(v0, v1), Flat(v2, v1), Flat(v2, v3), Rule(25).
+Rsg(v2, v3) :- Down(v0, v1), Flat(v2, v1), Up(v0, v3), Rule(55).
+Rsg(v3, v1) :- Flat(v0, v1), Up(v0, v2), Rsg(v3, v2), Rule(41).
+Rsg(v0, v3) :- Down(v0, v1), Rsg(v2, v1), Flat(v2, v3), Rule(58).
+Rsg(v2, v3) :- Down(v0, v1), Rsg(v2, v1), Rsg(v0, v3), Rule(18).
+Rsg(v3, v1) :- Rsg(v0, v1), Up(v0, v2), Up(v3, v2), Rule(66).
+Rsg(v3, v1) :- Down(v0, v1), Down(v0, v2), Flat(v3, v2), Rule(19).
+Rsg(v3, v1) :- Down(v0, v1), Down(v0, v2), Rsg(v3, v2), Rule(29).
+Rsg(v0, v3) :- Flat(v0, v1), Up(v2, v1), Up(v2, v3), Rule(43).
+Rsg(v2, v3) :- Rsg(v0, v1), Up(v2, v1), Up(v0, v3), Rule(3).
+Rsg(v3, v1) :- Down(v0, v1), Down(v0, v2), Up(v3, v2), Rule(59).
+Rsg(v3, v1) :- Down(v0, v1), Flat(v0, v2), Up(v3, v2), Rule(35).
+Rsg(v3, v1) :- Rsg(v0, v1), Rsg(v0, v2), Up(v3, v2), Rule(57).
+Rsg(v0, v3) :- Rsg(v0, v1), Rsg(v2, v1), Up(v2, v3), Rule(13).
+Rsg(v0, v1) :- Flat(v0, v1), Rule(54).
+Rsg(v2, v3) :- Down(v0, v1), Rsg(v2, v1), Up(v0, v3), Rule(27).
+Rsg(v0, v3) :- Flat(v0, v1), Rsg(v2, v1), Up(v2, v3), Rule(20).
+Rsg(v0, v3) :- Flat(v0, v1), Up(v2, v1), Flat(v2, v3), Rule(34).
+Rsg(v3, v1) :- Down(v0, v1), Up(v0, v2), Flat(v3, v2), Rule(0).
+Rsg(v0, v3) :- Down(v0, v1), Up(v2, v1), Down(v2, v3), Rule(39).
+Rsg(v0, v3) :- Flat(v0, v1), Flat(v2, v1), Flat(v2, v3), Rule(51).
+Rsg(v0, v3) :- Rsg(v0, v1), Up(v2, v1), Up(v2, v3), Rule(48).
+Rsg(v0, v3) :- Down(v0, v1), Up(v2, v1), Up(v2, v3), Rule(10).
+Rsg(v3, v2) :- Down(v0, v1), Flat(v0, v2), Up(v3, v1), Rule(49).
+Rsg(v0, v3) :- Flat(v0, v1), Flat(v2, v1), Up(v2, v3), Rule(53).
+Rsg(v0, v3) :- Down(v0, v1), Down(v2, v1), Flat(v2, v3), Rule(56).
+Rsg(v0, v3) :- Down(v0, v1), Up(v2, v1), Rsg(v2, v3), Rule(47).

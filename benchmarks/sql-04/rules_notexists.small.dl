@@ -1,0 +1,27 @@
+.type Inv
+.type Demand
+.type Company
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl In(v0: Inv, v1: Demand, v2: Company, v3: Company)
+.input In
+.decl not_null(v0: Company)
+.input not_null
+
+.decl In_notexists(v0: Inv, v1: Demand, v2: Company, v3: Company, v4: number)
+.output In_notexists
+.decl not_null_notexists(v0: Company, v1: number)
+.output not_null_notexists
+
+.decl Out_notexists(v0: Company, v1: Demand, v2: number)
+.output Out_notexists
+
+In_notexists(v0, v1, v2, v3, ruleIndex) :- In(v0, v1, v2, v3), Rule(ruleIndex).
+not_null_notexists(v0, ruleIndex) :- not_null(v0), Rule(ruleIndex).
+Out_notexists(v2, v1, ruleIndex) :- In_notexists(v0, v1, v2, v3, ruleIndex), not_null_notexists(v2, ruleIndex), ruleIndex != 1, Rule(1).
+Out_notexists(v2, v1, ruleIndex) :- In_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 2, Rule(2).
+Out_notexists(v3, v2, ruleIndex) :- not_null_notexists(v0, ruleIndex), In_notexists(v1, v2, v3, v0, ruleIndex), ruleIndex != 4, Rule(4).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, v3, ruleIndex), not_null_notexists(v3, ruleIndex), ruleIndex != 0, Rule(0).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 3, Rule(3).

@@ -1,0 +1,47 @@
+.type sname
+.type color
+.type supplier_key
+.type part_id
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl isRed(v0: color)
+.input isRed
+.decl isGreen(v0: color)
+.input isGreen
+.decl input3(v0: supplier_key, v1: sname)
+.input input3
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+.decl input2(v0: part_id, v1: color)
+.input input2
+
+.decl inv(v0: part_id, v1: color)
+.output inv
+
+.decl ans(v0: sname)
+.output ans
+
+inv(v1, v2) :- input1(v0, v1), input2(v1, v2), input2(v3, v2), Rule(20).
+inv(v0, v1) :- input2(v0, v1), isRed(v1), Rule(2).
+inv(v0, v3) :- input2(v0, v1), inv(v2, v1), inv(v2, v3), Rule(14).
+inv(v0, v1) :- input2(v0, v1), isGreen(v1), Rule(6).
+inv(v0, v1) :- input2(v0, v1), input2(v2, v1), inv(v0, v3), Rule(7).
+inv(v3, v2) :- input2(v0, v1), inv(v0, v2), inv(v3, v1), Rule(17).
+inv(v0, v1) :- input2(v0, v1), Rule(9).
+inv(v1, v3) :- input1(v0, v1), input1(v0, v2), input2(v2, v3), Rule(10).
+inv(v1, v2) :- input1(v0, v1), input2(v1, v2), inv(v3, v2), Rule(8).
+inv(v3, v1) :- input2(v0, v1), input2(v0, v2), inv(v3, v2), Rule(11).
+ans(v3) :- inv(v0, v1), input1(v2, v0), input3(v2, v3), Rule(21).
+inv(v3, v1) :- input2(v0, v1), inv(v0, v2), input2(v3, v2), Rule(3).
+inv(v3, v1) :- inv(v0, v1), inv(v0, v2), inv(v3, v2), Rule(18).
+inv(v0, v2) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(16).
+inv(v0, v2) :- input2(v0, v1), input2(v0, v2), inv(v3, v2), Rule(0).
+inv(v2, v3) :- input2(v0, v1), input2(v2, v1), inv(v0, v3), Rule(4).
+inv(v3, v1) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(1).
+inv(v1, v3) :- input1(v0, v1), input1(v0, v2), inv(v2, v3), Rule(5).
+ans(v1) :- input3(v0, v1), Rule(13).
+inv(v3, v1) :- input2(v0, v1), inv(v0, v2), inv(v3, v2), Rule(19).
+inv(v0, v1) :- input2(v0, v1), inv(v0, v2), inv(v3, v1), Rule(12).
+ans(v3) :- input2(v0, v1), input1(v2, v0), input3(v2, v3), Rule(15).

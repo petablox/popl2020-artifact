@@ -1,0 +1,113 @@
+.type T
+.type C
+.type S
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Active(v0: S)
+.input Active
+.decl Inactive(v0: S)
+.input Inactive
+.decl Input1(v0: T, v1: S, v2: C)
+.input Input1
+
+.decl inv1(v0: T, v1: C)
+.output inv1
+.decl inv2(v0: T, v1: C)
+.output inv2
+
+.decl ans(v0: T, v1: C, v2: C)
+.output ans
+
+ans(v3, v2, v1) :- ans(v0, v1, v2), inv1(v3, v1), Rule(11).
+inv2(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv1(v1, v3), Rule(38).
+inv1(v0, v2) :- inv1(v0, v1), inv2(v0, v2), Rule(45).
+inv2(v0, v1) :- inv1(v0, v1), Rule(1).
+inv1(v0, v2) :- Input1(v0, v1, v2), inv1(v0, v3), Rule(46).
+inv2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv1(v1, v3), Rule(36).
+inv1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv2(v1, v3), Rule(14).
+inv1(v0, v3) :- Input1(v0, v1, v2), inv2(v0, v3), Rule(21).
+inv2(v0, v4) :- Input1(v0, v1, v2), Input1(v3, v1, v4), Rule(35).
+inv1(v0, v4) :- ans(v0, v1, v2), ans(v3, v1, v4), Rule(37).
+inv1(v0, v1) :- ans(v0, v1, v2), inv2(v0, v3), Rule(53).
+inv1(v0, v1) :- inv2(v0, v1), inv2(v0, v2), Rule(10).
+inv2(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv2(v3, v2), Rule(75).
+ans(v3, v2, v1) :- ans(v0, v1, v2), inv2(v3, v1), Rule(80).
+inv1(v0, v2) :- Input1(v0, v1, v2), inv2(v3, v2), Rule(15).
+inv2(v3, v2) :- ans(v0, v1, v2), inv2(v3, v1), Rule(28).
+inv1(v0, v1) :- ans(v0, v1, v2), inv2(v3, v1), Rule(30).
+inv2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv1(v3, v2), Rule(54).
+inv2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), Rule(58).
+inv1(v0, v1) :- ans(v0, v1, v2), inv1(v0, v3), Rule(25).
+inv2(v3, v2) :- ans(v0, v1, v2), inv1(v3, v2), Rule(18).
+inv2(v0, v1) :- inv1(v0, v1), inv2(v0, v2), Rule(79).
+inv1(v3, v2) :- Input1(v0, v1, v2), inv2(v3, v2), Rule(81).
+inv1(v3, v2) :- ans(v0, v1, v2), inv2(v3, v2), Rule(48).
+ans(v0, v1, v2) :- inv1(v0, v1), inv1(v0, v2), Rule(42).
+ans(v0, v2, v1) :- ans(v0, v1, v2), Rule(26).
+ans(v0, v1, v2) :- inv1(v0, v1), inv2(v0, v2), Rule(63).
+inv2(v1, v2) :- Active(v0), Input1(v1, v0, v2), Rule(32).
+inv1(v0, v2) :- Input1(v0, v1, v2), inv2(v0, v3), Rule(27).
+inv2(v0, v2) :- Input1(v0, v1, v2), inv2(v3, v2), Rule(89).
+inv1(v0, v2) :- ans(v0, v1, v2), inv1(v3, v2), Rule(44).
+inv1(v3, v1) :- ans(v0, v1, v2), inv2(v3, v2), Rule(2).
+inv1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv2(v3, v2), Rule(74).
+inv2(v0, v1) :- ans(v0, v1, v2), inv1(v0, v3), Rule(24).
+ans(v0, v1, v2) :- inv2(v0, v1), inv2(v0, v2), Rule(22).
+ans(v0, v2, v1) :- inv1(v0, v1), inv2(v0, v2), Rule(49).
+inv2(v0, v3) :- Input1(v0, v1, v2), inv1(v0, v3), Rule(84).
+inv1(v0, v2) :- ans(v0, v1, v2), inv1(v0, v3), Rule(19).
+inv1(v0, v2) :- ans(v0, v1, v2), Rule(17).
+inv2(v0, v1) :- ans(v0, v1, v2), Rule(71).
+ans(v3, v1, v2) :- ans(v0, v1, v2), inv2(v3, v1), Rule(77).
+inv2(v0, v4) :- Input1(v0, v1, v2), ans(v3, v2, v4), Rule(78).
+inv2(v3, v2) :- Input1(v0, v1, v2), inv1(v3, v2), Rule(8).
+inv2(v3, v1) :- ans(v0, v1, v2), inv1(v3, v1), Rule(59).
+inv2(v3, v2) :- ans(v0, v1, v2), inv1(v3, v1), Rule(52).
+inv2(v0, v1) :- ans(v0, v1, v2), inv1(v3, v1), Rule(90).
+inv1(v3, v1) :- ans(v0, v1, v2), inv2(v3, v1), Rule(9).
+inv2(v0, v1) :- ans(v0, v1, v2), inv2(v3, v1), Rule(50).
+inv1(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv1(v1, v3), Rule(13).
+inv1(v0, v2) :- ans(v0, v1, v2), inv2(v3, v2), Rule(23).
+inv2(v0, v2) :- Input1(v0, v1, v2), Rule(88).
+inv2(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv2(v1, v3), Rule(60).
+inv1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv1(v1, v3), Rule(73).
+inv1(v1, v2) :- Active(v0), Input1(v1, v0, v2), Rule(57).
+inv2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv2(v3, v2), Rule(86).
+inv1(v0, v4) :- Input1(v0, v1, v2), ans(v3, v2, v4), Rule(7).
+inv1(v0, v2) :- Input1(v0, v1, v2), inv1(v3, v2), Rule(87).
+inv1(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv2(v3, v2), Rule(29).
+inv2(v0, v1) :- ans(v0, v1, v2), inv2(v0, v3), Rule(43).
+inv1(v0, v1) :- inv2(v0, v1), Rule(65).
+inv1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), Rule(69).
+inv2(v0, v2) :- ans(v0, v1, v2), inv1(v3, v2), Rule(33).
+inv1(v3, v2) :- ans(v0, v1, v2), inv1(v3, v1), Rule(64).
+inv2(v0, v1) :- inv1(v0, v1), inv1(v0, v2), Rule(5).
+inv2(v0, v2) :- Input1(v0, v1, v2), inv2(v0, v3), Rule(20).
+inv2(v3, v1) :- ans(v0, v1, v2), inv1(v3, v2), Rule(6).
+inv1(v0, v2) :- ans(v0, v1, v2), inv2(v0, v3), Rule(82).
+inv1(v0, v4) :- Input1(v0, v1, v2), Input1(v3, v1, v4), Rule(39).
+inv2(v3, v1) :- ans(v0, v1, v2), inv2(v3, v2), Rule(3).
+inv1(v0, v1) :- ans(v0, v1, v2), Rule(12).
+inv2(v0, v2) :- ans(v0, v1, v2), inv2(v0, v3), Rule(34).
+inv2(v0, v2) :- ans(v0, v1, v2), inv2(v3, v2), Rule(76).
+inv1(v0, v2) :- Input1(v0, v1, v2), Rule(70).
+inv1(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv2(v1, v3), Rule(67).
+inv2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv2(v1, v3), Rule(31).
+inv1(v0, v3) :- ans(v0, v1, v2), inv2(v0, v3), Rule(40).
+inv2(v0, v3) :- ans(v0, v1, v2), inv1(v0, v3), Rule(72).
+inv1(v3, v2) :- ans(v0, v1, v2), inv2(v3, v1), Rule(55).
+inv2(v0, v4) :- ans(v0, v1, v2), ans(v3, v2, v4), Rule(61).
+inv2(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv1(v3, v2), Rule(51).
+inv1(v0, v4) :- ans(v0, v1, v2), ans(v3, v2, v4), Rule(4).
+ans(v3, v1, v2) :- ans(v0, v1, v2), inv1(v3, v1), Rule(56).
+inv1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), inv1(v3, v2), Rule(16).
+inv2(v0, v2) :- ans(v0, v1, v2), Rule(85).
+inv2(v0, v2) :- Input1(v0, v1, v2), inv1(v3, v2), Rule(62).
+inv1(v3, v1) :- ans(v0, v1, v2), inv1(v3, v2), Rule(0).
+inv1(v0, v1) :- ans(v0, v1, v2), inv1(v3, v1), Rule(68).
+inv2(v0, v2) :- Input1(v0, v1, v2), inv1(v0, v3), Rule(41).
+inv2(v0, v4) :- ans(v0, v1, v2), ans(v3, v1, v4), Rule(83).
+inv2(v0, v2) :- ans(v0, v1, v2), inv1(v0, v3), Rule(66).
+inv1(v1, v2) :- Active(v0), Input1(v1, v0, v2), inv1(v3, v2), Rule(47).

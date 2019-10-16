@@ -1,0 +1,3 @@
+invent_Path(x, y) :- Edge(x, y).
+invent_Path(x, z) :- invent_Path(x, y), Edge(y, z).
+SCC(x, y) :- invent_Path(x, y), invent_Path(y, x).

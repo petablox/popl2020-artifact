@@ -1,0 +1,66 @@
+.type level
+.type S_key
+.type F_name
+.type C_name
+.type F_key
+.type S_name
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Junior(v0: level)
+.input Junior
+
+.decl focus(v0: F_name)
+.input focus
+
+.decl Class(v0: C_name, v1: F_key)
+.input Class
+
+.decl Enroll(v0: S_key, v1: C_name)
+.input Enroll
+
+.decl Faculty(v0: F_key, v1: F_name)
+.input Faculty
+
+.decl Student(v0: S_key, v1: S_name, v2: level)
+.input Student
+
+.decl inv1(v0: F_key)
+.output inv1
+
+.decl inv2(v0: C_name)
+.output inv2
+
+.decl inv3(v0: S_key)
+.output inv3
+
+.decl ans(v0: S_name)
+.output ans
+
+
+
+inv1(v0) :- inv1(v0), Rule(0).
+inv1(v0) :- inv1(v0), inv1(v0), Rule(1).
+inv1(v0) :- inv1(v0), inv1(v0), inv1(v0), Rule(2).
+inv1(v0) :- inv1(v0), inv1(v1), inv1(v1), Rule(3).
+inv1(v0) :- inv1(v1), inv1(v1), inv1(v0), Rule(4).
+inv1(v0) :- inv1(v1), inv1(v0), inv1(v1), Rule(5).
+inv2(v0) :- inv2(v0), Rule(6).
+inv2(v0) :- inv2(v0), inv2(v0), Rule(7).
+inv2(v0) :- inv2(v0), inv2(v0), inv2(v0), Rule(8).
+inv2(v0) :- inv2(v0), inv2(v1), inv2(v1), Rule(9).
+inv2(v0) :- inv2(v1), inv2(v1), inv2(v0), Rule(10).
+inv2(v0) :- inv2(v1), inv2(v0), inv2(v1), Rule(11).
+inv3(v0) :- inv3(v0), Rule(12).
+inv3(v0) :- inv3(v0), inv3(v0), Rule(13).
+inv3(v0) :- inv3(v0), inv3(v0), inv3(v0), Rule(14).
+inv3(v0) :- inv3(v0), inv3(v1), inv3(v1), Rule(15).
+inv3(v0) :- inv3(v1), inv3(v1), inv3(v0), Rule(16).
+inv3(v0) :- inv3(v1), inv3(v0), inv3(v1), Rule(17).
+ans(v0) :- ans(v0), Rule(18).
+ans(v0) :- ans(v0), ans(v0), Rule(19).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(20).
+ans(v0) :- ans(v0), ans(v1), ans(v1), Rule(21).
+ans(v0) :- ans(v1), ans(v1), ans(v0), Rule(22).
+ans(v0) :- ans(v1), ans(v0), ans(v1), Rule(23).

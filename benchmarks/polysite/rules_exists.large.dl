@@ -1,0 +1,588 @@
+.type M
+.type C
+.type I
+
+.decl Rule(n: number)
+.input Rule
+
+.decl CICM(v0: C, v1: I, v2: M)
+.input CICM
+
+.decl virtIM(v0: I, v1: M)
+.input virtIM
+
+.decl Mneq(v0: M, v1: M)
+.input Mneq
+
+.decl insvIM(v0: I, v1: M)
+.decl virtI(v0: I)
+.decl polySite(v0: I)
+.decl CICM_exists(v0: C, v1: I, v2: M, r: number)
+.output CICM_exists
+
+.decl virtIM_exists(v0: I, v1: M, r: number)
+.output virtIM_exists
+
+.decl Mneq_exists(v0: M, v1: M, r: number)
+.output Mneq_exists
+
+.decl insvIM_exists(v0: I, v1: M, r: number)
+.output insvIM_exists
+
+.decl virtI_exists(v0: I, r: number)
+.output virtI_exists
+
+.decl polySite_exists(v0: I, r: number)
+.output polySite_exists
+
+
+
+insvIM(v0, v1) :- virtIM(v0, v1), Rule(0).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), r = 0, Rule(0).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Rule(r), Rule(0).
+insvIM(v0, v1) :- insvIM(v0, v1), Rule(1).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), r = 1, Rule(1).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v1, r), Rule(r), Rule(1).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v1), Rule(2).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v1), r = 2, Rule(2).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v1), Rule(r), Rule(2).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v1, r), Rule(r), Rule(2).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), Rule(3).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), r = 3, Rule(3).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v1), Rule(r), Rule(3).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v1, r), Rule(r), Rule(3).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), Rule(4).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), r = 4, Rule(4).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v2), Rule(r), Rule(4).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v2, r), Rule(r), Rule(4).
+insvIM(v0, v1) :- virtIM(v0, v1), insvIM(v0, v1), Rule(5).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM(v0, v1), r = 5, Rule(5).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), insvIM(v0, v1), Rule(r), Rule(5).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(5).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v2), Rule(6).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v2), r = 6, Rule(6).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), insvIM(v0, v2), Rule(r), Rule(6).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(6).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v2), Rule(7).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v2), r = 7, Rule(7).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), insvIM(v0, v2), Rule(r), Rule(7).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(7).
+insvIM(v0, v1) :- insvIM(v0, v1), insvIM(v0, v1), Rule(8).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM(v0, v1), r = 8, Rule(8).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v1, r), insvIM(v0, v1), Rule(r), Rule(8).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(8).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v1), virtIM(v0, v1), Rule(9).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v1), virtIM(v0, v1), r = 9, Rule(9).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v1), virtIM(v0, v1), Rule(r), Rule(9).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v1, r), virtIM(v0, v1), Rule(r), Rule(9).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v1), virtIM_exists(v0, v1, r), Rule(r), Rule(9).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), virtIM(v0, v2), Rule(10).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), virtIM(v0, v2), r = 10, Rule(10).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v2), virtIM(v0, v2), Rule(r), Rule(10).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v2, r), virtIM(v0, v2), Rule(r), Rule(10).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), virtIM_exists(v0, v2, r), Rule(r), Rule(10).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), virtIM(v0, v1), Rule(11).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), virtIM(v0, v1), r = 11, Rule(11).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v2), virtIM(v0, v1), Rule(r), Rule(11).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v2, r), virtIM(v0, v1), Rule(r), Rule(11).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), virtIM_exists(v0, v1, r), Rule(r), Rule(11).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), virtIM(v0, v2), Rule(12).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), virtIM(v0, v2), r = 12, Rule(12).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v1), virtIM(v0, v2), Rule(r), Rule(12).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v1, r), virtIM(v0, v2), Rule(r), Rule(12).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), virtIM_exists(v0, v2, r), Rule(r), Rule(12).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v2), virtIM(v3, v1), Rule(13).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v2), virtIM(v3, v1), r = 13, Rule(13).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v3, v2), virtIM(v3, v1), Rule(r), Rule(13).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v3, v2, r), virtIM(v3, v1), Rule(r), Rule(13).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v2), virtIM_exists(v3, v1, r), Rule(r), Rule(13).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v1), virtIM(v3, v2), Rule(14).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v1), virtIM(v3, v2), r = 14, Rule(14).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v3, v1), virtIM(v3, v2), Rule(r), Rule(14).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v3, v1, r), virtIM(v3, v2), Rule(r), Rule(14).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v1), virtIM_exists(v3, v2, r), Rule(r), Rule(14).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), Mneq(v2, v1), Rule(15).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), Mneq(v2, v1), r = 15, Rule(15).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v1), Mneq(v2, v1), Rule(r), Rule(15).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v1, r), Mneq(v2, v1), Rule(r), Rule(15).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), Mneq_exists(v2, v1, r), Rule(r), Rule(15).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), Mneq(v1, v2), Rule(16).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), Mneq(v1, v2), r = 16, Rule(16).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v1), Mneq(v1, v2), Rule(r), Rule(16).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v1, r), Mneq(v1, v2), Rule(r), Rule(16).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), Mneq_exists(v1, v2, r), Rule(r), Rule(16).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), Mneq(v2, v1), Rule(17).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), Mneq(v2, v1), r = 17, Rule(17).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v2), Mneq(v2, v1), Rule(r), Rule(17).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v2, r), Mneq(v2, v1), Rule(r), Rule(17).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), Mneq_exists(v2, v1, r), Rule(r), Rule(17).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), Mneq(v1, v2), Rule(18).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), Mneq(v1, v2), r = 18, Rule(18).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v2), Mneq(v1, v2), Rule(r), Rule(18).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v2, r), Mneq(v1, v2), Rule(r), Rule(18).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), Mneq_exists(v1, v2, r), Rule(r), Rule(18).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), Mneq(v2, v1), Rule(19).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), Mneq(v2, v1), r = 19, Rule(19).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v2), Mneq(v2, v1), Rule(r), Rule(19).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v2, r), Mneq(v2, v1), Rule(r), Rule(19).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), Mneq_exists(v2, v1, r), Rule(r), Rule(19).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), Mneq(v1, v2), Rule(20).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), Mneq(v1, v2), r = 20, Rule(20).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v2), Mneq(v1, v2), Rule(r), Rule(20).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v2, r), Mneq(v1, v2), Rule(r), Rule(20).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), Mneq_exists(v1, v2, r), Rule(r), Rule(20).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v1), insvIM(v0, v1), Rule(21).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v1), insvIM(v0, v1), r = 21, Rule(21).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v1), insvIM(v0, v1), Rule(r), Rule(21).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v1, r), insvIM(v0, v1), Rule(r), Rule(21).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(21).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), insvIM(v0, v2), Rule(22).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), insvIM(v0, v2), r = 22, Rule(22).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), virtIM(v0, v2), insvIM(v0, v2), Rule(r), Rule(22).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM_exists(v0, v2, r), insvIM(v0, v2), Rule(r), Rule(22).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), virtIM(v0, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(22).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), insvIM(v0, v1), Rule(23).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), insvIM(v0, v1), r = 23, Rule(23).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v2), insvIM(v0, v1), Rule(r), Rule(23).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v2, r), insvIM(v0, v1), Rule(r), Rule(23).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(23).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), insvIM(v0, v2), Rule(24).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), insvIM(v0, v2), r = 24, Rule(24).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v0, v1), insvIM(v0, v2), Rule(r), Rule(24).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v0, v1, r), insvIM(v0, v2), Rule(r), Rule(24).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v0, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(24).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v2), insvIM(v3, v1), Rule(25).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v2), insvIM(v3, v1), r = 25, Rule(25).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v3, v2), insvIM(v3, v1), Rule(r), Rule(25).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v3, v2, r), insvIM(v3, v1), Rule(r), Rule(25).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v2), insvIM_exists(v3, v1, r), Rule(r), Rule(25).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v1), insvIM(v3, v2), Rule(26).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v1), insvIM(v3, v2), r = 26, Rule(26).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), virtIM(v3, v1), insvIM(v3, v2), Rule(r), Rule(26).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM_exists(v3, v1, r), insvIM(v3, v2), Rule(r), Rule(26).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), virtIM(v3, v1), insvIM_exists(v3, v2, r), Rule(r), Rule(26).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v1, v2), Mneq(v2, v1), Rule(27).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v1, v2), Mneq(v2, v1), r = 27, Rule(27).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v1, v2), Mneq(v2, v1), Rule(r), Rule(27).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v1, v2, r), Mneq(v2, v1), Rule(r), Rule(27).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v1, v2), Mneq_exists(v2, v1, r), Rule(r), Rule(27).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v1, v2), Mneq(v1, v2), Rule(28).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v1, v2), Mneq(v1, v2), r = 28, Rule(28).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v1, v2), Mneq(v1, v2), Rule(r), Rule(28).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v1, v2, r), Mneq(v1, v2), Rule(r), Rule(28).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v1, v2), Mneq_exists(v1, v2, r), Rule(r), Rule(28).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v1), Mneq(v2, v1), Rule(29).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v1), Mneq(v2, v1), r = 29, Rule(29).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v2, v1), Mneq(v2, v1), Rule(r), Rule(29).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v2, v1, r), Mneq(v2, v1), Rule(r), Rule(29).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v1), Mneq_exists(v2, v1, r), Rule(r), Rule(29).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v1), Mneq(v1, v2), Rule(30).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v1), Mneq(v1, v2), r = 30, Rule(30).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v2, v1), Mneq(v1, v2), Rule(r), Rule(30).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v2, v1, r), Mneq(v1, v2), Rule(r), Rule(30).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v1), Mneq_exists(v1, v2, r), Rule(r), Rule(30).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), Mneq(v2, v1), Rule(31).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), Mneq(v2, v1), r = 31, Rule(31).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v1), Mneq(v2, v1), Rule(r), Rule(31).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v1, r), Mneq(v2, v1), Rule(r), Rule(31).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), Mneq_exists(v2, v1, r), Rule(r), Rule(31).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), Mneq(v1, v2), Rule(32).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), Mneq(v1, v2), r = 32, Rule(32).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v2), Mneq(v1, v2), Rule(r), Rule(32).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v2, r), Mneq(v1, v2), Rule(r), Rule(32).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), Mneq_exists(v1, v2, r), Rule(r), Rule(32).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), Mneq(v2, v1), Rule(33).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), Mneq(v2, v1), r = 33, Rule(33).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v2), Mneq(v2, v1), Rule(r), Rule(33).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v2, r), Mneq(v2, v1), Rule(r), Rule(33).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), Mneq_exists(v2, v1, r), Rule(r), Rule(33).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), Mneq(v1, v2), Rule(34).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), Mneq(v1, v2), r = 34, Rule(34).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v1), Mneq(v1, v2), Rule(r), Rule(34).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v1, r), Mneq(v1, v2), Rule(r), Rule(34).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), Mneq_exists(v1, v2, r), Rule(r), Rule(34).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v2), Mneq(v3, v1), Rule(35).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v2), Mneq(v3, v1), r = 35, Rule(35).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v3, v2), Mneq(v3, v1), Rule(r), Rule(35).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v3, v2, r), Mneq(v3, v1), Rule(r), Rule(35).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v2), Mneq_exists(v3, v1, r), Rule(r), Rule(35).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v1), Mneq(v2, v3), Rule(36).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v1), Mneq(v2, v3), r = 36, Rule(36).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v3, v1), Mneq(v2, v3), Rule(r), Rule(36).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v3, v1, r), Mneq(v2, v3), Rule(r), Rule(36).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v1), Mneq_exists(v2, v3, r), Rule(r), Rule(36).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v2), Mneq(v1, v3), Rule(37).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v2), Mneq(v1, v3), r = 37, Rule(37).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v3, v2), Mneq(v1, v3), Rule(r), Rule(37).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v3, v2, r), Mneq(v1, v3), Rule(r), Rule(37).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v2), Mneq_exists(v1, v3, r), Rule(r), Rule(37).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v3), Mneq(v2, v3), Rule(38).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v3), Mneq(v2, v3), r = 38, Rule(38).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v3), Mneq(v2, v3), Rule(r), Rule(38).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v3, r), Mneq(v2, v3), Rule(r), Rule(38).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v3), Mneq_exists(v2, v3, r), Rule(r), Rule(38).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v3), Mneq(v2, v3), Rule(39).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v3), Mneq(v2, v3), r = 39, Rule(39).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v2, v3), Mneq(v2, v3), Rule(r), Rule(39).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v2, v3, r), Mneq(v2, v3), Rule(r), Rule(39).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v3), Mneq_exists(v2, v3, r), Rule(r), Rule(39).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v3), Mneq(v1, v3), Rule(40).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v3), Mneq(v1, v3), r = 40, Rule(40).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v3), Mneq(v1, v3), Rule(r), Rule(40).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v3, r), Mneq(v1, v3), Rule(r), Rule(40).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v3), Mneq_exists(v1, v3, r), Rule(r), Rule(40).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v3), Mneq(v3, v1), Rule(41).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v3), Mneq(v3, v1), r = 41, Rule(41).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v3), Mneq(v3, v1), Rule(r), Rule(41).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v3, r), Mneq(v3, v1), Rule(r), Rule(41).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v3), Mneq_exists(v3, v1, r), Rule(r), Rule(41).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v1), Mneq(v3, v2), Rule(42).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v1), Mneq(v3, v2), r = 42, Rule(42).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v3, v1), Mneq(v3, v2), Rule(r), Rule(42).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v3, v1, r), Mneq(v3, v2), Rule(r), Rule(42).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v3, v1), Mneq_exists(v3, v2, r), Rule(r), Rule(42).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v3), Mneq(v3, v2), Rule(43).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v3), Mneq(v3, v2), r = 43, Rule(43).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v3), Mneq(v3, v2), Rule(r), Rule(43).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v3, r), Mneq(v3, v2), Rule(r), Rule(43).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v3), Mneq_exists(v3, v2, r), Rule(r), Rule(43).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v3), Mneq(v3, v2), Rule(44).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v3), Mneq(v3, v2), r = 44, Rule(44).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v2, v3), Mneq(v3, v2), Rule(r), Rule(44).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v2, v3, r), Mneq(v3, v2), Rule(r), Rule(44).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v3), Mneq_exists(v3, v2, r), Rule(r), Rule(44).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), insvIM(v0, v1), Rule(45).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), insvIM(v0, v1), r = 45, Rule(45).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v2), insvIM(v0, v1), Rule(r), Rule(45).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v2, r), insvIM(v0, v1), Rule(r), Rule(45).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(45).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), insvIM(v0, v1), Rule(46).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), insvIM(v0, v1), r = 46, Rule(46).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v1), insvIM(v0, v1), Rule(r), Rule(46).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v1, r), insvIM(v0, v1), Rule(r), Rule(46).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(46).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v1), insvIM(v0, v2), Rule(47).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v1), insvIM(v0, v2), r = 47, Rule(47).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v2, v1), insvIM(v0, v2), Rule(r), Rule(47).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v2, v1, r), insvIM(v0, v2), Rule(r), Rule(47).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v2, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(47).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v1, v2), insvIM(v0, v2), Rule(48).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v1, v2), insvIM(v0, v2), r = 48, Rule(48).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), Mneq(v1, v2), insvIM(v0, v2), Rule(r), Rule(48).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq_exists(v1, v2, r), insvIM(v0, v2), Rule(r), Rule(48).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), Mneq(v1, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(48).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), insvIM(v0, v2), Rule(49).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), insvIM(v0, v2), r = 49, Rule(49).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v1, v2), insvIM(v0, v2), Rule(r), Rule(49).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v1, v2, r), insvIM(v0, v2), Rule(r), Rule(49).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v1, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(49).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), insvIM(v0, v2), Rule(50).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), insvIM(v0, v2), r = 50, Rule(50).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), Mneq(v2, v1), insvIM(v0, v2), Rule(r), Rule(50).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq_exists(v2, v1, r), insvIM(v0, v2), Rule(r), Rule(50).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), Mneq(v2, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(50).
+insvIM(v0, v1) :- virtIM(v0, v1), insvIM(v0, v1), insvIM(v0, v1), Rule(51).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM(v0, v1), insvIM(v0, v1), r = 51, Rule(51).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), insvIM(v0, v1), insvIM(v0, v1), Rule(r), Rule(51).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM_exists(v0, v1, r), insvIM(v0, v1), Rule(r), Rule(51).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM(v0, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(51).
+insvIM(v0, v1) :- virtIM(v0, v1), insvIM(v0, v2), insvIM(v0, v2), Rule(52).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM(v0, v2), insvIM(v0, v2), r = 52, Rule(52).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v1, r), insvIM(v0, v2), insvIM(v0, v2), Rule(r), Rule(52).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM_exists(v0, v2, r), insvIM(v0, v2), Rule(r), Rule(52).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v1), insvIM(v0, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(52).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v0, v2), insvIM(v0, v1), Rule(53).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v0, v2), insvIM(v0, v1), r = 53, Rule(53).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), insvIM(v0, v2), insvIM(v0, v1), Rule(r), Rule(53).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM_exists(v0, v2, r), insvIM(v0, v1), Rule(r), Rule(53).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v0, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(53).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v0, v1), insvIM(v0, v2), Rule(54).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v0, v1), insvIM(v0, v2), r = 54, Rule(54).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), insvIM(v0, v1), insvIM(v0, v2), Rule(r), Rule(54).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM_exists(v0, v1, r), insvIM(v0, v2), Rule(r), Rule(54).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v0, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(54).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v3, v2), insvIM(v3, v1), Rule(55).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v3, v2), insvIM(v3, v1), r = 55, Rule(55).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), insvIM(v3, v2), insvIM(v3, v1), Rule(r), Rule(55).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM_exists(v3, v2, r), insvIM(v3, v1), Rule(r), Rule(55).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v3, v2), insvIM_exists(v3, v1, r), Rule(r), Rule(55).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v3, v1), insvIM(v3, v2), Rule(56).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v3, v1), insvIM(v3, v2), r = 56, Rule(56).
+insvIM_exists(v0, v1, r) :- virtIM_exists(v0, v2, r), insvIM(v3, v1), insvIM(v3, v2), Rule(r), Rule(56).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM_exists(v3, v1, r), insvIM(v3, v2), Rule(r), Rule(56).
+insvIM_exists(v0, v1, r) :- virtIM(v0, v2), insvIM(v3, v1), insvIM_exists(v3, v2, r), Rule(r), Rule(56).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v2, v1), insvIM(v0, v1), Rule(57).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v2, v1), insvIM(v0, v1), r = 57, Rule(57).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), Mneq(v2, v1), insvIM(v0, v1), Rule(r), Rule(57).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq_exists(v2, v1, r), insvIM(v0, v1), Rule(r), Rule(57).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v2, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(57).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v2, v1), insvIM(v0, v1), Rule(58).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v2, v1), insvIM(v0, v1), r = 58, Rule(58).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), Mneq(v2, v1), insvIM(v0, v1), Rule(r), Rule(58).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq_exists(v2, v1, r), insvIM(v0, v1), Rule(r), Rule(58).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v2, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(58).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v1, v2), insvIM(v0, v1), Rule(59).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v1, v2), insvIM(v0, v1), r = 59, Rule(59).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), Mneq(v1, v2), insvIM(v0, v1), Rule(r), Rule(59).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq_exists(v1, v2, r), insvIM(v0, v1), Rule(r), Rule(59).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v1, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(59).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v1, v2), insvIM(v0, v1), Rule(60).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v1, v2), insvIM(v0, v1), r = 60, Rule(60).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), Mneq(v1, v2), insvIM(v0, v1), Rule(r), Rule(60).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq_exists(v1, v2, r), insvIM(v0, v1), Rule(r), Rule(60).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v1, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(60).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v1, v2), insvIM(v0, v2), Rule(61).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v1, v2), insvIM(v0, v2), r = 61, Rule(61).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), Mneq(v1, v2), insvIM(v0, v2), Rule(r), Rule(61).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq_exists(v1, v2, r), insvIM(v0, v2), Rule(r), Rule(61).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v1, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(61).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v2, v1), insvIM(v0, v2), Rule(62).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v2, v1), insvIM(v0, v2), r = 62, Rule(62).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), Mneq(v2, v1), insvIM(v0, v2), Rule(r), Rule(62).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq_exists(v2, v1, r), insvIM(v0, v2), Rule(r), Rule(62).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v2, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(62).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v1, v2), insvIM(v0, v2), Rule(63).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v1, v2), insvIM(v0, v2), r = 63, Rule(63).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), Mneq(v1, v2), insvIM(v0, v2), Rule(r), Rule(63).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq_exists(v1, v2, r), insvIM(v0, v2), Rule(r), Rule(63).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v1, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(63).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v2, v1), insvIM(v0, v2), Rule(64).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v2, v1), insvIM(v0, v2), r = 64, Rule(64).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), Mneq(v2, v1), insvIM(v0, v2), Rule(r), Rule(64).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq_exists(v2, v1, r), insvIM(v0, v2), Rule(r), Rule(64).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v2, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(64).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v2, v3), insvIM(v0, v1), Rule(65).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v2, v3), insvIM(v0, v1), r = 65, Rule(65).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v3, r), Mneq(v2, v3), insvIM(v0, v1), Rule(r), Rule(65).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq_exists(v2, v3, r), insvIM(v0, v1), Rule(r), Rule(65).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v2, v3), insvIM_exists(v0, v1, r), Rule(r), Rule(65).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v3, v2), insvIM(v0, v1), Rule(66).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v3, v2), insvIM(v0, v1), r = 66, Rule(66).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v3, r), Mneq(v3, v2), insvIM(v0, v1), Rule(r), Rule(66).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq_exists(v3, v2, r), insvIM(v0, v1), Rule(r), Rule(66).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v3, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(66).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v1, v2), insvIM(v0, v3), Rule(67).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v1, v2), insvIM(v0, v3), r = 67, Rule(67).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v3, r), Mneq(v1, v2), insvIM(v0, v3), Rule(r), Rule(67).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq_exists(v1, v2, r), insvIM(v0, v3), Rule(r), Rule(67).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v1, v2), insvIM_exists(v0, v3, r), Rule(r), Rule(67).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v2, v1), insvIM(v0, v3), Rule(68).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v2, v1), insvIM(v0, v3), r = 68, Rule(68).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v3, r), Mneq(v2, v1), insvIM(v0, v3), Rule(r), Rule(68).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq_exists(v2, v1, r), insvIM(v0, v3), Rule(r), Rule(68).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v2, v1), insvIM_exists(v0, v3, r), Rule(r), Rule(68).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v2, v3), insvIM(v0, v3), Rule(69).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v2, v3), insvIM(v0, v3), r = 69, Rule(69).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), Mneq(v2, v3), insvIM(v0, v3), Rule(r), Rule(69).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq_exists(v2, v3, r), insvIM(v0, v3), Rule(r), Rule(69).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v2, v3), insvIM_exists(v0, v3, r), Rule(r), Rule(69).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v3, v2), insvIM(v0, v3), Rule(70).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v3, v2), insvIM(v0, v3), r = 70, Rule(70).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), Mneq(v3, v2), insvIM(v0, v3), Rule(r), Rule(70).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq_exists(v3, v2, r), insvIM(v0, v3), Rule(r), Rule(70).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), Mneq(v3, v2), insvIM_exists(v0, v3, r), Rule(r), Rule(70).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v2, v3), insvIM(v0, v3), Rule(71).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v2, v3), insvIM(v0, v3), r = 71, Rule(71).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), Mneq(v2, v3), insvIM(v0, v3), Rule(r), Rule(71).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq_exists(v2, v3, r), insvIM(v0, v3), Rule(r), Rule(71).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v2, v3), insvIM_exists(v0, v3, r), Rule(r), Rule(71).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v3, v2), insvIM(v0, v3), Rule(72).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v3, v2), insvIM(v0, v3), r = 72, Rule(72).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), Mneq(v3, v2), insvIM(v0, v3), Rule(r), Rule(72).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq_exists(v3, v2, r), insvIM(v0, v3), Rule(r), Rule(72).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), Mneq(v3, v2), insvIM_exists(v0, v3, r), Rule(r), Rule(72).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v1, v3), insvIM(v0, v2), Rule(73).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v1, v3), insvIM(v0, v2), r = 73, Rule(73).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v3, r), Mneq(v1, v3), insvIM(v0, v2), Rule(r), Rule(73).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq_exists(v1, v3, r), insvIM(v0, v2), Rule(r), Rule(73).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v1, v3), insvIM_exists(v0, v2, r), Rule(r), Rule(73).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v3, v1), insvIM(v0, v2), Rule(74).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v3, v1), insvIM(v0, v2), r = 74, Rule(74).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v3, r), Mneq(v3, v1), insvIM(v0, v2), Rule(r), Rule(74).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq_exists(v3, v1, r), insvIM(v0, v2), Rule(r), Rule(74).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v3), Mneq(v3, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(74).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v2), insvIM(v0, v1), Rule(75).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v2), insvIM(v0, v1), r = 75, Rule(75).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), insvIM(v0, v2), insvIM(v0, v1), Rule(r), Rule(75).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM_exists(v0, v2, r), insvIM(v0, v1), Rule(r), Rule(75).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(75).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v1), insvIM(v0, v2), Rule(76).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v1), insvIM(v0, v2), r = 76, Rule(76).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), insvIM(v0, v1), insvIM(v0, v2), Rule(r), Rule(76).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM_exists(v0, v1, r), insvIM(v0, v2), Rule(r), Rule(76).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(76).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v2), insvIM(v0, v1), Rule(77).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v2), insvIM(v0, v1), r = 77, Rule(77).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), insvIM(v0, v2), insvIM(v0, v1), Rule(r), Rule(77).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM_exists(v0, v2, r), insvIM(v0, v1), Rule(r), Rule(77).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(77).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v1), insvIM(v0, v2), Rule(78).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v1), insvIM(v0, v2), r = 78, Rule(78).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), insvIM(v0, v1), insvIM(v0, v2), Rule(r), Rule(78).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM_exists(v0, v1, r), insvIM(v0, v2), Rule(r), Rule(78).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(78).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v2), insvIM(v0, v2), Rule(79).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v2), insvIM(v0, v2), r = 79, Rule(79).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v2, v1, r), insvIM(v0, v2), insvIM(v0, v2), Rule(r), Rule(79).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM_exists(v0, v2, r), insvIM(v0, v2), Rule(r), Rule(79).
+insvIM_exists(v0, v1, r) :- Mneq(v2, v1), insvIM(v0, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(79).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v2), insvIM(v0, v2), Rule(80).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v2), insvIM(v0, v2), r = 80, Rule(80).
+insvIM_exists(v0, v1, r) :- Mneq_exists(v1, v2, r), insvIM(v0, v2), insvIM(v0, v2), Rule(r), Rule(80).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM_exists(v0, v2, r), insvIM(v0, v2), Rule(r), Rule(80).
+insvIM_exists(v0, v1, r) :- Mneq(v1, v2), insvIM(v0, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(80).
+insvIM(v0, v1) :- insvIM(v0, v1), insvIM(v0, v1), insvIM(v0, v1), Rule(81).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM(v0, v1), insvIM(v0, v1), r = 81, Rule(81).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v1, r), insvIM(v0, v1), insvIM(v0, v1), Rule(r), Rule(81).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM_exists(v0, v1, r), insvIM(v0, v1), Rule(r), Rule(81).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM(v0, v1), insvIM_exists(v0, v1, r), Rule(r), Rule(81).
+insvIM(v0, v1) :- insvIM(v0, v1), insvIM(v0, v2), insvIM(v0, v2), Rule(82).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM(v0, v2), insvIM(v0, v2), r = 82, Rule(82).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v1, r), insvIM(v0, v2), insvIM(v0, v2), Rule(r), Rule(82).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM_exists(v0, v2, r), insvIM(v0, v2), Rule(r), Rule(82).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v1), insvIM(v0, v2), insvIM_exists(v0, v2, r), Rule(r), Rule(82).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v0, v2), insvIM(v0, v1), Rule(83).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v0, v2), insvIM(v0, v1), r = 83, Rule(83).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v2, r), insvIM(v0, v2), insvIM(v0, v1), Rule(r), Rule(83).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM_exists(v0, v2, r), insvIM(v0, v1), Rule(r), Rule(83).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v0, v2), insvIM_exists(v0, v1, r), Rule(r), Rule(83).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v0, v1), insvIM(v0, v2), Rule(84).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v0, v1), insvIM(v0, v2), r = 84, Rule(84).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v2, r), insvIM(v0, v1), insvIM(v0, v2), Rule(r), Rule(84).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM_exists(v0, v1, r), insvIM(v0, v2), Rule(r), Rule(84).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v0, v1), insvIM_exists(v0, v2, r), Rule(r), Rule(84).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v3, v2), insvIM(v3, v1), Rule(85).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v3, v2), insvIM(v3, v1), r = 85, Rule(85).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v2, r), insvIM(v3, v2), insvIM(v3, v1), Rule(r), Rule(85).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM_exists(v3, v2, r), insvIM(v3, v1), Rule(r), Rule(85).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v3, v2), insvIM_exists(v3, v1, r), Rule(r), Rule(85).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v3, v1), insvIM(v3, v2), Rule(86).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v3, v1), insvIM(v3, v2), r = 86, Rule(86).
+insvIM_exists(v0, v1, r) :- insvIM_exists(v0, v2, r), insvIM(v3, v1), insvIM(v3, v2), Rule(r), Rule(86).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM_exists(v3, v1, r), insvIM(v3, v2), Rule(r), Rule(86).
+insvIM_exists(v0, v1, r) :- insvIM(v0, v2), insvIM(v3, v1), insvIM_exists(v3, v2, r), Rule(r), Rule(86).
+virtI(v0) :- virtI(v0), Rule(87).
+virtI_exists(v0, r) :- virtI(v0), r = 87, Rule(87).
+virtI_exists(v0, r) :- virtI_exists(v0, r), Rule(r), Rule(87).
+virtI(v0) :- virtI(v0), virtI(v0), Rule(88).
+virtI_exists(v0, r) :- virtI(v0), virtI(v0), r = 88, Rule(88).
+virtI_exists(v0, r) :- virtI_exists(v0, r), virtI(v0), Rule(r), Rule(88).
+virtI_exists(v0, r) :- virtI(v0), virtI_exists(v0, r), Rule(r), Rule(88).
+virtI(v0) :- virtI(v0), virtI(v0), virtI(v0), Rule(89).
+virtI_exists(v0, r) :- virtI(v0), virtI(v0), virtI(v0), r = 89, Rule(89).
+virtI_exists(v0, r) :- virtI_exists(v0, r), virtI(v0), virtI(v0), Rule(r), Rule(89).
+virtI_exists(v0, r) :- virtI(v0), virtI_exists(v0, r), virtI(v0), Rule(r), Rule(89).
+virtI_exists(v0, r) :- virtI(v0), virtI(v0), virtI_exists(v0, r), Rule(r), Rule(89).
+virtI(v0) :- virtI(v0), virtI(v1), virtI(v1), Rule(90).
+virtI_exists(v0, r) :- virtI(v0), virtI(v1), virtI(v1), r = 90, Rule(90).
+virtI_exists(v0, r) :- virtI_exists(v0, r), virtI(v1), virtI(v1), Rule(r), Rule(90).
+virtI_exists(v0, r) :- virtI(v0), virtI_exists(v1, r), virtI(v1), Rule(r), Rule(90).
+virtI_exists(v0, r) :- virtI(v0), virtI(v1), virtI_exists(v1, r), Rule(r), Rule(90).
+virtI(v0) :- virtI(v1), virtI(v1), virtI(v0), Rule(91).
+virtI_exists(v0, r) :- virtI(v1), virtI(v1), virtI(v0), r = 91, Rule(91).
+virtI_exists(v0, r) :- virtI_exists(v1, r), virtI(v1), virtI(v0), Rule(r), Rule(91).
+virtI_exists(v0, r) :- virtI(v1), virtI_exists(v1, r), virtI(v0), Rule(r), Rule(91).
+virtI_exists(v0, r) :- virtI(v1), virtI(v1), virtI_exists(v0, r), Rule(r), Rule(91).
+virtI(v0) :- virtI(v1), virtI(v0), virtI(v1), Rule(92).
+virtI_exists(v0, r) :- virtI(v1), virtI(v0), virtI(v1), r = 92, Rule(92).
+virtI_exists(v0, r) :- virtI_exists(v1, r), virtI(v0), virtI(v1), Rule(r), Rule(92).
+virtI_exists(v0, r) :- virtI(v1), virtI_exists(v0, r), virtI(v1), Rule(r), Rule(92).
+virtI_exists(v0, r) :- virtI(v1), virtI(v0), virtI_exists(v1, r), Rule(r), Rule(92).
+polySite(v0) :- virtI(v0), Rule(93).
+polySite_exists(v0, r) :- virtI(v0), r = 93, Rule(93).
+polySite_exists(v0, r) :- virtI_exists(v0, r), Rule(r), Rule(93).
+polySite(v0) :- polySite(v0), Rule(94).
+polySite_exists(v0, r) :- polySite(v0), r = 94, Rule(94).
+polySite_exists(v0, r) :- polySite_exists(v0, r), Rule(r), Rule(94).
+polySite(v0) :- virtI(v0), virtI(v0), Rule(95).
+polySite_exists(v0, r) :- virtI(v0), virtI(v0), r = 95, Rule(95).
+polySite_exists(v0, r) :- virtI_exists(v0, r), virtI(v0), Rule(r), Rule(95).
+polySite_exists(v0, r) :- virtI(v0), virtI_exists(v0, r), Rule(r), Rule(95).
+polySite(v0) :- virtI(v0), polySite(v0), Rule(96).
+polySite_exists(v0, r) :- virtI(v0), polySite(v0), r = 96, Rule(96).
+polySite_exists(v0, r) :- virtI_exists(v0, r), polySite(v0), Rule(r), Rule(96).
+polySite_exists(v0, r) :- virtI(v0), polySite_exists(v0, r), Rule(r), Rule(96).
+polySite(v0) :- polySite(v0), polySite(v0), Rule(97).
+polySite_exists(v0, r) :- polySite(v0), polySite(v0), r = 97, Rule(97).
+polySite_exists(v0, r) :- polySite_exists(v0, r), polySite(v0), Rule(r), Rule(97).
+polySite_exists(v0, r) :- polySite(v0), polySite_exists(v0, r), Rule(r), Rule(97).
+polySite(v0) :- virtI(v0), virtI(v0), virtI(v0), Rule(98).
+polySite_exists(v0, r) :- virtI(v0), virtI(v0), virtI(v0), r = 98, Rule(98).
+polySite_exists(v0, r) :- virtI_exists(v0, r), virtI(v0), virtI(v0), Rule(r), Rule(98).
+polySite_exists(v0, r) :- virtI(v0), virtI_exists(v0, r), virtI(v0), Rule(r), Rule(98).
+polySite_exists(v0, r) :- virtI(v0), virtI(v0), virtI_exists(v0, r), Rule(r), Rule(98).
+polySite(v0) :- virtI(v0), virtI(v1), virtI(v1), Rule(99).
+polySite_exists(v0, r) :- virtI(v0), virtI(v1), virtI(v1), r = 99, Rule(99).
+polySite_exists(v0, r) :- virtI_exists(v0, r), virtI(v1), virtI(v1), Rule(r), Rule(99).
+polySite_exists(v0, r) :- virtI(v0), virtI_exists(v1, r), virtI(v1), Rule(r), Rule(99).
+polySite_exists(v0, r) :- virtI(v0), virtI(v1), virtI_exists(v1, r), Rule(r), Rule(99).
+polySite(v0) :- virtI(v1), virtI(v1), virtI(v0), Rule(100).
+polySite_exists(v0, r) :- virtI(v1), virtI(v1), virtI(v0), r = 100, Rule(100).
+polySite_exists(v0, r) :- virtI_exists(v1, r), virtI(v1), virtI(v0), Rule(r), Rule(100).
+polySite_exists(v0, r) :- virtI(v1), virtI_exists(v1, r), virtI(v0), Rule(r), Rule(100).
+polySite_exists(v0, r) :- virtI(v1), virtI(v1), virtI_exists(v0, r), Rule(r), Rule(100).
+polySite(v0) :- virtI(v1), virtI(v0), virtI(v1), Rule(101).
+polySite_exists(v0, r) :- virtI(v1), virtI(v0), virtI(v1), r = 101, Rule(101).
+polySite_exists(v0, r) :- virtI_exists(v1, r), virtI(v0), virtI(v1), Rule(r), Rule(101).
+polySite_exists(v0, r) :- virtI(v1), virtI_exists(v0, r), virtI(v1), Rule(r), Rule(101).
+polySite_exists(v0, r) :- virtI(v1), virtI(v0), virtI_exists(v1, r), Rule(r), Rule(101).
+polySite(v0) :- virtI(v0), virtI(v0), polySite(v0), Rule(102).
+polySite_exists(v0, r) :- virtI(v0), virtI(v0), polySite(v0), r = 102, Rule(102).
+polySite_exists(v0, r) :- virtI_exists(v0, r), virtI(v0), polySite(v0), Rule(r), Rule(102).
+polySite_exists(v0, r) :- virtI(v0), virtI_exists(v0, r), polySite(v0), Rule(r), Rule(102).
+polySite_exists(v0, r) :- virtI(v0), virtI(v0), polySite_exists(v0, r), Rule(r), Rule(102).
+polySite(v0) :- virtI(v0), virtI(v1), polySite(v1), Rule(103).
+polySite_exists(v0, r) :- virtI(v0), virtI(v1), polySite(v1), r = 103, Rule(103).
+polySite_exists(v0, r) :- virtI_exists(v0, r), virtI(v1), polySite(v1), Rule(r), Rule(103).
+polySite_exists(v0, r) :- virtI(v0), virtI_exists(v1, r), polySite(v1), Rule(r), Rule(103).
+polySite_exists(v0, r) :- virtI(v0), virtI(v1), polySite_exists(v1, r), Rule(r), Rule(103).
+polySite(v0) :- virtI(v1), virtI(v1), polySite(v0), Rule(104).
+polySite_exists(v0, r) :- virtI(v1), virtI(v1), polySite(v0), r = 104, Rule(104).
+polySite_exists(v0, r) :- virtI_exists(v1, r), virtI(v1), polySite(v0), Rule(r), Rule(104).
+polySite_exists(v0, r) :- virtI(v1), virtI_exists(v1, r), polySite(v0), Rule(r), Rule(104).
+polySite_exists(v0, r) :- virtI(v1), virtI(v1), polySite_exists(v0, r), Rule(r), Rule(104).
+polySite(v0) :- virtI(v1), virtI(v0), polySite(v1), Rule(105).
+polySite_exists(v0, r) :- virtI(v1), virtI(v0), polySite(v1), r = 105, Rule(105).
+polySite_exists(v0, r) :- virtI_exists(v1, r), virtI(v0), polySite(v1), Rule(r), Rule(105).
+polySite_exists(v0, r) :- virtI(v1), virtI_exists(v0, r), polySite(v1), Rule(r), Rule(105).
+polySite_exists(v0, r) :- virtI(v1), virtI(v0), polySite_exists(v1, r), Rule(r), Rule(105).
+polySite(v0) :- virtI(v0), polySite(v0), polySite(v0), Rule(106).
+polySite_exists(v0, r) :- virtI(v0), polySite(v0), polySite(v0), r = 106, Rule(106).
+polySite_exists(v0, r) :- virtI_exists(v0, r), polySite(v0), polySite(v0), Rule(r), Rule(106).
+polySite_exists(v0, r) :- virtI(v0), polySite_exists(v0, r), polySite(v0), Rule(r), Rule(106).
+polySite_exists(v0, r) :- virtI(v0), polySite(v0), polySite_exists(v0, r), Rule(r), Rule(106).
+polySite(v0) :- virtI(v0), polySite(v1), polySite(v1), Rule(107).
+polySite_exists(v0, r) :- virtI(v0), polySite(v1), polySite(v1), r = 107, Rule(107).
+polySite_exists(v0, r) :- virtI_exists(v0, r), polySite(v1), polySite(v1), Rule(r), Rule(107).
+polySite_exists(v0, r) :- virtI(v0), polySite_exists(v1, r), polySite(v1), Rule(r), Rule(107).
+polySite_exists(v0, r) :- virtI(v0), polySite(v1), polySite_exists(v1, r), Rule(r), Rule(107).
+polySite(v0) :- virtI(v1), polySite(v1), polySite(v0), Rule(108).
+polySite_exists(v0, r) :- virtI(v1), polySite(v1), polySite(v0), r = 108, Rule(108).
+polySite_exists(v0, r) :- virtI_exists(v1, r), polySite(v1), polySite(v0), Rule(r), Rule(108).
+polySite_exists(v0, r) :- virtI(v1), polySite_exists(v1, r), polySite(v0), Rule(r), Rule(108).
+polySite_exists(v0, r) :- virtI(v1), polySite(v1), polySite_exists(v0, r), Rule(r), Rule(108).
+polySite(v0) :- virtI(v1), polySite(v0), polySite(v1), Rule(109).
+polySite_exists(v0, r) :- virtI(v1), polySite(v0), polySite(v1), r = 109, Rule(109).
+polySite_exists(v0, r) :- virtI_exists(v1, r), polySite(v0), polySite(v1), Rule(r), Rule(109).
+polySite_exists(v0, r) :- virtI(v1), polySite_exists(v0, r), polySite(v1), Rule(r), Rule(109).
+polySite_exists(v0, r) :- virtI(v1), polySite(v0), polySite_exists(v1, r), Rule(r), Rule(109).
+polySite(v0) :- polySite(v0), polySite(v0), polySite(v0), Rule(110).
+polySite_exists(v0, r) :- polySite(v0), polySite(v0), polySite(v0), r = 110, Rule(110).
+polySite_exists(v0, r) :- polySite_exists(v0, r), polySite(v0), polySite(v0), Rule(r), Rule(110).
+polySite_exists(v0, r) :- polySite(v0), polySite_exists(v0, r), polySite(v0), Rule(r), Rule(110).
+polySite_exists(v0, r) :- polySite(v0), polySite(v0), polySite_exists(v0, r), Rule(r), Rule(110).
+polySite(v0) :- polySite(v0), polySite(v1), polySite(v1), Rule(111).
+polySite_exists(v0, r) :- polySite(v0), polySite(v1), polySite(v1), r = 111, Rule(111).
+polySite_exists(v0, r) :- polySite_exists(v0, r), polySite(v1), polySite(v1), Rule(r), Rule(111).
+polySite_exists(v0, r) :- polySite(v0), polySite_exists(v1, r), polySite(v1), Rule(r), Rule(111).
+polySite_exists(v0, r) :- polySite(v0), polySite(v1), polySite_exists(v1, r), Rule(r), Rule(111).
+polySite(v0) :- polySite(v1), polySite(v1), polySite(v0), Rule(112).
+polySite_exists(v0, r) :- polySite(v1), polySite(v1), polySite(v0), r = 112, Rule(112).
+polySite_exists(v0, r) :- polySite_exists(v1, r), polySite(v1), polySite(v0), Rule(r), Rule(112).
+polySite_exists(v0, r) :- polySite(v1), polySite_exists(v1, r), polySite(v0), Rule(r), Rule(112).
+polySite_exists(v0, r) :- polySite(v1), polySite(v1), polySite_exists(v0, r), Rule(r), Rule(112).
+polySite(v0) :- polySite(v1), polySite(v0), polySite(v1), Rule(113).
+polySite_exists(v0, r) :- polySite(v1), polySite(v0), polySite(v1), r = 113, Rule(113).
+polySite_exists(v0, r) :- polySite_exists(v1, r), polySite(v0), polySite(v1), Rule(r), Rule(113).
+polySite_exists(v0, r) :- polySite(v1), polySite_exists(v0, r), polySite(v1), Rule(r), Rule(113).
+polySite_exists(v0, r) :- polySite(v1), polySite(v0), polySite_exists(v1, r), Rule(r), Rule(113).

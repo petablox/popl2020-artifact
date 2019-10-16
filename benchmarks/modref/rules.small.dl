@@ -1,0 +1,66 @@
+.type I
+.type H
+.type F
+.type M
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl MgetInstFldInst(v0: M, v1: V, v2: V, v3: F)
+.input MgetInstFldInst
+.decl MgetStatFldInst(v0: M, v1: V, v2: F)
+.input MgetStatFldInst
+.decl MputInstFldInst(v0: M, v1: V, v2: F, v3: V)
+.input MputInstFldInst
+.decl MI(v0: M, v1: I)
+.input MI
+.decl VH(v0: V, v1: H)
+.input VH
+.decl IM(v0: I, v1: M)
+.input IM
+.decl MputStatFldInst(v0: M, v1: F, v2: V)
+.input MputStatFldInst
+
+
+.decl rMM(v0: M, v1: M)
+.output rMM
+.decl refInstField(v0: M, v1: H, v2: F)
+.output refInstField
+.decl modInstField(v0: M, v1: H, v2: F)
+.output modInstField
+.decl modStatField(v0: M, v1: F)
+.output modStatField
+.decl refStatField(v0: M, v1: F)
+.output refStatField
+
+modStatField(v0, v1) :- MputStatFldInst(v0, v1, v2), Rule(11).
+refStatField(v2, v1) :- modStatField(v0, v1), rMM(v2, v0), Rule(18).
+rMM(v0, v2) :- rMM(v0, v1), rMM(v2, v1), Rule(10).
+modStatField(v0, v2) :- rMM(v0, v1), refStatField(v1, v2), Rule(27).
+refInstField(v0, v2, v3) :- rMM(v0, v1), refInstField(v1, v2, v3), Rule(5).
+rMM(v0, v2) :- refStatField(v0, v1), refStatField(v2, v1), Rule(15).
+refInstField(v0, v4, v2) :- MputInstFldInst(v0, v1, v2, v3), VH(v1, v4), Rule(12).
+refStatField(v0, v1) :- modStatField(v0, v1), Rule(7).
+refInstField(v0, v4, v3) :- MgetInstFldInst(v0, v1, v2, v3), VH(v2, v4), Rule(22).
+refStatField(v0, v2) :- MgetStatFldInst(v0, v1, v2), Rule(6).
+rMM(v0, v2) :- rMM(v0, v1), rMM(v1, v2), Rule(29).
+modInstField(v0, v4, v2) :- MputInstFldInst(v0, v1, v2, v3), VH(v1, v4), Rule(2).
+modInstField(v0, v1, v2) :- refInstField(v0, v1, v2), Rule(14).
+rMM(v2, v1) :- IM(v0, v1), MI(v2, v0), Rule(24).
+modInstField(v3, v1, v2) :- modInstField(v0, v1, v2), rMM(v3, v0), Rule(0).
+refInstField(v0, v1, v2) :- modInstField(v0, v1, v2), Rule(8).
+rMM(v1, v3) :- rMM(v0, v1), rMM(v0, v2), rMM(v2, v3), Rule(28).
+modStatField(v0, v2) :- refInstField(v0, v1, v2), Rule(9).
+rMM(v0, v2) :- modStatField(v0, v1), modStatField(v2, v1), Rule(13).
+modStatField(v2, v1) :- modStatField(v0, v1), rMM(v2, v0), Rule(17).
+modStatField(v0, v2) :- MgetStatFldInst(v0, v1, v2), Rule(26).
+refStatField(v0, v2) :- modInstField(v0, v1, v2), Rule(23).
+refStatField(v0, v2) :- rMM(v0, v1), refStatField(v1, v2), Rule(21).
+modStatField(v0, v1) :- refStatField(v0, v1), Rule(16).
+refStatField(v0, v2) :- refInstField(v0, v1, v2), Rule(19).
+modInstField(v0, v4, v3) :- MgetInstFldInst(v0, v1, v2, v3), VH(v2, v4), Rule(20).
+refStatField(v0, v1) :- MputStatFldInst(v0, v1, v2), Rule(4).
+modStatField(v0, v2) :- modInstField(v0, v1, v2), Rule(25).
+rMM(v0, v3) :- rMM(v0, v1), rMM(v1, v2), rMM(v2, v3), Rule(1).
+rMM(v0, v2) :- MI(v0, v1), MI(v2, v1), Rule(3).

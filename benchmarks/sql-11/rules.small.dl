@@ -1,0 +1,91 @@
+.type F_name
+.type level
+.type F_key
+.type C_name
+.type S_name
+.type S_key
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Junior(v0: level)
+.input Junior
+.decl Enroll(v0: S_key, v1: C_name)
+.input Enroll
+.decl focus(v0: F_name)
+.input focus
+.decl Student(v0: S_key, v1: S_name, v2: level)
+.input Student
+.decl Class(v0: C_name, v1: F_key)
+.input Class
+.decl Faculty(v0: F_key, v1: F_name)
+.input Faculty
+
+.decl inv1(v0: F_key)
+.output inv1
+.decl inv2(v0: C_name)
+.output inv2
+.decl inv3(v0: S_key)
+.output inv3
+
+.decl ans(v0: S_name)
+.output ans
+
+ans(v2) :- inv2(v0), Enroll(v1, v0), Student(v1, v2, v3), Rule(34).
+inv2(v1) :- inv3(v0), Enroll(v0, v1), Class(v1, v2), Rule(12).
+inv3(v1) :- ans(v0), Student(v1, v0, v2), Rule(37).
+inv1(v2) :- Enroll(v0, v1), inv2(v1), Class(v1, v2), Rule(20).
+inv2(v2) :- Faculty(v0, v1), inv1(v0), Class(v2, v0), Rule(35).
+ans(v4) :- ans(v0), Student(v1, v0, v2), Student(v3, v4, v2), Rule(7).
+ans(v3) :- Student(v0, v1, v2), inv3(v0), Student(v0, v3, v4), Rule(39).
+ans(v4) :- inv3(v0), Student(v0, v1, v2), Student(v3, v4, v2), Rule(42).
+inv1(v1) :- Class(v0, v1), Faculty(v1, v2), Rule(53).
+inv1(v1) :- inv2(v0), Class(v0, v1), Faculty(v1, v2), Rule(43).
+inv1(v2) :- Class(v0, v1), inv2(v0), Class(v0, v2), Rule(8).
+inv2(v3) :- Student(v0, v1, v2), Enroll(v0, v3), Rule(32).
+ans(v2) :- Junior(v0), Student(v1, v2, v0), Rule(48).
+inv3(v0) :- Enroll(v0, v1), Enroll(v0, v2), Rule(0).
+inv3(v1) :- ans(v0), Student(v1, v0, v2), Student(v1, v3, v4), Rule(23).
+inv3(v1) :- inv2(v0), Enroll(v1, v0), Rule(24).
+ans(v2) :- Junior(v0), Student(v1, v2, v0), inv3(v1), Rule(55).
+inv1(v1) :- focus(v0), Faculty(v1, v0), Faculty(v1, v2), Rule(5).
+inv3(v3) :- ans(v0), Student(v1, v0, v2), Student(v3, v4, v2), Rule(14).
+inv2(v1) :- inv1(v0), Class(v1, v0), Class(v1, v2), Rule(31).
+inv1(v1) :- focus(v0), Faculty(v1, v0), Rule(52).
+inv1(v2) :- inv1(v0), Class(v1, v0), Class(v1, v2), Rule(57).
+ans(v2) :- Enroll(v0, v1), inv3(v0), Student(v0, v2, v3), Rule(27).
+inv2(v2) :- Enroll(v0, v1), inv3(v0), Enroll(v0, v2), Rule(28).
+inv2(v0) :- Class(v0, v1), Class(v0, v2), Rule(50).
+inv1(v2) :- inv3(v0), Enroll(v0, v1), Class(v1, v2), Rule(25).
+inv3(v1) :- Junior(v0), Student(v1, v2, v0), ans(v2), Rule(17).
+inv2(v2) :- Enroll(v0, v1), Enroll(v0, v2), Rule(26).
+ans(v1) :- inv3(v0), Student(v0, v1, v2), Rule(38).
+inv3(v3) :- inv3(v0), Student(v0, v1, v2), Student(v3, v4, v2), Rule(49).
+inv3(v0) :- Enroll(v0, v1), Student(v0, v2, v3), Rule(51).
+inv3(v2) :- Class(v0, v1), Enroll(v2, v0), Rule(3).
+inv3(v1) :- inv2(v0), Enroll(v1, v0), Enroll(v1, v2), Rule(54).
+inv2(v2) :- inv2(v0), Class(v0, v1), Class(v2, v1), Rule(6).
+ans(v3) :- ans(v0), Student(v1, v0, v2), Student(v1, v3, v4), Rule(19).
+inv1(v2) :- inv1(v0), Faculty(v0, v1), Faculty(v2, v1), Rule(16).
+inv2(v0) :- Class(v0, v1), Enroll(v2, v0), Rule(21).
+inv2(v3) :- Student(v0, v1, v2), inv3(v0), Enroll(v0, v3), Rule(33).
+inv2(v1) :- inv1(v0), Class(v1, v0), Rule(2).
+inv3(v1) :- Junior(v0), Student(v1, v2, v0), Student(v1, v3, v4), Rule(41).
+inv2(v2) :- Faculty(v0, v1), Class(v2, v0), Rule(45).
+inv1(v0) :- Faculty(v0, v1), Faculty(v0, v2), Rule(30).
+inv1(v1) :- inv2(v0), Class(v0, v1), Rule(4).
+inv1(v2) :- Enroll(v0, v1), Class(v1, v2), Rule(40).
+ans(v2) :- Junior(v0), Student(v1, v2, v0), Student(v1, v3, v4), Rule(18).
+inv3(v2) :- Class(v0, v1), inv2(v0), Enroll(v2, v0), Rule(29).
+inv2(v2) :- inv2(v0), Enroll(v1, v0), Enroll(v1, v2), Rule(9).
+inv3(v3) :- inv3(v0), Student(v0, v1, v2), Student(v3, v1, v4), Rule(10).
+inv3(v3) :- Junior(v0), Student(v1, v2, v0), Student(v3, v2, v4), Rule(36).
+ans(v2) :- Enroll(v0, v1), Student(v0, v2, v3), Rule(1).
+inv3(v1) :- inv2(v0), Enroll(v1, v0), Student(v1, v2, v3), Rule(15).
+inv3(v1) :- Junior(v0), Student(v1, v2, v0), Rule(56).
+ans(v3) :- Student(v0, v1, v2), Student(v0, v3, v4), Rule(47).
+ans(v3) :- Junior(v0), Student(v1, v2, v0), Student(v1, v3, v4), Rule(22).
+inv2(v1) :- inv3(v0), Enroll(v0, v1), Rule(46).
+inv3(v0) :- Student(v0, v1, v2), Student(v0, v3, v4), Rule(13).
+inv3(v2) :- inv3(v0), Enroll(v0, v1), Enroll(v2, v1), Rule(11).
+inv1(v2) :- Class(v0, v1), Class(v0, v2), Rule(44).

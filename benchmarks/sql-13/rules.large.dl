@@ -1,0 +1,66 @@
+.type ID
+.type Item
+
+.decl Rule(n: number)
+.input Rule
+
+.decl A(v0: ID, v1: Item)
+.input A
+
+.decl B(v0: Item, v1: Item)
+.input B
+
+.decl Out(v0: ID, v1: Item)
+.output Out
+
+
+
+Out(v0, v1) :- A(v0, v1), Rule(0).
+Out(v0, v1) :- Out(v0, v1), Rule(1).
+Out(v0, v1) :- A(v0, v1), A(v0, v1), Rule(2).
+Out(v0, v1) :- A(v0, v1), Out(v0, v1), Rule(3).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Rule(4).
+Out(v0, v1) :- A(v0, v1), A(v0, v1), A(v0, v1), Rule(5).
+Out(v0, v1) :- A(v0, v1), A(v2, v1), A(v2, v1), Rule(6).
+Out(v0, v1) :- A(v0, v1), A(v2, v3), A(v2, v3), Rule(7).
+Out(v0, v1) :- A(v2, v1), A(v2, v1), A(v0, v1), Rule(8).
+Out(v0, v1) :- A(v2, v1), A(v2, v3), A(v0, v3), Rule(9).
+Out(v0, v1) :- A(v2, v3), A(v2, v3), A(v0, v1), Rule(10).
+Out(v0, v1) :- A(v2, v3), A(v2, v1), A(v0, v3), Rule(11).
+Out(v0, v1) :- A(v2, v1), A(v0, v1), A(v2, v1), Rule(12).
+Out(v0, v1) :- A(v2, v1), A(v0, v3), A(v2, v3), Rule(13).
+Out(v0, v1) :- A(v2, v3), A(v0, v3), A(v2, v1), Rule(14).
+Out(v0, v1) :- A(v2, v3), A(v0, v1), A(v2, v3), Rule(15).
+Out(v0, v1) :- A(v0, v1), A(v0, v1), Out(v0, v1), Rule(16).
+Out(v0, v1) :- A(v0, v1), A(v2, v1), Out(v2, v1), Rule(17).
+Out(v0, v1) :- A(v0, v1), A(v2, v3), Out(v2, v3), Rule(18).
+Out(v0, v1) :- A(v2, v1), A(v2, v1), Out(v0, v1), Rule(19).
+Out(v0, v1) :- A(v2, v1), A(v2, v3), Out(v0, v3), Rule(20).
+Out(v0, v1) :- A(v2, v3), A(v2, v3), Out(v0, v1), Rule(21).
+Out(v0, v1) :- A(v2, v3), A(v2, v1), Out(v0, v3), Rule(22).
+Out(v0, v1) :- A(v2, v1), A(v0, v1), Out(v2, v1), Rule(23).
+Out(v0, v1) :- A(v2, v1), A(v0, v3), Out(v2, v3), Rule(24).
+Out(v0, v1) :- A(v2, v3), A(v0, v3), Out(v2, v1), Rule(25).
+Out(v0, v1) :- A(v2, v3), A(v0, v1), Out(v2, v3), Rule(26).
+Out(v0, v1) :- A(v0, v1), Out(v0, v1), Out(v0, v1), Rule(27).
+Out(v0, v1) :- A(v0, v1), Out(v2, v1), Out(v2, v1), Rule(28).
+Out(v0, v1) :- A(v0, v1), Out(v2, v3), Out(v2, v3), Rule(29).
+Out(v0, v1) :- A(v2, v1), Out(v2, v1), Out(v0, v1), Rule(30).
+Out(v0, v1) :- A(v2, v1), Out(v2, v3), Out(v0, v3), Rule(31).
+Out(v0, v1) :- A(v2, v3), Out(v2, v3), Out(v0, v1), Rule(32).
+Out(v0, v1) :- A(v2, v3), Out(v2, v1), Out(v0, v3), Rule(33).
+Out(v0, v1) :- A(v2, v1), Out(v0, v1), Out(v2, v1), Rule(34).
+Out(v0, v1) :- A(v2, v1), Out(v0, v3), Out(v2, v3), Rule(35).
+Out(v0, v1) :- A(v2, v3), Out(v0, v3), Out(v2, v1), Rule(36).
+Out(v0, v1) :- A(v2, v3), Out(v0, v1), Out(v2, v3), Rule(37).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(38).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(39).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(40).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(41).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(42).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(43).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(44).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(45).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(46).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(47).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(48).

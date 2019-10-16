@@ -1,0 +1,339 @@
+.type H
+.type F
+.type M
+.type T
+.type V
+.type Z
+
+.decl Rule(v0: number)
+.input Rule
+
+
+.decl invocation(v0: V, v1: V)
+.input invocation
+.decl store(v0: V, v1: V, v2: V)
+.input store
+.decl assign(v0: V, v1: V, v2: V, v3: V, v4: V, v5: V)
+.input assign
+.decl actual(v0: V, v1: V, v2: V)
+.input actual
+.decl points_initial(v0: V, v1: V)
+.input points_initial
+.decl formal(v0: V, v1: V, v2: V)
+.input formal
+.decl enclosing_type(v0: V, v1: V)
+.input enclosing_type
+.decl receiver_formal(v0: V, v1: V)
+.input receiver_formal
+.decl receiver_actual(v0: V, v1: V)
+.input receiver_actual
+.decl load(v0: V, v1: V, v2: V)
+.input load
+
+.decl pointsto_objcont(v0: V, v1: V, v2: V)
+.output pointsto_objcont
+.decl pointsto(v0: V, v1: V, v2: V, v3: V)
+.output pointsto
+.decl heappointsto(v0: V, v1: V, v2: V)
+.output heappointsto
+
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), receiver_formal(v1, v2), Rule(10).
+pointsto_objcont(v2, v0, v1) :- points_initial(v0, v1), store(v1, v0, v2), Rule(6).
+pointsto_objcont(v0, v1, v2) :- actual(v0, v1, v2), points_initial(v0, v2), Rule(11).
+pointsto_objcont(v0, v1, v2) :- pointsto_objcont(v0, v1, v2), receiver_formal(v2, v0), Rule(2).
+pointsto_objcont(v1, v0, v2) :- load(v0, v1, v2), points_initial(v2, v0), Rule(0).
+pointsto_objcont(v1, v0, v2) :- pointsto_objcont(v0, v1, v2), receiver_formal(v2, v0), Rule(4).
+pointsto_objcont(v2, v0, v1) :- points_initial(v0, v1), receiver_formal(v1, v2), Rule(8).
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), points_initial(v2, v1), Rule(9).
+pointsto_objcont(v2, v0, v1) :- points_initial(v0, v1), pointsto_objcont(v1, v0, v2), Rule(5).
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), store(v1, v0, v2), Rule(1).
+pointsto_objcont(v0, v1, v2) :- load(v0, v1, v2), points_initial(v2, v0), Rule(3).
+pointsto_objcont(v0, v2, v1) :- points_initial(v0, v1), pointsto_objcont(v1, v0, v2), Rule(7).
+pointsto_objcont(v0, v1, v2) :- Rule(69300), enclosing_type(v0, v1), assign(v2, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(56630), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(34295), enclosing_type(v0, v2), assign(v0, v1, v1, v0, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(19791), enclosing_type(v2, v0), actual(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(48017), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(13813), enclosing_type(v0, v1), load(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(28791), enclosing_type(v1, v0), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(36691), enclosing_type(v0, v1), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(15217), enclosing_type(v0, v1), invocation(v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(27895), enclosing_type(v0, v2), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(35837), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(86626), enclosing_type(v1, v2), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(22946), enclosing_type(v1, v0), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(84399), enclosing_type(v0, v2), assign(v2, v0, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(18672), enclosing_type(v0, v1), actual(v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(73858), enclosing_type(v1, v0), assign(v2, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(28989), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78609), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(35569), enclosing_type(v0, v1), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(62907), enclosing_type(v0, v2), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(40656), enclosing_type(v0, v2), assign(v1, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(19390), enclosing_type(v1, v0), actual(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(41025), enclosing_type(v2, v0), assign(v0, v2, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(36249), enclosing_type(v0, v1), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(62351), enclosing_type(v0, v1), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(2567), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(40179), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(59120), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78420), enclosing_type(v0, v1), assign(v1, v0, v2, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(64858), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(28441), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47932), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(40777), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(38959), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(52193), enclosing_type(v0, v2), assign(v1, v0, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(5063), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(63698), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(53306), enclosing_type(v0, v2), assign(v2, v1, v0, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(64812), enclosing_type(v0, v2), assign(v0, v2, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(79085), enclosing_type(v0, v1), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(35495), enclosing_type(v0, v1), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(43610), enclosing_type(v1, v0), assign(v1, v0, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(33581), enclosing_type(v2, v1), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(88964), enclosing_type(v0, v2), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(41537), enclosing_type(v0, v1), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(6139), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(66026), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78281), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(34234), enclosing_type(v1, v2), assign(v0, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(48347), enclosing_type(v1, v2), assign(v0, v2, v1, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(36826), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(19964), enclosing_type(v0, v2), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(70583), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(9423), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(59394), enclosing_type(v0, v2), assign(v1, v2, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(8227), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(22304), enclosing_type(v0, v2), assign(v1, v1, v0, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(21947), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(82029), enclosing_type(v0, v1), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(79077), enclosing_type(v1, v0), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(4839), assign(v0, v0, v1, v2, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(20846), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(10458), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(25015), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(65996), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(34638), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(27604), enclosing_type(v2, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(67769), enclosing_type(v0, v2), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(63016), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(42257), enclosing_type(v0, v2), assign(v1, v0, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(24992), enclosing_type(v1, v0), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(32795), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(3548), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(41694), enclosing_type(v0, v1), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(64161), enclosing_type(v2, v0), assign(v0, v2, v0, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(14576), enclosing_type(v0, v1), load(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(43687), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(7005), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(22493), enclosing_type(v1, v2), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(40917), enclosing_type(v0, v2), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(67708), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(90086), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47927), enclosing_type(v0, v2), assign(v1, v2, v0, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(86220), enclosing_type(v1, v0), assign(v2, v1, v0, v2, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(87963), enclosing_type(v0, v1), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(20685), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(39726), enclosing_type(v1, v0), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(73695), enclosing_type(v2, v1), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(25962), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(17004), enclosing_type(v0, v2), formal(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(76127), enclosing_type(v1, v0), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(4802), assign(v1, v0, v2, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(79890), enclosing_type(v1, v0), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(70047), enclosing_type(v0, v1), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(72259), enclosing_type(v1, v2), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(57647), enclosing_type(v0, v1), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(41683), enclosing_type(v0, v1), assign(v1, v0, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(70884), enclosing_type(v0, v1), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(19066), enclosing_type(v0, v2), actual(v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(56544), enclosing_type(v0, v1), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(50975), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(1665), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(19450), enclosing_type(v0, v1), actual(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(56468), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(5608), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(67044), enclosing_type(v0, v2), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(75403), enclosing_type(v0, v1), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(52086), enclosing_type(v0, v2), assign(v2, v1, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(37139), enclosing_type(v0, v1), assign(v0, v1, v1, v0, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(64840), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(57339), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(10964), enclosing_type(v0, v2), points_initial(v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(89827), enclosing_type(v0, v1), assign(v1, v0, v2, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(89093), enclosing_type(v0, v2), assign(v0, v2, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(23476), enclosing_type(v0, v2), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(17280), enclosing_type(v0, v2), formal(v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(64388), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(22401), enclosing_type(v2, v1), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(34014), enclosing_type(v1, v0), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(32608), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(60907), enclosing_type(v0, v2), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(65891), enclosing_type(v0, v2), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(37048), enclosing_type(v2, v0), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(74379), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47342), enclosing_type(v0, v2), assign(v0, v2, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(49990), enclosing_type(v2, v0), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(51700), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(6709), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(85928), enclosing_type(v0, v1), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(27710), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(82355), enclosing_type(v1, v2), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(9044), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(54183), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78074), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(74364), enclosing_type(v2, v1), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(80260), enclosing_type(v2, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(67346), enclosing_type(v0, v2), assign(v0, v2, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(35125), enclosing_type(v0, v1), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(59200), enclosing_type(v2, v0), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78013), enclosing_type(v0, v1), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(64376), enclosing_type(v2, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(29254), enclosing_type(v1, v0), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(43019), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(72564), enclosing_type(v2, v0), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(21285), enclosing_type(v1, v0), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(69299), enclosing_type(v0, v1), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(21348), enclosing_type(v1, v0), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(54555), enclosing_type(v0, v2), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(62981), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(68694), enclosing_type(v0, v1), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(6750), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47086), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(26939), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(67670), enclosing_type(v0, v2), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(73511), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(58608), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(91582), enclosing_type(v1, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(170), load(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(25399), enclosing_type(v0, v1), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(75363), enclosing_type(v0, v1), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(30037), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(17833), enclosing_type(v1, v0), formal(v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(35561), enclosing_type(v1, v0), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(18241), enclosing_type(v0, v1), actual(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47462), enclosing_type(v0, v2), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47663), enclosing_type(v2, v1), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(71901), enclosing_type(v1, v2), assign(v1, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(3343), assign(v0, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(6138), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(28853), enclosing_type(v0, v2), assign(v0, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(11948), enclosing_type(v0, v1), store(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(85549), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(7943), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(58357), enclosing_type(v0, v1), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(9616), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78374), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(89794), enclosing_type(v0, v2), assign(v0, v1, v1, v0, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(73931), enclosing_type(v1, v0), assign(v0, v2, v0, v1, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(61289), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(46907), enclosing_type(v0, v1), assign(v1, v1, v0, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(81145), enclosing_type(v2, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(50995), enclosing_type(v2, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(6355), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(7560), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(33965), enclosing_type(v0, v1), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(3904), assign(v1, v0, v2, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(79705), enclosing_type(v0, v1), assign(v0, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(54686), enclosing_type(v0, v2), assign(v2, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(71957), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(57810), enclosing_type(v0, v1), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(81803), enclosing_type(v0, v2), assign(v1, v0, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(53640), enclosing_type(v0, v2), assign(v0, v1, v1, v0, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(85336), enclosing_type(v2, v0), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(11627), enclosing_type(v2, v0), store(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(75557), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(18878), enclosing_type(v0, v2), actual(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(30106), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(75720), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(9210), assign(v0, v0, v1, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(38590), enclosing_type(v1, v0), assign(v2, v0, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(29854), enclosing_type(v0, v2), assign(v0, v2, v0, v1, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(1420), assign(v1, v0, v2, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(65965), enclosing_type(v0, v1), assign(v0, v2, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(86199), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(42621), enclosing_type(v0, v2), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(28746), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(25525), enclosing_type(v1, v0), assign(v1, v0, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(84605), enclosing_type(v0, v1), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(63851), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(7190), assign(v2, v0, v1, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(72049), enclosing_type(v2, v0), assign(v0, v1, v1, v0, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(31145), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(8461), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(58678), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(7528), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(65106), enclosing_type(v0, v1), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(54138), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(62378), enclosing_type(v0, v2), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(2915), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(76168), enclosing_type(v1, v2), assign(v1, v0, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(87560), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(9716), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(61577), enclosing_type(v0, v2), assign(v2, v0, v0, v1, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(88216), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(88040), enclosing_type(v1, v2), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(35188), enclosing_type(v1, v0), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(474), assign(v0, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(62935), enclosing_type(v0, v2), assign(v2, v1, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(43064), enclosing_type(v0, v2), assign(v1, v0, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(57077), enclosing_type(v1, v0), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(61633), enclosing_type(v2, v0), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(11958), enclosing_type(v0, v1), store(v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(58726), enclosing_type(v0, v1), assign(v2, v1, v0, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(56946), enclosing_type(v1, v0), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(1338), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(50426), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(46740), enclosing_type(v2, v0), assign(v0, v2, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(66661), enclosing_type(v0, v2), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(42383), enclosing_type(v0, v2), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(85064), enclosing_type(v2, v0), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(35514), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(22098), enclosing_type(v0, v2), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(88993), enclosing_type(v0, v1), assign(v0, v2, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(25146), enclosing_type(v1, v2), assign(v0, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(47655), enclosing_type(v0, v2), assign(v1, v2, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(6397), assign(v1, v1, v0, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(439), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(51294), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(78205), enclosing_type(v1, v0), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(86206), enclosing_type(v1, v0), assign(v1, v0, v0, v1, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(51600), enclosing_type(v0, v1), assign(v2, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(38146), enclosing_type(v0, v1), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(82123), enclosing_type(v2, v1), assign(v1, v1, v0, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(8929), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(58529), enclosing_type(v0, v1), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(3527), assign(v0, v0, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(74481), enclosing_type(v0, v1), assign(v0, v2, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(39415), enclosing_type(v1, v0), assign(v2, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(55665), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(8579), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(39475), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(1197), assign(v0, v2, v0, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(8358), assign(v2, v1, v0, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(7893), assign(v2, v0, v0, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(21380), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(9894), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(28898), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(41705), enclosing_type(v0, v1), assign(v0, v1, v2, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(15571), enclosing_type(v0, v1), receiver_actual(v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(26717), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(61156), enclosing_type(v0, v2), assign(v0, v1, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(68901), enclosing_type(v0, v2), assign(v1, v0, v2, v2, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(23206), enclosing_type(v0, v2), assign(v2, v1, v0, v2, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(25283), enclosing_type(v0, v2), assign(v0, v0, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(31758), enclosing_type(v0, v2), assign(v2, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(37984), enclosing_type(v0, v1), assign(v0, v2, v1, v0, v2, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(47385), enclosing_type(v1, v0), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(41373), enclosing_type(v0, v2), assign(v0, v1, v2, v0, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(52977), enclosing_type(v1, v2), assign(v0, v0, v1, v2, v1, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(90514), enclosing_type(v0, v2), assign(v1, v0, v2, v1, v2, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(43754), enclosing_type(v0, v1), assign(v1, v0, v2, v1, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(47926), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(41394), enclosing_type(v0, v1), assign(v0, v0, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(57499), enclosing_type(v0, v2), assign(v0, v2, v1, v2, v1, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(51220), enclosing_type(v0, v2), assign(v0, v0, v1, v2, v0, v1).
+pointsto_objcont(v0, v1, v2) :- Rule(32354), enclosing_type(v0, v1), assign(v0, v2, v1, v1, v0, v2).
+pointsto_objcont(v0, v1, v2) :- Rule(25411), enclosing_type(v0, v1), assign(v0, v1, v1, v0, v2, v0).
+pointsto_objcont(v0, v1, v2) :- Rule(13126), enclosing_type(v0, v1), store(v1, v2, v2).

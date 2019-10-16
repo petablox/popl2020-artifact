@@ -1,0 +1,107 @@
+.type H
+.type F
+.type M
+.type T
+.type V
+.type Z
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl invocation(v0: H, v1: M)
+.input invocation
+.decl store(v0: V, v1: F, v2: V)
+.input store
+.decl actual(v0: H, v1: Z, v2: V)
+.input actual
+.decl points_initial(v0: V, v1: H)
+.input points_initial
+.decl formal(v0: M, v1: Z, v2: V)
+.input formal
+.decl assign(v0: T, v1: V, v2: T, v3: V)
+.input assign
+.decl enclosing_type(v0: V, v1: T)
+.input enclosing_type
+.decl receiver_formal(v0: H, v1: V)
+.input receiver_formal
+.decl receiver_actual(v0: M, v1: V)
+.input receiver_actual
+.decl load(v0: V, v1: F, v2: V)
+.input load
+
+.decl invocation_notexists(v0: H, v1: M, v2: number)
+.output invocation_notexists
+.decl store_notexists(v0: V, v1: F, v2: V, v3: number)
+.output store_notexists
+.decl actual_notexists(v0: H, v1: Z, v2: V, v3: number)
+.output actual_notexists
+.decl points_initial_notexists(v0: V, v1: H, v2: number)
+.output points_initial_notexists
+.decl formal_notexists(v0: M, v1: Z, v2: V, v3: number)
+.output formal_notexists
+.decl assign_notexists(v0: T, v1: V, v2: T, v3: V, v4: number)
+.output assign_notexists
+.decl enclosing_type_notexists(v0: V, v1: T, v2: number)
+.output enclosing_type_notexists
+.decl receiver_formal_notexists(v0: H, v1: V, v2: number)
+.output receiver_formal_notexists
+.decl receiver_actual_notexists(v0: M, v1: V, v2: number)
+.output receiver_actual_notexists
+.decl load_notexists(v0: V, v1: F, v2: V, v3: number)
+.output load_notexists
+
+
+.decl pointsto_notexists(v0: T, v1: V, v2: H, v3: number)
+.output pointsto_notexists
+.decl heappointsto_notexists(v0: H, v1: F, v2: H, v3: number)
+.output heappointsto_notexists
+
+invocation_notexists(v0, v1, ruleIndex) :- invocation(v0, v1), Rule(ruleIndex).
+store_notexists(v0, v1, v2, ruleIndex) :- store(v0, v1, v2), Rule(ruleIndex).
+actual_notexists(v0, v1, v2, ruleIndex) :- actual(v0, v1, v2), Rule(ruleIndex).
+points_initial_notexists(v0, v1, ruleIndex) :- points_initial(v0, v1), Rule(ruleIndex).
+formal_notexists(v0, v1, v2, ruleIndex) :- formal(v0, v1, v2), Rule(ruleIndex).
+assign_notexists(v0, v1, v2, v3, ruleIndex) :- assign(v0, v1, v2, v3), Rule(ruleIndex).
+enclosing_type_notexists(v0, v1, ruleIndex) :- enclosing_type(v0, v1), Rule(ruleIndex).
+receiver_formal_notexists(v0, v1, ruleIndex) :- receiver_formal(v0, v1), Rule(ruleIndex).
+receiver_actual_notexists(v0, v1, ruleIndex) :- receiver_actual(v0, v1), Rule(ruleIndex).
+load_notexists(v0, v1, v2, ruleIndex) :- load(v0, v1, v2), Rule(ruleIndex).
+pointsto_notexists(v1, v0, v3, ruleIndex) :- enclosing_type_notexists(v0, v1, ruleIndex), pointsto_notexists(v1, v2, v3, ruleIndex), ruleIndex != 29, Rule(29).
+heappointsto_notexists(v3, v4, v2, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), heappointsto_notexists(v3, v4, v0, ruleIndex), ruleIndex != 3, Rule(3).
+pointsto_notexists(v0, v4, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v2, v4, v5, ruleIndex), ruleIndex != 18, Rule(18).
+pointsto_notexists(v0, v3, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), receiver_formal_notexists(v4, v1, ruleIndex), ruleIndex != 10, Rule(10).
+pointsto_notexists(v0, v1, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), receiver_formal_notexists(v4, v1, ruleIndex), ruleIndex != 32, Rule(32).
+pointsto_notexists(v0, v3, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), points_initial_notexists(v3, v4, ruleIndex), ruleIndex != 20, Rule(20).
+pointsto_notexists(v0, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v4, v1, v5, ruleIndex), ruleIndex != 16, Rule(16).
+heappointsto_notexists(v0, v1, v4, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), heappointsto_notexists(v0, v3, v4, ruleIndex), ruleIndex != 21, Rule(21).
+heappointsto_notexists(v3, v1, v2, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), heappointsto_notexists(v3, v4, v0, ruleIndex), ruleIndex != 24, Rule(24).
+pointsto_notexists(v2, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v4, v3, v5, ruleIndex), ruleIndex != 37, Rule(37).
+pointsto_notexists(v0, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v2, v4, v5, ruleIndex), ruleIndex != 34, Rule(34).
+pointsto_notexists(v4, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v4, v3, v5, ruleIndex), ruleIndex != 33, Rule(33).
+pointsto_notexists(v0, v3, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v2, v4, v5, ruleIndex), ruleIndex != 7, Rule(7).
+pointsto_notexists(v0, v3, v2, ruleIndex) :- pointsto_notexists(v0, v1, v2, ruleIndex), receiver_formal_notexists(v2, v3, ruleIndex), ruleIndex != 0, Rule(0).
+pointsto_notexists(v2, v0, v1, ruleIndex) :- points_initial_notexists(v0, v1, ruleIndex), pointsto_notexists(v2, v0, v3, ruleIndex), ruleIndex != 27, Rule(27).
+heappointsto_notexists(v0, v4, v2, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), heappointsto_notexists(v3, v4, v0, ruleIndex), ruleIndex != 35, Rule(35).
+pointsto_notexists(v2, v0, v1, ruleIndex) :- points_initial_notexists(v0, v1, ruleIndex), pointsto_notexists(v2, v3, v1, ruleIndex), ruleIndex != 22, Rule(22).
+pointsto_notexists(v3, v4, v2, ruleIndex) :- pointsto_notexists(v0, v1, v2, ruleIndex), assign_notexists(v3, v4, v0, v1, ruleIndex), ruleIndex != 9, Rule(9).
+pointsto_notexists(v3, v5, v2, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v3, v4, v0, ruleIndex), store_notexists(v4, v1, v5, ruleIndex), ruleIndex != 36, Rule(36).
+pointsto_notexists(v3, v0, v4, ruleIndex) :- load_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v3, v2, v4, ruleIndex), ruleIndex != 26, Rule(26).
+pointsto_notexists(v0, v1, v4, ruleIndex) :- pointsto_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v3, v1, v4, ruleIndex), ruleIndex != 11, Rule(11).
+pointsto_notexists(v5, v4, v2, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), load_notexists(v3, v1, v4, ruleIndex), pointsto_notexists(v5, v3, v0, ruleIndex), ruleIndex != 6, Rule(6).
+pointsto_notexists(v0, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v0, v4, v5, ruleIndex), ruleIndex != 15, Rule(15).
+pointsto_notexists(v0, v3, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), points_initial_notexists(v1, v4, ruleIndex), ruleIndex != 2, Rule(2).
+pointsto_notexists(v2, v1, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), points_initial_notexists(v1, v4, ruleIndex), ruleIndex != 19, Rule(19).
+pointsto_notexists(v1, v0, v2, ruleIndex) :- enclosing_type_notexists(v0, v1, ruleIndex), points_initial_notexists(v0, v2, ruleIndex), ruleIndex != 13, Rule(13).
+heappointsto_notexists(v0, v1, v4, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), heappointsto_notexists(v3, v1, v4, ruleIndex), ruleIndex != 23, Rule(23).
+pointsto_notexists(v3, v4, v2, ruleIndex) :- heappointsto_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v3, v4, v0, ruleIndex), ruleIndex != 28, Rule(28).
+heappointsto_notexists(v4, v1, v5, ruleIndex) :- load_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v3, v0, v4, ruleIndex), pointsto_notexists(v3, v2, v5, ruleIndex), ruleIndex != 14, Rule(14).
+pointsto_notexists(v0, v1, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), points_initial_notexists(v3, v4, ruleIndex), ruleIndex != 17, Rule(17).
+pointsto_notexists(v0, v1, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), points_initial_notexists(v1, v4, ruleIndex), ruleIndex != 1, Rule(1).
+pointsto_notexists(v0, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v4, v3, v5, ruleIndex), ruleIndex != 30, Rule(30).
+pointsto_notexists(v0, v3, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v4, v3, v5, ruleIndex), ruleIndex != 38, Rule(38).
+pointsto_notexists(v2, v1, v5, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), pointsto_notexists(v2, v4, v5, ruleIndex), ruleIndex != 5, Rule(5).
+pointsto_notexists(v0, v1, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), receiver_formal_notexists(v4, v3, ruleIndex), ruleIndex != 4, Rule(4).
+pointsto_notexists(v2, v1, v4, ruleIndex) :- assign_notexists(v0, v1, v2, v3, ruleIndex), points_initial_notexists(v3, v4, ruleIndex), ruleIndex != 8, Rule(8).
+pointsto_notexists(v0, v1, v4, ruleIndex) :- pointsto_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v0, v3, v4, ruleIndex), ruleIndex != 25, Rule(25).
+heappointsto_notexists(v2, v5, v4, ruleIndex) :- pointsto_notexists(v0, v1, v2, ruleIndex), pointsto_notexists(v0, v3, v4, ruleIndex), store_notexists(v1, v5, v3, ruleIndex), ruleIndex != 12, Rule(12).
+pointsto_notexists(v0, v3, v2, ruleIndex) :- pointsto_notexists(v0, v1, v2, ruleIndex), store_notexists(v3, v4, v1, ruleIndex), ruleIndex != 31, Rule(31).

@@ -1,0 +1,6 @@
+*CICM(C,I,M)
+*virtIM(I,M)
+*Mneq(M,M)
+insvIM(I,M)
+virtI(I)
+polySite(I)

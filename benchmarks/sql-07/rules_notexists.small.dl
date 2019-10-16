@@ -1,0 +1,56 @@
+.type ID
+.type Name
+.type School
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl In(v0: ID, v1: Name, v2: School)
+.input In
+
+.decl In_notexists(v0: ID, v1: Name, v2: School, v3: number)
+.output In_notexists
+
+.decl Out_notexists(v0: ID, v1: Name, v2: number)
+.output Out_notexists
+
+In_notexists(v0, v1, v2, ruleIndex) :- In(v0, v1, v2), Rule(ruleIndex).
+Out_notexists(v0, v6, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), In_notexists(v5, v6, v4, ruleIndex), ruleIndex != 30, Rule(30).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), ruleIndex != 32, Rule(32).
+Out_notexists(v0, v3, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), In_notexists(v5, v3, v6, ruleIndex), ruleIndex != 2, Rule(2).
+Out_notexists(v0, v3, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), ruleIndex != 21, Rule(21).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v0, v3, ruleIndex), Out_notexists(v4, v1, ruleIndex), ruleIndex != 37, Rule(37).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), Out_notexists(v3, v5, ruleIndex), ruleIndex != 15, Rule(15).
+Out_notexists(v0, v4, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v3, v1, ruleIndex), Out_notexists(v3, v4, ruleIndex), ruleIndex != 33, Rule(33).
+Out_notexists(v0, v5, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), Out_notexists(v3, v5, ruleIndex), ruleIndex != 11, Rule(11).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), Out_notexists(v3, v5, ruleIndex), ruleIndex != 31, Rule(31).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), In_notexists(v3, v5, v6, ruleIndex), ruleIndex != 14, Rule(14).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v3, v1, ruleIndex), ruleIndex != 7, Rule(7).
+Out_notexists(v0, v4, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), In_notexists(v5, v4, v6, ruleIndex), ruleIndex != 26, Rule(26).
+Out_notexists(v3, v1, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), Out_notexists(v0, v2, ruleIndex), Out_notexists(v3, v2, ruleIndex), ruleIndex != 10, Rule(10).
+Out_notexists(v5, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), Out_notexists(v5, v4, ruleIndex), ruleIndex != 6, Rule(6).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v0, v3, ruleIndex), ruleIndex != 38, Rule(38).
+Out_notexists(v3, v4, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v3, v1, ruleIndex), Out_notexists(v0, v4, ruleIndex), ruleIndex != 19, Rule(19).
+Out_notexists(v4, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v0, v3, ruleIndex), In_notexists(v4, v3, v5, ruleIndex), ruleIndex != 34, Rule(34).
+Out_notexists(v0, v6, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), In_notexists(v5, v6, v4, ruleIndex), ruleIndex != 16, Rule(16).
+Out_notexists(v0, v4, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), Out_notexists(v5, v4, ruleIndex), ruleIndex != 9, Rule(9).
+Out_notexists(v0, v4, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v3, v1, ruleIndex), In_notexists(v3, v4, v5, ruleIndex), ruleIndex != 12, Rule(12).
+Out_notexists(v4, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v0, v3, ruleIndex), Out_notexists(v4, v3, ruleIndex), ruleIndex != 0, Rule(0).
+Out_notexists(v5, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), In_notexists(v5, v6, v4, ruleIndex), ruleIndex != 24, Rule(24).
+Out_notexists(v0, v5, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), Out_notexists(v3, v5, ruleIndex), ruleIndex != 3, Rule(3).
+Out_notexists(v0, v4, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), ruleIndex != 1, Rule(1).
+Out_notexists(v0, v5, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), In_notexists(v3, v5, v6, ruleIndex), ruleIndex != 17, Rule(17).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), ruleIndex != 29, Rule(29).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v3, v1, ruleIndex), Out_notexists(v0, v4, ruleIndex), ruleIndex != 4, Rule(4).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), In_notexists(v3, v5, v6, ruleIndex), ruleIndex != 35, Rule(35).
+Out_notexists(v5, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), In_notexists(v5, v6, v4, ruleIndex), ruleIndex != 22, Rule(22).
+Out_notexists(v5, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), In_notexists(v5, v3, v6, ruleIndex), ruleIndex != 13, Rule(13).
+Out_notexists(v5, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), Out_notexists(v5, v3, ruleIndex), ruleIndex != 28, Rule(28).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), ruleIndex != 20, Rule(20).
+Out_notexists(v0, v3, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), Out_notexists(v2, v1, ruleIndex), Out_notexists(v2, v3, ruleIndex), ruleIndex != 8, Rule(8).
+Out_notexists(v0, v5, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), In_notexists(v3, v5, v6, ruleIndex), ruleIndex != 36, Rule(36).
+Out_notexists(v4, v3, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), Out_notexists(v0, v3, ruleIndex), Out_notexists(v4, v1, ruleIndex), ruleIndex != 23, Rule(23).
+Out_notexists(v0, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), ruleIndex != 18, Rule(18).
+Out_notexists(v5, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v4, v2, ruleIndex), In_notexists(v5, v4, v6, ruleIndex), ruleIndex != 5, Rule(5).
+Out_notexists(v3, v1, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v3, v1, v4, ruleIndex), ruleIndex != 25, Rule(25).
+Out_notexists(v0, v3, ruleIndex) :- In_notexists(v0, v1, v2, ruleIndex), In_notexists(v0, v3, v4, ruleIndex), Out_notexists(v5, v3, ruleIndex), ruleIndex != 27, Rule(27).

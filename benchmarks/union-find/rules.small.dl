@@ -1,0 +1,167 @@
+.type E
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl eq(v0: E, v1: E)
+.input eq
+.decl union(v0: E, v1: E)
+.input union
+.decl find(v0: E, v1: E)
+.input find
+
+
+.decl sameset(v0: E, v1: E)
+.output sameset
+
+sameset(v0, v1) :- eq(v0, v1), eq(v0, v2), Rule(52).
+sameset(v2, v0) :- eq(v0, v1), sameset(v1, v2), Rule(46).
+sameset(v0, v2) :- eq(v0, v1), union(v1, v2), Rule(83).
+sameset(v0, v1) :- eq(v0, v1), find(v2, v0), Rule(32).
+sameset(v0, v1) :- find(v0, v1), find(v0, v2), Rule(95).
+sameset(v0, v2) :- eq(v0, v1), union(v0, v2), Rule(143).
+sameset(v1, v2) :- find(v0, v1), find(v0, v2), Rule(130).
+sameset(v0, v2) :- find(v0, v1), sameset(v2, v1), Rule(75).
+sameset(v1, v0) :- eq(v0, v1), sameset(v1, v2), Rule(70).
+sameset(v1, v0) :- eq(v0, v1), union(v1, v2), Rule(1).
+sameset(v0, v1) :- find(v0, v1), sameset(v1, v0), Rule(50).
+sameset(v2, v0) :- find(v0, v1), union(v1, v2), Rule(139).
+sameset(v0, v1) :- find(v0, v1), union(v1, v2), Rule(20).
+sameset(v0, v2) :- union(v0, v1), union(v2, v1), Rule(15).
+sameset(v0, v1) :- union(v0, v1), union(v2, v0), Rule(64).
+sameset(v0, v1) :- find(v0, v1), Rule(110).
+sameset(v2, v0) :- eq(v0, v1), union(v2, v1), Rule(44).
+sameset(v0, v1) :- find(v0, v1), find(v1, v0), Rule(10).
+sameset(v0, v1) :- eq(v0, v1), union(v0, v2), Rule(96).
+sameset(v0, v2) :- eq(v0, v1), find(v2, v0), Rule(33).
+sameset(v2, v0) :- union(v0, v1), union(v2, v0), Rule(45).
+sameset(v2, v1) :- sameset(v0, v1), union(v1, v2), Rule(86).
+sameset(v1, v0) :- find(v0, v1), union(v2, v0), Rule(72).
+sameset(v2, v1) :- eq(v0, v1), union(v1, v2), Rule(5).
+sameset(v0, v1) :- eq(v0, v1), eq(v1, v0), Rule(84).
+sameset(v0, v1) :- union(v0, v1), Rule(82).
+sameset(v2, v1) :- find(v0, v1), sameset(v2, v0), Rule(141).
+sameset(v2, v1) :- sameset(v0, v1), sameset(v2, v0), Rule(133).
+sameset(v1, v0) :- eq(v0, v1), union(v2, v0), Rule(101).
+sameset(v2, v1) :- eq(v0, v1), find(v0, v2), Rule(148).
+sameset(v0, v1) :- eq(v0, v1), union(v1, v2), Rule(112).
+sameset(v0, v2) :- eq(v0, v1), sameset(v1, v2), Rule(120).
+sameset(v2, v0) :- find(v0, v1), union(v2, v0), Rule(69).
+sameset(v0, v1) :- eq(v0, v1), union(v1, v0), Rule(79).
+sameset(v0, v2) :- find(v0, v1), sameset(v1, v2), Rule(91).
+sameset(v0, v2) :- eq(v0, v1), eq(v2, v1), Rule(51).
+sameset(v2, v1) :- sameset(v0, v1), union(v0, v2), Rule(149).
+sameset(v2, v0) :- eq(v0, v1), sameset(v2, v1), Rule(3).
+sameset(v0, v2) :- sameset(v0, v1), union(v1, v2), Rule(71).
+sameset(v0, v1) :- eq(v0, v1), sameset(v1, v2), Rule(127).
+sameset(v1, v0) :- sameset(v0, v1), union(v2, v0), Rule(53).
+sameset(v1, v2) :- find(v0, v1), sameset(v2, v0), Rule(54).
+sameset(v0, v1) :- find(v0, v1), sameset(v0, v2), Rule(41).
+sameset(v0, v1) :- eq(v0, v1), eq(v2, v0), Rule(85).
+sameset(v0, v2) :- eq(v0, v1), find(v2, v1), Rule(105).
+sameset(v0, v1) :- find(v0, v1), union(v0, v2), Rule(55).
+sameset(v2, v1) :- eq(v0, v1), sameset(v2, v0), Rule(104).
+sameset(v2, v1) :- find(v0, v1), find(v2, v0), Rule(37).
+sameset(v1, v0) :- find(v0, v1), Rule(40).
+sameset(v1, v0) :- find(v0, v1), sameset(v1, v2), Rule(94).
+sameset(v0, v2) :- sameset(v0, v1), sameset(v2, v0), Rule(60).
+sameset(v1, v2) :- eq(v0, v1), eq(v2, v0), Rule(9).
+sameset(v1, v0) :- sameset(v0, v1), union(v1, v2), Rule(122).
+sameset(v2, v1) :- eq(v0, v1), union(v2, v0), Rule(39).
+sameset(v2, v0) :- sameset(v0, v1), union(v1, v2), Rule(2).
+sameset(v0, v2) :- union(v0, v1), union(v2, v0), Rule(137).
+sameset(v1, v0) :- eq(v0, v1), Rule(26).
+sameset(v0, v1) :- eq(v0, v1), find(v1, v2), Rule(48).
+sameset(v1, v0) :- find(v0, v1), sameset(v2, v0), Rule(108).
+sameset(v2, v1) :- eq(v0, v1), sameset(v0, v2), Rule(100).
+sameset(v0, v1) :- find(v0, v1), find(v2, v0), Rule(78).
+sameset(v1, v2) :- eq(v0, v1), find(v2, v0), Rule(34).
+sameset(v1, v2) :- find(v0, v1), union(v2, v0), Rule(140).
+sameset(v2, v0) :- find(v0, v1), union(v2, v1), Rule(93).
+sameset(v0, v2) :- find(v0, v1), sameset(v2, v0), Rule(145).
+sameset(v2, v0) :- eq(v0, v1), union(v2, v0), Rule(102).
+sameset(v2, v0) :- eq(v0, v1), find(v2, v1), Rule(136).
+sameset(v1, v2) :- eq(v0, v1), sameset(v0, v2), Rule(109).
+sameset(v0, v1) :- find(v0, v1), union(v1, v0), Rule(42).
+sameset(v1, v2) :- find(v0, v1), union(v1, v2), Rule(22).
+sameset(v2, v1) :- find(v0, v1), sameset(v1, v2), Rule(147).
+sameset(v0, v1) :- find(v0, v1), sameset(v2, v0), Rule(4).
+sameset(v1, v2) :- eq(v0, v1), find(v0, v2), Rule(89).
+sameset(v1, v0) :- union(v0, v1), union(v2, v0), Rule(121).
+sameset(v0, v2) :- eq(v0, v1), eq(v2, v0), Rule(18).
+sameset(v2, v0) :- sameset(v0, v1), union(v2, v1), Rule(119).
+sameset(v0, v1) :- eq(v0, v1), sameset(v2, v0), Rule(14).
+sameset(v2, v0) :- sameset(v0, v1), union(v2, v0), Rule(74).
+sameset(v0, v2) :- eq(v0, v1), find(v0, v2), Rule(0).
+sameset(v2, v1) :- eq(v0, v1), find(v2, v0), Rule(126).
+sameset(v0, v1) :- union(v0, v1), union(v0, v2), Rule(88).
+sameset(v1, v2) :- sameset(v0, v1), sameset(v0, v2), Rule(67).
+sameset(v1, v0) :- eq(v0, v1), union(v1, v0), Rule(144).
+sameset(v2, v1) :- sameset(v0, v1), union(v2, v0), Rule(146).
+sameset(v0, v1) :- eq(v0, v1), union(v2, v0), Rule(142).
+sameset(v0, v2) :- eq(v0, v1), union(v2, v0), Rule(103).
+sameset(v1, v0) :- eq(v0, v1), eq(v2, v0), Rule(87).
+sameset(v1, v0) :- find(v0, v1), find(v2, v0), Rule(118).
+sameset(v2, v0) :- find(v0, v1), sameset(v2, v1), Rule(92).
+sameset(v2, v1) :- eq(v0, v1), eq(v2, v0), Rule(150).
+sameset(v0, v2) :- find(v0, v1), union(v2, v0), Rule(7).
+sameset(v1, v0) :- union(v0, v1), Rule(28).
+sameset(v0, v1) :- eq(v0, v1), sameset(v0, v2), Rule(99).
+sameset(v2, v0) :- eq(v0, v1), union(v1, v2), Rule(77).
+sameset(v1, v0) :- find(v0, v1), union(v1, v2), Rule(135).
+sameset(v2, v0) :- eq(v0, v1), find(v1, v2), Rule(11).
+sameset(v1, v2) :- union(v0, v1), union(v0, v2), Rule(63).
+sameset(v1, v2) :- eq(v0, v1), union(v1, v2), Rule(27).
+sameset(v0, v1) :- eq(v0, v1), find(v1, v0), Rule(16).
+sameset(v2, v1) :- find(v0, v1), union(v2, v0), Rule(66).
+sameset(v0, v2) :- eq(v0, v1), sameset(v2, v0), Rule(80).
+sameset(v1, v0) :- sameset(v0, v1), Rule(38).
+sameset(v0, v2) :- find(v0, v1), find(v2, v1), Rule(62).
+sameset(v0, v1) :- find(v0, v1), sameset(v1, v2), Rule(132).
+sameset(v1, v2) :- sameset(v0, v1), union(v1, v2), Rule(76).
+sameset(v1, v0) :- eq(v0, v1), find(v1, v0), Rule(31).
+sameset(v0, v1) :- eq(v0, v1), Rule(129).
+sameset(v2, v0) :- find(v0, v1), find(v2, v0), Rule(57).
+sameset(v1, v2) :- eq(v0, v1), union(v2, v0), Rule(124).
+sameset(v1, v2) :- find(v0, v1), find(v2, v0), Rule(111).
+sameset(v0, v2) :- sameset(v0, v1), union(v0, v2), Rule(73).
+sameset(v0, v1) :- eq(v0, v1), find(v0, v2), Rule(113).
+sameset(v0, v1) :- eq(v0, v1), sameset(v1, v0), Rule(25).
+sameset(v0, v2) :- eq(v0, v1), find(v1, v2), Rule(68).
+sameset(v0, v2) :- sameset(v0, v1), union(v2, v0), Rule(30).
+sameset(v0, v1) :- find(v0, v1), union(v2, v0), Rule(114).
+sameset(v1, v2) :- find(v0, v1), sameset(v0, v2), Rule(128).
+sameset(v1, v2) :- eq(v0, v1), find(v1, v2), Rule(115).
+sameset(v1, v2) :- eq(v0, v1), sameset(v2, v0), Rule(36).
+sameset(v0, v2) :- sameset(v0, v1), union(v2, v1), Rule(8).
+sameset(v1, v0) :- sameset(v0, v1), union(v1, v0), Rule(47).
+sameset(v2, v0) :- eq(v0, v1), find(v2, v0), Rule(123).
+sameset(v1, v2) :- sameset(v0, v1), union(v2, v0), Rule(97).
+sameset(v0, v2) :- find(v0, v1), find(v2, v0), Rule(56).
+sameset(v1, v0) :- find(v0, v1), union(v1, v0), Rule(106).
+sameset(v1, v2) :- sameset(v0, v1), union(v0, v2), Rule(49).
+sameset(v0, v2) :- eq(v0, v1), union(v2, v1), Rule(19).
+sameset(v1, v2) :- sameset(v0, v1), sameset(v2, v0), Rule(12).
+sameset(v1, v0) :- eq(v0, v1), sameset(v2, v0), Rule(58).
+sameset(v0, v1) :- union(v0, v1), union(v1, v0), Rule(35).
+sameset(v2, v1) :- eq(v0, v1), sameset(v1, v2), Rule(98).
+sameset(v1, v0) :- eq(v0, v1), find(v2, v0), Rule(21).
+sameset(v1, v0) :- eq(v0, v1), find(v1, v2), Rule(117).
+sameset(v0, v2) :- find(v0, v1), union(v2, v1), Rule(134).
+sameset(v2, v1) :- eq(v0, v1), find(v1, v2), Rule(17).
+sameset(v2, v0) :- find(v0, v1), sameset(v1, v2), Rule(90).
+sameset(v2, v1) :- eq(v0, v1), union(v0, v2), Rule(138).
+sameset(v2, v1) :- find(v0, v1), union(v0, v2), Rule(131).
+sameset(v1, v2) :- find(v0, v1), union(v0, v2), Rule(81).
+sameset(v1, v2) :- eq(v0, v1), union(v0, v2), Rule(29).
+sameset(v1, v2) :- union(v0, v1), union(v2, v0), Rule(65).
+sameset(v2, v1) :- find(v0, v1), union(v1, v2), Rule(59).
+sameset(v0, v2) :- find(v0, v1), union(v1, v2), Rule(107).
+sameset(v0, v2) :- eq(v0, v1), sameset(v2, v1), Rule(24).
+sameset(v1, v0) :- sameset(v0, v1), sameset(v2, v0), Rule(6).
+sameset(v1, v2) :- eq(v0, v1), eq(v0, v2), Rule(116).
+sameset(v2, v1) :- find(v0, v1), sameset(v0, v2), Rule(43).
+sameset(v0, v2) :- sameset(v0, v1), sameset(v2, v1), Rule(61).
+sameset(v2, v1) :- union(v0, v1), union(v2, v0), Rule(23).
+sameset(v0, v2) :- find(v0, v1), union(v0, v2), Rule(125).
+sameset(v2, v0) :- eq(v0, v1), eq(v2, v0), Rule(13).
