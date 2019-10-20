@@ -1,0 +1,116 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Edge(v0: V, v1: V)
+.input Edge
+
+.decl invent_Path(v0: V, v1: V)
+.output invent_Path
+
+.decl SCC(v0: V, v1: V)
+.output SCC
+
+
+
+SCC(v0, v1) :- Edge(v2, v0), Edge(v2, v1), SCC(v2, v0), Rule(1125).
+invent_Path(v0, v1) :- Edge(v0, v1), Edge(v2, v1), invent_Path(v0, v2), Rule(238).
+SCC(v0, v1) :- invent_Path(v0, v1), invent_Path(v0, v1), SCC(v0, v1), Rule(1797).
+SCC(v0, v1) :- invent_Path(v1, v0), SCC(v1, v0), SCC(v1, v0), Rule(1948).
+SCC(v0, v1) :- invent_Path(v0, v1), invent_Path(v2, v0), invent_Path(v1, v2), Rule(1714).
+SCC(v0, v1) :- invent_Path(v2, v1), SCC(v1, v0), SCC(v0, v2), Rule(1992).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v2, v0), invent_Path(v1, v2), Rule(1741).
+invent_Path(v0, v1) :- Edge(v0, v1), Rule(0).
+SCC(v0, v1) :- invent_Path(v2, v1), invent_Path(v2, v0), SCC(v2, v1), Rule(1933).
+SCC(v0, v1) :- invent_Path(v1, v0), invent_Path(v0, v1), SCC(v0, v1), Rule(1791).
+SCC(v0, v1) :- invent_Path(v0, v1), invent_Path(v1, v0), Rule(692).
+SCC(v0, v1) :- Edge(v1, v2), SCC(v1, v2), SCC(v0, v1), Rule(1596).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v2, v1), SCC(v2, v0), Rule(1163).
+SCC(v0, v1) :- SCC(v0, v2), SCC(v1, v2), SCC(v2, v0), Rule(2177).
+SCC(v0, v1) :- invent_Path(v0, v1), SCC(v0, v2), SCC(v1, v2), Rule(2001).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v1, v2), Edge(v0, v2), Rule(773).
+SCC(v0, v1) :- Edge(v2, v1), Edge(v0, v2), Edge(v2, v1), Rule(874).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v2, v1), Edge(v2, v0), Rule(859).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v0, v1), invent_Path(v1, v0), Rule(878).
+SCC(v0, v1) :- Edge(v1, v0), SCC(v2, v1), SCC(v1, v2), Rule(1600).
+SCC(v0, v1) :- Edge(v0, v2), invent_Path(v2, v0), SCC(v1, v2), Rule(1425).
+SCC(v0, v1) :- invent_Path(v1, v2), invent_Path(v1, v2), SCC(v1, v0), Rule(1905).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v1, v2), invent_Path(v1, v0), Rule(1689).
+invent_Path(v0, v1) :- Edge(v2, v1), invent_Path(v1, v2), invent_Path(v1, v0), Rule(456).
+SCC(v0, v1) :- invent_Path(v0, v1), invent_Path(v2, v0), SCC(v1, v2), Rule(1866).
+SCC(v0, v1) :- Edge(v1, v0), invent_Path(v0, v1), SCC(v0, v1), Rule(1335).
+SCC(v0, v1) :- Edge(v0, v2), invent_Path(v0, v2), SCC(v1, v2), Rule(1436).
+invent_Path(v0, v1) :- Edge(v2, v1), Edge(v0, v1), Edge(v0, v2), Rule(77).
+SCC(v0, v1) :- Edge(v2, v1), Edge(v0, v2), SCC(v1, v0), Rule(1065).
+SCC(v0, v1) :- Edge(v2, v0), Edge(v2, v1), SCC(v2, v1), Rule(1166).
+invent_Path(v0, v1) :- Edge(v0, v1), Edge(v0, v2), Edge(v1, v2), Rule(99).
+SCC(v0, v1) :- Edge(v0, v2), invent_Path(v2, v0), SCC(v0, v1), Rule(1360).
+SCC(v0, v1) :- invent_Path(v1, v0), SCC(v2, v0), SCC(v2, v0), Rule(1972).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v2, v1), SCC(v1, v2), Rule(1930).
+invent_Path(v0, v1) :- Edge(v2, v0), Edge(v1, v0), invent_Path(v0, v2), Rule(202).
+invent_Path(v0, v1) :- Edge(v1, v2), Edge(v1, v2), Edge(v2, v0), Rule(174).
+invent_Path(v0, v1) :- invent_Path(v1, v0), invent_Path(v2, v0), invent_Path(v0, v2), Rule(525).
+invent_Path(v0, v1) :- Edge(v0, v2), Edge(v1, v2), Edge(v2, v0), Rule(123).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v2, v0), SCC(v1, v2), Rule(1893).
+invent_Path(v0, v1) :- Edge(v2, v1), Edge(v0, v2), Edge(v2, v1), Rule(188).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v0, v2), SCC(v2, v0), Rule(1058).
+SCC(v0, v1) :- invent_Path(v1, v0), invent_Path(v2, v1), invent_Path(v2, v0), Rule(1717).
+invent_Path(v0, v1) :- invent_Path(v1, v2), invent_Path(v0, v1), invent_Path(v1, v2), Rule(607).
+SCC(v0, v1) :- Edge(v0, v2), Edge(v2, v1), SCC(v1, v2), Rule(1159).
+invent_Path(v0, v1) :- Edge(v0, v2), Edge(v0, v2), Edge(v1, v2), Rule(142).
+SCC(v0, v1) :- Edge(v1, v2), SCC(v2, v1), SCC(v1, v0), Rule(1599).
+SCC(v0, v1) :- SCC(v2, v0), SCC(v2, v1), SCC(v0, v1), Rule(2139).
+invent_Path(v0, v1) :- Edge(v1, v0), Edge(v2, v0), Edge(v0, v2), Rule(69).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v0, v1), invent_Path(v0, v1), Rule(885).
+SCC(v0, v1) :- invent_Path(v2, v1), invent_Path(v0, v1), SCC(v2, v0), Rule(1848).
+SCC(v0, v1) :- Edge(v2, v1), Edge(v1, v2), SCC(v0, v2), Rule(1162).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v0, v1), invent_Path(v0, v2), Rule(1658).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v0, v2), SCC(v1, v0), Rule(1813).
+invent_Path(v0, v1) :- Edge(v1, v2), invent_Path(v2, v1), invent_Path(v0, v2), Rule(483).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v2, v0), SCC(v0, v1), Rule(1071).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v2, v1), SCC(v1, v0), Rule(1842).
+invent_Path(v0, v1) :- invent_Path(v1, v2), invent_Path(v2, v0), invent_Path(v0, v2), Rule(592).
+SCC(v0, v1) :- Edge(v2, v0), invent_Path(v0, v2), invent_Path(v0, v1), Rule(1204).
+invent_Path(v0, v1) :- Edge(v0, v2), Edge(v0, v1), Edge(v0, v2), Rule(48).
+invent_Path(v0, v1) :- Edge(v2, v0), Edge(v0, v2), invent_Path(v0, v1), Rule(214).
+invent_Path(v0, v1) :- Edge(v1, v2), Edge(v1, v0), Edge(v2, v0), Rule(73).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v0, v1), SCC(v2, v0), Rule(1096).
+SCC(v0, v1) :- SCC(v0, v2), SCC(v2, v0), SCC(v2, v1), Rule(2184).
+invent_Path(v0, v1) :- Edge(v0, v2), invent_Path(v2, v1), Rule(23).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v2, v0), Edge(v2, v0), Rule(740).
+SCC(v0, v1) :- Edge(v0, v2), SCC(v2, v1), SCC(v0, v2), Rule(1571).
+SCC(v0, v1) :- Edge(v2, v0), SCC(v2, v0), SCC(v2, v1), Rule(1587).
+SCC(v0, v1) :- invent_Path(v1, v2), invent_Path(v0, v2), invent_Path(v0, v1), Rule(1712).
+SCC(v0, v1) :- invent_Path(v2, v0), invent_Path(v2, v1), Rule(699).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v2, v0), Edge(v2, v0), Rule(823).
+SCC(v0, v1) :- Edge(v0, v1), invent_Path(v1, v0), SCC(v1, v0), Rule(1338).
+invent_Path(v0, v1) :- Edge(v2, v1), Edge(v2, v1), Edge(v2, v0), Rule(187).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v1, v0), invent_Path(v2, v1), Rule(994).
+SCC(v0, v1) :- Edge(v1, v2), SCC(v2, v0), Rule(684).
+invent_Path(v0, v1) :- Edge(v1, v2), Edge(v0, v1), Edge(v2, v0), Rule(106).
+invent_Path(v0, v1) :- Edge(v2, v0), Edge(v1, v2), Edge(v1, v2), Rule(178).
+SCC(v0, v1) :- invent_Path(v0, v2), SCC(v0, v1), SCC(v1, v2), Rule(2015).
+SCC(v0, v1) :- Edge(v0, v2), Edge(v1, v2), Edge(v1, v2), Rule(854).
+SCC(v0, v1) :- Edge(v1, v0), invent_Path(v0, v1), SCC(v1, v0), Rule(1336).
+invent_Path(v0, v1) :- Edge(v2, v1), Edge(v2, v1), Edge(v0, v2), Rule(184).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v2, v1), SCC(v1, v0), Rule(1143).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v2, v1), invent_Path(v0, v1), Rule(985).
+invent_Path(v0, v1) :- invent_Path(v1, v2), invent_Path(v2, v1), invent_Path(v0, v1), Rule(603).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v0, v1), Edge(v0, v1), Rule(733).
+invent_Path(v0, v1) :- Edge(v1, v0), Edge(v0, v2), invent_Path(v0, v2), Rule(207).
+SCC(v0, v1) :- Edge(v2, v0), Edge(v2, v1), SCC(v0, v1), Rule(1075).
+SCC(v0, v1) :- invent_Path(v2, v1), invent_Path(v2, v0), invent_Path(v1, v2), Rule(1783).
+invent_Path(v0, v1) :- Edge(v2, v1), Edge(v1, v2), invent_Path(v0, v1), Rule(297).
+SCC(v0, v1) :- Edge(v2, v0), SCC(v0, v1), SCC(v1, v2), Rule(1540).
+SCC(v0, v1) :- invent_Path(v0, v2), SCC(v0, v1), SCC(v2, v0), Rule(1951).
+invent_Path(v0, v1) :- Edge(v2, v0), Edge(v2, v1), Edge(v2, v1), Rule(176).
+SCC(v0, v1) :- Edge(v1, v2), Edge(v0, v2), invent_Path(v1, v0), Rule(914).
+SCC(v0, v1) :- invent_Path(v1, v2), invent_Path(v2, v1), invent_Path(v2, v0), Rule(1771).
+SCC(v0, v1) :- invent_Path(v1, v2), invent_Path(v2, v0), invent_Path(v0, v2), Rule(1734).
+invent_Path(v0, v1) :- Edge(v0, v1), Edge(v2, v0), Edge(v0, v2), Rule(53).
+SCC(v0, v1) :- invent_Path(v2, v1), invent_Path(v2, v0), invent_Path(v0, v1), Rule(1695).
+invent_Path(v0, v1) :- invent_Path(v1, v0), invent_Path(v0, v2), invent_Path(v2, v0), Rule(512).
+invent_Path(v0, v1) :- Edge(v0, v2), Edge(v0, v2), invent_Path(v1, v0), Rule(210).
+SCC(v0, v1) :- invent_Path(v0, v1), SCC(v0, v2), SCC(v2, v1), Rule(2019).
+SCC(v0, v1) :- SCC(v0, v2), SCC(v1, v2), SCC(v2, v1), Rule(2243).

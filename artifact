@@ -11,16 +11,19 @@ scale_benchmarks = ["1-object-1-type_100","1-object-1-type_200","1-object-1-type
 f = open("data.log", "w")
 f.close()
 
+for benchmark in scale_benchmarks:
+	print("Generating souffle executable for [" + benchmark + "]")
+	myproc = subprocess.Popen([ './prepare', './scale_benchmarks/' + benchmark ], \
+          stdin=subprocess.PIPE, \
+          stdout=subprocess.PIPE, \
+          universal_newlines=True)
+	myproc.communicate()
+	print("Generated souffle executable for [" + benchmark + "]!")
+
 
 for i in range(1, 9):
+	break
 	for benchmark in scale_benchmarks:
-		print("Generating souffle executable for [" + benchmark + "]")
-		myproc = subprocess.Popen([ './prepare', './scale_benchmarks/' + benchmark ], \
-	          stdin=subprocess.PIPE, \
-	          stdout=subprocess.PIPE, \
-	          universal_newlines=True)
-		myproc.communicate()
-		print("Generated souffle executable for [" + benchmark + "]!")
 		print("Running ProSynth (delta) for [" + benchmark + "]")
 		myproc = subprocess.Popen([ './prosynth', './scale_benchmarks/' + benchmark, "0", "1", str(i) ], \
 	          stdin=subprocess.PIPE, \
@@ -28,15 +31,17 @@ for i in range(1, 9):
 	          universal_newlines=True)
 		myproc.communicate()
 
+for benchmark in benchmarks:
+	print("Generating souffle executable for [" + benchmark + "]")
+	myproc = subprocess.Popen([ './prepare', './benchmarks/' + benchmark ], \
+          stdin=subprocess.PIPE, \
+          stdout=subprocess.PIPE, \
+          universal_newlines=True)
+	myproc.communicate()
+	print("Generated souffle executable for [" + benchmark + "]!")
+
 for i in range(1, 33):
 	for benchmark in benchmarks:
-		print("Generating souffle executable for [" + benchmark + "]")
-		myproc = subprocess.Popen([ './prepare', './benchmarks/' + benchmark ], \
-	          stdin=subprocess.PIPE, \
-	          stdout=subprocess.PIPE, \
-	          universal_newlines=True)
-		myproc.communicate()
-		print("Generated souffle executable for [" + benchmark + "]!")
 		print("Running ProSynth (no delta) for [" + benchmark + "]")
 		myproc = subprocess.Popen([ './prosynth', './benchmarks/' + benchmark, "0", "0", str(i) ], \
 	          stdin=subprocess.PIPE, \

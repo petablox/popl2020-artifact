@@ -1,0 +1,384 @@
+souffle.small.out.cpp:296:6: warning: unused variable 'lease' [-Wunused-variable]
+auto lease = insert_lock.acquire();
+     ^
+souffle.small.out.cpp:3046:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3265:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3301:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3335:19: warning: unused variable 'rel_4_delta_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_delta_invent_Path_op_ctxt,rel_4_delta_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:3629:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3667:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3812:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3848:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:3943:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:4081:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:4462:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:4639:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:4675:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:4710:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5020:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5058:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5094:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5130:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5238:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5276:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5455:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5493:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5794:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5824:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5854:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:5913:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6167:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6370:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6666:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6694:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:6767:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6793:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6906:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:6936:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7084:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7113:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7142:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7179:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7215:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7251:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7289:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7325:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7361:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7397:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7433:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7468:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:7500:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7573:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7778:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7815:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:7851:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8019:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8057:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8093:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8129:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8165:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8201:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8309:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8345:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8381:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8417:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8621:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8659:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8767:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8803:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:8838:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:8977:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9013:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9049:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9087:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9123:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9159:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9194:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9262:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9300:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9335:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9427:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9463:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9495:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9533:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9678:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9716:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:9752:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9789:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9826:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:9862:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10020:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10058:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10094:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10131:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10169:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10205:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10243:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10387:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10424:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10460:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10616:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10653:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10691:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10726:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10758:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10794:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10830:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10866:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:10902:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10940:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:10975:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11007:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11042:19: warning: unused variable 'rel_7_delta_SCC_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_7_delta_SCC_op_ctxt,rel_7_delta_SCC->createContext());
+                  ^
+souffle.small.out.cpp:11069:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:11107:19: warning: unused variable 'rel_3_invent_Path_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_3_invent_Path_op_ctxt,rel_3_invent_Path->createContext());
+                  ^
+souffle.small.out.cpp:11252:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11289:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11326:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11362:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11398:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11435:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11928:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:11966:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12002:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12040:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12219:19: warning: unused variable 'rel_7_delta_SCC_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_7_delta_SCC_op_ctxt,rel_7_delta_SCC->createContext());
+                  ^
+souffle.small.out.cpp:12246:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12282:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12354:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12392:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
+souffle.small.out.cpp:12428:19: warning: unused variable 'rel_1_Edge_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_Edge_op_ctxt,rel_1_Edge->createContext());
+                  ^
