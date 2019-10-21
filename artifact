@@ -22,7 +22,6 @@ for benchmark in scale_benchmarks:
 
 
 for i in range(1, 9):
-	break
 	for benchmark in scale_benchmarks:
 		print("Running ProSynth (delta) for [" + benchmark + "]")
 		myproc = subprocess.Popen([ './prosynth', './scale_benchmarks/' + benchmark, "0", "1", str(i) ], \
