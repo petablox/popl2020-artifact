@@ -1,0 +1,44 @@
+.type Plan
+.type Attributes
+.type Id
+.type Value
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl active(v0: Attributes)
+.input active
+.decl correct(v0: Value)
+.input correct
+.decl input1(v0: Id, v1: Plan, v2: Attributes, v3: Value)
+.input input1
+
+.decl active_notexists(v0: Attributes, v1: number)
+.output active_notexists
+.decl correct_notexists(v0: Value, v1: number)
+.output correct_notexists
+.decl input1_notexists(v0: Id, v1: Plan, v2: Attributes, v3: Value, v4: number)
+.output input1_notexists
+
+.decl inv_notexists(v0: Plan, v1: number)
+.output inv_notexists
+
+.decl ans_notexists(v0: Id, v1: Plan, v2: Attributes, v3: Value, v4: number)
+.output ans_notexists
+
+active_notexists(v0, ruleIndex) :- active(v0), Rule(ruleIndex).
+correct_notexists(v0, ruleIndex) :- correct(v0), Rule(ruleIndex).
+input1_notexists(v0, v1, v2, v3, ruleIndex) :- input1(v0, v1, v2, v3), Rule(ruleIndex).
+inv_notexists(v5, ruleIndex) :- input1_notexists(v0, v1, v2, v3, ruleIndex), ans_notexists(v4, v5, v2, v6, ruleIndex), ruleIndex != 10, Rule(10).
+inv_notexists(v2, ruleIndex) :- active_notexists(v0, ruleIndex), ans_notexists(v1, v2, v0, v3, ruleIndex), correct_notexists(v3, ruleIndex), ruleIndex != 0, Rule(0).
+inv_notexists(v2, ruleIndex) :- correct_notexists(v0, ruleIndex), ans_notexists(v1, v2, v3, v0, ruleIndex), ruleIndex != 2, Rule(2).
+ans_notexists(v1, v2, v0, v3, ruleIndex) :- active_notexists(v0, ruleIndex), input1_notexists(v1, v2, v0, v3, ruleIndex), ruleIndex != 5, Rule(5).
+inv_notexists(v5, ruleIndex) :- input1_notexists(v0, v1, v2, v3, ruleIndex), input1_notexists(v4, v5, v2, v6, ruleIndex), ruleIndex != 1, Rule(1).
+inv_notexists(v2, ruleIndex) :- active_notexists(v0, ruleIndex), ans_notexists(v1, v2, v0, v3, ruleIndex), ruleIndex != 8, Rule(8).
+inv_notexists(v2, ruleIndex) :- active_notexists(v0, ruleIndex), input1_notexists(v1, v2, v0, v3, ruleIndex), ruleIndex != 7, Rule(7).
+inv_notexists(v5, ruleIndex) :- ans_notexists(v0, v1, v2, v3, ruleIndex), input1_notexists(v4, v5, v2, v6, ruleIndex), ruleIndex != 9, Rule(9).
+inv_notexists(v5, ruleIndex) :- ans_notexists(v0, v1, v2, v3, ruleIndex), ans_notexists(v4, v5, v2, v6, ruleIndex), ruleIndex != 3, Rule(3).
+inv_notexists(v2, ruleIndex) :- correct_notexists(v0, ruleIndex), input1_notexists(v1, v2, v3, v0, ruleIndex), ruleIndex != 6, Rule(6).
+ans_notexists(v1, v2, v3, v0, ruleIndex) :- correct_notexists(v0, ruleIndex), input1_notexists(v1, v2, v3, v0, ruleIndex), ruleIndex != 4, Rule(4).
+inv_notexists(v3, ruleIndex) :- active_notexists(v0, ruleIndex), correct_notexists(v1, ruleIndex), input1_notexists(v2, v3, v0, v1, ruleIndex), ruleIndex != 12, Rule(12).
+ans_notexists(v0, v1, v2, v3, ruleIndex) :- input1_notexists(v0, v1, v2, v3, ruleIndex), inv_notexists(v1, ruleIndex), ruleIndex != 11, Rule(11).

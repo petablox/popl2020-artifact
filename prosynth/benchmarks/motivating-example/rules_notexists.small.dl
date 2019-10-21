@@ -1,0 +1,23 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Edge(v0: V, v1: V)
+.input Edge
+.decl Edge_notexists(v0: V, v1: V, r: number)
+.output Edge_notexists
+.decl Path_notexists(v0: V, v1: V, r: number)
+.output Path_notexists
+.decl SCC_notexists(v0: V, v1: V, r: number)
+.output SCC_notexists
+
+Edge_notexists(x, y, r) :- Edge(x, y), Rule(r).
+SCC_notexists(x, y, r) :- Edge_notexists(x, y, r), Rule(r), r != 0, Rule(0).
+Path_notexists(x, y, r) :- Edge_notexists(x, y, r), Rule(r), r != 1, Rule(1).
+Path_notexists(x, y, r) :- Edge_notexists(z, y, r), Path_notexists(x, z, r), Rule(r), r != 2, Rule(2).
+SCC_notexists(x, y, r) :- Path_notexists(x, y, r), Path_notexists(y, x, r), Rule(r), r != 3, Rule(3).
+SCC_notexists(x, y, r) :- Path_notexists(x, y, r), Rule(r), r != 4, Rule(4).
+SCC_notexists(x, y, r) :- Path_notexists(y, x, r), Rule(r), r != 5, Rule(5).
+Path_notexists(x, y, r) :- Edge_notexists(y, x, r), Rule(r), r != 6, Rule(6).
+Path_notexists(x, z, r) :- Path_notexists(x, y, r), Edge_notexists(z, y, r), Rule(r), r != 7, Rule(7).

@@ -1,0 +1,29 @@
+.type ID
+.type Name
+.type Age
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl family(v0: ID, v1: Name, v2: Age, v3: ID)
+.input family
+
+.decl family_notexists(v0: ID, v1: Name, v2: Age, v3: ID, v4: number)
+.output family_notexists
+
+.decl Out_notexists(v0: ID, v1: Name, v2: number)
+.output Out_notexists
+
+family_notexists(v0, v1, v2, v3, ruleIndex) :- family(v0, v1, v2, v3), Rule(ruleIndex).
+Out_notexists(v0, v5, ruleIndex) :- family_notexists(v0, v1, v2, v3, ruleIndex), family_notexists(v4, v5, v6, v3, ruleIndex), ruleIndex != 9, Rule(9).
+Out_notexists(v0, v1, ruleIndex) :- family_notexists(v0, v1, v2, v3, ruleIndex), family_notexists(v0, v4, v5, v6, ruleIndex), ruleIndex != 10, Rule(10).
+Out_notexists(v0, v1, ruleIndex) :- family_notexists(v0, v1, v2, v3, ruleIndex), family_notexists(v4, v5, v6, v0, ruleIndex), ruleIndex != 11, Rule(11).
+Out_notexists(v4, v1, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), family_notexists(v0, v2, v3, v4, ruleIndex), ruleIndex != 8, Rule(8).
+Out_notexists(v0, v2, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), family_notexists(v0, v2, v3, v4, ruleIndex), ruleIndex != 1, Rule(1).
+Out_notexists(v2, v1, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), family_notexists(v2, v1, v3, v4, ruleIndex), ruleIndex != 2, Rule(2).
+Out_notexists(v0, v3, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), family_notexists(v2, v3, v4, v0, ruleIndex), ruleIndex != 3, Rule(3).
+Out_notexists(v4, v1, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), family_notexists(v2, v1, v3, v4, ruleIndex), ruleIndex != 7, Rule(7).
+Out_notexists(v0, v5, ruleIndex) :- family_notexists(v0, v1, v2, v3, ruleIndex), family_notexists(v4, v5, v6, v0, ruleIndex), ruleIndex != 5, Rule(5).
+Out_notexists(v2, v1, ruleIndex) :- Out_notexists(v0, v1, ruleIndex), family_notexists(v2, v3, v4, v0, ruleIndex), ruleIndex != 4, Rule(4).
+Out_notexists(v4, v1, ruleIndex) :- family_notexists(v0, v1, v2, v3, ruleIndex), family_notexists(v4, v5, v6, v0, ruleIndex), ruleIndex != 0, Rule(0).
+Out_notexists(v0, v5, ruleIndex) :- family_notexists(v0, v1, v2, v3, ruleIndex), family_notexists(v4, v5, v2, v6, ruleIndex), ruleIndex != 6, Rule(6).

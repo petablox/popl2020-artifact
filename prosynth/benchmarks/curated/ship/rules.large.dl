@@ -1,0 +1,49 @@
+.type H
+.type N
+.type C
+.type P
+
+.decl Rule(n: number)
+.input Rule
+
+.decl ProductName(v0: N, v1: P)
+.input ProductName
+
+.decl CustomerCity(v0: H, v1: C)
+.input CustomerCity
+
+.decl HasOrdered(v0: H, v1: N)
+.input HasOrdered
+
+.decl ShipTo(v0: P, v1: C)
+.output ShipTo
+
+
+ShipTo(v0, v1) :- ShipTo(v0, v1), Rule(0).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), Rule(1).
+ShipTo(v0, v1) :- ProductName(v2, v0), ProductName(v2, v0), ShipTo(v0, v1), Rule(2).
+ShipTo(v0, v1) :- ProductName(v2, v3), ProductName(v2, v0), ShipTo(v3, v1), Rule(3).
+ShipTo(v0, v1) :- ProductName(v2, v3), ProductName(v2, v3), ShipTo(v0, v1), Rule(4).
+ShipTo(v0, v1) :- ProductName(v2, v0), ProductName(v2, v3), ShipTo(v3, v1), Rule(5).
+ShipTo(v0, v1) :- ProductName(v2, v0), CustomerCity(v3, v1), HasOrdered(v3, v2), Rule(6).
+ShipTo(v0, v1) :- CustomerCity(v2, v1), CustomerCity(v2, v1), ShipTo(v0, v1), Rule(7).
+ShipTo(v0, v1) :- CustomerCity(v2, v3), CustomerCity(v2, v3), ShipTo(v0, v1), Rule(8).
+ShipTo(v0, v1) :- CustomerCity(v2, v1), CustomerCity(v2, v3), ShipTo(v0, v3), Rule(9).
+ShipTo(v0, v1) :- CustomerCity(v2, v3), CustomerCity(v2, v1), ShipTo(v0, v3), Rule(10).
+ShipTo(v0, v1) :- HasOrdered(v2, v3), HasOrdered(v2, v3), ShipTo(v0, v1), Rule(11).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(12).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(13).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(14).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(15).
+ShipTo(v0, v1) :- ShipTo(v2, v1), ShipTo(v2, v1), ShipTo(v0, v1), Rule(16).
+ShipTo(v0, v1) :- ShipTo(v2, v1), ShipTo(v0, v1), ShipTo(v2, v1), Rule(17).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v2, v1), ShipTo(v2, v1), Rule(18).
+ShipTo(v0, v1) :- ShipTo(v2, v3), ShipTo(v0, v3), ShipTo(v2, v1), Rule(19).
+ShipTo(v0, v1) :- ShipTo(v2, v1), ShipTo(v0, v3), ShipTo(v2, v3), Rule(20).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v2, v3), ShipTo(v2, v3), Rule(21).
+ShipTo(v0, v1) :- ShipTo(v2, v3), ShipTo(v2, v3), ShipTo(v0, v1), Rule(22).
+ShipTo(v0, v1) :- ShipTo(v2, v3), ShipTo(v0, v1), ShipTo(v2, v3), Rule(23).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(24).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(25).
+ShipTo(v0, v1) :- ShipTo(v2, v1), ShipTo(v2, v3), ShipTo(v0, v3), Rule(26).
+ShipTo(v0, v1) :- ShipTo(v2, v3), ShipTo(v2, v1), ShipTo(v0, v3), Rule(27).

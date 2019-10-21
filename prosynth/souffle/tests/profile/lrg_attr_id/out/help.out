@@ -1,0 +1,22 @@
+
+Available profiling commands:
+  rel                           -     display relation table.
+  rel <relation id>             -     display all rules of a given relation.
+  rul                           -     display rule table
+  rul <rule id>                 -     display all version of given rule.
+  rul id                        -     display all rules names and ids.
+  rul id <rule id>              -     display the rule name for the given rule id.
+  graph <relation id> <type>    -     graph a relation by type: (tot_t/copy_t/tuples).
+  graph <rule id> <type>        -     graph recursive(C) rule by type(tot_t/tuples).
+  graph ver <rule id> <type>    -     graph recursive(C) rule versions by type(tot_t/copy_t/tuples).
+  top                           -     display top-level summary of program run.
+  configuration                 -     display configuration settings for this run.
+  usage [relation id|rule id]   -     display CPU usage graphs for a relation or rule.
+  memory                        -     display memory usage.
+  help                          -     print this.
+
+Interactive mode only commands:
+  limit <row count>             -     limit number of results shown.
+  sort <col number>             -     sort tables by given column number.
+  q                             -     exit program.
+

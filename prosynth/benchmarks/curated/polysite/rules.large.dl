@@ -1,0 +1,141 @@
+.type M
+.type C
+.type I
+
+.decl Rule(n: number)
+.input Rule
+
+.decl CICM(v0: C, v1: I, v2: M)
+.input CICM
+
+.decl virtIM(v0: I, v1: M)
+.input virtIM
+
+.decl Mneq(v0: M, v1: M)
+.input Mneq
+
+.decl insvIM(v0: I, v1: M)
+.output insvIM
+
+.decl virtI(v0: I)
+.output virtI
+
+.decl polySite(v0: I)
+.output polySite
+
+
+
+insvIM(v0, v1) :- virtIM(v0, v1), Rule(0).
+insvIM(v0, v1) :- insvIM(v0, v1), Rule(1).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v1), Rule(2).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), Rule(3).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), Rule(4).
+insvIM(v0, v1) :- virtIM(v0, v1), insvIM(v0, v1), Rule(5).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v2), Rule(6).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v2), Rule(7).
+insvIM(v0, v1) :- insvIM(v0, v1), insvIM(v0, v1), Rule(8).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v1), virtIM(v0, v1), Rule(9).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), virtIM(v0, v2), Rule(10).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), virtIM(v0, v1), Rule(11).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), virtIM(v0, v2), Rule(12).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v2), virtIM(v3, v1), Rule(13).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v1), virtIM(v3, v2), Rule(14).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), Mneq(v2, v1), Rule(15).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), Mneq(v1, v2), Rule(16).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), Mneq(v2, v1), Rule(17).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), Mneq(v1, v2), Rule(18).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), Mneq(v2, v1), Rule(19).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), Mneq(v1, v2), Rule(20).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v1), insvIM(v0, v1), Rule(21).
+insvIM(v0, v1) :- virtIM(v0, v1), virtIM(v0, v2), insvIM(v0, v2), Rule(22).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v2), insvIM(v0, v1), Rule(23).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v0, v1), insvIM(v0, v2), Rule(24).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v2), insvIM(v3, v1), Rule(25).
+insvIM(v0, v1) :- virtIM(v0, v2), virtIM(v3, v1), insvIM(v3, v2), Rule(26).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v1, v2), Mneq(v2, v1), Rule(27).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v1, v2), Mneq(v1, v2), Rule(28).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v1), Mneq(v2, v1), Rule(29).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v1), Mneq(v1, v2), Rule(30).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), Mneq(v2, v1), Rule(31).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), Mneq(v1, v2), Rule(32).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), Mneq(v2, v1), Rule(33).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), Mneq(v1, v2), Rule(34).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v2), Mneq(v3, v1), Rule(35).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v1), Mneq(v2, v3), Rule(36).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v2), Mneq(v1, v3), Rule(37).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v3), Mneq(v2, v3), Rule(38).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v3), Mneq(v2, v3), Rule(39).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v3), Mneq(v1, v3), Rule(40).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v3), Mneq(v3, v1), Rule(41).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v3, v1), Mneq(v3, v2), Rule(42).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v3), Mneq(v3, v2), Rule(43).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v3), Mneq(v3, v2), Rule(44).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), insvIM(v0, v1), Rule(45).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), insvIM(v0, v1), Rule(46).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v2, v1), insvIM(v0, v2), Rule(47).
+insvIM(v0, v1) :- virtIM(v0, v1), Mneq(v1, v2), insvIM(v0, v2), Rule(48).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v1, v2), insvIM(v0, v2), Rule(49).
+insvIM(v0, v1) :- virtIM(v0, v2), Mneq(v2, v1), insvIM(v0, v2), Rule(50).
+insvIM(v0, v1) :- virtIM(v0, v1), insvIM(v0, v1), insvIM(v0, v1), Rule(51).
+insvIM(v0, v1) :- virtIM(v0, v1), insvIM(v0, v2), insvIM(v0, v2), Rule(52).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v0, v2), insvIM(v0, v1), Rule(53).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v0, v1), insvIM(v0, v2), Rule(54).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v3, v2), insvIM(v3, v1), Rule(55).
+insvIM(v0, v1) :- virtIM(v0, v2), insvIM(v3, v1), insvIM(v3, v2), Rule(56).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v2, v1), insvIM(v0, v1), Rule(57).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v2, v1), insvIM(v0, v1), Rule(58).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v1, v2), insvIM(v0, v1), Rule(59).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v1, v2), insvIM(v0, v1), Rule(60).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v1, v2), insvIM(v0, v2), Rule(61).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v2, v1), insvIM(v0, v2), Rule(62).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v1, v2), insvIM(v0, v2), Rule(63).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v2, v1), insvIM(v0, v2), Rule(64).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v2, v3), insvIM(v0, v1), Rule(65).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v3, v2), insvIM(v0, v1), Rule(66).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v1, v2), insvIM(v0, v3), Rule(67).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v2, v1), insvIM(v0, v3), Rule(68).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v2, v3), insvIM(v0, v3), Rule(69).
+insvIM(v0, v1) :- Mneq(v2, v1), Mneq(v3, v2), insvIM(v0, v3), Rule(70).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v2, v3), insvIM(v0, v3), Rule(71).
+insvIM(v0, v1) :- Mneq(v1, v2), Mneq(v3, v2), insvIM(v0, v3), Rule(72).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v1, v3), insvIM(v0, v2), Rule(73).
+insvIM(v0, v1) :- Mneq(v2, v3), Mneq(v3, v1), insvIM(v0, v2), Rule(74).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v2), insvIM(v0, v1), Rule(75).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v1), insvIM(v0, v2), Rule(76).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v2), insvIM(v0, v1), Rule(77).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v1), insvIM(v0, v2), Rule(78).
+insvIM(v0, v1) :- Mneq(v2, v1), insvIM(v0, v2), insvIM(v0, v2), Rule(79).
+insvIM(v0, v1) :- Mneq(v1, v2), insvIM(v0, v2), insvIM(v0, v2), Rule(80).
+insvIM(v0, v1) :- insvIM(v0, v1), insvIM(v0, v1), insvIM(v0, v1), Rule(81).
+insvIM(v0, v1) :- insvIM(v0, v1), insvIM(v0, v2), insvIM(v0, v2), Rule(82).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v0, v2), insvIM(v0, v1), Rule(83).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v0, v1), insvIM(v0, v2), Rule(84).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v3, v2), insvIM(v3, v1), Rule(85).
+insvIM(v0, v1) :- insvIM(v0, v2), insvIM(v3, v1), insvIM(v3, v2), Rule(86).
+virtI(v0) :- virtI(v0), Rule(87).
+virtI(v0) :- virtI(v0), virtI(v0), Rule(88).
+virtI(v0) :- virtI(v0), virtI(v0), virtI(v0), Rule(89).
+virtI(v0) :- virtI(v0), virtI(v1), virtI(v1), Rule(90).
+virtI(v0) :- virtI(v1), virtI(v1), virtI(v0), Rule(91).
+virtI(v0) :- virtI(v1), virtI(v0), virtI(v1), Rule(92).
+polySite(v0) :- virtI(v0), Rule(93).
+polySite(v0) :- polySite(v0), Rule(94).
+polySite(v0) :- virtI(v0), virtI(v0), Rule(95).
+polySite(v0) :- virtI(v0), polySite(v0), Rule(96).
+polySite(v0) :- polySite(v0), polySite(v0), Rule(97).
+polySite(v0) :- virtI(v0), virtI(v0), virtI(v0), Rule(98).
+polySite(v0) :- virtI(v0), virtI(v1), virtI(v1), Rule(99).
+polySite(v0) :- virtI(v1), virtI(v1), virtI(v0), Rule(100).
+polySite(v0) :- virtI(v1), virtI(v0), virtI(v1), Rule(101).
+polySite(v0) :- virtI(v0), virtI(v0), polySite(v0), Rule(102).
+polySite(v0) :- virtI(v0), virtI(v1), polySite(v1), Rule(103).
+polySite(v0) :- virtI(v1), virtI(v1), polySite(v0), Rule(104).
+polySite(v0) :- virtI(v1), virtI(v0), polySite(v1), Rule(105).
+polySite(v0) :- virtI(v0), polySite(v0), polySite(v0), Rule(106).
+polySite(v0) :- virtI(v0), polySite(v1), polySite(v1), Rule(107).
+polySite(v0) :- virtI(v1), polySite(v1), polySite(v0), Rule(108).
+polySite(v0) :- virtI(v1), polySite(v0), polySite(v1), Rule(109).
+polySite(v0) :- polySite(v0), polySite(v0), polySite(v0), Rule(110).
+polySite(v0) :- polySite(v0), polySite(v1), polySite(v1), Rule(111).
+polySite(v0) :- polySite(v1), polySite(v1), polySite(v0), Rule(112).
+polySite(v0) :- polySite(v1), polySite(v0), polySite(v1), Rule(113).

@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Provenance-aware Datalog Synthesis Tool
+# The Ad-hoc Clause Learning Algorithm
+
+# NOTE: This script is present for historical purposes only, and is subsumed by scripts/prosynth
+
+# Invocation: ./scripts/variants/adhoc PROBLEM_DIR
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.dl: Specifies the signatures of the EDB and IDB relations, and the set of candidate rules
+#              Also contains a one-place input relation named Rule(n)
+# 2. ruleNames.txt: Provides the set of valid rule names, which can be used to populate the Rule.facts file
+# 3. R.facts, for each input relation R other than Rule: Specifies the EDB
+# 4. R.expected, for each output relation R: Specified the expected IDB
+# 5. a.out: Executable produced by Souffle with -t explain enabled
+
+# rules.dl and R.facts are expected to be a in a format recognized by Souffle
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import json
+import logging
+import os
+import subprocess
+import sys
+import z3
+
+numWhy = 0
+numWhyNot = 0
+
+scriptPath = sys.argv[0]
+problemDirName = sys.argv[1]
+
+logging.basicConfig(level=logging.INFO, \
+                    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s", \
+                    datefmt="%H:%M:%S")
+
+# 1a. Load the set of rules and IDB relations
+
+allRuleNames = { name.strip() for name in open(problemDirName + '/ruleNames.txt') if name.strip() }
+allRuleNames = { name: z3.Bool(name) for name in allRuleNames }
+
+def loadRelation(filename):
+    ans = { line.strip() for line in open(filename) if line.strip() }
+    ans = { tuple(line.split('\t')) for line in ans }
+    return ans
+
+idbRelationsExpected = { name for name in os.listdir(problemDirName) if name.endswith('.expected') }
+idbRelationsExpected = { name[:-len('.expected')] for name in idbRelationsExpected }
+idbRelationsExpected = { name: loadRelation(problemDirName + '/' + name + '.expected') for name in idbRelationsExpected }
+
+# 1b. Initialize the constraint solver
+
+solver = z3.Solver()
+def satisfyingRuleSet(default):
+    # Determines the set of rules that should be switched on to satisfy the current set of constraints
+    # Includes presently unconstrained rules iff default is true
+    solver.check()
+    m = solver.model()
+    logging.info("z3 model generated")
+    ans1 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == True }
+    ans2 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == None } if default else set()
+    return ans1 | ans2
+
+# solnConstraint = z3.BoolVal(True)
+# for ruleName in { '101', '134', '64' }: solnConstraint = z3.And(solnConstraint, allRuleNames[ruleName])
+# solver.add(solnConstraint)
+
+def doSanity():
+    solver.push()
+    # solver.add(solnConstraint)
+    solver.check()
+    solver.model()
+    solver.pop()
+doSanity()
+
+# rootConstraint = z3.BoolVal(False)
+# for ruleName in allRuleNames: rootConstraint = z3.Or(allRuleNames[ruleName])
+# solver.add(rootConstraint)
+
+# 1c. Helper method to create Rule.facts file
+
+def printRuleEDB(ruleSet):
+    with open(problemDirName + '/Rule.facts', 'w') as outFile:
+        for name in ruleSet: print(name, file=outFile)
+
+########################################################################################################################
+# 3. Repeatedly add constraints until a satisfying assignment is found
+
+iterationNum = 0
+while True:
+    currRuleSetLarge = satisfyingRuleSet(True)
+    
+    solved = True
+
+    iterationNum += 1
+    print("\n\n--------Iteration " + str(iterationNum) + "--------")
+    print("rPlus: " + str(sorted(currRuleSetLarge)))
+    print("rMinus: " + str(sorted(set(allRuleNames) - currRuleSetLarge)))
+    logging.info("Culumative Number of Constraints -- Why: " + str(numWhy) + ', WhyNot: ' + str(numWhyNot))
+
+    printRuleEDB(currRuleSetLarge)
+    logging.info("rPlus printed to Rule.facts")
+    with subprocess.Popen([ problemDirName + '/souffle.out', '-F', problemDirName, '-D', problemDirName ], \
+                          stdin=subprocess.PIPE, \
+                          stdout=subprocess.PIPE, \
+                          universal_newlines=True) as souffleProc:
+
+        ################################################################################################################
+        # 3a. Set up communication with Souffle
+
+        logging.info("Souffle invoked")
+        while souffleProc.stdout.readline().strip() != '###': pass
+        while souffleProc.stdout.readline().strip() != '###': pass
+        def execSouffleCmd(cmd):
+            #logging.info('prosynth to souffle: ' + cmd)
+            print(cmd, file=souffleProc.stdin)
+            souffleProc.stdin.flush()
+
+            response = [ souffleProc.stdout.readline().strip() ]
+            while response[-1] != '###': response.append(souffleProc.stdout.readline().strip())
+            response = response[:-1]
+            ans = '\n'.join(response)
+            #logging.info('souffle to prosynth: ' + ans)
+            return ans
+        execSouffleCmd('format json')
+        execSouffleCmd('setdepth 200000')
+
+        ################################################################################################################
+        # 3b. Functions to print and parse tuples in the Souffle executable format
+
+        def printSouffleString(relName, t):
+            t = tuple( '"{}"'.format(x) for x in t )
+            t = ', '.join(t)
+            return '{}({})'.format(relName, t)
+
+        def parseSouffleString(string):
+            xs = string.split('(')
+            assert(len(xs) == 2)
+            relName = xs[0].strip()
+            xs = xs[1]
+            xs = xs.split(')')[0].strip()
+            xs = [ x.strip() for x in xs.split(',') ]
+            for x in xs: assert(x.startswith('"') and x.endswith('"'))
+            xs = tuple([ x[1:-1].strip() for x in xs ])
+            return (relName, xs)
+
+        ################################################################################################################
+        # 3b. Functions to query provenance
+        #     The provenance object returned by Souffle is a list of hypothesis provenance objects H*, each of which is
+        #     of the form:
+        #     1. { 'axiom': T }, for a tuple T, or
+        #     2. { 'premises': T, 'children': H* }, for a tuple T, and a list of hypothesis provenance objects, H*
+
+        def cleanProvenanceJson(provenance):
+            def cleanProvenanceJsonInt(p):
+                if type(p) is dict:
+                    p = { key: value for key, value in p.items() if key != 'rules' }
+                    p = { key: value for key, value in p.items() if key != 'rule-number' }
+                    p = { key: cleanProvenanceJsonInt(value) for key, value in p.items() }
+                elif type(p) is list:
+                    p = [ cleanProvenanceJsonInt(value) for value in p ]
+                return p
+            provenance = cleanProvenanceJsonInt(provenance)
+            assert(len(provenance) == 1)
+            assert('proof' in provenance)
+            provenance = provenance['proof']['children']
+            return provenance
+
+        def squashDesirableConclusions(provenance):
+            if type(provenance) is dict:
+                if 'premises' in provenance:
+                    premiseRel, premiseT = parseSouffleString(provenance['premises'])
+                    if premiseRel in idbRelationsExpected and premiseT in idbRelationsExpected[premiseRel]:
+                        provenance = { 'axiom': provenance['premises'] }
+                    else: provenance = { key: squashDesirableConclusions(value) for key, value in provenance.items() }
+            elif type(provenance) is list:
+               provenance = [ squashDesirableConclusions(elem) for elem in provenance ]
+            return provenance
+
+        def collectIntermediateConclusions(provenance):
+            if type(provenance) is dict:
+                premises = { premise for key, value in provenance.items() \
+                                     for premise in collectIntermediateConclusions(value) }
+                if 'premises' in provenance: premises = premises | { parseSouffleString(provenance['premises']) }
+                return premises
+            elif type(provenance) is list:
+                return { premise for elem in provenance for premise in collectIntermediateConclusions(elem) }
+            else: return set()
+
+        def collectRules(provenance):
+            if type(provenance) is dict:
+                rules = { rule for key, value in provenance.items() for rule in collectRules(value) }
+                if 'axiom' in provenance and provenance['axiom'].startswith('Rule'):
+                    rules = rules | { provenance['axiom'][len('Rule') + 1:-1] }
+                return rules
+            elif type(provenance) is list:
+                rules = { rule for elem in provenance for rule in collectRules(elem) }
+                return rules
+            else: return set()
+
+        def getProvenance(relName, t):
+            provenance1 = execSouffleCmd('explain ' + printSouffleString(relName, t))
+            provenance2 = json.loads(provenance1)
+            provenance3 = cleanProvenanceJson(provenance2)
+            provenance4 = squashDesirableConclusions(provenance3)
+            
+            # if provenance3 != provenance4:
+            #     logging.info(provenance3)
+            #     logging.info(provenance4)
+            return provenance4
+
+        def why(relName, t):
+            provenance = getProvenance(relName, t)
+            #for hypRelName, hypT in collectIntermediateConclusions(provenance):
+            #    if hypRelName in idbRelationsExpected and hypT not in idbRelationsExpected[hypRelName]:
+            #        logging.debug('Tuple {} depends on absurd hypothesis {}'.format((relName, t), (hypRelName, hypT)))
+            #        return None
+            rules = collectRules(provenance)
+            #print(rules)
+            outputStr = "WHY constraint added: [not ("
+            for ruleName in rules:
+                outputStr += str(ruleName) + " and "
+            outputStr = outputStr[:len(outputStr)-5]
+            outputStr += ")] because "
+            outputStr += str(t) + " is undesirable and produced"
+            print(outputStr)
+            #logging.info('Tuple {} depends on rules {}'.format((relName, t), sorted(rules)))
+            ans = z3.BoolVal(True)
+            for ruleName in rules: ans = z3.And(ans, allRuleNames[ruleName])
+            return ans
+
+        def whyNot():
+            ans = z3.BoolVal(False)
+
+            outputStr = "WHYNOT constraint added: ["
+
+            for ruleName in allRuleNames:
+                if ruleName not in currRuleSetLarge:
+                    ans = z3.Or(ans, allRuleNames[ruleName])
+                    outputStr += str(ruleName) + " or "
+
+            outputStr = outputStr[:len(outputStr)-4]
+            outputStr += "] because "
+            outputStr += str(t) + " is desirable and unproduced"
+
+            print(outputStr)
+            return ans
+
+        ################################################################################################################
+        # 3c. Iterate over all tuples
+
+        for relName in idbRelationsExpected:
+            #logging.info(relName)
+            relProduced = loadRelation(problemDirName + '/' + relName + '.csv')
+
+            # 3c(i) Tuples which are expected and produced
+            # We do not have anything to learn from these tuples
+            #for t in relProduced & idbRelationsExpected[relName]:
+                #logging.info('Solution produces desirable tuple: ' + printSouffleString(relName, t))
+
+            # 3c(ii) Tuples which are unexpected but still produced
+            # Here, we ask the question: ``Why was this tuple produced?''
+            
+            for t in relProduced - idbRelationsExpected[relName]:
+                #logging.info('Solution produces undesirable tuple ' + printSouffleString(relName, t))
+                solved = False
+                whyRelT = why(relName, t)
+                if whyRelT != None:
+                    solver.add(z3.Not(whyRelT))
+                    numWhy+=1
+                    doSanity()
+
+            # 3c(iii) Tuples which were expected but not produced
+            # Here, we ask the question: ``Why was this tuple not produced?''
+            unproducedDesirable = False
+            for t in idbRelationsExpected[relName] - relProduced:
+                #logging.info('Solution fails to produce desirable tuple ' + printSouffleString(relName, t))
+                solved = False
+                unproducedDesirable = True
+
+            if unproducedDesirable:
+                whyNotRelT = whyNot()
+                if whyNotRelT != None:
+                    solver.add(whyNotRelT)
+                    numWhyNot+=1
+                    doSanity()
+            
+                # pass
+
+        ################################################################################################################
+        # 3d. Find useful rules
+
+        if solved:
+            ans = { ruleName for relName in idbRelationsExpected \
+                             for t in idbRelationsExpected[relName] \
+                             for ruleName in collectRules(getProvenance(relName, t)) }
+            print(ans)
+            break

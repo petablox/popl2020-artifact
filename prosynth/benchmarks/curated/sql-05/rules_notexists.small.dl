@@ -1,0 +1,31 @@
+.type supplier_key
+.type part_id
+.type part_name
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+.decl input2(v0: part_id, v1: part_name)
+.input input2
+
+.decl input1_notexists(v0: supplier_key, v1: part_id, v2: number)
+.output input1_notexists
+.decl input2_notexists(v0: part_id, v1: part_name, v2: number)
+.output input2_notexists
+
+.decl ans_notexists(v0: part_name, v1: number)
+.output ans_notexists
+
+input1_notexists(v0, v1, ruleIndex) :- input1(v0, v1), Rule(ruleIndex).
+input2_notexists(v0, v1, ruleIndex) :- input2(v0, v1), Rule(ruleIndex).
+ans_notexists(v1, ruleIndex) :- input2_notexists(v0, v1, ruleIndex), input2_notexists(v2, v1, ruleIndex), ruleIndex != 5, Rule(5).
+ans_notexists(v3, ruleIndex) :- input1_notexists(v0, v1, ruleIndex), input1_notexists(v0, v2, ruleIndex), input2_notexists(v2, v3, ruleIndex), ruleIndex != 8, Rule(8).
+ans_notexists(v2, ruleIndex) :- input2_notexists(v0, v1, ruleIndex), input2_notexists(v0, v2, ruleIndex), ruleIndex != 2, Rule(2).
+ans_notexists(v2, ruleIndex) :- ans_notexists(v0, ruleIndex), input2_notexists(v1, v0, ruleIndex), input2_notexists(v1, v2, ruleIndex), ruleIndex != 1, Rule(1).
+ans_notexists(v1, ruleIndex) :- input2_notexists(v0, v1, ruleIndex), ruleIndex != 7, Rule(7).
+ans_notexists(v2, ruleIndex) :- input2_notexists(v0, v1, ruleIndex), input2_notexists(v0, v2, ruleIndex), input2_notexists(v3, v2, ruleIndex), ruleIndex != 0, Rule(0).
+ans_notexists(v3, ruleIndex) :- input2_notexists(v0, v1, ruleIndex), input2_notexists(v2, v1, ruleIndex), input2_notexists(v2, v3, ruleIndex), ruleIndex != 3, Rule(3).
+ans_notexists(v2, ruleIndex) :- input1_notexists(v0, v1, ruleIndex), input2_notexists(v1, v2, ruleIndex), ruleIndex != 6, Rule(6).
+ans_notexists(v2, ruleIndex) :- input1_notexists(v0, v1, ruleIndex), input2_notexists(v1, v2, ruleIndex), input2_notexists(v3, v2, ruleIndex), ruleIndex != 4, Rule(4).

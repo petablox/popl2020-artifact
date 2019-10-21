@@ -1,0 +1,94 @@
+.type L
+.type X
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Certificate(v0: X, v1: L)
+.input Certificate
+.decl Verify(v0: X, v1: L)
+.input Verify
+.decl Check(v0: X, v1: L)
+.input Check
+.decl opSucc(v0: L, v1: L)
+.input opSucc
+
+.decl inv1(v0: X, v1: L)
+.output inv1
+.decl inv2(v0: L)
+.output inv2
+.decl inv3(v0: X, v1: L)
+.output inv3
+.decl inv4(v0: L)
+.output inv4
+
+.decl Correct(v0: L)
+.output Correct
+
+inv4(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(21).
+Correct(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(29).
+inv4(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(51).
+inv4(v0) :- inv2(v0), Rule(64).
+inv4(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(39).
+inv4(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(66).
+Correct(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(40).
+inv4(v0) :- Correct(v0), Rule(58).
+inv2(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(2).
+Correct(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(52).
+inv4(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(34).
+Correct(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(44).
+Correct(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(6).
+inv2(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(5).
+inv2(v0) :- Correct(v0), Rule(45).
+inv2(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(36).
+Correct(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(25).
+Correct(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(28).
+inv4(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(56).
+inv1(v0, v2) :- Check(v0, v1), opSucc(v1, v2), Rule(20).
+Correct(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(38).
+inv4(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(30).
+Correct(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(12).
+Correct(v0) :- inv4(v0), Rule(43).
+inv2(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(62).
+inv4(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(47).
+inv1(v0, v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(53).
+inv2(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(11).
+inv4(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(22).
+Correct(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(19).
+inv1(v0, v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(54).
+inv2(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(42).
+inv2(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(14).
+inv3(v0, v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(1).
+Correct(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(16).
+inv2(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(63).
+inv2(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(41).
+inv3(v0, v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(7).
+Correct(v0) :- inv2(v0), inv4(v0), Rule(10).
+inv2(v0) :- inv4(v0), Rule(59).
+inv2(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(57).
+inv2(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(18).
+inv4(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(15).
+Correct(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(37).
+inv3(v0, v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(48).
+inv2(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(13).
+Correct(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(23).
+inv4(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(3).
+inv4(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(49).
+inv1(v0, v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(55).
+Correct(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(27).
+Correct(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(65).
+Correct(v0) :- inv2(v0), Rule(46).
+inv4(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(60).
+Correct(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(35).
+inv4(v0) :- Correct(v0), inv2(v0), Rule(0).
+inv3(v0, v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(26).
+inv4(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(8).
+inv3(v0, v2) :- Check(v0, v1), opSucc(v1, v2), Rule(50).
+inv4(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(33).
+inv1(v0, v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(32).
+inv2(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(4).
+inv2(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(31).
+inv2(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(9).
+inv4(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(61).
+inv2(v0) :- Correct(v0), inv4(v0), Rule(24).
+inv2(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(17).

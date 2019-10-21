@@ -1,0 +1,29 @@
+.type ID
+.type Name
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Child(v0: ID, v1: Name, v2: ID)
+.input Child
+.decl Parent(v0: ID, v1: Name, v2: ID)
+.input Parent
+
+.decl Child_notexists(v0: ID, v1: Name, v2: ID, v3: number)
+.output Child_notexists
+.decl Parent_notexists(v0: ID, v1: Name, v2: ID, v3: number)
+.output Parent_notexists
+
+.decl Out_notexists(v0: ID, v1: Name, v2: ID, v3: number)
+.output Out_notexists
+
+Child_notexists(v0, v1, v2, ruleIndex) :- Child(v0, v1, v2), Rule(ruleIndex).
+Parent_notexists(v0, v1, v2, ruleIndex) :- Parent(v0, v1, v2), Rule(ruleIndex).
+Out_notexists(v0, v1, v2, ruleIndex) :- Child_notexists(v0, v1, v2, ruleIndex), ruleIndex != 5, Rule(5).
+Out_notexists(v2, v1, v2, ruleIndex) :- Parent_notexists(v0, v1, v2, ruleIndex), ruleIndex != 1, Rule(1).
+Out_notexists(v2, v1, v2, ruleIndex) :- Child_notexists(v0, v1, v2, ruleIndex), ruleIndex != 7, Rule(7).
+Out_notexists(v2, v1, v2, ruleIndex) :- Out_notexists(v0, v1, v2, ruleIndex), ruleIndex != 6, Rule(6).
+Out_notexists(v0, v1, v0, ruleIndex) :- Child_notexists(v0, v1, v2, ruleIndex), ruleIndex != 2, Rule(2).
+Out_notexists(v0, v1, v2, ruleIndex) :- Parent_notexists(v0, v1, v2, ruleIndex), ruleIndex != 0, Rule(0).
+Out_notexists(v0, v1, v0, ruleIndex) :- Out_notexists(v0, v1, v2, ruleIndex), ruleIndex != 3, Rule(3).
+Out_notexists(v0, v1, v0, ruleIndex) :- Parent_notexists(v0, v1, v2, ruleIndex), ruleIndex != 4, Rule(4).

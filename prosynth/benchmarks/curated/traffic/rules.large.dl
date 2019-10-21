@@ -1,0 +1,901 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl GreenSignal(v0: V)
+.input GreenSignal
+
+.decl HasTraffic(v0: V)
+.input HasTraffic
+
+.decl Intersect(v0: V)
+.input Intersect
+
+.decl inv(v0: V, v1: V)
+.output inv
+
+.decl Crashes(v0: V)
+.output Crashes
+
+
+inv(v0, v1) :- inv(v0, v1), Rule(0).
+inv(v0, v1) :- inv(v1, v0), Rule(1).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), Rule(2).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), Rule(3).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), Rule(4).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), Rule(5).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v1), Rule(6).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v0), Rule(7).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v0), Rule(8).
+inv(v0, v1) :- GreenSignal(v0), inv(v0, v1), Rule(9).
+inv(v0, v1) :- GreenSignal(v1), inv(v1, v0), Rule(10).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v1), Rule(11).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), Rule(12).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), Rule(13).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v1), Rule(14).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v0), Rule(15).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v0), Rule(16).
+inv(v0, v1) :- HasTraffic(v0), inv(v0, v1), Rule(17).
+inv(v0, v1) :- HasTraffic(v1), inv(v1, v0), Rule(18).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v1), Rule(19).
+inv(v0, v1) :- Intersect(v0), Intersect(v1), Rule(20).
+inv(v0, v1) :- Intersect(v1), Intersect(v0), Rule(21).
+inv(v0, v1) :- Intersect(v0), inv(v1, v0), Rule(22).
+inv(v0, v1) :- Intersect(v0), inv(v0, v1), Rule(23).
+inv(v0, v1) :- Intersect(v1), inv(v1, v0), Rule(24).
+inv(v0, v1) :- Intersect(v1), inv(v0, v1), Rule(25).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v0), Rule(26).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v1), Rule(27).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v0), Rule(28).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v1), Rule(29).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), Rule(30).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), Rule(31).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), Rule(32).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), Rule(33).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), Rule(34).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), Rule(35).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), Rule(36).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), Rule(37).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), GreenSignal(v0), Rule(38).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), GreenSignal(v0), Rule(39).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v0), GreenSignal(v1), Rule(40).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), GreenSignal(v1), Rule(41).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v1), GreenSignal(v0), Rule(42).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), GreenSignal(v1), Rule(43).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), HasTraffic(v0), Rule(44).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), HasTraffic(v0), Rule(45).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v0), HasTraffic(v1), Rule(46).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), HasTraffic(v1), Rule(47).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v1), HasTraffic(v0), Rule(48).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), HasTraffic(v1), Rule(49).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), Intersect(v0), Rule(50).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), Intersect(v0), Rule(51).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v0), Intersect(v1), Rule(52).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), Intersect(v1), Rule(53).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v1), Intersect(v0), Rule(54).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), Intersect(v1), Rule(55).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v0), inv(v0, v1), Rule(56).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v0), inv(v1, v0), Rule(57).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), inv(v1, v0), Rule(58).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v0), inv(v0, v1), Rule(59).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), inv(v1, v0), Rule(60).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v1), inv(v0, v1), Rule(61).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v1), inv(v1, v0), Rule(62).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v1), inv(v0, v1), Rule(63).
+inv(v0, v1) :- GreenSignal(v2), GreenSignal(v0), inv(v1, v2), Rule(64).
+inv(v0, v1) :- GreenSignal(v2), GreenSignal(v1), inv(v0, v2), Rule(65).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v2), inv(v2, v0), Rule(66).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v2), inv(v2, v1), Rule(67).
+inv(v0, v1) :- GreenSignal(v2), GreenSignal(v2), inv(v1, v0), Rule(68).
+inv(v0, v1) :- GreenSignal(v0), GreenSignal(v2), inv(v1, v2), Rule(69).
+inv(v0, v1) :- GreenSignal(v2), GreenSignal(v0), inv(v2, v1), Rule(70).
+inv(v0, v1) :- GreenSignal(v2), GreenSignal(v2), inv(v0, v1), Rule(71).
+inv(v0, v1) :- GreenSignal(v2), GreenSignal(v1), inv(v2, v0), Rule(72).
+inv(v0, v1) :- GreenSignal(v1), GreenSignal(v2), inv(v0, v2), Rule(73).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), HasTraffic(v0), Rule(74).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), HasTraffic(v0), Rule(75).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v0), HasTraffic(v1), Rule(76).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), HasTraffic(v1), Rule(77).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v1), HasTraffic(v0), Rule(78).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), HasTraffic(v1), Rule(79).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), Intersect(v0), Rule(80).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), Intersect(v0), Rule(81).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v0), Intersect(v1), Rule(82).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), Intersect(v1), Rule(83).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v1), Intersect(v0), Rule(84).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), Intersect(v1), Rule(85).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v0), inv(v0, v1), Rule(86).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v0), inv(v1, v0), Rule(87).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), inv(v1, v0), Rule(88).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v0), inv(v0, v1), Rule(89).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), inv(v1, v0), Rule(90).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v1), inv(v0, v1), Rule(91).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v1), inv(v1, v0), Rule(92).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v1), inv(v0, v1), Rule(93).
+inv(v0, v1) :- GreenSignal(v2), HasTraffic(v0), inv(v1, v2), Rule(94).
+inv(v0, v1) :- GreenSignal(v2), HasTraffic(v1), inv(v0, v2), Rule(95).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v2), inv(v2, v0), Rule(96).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v2), inv(v2, v1), Rule(97).
+inv(v0, v1) :- GreenSignal(v2), HasTraffic(v2), inv(v1, v0), Rule(98).
+inv(v0, v1) :- GreenSignal(v0), HasTraffic(v2), inv(v1, v2), Rule(99).
+inv(v0, v1) :- GreenSignal(v2), HasTraffic(v0), inv(v2, v1), Rule(100).
+inv(v0, v1) :- GreenSignal(v2), HasTraffic(v2), inv(v0, v1), Rule(101).
+inv(v0, v1) :- GreenSignal(v2), HasTraffic(v1), inv(v2, v0), Rule(102).
+inv(v0, v1) :- GreenSignal(v1), HasTraffic(v2), inv(v0, v2), Rule(103).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v0), Intersect(v0), Rule(104).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v1), Intersect(v0), Rule(105).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v0), Intersect(v1), Rule(106).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v1), Intersect(v1), Rule(107).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v1), Intersect(v0), Rule(108).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v0), Intersect(v1), Rule(109).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v0), inv(v0, v1), Rule(110).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v0), inv(v1, v0), Rule(111).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v0), inv(v1, v0), Rule(112).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v0), inv(v0, v1), Rule(113).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v1), inv(v1, v0), Rule(114).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v1), inv(v0, v1), Rule(115).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v1), inv(v1, v0), Rule(116).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v1), inv(v0, v1), Rule(117).
+inv(v0, v1) :- GreenSignal(v2), Intersect(v0), inv(v1, v2), Rule(118).
+inv(v0, v1) :- GreenSignal(v2), Intersect(v1), inv(v0, v2), Rule(119).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v2), inv(v2, v0), Rule(120).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v2), inv(v2, v1), Rule(121).
+inv(v0, v1) :- GreenSignal(v2), Intersect(v2), inv(v1, v0), Rule(122).
+inv(v0, v1) :- GreenSignal(v0), Intersect(v2), inv(v1, v2), Rule(123).
+inv(v0, v1) :- GreenSignal(v2), Intersect(v0), inv(v2, v1), Rule(124).
+inv(v0, v1) :- GreenSignal(v2), Intersect(v2), inv(v0, v1), Rule(125).
+inv(v0, v1) :- GreenSignal(v2), Intersect(v1), inv(v2, v0), Rule(126).
+inv(v0, v1) :- GreenSignal(v1), Intersect(v2), inv(v0, v2), Rule(127).
+inv(v0, v1) :- GreenSignal(v0), inv(v0, v1), inv(v1, v0), Rule(128).
+inv(v0, v1) :- GreenSignal(v0), inv(v0, v1), inv(v0, v1), Rule(129).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v0), inv(v1, v0), Rule(130).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v0), inv(v0, v1), Rule(131).
+inv(v0, v1) :- GreenSignal(v1), inv(v1, v0), inv(v1, v0), Rule(132).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v1), inv(v0, v1), Rule(133).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v1), inv(v1, v0), Rule(134).
+inv(v0, v1) :- GreenSignal(v1), inv(v1, v0), inv(v0, v1), Rule(135).
+inv(v0, v1) :- GreenSignal(v1), inv(v2, v0), inv(v0, v2), Rule(136).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v0), inv(v0, v2), Rule(137).
+inv(v0, v1) :- GreenSignal(v0), inv(v2, v1), inv(v2, v0), Rule(138).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v2), inv(v0, v1), Rule(139).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v0), inv(v2, v0), Rule(140).
+inv(v0, v1) :- GreenSignal(v0), inv(v2, v0), inv(v1, v2), Rule(141).
+inv(v0, v1) :- GreenSignal(v0), inv(v2, v1), inv(v0, v2), Rule(142).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v2), inv(v2, v0), Rule(143).
+inv(v0, v1) :- GreenSignal(v0), inv(v0, v2), inv(v2, v1), Rule(144).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v2), inv(v0, v2), Rule(145).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v0), inv(v1, v0), Rule(146).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v2), inv(v0, v2), Rule(147).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v2), inv(v2, v0), Rule(148).
+inv(v0, v1) :- GreenSignal(v0), inv(v2, v0), inv(v2, v1), Rule(149).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v1), inv(v2, v0), Rule(150).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v2), inv(v1, v0), Rule(151).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v1), inv(v0, v2), Rule(152).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v0), inv(v0, v1), Rule(153).
+inv(v0, v1) :- GreenSignal(v0), inv(v0, v2), inv(v1, v2), Rule(154).
+inv(v0, v1) :- GreenSignal(v1), inv(v2, v0), inv(v2, v0), Rule(155).
+inv(v0, v1) :- GreenSignal(v1), inv(v2, v1), inv(v2, v0), Rule(156).
+inv(v0, v1) :- GreenSignal(v1), inv(v2, v0), inv(v1, v2), Rule(157).
+inv(v0, v1) :- GreenSignal(v1), inv(v2, v1), inv(v0, v2), Rule(158).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v0), inv(v1, v2), Rule(159).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v2), inv(v1, v0), Rule(160).
+inv(v0, v1) :- GreenSignal(v0), inv(v2, v1), inv(v1, v2), Rule(161).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v1), inv(v2, v1), Rule(162).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v2), inv(v1, v2), Rule(163).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v1), inv(v1, v0), Rule(164).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v2), inv(v1, v2), Rule(165).
+inv(v0, v1) :- GreenSignal(v1), inv(v1, v2), inv(v0, v2), Rule(166).
+inv(v0, v1) :- GreenSignal(v1), inv(v1, v2), inv(v2, v0), Rule(167).
+inv(v0, v1) :- GreenSignal(v1), inv(v2, v0), inv(v2, v1), Rule(168).
+inv(v0, v1) :- GreenSignal(v0), inv(v2, v1), inv(v2, v1), Rule(169).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v0), inv(v2, v1), Rule(170).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v2), inv(v0, v1), Rule(171).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v1), inv(v1, v2), Rule(172).
+inv(v0, v1) :- GreenSignal(v1), inv(v0, v2), inv(v2, v1), Rule(173).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v1), inv(v0, v1), Rule(174).
+inv(v0, v1) :- GreenSignal(v0), inv(v1, v2), inv(v2, v1), Rule(175).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v2), inv(v2, v1), Rule(176).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v0), inv(v1, v2), Rule(177).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v1), inv(v0, v2), Rule(178).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v1), inv(v2, v0), Rule(179).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v2), inv(v2, v0), Rule(180).
+inv(v0, v1) :- GreenSignal(v2), inv(v1, v2), inv(v0, v2), Rule(181).
+inv(v0, v1) :- GreenSignal(v2), inv(v0, v2), inv(v1, v2), Rule(182).
+inv(v0, v1) :- GreenSignal(v2), inv(v2, v0), inv(v2, v1), Rule(183).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), HasTraffic(v0), Rule(184).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), HasTraffic(v0), Rule(185).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v0), HasTraffic(v1), Rule(186).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), HasTraffic(v1), Rule(187).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v1), HasTraffic(v0), Rule(188).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), HasTraffic(v1), Rule(189).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), Intersect(v0), Rule(190).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), Intersect(v0), Rule(191).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v0), Intersect(v1), Rule(192).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), Intersect(v1), Rule(193).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v1), Intersect(v0), Rule(194).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), Intersect(v1), Rule(195).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v0), inv(v0, v1), Rule(196).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v0), inv(v1, v0), Rule(197).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), inv(v1, v0), Rule(198).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v0), inv(v0, v1), Rule(199).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), inv(v1, v0), Rule(200).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v1), inv(v0, v1), Rule(201).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v1), inv(v1, v0), Rule(202).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v1), inv(v0, v1), Rule(203).
+inv(v0, v1) :- HasTraffic(v2), HasTraffic(v0), inv(v1, v2), Rule(204).
+inv(v0, v1) :- HasTraffic(v2), HasTraffic(v1), inv(v0, v2), Rule(205).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v2), inv(v2, v0), Rule(206).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v2), inv(v2, v1), Rule(207).
+inv(v0, v1) :- HasTraffic(v2), HasTraffic(v2), inv(v1, v0), Rule(208).
+inv(v0, v1) :- HasTraffic(v0), HasTraffic(v2), inv(v1, v2), Rule(209).
+inv(v0, v1) :- HasTraffic(v2), HasTraffic(v0), inv(v2, v1), Rule(210).
+inv(v0, v1) :- HasTraffic(v2), HasTraffic(v2), inv(v0, v1), Rule(211).
+inv(v0, v1) :- HasTraffic(v2), HasTraffic(v1), inv(v2, v0), Rule(212).
+inv(v0, v1) :- HasTraffic(v1), HasTraffic(v2), inv(v0, v2), Rule(213).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v0), Intersect(v0), Rule(214).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v1), Intersect(v0), Rule(215).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v0), Intersect(v1), Rule(216).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v1), Intersect(v1), Rule(217).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v1), Intersect(v0), Rule(218).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v0), Intersect(v1), Rule(219).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v0), inv(v0, v1), Rule(220).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v0), inv(v1, v0), Rule(221).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v0), inv(v1, v0), Rule(222).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v0), inv(v0, v1), Rule(223).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v1), inv(v1, v0), Rule(224).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v1), inv(v0, v1), Rule(225).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v1), inv(v1, v0), Rule(226).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v1), inv(v0, v1), Rule(227).
+inv(v0, v1) :- HasTraffic(v2), Intersect(v0), inv(v1, v2), Rule(228).
+inv(v0, v1) :- HasTraffic(v2), Intersect(v1), inv(v0, v2), Rule(229).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v2), inv(v2, v0), Rule(230).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v2), inv(v2, v1), Rule(231).
+inv(v0, v1) :- HasTraffic(v2), Intersect(v2), inv(v1, v0), Rule(232).
+inv(v0, v1) :- HasTraffic(v0), Intersect(v2), inv(v1, v2), Rule(233).
+inv(v0, v1) :- HasTraffic(v2), Intersect(v0), inv(v2, v1), Rule(234).
+inv(v0, v1) :- HasTraffic(v2), Intersect(v2), inv(v0, v1), Rule(235).
+inv(v0, v1) :- HasTraffic(v2), Intersect(v1), inv(v2, v0), Rule(236).
+inv(v0, v1) :- HasTraffic(v1), Intersect(v2), inv(v0, v2), Rule(237).
+inv(v0, v1) :- HasTraffic(v0), inv(v0, v1), inv(v1, v0), Rule(238).
+inv(v0, v1) :- HasTraffic(v0), inv(v0, v1), inv(v0, v1), Rule(239).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v0), inv(v1, v0), Rule(240).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v0), inv(v0, v1), Rule(241).
+inv(v0, v1) :- HasTraffic(v1), inv(v1, v0), inv(v1, v0), Rule(242).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v1), inv(v0, v1), Rule(243).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v1), inv(v1, v0), Rule(244).
+inv(v0, v1) :- HasTraffic(v1), inv(v1, v0), inv(v0, v1), Rule(245).
+inv(v0, v1) :- HasTraffic(v1), inv(v2, v0), inv(v0, v2), Rule(246).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v0), inv(v0, v2), Rule(247).
+inv(v0, v1) :- HasTraffic(v0), inv(v2, v1), inv(v2, v0), Rule(248).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v2), inv(v0, v1), Rule(249).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v0), inv(v2, v0), Rule(250).
+inv(v0, v1) :- HasTraffic(v0), inv(v2, v0), inv(v1, v2), Rule(251).
+inv(v0, v1) :- HasTraffic(v0), inv(v2, v1), inv(v0, v2), Rule(252).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v2), inv(v2, v0), Rule(253).
+inv(v0, v1) :- HasTraffic(v0), inv(v0, v2), inv(v2, v1), Rule(254).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v2), inv(v0, v2), Rule(255).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v0), inv(v1, v0), Rule(256).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v2), inv(v0, v2), Rule(257).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v2), inv(v2, v0), Rule(258).
+inv(v0, v1) :- HasTraffic(v0), inv(v2, v0), inv(v2, v1), Rule(259).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v1), inv(v2, v0), Rule(260).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v2), inv(v1, v0), Rule(261).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v1), inv(v0, v2), Rule(262).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v0), inv(v0, v1), Rule(263).
+inv(v0, v1) :- HasTraffic(v0), inv(v0, v2), inv(v1, v2), Rule(264).
+inv(v0, v1) :- HasTraffic(v1), inv(v2, v0), inv(v2, v0), Rule(265).
+inv(v0, v1) :- HasTraffic(v1), inv(v2, v1), inv(v2, v0), Rule(266).
+inv(v0, v1) :- HasTraffic(v1), inv(v2, v0), inv(v1, v2), Rule(267).
+inv(v0, v1) :- HasTraffic(v1), inv(v2, v1), inv(v0, v2), Rule(268).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v0), inv(v1, v2), Rule(269).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v2), inv(v1, v0), Rule(270).
+inv(v0, v1) :- HasTraffic(v0), inv(v2, v1), inv(v1, v2), Rule(271).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v1), inv(v2, v1), Rule(272).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v2), inv(v1, v2), Rule(273).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v1), inv(v1, v0), Rule(274).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v2), inv(v1, v2), Rule(275).
+inv(v0, v1) :- HasTraffic(v1), inv(v1, v2), inv(v0, v2), Rule(276).
+inv(v0, v1) :- HasTraffic(v1), inv(v1, v2), inv(v2, v0), Rule(277).
+inv(v0, v1) :- HasTraffic(v1), inv(v2, v0), inv(v2, v1), Rule(278).
+inv(v0, v1) :- HasTraffic(v0), inv(v2, v1), inv(v2, v1), Rule(279).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v0), inv(v2, v1), Rule(280).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v2), inv(v0, v1), Rule(281).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v1), inv(v1, v2), Rule(282).
+inv(v0, v1) :- HasTraffic(v1), inv(v0, v2), inv(v2, v1), Rule(283).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v1), inv(v0, v1), Rule(284).
+inv(v0, v1) :- HasTraffic(v0), inv(v1, v2), inv(v2, v1), Rule(285).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v2), inv(v2, v1), Rule(286).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v0), inv(v1, v2), Rule(287).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v1), inv(v0, v2), Rule(288).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v1), inv(v2, v0), Rule(289).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v2), inv(v2, v0), Rule(290).
+inv(v0, v1) :- HasTraffic(v2), inv(v1, v2), inv(v0, v2), Rule(291).
+inv(v0, v1) :- HasTraffic(v2), inv(v0, v2), inv(v1, v2), Rule(292).
+inv(v0, v1) :- HasTraffic(v2), inv(v2, v0), inv(v2, v1), Rule(293).
+inv(v0, v1) :- Intersect(v1), Intersect(v0), Intersect(v0), Rule(294).
+inv(v0, v1) :- Intersect(v0), Intersect(v1), Intersect(v0), Rule(295).
+inv(v0, v1) :- Intersect(v0), Intersect(v0), Intersect(v1), Rule(296).
+inv(v0, v1) :- Intersect(v0), Intersect(v1), Intersect(v1), Rule(297).
+inv(v0, v1) :- Intersect(v1), Intersect(v1), Intersect(v0), Rule(298).
+inv(v0, v1) :- Intersect(v1), Intersect(v0), Intersect(v1), Rule(299).
+inv(v0, v1) :- Intersect(v0), Intersect(v0), inv(v0, v1), Rule(300).
+inv(v0, v1) :- Intersect(v0), Intersect(v0), inv(v1, v0), Rule(301).
+inv(v0, v1) :- Intersect(v1), Intersect(v0), inv(v1, v0), Rule(302).
+inv(v0, v1) :- Intersect(v1), Intersect(v0), inv(v0, v1), Rule(303).
+inv(v0, v1) :- Intersect(v0), Intersect(v1), inv(v1, v0), Rule(304).
+inv(v0, v1) :- Intersect(v0), Intersect(v1), inv(v0, v1), Rule(305).
+inv(v0, v1) :- Intersect(v1), Intersect(v1), inv(v1, v0), Rule(306).
+inv(v0, v1) :- Intersect(v1), Intersect(v1), inv(v0, v1), Rule(307).
+inv(v0, v1) :- Intersect(v2), Intersect(v0), inv(v1, v2), Rule(308).
+inv(v0, v1) :- Intersect(v2), Intersect(v1), inv(v0, v2), Rule(309).
+inv(v0, v1) :- Intersect(v1), Intersect(v2), inv(v2, v0), Rule(310).
+inv(v0, v1) :- Intersect(v0), Intersect(v2), inv(v2, v1), Rule(311).
+inv(v0, v1) :- Intersect(v2), Intersect(v2), inv(v1, v0), Rule(312).
+inv(v0, v1) :- Intersect(v0), Intersect(v2), inv(v1, v2), Rule(313).
+inv(v0, v1) :- Intersect(v2), Intersect(v0), inv(v2, v1), Rule(314).
+inv(v0, v1) :- Intersect(v2), Intersect(v2), inv(v0, v1), Rule(315).
+inv(v0, v1) :- Intersect(v2), Intersect(v1), inv(v2, v0), Rule(316).
+inv(v0, v1) :- Intersect(v1), Intersect(v2), inv(v0, v2), Rule(317).
+inv(v0, v1) :- Intersect(v0), inv(v0, v1), inv(v1, v0), Rule(318).
+inv(v0, v1) :- Intersect(v0), inv(v0, v1), inv(v0, v1), Rule(319).
+inv(v0, v1) :- Intersect(v0), inv(v1, v0), inv(v1, v0), Rule(320).
+inv(v0, v1) :- Intersect(v0), inv(v1, v0), inv(v0, v1), Rule(321).
+inv(v0, v1) :- Intersect(v1), inv(v1, v0), inv(v1, v0), Rule(322).
+inv(v0, v1) :- Intersect(v1), inv(v0, v1), inv(v0, v1), Rule(323).
+inv(v0, v1) :- Intersect(v1), inv(v0, v1), inv(v1, v0), Rule(324).
+inv(v0, v1) :- Intersect(v1), inv(v1, v0), inv(v0, v1), Rule(325).
+inv(v0, v1) :- Intersect(v1), inv(v2, v0), inv(v0, v2), Rule(326).
+inv(v0, v1) :- Intersect(v2), inv(v1, v0), inv(v0, v2), Rule(327).
+inv(v0, v1) :- Intersect(v0), inv(v2, v1), inv(v2, v0), Rule(328).
+inv(v0, v1) :- Intersect(v2), inv(v0, v2), inv(v0, v1), Rule(329).
+inv(v0, v1) :- Intersect(v2), inv(v1, v0), inv(v2, v0), Rule(330).
+inv(v0, v1) :- Intersect(v0), inv(v2, v0), inv(v1, v2), Rule(331).
+inv(v0, v1) :- Intersect(v0), inv(v2, v1), inv(v0, v2), Rule(332).
+inv(v0, v1) :- Intersect(v1), inv(v0, v2), inv(v2, v0), Rule(333).
+inv(v0, v1) :- Intersect(v0), inv(v0, v2), inv(v2, v1), Rule(334).
+inv(v0, v1) :- Intersect(v1), inv(v0, v2), inv(v0, v2), Rule(335).
+inv(v0, v1) :- Intersect(v2), inv(v2, v0), inv(v1, v0), Rule(336).
+inv(v0, v1) :- Intersect(v0), inv(v1, v2), inv(v0, v2), Rule(337).
+inv(v0, v1) :- Intersect(v0), inv(v1, v2), inv(v2, v0), Rule(338).
+inv(v0, v1) :- Intersect(v0), inv(v2, v0), inv(v2, v1), Rule(339).
+inv(v0, v1) :- Intersect(v2), inv(v0, v1), inv(v2, v0), Rule(340).
+inv(v0, v1) :- Intersect(v2), inv(v0, v2), inv(v1, v0), Rule(341).
+inv(v0, v1) :- Intersect(v2), inv(v0, v1), inv(v0, v2), Rule(342).
+inv(v0, v1) :- Intersect(v2), inv(v2, v0), inv(v0, v1), Rule(343).
+inv(v0, v1) :- Intersect(v0), inv(v0, v2), inv(v1, v2), Rule(344).
+inv(v0, v1) :- Intersect(v1), inv(v2, v0), inv(v2, v0), Rule(345).
+inv(v0, v1) :- Intersect(v1), inv(v2, v1), inv(v2, v0), Rule(346).
+inv(v0, v1) :- Intersect(v1), inv(v2, v0), inv(v1, v2), Rule(347).
+inv(v0, v1) :- Intersect(v1), inv(v2, v1), inv(v0, v2), Rule(348).
+inv(v0, v1) :- Intersect(v2), inv(v1, v0), inv(v1, v2), Rule(349).
+inv(v0, v1) :- Intersect(v2), inv(v1, v2), inv(v1, v0), Rule(350).
+inv(v0, v1) :- Intersect(v0), inv(v2, v1), inv(v1, v2), Rule(351).
+inv(v0, v1) :- Intersect(v2), inv(v0, v1), inv(v2, v1), Rule(352).
+inv(v0, v1) :- Intersect(v1), inv(v0, v2), inv(v1, v2), Rule(353).
+inv(v0, v1) :- Intersect(v2), inv(v2, v1), inv(v1, v0), Rule(354).
+inv(v0, v1) :- Intersect(v0), inv(v1, v2), inv(v1, v2), Rule(355).
+inv(v0, v1) :- Intersect(v1), inv(v1, v2), inv(v0, v2), Rule(356).
+inv(v0, v1) :- Intersect(v1), inv(v1, v2), inv(v2, v0), Rule(357).
+inv(v0, v1) :- Intersect(v1), inv(v2, v0), inv(v2, v1), Rule(358).
+inv(v0, v1) :- Intersect(v0), inv(v2, v1), inv(v2, v1), Rule(359).
+inv(v0, v1) :- Intersect(v2), inv(v1, v0), inv(v2, v1), Rule(360).
+inv(v0, v1) :- Intersect(v2), inv(v1, v2), inv(v0, v1), Rule(361).
+inv(v0, v1) :- Intersect(v2), inv(v0, v1), inv(v1, v2), Rule(362).
+inv(v0, v1) :- Intersect(v1), inv(v0, v2), inv(v2, v1), Rule(363).
+inv(v0, v1) :- Intersect(v2), inv(v2, v1), inv(v0, v1), Rule(364).
+inv(v0, v1) :- Intersect(v0), inv(v1, v2), inv(v2, v1), Rule(365).
+inv(v0, v1) :- Intersect(v2), inv(v0, v2), inv(v2, v1), Rule(366).
+inv(v0, v1) :- Intersect(v2), inv(v2, v0), inv(v1, v2), Rule(367).
+inv(v0, v1) :- Intersect(v2), inv(v2, v1), inv(v0, v2), Rule(368).
+inv(v0, v1) :- Intersect(v2), inv(v2, v1), inv(v2, v0), Rule(369).
+inv(v0, v1) :- Intersect(v2), inv(v1, v2), inv(v2, v0), Rule(370).
+inv(v0, v1) :- Intersect(v2), inv(v1, v2), inv(v0, v2), Rule(371).
+inv(v0, v1) :- Intersect(v2), inv(v0, v2), inv(v1, v2), Rule(372).
+inv(v0, v1) :- Intersect(v2), inv(v2, v0), inv(v2, v1), Rule(373).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v1), inv(v1, v0), Rule(374).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v1), inv(v0, v1), Rule(375).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v1), inv(v1, v0), Rule(376).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v0), inv(v0, v1), Rule(377).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v0), inv(v1, v0), Rule(378).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v0), inv(v0, v1), Rule(379).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v0), inv(v1, v0), Rule(380).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v1), inv(v0, v1), Rule(381).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v1), inv(v0, v2), Rule(382).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v1), inv(v2, v0), Rule(383).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v0), inv(v0, v2), Rule(384).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v0), inv(v2, v0), Rule(385).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v2), inv(v0, v1), Rule(386).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v0), inv(v0, v2), Rule(387).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v0), inv(v2, v0), Rule(388).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v2), inv(v0, v2), Rule(389).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v2), inv(v2, v0), Rule(390).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v0), inv(v0, v1), Rule(391).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v2), inv(v1, v0), Rule(392).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v0), inv(v1, v0), Rule(393).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v1), inv(v0, v2), Rule(394).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v1), inv(v2, v0), Rule(395).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v2), inv(v0, v1), Rule(396).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v2), inv(v1, v0), Rule(397).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v0), inv(v0, v2), Rule(398).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v0), inv(v2, v0), Rule(399).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v0), inv(v0, v1), Rule(400).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v2), inv(v0, v2), Rule(401).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v2), inv(v2, v0), Rule(402).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v0), inv(v0, v2), Rule(403).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v0), inv(v2, v0), Rule(404).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v0), inv(v1, v0), Rule(405).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v2), inv(v1, v2), Rule(406).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v0), inv(v2, v0), Rule(407).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v2), inv(v0, v2), Rule(408).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), inv(v1, v0), Rule(409).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), inv(v1, v0), Rule(410).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v1), inv(v0, v2), Rule(411).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v0), inv(v1, v2), Rule(412).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v1), inv(v0, v2), Rule(413).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v1), inv(v2, v1), Rule(414).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), inv(v0, v1), Rule(415).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), inv(v0, v1), Rule(416).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v0), inv(v2, v1), Rule(417).
+inv(v0, v1) :- inv(v1, v0), inv(v0, v2), inv(v2, v1), Rule(418).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), inv(v0, v1), Rule(419).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v1), inv(v0, v2), Rule(420).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v2), inv(v0, v2), Rule(421).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v1), inv(v0, v2), Rule(422).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), inv(v1, v0), Rule(423).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v0), inv(v0, v2), Rule(424).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), inv(v1, v0), Rule(425).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), inv(v1, v0), Rule(426).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v0), inv(v2, v1), Rule(427).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v1), inv(v1, v2), Rule(428).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v0), inv(v0, v2), Rule(429).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v0), inv(v1, v2), Rule(430).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), inv(v0, v1), Rule(431).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v1), inv(v2, v0), Rule(432).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v2), inv(v1, v2), Rule(433).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), inv(v0, v1), Rule(434).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v2), inv(v2, v0), Rule(435).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), inv(v0, v1), Rule(436).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v1), inv(v2, v0), Rule(437).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v0), inv(v1, v2), Rule(438).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v2), inv(v2, v0), Rule(439).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v1), inv(v2, v0), Rule(440).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), inv(v1, v0), Rule(441).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v1), inv(v2, v1), Rule(442).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), inv(v1, v0), Rule(443).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), inv(v1, v0), Rule(444).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v0), inv(v2, v1), Rule(445).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), inv(v0, v1), Rule(446).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v1), inv(v1, v2), Rule(447).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), inv(v0, v1), Rule(448).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v0), inv(v2, v0), Rule(449).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v0), inv(v1, v2), Rule(450).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v2), inv(v2, v1), Rule(451).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v0), inv(v2, v1), Rule(452).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v1), inv(v2, v0), Rule(453).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), inv(v0, v2), Rule(454).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), inv(v2, v0), Rule(455).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), inv(v0, v2), Rule(456).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), inv(v2, v0), Rule(457).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v2), inv(v2, v1), Rule(458).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), inv(v0, v2), Rule(459).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), inv(v2, v0), Rule(460).
+inv(v0, v1) :- inv(v2, v0), inv(v0, v2), inv(v1, v2), Rule(461).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), inv(v0, v2), Rule(462).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), inv(v2, v0), Rule(463).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v0), inv(v2, v1), Rule(464).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v0), inv(v1, v2), Rule(465).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), inv(v0, v2), Rule(466).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), inv(v2, v0), Rule(467).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), inv(v0, v2), Rule(468).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), inv(v2, v0), Rule(469).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), inv(v0, v2), Rule(470).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), inv(v2, v0), Rule(471).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v2), inv(v2, v1), Rule(472).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), inv(v0, v2), Rule(473).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), inv(v2, v0), Rule(474).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v0), inv(v2, v1), Rule(475).
+inv(v0, v1) :- inv(v0, v2), inv(v0, v2), inv(v1, v2), Rule(476).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v0), inv(v1, v2), Rule(477).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v1), inv(v2, v1), Rule(478).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v2), inv(v0, v1), Rule(479).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v1), inv(v1, v2), Rule(480).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v1), inv(v0, v1), Rule(481).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v2), inv(v1, v2), Rule(482).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v1), inv(v2, v1), Rule(483).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v2), inv(v0, v1), Rule(484).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v1), inv(v1, v2), Rule(485).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v2), inv(v1, v0), Rule(486).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v1), inv(v1, v0), Rule(487).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v1), inv(v1, v2), Rule(488).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v2), inv(v1, v0), Rule(489).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v0), inv(v2, v1), Rule(490).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v1), inv(v0, v1), Rule(491).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v1), inv(v2, v1), Rule(492).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v0), inv(v1, v2), Rule(493).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v1), inv(v1, v0), Rule(494).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v1), inv(v1, v2), Rule(495).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v2), inv(v2, v1), Rule(496).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v0), inv(v2, v1), Rule(497).
+inv(v0, v1) :- inv(v1, v0), inv(v1, v2), inv(v1, v2), Rule(498).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v0), inv(v1, v2), Rule(499).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v1), inv(v2, v1), Rule(500).
+inv(v0, v1) :- inv(v0, v1), inv(v1, v2), inv(v2, v1), Rule(501).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), inv(v1, v2), Rule(502).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), inv(v1, v2), Rule(503).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), inv(v1, v2), Rule(504).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), inv(v2, v1), Rule(505).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v2), inv(v0, v2), Rule(506).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v1), inv(v2, v0), Rule(507).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v2), inv(v2, v0), Rule(508).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), inv(v2, v1), Rule(509).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), inv(v2, v1), Rule(510).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v0), inv(v2, v1), Rule(511).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v2), inv(v1, v2), Rule(512).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v1), inv(v0, v2), Rule(513).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v1), inv(v1, v2), Rule(514).
+inv(v0, v1) :- inv(v2, v1), inv(v1, v2), inv(v2, v0), Rule(515).
+inv(v0, v1) :- inv(v1, v2), inv(v1, v2), inv(v0, v2), Rule(516).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), inv(v2, v1), Rule(517).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v1), inv(v0, v2), Rule(518).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v0), inv(v1, v2), Rule(519).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v2), inv(v1, v2), Rule(520).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v1), inv(v2, v0), Rule(521).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), inv(v2, v1), Rule(522).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v2), inv(v2, v1), Rule(523).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v1), inv(v2, v1), Rule(524).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v2), inv(v1, v2), Rule(525).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v3), inv(v2, v1), Rule(526).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v3), inv(v3, v0), Rule(527).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v0), inv(v3, v1), Rule(528).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v1), inv(v3, v0), Rule(529).
+inv(v0, v1) :- inv(v2, v3), inv(v1, v2), inv(v3, v0), Rule(530).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v3), inv(v2, v3), Rule(531).
+inv(v0, v1) :- inv(v2, v3), inv(v1, v3), inv(v0, v2), Rule(532).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v3), inv(v3, v1), Rule(533).
+inv(v0, v1) :- inv(v2, v1), inv(v3, v2), inv(v0, v3), Rule(534).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v3), inv(v1, v0), Rule(535).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v3), inv(v1, v3), Rule(536).
+inv(v0, v1) :- inv(v1, v2), inv(v3, v2), inv(v3, v0), Rule(537).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v3), inv(v3, v2), Rule(538).
+inv(v0, v1) :- inv(v2, v3), inv(v3, v0), inv(v1, v2), Rule(539).
+inv(v0, v1) :- inv(v2, v1), inv(v3, v0), inv(v3, v2), Rule(540).
+inv(v0, v1) :- inv(v2, v3), inv(v3, v1), inv(v2, v0), Rule(541).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v2), inv(v1, v3), Rule(542).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v3), inv(v2, v3), Rule(543).
+inv(v0, v1) :- inv(v2, v1), inv(v3, v0), inv(v2, v3), Rule(544).
+inv(v0, v1) :- inv(v2, v0), inv(v3, v1), inv(v3, v2), Rule(545).
+inv(v0, v1) :- inv(v0, v2), inv(v3, v2), inv(v1, v3), Rule(546).
+inv(v0, v1) :- inv(v2, v0), inv(v3, v1), inv(v2, v3), Rule(547).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v3), inv(v3, v2), Rule(548).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v3), inv(v2, v3), Rule(549).
+inv(v0, v1) :- inv(v1, v2), inv(v3, v0), inv(v3, v2), Rule(550).
+inv(v0, v1) :- inv(v2, v1), inv(v3, v2), inv(v3, v0), Rule(551).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v3), inv(v2, v3), Rule(552).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v3), inv(v0, v1), Rule(553).
+inv(v0, v1) :- inv(v2, v0), inv(v3, v2), inv(v3, v1), Rule(554).
+inv(v0, v1) :- inv(v2, v3), inv(v3, v1), inv(v0, v2), Rule(555).
+inv(v0, v1) :- inv(v2, v3), inv(v3, v2), inv(v1, v0), Rule(556).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v3), inv(v0, v3), Rule(557).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v3), inv(v1, v2), Rule(558).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v0), inv(v1, v3), Rule(559).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v3), inv(v3, v2), Rule(560).
+inv(v0, v1) :- inv(v0, v2), inv(v2, v3), inv(v1, v3), Rule(561).
+inv(v0, v1) :- inv(v2, v0), inv(v1, v3), inv(v2, v3), Rule(562).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v1), inv(v3, v2), Rule(563).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v1), inv(v2, v3), Rule(564).
+inv(v0, v1) :- inv(v0, v2), inv(v3, v1), inv(v3, v2), Rule(565).
+inv(v0, v1) :- inv(v0, v2), inv(v3, v1), inv(v2, v3), Rule(566).
+inv(v0, v1) :- inv(v2, v3), inv(v3, v0), inv(v2, v1), Rule(567).
+inv(v0, v1) :- inv(v1, v2), inv(v0, v3), inv(v3, v2), Rule(568).
+inv(v0, v1) :- inv(v2, v3), inv(v3, v2), inv(v0, v1), Rule(569).
+inv(v0, v1) :- inv(v2, v0), inv(v2, v3), inv(v3, v1), Rule(570).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v2), inv(v3, v1), Rule(571).
+inv(v0, v1) :- inv(v1, v2), inv(v3, v0), inv(v2, v3), Rule(572).
+inv(v0, v1) :- inv(v0, v2), inv(v3, v2), inv(v3, v1), Rule(573).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v3), inv(v0, v3), Rule(574).
+inv(v0, v1) :- inv(v2, v0), inv(v3, v2), inv(v1, v3), Rule(575).
+inv(v0, v1) :- inv(v1, v2), inv(v2, v3), inv(v3, v0), Rule(576).
+inv(v0, v1) :- inv(v1, v2), inv(v3, v2), inv(v0, v3), Rule(577).
+inv(v0, v1) :- inv(v2, v3), inv(v1, v3), inv(v2, v0), Rule(578).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v1), inv(v0, v3), Rule(579).
+inv(v0, v1) :- inv(v2, v3), inv(v1, v2), inv(v0, v3), Rule(580).
+inv(v0, v1) :- inv(v2, v3), inv(v1, v0), inv(v3, v2), Rule(581).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v3), inv(v3, v2), Rule(582).
+inv(v0, v1) :- inv(v2, v3), inv(v1, v0), inv(v2, v3), Rule(583).
+inv(v0, v1) :- inv(v1, v0), inv(v2, v3), inv(v3, v2), Rule(584).
+inv(v0, v1) :- inv(v0, v2), inv(v1, v3), inv(v2, v3), Rule(585).
+Crashes(v0) :- GreenSignal(v0), Rule(586).
+Crashes(v0) :- HasTraffic(v0), Rule(587).
+Crashes(v0) :- Intersect(v0), Rule(588).
+Crashes(v0) :- Crashes(v0), Rule(589).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v0), Rule(590).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v0), Rule(591).
+Crashes(v0) :- GreenSignal(v0), Intersect(v0), Rule(592).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v0), Rule(593).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v1), Rule(594).
+Crashes(v0) :- GreenSignal(v0), Crashes(v0), Rule(595).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v0), Rule(596).
+Crashes(v0) :- HasTraffic(v0), Intersect(v0), Rule(597).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v0), Rule(598).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v1), Rule(599).
+Crashes(v0) :- HasTraffic(v0), Crashes(v0), Rule(600).
+Crashes(v0) :- Intersect(v0), Intersect(v0), Rule(601).
+Crashes(v0) :- Intersect(v1), inv(v1, v0), Rule(602).
+Crashes(v0) :- Intersect(v1), inv(v0, v1), Rule(603).
+Crashes(v0) :- Intersect(v0), Crashes(v0), Rule(604).
+Crashes(v0) :- inv(v1, v0), inv(v1, v0), Rule(605).
+Crashes(v0) :- inv(v1, v0), inv(v0, v1), Rule(606).
+Crashes(v0) :- inv(v0, v1), inv(v1, v0), Rule(607).
+Crashes(v0) :- inv(v0, v1), inv(v0, v1), Rule(608).
+Crashes(v0) :- inv(v0, v1), Crashes(v1), Rule(609).
+Crashes(v0) :- inv(v1, v0), Crashes(v1), Rule(610).
+Crashes(v0) :- Crashes(v0), Crashes(v0), Rule(611).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v0), GreenSignal(v0), Rule(612).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v1), GreenSignal(v1), Rule(613).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v1), GreenSignal(v0), Rule(614).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v0), GreenSignal(v1), Rule(615).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v0), HasTraffic(v0), Rule(616).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v1), HasTraffic(v1), Rule(617).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v1), HasTraffic(v0), Rule(618).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v0), HasTraffic(v1), Rule(619).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v0), Intersect(v0), Rule(620).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v1), Intersect(v1), Rule(621).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v1), Intersect(v0), Rule(622).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v0), Intersect(v1), Rule(623).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v0), inv(v1, v0), Rule(624).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v0), inv(v0, v1), Rule(625).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v1), inv(v1, v0), Rule(626).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v1), inv(v0, v1), Rule(627).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v1), inv(v1, v0), Rule(628).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v1), inv(v0, v1), Rule(629).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v0), Crashes(v0), Rule(630).
+Crashes(v0) :- GreenSignal(v0), GreenSignal(v1), Crashes(v1), Rule(631).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v1), Crashes(v0), Rule(632).
+Crashes(v0) :- GreenSignal(v1), GreenSignal(v0), Crashes(v1), Rule(633).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v0), HasTraffic(v0), Rule(634).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v1), HasTraffic(v1), Rule(635).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v1), HasTraffic(v0), Rule(636).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v0), HasTraffic(v1), Rule(637).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v0), Intersect(v0), Rule(638).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v1), Intersect(v1), Rule(639).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v1), Intersect(v0), Rule(640).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v0), Intersect(v1), Rule(641).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v0), inv(v1, v0), Rule(642).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v0), inv(v0, v1), Rule(643).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v1), inv(v1, v0), Rule(644).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v1), inv(v0, v1), Rule(645).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v1), inv(v1, v0), Rule(646).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v1), inv(v0, v1), Rule(647).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v0), Crashes(v0), Rule(648).
+Crashes(v0) :- GreenSignal(v0), HasTraffic(v1), Crashes(v1), Rule(649).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v1), Crashes(v0), Rule(650).
+Crashes(v0) :- GreenSignal(v1), HasTraffic(v0), Crashes(v1), Rule(651).
+Crashes(v0) :- GreenSignal(v0), Intersect(v0), Intersect(v0), Rule(652).
+Crashes(v0) :- GreenSignal(v0), Intersect(v1), Intersect(v1), Rule(653).
+Crashes(v0) :- GreenSignal(v1), Intersect(v1), Intersect(v0), Rule(654).
+Crashes(v0) :- GreenSignal(v1), Intersect(v0), Intersect(v1), Rule(655).
+Crashes(v0) :- GreenSignal(v1), Intersect(v0), inv(v1, v0), Rule(656).
+Crashes(v0) :- GreenSignal(v1), Intersect(v0), inv(v0, v1), Rule(657).
+Crashes(v0) :- GreenSignal(v0), Intersect(v1), inv(v1, v0), Rule(658).
+Crashes(v0) :- GreenSignal(v0), Intersect(v1), inv(v0, v1), Rule(659).
+Crashes(v0) :- GreenSignal(v1), Intersect(v1), inv(v1, v0), Rule(660).
+Crashes(v0) :- GreenSignal(v1), Intersect(v1), inv(v0, v1), Rule(661).
+Crashes(v0) :- GreenSignal(v0), Intersect(v0), Crashes(v0), Rule(662).
+Crashes(v0) :- GreenSignal(v0), Intersect(v1), Crashes(v1), Rule(663).
+Crashes(v0) :- GreenSignal(v1), Intersect(v1), Crashes(v0), Rule(664).
+Crashes(v0) :- GreenSignal(v1), Intersect(v0), Crashes(v1), Rule(665).
+Crashes(v0) :- GreenSignal(v0), inv(v0, v1), inv(v1, v0), Rule(666).
+Crashes(v0) :- GreenSignal(v0), inv(v0, v1), inv(v0, v1), Rule(667).
+Crashes(v0) :- GreenSignal(v0), inv(v1, v0), inv(v1, v0), Rule(668).
+Crashes(v0) :- GreenSignal(v0), inv(v1, v0), inv(v0, v1), Rule(669).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v0), inv(v1, v0), Rule(670).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v1), inv(v0, v1), Rule(671).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v1), inv(v1, v0), Rule(672).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v0), inv(v0, v1), Rule(673).
+Crashes(v0) :- GreenSignal(v1), inv(v2, v1), inv(v2, v0), Rule(674).
+Crashes(v0) :- GreenSignal(v1), inv(v2, v0), inv(v1, v2), Rule(675).
+Crashes(v0) :- GreenSignal(v1), inv(v2, v1), inv(v0, v2), Rule(676).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v2), inv(v1, v2), Rule(677).
+Crashes(v0) :- GreenSignal(v0), inv(v1, v2), inv(v1, v2), Rule(678).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v2), inv(v0, v2), Rule(679).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v2), inv(v2, v0), Rule(680).
+Crashes(v0) :- GreenSignal(v1), inv(v2, v0), inv(v2, v1), Rule(681).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v2), inv(v2, v1), Rule(682).
+Crashes(v0) :- GreenSignal(v0), inv(v1, v2), inv(v2, v1), Rule(683).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v1), Crashes(v0), Rule(684).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v0), Crashes(v0), Rule(685).
+Crashes(v0) :- GreenSignal(v0), inv(v1, v0), Crashes(v1), Rule(686).
+Crashes(v0) :- GreenSignal(v0), inv(v0, v1), Crashes(v1), Rule(687).
+Crashes(v0) :- GreenSignal(v1), inv(v0, v1), Crashes(v1), Rule(688).
+Crashes(v0) :- GreenSignal(v1), inv(v1, v0), Crashes(v1), Rule(689).
+Crashes(v0) :- GreenSignal(v0), Crashes(v0), Crashes(v0), Rule(690).
+Crashes(v0) :- GreenSignal(v0), Crashes(v1), Crashes(v1), Rule(691).
+Crashes(v0) :- GreenSignal(v1), Crashes(v1), Crashes(v0), Rule(692).
+Crashes(v0) :- GreenSignal(v1), Crashes(v0), Crashes(v1), Rule(693).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v0), HasTraffic(v0), Rule(694).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v1), HasTraffic(v1), Rule(695).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v1), HasTraffic(v0), Rule(696).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v0), HasTraffic(v1), Rule(697).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v0), Intersect(v0), Rule(698).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v1), Intersect(v1), Rule(699).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v1), Intersect(v0), Rule(700).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v0), Intersect(v1), Rule(701).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v0), inv(v1, v0), Rule(702).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v0), inv(v0, v1), Rule(703).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v1), inv(v1, v0), Rule(704).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v1), inv(v0, v1), Rule(705).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v1), inv(v1, v0), Rule(706).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v1), inv(v0, v1), Rule(707).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v0), Crashes(v0), Rule(708).
+Crashes(v0) :- HasTraffic(v0), HasTraffic(v1), Crashes(v1), Rule(709).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v1), Crashes(v0), Rule(710).
+Crashes(v0) :- HasTraffic(v1), HasTraffic(v0), Crashes(v1), Rule(711).
+Crashes(v0) :- HasTraffic(v0), Intersect(v0), Intersect(v0), Rule(712).
+Crashes(v0) :- HasTraffic(v0), Intersect(v1), Intersect(v1), Rule(713).
+Crashes(v0) :- HasTraffic(v1), Intersect(v1), Intersect(v0), Rule(714).
+Crashes(v0) :- HasTraffic(v1), Intersect(v0), Intersect(v1), Rule(715).
+Crashes(v0) :- HasTraffic(v1), Intersect(v0), inv(v1, v0), Rule(716).
+Crashes(v0) :- HasTraffic(v1), Intersect(v0), inv(v0, v1), Rule(717).
+Crashes(v0) :- HasTraffic(v0), Intersect(v1), inv(v1, v0), Rule(718).
+Crashes(v0) :- HasTraffic(v0), Intersect(v1), inv(v0, v1), Rule(719).
+Crashes(v0) :- HasTraffic(v1), Intersect(v1), inv(v1, v0), Rule(720).
+Crashes(v0) :- HasTraffic(v1), Intersect(v1), inv(v0, v1), Rule(721).
+Crashes(v0) :- HasTraffic(v0), Intersect(v0), Crashes(v0), Rule(722).
+Crashes(v0) :- HasTraffic(v0), Intersect(v1), Crashes(v1), Rule(723).
+Crashes(v0) :- HasTraffic(v1), Intersect(v1), Crashes(v0), Rule(724).
+Crashes(v0) :- HasTraffic(v1), Intersect(v0), Crashes(v1), Rule(725).
+Crashes(v0) :- HasTraffic(v0), inv(v0, v1), inv(v1, v0), Rule(726).
+Crashes(v0) :- HasTraffic(v0), inv(v0, v1), inv(v0, v1), Rule(727).
+Crashes(v0) :- HasTraffic(v0), inv(v1, v0), inv(v1, v0), Rule(728).
+Crashes(v0) :- HasTraffic(v0), inv(v1, v0), inv(v0, v1), Rule(729).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v0), inv(v1, v0), Rule(730).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v1), inv(v0, v1), Rule(731).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v1), inv(v1, v0), Rule(732).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v0), inv(v0, v1), Rule(733).
+Crashes(v0) :- HasTraffic(v1), inv(v2, v1), inv(v2, v0), Rule(734).
+Crashes(v0) :- HasTraffic(v1), inv(v2, v0), inv(v1, v2), Rule(735).
+Crashes(v0) :- HasTraffic(v1), inv(v2, v1), inv(v0, v2), Rule(736).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v2), inv(v1, v2), Rule(737).
+Crashes(v0) :- HasTraffic(v0), inv(v1, v2), inv(v1, v2), Rule(738).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v2), inv(v0, v2), Rule(739).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v2), inv(v2, v0), Rule(740).
+Crashes(v0) :- HasTraffic(v1), inv(v2, v0), inv(v2, v1), Rule(741).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v2), inv(v2, v1), Rule(742).
+Crashes(v0) :- HasTraffic(v0), inv(v1, v2), inv(v2, v1), Rule(743).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v1), Crashes(v0), Rule(744).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v0), Crashes(v0), Rule(745).
+Crashes(v0) :- HasTraffic(v0), inv(v1, v0), Crashes(v1), Rule(746).
+Crashes(v0) :- HasTraffic(v0), inv(v0, v1), Crashes(v1), Rule(747).
+Crashes(v0) :- HasTraffic(v1), inv(v0, v1), Crashes(v1), Rule(748).
+Crashes(v0) :- HasTraffic(v1), inv(v1, v0), Crashes(v1), Rule(749).
+Crashes(v0) :- HasTraffic(v0), Crashes(v0), Crashes(v0), Rule(750).
+Crashes(v0) :- HasTraffic(v0), Crashes(v1), Crashes(v1), Rule(751).
+Crashes(v0) :- HasTraffic(v1), Crashes(v1), Crashes(v0), Rule(752).
+Crashes(v0) :- HasTraffic(v1), Crashes(v0), Crashes(v1), Rule(753).
+Crashes(v0) :- Intersect(v0), Intersect(v0), Intersect(v0), Rule(754).
+Crashes(v0) :- Intersect(v0), Intersect(v1), Intersect(v1), Rule(755).
+Crashes(v0) :- Intersect(v1), Intersect(v1), Intersect(v0), Rule(756).
+Crashes(v0) :- Intersect(v1), Intersect(v0), Intersect(v1), Rule(757).
+Crashes(v0) :- Intersect(v1), Intersect(v0), inv(v1, v0), Rule(758).
+Crashes(v0) :- Intersect(v1), Intersect(v0), inv(v0, v1), Rule(759).
+Crashes(v0) :- Intersect(v0), Intersect(v1), inv(v1, v0), Rule(760).
+Crashes(v0) :- Intersect(v0), Intersect(v1), inv(v0, v1), Rule(761).
+Crashes(v0) :- Intersect(v1), Intersect(v1), inv(v1, v0), Rule(762).
+Crashes(v0) :- Intersect(v1), Intersect(v1), inv(v0, v1), Rule(763).
+Crashes(v0) :- Intersect(v0), Intersect(v0), Crashes(v0), Rule(764).
+Crashes(v0) :- Intersect(v0), Intersect(v1), Crashes(v1), Rule(765).
+Crashes(v0) :- Intersect(v1), Intersect(v1), Crashes(v0), Rule(766).
+Crashes(v0) :- Intersect(v1), Intersect(v0), Crashes(v1), Rule(767).
+Crashes(v0) :- Intersect(v0), inv(v0, v1), inv(v1, v0), Rule(768).
+Crashes(v0) :- Intersect(v0), inv(v0, v1), inv(v0, v1), Rule(769).
+Crashes(v0) :- Intersect(v0), inv(v1, v0), inv(v1, v0), Rule(770).
+Crashes(v0) :- Intersect(v0), inv(v1, v0), inv(v0, v1), Rule(771).
+Crashes(v0) :- Intersect(v1), inv(v1, v0), inv(v1, v0), Rule(772).
+Crashes(v0) :- Intersect(v1), inv(v0, v1), inv(v0, v1), Rule(773).
+Crashes(v0) :- Intersect(v1), inv(v0, v1), inv(v1, v0), Rule(774).
+Crashes(v0) :- Intersect(v1), inv(v1, v0), inv(v0, v1), Rule(775).
+Crashes(v0) :- Intersect(v1), inv(v2, v1), inv(v2, v0), Rule(776).
+Crashes(v0) :- Intersect(v1), inv(v2, v0), inv(v1, v2), Rule(777).
+Crashes(v0) :- Intersect(v1), inv(v2, v1), inv(v0, v2), Rule(778).
+Crashes(v0) :- Intersect(v1), inv(v0, v2), inv(v1, v2), Rule(779).
+Crashes(v0) :- Intersect(v0), inv(v1, v2), inv(v1, v2), Rule(780).
+Crashes(v0) :- Intersect(v1), inv(v1, v2), inv(v0, v2), Rule(781).
+Crashes(v0) :- Intersect(v1), inv(v1, v2), inv(v2, v0), Rule(782).
+Crashes(v0) :- Intersect(v1), inv(v2, v0), inv(v2, v1), Rule(783).
+Crashes(v0) :- Intersect(v1), inv(v0, v2), inv(v2, v1), Rule(784).
+Crashes(v0) :- Intersect(v0), inv(v1, v2), inv(v2, v1), Rule(785).
+Crashes(v0) :- Intersect(v1), inv(v0, v1), Crashes(v0), Rule(786).
+Crashes(v0) :- Intersect(v1), inv(v1, v0), Crashes(v0), Rule(787).
+Crashes(v0) :- Intersect(v0), inv(v1, v0), Crashes(v1), Rule(788).
+Crashes(v0) :- Intersect(v0), inv(v0, v1), Crashes(v1), Rule(789).
+Crashes(v0) :- Intersect(v1), inv(v0, v1), Crashes(v1), Rule(790).
+Crashes(v0) :- Intersect(v1), inv(v1, v0), Crashes(v1), Rule(791).
+Crashes(v0) :- Intersect(v0), Crashes(v0), Crashes(v0), Rule(792).
+Crashes(v0) :- Intersect(v0), Crashes(v1), Crashes(v1), Rule(793).
+Crashes(v0) :- Intersect(v1), Crashes(v1), Crashes(v0), Rule(794).
+Crashes(v0) :- Intersect(v1), Crashes(v0), Crashes(v1), Rule(795).
+Crashes(v0) :- inv(v0, v1), inv(v0, v1), inv(v1, v0), Rule(796).
+Crashes(v0) :- inv(v1, v0), inv(v0, v1), inv(v0, v1), Rule(797).
+Crashes(v0) :- inv(v1, v0), inv(v0, v1), inv(v1, v0), Rule(798).
+Crashes(v0) :- inv(v0, v1), inv(v1, v0), inv(v0, v1), Rule(799).
+Crashes(v0) :- inv(v0, v1), inv(v1, v0), inv(v1, v0), Rule(800).
+Crashes(v0) :- inv(v1, v0), inv(v1, v0), inv(v0, v1), Rule(801).
+Crashes(v0) :- inv(v1, v0), inv(v1, v0), inv(v1, v0), Rule(802).
+Crashes(v0) :- inv(v0, v1), inv(v0, v1), inv(v0, v1), Rule(803).
+Crashes(v0) :- inv(v1, v0), inv(v0, v2), inv(v1, v2), Rule(804).
+Crashes(v0) :- inv(v1, v2), inv(v1, v0), inv(v2, v0), Rule(805).
+Crashes(v0) :- inv(v1, v0), inv(v1, v2), inv(v0, v2), Rule(806).
+Crashes(v0) :- inv(v1, v2), inv(v0, v2), inv(v1, v0), Rule(807).
+Crashes(v0) :- inv(v1, v2), inv(v0, v1), inv(v0, v2), Rule(808).
+Crashes(v0) :- inv(v1, v2), inv(v2, v0), inv(v0, v1), Rule(809).
+Crashes(v0) :- inv(v0, v1), inv(v2, v0), inv(v2, v1), Rule(810).
+Crashes(v0) :- inv(v1, v0), inv(v0, v2), inv(v2, v1), Rule(811).
+Crashes(v0) :- inv(v0, v1), inv(v2, v1), inv(v0, v2), Rule(812).
+Crashes(v0) :- inv(v0, v1), inv(v1, v2), inv(v0, v2), Rule(813).
+Crashes(v0) :- inv(v1, v0), inv(v2, v1), inv(v0, v2), Rule(814).
+Crashes(v0) :- inv(v1, v2), inv(v2, v0), inv(v1, v0), Rule(815).
+Crashes(v0) :- inv(v1, v2), inv(v1, v0), inv(v0, v2), Rule(816).
+Crashes(v0) :- inv(v0, v1), inv(v0, v2), inv(v1, v2), Rule(817).
+Crashes(v0) :- inv(v1, v0), inv(v1, v2), inv(v2, v0), Rule(818).
+Crashes(v0) :- inv(v0, v1), inv(v2, v1), inv(v2, v0), Rule(819).
+Crashes(v0) :- inv(v1, v0), inv(v2, v0), inv(v1, v2), Rule(820).
+Crashes(v0) :- inv(v0, v1), inv(v1, v2), inv(v2, v0), Rule(821).
+Crashes(v0) :- inv(v1, v2), inv(v0, v1), inv(v2, v0), Rule(822).
+Crashes(v0) :- inv(v1, v2), inv(v0, v2), inv(v0, v1), Rule(823).
+Crashes(v0) :- inv(v0, v1), inv(v2, v0), inv(v1, v2), Rule(824).
+Crashes(v0) :- inv(v0, v1), inv(v0, v2), inv(v2, v1), Rule(825).
+Crashes(v0) :- inv(v1, v0), inv(v2, v0), inv(v2, v1), Rule(826).
+Crashes(v0) :- inv(v1, v0), inv(v2, v1), inv(v2, v0), Rule(827).
+Crashes(v0) :- inv(v1, v2), inv(v0, v1), inv(v2, v1), Rule(828).
+Crashes(v0) :- inv(v0, v1), inv(v2, v1), inv(v1, v2), Rule(829).
+Crashes(v0) :- inv(v1, v2), inv(v2, v1), inv(v0, v1), Rule(830).
+Crashes(v0) :- inv(v0, v1), inv(v1, v2), inv(v1, v2), Rule(831).
+Crashes(v0) :- inv(v1, v0), inv(v2, v1), inv(v2, v1), Rule(832).
+Crashes(v0) :- inv(v1, v2), inv(v1, v2), inv(v0, v1), Rule(833).
+Crashes(v0) :- inv(v1, v2), inv(v0, v1), inv(v1, v2), Rule(834).
+Crashes(v0) :- inv(v1, v2), inv(v2, v1), inv(v1, v0), Rule(835).
+Crashes(v0) :- inv(v1, v0), inv(v2, v1), inv(v1, v2), Rule(836).
+Crashes(v0) :- inv(v1, v2), inv(v1, v2), inv(v1, v0), Rule(837).
+Crashes(v0) :- inv(v1, v2), inv(v1, v0), inv(v2, v1), Rule(838).
+Crashes(v0) :- inv(v1, v2), inv(v1, v0), inv(v1, v2), Rule(839).
+Crashes(v0) :- inv(v1, v0), inv(v1, v2), inv(v2, v1), Rule(840).
+Crashes(v0) :- inv(v1, v0), inv(v1, v2), inv(v1, v2), Rule(841).
+Crashes(v0) :- inv(v0, v1), inv(v2, v1), inv(v2, v1), Rule(842).
+Crashes(v0) :- inv(v0, v1), inv(v1, v2), inv(v2, v1), Rule(843).
+Crashes(v0) :- inv(v1, v2), inv(v2, v0), inv(v1, v2), Rule(844).
+Crashes(v0) :- inv(v1, v2), inv(v0, v2), inv(v2, v1), Rule(845).
+Crashes(v0) :- inv(v1, v2), inv(v2, v1), inv(v2, v0), Rule(846).
+Crashes(v0) :- inv(v1, v2), inv(v1, v2), inv(v2, v0), Rule(847).
+Crashes(v0) :- inv(v1, v2), inv(v2, v0), inv(v2, v1), Rule(848).
+Crashes(v0) :- inv(v1, v2), inv(v2, v1), inv(v0, v2), Rule(849).
+Crashes(v0) :- inv(v1, v2), inv(v1, v2), inv(v0, v2), Rule(850).
+Crashes(v0) :- inv(v1, v2), inv(v0, v2), inv(v1, v2), Rule(851).
+Crashes(v0) :- inv(v1, v0), inv(v1, v0), Crashes(v0), Rule(852).
+Crashes(v0) :- inv(v0, v1), inv(v1, v0), Crashes(v0), Rule(853).
+Crashes(v0) :- inv(v0, v1), inv(v0, v1), Crashes(v0), Rule(854).
+Crashes(v0) :- inv(v1, v0), inv(v0, v1), Crashes(v0), Rule(855).
+Crashes(v0) :- inv(v0, v1), inv(v0, v1), Crashes(v1), Rule(856).
+Crashes(v0) :- inv(v0, v1), inv(v1, v0), Crashes(v1), Rule(857).
+Crashes(v0) :- inv(v1, v0), inv(v0, v1), Crashes(v1), Rule(858).
+Crashes(v0) :- inv(v1, v0), inv(v1, v0), Crashes(v1), Rule(859).
+Crashes(v0) :- inv(v1, v2), inv(v1, v2), Crashes(v0), Rule(860).
+Crashes(v0) :- inv(v1, v2), inv(v2, v1), Crashes(v0), Rule(861).
+Crashes(v0) :- inv(v1, v2), inv(v0, v1), Crashes(v2), Rule(862).
+Crashes(v0) :- inv(v1, v2), inv(v1, v0), Crashes(v2), Rule(863).
+Crashes(v0) :- inv(v1, v0), inv(v1, v2), Crashes(v2), Rule(864).
+Crashes(v0) :- inv(v1, v0), inv(v2, v1), Crashes(v2), Rule(865).
+Crashes(v0) :- inv(v0, v1), inv(v1, v2), Crashes(v2), Rule(866).
+Crashes(v0) :- inv(v0, v1), inv(v2, v1), Crashes(v2), Rule(867).
+Crashes(v0) :- inv(v1, v2), inv(v0, v2), Crashes(v1), Rule(868).
+Crashes(v0) :- inv(v1, v2), inv(v2, v0), Crashes(v1), Rule(869).
+Crashes(v0) :- inv(v1, v0), Crashes(v1), Crashes(v0), Rule(870).
+Crashes(v0) :- inv(v1, v0), Crashes(v0), Crashes(v1), Rule(871).
+Crashes(v0) :- inv(v0, v1), Crashes(v1), Crashes(v0), Rule(872).
+Crashes(v0) :- inv(v0, v1), Crashes(v0), Crashes(v1), Rule(873).
+Crashes(v0) :- inv(v1, v0), Crashes(v1), Crashes(v1), Rule(874).
+Crashes(v0) :- inv(v0, v1), Crashes(v1), Crashes(v1), Rule(875).
+Crashes(v0) :- Crashes(v0), Crashes(v0), Crashes(v0), Rule(876).
+Crashes(v0) :- Crashes(v0), Crashes(v1), Crashes(v1), Rule(877).
+Crashes(v0) :- Crashes(v1), Crashes(v1), Crashes(v0), Rule(878).
+Crashes(v0) :- Crashes(v1), Crashes(v0), Crashes(v1), Rule(879).

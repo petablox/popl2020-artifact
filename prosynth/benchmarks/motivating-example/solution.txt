@@ -1,0 +1,6 @@
+WRONG: SCC(x, y) :- Edge(x, y).
+RIGHT: Path(x, y) :- Edge(x, y).
+RIGHT: Path(x, z) :- Path(x, y), Edge(y, z).
+RIGHT: SCC(x, y) :- Path(x, y), Path(y, x).
+WRONG: SCC(x, y) :- Path(x, y).
+WRONG: SCC(x, y) :- Path(y, x).

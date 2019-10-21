@@ -1,0 +1,389 @@
+.type part_id
+.type color
+.type sname
+.type supplier_key
+
+.decl Rule(n: number)
+.input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+
+.decl isRed(v0: color)
+.input isRed
+
+.decl isGreen(v0: color)
+.input isGreen
+
+.decl input2(v0: part_id, v1: color)
+.input input2
+
+.decl input3(v0: supplier_key, v1: sname)
+.input input3
+
+.decl invent_sel(v0: part_id, v1: color)
+.decl ans(v0: sname)
+.decl input1_exists(v0: supplier_key, v1: part_id, r: number)
+.output input1_exists
+
+.decl isRed_exists(v0: color, r: number)
+.output isRed_exists
+
+.decl isGreen_exists(v0: color, r: number)
+.output isGreen_exists
+
+.decl input2_exists(v0: part_id, v1: color, r: number)
+.output input2_exists
+
+.decl input3_exists(v0: supplier_key, v1: sname, r: number)
+.output input3_exists
+
+.decl invent_sel_exists(v0: part_id, v1: color, r: number)
+.output invent_sel_exists
+
+.decl ans_exists(v0: sname, r: number)
+.output ans_exists
+
+
+
+invent_sel(v0, v1) :- input2(v0, v1), Rule(0).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), r = 0, Rule(0).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), Rule(r), Rule(0).
+invent_sel(v0, v1) :- invent_sel(v0, v1), Rule(1).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), r = 1, Rule(1).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v0, v1, r), Rule(r), Rule(1).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), Rule(2).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2(v0, v1), r = 2, Rule(2).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), input2(v0, v1), Rule(r), Rule(2).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2_exists(v0, v1, r), Rule(r), Rule(2).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), Rule(3).
+invent_sel_exists(v0, v1, r) :- isRed(v1), invent_sel(v0, v1), r = 3, Rule(3).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), invent_sel(v0, v1), Rule(r), Rule(3).
+invent_sel_exists(v0, v1, r) :- isRed(v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(3).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), Rule(4).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2(v0, v1), r = 4, Rule(4).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), input2(v0, v1), Rule(r), Rule(4).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2_exists(v0, v1, r), Rule(r), Rule(4).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), Rule(5).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), invent_sel(v0, v1), r = 5, Rule(5).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), invent_sel(v0, v1), Rule(r), Rule(5).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(5).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), Rule(6).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v0, v1), r = 6, Rule(6).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v0, v1), Rule(r), Rule(6).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v0, v1, r), Rule(r), Rule(6).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), Rule(7).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v0, v1), r = 7, Rule(7).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(7).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(7).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), Rule(8).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v0, v1), r = 8, Rule(8).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(8).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(8).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v0, v1), Rule(9).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isRed(v1), input2(v0, v1), r = 9, Rule(9).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), isRed(v1), input2(v0, v1), Rule(r), Rule(9).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isRed_exists(v1, r), input2(v0, v1), Rule(r), Rule(9).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isRed(v1), input2_exists(v0, v1, r), Rule(r), Rule(9).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), invent_sel(v0, v1), Rule(10).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isRed(v1), invent_sel(v0, v1), r = 10, Rule(10).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), isRed(v1), invent_sel(v0, v1), Rule(r), Rule(10).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isRed_exists(v1, r), invent_sel(v0, v1), Rule(r), Rule(10).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isRed(v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(10).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v0, v1), Rule(11).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isGreen(v1), input2(v0, v1), r = 11, Rule(11).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), isGreen(v1), input2(v0, v1), Rule(r), Rule(11).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isGreen_exists(v1, r), input2(v0, v1), Rule(r), Rule(11).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isGreen(v1), input2_exists(v0, v1, r), Rule(r), Rule(11).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), invent_sel(v0, v1), Rule(12).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isGreen(v1), invent_sel(v0, v1), r = 12, Rule(12).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), isGreen(v1), invent_sel(v0, v1), Rule(r), Rule(12).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isGreen_exists(v1, r), invent_sel(v0, v1), Rule(r), Rule(12).
+invent_sel_exists(v0, v1, r) :- isRed(v1), isGreen(v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(12).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v0, v1), Rule(13).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2(v0, v1), input2(v0, v1), r = 13, Rule(13).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), input2(v0, v1), input2(v0, v1), Rule(r), Rule(13).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2_exists(v0, v1, r), input2(v0, v1), Rule(r), Rule(13).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2(v0, v1), input2_exists(v0, v1, r), Rule(r), Rule(13).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), invent_sel(v0, v1), Rule(14).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2(v0, v1), invent_sel(v0, v1), r = 14, Rule(14).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), input2(v0, v1), invent_sel(v0, v1), Rule(r), Rule(14).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(14).
+invent_sel_exists(v0, v1, r) :- isRed(v1), input2(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(14).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(15).
+invent_sel_exists(v0, v1, r) :- isRed(v1), invent_sel(v0, v1), invent_sel(v0, v1), r = 15, Rule(15).
+invent_sel_exists(v0, v1, r) :- isRed_exists(v1, r), invent_sel(v0, v1), invent_sel(v0, v1), Rule(r), Rule(15).
+invent_sel_exists(v0, v1, r) :- isRed(v1), invent_sel_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(15).
+invent_sel_exists(v0, v1, r) :- isRed(v1), invent_sel(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(15).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v0, v1), Rule(16).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), isGreen(v1), input2(v0, v1), r = 16, Rule(16).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), isGreen(v1), input2(v0, v1), Rule(r), Rule(16).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), isGreen_exists(v1, r), input2(v0, v1), Rule(r), Rule(16).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), isGreen(v1), input2_exists(v0, v1, r), Rule(r), Rule(16).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v0, v1), Rule(17).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), isGreen(v1), invent_sel(v0, v1), r = 17, Rule(17).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), isGreen(v1), invent_sel(v0, v1), Rule(r), Rule(17).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), isGreen_exists(v1, r), invent_sel(v0, v1), Rule(r), Rule(17).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), isGreen(v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(17).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v0, v1), Rule(18).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2(v0, v1), input2(v0, v1), r = 18, Rule(18).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), input2(v0, v1), input2(v0, v1), Rule(r), Rule(18).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2_exists(v0, v1, r), input2(v0, v1), Rule(r), Rule(18).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2(v0, v1), input2_exists(v0, v1, r), Rule(r), Rule(18).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), invent_sel(v0, v1), Rule(19).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2(v0, v1), invent_sel(v0, v1), r = 19, Rule(19).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), input2(v0, v1), invent_sel(v0, v1), Rule(r), Rule(19).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(19).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), input2(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(19).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(20).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), r = 20, Rule(20).
+invent_sel_exists(v0, v1, r) :- isGreen_exists(v1, r), invent_sel(v0, v1), invent_sel(v0, v1), Rule(r), Rule(20).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), invent_sel_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(20).
+invent_sel_exists(v0, v1, r) :- isGreen(v1), invent_sel(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(20).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), Rule(21).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), r = 21, Rule(21).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v0, v1), input2(v0, v1), Rule(r), Rule(21).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v0, v1, r), input2(v0, v1), Rule(r), Rule(21).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v0, v1), input2_exists(v0, v1, r), Rule(r), Rule(21).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), Rule(22).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), r = 22, Rule(22).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v2, v1), input2(v2, v1), Rule(r), Rule(22).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v2, v1, r), input2(v2, v1), Rule(r), Rule(22).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v1), input2_exists(v2, v1, r), Rule(r), Rule(22).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), Rule(23).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), r = 23, Rule(23).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v2, v1), input2(v0, v1), Rule(r), Rule(23).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v2, v1, r), input2(v0, v1), Rule(r), Rule(23).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v1), input2_exists(v0, v1, r), Rule(r), Rule(23).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(24).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), r = 24, Rule(24).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v0, v1), input2(v2, v1), Rule(r), Rule(24).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v0, v1, r), input2(v2, v1), Rule(r), Rule(24).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v1), input2_exists(v2, v1, r), Rule(r), Rule(24).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), Rule(25).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), r = 25, Rule(25).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v2, v3), input2(v2, v3), Rule(r), Rule(25).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v2, v3, r), input2(v2, v3), Rule(r), Rule(25).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v3), input2_exists(v2, v3, r), Rule(r), Rule(25).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(26).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), r = 26, Rule(26).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v2, v3), input2(v0, v3), Rule(r), Rule(26).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v2, v3, r), input2(v0, v3), Rule(r), Rule(26).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v3), input2_exists(v0, v3, r), Rule(r), Rule(26).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(27).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), r = 27, Rule(27).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v0, v3), input2(v2, v3), Rule(r), Rule(27).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v0, v3, r), input2(v2, v3), Rule(r), Rule(27).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v3), input2_exists(v2, v3, r), Rule(r), Rule(27).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), Rule(28).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), r = 28, Rule(28).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v2, v3), input2(v0, v1), Rule(r), Rule(28).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v2, v3, r), input2(v0, v1), Rule(r), Rule(28).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v3), input2_exists(v0, v1, r), Rule(r), Rule(28).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(29).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), r = 29, Rule(29).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v0, v3), input2(v2, v1), Rule(r), Rule(29).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v0, v3, r), input2(v2, v1), Rule(r), Rule(29).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v3), input2_exists(v2, v1, r), Rule(r), Rule(29).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(30).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), r = 30, Rule(30).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v2, v1), input2(v0, v3), Rule(r), Rule(30).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v2, v1, r), input2(v0, v3), Rule(r), Rule(30).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v1), input2_exists(v0, v3, r), Rule(r), Rule(30).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(31).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), r = 31, Rule(31).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v0, v1), input2(v2, v3), Rule(r), Rule(31).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v0, v1, r), input2(v2, v3), Rule(r), Rule(31).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v1), input2_exists(v2, v3, r), Rule(r), Rule(31).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), Rule(32).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), r = 32, Rule(32).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v0, v1), invent_sel(v0, v1), Rule(r), Rule(32).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(32).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(32).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), Rule(33).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), r = 33, Rule(33).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v2, v1), invent_sel(v2, v1), Rule(r), Rule(33).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v2, v1, r), invent_sel(v2, v1), Rule(r), Rule(33).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v1), invent_sel_exists(v2, v1, r), Rule(r), Rule(33).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), Rule(34).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), r = 34, Rule(34).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v2, v1), invent_sel(v0, v1), Rule(r), Rule(34).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v2, v1, r), invent_sel(v0, v1), Rule(r), Rule(34).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(34).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), Rule(35).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), r = 35, Rule(35).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v0, v1), invent_sel(v2, v1), Rule(r), Rule(35).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v0, v1, r), invent_sel(v2, v1), Rule(r), Rule(35).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v1), invent_sel_exists(v2, v1, r), Rule(r), Rule(35).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), Rule(36).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), r = 36, Rule(36).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), input2(v2, v3), invent_sel(v2, v3), Rule(r), Rule(36).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2_exists(v2, v3, r), invent_sel(v2, v3), Rule(r), Rule(36).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), input2(v2, v3), invent_sel_exists(v2, v3, r), Rule(r), Rule(36).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(37).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), r = 37, Rule(37).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v2, v3), invent_sel(v0, v3), Rule(r), Rule(37).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v2, v3, r), invent_sel(v0, v3), Rule(r), Rule(37).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v2, v3), invent_sel_exists(v0, v3, r), Rule(r), Rule(37).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), Rule(38).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), r = 38, Rule(38).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), input2(v0, v3), invent_sel(v2, v3), Rule(r), Rule(38).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2_exists(v0, v3, r), invent_sel(v2, v3), Rule(r), Rule(38).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), input2(v0, v3), invent_sel_exists(v2, v3, r), Rule(r), Rule(38).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), Rule(39).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), r = 39, Rule(39).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v2, v3), invent_sel(v0, v1), Rule(r), Rule(39).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v2, v3, r), invent_sel(v0, v1), Rule(r), Rule(39).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v3), invent_sel_exists(v0, v1, r), Rule(r), Rule(39).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(40).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), r = 40, Rule(40).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v0, v3), invent_sel(v2, v1), Rule(r), Rule(40).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v0, v3, r), invent_sel(v2, v1), Rule(r), Rule(40).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v3), invent_sel_exists(v2, v1, r), Rule(r), Rule(40).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), Rule(41).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), r = 41, Rule(41).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v2, v1), invent_sel(v0, v3), Rule(r), Rule(41).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v2, v1, r), invent_sel(v0, v3), Rule(r), Rule(41).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v2, v1), invent_sel_exists(v0, v3, r), Rule(r), Rule(41).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), Rule(42).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), r = 42, Rule(42).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), input2(v0, v1), invent_sel(v2, v3), Rule(r), Rule(42).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2_exists(v0, v1, r), invent_sel(v2, v3), Rule(r), Rule(42).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), input2(v0, v1), invent_sel_exists(v2, v3, r), Rule(r), Rule(42).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(43).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), r = 43, Rule(43).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), invent_sel(v0, v1), invent_sel(v0, v1), Rule(r), Rule(43).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(43).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(43).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(44).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), r = 44, Rule(44).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), invent_sel(v2, v1), invent_sel(v2, v1), Rule(r), Rule(44).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel_exists(v2, v1, r), invent_sel(v2, v1), Rule(r), Rule(44).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v2, v1), invent_sel_exists(v2, v1, r), Rule(r), Rule(44).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(45).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), r = 45, Rule(45).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), invent_sel(v2, v1), invent_sel(v0, v1), Rule(r), Rule(45).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel_exists(v2, v1, r), invent_sel(v0, v1), Rule(r), Rule(45).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v2, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(45).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(46).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), r = 46, Rule(46).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), invent_sel(v0, v1), invent_sel(v2, v1), Rule(r), Rule(46).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel_exists(v0, v1, r), invent_sel(v2, v1), Rule(r), Rule(46).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v0, v1), invent_sel_exists(v2, v1, r), Rule(r), Rule(46).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(47).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), r = 47, Rule(47).
+invent_sel_exists(v0, v1, r) :- input2_exists(v0, v1, r), invent_sel(v2, v3), invent_sel(v2, v3), Rule(r), Rule(47).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel_exists(v2, v3, r), invent_sel(v2, v3), Rule(r), Rule(47).
+invent_sel_exists(v0, v1, r) :- input2(v0, v1), invent_sel(v2, v3), invent_sel_exists(v2, v3, r), Rule(r), Rule(47).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(48).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), r = 48, Rule(48).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), invent_sel(v2, v3), invent_sel(v0, v3), Rule(r), Rule(48).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel_exists(v2, v3, r), invent_sel(v0, v3), Rule(r), Rule(48).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v2, v3), invent_sel_exists(v0, v3, r), Rule(r), Rule(48).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(49).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), r = 49, Rule(49).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v1, r), invent_sel(v0, v3), invent_sel(v2, v3), Rule(r), Rule(49).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel_exists(v0, v3, r), invent_sel(v2, v3), Rule(r), Rule(49).
+invent_sel_exists(v0, v1, r) :- input2(v2, v1), invent_sel(v0, v3), invent_sel_exists(v2, v3, r), Rule(r), Rule(49).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(50).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), r = 50, Rule(50).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), invent_sel(v2, v3), invent_sel(v0, v1), Rule(r), Rule(50).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel_exists(v2, v3, r), invent_sel(v0, v1), Rule(r), Rule(50).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v2, v3), invent_sel_exists(v0, v1, r), Rule(r), Rule(50).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(51).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), r = 51, Rule(51).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), invent_sel(v0, v3), invent_sel(v2, v1), Rule(r), Rule(51).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel_exists(v0, v3, r), invent_sel(v2, v1), Rule(r), Rule(51).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v0, v3), invent_sel_exists(v2, v1, r), Rule(r), Rule(51).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(52).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), r = 52, Rule(52).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), invent_sel(v2, v1), invent_sel(v0, v3), Rule(r), Rule(52).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel_exists(v2, v1, r), invent_sel(v0, v3), Rule(r), Rule(52).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v2, v1), invent_sel_exists(v0, v3, r), Rule(r), Rule(52).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(53).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), r = 53, Rule(53).
+invent_sel_exists(v0, v1, r) :- input2_exists(v2, v3, r), invent_sel(v0, v1), invent_sel(v2, v3), Rule(r), Rule(53).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel_exists(v0, v1, r), invent_sel(v2, v3), Rule(r), Rule(53).
+invent_sel_exists(v0, v1, r) :- input2(v2, v3), invent_sel(v0, v1), invent_sel_exists(v2, v3, r), Rule(r), Rule(53).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(54).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), r = 54, Rule(54).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v0, v1, r), invent_sel(v0, v1), invent_sel(v0, v1), Rule(r), Rule(54).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel_exists(v0, v1, r), invent_sel(v0, v1), Rule(r), Rule(54).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(54).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(55).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), r = 55, Rule(55).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v0, v1, r), invent_sel(v2, v1), invent_sel(v2, v1), Rule(r), Rule(55).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel_exists(v2, v1, r), invent_sel(v2, v1), Rule(r), Rule(55).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel_exists(v2, v1, r), Rule(r), Rule(55).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(56).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), r = 56, Rule(56).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v1, r), invent_sel(v2, v1), invent_sel(v0, v1), Rule(r), Rule(56).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel_exists(v2, v1, r), invent_sel(v0, v1), Rule(r), Rule(56).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel_exists(v0, v1, r), Rule(r), Rule(56).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(57).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), r = 57, Rule(57).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v1, r), invent_sel(v0, v1), invent_sel(v2, v1), Rule(r), Rule(57).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel_exists(v0, v1, r), invent_sel(v2, v1), Rule(r), Rule(57).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel_exists(v2, v1, r), Rule(r), Rule(57).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(58).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), r = 58, Rule(58).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v0, v1, r), invent_sel(v2, v3), invent_sel(v2, v3), Rule(r), Rule(58).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel_exists(v2, v3, r), invent_sel(v2, v3), Rule(r), Rule(58).
+invent_sel_exists(v0, v1, r) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel_exists(v2, v3, r), Rule(r), Rule(58).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(59).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), r = 59, Rule(59).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v1, r), invent_sel(v2, v3), invent_sel(v0, v3), Rule(r), Rule(59).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel_exists(v2, v3, r), invent_sel(v0, v3), Rule(r), Rule(59).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel_exists(v0, v3, r), Rule(r), Rule(59).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(60).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), r = 60, Rule(60).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v1, r), invent_sel(v0, v3), invent_sel(v2, v3), Rule(r), Rule(60).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel_exists(v0, v3, r), invent_sel(v2, v3), Rule(r), Rule(60).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel_exists(v2, v3, r), Rule(r), Rule(60).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(61).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), r = 61, Rule(61).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v3, r), invent_sel(v2, v3), invent_sel(v0, v1), Rule(r), Rule(61).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel_exists(v2, v3, r), invent_sel(v0, v1), Rule(r), Rule(61).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel_exists(v0, v1, r), Rule(r), Rule(61).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(62).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), r = 62, Rule(62).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v3, r), invent_sel(v0, v3), invent_sel(v2, v1), Rule(r), Rule(62).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel_exists(v0, v3, r), invent_sel(v2, v1), Rule(r), Rule(62).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel_exists(v2, v1, r), Rule(r), Rule(62).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(63).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), r = 63, Rule(63).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v3, r), invent_sel(v2, v1), invent_sel(v0, v3), Rule(r), Rule(63).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel_exists(v2, v1, r), invent_sel(v0, v3), Rule(r), Rule(63).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel_exists(v0, v3, r), Rule(r), Rule(63).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(64).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), r = 64, Rule(64).
+invent_sel_exists(v0, v1, r) :- invent_sel_exists(v2, v3, r), invent_sel(v0, v1), invent_sel(v2, v3), Rule(r), Rule(64).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel_exists(v0, v1, r), invent_sel(v2, v3), Rule(r), Rule(64).
+invent_sel_exists(v0, v1, r) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel_exists(v2, v3, r), Rule(r), Rule(64).
+ans(v0) :- ans(v0), Rule(65).
+ans_exists(v0, r) :- ans(v0), r = 65, Rule(65).
+ans_exists(v0, r) :- ans_exists(v0, r), Rule(r), Rule(65).
+ans(v0) :- ans(v0), ans(v0), Rule(66).
+ans_exists(v0, r) :- ans(v0), ans(v0), r = 66, Rule(66).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v0), Rule(r), Rule(66).
+ans_exists(v0, r) :- ans(v0), ans_exists(v0, r), Rule(r), Rule(66).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(67).
+ans_exists(v0, r) :- ans(v0), ans(v0), ans(v0), r = 67, Rule(67).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v0), ans(v0), Rule(r), Rule(67).
+ans_exists(v0, r) :- ans(v0), ans_exists(v0, r), ans(v0), Rule(r), Rule(67).
+ans_exists(v0, r) :- ans(v0), ans(v0), ans_exists(v0, r), Rule(r), Rule(67).
+ans(v0) :- ans(v0), ans(v1), ans(v1), Rule(68).
+ans_exists(v0, r) :- ans(v0), ans(v1), ans(v1), r = 68, Rule(68).
+ans_exists(v0, r) :- ans_exists(v0, r), ans(v1), ans(v1), Rule(r), Rule(68).
+ans_exists(v0, r) :- ans(v0), ans_exists(v1, r), ans(v1), Rule(r), Rule(68).
+ans_exists(v0, r) :- ans(v0), ans(v1), ans_exists(v1, r), Rule(r), Rule(68).
+ans(v0) :- ans(v1), ans(v1), ans(v0), Rule(69).
+ans_exists(v0, r) :- ans(v1), ans(v1), ans(v0), r = 69, Rule(69).
+ans_exists(v0, r) :- ans_exists(v1, r), ans(v1), ans(v0), Rule(r), Rule(69).
+ans_exists(v0, r) :- ans(v1), ans_exists(v1, r), ans(v0), Rule(r), Rule(69).
+ans_exists(v0, r) :- ans(v1), ans(v1), ans_exists(v0, r), Rule(r), Rule(69).
+ans(v0) :- ans(v1), ans(v0), ans(v1), Rule(70).
+ans_exists(v0, r) :- ans(v1), ans(v0), ans(v1), r = 70, Rule(70).
+ans_exists(v0, r) :- ans_exists(v1, r), ans(v0), ans(v1), Rule(r), Rule(70).
+ans_exists(v0, r) :- ans(v1), ans_exists(v0, r), ans(v1), Rule(r), Rule(70).
+ans_exists(v0, r) :- ans(v1), ans(v0), ans_exists(v1, r), Rule(r), Rule(70).

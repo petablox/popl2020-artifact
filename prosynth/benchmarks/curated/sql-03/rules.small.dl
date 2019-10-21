@@ -1,0 +1,72 @@
+.type X
+.type Y
+.type Number
+.type Value
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl In(v0: X, v1: Y, v2: Number, v3: Value)
+.input In
+
+
+.decl Out(v0: Number, v1: Value)
+.output Out
+
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), Rule(26).
+Out(v7, v3) :- In(v0, v1, v2, v3), Out(v2, v4), In(v5, v6, v7, v4), Rule(52).
+Out(v3, v1) :- Out(v0, v1), Out(v0, v2), Out(v3, v2), Rule(49).
+Out(v7, v3) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), Out(v7, v6), Rule(27).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), In(v7, v8, v6, v9), Rule(5).
+Out(v2, v7) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), Out(v5, v7), Rule(46).
+Out(v8, v3) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), In(v4, v7, v8, v9), Rule(35).
+Out(v5, v3) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), Rule(20).
+Out(v8, v3) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), In(v7, v5, v8, v9), Rule(47).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), In(v4, v7, v8, v9), Rule(56).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), In(v4, v7, v8, v9), Rule(44).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), In(v7, v8, v9, v6), Rule(40).
+Out(v5, v4) :- In(v0, v1, v2, v3), Out(v2, v4), Out(v5, v3), Rule(48).
+Out(v5, v3) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), In(v7, v8, v5, v9), Rule(4).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), Out(v7, v6), Rule(39).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), Out(v7, v6), Rule(16).
+Out(v6, v3) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), Out(v6, v7), Rule(34).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), Out(v7, v6), Rule(14).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), In(v7, v8, v9, v6), Rule(8).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), In(v7, v5, v8, v9), Rule(22).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), In(v7, v4, v8, v9), Rule(28).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), Rule(21).
+Out(v5, v3) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), Out(v5, v7), Rule(17).
+Out(v2, v5) :- In(v0, v1, v2, v3), Out(v4, v3), Out(v4, v5), Rule(51).
+Out(v5, v3) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), Rule(29).
+Out(v6, v3) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), Rule(42).
+Out(v2, v7) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), Out(v5, v7), Rule(12).
+Out(v0, v3) :- Out(v0, v1), Out(v2, v1), Out(v2, v3), Rule(36).
+Out(v7, v3) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), Out(v7, v6), Rule(15).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), In(v7, v8, v5, v9), Rule(13).
+Out(v5, v3) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), Out(v5, v7), Rule(33).
+Out(v2, v7) :- In(v0, v1, v2, v3), Out(v4, v3), In(v5, v6, v4, v7), Rule(54).
+Out(v2, v3) :- In(v0, v1, v2, v3), Out(v4, v3), Out(v2, v5), Rule(9).
+Out(v8, v3) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), In(v7, v5, v8, v9), Rule(11).
+Out(v8, v3) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), In(v4, v7, v8, v9), Rule(2).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), In(v7, v8, v9, v6), Rule(45).
+Out(v8, v3) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), In(v4, v7, v8, v9), Rule(18).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), In(v4, v7, v8, v9), Rule(3).
+Out(v2, v3) :- In(v0, v1, v2, v3), Rule(31).
+Out(v7, v3) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), Out(v7, v6), Rule(55).
+Out(v2, v3) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), Rule(50).
+Out(v2, v3) :- In(v0, v1, v2, v3), Out(v2, v4), Rule(10).
+Out(v9, v3) :- In(v0, v1, v2, v3), In(v4, v5, v2, v6), In(v7, v8, v9, v6), Rule(25).
+Out(v9, v3) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), In(v7, v8, v9, v6), Rule(32).
+Out(v9, v3) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), In(v7, v8, v9, v6), Rule(1).
+Out(v2, v6) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), Rule(23).
+Out(v4, v5) :- In(v0, v1, v2, v3), Out(v4, v3), Out(v2, v5), Rule(43).
+Out(v5, v3) :- In(v0, v1, v2, v3), In(v4, v1, v5, v6), In(v7, v8, v5, v9), Rule(24).
+Out(v8, v3) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), In(v7, v4, v8, v9), Rule(0).
+Out(v2, v7) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), Out(v6, v7), Rule(41).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), In(v7, v5, v8, v9), Rule(38).
+Out(v2, v9) :- In(v0, v1, v2, v3), In(v0, v4, v5, v6), In(v7, v8, v5, v9), Rule(53).
+Out(v2, v3) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), Rule(19).
+Out(v6, v3) :- In(v0, v1, v2, v3), In(v4, v5, v6, v3), In(v7, v8, v6, v9), Rule(30).
+Out(v5, v3) :- In(v0, v1, v2, v3), Out(v2, v4), Out(v5, v4), Rule(6).
+Out(v2, v3) :- In(v0, v1, v2, v3), Out(v2, v4), Out(v5, v3), Rule(7).
+Out(v2, v3) :- In(v0, v1, v2, v3), Out(v4, v3), Rule(37).

@@ -1,0 +1,57 @@
+.type Y
+.type Number
+.type X
+.type Value
+
+.decl Rule(n: number)
+.input Rule
+
+.decl In(v0: X, v1: Y, v2: Number, v3: Value)
+.input In
+
+.decl Out(v0: Number, v1: Value)
+.decl In_exists(v0: X, v1: Y, v2: Number, v3: Value, r: number)
+.output In_exists
+
+.decl Out_exists(v0: Number, v1: Value, r: number)
+.output Out_exists
+
+
+
+Out(v0, v1) :- Out(v0, v1), Rule(0).
+Out_exists(v0, v1, r) :- Out(v0, v1), r = 0, Rule(0).
+Out_exists(v0, v1, r) :- Out_exists(v0, v1, r), Rule(r), Rule(0).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Rule(1).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out(v0, v1), r = 1, Rule(1).
+Out_exists(v0, v1, r) :- Out_exists(v0, v1, r), Out(v0, v1), Rule(r), Rule(1).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out_exists(v0, v1, r), Rule(r), Rule(1).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(2).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out(v0, v1), Out(v0, v1), r = 2, Rule(2).
+Out_exists(v0, v1, r) :- Out_exists(v0, v1, r), Out(v0, v1), Out(v0, v1), Rule(r), Rule(2).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out_exists(v0, v1, r), Out(v0, v1), Rule(r), Rule(2).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out(v0, v1), Out_exists(v0, v1, r), Rule(r), Rule(2).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v2), Out(v0, v2), Rule(3).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out(v0, v2), Out(v0, v2), r = 3, Rule(3).
+Out_exists(v0, v1, r) :- Out_exists(v0, v1, r), Out(v0, v2), Out(v0, v2), Rule(r), Rule(3).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out_exists(v0, v2, r), Out(v0, v2), Rule(r), Rule(3).
+Out_exists(v0, v1, r) :- Out(v0, v1), Out(v0, v2), Out_exists(v0, v2, r), Rule(r), Rule(3).
+Out(v0, v1) :- Out(v0, v2), Out(v0, v2), Out(v0, v1), Rule(4).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v0, v2), Out(v0, v1), r = 4, Rule(4).
+Out_exists(v0, v1, r) :- Out_exists(v0, v2, r), Out(v0, v2), Out(v0, v1), Rule(r), Rule(4).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out_exists(v0, v2, r), Out(v0, v1), Rule(r), Rule(4).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v0, v2), Out_exists(v0, v1, r), Rule(r), Rule(4).
+Out(v0, v1) :- Out(v0, v2), Out(v0, v1), Out(v0, v2), Rule(5).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v0, v1), Out(v0, v2), r = 5, Rule(5).
+Out_exists(v0, v1, r) :- Out_exists(v0, v2, r), Out(v0, v1), Out(v0, v2), Rule(r), Rule(5).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out_exists(v0, v1, r), Out(v0, v2), Rule(r), Rule(5).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v0, v1), Out_exists(v0, v2, r), Rule(r), Rule(5).
+Out(v0, v1) :- Out(v0, v2), Out(v3, v2), Out(v3, v1), Rule(6).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v3, v2), Out(v3, v1), r = 6, Rule(6).
+Out_exists(v0, v1, r) :- Out_exists(v0, v2, r), Out(v3, v2), Out(v3, v1), Rule(r), Rule(6).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out_exists(v3, v2, r), Out(v3, v1), Rule(r), Rule(6).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v3, v2), Out_exists(v3, v1, r), Rule(r), Rule(6).
+Out(v0, v1) :- Out(v0, v2), Out(v3, v1), Out(v3, v2), Rule(7).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v3, v1), Out(v3, v2), r = 7, Rule(7).
+Out_exists(v0, v1, r) :- Out_exists(v0, v2, r), Out(v3, v1), Out(v3, v2), Rule(r), Rule(7).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out_exists(v3, v1, r), Out(v3, v2), Rule(r), Rule(7).
+Out_exists(v0, v1, r) :- Out(v0, v2), Out(v3, v1), Out_exists(v3, v2, r), Rule(r), Rule(7).

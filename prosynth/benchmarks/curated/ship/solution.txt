@@ -1,0 +1,1 @@
+ship_to(ProdName, City) :- has_ordered(CustNo, ProdNo), customer_city(CustNo, City), product_name(ProdNo, ProdName).

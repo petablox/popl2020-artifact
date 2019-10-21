@@ -1,0 +1,20 @@
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Edge(v0: V, v1: V)
+.input Edge
+.decl Path(v0: V, v1: V)
+.output Path
+.decl SCC(v0: V, v1: V)
+.output SCC
+
+SCC(x, y) :- Edge(x, y), Rule(0).
+Path(x, y) :- Edge(x, y), Rule(1).
+Path(x, z) :- Path(x, y), Edge(y, z), Rule(2).
+SCC(x, y) :- Path(x, y), Path(y, x), Rule(3).
+SCC(x, y) :- Path(x, y), Rule(4).
+SCC(x, y) :- Path(y, x), Rule(5).
+Path(x, y) :- Edge(y, x), Rule(6).
+Path(x, z) :- Path(x, y), Edge(z, y), Rule(7).

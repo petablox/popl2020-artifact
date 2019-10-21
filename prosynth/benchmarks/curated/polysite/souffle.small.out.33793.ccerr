@@ -1,0 +1,834 @@
+./polysite/souffle.small.out.cpp:523:6: warning: unused variable 'lease' [-Wunused-variable]
+auto lease = insert_lock.acquire();
+     ^
+./polysite/souffle.small.out.cpp:4522:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4552:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4612:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4642:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4761:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4851:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4882:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4943:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:4973:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5062:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5122:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5153:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5213:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5244:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5245:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5303:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5393:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5422:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5473:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5504:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5534:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5565:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5596:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5686:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5718:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5750:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5778:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5806:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5807:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5835:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5863:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5893:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5924:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:5984:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6015:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6164:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6184:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6214:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6274:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6335:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6353:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6377:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6527:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6649:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6680:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6770:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6802:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6832:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6864:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:6955:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7016:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7076:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7110:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7139:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7203:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7296:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7327:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7387:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7418:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7450:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7481:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7512:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7603:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7636:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7694:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7727:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7756:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7816:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:7997:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8140:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8171:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8226:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8263:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8303:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8336:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8340:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8371:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8407:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8443:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8448:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8478:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8515:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8555:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8557:19: warning: unused variable 'rel_11_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_11_polySite_op_ctxt,rel_11_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8594:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8624:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8664:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8697:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8734:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8771:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8918:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8956:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:8995:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9028:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9065:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9248:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9321:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9358:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9362:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9429:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9469:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9501:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9573:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9610:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9646:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9682:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9718:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9900:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9933:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:9970:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10007:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10080:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10116:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10188:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10225:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10261:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10297:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10337:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10373:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10410:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10415:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10517:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10557:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10593:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10630:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10634:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10737:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10774:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10811:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10848:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10853:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10883:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10923:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10956:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10993:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:10998:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11028:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11104:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11207:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11244:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11248:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11279:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11318:19: warning: unused variable 'rel_8_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_virtI_op_ctxt,rel_8_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11320:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11358:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11424:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11429:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11463:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11529:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11569:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11609:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11639:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11676:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11713:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11718:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11748:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11784:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11820:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11857:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11894:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11934:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:11972:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12012:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12049:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12086:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12111:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12184:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12223:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12268:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12306:19: warning: unused variable 'rel_11_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_11_polySite_op_ctxt,rel_11_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12339:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12417:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12450:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12528:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12602:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12673:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12710:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12751:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12821:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12845:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12884:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12921:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:12963:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13070:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13221:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13254:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13334:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13367:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13404:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13441:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13518:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13558:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13628:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13665:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13705:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13776:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13811:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13849:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13887:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13930:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:13969:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14005:19: warning: unused variable 'rel_11_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_11_polySite_op_ctxt,rel_11_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14039:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14079:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14116:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14148:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14224:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14258:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14299:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14337:19: warning: unused variable 'rel_11_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_11_polySite_op_ctxt,rel_11_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14374:19: warning: unused variable 'rel_11_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_11_polySite_op_ctxt,rel_11_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14408:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14484:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14632:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14667:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14702:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14739:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14776:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14854:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14929:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:14963:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15003:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15040:19: warning: unused variable 'rel_8_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_virtI_op_ctxt,rel_8_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15077:19: warning: unused variable 'rel_8_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_virtI_op_ctxt,rel_8_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15152:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15188:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15223:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15263:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15336:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15373:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15412:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15447:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15485:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15520:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15557:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15709:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15781:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15823:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15861:19: warning: unused variable 'rel_8_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_virtI_op_ctxt,rel_8_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15899:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15935:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:15969:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16008:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16047:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16086:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16123:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16160:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16237:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16270:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16300:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16336:19: warning: unused variable 'rel_8_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_8_virtI_op_ctxt,rel_8_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16372:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16410:19: warning: unused variable 'rel_4_virtIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_4_virtIM_op_ctxt,rel_4_virtIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16445:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16482:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16557:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16594:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16628:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16705:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16852:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16888:19: warning: unused variable 'rel_9_delta_virtI_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_9_delta_virtI_op_ctxt,rel_9_delta_virtI->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16922:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:16959:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17038:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17108:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17181:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17223:19: warning: unused variable 'rel_12_delta_polySite_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_12_delta_polySite_op_ctxt,rel_12_delta_polySite->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17292:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17332:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17405:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17445:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17479:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17594:19: warning: unused variable 'rel_5_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_5_insvIM_op_ctxt,rel_5_insvIM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17628:19: warning: unused variable 'rel_1_CICM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_1_CICM_op_ctxt,rel_1_CICM->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17703:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17742:19: warning: unused variable 'rel_2_Mneq_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_2_Mneq_op_ctxt,rel_2_Mneq->createContext());
+                  ^
+./polysite/souffle.small.out.cpp:17778:19: warning: unused variable 'rel_6_delta_insvIM_op_ctxt' [-Wunused-variable]
+CREATE_OP_CONTEXT(rel_6_delta_insvIM_op_ctxt,rel_6_delta_insvIM->createContext());
+                  ^

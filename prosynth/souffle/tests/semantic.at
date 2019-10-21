@@ -1,0 +1,199 @@
+# Souffle - A Datalog Compiler
+# Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at:
+# - https://opensource.org/licenses/UPL
+# - <souffle root>/licenses/SOUFFLE-UPL.txt
+
+dnl Execute a positive gzip test case for a given flag configuration
+dnl $1 -- test case
+dnl $2 -- category
+dnl $3 -- facts directory relative to the test directory
+dnl $4 -- directory with expected output
+dnl       (relative to the test dir, but starting with '/'), or empty string
+m4_define([TEST_EVAL_GZIP],[
+  m4_define([TESTNAME],[$1])
+  m4_define([CATEGORY],[$2])
+  m4_define([TESTDIR],["$TESTS"/CATEGORY/TESTNAME])
+  m4_define([PROGRAM],[TESTDIR/TESTNAME.dl])
+  m4_define([FACTS],[TESTDIR/$3])
+  m4_define([EXPECTEDDIR], [TESTDIR$4])
+  # invoke souffle
+  cp TESTDIR/*sqlite.input . || true
+  AT_CHECK(["$SOUFFLE" FLAGS -D. -F FACTS PROGRAM 1>TESTNAME.out 2>TESTNAME.err], [0])
+  SORTED_SAME_FILES([*.csv],[EXPECTEDDIR])
+  # compare all other output files without sorting
+  for i in *.output
+  do
+    # extract the relation view as csv and compare to the expected values
+    gzip -d -c $i > "$i.unsorted.generated"
+    sort "$i.unsorted.generated" > "$i.sorted.generated"
+    SAME_FILE(["$i.sorted.generated"],["EXPECTEDDIR/$i.sorted.expected"])
+  done
+  # validate stdout and stderr
+  SAME_FILE([TESTNAME.out],[EXPECTEDDIR/TESTNAME.out])
+  SAME_FILE([TESTNAME.err],[EXPECTEDDIR/TESTNAME.err])
+])
+
+dnl Positive gzip testcase for Souffle
+dnl $1 -- test name
+dnl $2 -- category
+m4_define([POSITIVE_TEST_GZIP],[
+  TEST_GROUP([$1],[
+    TEST_EVAL_GZIP([$1],[$2],facts)
+  ])
+])
+
+
+dnl Execute a positive sqlite test case for a given flag configuration
+dnl $1 -- test case
+dnl $2 -- category
+dnl $3 -- facts directory relative to the test directory
+dnl $4 -- directory with expected output
+dnl       (relative to the test dir, but starting with '/'), or empty string
+m4_define([TEST_EVAL_SQLITE3],[
+  m4_define([TESTNAME],[$1])
+  m4_define([CATEGORY],[$2])
+  m4_define([TESTDIR],["$TESTS"/CATEGORY/TESTNAME])
+  m4_define([PROGRAM],[TESTDIR/TESTNAME.dl])
+  m4_define([FACTS],[TESTDIR/$3])
+  m4_define([EXPECTEDDIR], [TESTDIR$4])
+  # invoke souffle
+  cp TESTDIR/*sqlite.input . || true
+  AT_CHECK(["$SOUFFLE" FLAGS -D. -F FACTS PROGRAM 1>TESTNAME.out 2>TESTNAME.err], [0])
+  SORTED_SAME_FILES([*.csv],[EXPECTEDDIR])
+  # compare all other output files without sorting
+  for i in *.output
+  do
+    # extract the relation view as csv and compare to the expected values
+    sqlite3 -batch $i -init EXPECTEDDIR/$i.script "" > "$i.unsorted.generated"
+    sort "$i.unsorted.generated" > "$i.sorted.generated"
+    SAME_FILE(["$i.sorted.generated"],["EXPECTEDDIR/$i.sorted.expected"])
+  done
+  # validate stdout and stderr
+  SAME_FILE([TESTNAME.out],[EXPECTEDDIR/TESTNAME.out])
+  SAME_FILE([TESTNAME.err],[EXPECTEDDIR/TESTNAME.err])
+])
+
+dnl Positive sqlite3 testcase for Souffle
+dnl $1 -- test name
+dnl $2 -- category
+m4_define([POSITIVE_TEST_SQLITE3],[
+  TEST_GROUP([$1],[
+    TEST_EVAL_SQLITE3([$1],[$2],facts)
+  ])
+])
+
+##########################################################################
+
+NEGATIVE_TEST([agg_checks2],[semantic])
+NEGATIVE_TEST([agg_checks],[semantic])
+POSITIVE_TEST([aggregate1],[semantic])
+POSITIVE_TEST([aggregate2],[semantic])
+POSITIVE_TEST([aggregate3],[semantic])
+NEGATIVE_TEST([agg_nested],[semantic])
+POSITIVE_TEST([alias],[semantic])
+NEGATIVE_TEST([attrib_dupl],[semantic])
+POSITIVE_TEST([bin1],[semantic])
+POSITIVE_TEST([bin],[semantic])
+POSITIVE_TEST([binhex],[semantic])
+POSITIVE_TEST([bitwise],[semantic])
+POSITIVE_TEST([bool],[semantic])
+NEGATIVE_TEST([choice],[semantic])
+NEGATIVE_TEST([comp_clauses],[semantic])
+NEGATIVE_TEST([comp_infinite_recursion],[semantic])
+POSITIVE_TEST([comp_inner_types],[semantic])
+NEGATIVE_TEST([comp_name_resolution],[semantic])
+NEGATIVE_TEST([comp_nonexistent_type],[semantic])
+NEGATIVE_TEST([comp_override],[semantic])
+NEGATIVE_TEST([comp_params_inheritance],[semantic])
+NEGATIVE_TEST([comp_relation],[semantic])
+NEGATIVE_TEST([comp_types],[semantic])
+POSITIVE_TEST([comp_opt],[semantic])
+NEGATIVE_TEST([counter2],[semantic])
+POSITIVE_TEST([counter],[semantic])
+NEGATIVE_TEST([disjoint_names],[semantic])
+# TODO (see issue #231) NEGATIVE_TEST([divide_by_zero],[semantic])
+POSITIVE_TEST([duplicates],[semantic])
+POSITIVE_TEST([eqrel_tests],[semantic])
+POSITIVE_TEST([eqrel_tests2],[semantic])
+POSITIVE_TEST([eqrel_tests3],[semantic])
+POSITIVE_TEST([equivalent],[semantic])
+NEGATIVE_TEST([execution_plan],[semantic])
+NEGATIVE_TEST([fact_arity],[semantic])
+NEGATIVE_TEST([fact_cat],[semantic])
+NEGATIVE_TEST([fact_ctr],[semantic])
+NEGATIVE_TEST([fact_empty],[semantic])
+NEGATIVE_TEST([fact_number2],[semantic])
+NEGATIVE_TEST([fact_number],[semantic])
+NEGATIVE_TEST([fact_plus],[semantic])
+NEGATIVE_TEST([fact_variable],[semantic])
+POSITIVE_TEST([hex1],[semantic])
+POSITIVE_TEST([hex],[semantic])
+NEGATIVE_TEST([inline_cycle1],[semantic])
+POSITIVE_TEST([inline_cycle2],[semantic])
+NEGATIVE_TEST([inline_negation],[semantic])
+NEGATIVE_TEST([inline_output],[semantic])
+POSITIVE_TEST([ipv4],[semantic])
+POSITIVE_TEST([ipv4_1],[semantic])
+POSITIVE_TEST([load2],[semantic])
+POSITIVE_TEST([load3],[semantic])
+POSITIVE_TEST([load4],[semantic])
+POSITIVE_TEST([load6],[semantic])
+POSITIVE_TEST([load7],[semantic])
+POSITIVE_TEST([logical],[semantic])
+POSITIVE_TEST([lrg_attr_id],[semantic])
+POSITIVE_TEST([lrg_rel_id1],[semantic])
+POSITIVE_TEST([lrg_rel_id2],[semantic])
+POSITIVE_TEST([negative_numbers],[semantic])
+POSITIVE_TEST([not_copy1],[semantic])
+POSITIVE_TEST([not_copy2],[semantic])
+POSITIVE_TEST([not_copy],[semantic])
+NEGATIVE_TEST([number_constants],[semantic])
+NEGATIVE_TEST([plan1],[semantic])
+NEGATIVE_TEST([plan2],[semantic])
+POSITIVE_TEST([progmin1],[semantic])
+NEGATIVE_TEST([record_null],[semantic])
+POSITIVE_TEST([records0],[semantic])
+POSITIVE_TEST([records1],[semantic])
+POSITIVE_TEST([records2],[semantic])
+POSITIVE_TEST([records3],[semantic])
+POSITIVE_TEST([records4],[semantic])
+POSITIVE_TEST([records5],[semantic])
+POSITIVE_TEST([records6],[semantic])
+POSITIVE_TEST([records7],[semantic])
+POSITIVE_TEST([records8],[semantic])
+NEGATIVE_TEST([recursive_unions],[semantic])
+POSITIVE_TEST([rel_copy_cycles],[semantic])
+NEGATIVE_TEST([rel_dupl],[semantic])
+POSITIVE_TEST([rel_list],[semantic])
+POSITIVE_TEST([rel_nullary],[semantic])
+NEGATIVE_TEST([rel_record],[semantic])
+NEGATIVE_TEST([rel_stratification2],[semantic])
+NEGATIVE_TEST([rel_stratification],[semantic])
+NEGATIVE_TEST([rel_udef],[semantic])
+POSITIVE_TEST([rqualifiers],[semantic])
+NEGATIVE_TEST([rule_arity],[semantic])
+NEGATIVE_TEST([rule_grounded],[semantic])
+NEGATIVE_TEST([rule_typecompat],[semantic])
+NEGATIVE_TEST([rule_undeclared_relation2],[semantic])
+NEGATIVE_TEST([rule_undeclared_relation],[semantic])
+POSITIVE_TEST_GZIP([store],[semantic])
+POSITIVE_TEST([store2],[semantic])
+POSITIVE_TEST_SQLITE3([store3],[semantic])
+POSITIVE_TEST([store4],[semantic])
+POSITIVE_TEST([store5],[semantic])
+POSITIVE_TEST([strconv],[semantic])
+POSITIVE_TEST([string_len],[semantic])
+POSITIVE_TEST([string_substr1],[semantic])
+POSITIVE_TEST([string_substr],[semantic])
+POSITIVE_TEST([suppress_warnings],[semantic])
+NEGATIVE_TEST([type_dupl],[semantic])
+NEGATIVE_TEST([type_system1],[semantic])
+NEGATIVE_TEST([type_system2],[semantic])
+NEGATIVE_TEST([type_system3],[semantic])
+NEGATIVE_TEST([type_udef],[semantic])
+POSITIVE_TEST([underscore2],[semantic])
+NEGATIVE_TEST([underscore],[semantic])
+NEGATIVE_TEST([union_types],[semantic])
+NEGATIVE_TEST([var_single],[semantic])
+NEGATIVE_TEST([witness_check],[semantic])

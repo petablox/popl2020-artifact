@@ -1,0 +1,87 @@
+.type I
+.type H
+.type F
+.type M
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl MgetInstFldInst(v0: M, v1: V, v2: V, v3: F)
+.input MgetInstFldInst
+.decl MgetStatFldInst(v0: M, v1: V, v2: F)
+.input MgetStatFldInst
+.decl MputInstFldInst(v0: M, v1: V, v2: F, v3: V)
+.input MputInstFldInst
+.decl MI(v0: M, v1: I)
+.input MI
+.decl VH(v0: V, v1: H)
+.input VH
+.decl IM(v0: I, v1: M)
+.input IM
+.decl MputStatFldInst(v0: M, v1: F, v2: V)
+.input MputStatFldInst
+
+.decl MgetInstFldInst_notexists(v0: M, v1: V, v2: V, v3: F, v4: number)
+.output MgetInstFldInst_notexists
+.decl MgetStatFldInst_notexists(v0: M, v1: V, v2: F, v3: number)
+.output MgetStatFldInst_notexists
+.decl MputInstFldInst_notexists(v0: M, v1: V, v2: F, v3: V, v4: number)
+.output MputInstFldInst_notexists
+.decl MI_notexists(v0: M, v1: I, v2: number)
+.output MI_notexists
+.decl VH_notexists(v0: V, v1: H, v2: number)
+.output VH_notexists
+.decl IM_notexists(v0: I, v1: M, v2: number)
+.output IM_notexists
+.decl MputStatFldInst_notexists(v0: M, v1: F, v2: V, v3: number)
+.output MputStatFldInst_notexists
+
+.decl rMM_notexists(v0: M, v1: M, v2: number)
+.output rMM_notexists
+.decl refInstField_notexists(v0: M, v1: H, v2: F, v3: number)
+.output refInstField_notexists
+.decl modInstField_notexists(v0: M, v1: H, v2: F, v3: number)
+.output modInstField_notexists
+.decl modStatField_notexists(v0: M, v1: F, v2: number)
+.output modStatField_notexists
+.decl refStatField_notexists(v0: M, v1: F, v2: number)
+.output refStatField_notexists
+
+MgetInstFldInst_notexists(v0, v1, v2, v3, ruleIndex) :- MgetInstFldInst(v0, v1, v2, v3), Rule(ruleIndex).
+MgetStatFldInst_notexists(v0, v1, v2, ruleIndex) :- MgetStatFldInst(v0, v1, v2), Rule(ruleIndex).
+MputInstFldInst_notexists(v0, v1, v2, v3, ruleIndex) :- MputInstFldInst(v0, v1, v2, v3), Rule(ruleIndex).
+MI_notexists(v0, v1, ruleIndex) :- MI(v0, v1), Rule(ruleIndex).
+VH_notexists(v0, v1, ruleIndex) :- VH(v0, v1), Rule(ruleIndex).
+IM_notexists(v0, v1, ruleIndex) :- IM(v0, v1), Rule(ruleIndex).
+MputStatFldInst_notexists(v0, v1, v2, ruleIndex) :- MputStatFldInst(v0, v1, v2), Rule(ruleIndex).
+modStatField_notexists(v0, v1, ruleIndex) :- MputStatFldInst_notexists(v0, v1, v2, ruleIndex), ruleIndex != 11, Rule(11).
+refStatField_notexists(v2, v1, ruleIndex) :- modStatField_notexists(v0, v1, ruleIndex), rMM_notexists(v2, v0, ruleIndex), ruleIndex != 18, Rule(18).
+rMM_notexists(v0, v2, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), rMM_notexists(v2, v1, ruleIndex), ruleIndex != 10, Rule(10).
+modStatField_notexists(v0, v2, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), refStatField_notexists(v1, v2, ruleIndex), ruleIndex != 27, Rule(27).
+refInstField_notexists(v0, v2, v3, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), refInstField_notexists(v1, v2, v3, ruleIndex), ruleIndex != 5, Rule(5).
+rMM_notexists(v0, v2, ruleIndex) :- refStatField_notexists(v0, v1, ruleIndex), refStatField_notexists(v2, v1, ruleIndex), ruleIndex != 15, Rule(15).
+refInstField_notexists(v0, v4, v2, ruleIndex) :- MputInstFldInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v1, v4, ruleIndex), ruleIndex != 12, Rule(12).
+refStatField_notexists(v0, v1, ruleIndex) :- modStatField_notexists(v0, v1, ruleIndex), ruleIndex != 7, Rule(7).
+refInstField_notexists(v0, v4, v3, ruleIndex) :- MgetInstFldInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v2, v4, ruleIndex), ruleIndex != 22, Rule(22).
+refStatField_notexists(v0, v2, ruleIndex) :- MgetStatFldInst_notexists(v0, v1, v2, ruleIndex), ruleIndex != 6, Rule(6).
+rMM_notexists(v0, v2, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), rMM_notexists(v1, v2, ruleIndex), ruleIndex != 29, Rule(29).
+modInstField_notexists(v0, v4, v2, ruleIndex) :- MputInstFldInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v1, v4, ruleIndex), ruleIndex != 2, Rule(2).
+modInstField_notexists(v0, v1, v2, ruleIndex) :- refInstField_notexists(v0, v1, v2, ruleIndex), ruleIndex != 14, Rule(14).
+rMM_notexists(v2, v1, ruleIndex) :- IM_notexists(v0, v1, ruleIndex), MI_notexists(v2, v0, ruleIndex), ruleIndex != 24, Rule(24).
+modInstField_notexists(v3, v1, v2, ruleIndex) :- modInstField_notexists(v0, v1, v2, ruleIndex), rMM_notexists(v3, v0, ruleIndex), ruleIndex != 0, Rule(0).
+refInstField_notexists(v0, v1, v2, ruleIndex) :- modInstField_notexists(v0, v1, v2, ruleIndex), ruleIndex != 8, Rule(8).
+rMM_notexists(v1, v3, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), rMM_notexists(v0, v2, ruleIndex), rMM_notexists(v2, v3, ruleIndex), ruleIndex != 28, Rule(28).
+modStatField_notexists(v0, v2, ruleIndex) :- refInstField_notexists(v0, v1, v2, ruleIndex), ruleIndex != 9, Rule(9).
+rMM_notexists(v0, v2, ruleIndex) :- modStatField_notexists(v0, v1, ruleIndex), modStatField_notexists(v2, v1, ruleIndex), ruleIndex != 13, Rule(13).
+modStatField_notexists(v2, v1, ruleIndex) :- modStatField_notexists(v0, v1, ruleIndex), rMM_notexists(v2, v0, ruleIndex), ruleIndex != 17, Rule(17).
+modStatField_notexists(v0, v2, ruleIndex) :- MgetStatFldInst_notexists(v0, v1, v2, ruleIndex), ruleIndex != 26, Rule(26).
+refStatField_notexists(v0, v2, ruleIndex) :- modInstField_notexists(v0, v1, v2, ruleIndex), ruleIndex != 23, Rule(23).
+refStatField_notexists(v0, v2, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), refStatField_notexists(v1, v2, ruleIndex), ruleIndex != 21, Rule(21).
+modStatField_notexists(v0, v1, ruleIndex) :- refStatField_notexists(v0, v1, ruleIndex), ruleIndex != 16, Rule(16).
+refStatField_notexists(v0, v2, ruleIndex) :- refInstField_notexists(v0, v1, v2, ruleIndex), ruleIndex != 19, Rule(19).
+modInstField_notexists(v0, v4, v3, ruleIndex) :- MgetInstFldInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v2, v4, ruleIndex), ruleIndex != 20, Rule(20).
+refStatField_notexists(v0, v1, ruleIndex) :- MputStatFldInst_notexists(v0, v1, v2, ruleIndex), ruleIndex != 4, Rule(4).
+modStatField_notexists(v0, v2, ruleIndex) :- modInstField_notexists(v0, v1, v2, ruleIndex), ruleIndex != 25, Rule(25).
+rMM_notexists(v0, v3, ruleIndex) :- rMM_notexists(v0, v1, ruleIndex), rMM_notexists(v1, v2, ruleIndex), rMM_notexists(v2, v3, ruleIndex), ruleIndex != 1, Rule(1).
+rMM_notexists(v0, v2, ruleIndex) :- MI_notexists(v0, v1, ruleIndex), MI_notexists(v2, v1, ruleIndex), ruleIndex != 3, Rule(3).

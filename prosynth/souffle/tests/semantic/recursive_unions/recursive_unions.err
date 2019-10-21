@@ -1,0 +1,13 @@
+Error: Cyclic definition of union type(s) {U1,U2} in file recursive_unions.dl at line 12
+.type U1 = U2 | U3
+^------------------
+Error: Cyclic definition of union type(s) {V1} in file recursive_unions.dl at line 16
+.type V1 = V1 | symbol
+^----------------------
+Error: Cyclic definition of union type(s) {R} in file recursive_unions.dl at line 19
+.type R = R
+^-----------
+Error: Cyclic definition of union type(s) {B,a,D} in file recursive_unions.dl at line 25
+.type B = C | a
+^---------------
+4 errors generated, evaluation aborted

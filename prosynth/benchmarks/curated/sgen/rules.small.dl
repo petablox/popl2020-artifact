@@ -1,0 +1,178 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl parent(v0: V, v1: V)
+.input parent
+
+
+.decl sgen(v0: V, v1: V)
+.output sgen
+
+sgen(v0, v1) :- parent(v0, v1), sgen(v0, v2), Rule(80).
+sgen(v2, v1) :- parent(v0, v1), parent(v0, v2), parent(v2, v3), Rule(137).
+sgen(v0, v3) :- parent(v0, v1), sgen(v2, v1), sgen(v3, v2), Rule(51).
+sgen(v0, v3) :- parent(v0, v1), parent(v1, v2), parent(v3, v2), Rule(116).
+sgen(v1, v2) :- sgen(v0, v1), sgen(v2, v0), Rule(161).
+sgen(v2, v3) :- parent(v0, v1), parent(v1, v2), sgen(v0, v3), Rule(115).
+sgen(v0, v1) :- parent(v0, v1), sgen(v1, v2), Rule(41).
+sgen(v2, v1) :- sgen(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(22).
+sgen(v2, v1) :- parent(v0, v1), sgen(v0, v2), Rule(13).
+sgen(v0, v2) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(103).
+sgen(v3, v0) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v1), Rule(165).
+sgen(v3, v2) :- parent(v0, v1), parent(v2, v1), sgen(v3, v0), Rule(162).
+sgen(v3, v0) :- parent(v0, v1), parent(v1, v2), sgen(v3, v2), Rule(151).
+sgen(v0, v2) :- parent(v0, v1), parent(v0, v2), sgen(v2, v3), Rule(86).
+sgen(v0, v2) :- parent(v0, v1), sgen(v2, v0), Rule(85).
+sgen(v1, v2) :- parent(v0, v1), parent(v1, v2), parent(v3, v2), Rule(95).
+sgen(v1, v3) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(77).
+sgen(v0, v2) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(145).
+sgen(v3, v1) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(89).
+sgen(v1, v2) :- parent(v0, v1), sgen(v0, v2), sgen(v1, v3), Rule(73).
+sgen(v3, v1) :- parent(v0, v1), sgen(v0, v2), parent(v3, v2), Rule(93).
+sgen(v2, v0) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(112).
+sgen(v3, v1) :- parent(v0, v1), sgen(v1, v2), sgen(v2, v3), Rule(99).
+sgen(v0, v2) :- parent(v0, v1), parent(v0, v2), sgen(v3, v2), Rule(70).
+sgen(v0, v3) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(16).
+sgen(v3, v1) :- sgen(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(97).
+sgen(v1, v0) :- sgen(v0, v1), sgen(v2, v0), Rule(121).
+sgen(v3, v1) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(147).
+sgen(v3, v1) :- parent(v0, v1), parent(v0, v2), parent(v2, v3), Rule(17).
+sgen(v3, v1) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(50).
+sgen(v0, v1) :- parent(v0, v1), parent(v2, v1), sgen(v3, v0), Rule(91).
+sgen(v3, v1) :- parent(v0, v1), sgen(v0, v2), sgen(v3, v2), Rule(108).
+sgen(v0, v3) :- parent(v0, v1), sgen(v2, v0), parent(v3, v2), Rule(74).
+sgen(v0, v3) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(96).
+sgen(v0, v1) :- parent(v0, v1), parent(v0, v2), Rule(109).
+sgen(v2, v0) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(52).
+sgen(v3, v0) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(140).
+sgen(v3, v0) :- parent(v0, v1), sgen(v1, v2), parent(v3, v2), Rule(21).
+sgen(v1, v2) :- sgen(v0, v1), sgen(v0, v2), Rule(24).
+sgen(v0, v3) :- sgen(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(136).
+sgen(v1, v2) :- parent(v0, v1), sgen(v2, v0), Rule(78).
+sgen(v2, v1) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(34).
+sgen(v0, v3) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(59).
+sgen(v0, v3) :- parent(v0, v1), parent(v0, v2), sgen(v2, v3), Rule(42).
+sgen(v3, v2) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v1), Rule(114).
+sgen(v2, v1) :- parent(v0, v1), sgen(v1, v2), Rule(125).
+sgen(v3, v1) :- parent(v0, v1), parent(v1, v2), parent(v3, v2), Rule(15).
+sgen(v2, v0) :- parent(v0, v1), sgen(v2, v1), Rule(12).
+sgen(v3, v2) :- parent(v0, v1), sgen(v0, v2), sgen(v3, v1), Rule(110).
+sgen(v1, v2) :- parent(v0, v1), parent(v0, v2), Rule(155).
+sgen(v2, v1) :- parent(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(158).
+sgen(v1, v2) :- parent(v0, v1), parent(v1, v2), sgen(v3, v2), Rule(100).
+sgen(v3, v1) :- parent(v0, v1), sgen(v2, v0), sgen(v2, v3), Rule(75).
+sgen(v3, v0) :- parent(v0, v1), parent(v1, v2), parent(v3, v2), Rule(40).
+sgen(v3, v0) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(83).
+sgen(v1, v3) :- parent(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(62).
+sgen(v2, v1) :- parent(v0, v1), sgen(v2, v0), Rule(58).
+sgen(v0, v3) :- parent(v0, v1), parent(v1, v2), sgen(v3, v2), Rule(64).
+sgen(v0, v2) :- parent(v0, v1), sgen(v2, v1), sgen(v3, v2), Rule(67).
+sgen(v3, v2) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(46).
+sgen(v0, v2) :- parent(v0, v1), parent(v1, v2), sgen(v0, v3), Rule(1).
+sgen(v2, v1) :- parent(v0, v1), sgen(v0, v2), parent(v2, v3), Rule(122).
+sgen(v2, v0) :- parent(v0, v1), sgen(v1, v2), Rule(68).
+sgen(v1, v3) :- parent(v0, v1), sgen(v1, v2), sgen(v2, v3), Rule(163).
+sgen(v0, v3) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v2), Rule(60).
+sgen(v0, v2) :- parent(v0, v1), sgen(v2, v1), Rule(71).
+sgen(v1, v2) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(128).
+sgen(v0, v2) :- parent(v0, v1), parent(v2, v1), Rule(49).
+sgen(v3, v1) :- parent(v0, v1), parent(v0, v2), parent(v3, v2), Rule(143).
+sgen(v3, v2) :- parent(v0, v1), parent(v1, v2), sgen(v0, v3), Rule(32).
+sgen(v1, v3) :- sgen(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(154).
+sgen(v3, v1) :- parent(v0, v1), parent(v1, v2), sgen(v3, v2), Rule(37).
+sgen(v3, v2) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(156).
+sgen(v1, v3) :- parent(v0, v1), sgen(v0, v2), parent(v2, v3), Rule(102).
+sgen(v0, v2) :- sgen(v0, v1), sgen(v2, v1), Rule(53).
+sgen(v2, v1) :- parent(v0, v1), parent(v0, v2), sgen(v2, v3), Rule(111).
+sgen(v1, v3) :- parent(v0, v1), sgen(v2, v0), sgen(v2, v3), Rule(88).
+sgen(v0, v1) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(146).
+sgen(v3, v0) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(9).
+sgen(v1, v2) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(47).
+sgen(v0, v3) :- parent(v0, v1), parent(v2, v3), sgen(v3, v0), Rule(126).
+sgen(v0, v3) :- parent(v0, v1), parent(v0, v2), parent(v2, v3), Rule(81).
+sgen(v2, v1) :- parent(v0, v1), sgen(v2, v0), parent(v3, v2), Rule(76).
+sgen(v1, v3) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(133).
+sgen(v3, v0) :- sgen(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(150).
+sgen(v0, v3) :- parent(v0, v1), sgen(v1, v2), parent(v3, v2), Rule(157).
+sgen(v0, v3) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(120).
+sgen(v0, v2) :- sgen(v0, v1), sgen(v2, v0), Rule(117).
+sgen(v0, v2) :- parent(v0, v1), parent(v0, v2), parent(v2, v3), Rule(28).
+sgen(v1, v0) :- parent(v0, v1), sgen(v2, v0), Rule(72).
+sgen(v3, v2) :- parent(v0, v1), sgen(v0, v2), sgen(v1, v3), Rule(127).
+sgen(v2, v0) :- parent(v0, v1), sgen(v1, v2), sgen(v2, v3), Rule(33).
+sgen(v2, v3) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(82).
+sgen(v0, v1) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v1), Rule(43).
+sgen(v0, v2) :- parent(v0, v1), sgen(v1, v2), Rule(27).
+sgen(v1, v2) :- parent(v0, v1), sgen(v0, v2), Rule(123).
+sgen(v3, v0) :- parent(v0, v1), sgen(v2, v0), parent(v3, v2), Rule(23).
+sgen(v0, v3) :- sgen(v0, v1), sgen(v1, v2), sgen(v3, v2), Rule(94).
+sgen(v0, v2) :- parent(v0, v1), sgen(v1, v2), sgen(v2, v3), Rule(56).
+sgen(v3, v1) :- sgen(v0, v1), sgen(v0, v2), sgen(v3, v2), Rule(35).
+sgen(v3, v0) :- parent(v0, v1), sgen(v2, v1), sgen(v3, v2), Rule(57).
+sgen(v0, v3) :- parent(v0, v1), sgen(v2, v0), sgen(v2, v3), Rule(153).
+sgen(v2, v0) :- parent(v0, v1), parent(v2, v1), sgen(v3, v0), Rule(144).
+sgen(v0, v2) :- parent(v0, v1), parent(v2, v0), Rule(26).
+sgen(v0, v3) :- parent(v0, v1), sgen(v2, v1), sgen(v2, v3), Rule(30).
+sgen(v0, v3) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(141).
+sgen(v3, v1) :- sgen(v0, v1), sgen(v1, v2), sgen(v3, v2), Rule(104).
+sgen(v2, v3) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v1), Rule(7).
+sgen(v3, v1) :- parent(v0, v1), sgen(v2, v0), parent(v3, v2), Rule(11).
+sgen(v2, v0) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(4).
+sgen(v0, v2) :- parent(v0, v1), parent(v0, v2), parent(v3, v2), Rule(132).
+sgen(v1, v0) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(92).
+sgen(v2, v1) :- parent(v0, v1), sgen(v2, v3), sgen(v1, v2), Rule(69).
+sgen(v1, v3) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(138).
+sgen(v0, v3) :- parent(v0, v1), sgen(v0, v2), parent(v2, v3), Rule(18).
+sgen(v0, v2) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(129).
+sgen(v1, v3) :- parent(v0, v1), parent(v0, v2), sgen(v2, v3), Rule(66).
+sgen(v1, v2) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(19).
+sgen(v2, v1) :- sgen(v0, v1), sgen(v2, v0), Rule(124).
+sgen(v0, v3) :- parent(v0, v1), sgen(v0, v2), sgen(v1, v3), Rule(14).
+sgen(v2, v3) :- parent(v0, v1), parent(v2, v1), sgen(v3, v0), Rule(90).
+sgen(v1, v2) :- parent(v0, v1), sgen(v2, v0), parent(v3, v2), Rule(31).
+sgen(v2, v1) :- parent(v0, v1), sgen(v2, v0), sgen(v2, v3), Rule(106).
+sgen(v0, v1) :- parent(v0, v1), parent(v2, v1), sgen(v0, v3), Rule(148).
+sgen(v1, v3) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(105).
+sgen(v3, v0) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v2), Rule(149).
+sgen(v2, v0) :- parent(v0, v1), parent(v2, v0), Rule(3).
+sgen(v3, v1) :- parent(v0, v1), parent(v0, v2), sgen(v2, v3), Rule(8).
+sgen(v0, v1) :- parent(v0, v1), sgen(v2, v0), Rule(130).
+sgen(v0, v1) :- parent(v0, v1), sgen(v0, v2), sgen(v1, v3), Rule(10).
+sgen(v2, v1) :- parent(v0, v1), parent(v2, v0), Rule(29).
+sgen(v1, v0) :- parent(v0, v1), parent(v2, v0), Rule(36).
+sgen(v0, v3) :- parent(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(6).
+sgen(v2, v3) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(159).
+sgen(v2, v3) :- parent(v0, v1), sgen(v0, v2), sgen(v1, v3), Rule(54).
+sgen(v1, v3) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(55).
+sgen(v0, v1) :- parent(v0, v1), parent(v2, v0), Rule(79).
+sgen(v2, v1) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(142).
+sgen(v3, v1) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(84).
+sgen(v0, v1) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v0), Rule(98).
+sgen(v0, v1) :- parent(v0, v1), sgen(v0, v2), sgen(v3, v1), Rule(134).
+sgen(v1, v0) :- parent(v0, v1), sgen(v1, v2), Rule(152).
+sgen(v0, v1) :- parent(v0, v1), parent(v1, v2), sgen(v0, v3), Rule(164).
+sgen(v2, v1) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(39).
+sgen(v2, v3) :- parent(v0, v1), parent(v2, v1), sgen(v0, v3), Rule(139).
+sgen(v3, v1) :- parent(v0, v1), sgen(v1, v2), sgen(v3, v2), Rule(48).
+sgen(v1, v3) :- parent(v0, v1), parent(v1, v2), sgen(v0, v3), Rule(87).
+sgen(v1, v2) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(5).
+sgen(v1, v2) :- parent(v0, v1), parent(v2, v0), Rule(113).
+sgen(v3, v1) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(2).
+sgen(v1, v3) :- parent(v0, v1), parent(v0, v2), parent(v2, v3), Rule(160).
+sgen(v1, v2) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(0).
+sgen(v3, v1) :- parent(v0, v1), sgen(v0, v2), parent(v2, v3), Rule(65).
+sgen(v0, v3) :- parent(v0, v1), sgen(v1, v2), sgen(v2, v3), Rule(25).
+sgen(v2, v1) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(131).
+sgen(v3, v1) :- parent(v0, v1), parent(v0, v2), sgen(v3, v2), Rule(45).
+sgen(v1, v3) :- parent(v0, v1), sgen(v2, v0), parent(v3, v2), Rule(38).
+sgen(v3, v0) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(20).
+sgen(v3, v1) :- parent(v0, v1), sgen(v0, v2), sgen(v2, v3), Rule(44).
+sgen(v1, v0) :- parent(v0, v1), parent(v2, v0), sgen(v1, v3), Rule(118).
+sgen(v2, v1) :- parent(v0, v1), parent(v2, v0), sgen(v3, v2), Rule(63).
+sgen(v3, v1) :- parent(v0, v1), sgen(v1, v2), parent(v3, v2), Rule(107).
+sgen(v0, v2) :- parent(v0, v1), parent(v2, v0), parent(v3, v2), Rule(61).
+sgen(v3, v0) :- parent(v0, v1), sgen(v1, v2), sgen(v2, v3), Rule(101).
+sgen(v0, v2) :- parent(v0, v1), sgen(v2, v0), sgen(v3, v2), Rule(135).
+sgen(v3, v0) :- sgen(v0, v1), sgen(v1, v2), sgen(v3, v2), Rule(119).

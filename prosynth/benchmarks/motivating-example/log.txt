@@ -1,0 +1,254 @@
+--------Iteration 1--------
+rPlus: ['0', '1', '2', '3', '4', '5', '6', '7']
+rMinus: []
+ INFO [root.<module>:114] Culumative Number of Constraints -- Why: 0, WhyNot: 0
+ INFO [root.<module>:117] rPlus printed to Rule.facts
+ INFO [root.<module>:128] Souffle invoked
+ INFO [root.<module>:385] rPlus printed to Rule.facts
+ INFO [root.<module>:387] Souffle_notexists invoked
+ INFO [root.<module>:415] ('3', '1') has coprov set()
+ INFO [root.<module>:415] ('3', '2') has coprov set()
+ INFO [root.<module>:415] ('1', '2') has coprov set()
+ INFO [root.<module>:415] ('5', '5') has coprov set()
+ INFO [root.<module>:415] ('1', '3') has coprov set()
+ INFO [root.<module>:415] ('3', '3') has coprov set()
+ INFO [root.<module>:415] ('1', '1') has coprov set()
+ INFO [root.<module>:415] ('6', '6') has coprov set()
+ INFO [root.<module>:415] ('2', '2') has coprov set()
+ INFO [root.<module>:415] ('5', '6') has coprov set()
+ INFO [root.<module>:415] ('2', '1') has coprov set()
+ INFO [root.<module>:415] ('2', '3') has coprov set()
+ INFO [root.<module>:415] ('6', '5') has coprov set()
+WHY constraint added: [not (3 and 2 and 7 and 1 and 6)] because ('1', '6') is undesirable and produced
+WHY constraint added: [not (1 and 6 and 3)] because ('4', '2') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 3)] because ('4', '4') is undesirable and produced
+WHY constraint added: [not (1 and 2 and 7 and 3)] because ('6', '2') is undesirable and produced
+WHY constraint added: [not (0)] because ('3', '5') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 3)] because ('5', '1') is undesirable and produced
+WHY constraint added: [not (3 and 6 and 2 and 1 and 7)] because ('6', '1') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 3)] because ('4', '3') is undesirable and produced
+WHY constraint added: [not (2 and 1 and 7 and 3)] because ('2', '6') is undesirable and produced
+WHY constraint added: [not (3 and 2 and 7 and 1 and 6)] because ('5', '2') is undesirable and produced
+WHY constraint added: [not (2 and 1 and 7 and 3)] because ('3', '6') is undesirable and produced
+WHY constraint added: [not (1 and 6 and 3)] because ('5', '3') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 3)] because ('3', '4') is undesirable and produced
+WHY constraint added: [not (3 and 2 and 7 and 1 and 6)] because ('4', '1') is undesirable and produced
+WHY constraint added: [not (3 and 2 and 7 and 1 and 6)] because ('4', '6') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 3)] because ('1', '5') is undesirable and produced
+WHY constraint added: [not (3 and 2 and 7 and 1 and 6)] because ('1', '4') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 7 and 3)] because ('5', '4') is undesirable and produced
+WHY constraint added: [not (3 and 6 and 2 and 1 and 7)] because ('6', '4') is undesirable and produced
+WHY constraint added: [not (0)] because ('2', '4') is undesirable and produced
+WHY constraint added: [not (3 and 2 and 7 and 1 and 6)] because ('2', '5') is undesirable and produced
+WHY constraint added: [not (2 and 6 and 7 and 3)] because ('4', '5') is undesirable and produced
+WHY constraint added: [not (1 and 2 and 7 and 3)] because ('6', '3') is undesirable and produced
+expected but unproduced: 
+
+
+--------Iteration 2--------
+rPlus: ['1', '4', '5', '6']
+rMinus: ['0', '2', '3', '7']
+ INFO [root.<module>:114] Culumative Number of Constraints -- Why: 23, WhyNot: 0
+ INFO [root.<module>:117] rPlus printed to Rule.facts
+ INFO [root.<module>:128] Souffle invoked
+ INFO [root.<module>:385] rPlus printed to Rule.facts
+ INFO [root.<module>:387] Souffle_notexists invoked
+ INFO [root.<module>:415] ('3', '1') has coprov set()
+ INFO [root.<module>:415] ('3', '2') has coprov set()
+ INFO [root.<module>:415] ('1', '2') has coprov set()
+ INFO [root.<module>:415] ('1', '3') has coprov set()
+ INFO [root.<module>:415] ('5', '6') has coprov set()
+ INFO [root.<module>:415] ('2', '1') has coprov set()
+ INFO [root.<module>:415] ('2', '3') has coprov set()
+ INFO [root.<module>:415] ('6', '5') has coprov set()
+WHY constraint added: [not (1 and 4)] because ('3', '5') is undesirable and produced
+WHY constraint added: [not (6 and 4)] because ('4', '2') is undesirable and produced
+WHY constraint added: [not (1 and 4)] because ('2', '4') is undesirable and produced
+WHY constraint added: [not (6 and 4)] because ('5', '3') is undesirable and produced
+expected but unproduced: 
+('1', '1')
+('6', '6')
+('5', '5')
+('3', '3')
+('2', '2')
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+WHYNOT constraint added: [2 or 7] because ('1', '1') is desirable and unproduced
+ INFO [root.<module>:501] size of original rMinus: 4 and new rMinus: 2
+ INFO [root.<module>:502] {'0', '2', '7', '3'}
+ INFO [root.<module>:503] ['2', '7']
+
+
+--------Iteration 3--------
+rPlus: ['2', '4', '5']
+rMinus: ['0', '1', '3', '6', '7']
+ INFO [root.<module>:114] Culumative Number of Constraints -- Why: 27, WhyNot: 1
+ INFO [root.<module>:117] rPlus printed to Rule.facts
+ INFO [root.<module>:128] Souffle invoked
+ INFO [root.<module>:385] rPlus printed to Rule.facts
+ INFO [root.<module>:387] Souffle_notexists invoked
+expected but unproduced: 
+('3', '1')
+('3', '2')
+('1', '2')
+('5', '5')
+('1', '3')
+('3', '3')
+('1', '1')
+('6', '6')
+('2', '2')
+('5', '6')
+('2', '1')
+('2', '3')
+('6', '5')
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+WHYNOT constraint added: [6 or 1 or 0] because ('3', '1') is desirable and unproduced
+ INFO [root.<module>:501] size of original rMinus: 5 and new rMinus: 3
+ INFO [root.<module>:502] {'3', '7', '1', '0', '6'}
+ INFO [root.<module>:503] ['6', '1', '0']
+
+
+--------Iteration 4--------
+rPlus: ['1', '2', '5', '6']
+rMinus: ['0', '3', '4', '7']
+ INFO [root.<module>:114] Culumative Number of Constraints -- Why: 27, WhyNot: 2
+ INFO [root.<module>:117] rPlus printed to Rule.facts
+ INFO [root.<module>:128] Souffle invoked
+ INFO [root.<module>:385] rPlus printed to Rule.facts
+ INFO [root.<module>:387] Souffle_notexists invoked
+ INFO [root.<module>:415] ('3', '1') has coprov {'5'}
+ INFO [root.<module>:415] ('3', '2') has coprov {'5'}
+ INFO [root.<module>:415] ('1', '2') has coprov {'5'}
+ INFO [root.<module>:415] ('5', '5') has coprov {'2', '5'}
+ INFO [root.<module>:415] ('1', '3') has coprov {'5'}
+ INFO [root.<module>:415] ('3', '3') has coprov {'2', '5'}
+ INFO [root.<module>:415] ('1', '1') has coprov {'2', '5'}
+ INFO [root.<module>:415] ('6', '6') has coprov {'2', '5'}
+ INFO [root.<module>:415] ('2', '2') has coprov {'2', '5'}
+ INFO [root.<module>:415] ('5', '6') has coprov {'5'}
+ INFO [root.<module>:415] ('2', '1') has coprov {'5'}
+ INFO [root.<module>:415] ('2', '3') has coprov {'5'}
+ INFO [root.<module>:415] ('6', '5') has coprov {'5'}
+COPROV constraint added: (not 0 and not 3 and not 7 and not 4) => (2 and 5)
+WHY constraint added: [not (2 and 5 and 1)] because ('6', '2') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('1', '4') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('3', '4') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('5', '1') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('6', '1') is undesirable and produced
+WHY constraint added: [not (2 and 5 and 1)] because ('4', '1') is undesirable and produced
+WHY constraint added: [not (5 and 1)] because ('5', '3') is undesirable and produced
+WHY constraint added: [not (2 and 5 and 1)] because ('5', '2') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('2', '5') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('4', '5') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('5', '4') is undesirable and produced
+WHY constraint added: [not (5 and 1)] because ('4', '2') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('1', '5') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('4', '4') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('6', '4') is undesirable and produced
+WHY constraint added: [not (6 and 2 and 5)] because ('4', '3') is undesirable and produced
+WHY constraint added: [not (2 and 5 and 1)] because ('6', '3') is undesirable and produced
+WHY constraint added: [not (6 and 5)] because ('3', '5') is undesirable and produced
+WHY constraint added: [not (6 and 5)] because ('2', '4') is undesirable and produced
+expected but unproduced: 
+
+
+--------Iteration 5--------
+rPlus: ['1', '2']
+rMinus: ['0', '3', '4', '5', '6', '7']
+ INFO [root.<module>:114] Culumative Number of Constraints -- Why: 46, WhyNot: 2
+ INFO [root.<module>:117] rPlus printed to Rule.facts
+ INFO [root.<module>:128] Souffle invoked
+ INFO [root.<module>:385] rPlus printed to Rule.facts
+ INFO [root.<module>:387] Souffle_notexists invoked
+expected but unproduced: 
+('3', '1')
+('3', '2')
+('1', '2')
+('5', '5')
+('1', '3')
+('3', '3')
+('1', '1')
+('6', '6')
+('2', '2')
+('5', '6')
+('2', '1')
+('2', '3')
+('6', '5')
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+ INFO [root.whyNotDelta:291] currRPlus printed to Rule.facts [within whyNotDelta]
+ INFO [root.whyNotDelta:296] Souffle invoked [within whyNotDelta]
+WHYNOT constraint added: [4 or 5 or 3 or 0] because ('3', '1') is desirable and unproduced
+ INFO [root.<module>:501] size of original rMinus: 6 and new rMinus: 4
+ INFO [root.<module>:502] {'5', '3', '4', '7', '0', '6'}
+ INFO [root.<module>:503] ['4', '5', '3', '0']
+
+
+--------Iteration 6--------
+rPlus: ['3', '6', '7']
+rMinus: ['0', '1', '2', '4', '5']
+ INFO [root.<module>:114] Culumative Number of Constraints -- Why: 46, WhyNot: 3
+ INFO [root.<module>:117] rPlus printed to Rule.facts
+ INFO [root.<module>:128] Souffle invoked
+ INFO [root.<module>:385] rPlus printed to Rule.facts
+ INFO [root.<module>:387] Souffle_notexists invoked
+ INFO [root.<module>:415] ('5', '6') has coprov {'6', '3'}
+ INFO [root.<module>:415] ('6', '5') has coprov {'6', '3'}
+COPROV constraint added: (not 5 and not 4 and not 2 and not 1 and not 0) => (6 and 3)
+expected but unproduced: 
+{'6', '7', '3'}
+
+real	0m0.470s
+user	0m0.302s
+sys	0m0.151s

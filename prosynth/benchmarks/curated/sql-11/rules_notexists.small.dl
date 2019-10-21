@@ -1,0 +1,110 @@
+.type F_name
+.type level
+.type F_key
+.type C_name
+.type S_name
+.type S_key
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Junior(v0: level)
+.input Junior
+.decl Enroll(v0: S_key, v1: C_name)
+.input Enroll
+.decl focus(v0: F_name)
+.input focus
+.decl Student(v0: S_key, v1: S_name, v2: level)
+.input Student
+.decl Class(v0: C_name, v1: F_key)
+.input Class
+.decl Faculty(v0: F_key, v1: F_name)
+.input Faculty
+
+.decl Junior_notexists(v0: level, v1: number)
+.output Junior_notexists
+.decl Enroll_notexists(v0: S_key, v1: C_name, v2: number)
+.output Enroll_notexists
+.decl focus_notexists(v0: F_name, v1: number)
+.output focus_notexists
+.decl Student_notexists(v0: S_key, v1: S_name, v2: level, v3: number)
+.output Student_notexists
+.decl Class_notexists(v0: C_name, v1: F_key, v2: number)
+.output Class_notexists
+.decl Faculty_notexists(v0: F_key, v1: F_name, v2: number)
+.output Faculty_notexists
+
+.decl inv1_notexists(v0: F_key, v1: number)
+.output inv1_notexists
+.decl inv2_notexists(v0: C_name, v1: number)
+.output inv2_notexists
+.decl inv3_notexists(v0: S_key, v1: number)
+.output inv3_notexists
+
+.decl ans_notexists(v0: S_name, v1: number)
+.output ans_notexists
+
+Junior_notexists(v0, ruleIndex) :- Junior(v0), Rule(ruleIndex).
+Enroll_notexists(v0, v1, ruleIndex) :- Enroll(v0, v1), Rule(ruleIndex).
+focus_notexists(v0, ruleIndex) :- focus(v0), Rule(ruleIndex).
+Student_notexists(v0, v1, v2, ruleIndex) :- Student(v0, v1, v2), Rule(ruleIndex).
+Class_notexists(v0, v1, ruleIndex) :- Class(v0, v1), Rule(ruleIndex).
+Faculty_notexists(v0, v1, ruleIndex) :- Faculty(v0, v1), Rule(ruleIndex).
+ans_notexists(v2, ruleIndex) :- inv2_notexists(v0, ruleIndex), Enroll_notexists(v1, v0, ruleIndex), Student_notexists(v1, v2, v3, ruleIndex), ruleIndex != 34, Rule(34).
+inv2_notexists(v1, ruleIndex) :- inv3_notexists(v0, ruleIndex), Enroll_notexists(v0, v1, ruleIndex), Class_notexists(v1, v2, ruleIndex), ruleIndex != 12, Rule(12).
+inv3_notexists(v1, ruleIndex) :- ans_notexists(v0, ruleIndex), Student_notexists(v1, v0, v2, ruleIndex), ruleIndex != 37, Rule(37).
+inv1_notexists(v2, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), inv2_notexists(v1, ruleIndex), Class_notexists(v1, v2, ruleIndex), ruleIndex != 20, Rule(20).
+inv2_notexists(v2, ruleIndex) :- Faculty_notexists(v0, v1, ruleIndex), inv1_notexists(v0, ruleIndex), Class_notexists(v2, v0, ruleIndex), ruleIndex != 35, Rule(35).
+ans_notexists(v4, ruleIndex) :- ans_notexists(v0, ruleIndex), Student_notexists(v1, v0, v2, ruleIndex), Student_notexists(v3, v4, v2, ruleIndex), ruleIndex != 7, Rule(7).
+ans_notexists(v3, ruleIndex) :- Student_notexists(v0, v1, v2, ruleIndex), inv3_notexists(v0, ruleIndex), Student_notexists(v0, v3, v4, ruleIndex), ruleIndex != 39, Rule(39).
+ans_notexists(v4, ruleIndex) :- inv3_notexists(v0, ruleIndex), Student_notexists(v0, v1, v2, ruleIndex), Student_notexists(v3, v4, v2, ruleIndex), ruleIndex != 42, Rule(42).
+inv1_notexists(v1, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), Faculty_notexists(v1, v2, ruleIndex), ruleIndex != 53, Rule(53).
+inv1_notexists(v1, ruleIndex) :- inv2_notexists(v0, ruleIndex), Class_notexists(v0, v1, ruleIndex), Faculty_notexists(v1, v2, ruleIndex), ruleIndex != 43, Rule(43).
+inv1_notexists(v2, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), inv2_notexists(v0, ruleIndex), Class_notexists(v0, v2, ruleIndex), ruleIndex != 8, Rule(8).
+inv2_notexists(v3, ruleIndex) :- Student_notexists(v0, v1, v2, ruleIndex), Enroll_notexists(v0, v3, ruleIndex), ruleIndex != 32, Rule(32).
+ans_notexists(v2, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), ruleIndex != 48, Rule(48).
+inv3_notexists(v0, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), Enroll_notexists(v0, v2, ruleIndex), ruleIndex != 0, Rule(0).
+inv3_notexists(v1, ruleIndex) :- ans_notexists(v0, ruleIndex), Student_notexists(v1, v0, v2, ruleIndex), Student_notexists(v1, v3, v4, ruleIndex), ruleIndex != 23, Rule(23).
+inv3_notexists(v1, ruleIndex) :- inv2_notexists(v0, ruleIndex), Enroll_notexists(v1, v0, ruleIndex), ruleIndex != 24, Rule(24).
+ans_notexists(v2, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), inv3_notexists(v1, ruleIndex), ruleIndex != 55, Rule(55).
+inv1_notexists(v1, ruleIndex) :- focus_notexists(v0, ruleIndex), Faculty_notexists(v1, v0, ruleIndex), Faculty_notexists(v1, v2, ruleIndex), ruleIndex != 5, Rule(5).
+inv3_notexists(v3, ruleIndex) :- ans_notexists(v0, ruleIndex), Student_notexists(v1, v0, v2, ruleIndex), Student_notexists(v3, v4, v2, ruleIndex), ruleIndex != 14, Rule(14).
+inv2_notexists(v1, ruleIndex) :- inv1_notexists(v0, ruleIndex), Class_notexists(v1, v0, ruleIndex), Class_notexists(v1, v2, ruleIndex), ruleIndex != 31, Rule(31).
+inv1_notexists(v1, ruleIndex) :- focus_notexists(v0, ruleIndex), Faculty_notexists(v1, v0, ruleIndex), ruleIndex != 52, Rule(52).
+inv1_notexists(v2, ruleIndex) :- inv1_notexists(v0, ruleIndex), Class_notexists(v1, v0, ruleIndex), Class_notexists(v1, v2, ruleIndex), ruleIndex != 57, Rule(57).
+ans_notexists(v2, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), inv3_notexists(v0, ruleIndex), Student_notexists(v0, v2, v3, ruleIndex), ruleIndex != 27, Rule(27).
+inv2_notexists(v2, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), inv3_notexists(v0, ruleIndex), Enroll_notexists(v0, v2, ruleIndex), ruleIndex != 28, Rule(28).
+inv2_notexists(v0, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), Class_notexists(v0, v2, ruleIndex), ruleIndex != 50, Rule(50).
+inv1_notexists(v2, ruleIndex) :- inv3_notexists(v0, ruleIndex), Enroll_notexists(v0, v1, ruleIndex), Class_notexists(v1, v2, ruleIndex), ruleIndex != 25, Rule(25).
+inv3_notexists(v1, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), ans_notexists(v2, ruleIndex), ruleIndex != 17, Rule(17).
+inv2_notexists(v2, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), Enroll_notexists(v0, v2, ruleIndex), ruleIndex != 26, Rule(26).
+ans_notexists(v1, ruleIndex) :- inv3_notexists(v0, ruleIndex), Student_notexists(v0, v1, v2, ruleIndex), ruleIndex != 38, Rule(38).
+inv3_notexists(v3, ruleIndex) :- inv3_notexists(v0, ruleIndex), Student_notexists(v0, v1, v2, ruleIndex), Student_notexists(v3, v4, v2, ruleIndex), ruleIndex != 49, Rule(49).
+inv3_notexists(v0, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), Student_notexists(v0, v2, v3, ruleIndex), ruleIndex != 51, Rule(51).
+inv3_notexists(v2, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), Enroll_notexists(v2, v0, ruleIndex), ruleIndex != 3, Rule(3).
+inv3_notexists(v1, ruleIndex) :- inv2_notexists(v0, ruleIndex), Enroll_notexists(v1, v0, ruleIndex), Enroll_notexists(v1, v2, ruleIndex), ruleIndex != 54, Rule(54).
+inv2_notexists(v2, ruleIndex) :- inv2_notexists(v0, ruleIndex), Class_notexists(v0, v1, ruleIndex), Class_notexists(v2, v1, ruleIndex), ruleIndex != 6, Rule(6).
+ans_notexists(v3, ruleIndex) :- ans_notexists(v0, ruleIndex), Student_notexists(v1, v0, v2, ruleIndex), Student_notexists(v1, v3, v4, ruleIndex), ruleIndex != 19, Rule(19).
+inv1_notexists(v2, ruleIndex) :- inv1_notexists(v0, ruleIndex), Faculty_notexists(v0, v1, ruleIndex), Faculty_notexists(v2, v1, ruleIndex), ruleIndex != 16, Rule(16).
+inv2_notexists(v0, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), Enroll_notexists(v2, v0, ruleIndex), ruleIndex != 21, Rule(21).
+inv2_notexists(v3, ruleIndex) :- Student_notexists(v0, v1, v2, ruleIndex), inv3_notexists(v0, ruleIndex), Enroll_notexists(v0, v3, ruleIndex), ruleIndex != 33, Rule(33).
+inv2_notexists(v1, ruleIndex) :- inv1_notexists(v0, ruleIndex), Class_notexists(v1, v0, ruleIndex), ruleIndex != 2, Rule(2).
+inv3_notexists(v1, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), Student_notexists(v1, v3, v4, ruleIndex), ruleIndex != 41, Rule(41).
+inv2_notexists(v2, ruleIndex) :- Faculty_notexists(v0, v1, ruleIndex), Class_notexists(v2, v0, ruleIndex), ruleIndex != 45, Rule(45).
+inv1_notexists(v0, ruleIndex) :- Faculty_notexists(v0, v1, ruleIndex), Faculty_notexists(v0, v2, ruleIndex), ruleIndex != 30, Rule(30).
+inv1_notexists(v1, ruleIndex) :- inv2_notexists(v0, ruleIndex), Class_notexists(v0, v1, ruleIndex), ruleIndex != 4, Rule(4).
+inv1_notexists(v2, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), Class_notexists(v1, v2, ruleIndex), ruleIndex != 40, Rule(40).
+ans_notexists(v2, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), Student_notexists(v1, v3, v4, ruleIndex), ruleIndex != 18, Rule(18).
+inv3_notexists(v2, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), inv2_notexists(v0, ruleIndex), Enroll_notexists(v2, v0, ruleIndex), ruleIndex != 29, Rule(29).
+inv2_notexists(v2, ruleIndex) :- inv2_notexists(v0, ruleIndex), Enroll_notexists(v1, v0, ruleIndex), Enroll_notexists(v1, v2, ruleIndex), ruleIndex != 9, Rule(9).
+inv3_notexists(v3, ruleIndex) :- inv3_notexists(v0, ruleIndex), Student_notexists(v0, v1, v2, ruleIndex), Student_notexists(v3, v1, v4, ruleIndex), ruleIndex != 10, Rule(10).
+inv3_notexists(v3, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), Student_notexists(v3, v2, v4, ruleIndex), ruleIndex != 36, Rule(36).
+ans_notexists(v2, ruleIndex) :- Enroll_notexists(v0, v1, ruleIndex), Student_notexists(v0, v2, v3, ruleIndex), ruleIndex != 1, Rule(1).
+inv3_notexists(v1, ruleIndex) :- inv2_notexists(v0, ruleIndex), Enroll_notexists(v1, v0, ruleIndex), Student_notexists(v1, v2, v3, ruleIndex), ruleIndex != 15, Rule(15).
+inv3_notexists(v1, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), ruleIndex != 56, Rule(56).
+ans_notexists(v3, ruleIndex) :- Student_notexists(v0, v1, v2, ruleIndex), Student_notexists(v0, v3, v4, ruleIndex), ruleIndex != 47, Rule(47).
+ans_notexists(v3, ruleIndex) :- Junior_notexists(v0, ruleIndex), Student_notexists(v1, v2, v0, ruleIndex), Student_notexists(v1, v3, v4, ruleIndex), ruleIndex != 22, Rule(22).
+inv2_notexists(v1, ruleIndex) :- inv3_notexists(v0, ruleIndex), Enroll_notexists(v0, v1, ruleIndex), ruleIndex != 46, Rule(46).
+inv3_notexists(v0, ruleIndex) :- Student_notexists(v0, v1, v2, ruleIndex), Student_notexists(v0, v3, v4, ruleIndex), ruleIndex != 13, Rule(13).
+inv3_notexists(v2, ruleIndex) :- inv3_notexists(v0, ruleIndex), Enroll_notexists(v0, v1, ruleIndex), Enroll_notexists(v2, v1, ruleIndex), ruleIndex != 11, Rule(11).
+inv1_notexists(v2, ruleIndex) :- Class_notexists(v0, v1, ruleIndex), Class_notexists(v0, v2, ruleIndex), ruleIndex != 44, Rule(44).

@@ -1,0 +1,6 @@
+ ----- Relation Table -----
+   TOT_T  NREC_T   REC_T  COPY_T         TUPLES    ID NAME
+
+    .000    .000    .000    .000              3    R2 rel
+    .000    .000    .000    .000              1    R1 first
+

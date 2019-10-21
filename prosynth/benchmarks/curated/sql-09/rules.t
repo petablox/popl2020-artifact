@@ -1,0 +1,5 @@
+*treat(status)
+*untreat(status)
+*input1(id,country,status)
+invent_country(country)
+ans(id,country,status)

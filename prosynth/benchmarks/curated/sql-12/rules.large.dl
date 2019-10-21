@@ -1,0 +1,102 @@
+.type part_id
+.type color
+.type sname
+.type supplier_key
+
+.decl Rule(n: number)
+.input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+
+.decl isRed(v0: color)
+.input isRed
+
+.decl isGreen(v0: color)
+.input isGreen
+
+.decl input2(v0: part_id, v1: color)
+.input input2
+
+.decl input3(v0: supplier_key, v1: sname)
+.input input3
+
+.decl inv(v0: part_id, v1: color)
+.output inv
+
+.decl ans(v0: sname)
+.output ans
+
+
+
+inv(v0, v1) :- input2(v0, v1), Rule(0).
+inv(v0, v1) :- inv(v0, v1), Rule(1).
+inv(v0, v1) :- isRed(v1), input2(v0, v1), Rule(2).
+inv(v0, v1) :- isRed(v1), inv(v0, v1), Rule(3).
+inv(v0, v1) :- isGreen(v1), input2(v0, v1), Rule(4).
+inv(v0, v1) :- isGreen(v1), inv(v0, v1), Rule(5).
+inv(v0, v1) :- input2(v0, v1), input2(v0, v1), Rule(6).
+inv(v0, v1) :- input2(v0, v1), inv(v0, v1), Rule(7).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v1), Rule(8).
+inv(v0, v1) :- isRed(v1), isRed(v1), input2(v0, v1), Rule(9).
+inv(v0, v1) :- isRed(v1), isRed(v1), inv(v0, v1), Rule(10).
+inv(v0, v1) :- isRed(v1), isGreen(v1), input2(v0, v1), Rule(11).
+inv(v0, v1) :- isRed(v1), isGreen(v1), inv(v0, v1), Rule(12).
+inv(v0, v1) :- isRed(v1), input2(v0, v1), input2(v0, v1), Rule(13).
+inv(v0, v1) :- isRed(v1), input2(v0, v1), inv(v0, v1), Rule(14).
+inv(v0, v1) :- isRed(v1), inv(v0, v1), inv(v0, v1), Rule(15).
+inv(v0, v1) :- isGreen(v1), isGreen(v1), input2(v0, v1), Rule(16).
+inv(v0, v1) :- isGreen(v1), isGreen(v1), inv(v0, v1), Rule(17).
+inv(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v0, v1), Rule(18).
+inv(v0, v1) :- isGreen(v1), input2(v0, v1), inv(v0, v1), Rule(19).
+inv(v0, v1) :- isGreen(v1), inv(v0, v1), inv(v0, v1), Rule(20).
+inv(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), Rule(21).
+inv(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), Rule(22).
+inv(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), Rule(23).
+inv(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(24).
+inv(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), Rule(25).
+inv(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(26).
+inv(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(27).
+inv(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), Rule(28).
+inv(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(29).
+inv(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(30).
+inv(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(31).
+inv(v0, v1) :- input2(v0, v1), input2(v0, v1), inv(v0, v1), Rule(32).
+inv(v0, v1) :- input2(v0, v1), input2(v2, v1), inv(v2, v1), Rule(33).
+inv(v0, v1) :- input2(v2, v1), input2(v2, v1), inv(v0, v1), Rule(34).
+inv(v0, v1) :- input2(v2, v1), input2(v0, v1), inv(v2, v1), Rule(35).
+inv(v0, v1) :- input2(v0, v1), input2(v2, v3), inv(v2, v3), Rule(36).
+inv(v0, v1) :- input2(v2, v1), input2(v2, v3), inv(v0, v3), Rule(37).
+inv(v0, v1) :- input2(v2, v1), input2(v0, v3), inv(v2, v3), Rule(38).
+inv(v0, v1) :- input2(v2, v3), input2(v2, v3), inv(v0, v1), Rule(39).
+inv(v0, v1) :- input2(v2, v3), input2(v0, v3), inv(v2, v1), Rule(40).
+inv(v0, v1) :- input2(v2, v3), input2(v2, v1), inv(v0, v3), Rule(41).
+inv(v0, v1) :- input2(v2, v3), input2(v0, v1), inv(v2, v3), Rule(42).
+inv(v0, v1) :- input2(v0, v1), inv(v0, v1), inv(v0, v1), Rule(43).
+inv(v0, v1) :- input2(v0, v1), inv(v2, v1), inv(v2, v1), Rule(44).
+inv(v0, v1) :- input2(v2, v1), inv(v2, v1), inv(v0, v1), Rule(45).
+inv(v0, v1) :- input2(v2, v1), inv(v0, v1), inv(v2, v1), Rule(46).
+inv(v0, v1) :- input2(v0, v1), inv(v2, v3), inv(v2, v3), Rule(47).
+inv(v0, v1) :- input2(v2, v1), inv(v2, v3), inv(v0, v3), Rule(48).
+inv(v0, v1) :- input2(v2, v1), inv(v0, v3), inv(v2, v3), Rule(49).
+inv(v0, v1) :- input2(v2, v3), inv(v2, v3), inv(v0, v1), Rule(50).
+inv(v0, v1) :- input2(v2, v3), inv(v0, v3), inv(v2, v1), Rule(51).
+inv(v0, v1) :- input2(v2, v3), inv(v2, v1), inv(v0, v3), Rule(52).
+inv(v0, v1) :- input2(v2, v3), inv(v0, v1), inv(v2, v3), Rule(53).
+inv(v0, v1) :- inv(v0, v1), inv(v0, v1), inv(v0, v1), Rule(54).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v1), inv(v2, v1), Rule(55).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v1), inv(v0, v1), Rule(56).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v1), inv(v2, v1), Rule(57).
+inv(v0, v1) :- inv(v0, v1), inv(v2, v3), inv(v2, v3), Rule(58).
+inv(v0, v1) :- inv(v2, v1), inv(v2, v3), inv(v0, v3), Rule(59).
+inv(v0, v1) :- inv(v2, v1), inv(v0, v3), inv(v2, v3), Rule(60).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v3), inv(v0, v1), Rule(61).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v3), inv(v2, v1), Rule(62).
+inv(v0, v1) :- inv(v2, v3), inv(v2, v1), inv(v0, v3), Rule(63).
+inv(v0, v1) :- inv(v2, v3), inv(v0, v1), inv(v2, v3), Rule(64).
+ans(v0) :- ans(v0), Rule(65).
+ans(v0) :- ans(v0), ans(v0), Rule(66).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(67).
+ans(v0) :- ans(v0), ans(v1), ans(v1), Rule(68).
+ans(v0) :- ans(v1), ans(v1), ans(v0), Rule(69).
+ans(v0) :- ans(v1), ans(v0), ans(v1), Rule(70).

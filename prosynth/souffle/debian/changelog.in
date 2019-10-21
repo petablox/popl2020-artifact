@@ -1,0 +1,118 @@
+souffle (@VERSION@-1) UNRELEASED; urgency=low
+  * Fix transformation of aggregates (b-scholz)
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Fri, 8 Aug 2019 16:44:31 +1100
+
+souffle (1.6.1); urgency=low
+  * Fix builds from GitHub source releases (mmcgr)
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Fri, 2 Aug 2019 13:30:33 +1100
+
+souffle (1.6.0); urgency=low
+  * Low Level Machine Interpreter for improved non-synthesised performance (XiaowenHu96,HerbertJordan)
+  * Provenance support for negation and equivalence relations (taipan-snake)
+  * New semantics for RAM (b-scholz)
+  * Stratified RAM Analysis interfaces (b-scholz)
+  * New RAM Transformations: expand/collapsing conditions of filters, hoisting
+    of conditions, index transformation to utilize index operations,
+    if-conversions (converting scans to existence operations if possible), Choice
+    conversion, hoisting aggregates, and parallelization (dcol97)
+  * Meta-transformers for RAM (sequence/loop/conditional) (b-scholz)
+  * Add RAM transform support to debug report (rdowavic)
+  * Enable complex aggregates (rdowavic)
+  * Memory use improvements (mmcgr)
+  * Allow input pipes for datalog (maweki)
+  * Allow arbitrary argument length formax/min/cat functors (azreika)
+  * AST optimisations (azreika)
+  * Add user-defined libraries for functors (mmcgr)
+  * Added -l parameter for functor libraries and -L for functor library paths (mmcgr)
+  * Added --interpreter[LVM|RAMI] parameter for interpreter choice (XiaowenHu96)
+  * Improved code documentation (dcol97)
+  * Refactoring for maintainability and readability (mmcgr)
+  * Performance enhancements
+  * Bug fixes
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Tue, 23 Jul 2019 11:40:23 +1100
+
+souffle (1.5.1); urgency=low
+  * Rewritten code generation (taipan-snake)
+  * Improved Provenance via generated data structures (taipan-snake)
+  * Profile cpu & memory usage (mmcgr)
+  * Enhanced profiler graphs (mmcgr)
+  * Productivity measures in profiler (mmcgr)
+  * General profiler enhancements (mmcgr)
+  * Added support for non-x86 platforms (mmcgr)
+  * Improve compilation speed (mmcgr)
+  * Bash autocompletion (mmcgr)
+  * Extended verbose mode (azreika/mmcgr)
+  * Reorder atoms to optimise evaluation speed (azreika)
+  * Profile-guided atom reordering (azreika)
+  * Various AST optimisations (azreika)
+  * User defined functors (b-scholz)
+  * Bug fixes
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Thu, 17 Jan 2019 09:40:23 +1100
+
+souffle (1.4.0); urgency=low
+  * improved parallel performance (HerbertJordan)
+  * improved operators hints in btree (HerbertJordan)
+  * extended progress logging in verbose mode (mmcgr)
+  * added to_string and to_number functors (b-scholz)
+  * live profiler (mmcgr)
+  * changed profile output format to json (mmcgr)
+  * profile output is less indeterminate (mmcgr)
+  * profiler tracks memory and cpu usage during execution (mmcgr)
+  * profiler tracks load/store times (mmcgr)
+  * multiple input directives (mmcgr)
+  * handle failed input less terminally (mmcgr)
+  * MPI engine (lyndonhenry)
+  * Bug fixes
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Thu, 24 May 2018 12:40:23 +1100
+
+souffle (1.3.0); urgency=low
+
+  * Added more feedback in verbose mode (azreika/mmcgr)
+  * Fixed and enhanced 64 bit domain support (mmcgr/cfallin)
+  * Improved debug report (azreika)
+  * Enhanced profiler (atom frequency, bug fixes) (mmcgr)
+  * Hashmap support (HerbertJordan,65linesofcode)
+  * Enhanced provenance tools (taipan-snake)
+  * Performance enhancements (azreika)
+  * Bug fixes (mmcgr, azreika)
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Thu, 24 May 2018 12:40:23 +1100
+
+souffle (1.2.0); urgency=low
+
+  * Interactive provenance browser (taipan-snake)
+  * Compilation to subprograms for separate execution (lyndonhenry)
+  * Magic Sets (azreika)
+  * Sum aggregator fixed
+  * gcc7 optimisations
+  * File IO optimisations
+  * Added pragmas to enable runtime options
+  * Various minor bug fixes and usability enhancements
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Wed, 29 Mar 2017 12:00:23 +1100
+
+souffle (1.1.0); urgency=low
+
+  * Configurable I/O System with more options and support for new language
+    extensions (mmcgr).
+  * Support of equivalence relation using union/find data-structures (pnappa)
+  * New profiling tool rewritten in C++ with HTML/Javascript output
+    (DominicRomanowski).
+  * Replacing the Boost C-prepocessor wave by mcpp (pnappa)
+  * Adding ternary functors (b-scholz)
+  * JNI interface (psubotic)
+  * Memory optimisations (lyndonhenry)
+  * Numerous bug fixes. 
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Wed, 29 Mar 2017 12:00:23 +1100
+
+souffle (1.0.0); urgency=low
+
+  * Initial release
+
+ -- Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>  Mon, 21 Mar 2016 17:25:32 +0000

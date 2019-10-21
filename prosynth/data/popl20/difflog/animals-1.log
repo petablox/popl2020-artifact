@@ -1,0 +1,41 @@
+[0m[[0m[0minfo[0m] [0m[0mLoading settings from plugins.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mLoading project definition from /home/rmukund/Difflog/qd/project[0m
+[0m[[0m[0minfo[0m] [0m[0mUpdating ProjectRef(uri("file:/home/rmukund/Difflog/qd/project/"), "qd-build")...[0m
+[0m[[0m[0minfo[0m] [0m[0mDone updating.[0m
+[0m[[0m[0minfo[0m] [0m[0mLoading settings from build.sbt ...[0m
+[0m[[0m[0minfo[0m] [0m[0mSet current project to QD (in build file:/home/rmukund/Difflog/qd/)[0m
+[0m[[0m[0minfo[0m] [0m[0mRunning qd.Main alps /home/rmukund/Difflog/prosynth/benchmarks/curated/animals/animals.d /home/rmukund/Difflog/prosynth/benchmarks/curated/animals/animals.tp HybridAnnealingLearner NaiveEvaluator L2Scorer 0.01 6000000[0m
+2019.07.07 05:23:15 [run-main-0] INFO qd.Main:35:16 - Hello! Difflog invoked with arguments [alps, /home/rmukund/Difflog/prosynth/benchmarks/curated/animals/animals.d, /home/rmukund/Difflog/prosynth/benchmarks/curated/animals/animals.tp, HybridAnnealingLearner, NaiveEvaluator, L2Scorer, 0.01, 6000000]
+2019.07.07 05:23:15 [run-main-0] INFO qd.problem.ALPSParser.parse:15:16 - Input relations: 9
+2019.07.07 05:23:15 [run-main-0] INFO qd.problem.ALPSParser.parse:16:16 - Invented relations: 0
+2019.07.07 05:23:15 [run-main-0] INFO qd.problem.ALPSParser.parse:17:16 - Output relations: 4
+2019.07.07 05:23:15 [run-main-0] INFO qd.problem.ALPSParser.parse:18:16 - Rules: 76
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.nextStateMCMC:110:18 -   c: 0.001, k0: 5.0, iteration: 0, temperature: 621.3349345596118
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.nextStateMCMC:111:18 -   currState.loss: 16.859230607567127, piCurr: 0.9732309318613878
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.nextStateMCMC:112:18 -   proposedState.loss: 4.069146793623283, piProposed: 0.9934723590977139
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.nextStateMCMC:113:18 -   probAccept: 1.0, coin: 0.8371179971436498
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.nextStateMCMC:116:20 -   Accepted MCMC sample
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.learn:52:20 -   4.069146793623283, 4.069146793623283, 4.456468229956535, 14.782534485796852, 1.0
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.Learner.simplifyIfSolutionPoint:89:18 - Current position is separable...
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.Learner.simplifyIfSolutionPoint:93:20 - ... and also a solution point.
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.learn:52:20 -   0.0, 0.0, 3.1622776601683795, 0.0, 3.6374711827335284
+2019.07.07 05:23:16 [run-main-0] INFO qd.learner.HybridAnnealingLearner.learn:70:18 - #Iterations: 2.
+// Achieved loss 0.0
+1.0: R9: fish(v0) :- reptile(v0).
+1.0: R72: mammal(v1) :- none(v0), has_covering(v1, v0).
+1.0: R54: reptile(v0) :- has_covering(v0, v1), homeothermic(v0).
+1.0: R70: reptile(v1) :- hair(v0), has_covering(v1, v0).
+1.0: R48: mammal(v0) :- has_covering(v0, v1), has_milk(v0).
+1.0: R69: fish(v1) :- hair(v0), has_covering(v1, v0).
+1.0: R34: reptile(v0) :- has_covering(v0, v1).
+1.0: R35: bird(v0) :- has_covering(v0, v1).
+1.0: R12: mammal(v0) :- has_eggs(v0).
+1.0: R13: fish(v0) :- has_eggs(v0).
+2019.07.07 05:23:16 [run-main-0] INFO qd.Main:194:15 - Timers:
+Main: 1.364741643 seconds, 1 invocations.
+HybridAnnealingLearner.learn: 0.671223511 seconds, 1 invocations.
+State.apply: evaluator: 0.352332987 seconds, 4 invocations.
+NaiveEvaluator.immediateConsequence(State): 0.343400089 seconds, 7 invocations.
+2019.07.07 05:23:16 [run-main-0] INFO qd.Main:200:15 - No counters enabled
+2019.07.07 05:23:16 [run-main-0] INFO qd.Main:205:14 - Bye!
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 3 s, completed Jul 7, 2019, 5:23:16 AM[0m

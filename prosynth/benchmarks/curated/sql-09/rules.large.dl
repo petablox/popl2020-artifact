@@ -1,0 +1,122 @@
+.type status
+.type country
+.type id
+
+.decl Rule(n: number)
+.input Rule
+
+.decl treat(v0: status)
+.input treat
+
+.decl untreat(v0: status)
+.input untreat
+
+.decl input1(v0: id, v1: country, v2: status)
+.input input1
+
+.decl inv(v0: country)
+.output inv
+
+.decl ans(v0: id, v1: country, v2: status)
+.output ans
+
+
+
+inv(v0) :- inv(v0), Rule(0).
+inv(v0) :- inv(v0), inv(v0), Rule(1).
+inv(v0) :- inv(v0), inv(v0), inv(v0), Rule(2).
+inv(v0) :- inv(v0), inv(v1), inv(v1), Rule(3).
+inv(v0) :- inv(v1), inv(v1), inv(v0), Rule(4).
+inv(v0) :- inv(v1), inv(v0), inv(v1), Rule(5).
+ans(v0, v1, v2) :- input1(v0, v1, v2), Rule(6).
+ans(v0, v1, v2) :- ans(v0, v1, v2), Rule(7).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), Rule(8).
+ans(v0, v1, v2) :- treat(v2), ans(v0, v1, v2), Rule(9).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), Rule(10).
+ans(v0, v1, v2) :- untreat(v2), ans(v0, v1, v2), Rule(11).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), Rule(12).
+ans(v0, v1, v2) :- input1(v0, v1, v2), inv(v1), Rule(13).
+ans(v0, v1, v2) :- input1(v0, v1, v2), ans(v0, v1, v2), Rule(14).
+ans(v0, v1, v2) :- inv(v1), ans(v0, v1, v2), Rule(15).
+ans(v0, v1, v2) :- ans(v0, v1, v2), ans(v0, v1, v2), Rule(16).
+ans(v0, v1, v2) :- treat(v2), treat(v2), input1(v0, v1, v2), Rule(17).
+ans(v0, v1, v2) :- treat(v2), treat(v3), input1(v0, v1, v3), Rule(18).
+ans(v0, v1, v2) :- treat(v3), treat(v3), input1(v0, v1, v2), Rule(19).
+ans(v0, v1, v2) :- treat(v3), treat(v2), input1(v0, v1, v3), Rule(20).
+ans(v0, v1, v2) :- treat(v2), treat(v2), ans(v0, v1, v2), Rule(21).
+ans(v0, v1, v2) :- treat(v2), treat(v3), ans(v0, v1, v3), Rule(22).
+ans(v0, v1, v2) :- treat(v3), treat(v3), ans(v0, v1, v2), Rule(23).
+ans(v0, v1, v2) :- treat(v3), treat(v2), ans(v0, v1, v3), Rule(24).
+ans(v0, v1, v2) :- treat(v2), untreat(v2), input1(v0, v1, v2), Rule(25).
+ans(v0, v1, v2) :- treat(v2), untreat(v3), input1(v0, v1, v3), Rule(26).
+ans(v0, v1, v2) :- treat(v3), untreat(v3), input1(v0, v1, v2), Rule(27).
+ans(v0, v1, v2) :- treat(v3), untreat(v2), input1(v0, v1, v3), Rule(28).
+ans(v0, v1, v2) :- treat(v2), untreat(v2), ans(v0, v1, v2), Rule(29).
+ans(v0, v1, v2) :- treat(v2), untreat(v3), ans(v0, v1, v3), Rule(30).
+ans(v0, v1, v2) :- treat(v3), untreat(v3), ans(v0, v1, v2), Rule(31).
+ans(v0, v1, v2) :- treat(v3), untreat(v2), ans(v0, v1, v3), Rule(32).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), input1(v0, v1, v2), Rule(33).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v3), input1(v0, v1, v3), Rule(34).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v3), input1(v0, v1, v2), Rule(35).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v2), input1(v0, v1, v3), Rule(36).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), inv(v1), Rule(37).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), ans(v0, v1, v2), Rule(38).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v3), ans(v0, v1, v3), Rule(39).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v3), ans(v0, v1, v2), Rule(40).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v2), ans(v0, v1, v3), Rule(41).
+ans(v0, v1, v2) :- treat(v2), inv(v1), ans(v0, v1, v2), Rule(42).
+ans(v0, v1, v2) :- treat(v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(43).
+ans(v0, v1, v2) :- treat(v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(44).
+ans(v0, v1, v2) :- treat(v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(45).
+ans(v0, v1, v2) :- treat(v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(46).
+ans(v0, v1, v2) :- untreat(v2), untreat(v2), input1(v0, v1, v2), Rule(47).
+ans(v0, v1, v2) :- untreat(v2), untreat(v3), input1(v0, v1, v3), Rule(48).
+ans(v0, v1, v2) :- untreat(v3), untreat(v3), input1(v0, v1, v2), Rule(49).
+ans(v0, v1, v2) :- untreat(v3), untreat(v2), input1(v0, v1, v3), Rule(50).
+ans(v0, v1, v2) :- untreat(v2), untreat(v2), ans(v0, v1, v2), Rule(51).
+ans(v0, v1, v2) :- untreat(v2), untreat(v3), ans(v0, v1, v3), Rule(52).
+ans(v0, v1, v2) :- untreat(v3), untreat(v3), ans(v0, v1, v2), Rule(53).
+ans(v0, v1, v2) :- untreat(v3), untreat(v2), ans(v0, v1, v3), Rule(54).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), input1(v0, v1, v2), Rule(55).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v3), input1(v0, v1, v3), Rule(56).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v3), input1(v0, v1, v2), Rule(57).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v2), input1(v0, v1, v3), Rule(58).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), inv(v1), Rule(59).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), ans(v0, v1, v2), Rule(60).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v3), ans(v0, v1, v3), Rule(61).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v3), ans(v0, v1, v2), Rule(62).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v2), ans(v0, v1, v3), Rule(63).
+ans(v0, v1, v2) :- untreat(v2), inv(v1), ans(v0, v1, v2), Rule(64).
+ans(v0, v1, v2) :- untreat(v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(65).
+ans(v0, v1, v2) :- untreat(v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(66).
+ans(v0, v1, v2) :- untreat(v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(67).
+ans(v0, v1, v2) :- untreat(v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(68).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), input1(v0, v1, v2), Rule(69).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v3), input1(v0, v1, v3), Rule(70).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v3), input1(v0, v1, v2), Rule(71).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v2), input1(v0, v1, v3), Rule(72).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v3), input1(v0, v4, v2), Rule(73).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v2), input1(v0, v4, v3), Rule(74).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), inv(v1), Rule(75).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), ans(v0, v1, v2), Rule(76).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v3), ans(v0, v1, v3), Rule(77).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v3), ans(v0, v1, v2), Rule(78).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v2), ans(v0, v1, v3), Rule(79).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v3), ans(v0, v4, v2), Rule(80).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v2), ans(v0, v4, v3), Rule(81).
+ans(v0, v1, v2) :- input1(v0, v1, v2), inv(v1), inv(v1), Rule(82).
+ans(v0, v1, v2) :- input1(v0, v1, v2), inv(v1), ans(v0, v1, v2), Rule(83).
+ans(v0, v1, v2) :- input1(v0, v1, v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(84).
+ans(v0, v1, v2) :- input1(v0, v1, v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(85).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(86).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(87).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v4, v3), ans(v0, v4, v2), Rule(88).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v4, v2), ans(v0, v4, v3), Rule(89).
+ans(v0, v1, v2) :- inv(v1), inv(v1), ans(v0, v1, v2), Rule(90).
+ans(v0, v1, v2) :- inv(v1), ans(v0, v1, v2), ans(v0, v1, v2), Rule(91).
+ans(v0, v1, v2) :- ans(v0, v1, v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(92).
+ans(v0, v1, v2) :- ans(v0, v1, v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(93).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(94).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(95).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v4, v3), ans(v0, v4, v2), Rule(96).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v4, v2), ans(v0, v4, v3), Rule(97).

@@ -1,0 +1,37 @@
+.type Demand
+.type Inv
+.type Company
+
+.decl Rule(n: number)
+.input Rule
+
+.decl In(v0: Inv, v1: Demand, v2: Company, v3: Company)
+.input In
+
+.decl not_null(v0: Company)
+.input not_null
+
+.decl In_notexists(v0: Inv, v1: Demand, v2: Company, v3: Company, r: number)
+.output In_notexists
+
+.decl not_null_notexists(v0: Company, r: number)
+.output not_null_notexists
+
+.decl Out_notexists(v0: Company, v1: Demand, r: number)
+.output Out_notexists
+
+
+
+In_notexists(v0, v1, v2, v3, r) :- In(v0, v1, v2, v3), Rule(r).
+not_null_notexists(v0, r) :- not_null(v0), Rule(r).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+Out_notexists(v0, v1, r) :- not_null_notexists(v0, r), Out_notexists(v0, v1, r), Rule(r), r != 1, Rule(1).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+Out_notexists(v0, v1, r) :- not_null_notexists(v0, r), not_null_notexists(v0, r), Out_notexists(v0, v1, r), Rule(r), r != 3, Rule(3).
+Out_notexists(v0, v1, r) :- not_null_notexists(v0, r), Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Out_notexists(v0, v1, r), Rule(r), r != 5, Rule(5).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v1, r), Out_notexists(v0, v2, r), Out_notexists(v0, v2, r), Rule(r), r != 6, Rule(6).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v0, v2, r), Out_notexists(v0, v1, r), Rule(r), r != 7, Rule(7).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v0, v1, r), Out_notexists(v0, v2, r), Rule(r), r != 8, Rule(8).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v3, v2, r), Out_notexists(v3, v1, r), Rule(r), r != 9, Rule(9).
+Out_notexists(v0, v1, r) :- Out_notexists(v0, v2, r), Out_notexists(v3, v1, r), Out_notexists(v3, v2, r), Rule(r), r != 10, Rule(10).

@@ -1,0 +1,17 @@
+.deps
+
+souffle
+souffle-compile
+souffle-config
+souffle-profile
+souffle2lb
+souffle2bdd
+
+stack.hh
+parser.hh
+parser.cc
+scanner.cc
+libsouffle*
+*.output
+
+test-suite.log

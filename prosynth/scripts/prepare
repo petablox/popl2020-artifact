@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+########################################################################################################################
+# Provenance-aware Datalog Synthesis Tool
+# Benchmark Preparation Script
+
+# Compiles the rules.dl file to produce an executable binary. This binary file is used for evaluating candidate programs
+# and to query explanations.
+
+# Invocation: ./scripts/prepare PROBLEM_DIR
+
+# The PROBLEM_DIR directory is expected to contain a rules.dl file.
+
+########################################################################################################################
+
+PROBLEM_DIR=$1
+
+SOUFFLE=$PWD/souffle/src/souffle
+
+cd $PROBLEM_DIR
+$SOUFFLE -t explain -osouffle.small.out rules.small.dl

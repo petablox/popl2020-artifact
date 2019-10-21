@@ -1,0 +1,505 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Prosynth: Provenance-Guided Synthesis of Datalog Programs
+# The Ad-hoc Clause Learning Algorithm with Coprovenance Analysis and Delta Debugging-based Why Not Provenance
+
+# Invocation: ./scripts/prosynth PROBLEM_DIR USE_COPROV USE_DELTA_WHYNOTS
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.dl: Specifies the signatures of the EDB and IDB relations, and the set of candidate rules
+#              Also contains a one-place input relation named Rule(n)
+# 2. ruleNames.txt: Provides the set of valid rule names, which can be used to populate the Rule.facts file
+# 3. R.facts, for each input relation R other than Rule: Specifies the EDB
+# 4. R.expected, for each output relation R: Specified the expected IDB
+# 5. a.out: Executable produced by Souffle with -t explain enabled
+
+# rules.dl and R.facts are expected to be a in a format recognized by Souffle
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import json
+import logging
+import os
+import random
+import re
+import subprocess
+import sys
+import time
+import z3
+import copy
+import atexit
+
+currRuleSetLarge = set()
+numWhy = 0
+numWhyNot = 0
+
+scriptPath = sys.argv[0]
+problemDirName = sys.argv[1]
+setting_coprov = sys.argv[2]
+setting_delta = sys.argv[3]
+run_count = sys.argv[4]
+
+scriptStartTime = time.clock_gettime(0)
+def printTimer():
+    print("Total runtime: " + str(time.clock_gettime(0) - scriptStartTime))
+atexit.register(printTimer)
+
+logging.basicConfig(level=logging.INFO, \
+                    format=" %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s", \
+                    datefmt="%H:%M:%S")
+
+# 1a. Load the set of rules and IDB relations
+
+allRuleNames = { name.strip() for name in open(problemDirName + '/ruleNames.small.txt') if name.strip() }
+allRuleNames = { name: z3.Bool(name) for name in allRuleNames }
+
+def loadRelation(filename):
+    ans = { line.strip() for line in open(filename) if line.strip() }
+    ans = { tuple(line.split('\t')) for line in ans }
+    return ans
+
+idbRelationsExpected = { name for name in os.listdir(problemDirName) if name.endswith('.expected') }
+idbRelationsExpected = { name[:-len('.expected')] for name in idbRelationsExpected }
+idbRelationsExpected = { name: loadRelation(problemDirName + '/' + name + '.expected') for name in idbRelationsExpected }
+
+# 1b. Initialize the constraint solver
+
+solver = z3.Solver()
+def satisfyingRuleSet(default):
+    global callsToz3
+    # Determines the set of rules that should be switched on to satisfy the current set of constraints
+    # Includes presently unconstrained rules iff default is true
+
+    currTime = time.clock_gettime(0)
+    m = solver.model()
+    logging.info("z3 model generated")
+    callsToz3 += 1
+
+    ans1 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == True }
+    ans2 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == None } if default else set()
+    return ans1 | ans2
+
+#solnConstraint = z3.BoolVal(False)
+#for ruleName in { '1', '110', '103', '116', '117', '138', '16', '32', '4', '60', '82' }: solnConstraint = z3.Or(solnConstraint, allRuleNames[ruleName])
+#solver.add(solnConstraint)
+
+def doSanity():
+    try:
+        solver.push()
+        solver.check()
+        solver.model()
+        solver.pop()
+        return True
+    except Z3Exception:
+        return False
+doSanity()
+
+# rootConstraint = z3.BoolVal(False)
+# for ruleName in allRuleNames: rootConstraint = z3.Or(allRuleNames[ruleName])
+# solver.add(rootConstraint)
+
+# 1c. Helper method to create Rule.facts file
+
+def printRuleEDB(ruleSet):
+    with open(problemDirName + '/Rule.facts', 'w') as outFile:
+        for name in ruleSet: print(name, file=outFile)
+
+########################################################################################################################
+# 3. Repeatedly add constraints until a satisfying assignment is found
+
+iterationNum = 0
+callsToz3 = 0
+callsToSouffle = 0
+while True:
+
+    currRuleSetLarge = satisfyingRuleSet(True)
+    #logging.info(sorted(currRuleSetLarge))
+    #input("Press Enter to continue...")
+    solved = True
+
+    iterationNum += 1
+    logging.info("--------Iteration " + str(iterationNum) + "--------")
+    logging.info("\n\n--------Iteration " + str(iterationNum) + "--------")
+    logging.info("Calls to z3: " + str(callsToz3) + ", Calls to Souffle: " + str(callsToSouffle))
+    logging.info("rPlus: " + str(sorted(currRuleSetLarge)))
+    logging.info("rMinus: " + str(sorted(set(allRuleNames) - currRuleSetLarge)))
+    logging.info("Culumative Number of Constraints -- Why: " + str(numWhy) + ', WhyNot: ' + str(numWhyNot))
+    logging.info("Culumative Number of Constraints -- Why: " + str(numWhy) + ', WhyNot: ' + str(numWhyNot))
+
+    printRuleEDB(currRuleSetLarge)
+    logging.info("rPlus printed to Rule.facts")
+
+    currTime = time.clock_gettime(0)
+    with subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName ], \
+                          stdin=subprocess.PIPE, \
+                          stdout=subprocess.PIPE, \
+                          universal_newlines=True) as souffleProc:
+
+        ################################################################################################################
+        # 3a. Set up communication with Souffle
+
+        logging.info("Souffle invoked")
+        callsToSouffle += 1
+        while souffleProc.stdout.readline().strip() != '###': pass
+        while souffleProc.stdout.readline().strip() != '###': pass
+        def execSouffleCmd(cmd):
+            #logging.info('prosynth to souffle: ' + cmd)
+            print(cmd, file=souffleProc.stdin)
+            souffleProc.stdin.flush()
+
+            response = [ souffleProc.stdout.readline().strip() ]
+            if response[-1] == '':
+                return "error reading" #doesn't deal with underlying problem, just passes error through and skips question
+                #return execSouffleCmd(cmd)
+            while response[-1] != '###': 
+                response.append(souffleProc.stdout.readline().strip())
+            response = response[:-1]
+            ans = '\n'.join(response)
+            #logging.info('souffle to prosynth: ' + ans)
+            return ans
+        execSouffleCmd('format json')
+        execSouffleCmd('setdepth 200000')
+        #logging.info("running souffle took {} microseconds".format(1000000*(time.clock_gettime(0) - currTime)))
+
+        ################################################################################################################
+        # 3b. Functions to print and parse tuples in the Souffle executable format
+
+        def printSouffleString(relName, t):
+            t = tuple( '"{}"'.format(x) for x in t )
+            t = ', '.join(t)
+            return '{}({})'.format(relName, t)
+
+        def parseSouffleString(string):
+            xs = string.split('(')
+            assert(len(xs) == 2)
+            relName = xs[0].strip()
+            xs = xs[1]
+            xs = xs.split(')')[0].strip()
+            xs = [ x.strip() for x in xs.split(',') ]
+            for x in xs: assert(x.startswith('"') and x.endswith('"'))
+            xs = tuple([ x[1:-1].strip() for x in xs ])
+            return (relName, xs)
+
+        ################################################################################################################
+        # 3b. Functions to query provenance
+        #     The provenance object returned by Souffle is a list of hypothesis provenance objects H*, each of which is
+        #     of the form:
+        #     1. { 'axiom': T }, for a tuple T, or
+        #     2. { 'premises': T, 'children': H* }, for a tuple T, and a list of hypothesis provenance objects, H*
+
+        def cleanProvenanceJson(provenance):
+            def cleanProvenanceJsonInt(p):
+                if type(p) is dict:
+                    p = { key: value for key, value in p.items() if key != 'rules' }
+                    p = { key: value for key, value in p.items() if key != 'rule-number' }
+                    p = { key: cleanProvenanceJsonInt(value) for key, value in p.items() }
+                elif type(p) is list:
+                    p = [ cleanProvenanceJsonInt(value) for value in p ]
+                return p
+            provenance = cleanProvenanceJsonInt(provenance)
+            assert(len(provenance) == 1)
+            assert('proof' in provenance)
+            if 'children' not in provenance['proof']:
+                return "error reading"
+            provenance = provenance['proof']['children']
+            return provenance
+
+        def squashDesirableConclusions(provenance):
+            if type(provenance) is dict:
+                if 'premises' in provenance:
+                    premiseRel, premiseT = parseSouffleString(provenance['premises'])
+                    if premiseRel in idbRelationsExpected and premiseT in idbRelationsExpected[premiseRel]:
+                        provenance = { 'axiom': provenance['premises'] }
+                    else: provenance = { key: squashDesirableConclusions(value) for key, value in provenance.items() }
+            elif type(provenance) is list:
+               provenance = [ squashDesirableConclusions(elem) for elem in provenance ]
+            return provenance
+
+        def collectIntermediateConclusions(provenance):
+            if type(provenance) is dict:
+                premises = { premise for key, value in provenance.items() \
+                                     for premise in collectIntermediateConclusions(value) }
+                if 'premises' in provenance: premises = premises | { parseSouffleString(provenance['premises']) }
+                return premises
+            elif type(provenance) is list:
+                return { premise for elem in provenance for premise in collectIntermediateConclusions(elem) }
+            else: return set()
+
+        def collectRules(provenance):
+            if type(provenance) is dict:
+                rules = { rule for key, value in provenance.items() for rule in collectRules(value) }
+                if 'axiom' in provenance and provenance['axiom'].startswith('Rule'):
+                    rules = rules | { provenance['axiom'][len('Rule') + 1:-1] }
+                return rules
+            elif type(provenance) is list:
+                rules = { rule for elem in provenance for rule in collectRules(elem) }
+                return rules
+            else: return set()
+
+        def getProvenance(relName, t):
+            provenance1 = execSouffleCmd('explain ' + printSouffleString(relName, t))
+            if provenance1 == "error reading":
+                return "error reading"
+            provenance2 = json.loads(provenance1)
+
+            #print(t)
+            provenance3 = cleanProvenanceJson(provenance2)
+            if provenance3 == "error reading":
+                return "error reading"
+            provenance4 = squashDesirableConclusions(provenance3)
+            # if provenance3 != provenance4:
+            #     logging.info(provenance3)
+            #     logging.info(provenance4)
+            return provenance4
+
+        def why(relName, t):
+            provenance = getProvenance(relName, t)
+            if provenance == "error reading":
+                return ("error reading", False)
+            #for hypRelName, hypT in collectIntermediateConclusions(provenance):
+            #    if hypRelName in idbRelationsExpected and hypT not in idbRelationsExpected[hypRelName]:
+            #        logging.debug('Tuple {} depends on absurd hypothesis {}'.format((relName, t), (hypRelName, hypT)))
+            #        return None
+            rules = collectRules(provenance)
+            #logging.info('Tuple {} depends on rules {}'.format((relName, t), sorted(rules)))
+           
+            ans = z3.BoolVal(True)
+            currentRuleList = []
+            for ruleName in rules: 
+                currentRuleList.append(ruleName)
+
+            outputStr = "WHY constraint added: [not ("
+            for ruleName in currentRuleList:
+                outputStr += str(ruleName) + " and "
+            outputStr = outputStr[:len(outputStr)-5]
+            outputStr += ")] because "
+            outputStr += str(t) + " is undesirable and produced"
+            logging.info(outputStr)
+
+            for ruleName in (currentRuleList):
+                ans = z3.And(ans, allRuleNames[ruleName])
+            #logging.info('adding constraint: not [%s]' % ' and '.join(map(str, sorted(currentRuleList))))
+            return ("", ans)
+
+        def breakIntoPieces(l, numPieces):
+            avg = len(l) / float(numPieces)
+            out = []
+            last = 0.0
+
+            while last < len(l):
+                out.append(l[int(last):int(last+avg)])
+                last += avg
+
+            return out
+
+        def whyNotDelta(relName, t, currRuleSetLarge):
+            global callsToSouffle
+
+            divisions = 2
+
+            rMinus = set(allRuleNames) - currRuleSetLarge
+            rPlus = currRuleSetLarge
+            code = sorted(list(rMinus))
+
+            origRMinusSize = len(rMinus)
+
+            while True:
+                #logging.info(divisions)
+                for codeChunk in breakIntoPieces(code, divisions):
+                    currRMinus = rMinus - set(codeChunk)
+                    currRPlus = rPlus.union(set(codeChunk))
+
+                    printRuleEDB(currRPlus)
+                    # logging.info("currRPlus printed to Rule.facts [within whyNotDelta]")
+                    subproc = subprocess.Popen([ problemDirName + '/souffle.small.out', '-F', problemDirName, '-D', problemDirName ], \
+                                stdin=subprocess.PIPE, \
+                                stdout=subprocess.PIPE, \
+                                universal_newlines=True)
+                    # logging.info("Souffle invoked [within whyNotDelta]")
+                    callsToSouffle += 1
+                    subproc.communicate()
+                    relProduced = loadRelation(problemDirName + '/' + relName + '.csv')
+                    bugProduced = True
+                    for tt in relProduced:
+                        if tt == t:
+                            bugProduced = False
+
+                    if bugProduced:
+                        rMinus = currRMinus
+                        rPlus = currRPlus
+
+                if divisions == len(code):
+                    break
+                divisions = min(len(code), divisions*2)
+                if divisions == 0:
+                    break
+
+            outputStr = "WHYNOT constraint added: ["
+            for ruleName in list(rMinus):
+                outputStr += str(ruleName) + " or "
+            outputStr = outputStr[:len(outputStr)-4]
+            outputStr += "] because "
+            outputStr += str(t) + " is desirable and unproduced"
+            logging.info(outputStr)
+
+            return list(rMinus)
+
+        def whyNot():
+            ans = z3.BoolVal(False)
+            outputStr = "WHYNOT constraint added: ["
+            for ruleName in allRuleNames:
+                if ruleName not in currRuleSetLarge:
+                    ans = z3.Or(ans, allRuleNames[ruleName])
+                    outputStr += str(ruleName) + " or "
+            outputStr = outputStr[:len(outputStr)-4]
+            outputStr += "] because "
+            outputStr += "there exists some tuple that is desirable and unproduced"
+            logging.info(outputStr)
+            return ans
+
+        ################################################################################################################
+        # 3c. Iterate over all tuples
+        if setting_coprov == "1":
+            printRuleEDB(currRuleSetLarge)
+            logging.info("rPlus printed to Rule.facts")
+            myProc = subprocess.Popen([ problemDirName + '/souffle_notexists.small.out', '-F', problemDirName, '-D', problemDirName ])
+            logging.info("Souffle_notexists invoked")
+            callsToSouffle += 1
+            myProc.communicate()
+            for relName in idbRelationsExpected:
+                tE = idbRelationsExpected[relName]
+
+                notExistsData = { line.strip() for line in open(problemDirName + '/' + relName + '_notexists.csv') if line.strip() }
+                notExistsData = { tuple(line.split('\t')) for line in notExistsData }
+
+                coprov = dict()
+                for rel in notExistsData:
+                    coprov[rel[:len(rel)-1]] = set()
+
+                for rel in notExistsData:
+                    coprov[rel[:len(rel)-1]].add(rel[len(rel) - 1])
+
+                for cp in coprov.keys():
+                    coprov[cp] = currRuleSetLarge - coprov[cp]
+
+                neededRules = set()
+                for t in tE:
+                    if t in coprov:
+                        #if coprov[t] != None:
+                        #    logging.info(str(t) + " has coprov " + str(coprov[t]))
+                        neededRules = neededRules.union(set(coprov[t]))
+
+                if len(neededRules) != 0:
+                    smallRMinus = set(allRuleNames) - currRuleSetLarge
+
+                    outputStr = "COPROV constraint added: ("
+
+                    allNotRMinus = z3.BoolVal(True)
+                    for ruleName in smallRMinus:
+                        allNotRMinus = z3.And(allNotRMinus, z3.Not(allRuleNames[ruleName]))
+                        outputStr += "not " + str(ruleName) + " and "
+                    allNeededRules = z3.BoolVal(True)
+
+                    outputStr = outputStr[:len(outputStr)-5]
+
+                    outputStr += ") => ("
+
+                    for ruleName in neededRules:
+                        allNeededRules = z3.And(allNeededRules, allRuleNames[ruleName])
+                        outputStr += str(ruleName) + " and "
+
+                    outputStr = outputStr[:len(outputStr)-5]
+                    outputStr += ")"
+                    logging.info(outputStr)
+
+                    solver.add(z3.Implies(allNotRMinus, allNeededRules))
+
+        for relName in idbRelationsExpected:
+            relProduced = loadRelation(problemDirName + '/' + relName + '.csv')
+
+            # 3c(i) Tuples which are expected and produced
+            # We do not have anything to learn from these tuples
+            #for t in relProduced & idbRelationsExpected[relName]:
+                #logging.info('Solution produces desirable tuple: ' + printSouffleString(relName, t))
+
+            # 3c(ii) Tuples which are unexpected but still produced
+            # Here, we ask the question: ``Why was this tuple produced?''
+            
+            newWhys = 0
+            currUndesiredTuples = list(relProduced - idbRelationsExpected[relName])
+            random.shuffle(currUndesiredTuples)
+            for t in currUndesiredTuples:
+                solved = False
+                whyRelT = why(relName, t)
+                if whyRelT[0] == "error reading":
+                    logging.info("\n")
+                    logging.info(t)
+                    logging.info("error reading!\n")
+                    break
+                elif whyRelT[1] != None:     
+                    solver.add(z3.Not(whyRelT[1]))
+                    numWhy+=1
+                    newWhys+=1
+                    doSanity()
+                if newWhys > 30:
+                    break
+
+            # 3c(iii) Tuples which were expected but not produced
+            # Here, we ask the question: ``Why was this tuple not produced?''
+            unproducedDesirable = False
+            oldCRSL = copy.deepcopy(currRuleSetLarge)
+
+            for t in (idbRelationsExpected[relName] - relProduced):
+                currRuleSetLarge = copy.deepcopy(oldCRSL)
+                solved = False
+
+                whyNotRelT = z3.BoolVal(False)
+
+                if setting_delta == "1":
+                    smallRMinus = whyNotDelta(relName, t, currRuleSetLarge)
+                    for ruleName in smallRMinus:
+                        whyNotRelT = z3.Or(whyNotRelT, allRuleNames[ruleName])
+                else:
+                    whyNotRelT = whyNot()
+
+                if whyNotRelT != None:
+                    solver.add(whyNotRelT)
+                    numWhyNot += 1
+                    unproducedDesirable = True
+                    try:
+                        doSanity()
+                    except:
+                        dataLogStr = "{" + f"name: '{problemDirName}_{runCount}', " + \
+                                           f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                                           f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                                           f"setting_delta: {setting_delta}" + "}"
+                        with open('data.log', 'a+') as f: print(dataLogStr, file=f)
+                        quit()
+                break
+
+        ################################################################################################################
+        # 3d. Find useful rules
+
+        if solved:
+            dataLogStr = "{" + f"name: '{problemDirName}_{runCount}', " + \
+                               f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                               f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                               f"setting_delta: {setting_delta}" + "}"
+            with open('data.log', 'a+') as f: print(dataLogStr, file=f)
+
+            ans = { ruleName for relName in idbRelationsExpected \
+                             for t in idbRelationsExpected[relName] \
+                             for ruleName in collectRules(getProvenance(relName, t)) }
+            ans = '|'.join(ans)
+            ans = r'Rule\(({})\)'.format(ans)
+            logging.info(ans)
+            ans = re.compile(ans)
+            ans = { line.strip() for line in open(problemDirName + '/rules.small.dl') if ans.search(line) }
+            for line in ans: print(line)
+
+            logging.info(f'Calls to Z3: {callsToZ3}, Calls to Souffle: {callsToSouffle}')
+            break

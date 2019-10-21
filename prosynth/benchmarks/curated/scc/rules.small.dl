@@ -1,0 +1,180 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl Edge(v0: V, v1: V)
+.input Edge
+
+.decl inv(v0: V, v1: V)
+.output inv
+
+.decl SCC(v0: V, v1: V)
+.output SCC
+
+SCC(v2, v1) :- SCC(v0, v1), SCC(v2, v0), Rule(126).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(58).
+inv(v1, v0) :- Edge(v0, v1), inv(v2, v0), Rule(159).
+inv(v0, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(141).
+SCC(v1, v0) :- inv(v0, v1), inv(v2, v0), Rule(42).
+SCC(v1, v2) :- Edge(v0, v1), inv(v2, v0), Rule(62).
+inv(v2, v1) :- Edge(v0, v1), inv(v0, v2), Rule(69).
+SCC(v2, v1) :- Edge(v0, v1), inv(v2, v0), Rule(122).
+inv(v2, v0) :- SCC(v0, v1), inv(v2, v1), Rule(162).
+SCC(v2, v0) :- SCC(v0, v1), inv(v1, v2), Rule(91).
+SCC(v0, v1) :- inv(v0, v1), inv(v2, v0), Rule(81).
+inv(v0, v2) :- SCC(v0, v1), inv(v2, v0), Rule(15).
+inv(v1, v2) :- Edge(v0, v1), SCC(v0, v2), Rule(144).
+inv(v0, v1) :- SCC(v0, v1), inv(v1, v0), Rule(85).
+inv(v0, v2) :- Edge(v0, v1), SCC(v0, v2), Rule(11).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(123).
+inv(v0, v2) :- Edge(v0, v1), SCC(v2, v1), Rule(28).
+inv(v2, v1) :- SCC(v0, v1), inv(v0, v2), Rule(93).
+SCC(v2, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(131).
+inv(v1, v0) :- Edge(v0, v1), SCC(v1, v0), Rule(72).
+SCC(v0, v1) :- Edge(v0, v1), SCC(v1, v0), Rule(44).
+SCC(v0, v2) :- SCC(v0, v1), inv(v0, v2), Rule(36).
+SCC(v1, v2) :- SCC(v0, v1), inv(v1, v2), Rule(142).
+SCC(v2, v0) :- inv(v0, v1), inv(v2, v0), Rule(89).
+SCC(v1, v2) :- Edge(v0, v1), inv(v1, v2), Rule(49).
+inv(v1, v0) :- Edge(v0, v1), inv(v1, v2), Rule(146).
+inv(v1, v2) :- Edge(v0, v1), inv(v2, v0), Rule(156).
+SCC(v2, v0) :- SCC(v0, v1), inv(v2, v1), Rule(39).
+inv(v0, v1) :- Edge(v0, v1), Rule(134).
+inv(v0, v1) :- SCC(v0, v1), SCC(v1, v0), Rule(25).
+SCC(v2, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(82).
+SCC(v1, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(80).
+inv(v0, v1) :- Edge(v0, v1), Edge(v0, v2), Rule(150).
+inv(v2, v0) :- Edge(v0, v1), SCC(v2, v1), Rule(8).
+inv(v0, v1) :- Edge(v0, v1), inv(v0, v2), Rule(0).
+inv(v2, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(51).
+SCC(v2, v1) :- SCC(v0, v1), inv(v2, v0), Rule(94).
+SCC(v1, v0) :- Edge(v0, v1), SCC(v2, v0), Rule(17).
+SCC(v0, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(107).
+inv(v0, v2) :- SCC(v0, v1), inv(v1, v2), Rule(59).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(71).
+inv(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(151).
+SCC(v2, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(4).
+inv(v0, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(65).
+inv(v1, v2) :- Edge(v0, v1), SCC(v1, v2), Rule(78).
+SCC(v1, v0) :- SCC(v0, v1), inv(v1, v0), Rule(143).
+SCC(v2, v0) :- SCC(v0, v1), inv(v2, v0), Rule(33).
+inv(v1, v0) :- SCC(v0, v1), inv(v2, v0), Rule(2).
+SCC(v0, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(137).
+inv(v2, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(109).
+SCC(v2, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(100).
+SCC(v1, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(116).
+inv(v1, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(92).
+SCC(v1, v2) :- Edge(v0, v1), SCC(v0, v2), Rule(70).
+inv(v2, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(90).
+inv(v0, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(112).
+SCC(v0, v1) :- Edge(v0, v1), inv(v0, v2), Rule(48).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v0, v2), Rule(138).
+SCC(v0, v1) :- Edge(v0, v1), inv(v1, v2), Rule(23).
+SCC(v1, v0) :- inv(v0, v1), Rule(98).
+SCC(v2, v0) :- Edge(v0, v1), inv(v2, v0), Rule(22).
+SCC(v2, v0) :- Edge(v0, v1), inv(v1, v2), Rule(145).
+inv(v2, v1) :- SCC(v0, v1), inv(v2, v0), Rule(75).
+SCC(v0, v2) :- SCC(v0, v1), inv(v2, v1), Rule(120).
+SCC(v2, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(47).
+inv(v0, v1) :- SCC(v0, v1), inv(v1, v2), Rule(38).
+inv(v1, v0) :- Edge(v0, v1), Rule(50).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(14).
+SCC(v1, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(1).
+SCC(v2, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(61).
+inv(v1, v2) :- SCC(v0, v1), SCC(v0, v2), Rule(111).
+inv(v0, v1) :- Edge(v0, v1), SCC(v1, v0), Rule(66).
+inv(v1, v0) :- inv(v0, v1), Rule(7).
+inv(v0, v1) :- SCC(v0, v1), SCC(v2, v0), Rule(99).
+SCC(v0, v2) :- Edge(v0, v1), SCC(v1, v2), Rule(52).
+SCC(v1, v0) :- SCC(v0, v1), Rule(73).
+SCC(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(104).
+inv(v1, v2) :- Edge(v0, v1), inv(v0, v2), Rule(102).
+SCC(v0, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(103).
+inv(v0, v1) :- SCC(v0, v1), SCC(v0, v2), Rule(128).
+SCC(v1, v2) :- SCC(v0, v1), inv(v2, v0), Rule(115).
+inv(v1, v0) :- inv(v0, v1), inv(v2, v0), Rule(139).
+inv(v1, v0) :- SCC(v0, v1), inv(v1, v2), Rule(110).
+inv(v0, v1) :- SCC(v0, v1), inv(v0, v2), Rule(113).
+inv(v1, v0) :- SCC(v0, v1), SCC(v2, v0), Rule(29).
+SCC(v1, v0) :- SCC(v0, v1), inv(v2, v0), Rule(140).
+inv(v2, v0) :- SCC(v0, v1), SCC(v2, v0), Rule(129).
+SCC(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(147).
+SCC(v0, v1) :- inv(v0, v1), Rule(77).
+inv(v1, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(157).
+SCC(v0, v2) :- Edge(v0, v1), inv(v2, v0), Rule(18).
+SCC(v0, v1) :- Edge(v0, v1), inv(v2, v0), Rule(27).
+SCC(v2, v1) :- SCC(v0, v1), inv(v1, v2), Rule(53).
+inv(v2, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(83).
+inv(v2, v0) :- SCC(v0, v1), inv(v1, v2), Rule(148).
+inv(v2, v1) :- SCC(v0, v1), SCC(v2, v0), Rule(87).
+SCC(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(46).
+inv(v1, v0) :- SCC(v0, v1), Rule(136).
+inv(v0, v2) :- Edge(v0, v1), inv(v2, v1), Rule(130).
+inv(v0, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(125).
+inv(v2, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(132).
+inv(v0, v2) :- Edge(v0, v1), inv(v2, v0), Rule(152).
+inv(v2, v1) :- Edge(v0, v1), inv(v2, v0), Rule(12).
+SCC(v0, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(32).
+SCC(v2, v0) :- Edge(v0, v1), inv(v2, v1), Rule(96).
+SCC(v1, v0) :- Edge(v0, v1), inv(v2, v0), Rule(37).
+inv(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(9).
+SCC(v1, v0) :- SCC(v0, v1), inv(v1, v2), Rule(43).
+inv(v1, v2) :- SCC(v0, v1), inv(v0, v2), Rule(5).
+inv(v2, v1) :- SCC(v0, v1), inv(v1, v2), Rule(19).
+inv(v1, v2) :- Edge(v0, v1), Edge(v0, v2), Rule(31).
+inv(v1, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(57).
+inv(v0, v2) :- SCC(v0, v1), SCC(v2, v1), Rule(164).
+SCC(v0, v1) :- inv(v0, v1), inv(v1, v0), Rule(101).
+inv(v1, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(6).
+inv(v0, v1) :- SCC(v0, v1), Rule(67).
+inv(v0, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(158).
+inv(v2, v1) :- Edge(v0, v1), inv(v1, v2), Rule(13).
+inv(v0, v2) :- Edge(v0, v1), Edge(v2, v1), Rule(84).
+SCC(v0, v2) :- Edge(v0, v1), inv(v1, v2), Rule(45).
+SCC(v2, v1) :- Edge(v0, v1), inv(v1, v2), Rule(97).
+SCC(v0, v2) :- SCC(v0, v1), inv(v2, v0), Rule(105).
+SCC(v0, v2) :- Edge(v0, v1), inv(v0, v2), Rule(34).
+SCC(v1, v0) :- Edge(v0, v1), inv(v1, v2), Rule(79).
+SCC(v0, v1) :- inv(v0, v1), inv(v0, v2), Rule(161).
+inv(v0, v1) :- Edge(v0, v1), inv(v2, v0), Rule(106).
+SCC(v0, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(135).
+SCC(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(124).
+inv(v0, v2) :- Edge(v0, v1), inv(v1, v2), Rule(64).
+SCC(v0, v2) :- Edge(v0, v1), Edge(v2, v1), Rule(60).
+inv(v0, v1) :- Edge(v0, v1), inv(v1, v2), Rule(56).
+inv(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(3).
+SCC(v0, v2) :- SCC(v0, v1), inv(v1, v2), Rule(108).
+SCC(v0, v2) :- Edge(v0, v1), SCC(v2, v1), Rule(86).
+SCC(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(54).
+SCC(v1, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(35).
+SCC(v1, v0) :- Edge(v0, v1), inv(v1, v0), Rule(95).
+inv(v2, v0) :- Edge(v0, v1), inv(v1, v2), Rule(76).
+SCC(v0, v1) :- Edge(v0, v1), Rule(117).
+inv(v0, v2) :- SCC(v0, v1), inv(v2, v1), Rule(63).
+SCC(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(127).
+inv(v1, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(41).
+SCC(v2, v1) :- Edge(v0, v1), inv(v0, v2), Rule(133).
+inv(v2, v0) :- Edge(v0, v1), SCC(v2, v0), Rule(163).
+SCC(v0, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(121).
+SCC(v1, v2) :- SCC(v0, v1), SCC(v0, v2), Rule(160).
+SCC(v1, v0) :- SCC(v0, v1), SCC(v2, v0), Rule(114).
+SCC(v0, v2) :- SCC(v0, v1), SCC(v2, v1), Rule(165).
+SCC(v0, v2) :- Edge(v0, v1), inv(v2, v1), Rule(20).
+SCC(v1, v2) :- Edge(v0, v1), inv(v0, v2), Rule(153).
+inv(v0, v2) :- Edge(v0, v1), SCC(v1, v2), Rule(68).
+inv(v2, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(21).
+SCC(v1, v2) :- Edge(v0, v1), Edge(v0, v2), Rule(10).
+inv(v2, v0) :- Edge(v0, v1), inv(v2, v1), Rule(30).
+SCC(v0, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(149).
+inv(v1, v2) :- SCC(v0, v1), inv(v2, v0), Rule(155).
+inv(v0, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(40).
+inv(v0, v1) :- SCC(v0, v1), inv(v2, v0), Rule(119).
+SCC(v1, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(118).
+SCC(v1, v0) :- Edge(v0, v1), Rule(16).
+SCC(v2, v1) :- SCC(v0, v1), inv(v0, v2), Rule(154).
+inv(v0, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(55).
+inv(v1, v0) :- Edge(v0, v1), SCC(v2, v0), Rule(74).
+inv(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(26).
+SCC(v2, v0) :- Edge(v0, v1), SCC(v2, v1), Rule(88).
+SCC(v1, v2) :- SCC(v0, v1), inv(v0, v2), Rule(24).

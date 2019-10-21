@@ -1,0 +1,34 @@
+.type Plan
+.type Attributes
+.type Id
+.type Value
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl active(v0: Attributes)
+.input active
+.decl correct(v0: Value)
+.input correct
+.decl input1(v0: Id, v1: Plan, v2: Attributes, v3: Value)
+.input input1
+
+.decl inv(v0: Plan)
+.output inv
+
+.decl ans(v0: Id, v1: Plan, v2: Attributes, v3: Value)
+.output ans
+
+inv(v5) :- input1(v0, v1, v2, v3), ans(v4, v5, v2, v6), Rule(10).
+inv(v2) :- active(v0), ans(v1, v2, v0, v3), correct(v3), Rule(0).
+inv(v2) :- correct(v0), ans(v1, v2, v3, v0), Rule(2).
+ans(v1, v2, v0, v3) :- active(v0), input1(v1, v2, v0, v3), Rule(5).
+inv(v5) :- input1(v0, v1, v2, v3), input1(v4, v5, v2, v6), Rule(1).
+inv(v2) :- active(v0), ans(v1, v2, v0, v3), Rule(8).
+inv(v2) :- active(v0), input1(v1, v2, v0, v3), Rule(7).
+inv(v5) :- ans(v0, v1, v2, v3), input1(v4, v5, v2, v6), Rule(9).
+inv(v5) :- ans(v0, v1, v2, v3), ans(v4, v5, v2, v6), Rule(3).
+inv(v2) :- correct(v0), input1(v1, v2, v3, v0), Rule(6).
+ans(v1, v2, v3, v0) :- correct(v0), input1(v1, v2, v3, v0), Rule(4).
+inv(v3) :- active(v0), correct(v1), input1(v2, v3, v0, v1), Rule(12).
+ans(v0, v1, v2, v3) :- input1(v0, v1, v2, v3), inv(v1), Rule(11).

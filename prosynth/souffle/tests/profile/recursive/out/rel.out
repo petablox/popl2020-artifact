@@ -1,0 +1,8 @@
+ ----- Relation Table -----
+   TOT_T  NREC_T   REC_T  COPY_T         TUPLES    ID NAME
+
+    .082    .000    .076    .006           9999    R1 A
+    .003    .000    .003    .000              1    R3 B
+    .003    .000    .003    .000              1    R2 C
+    .000    .000    .000    .000              1    R4 R1
+

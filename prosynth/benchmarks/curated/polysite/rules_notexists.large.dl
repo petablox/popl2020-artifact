@@ -1,0 +1,151 @@
+.type M
+.type C
+.type I
+
+.decl Rule(n: number)
+.input Rule
+
+.decl CICM(v0: C, v1: I, v2: M)
+.input CICM
+
+.decl virtIM(v0: I, v1: M)
+.input virtIM
+
+.decl Mneq(v0: M, v1: M)
+.input Mneq
+
+.decl CICM_notexists(v0: C, v1: I, v2: M, r: number)
+.output CICM_notexists
+
+.decl virtIM_notexists(v0: I, v1: M, r: number)
+.output virtIM_notexists
+
+.decl Mneq_notexists(v0: M, v1: M, r: number)
+.output Mneq_notexists
+
+.decl insvIM_notexists(v0: I, v1: M, r: number)
+.output insvIM_notexists
+
+.decl virtI_notexists(v0: I, r: number)
+.output virtI_notexists
+
+.decl polySite_notexists(v0: I, r: number)
+.output polySite_notexists
+
+CICM_notexists(v0, v1, v2, r) :- CICM(v0, v1, v2), Rule(r).
+virtIM_notexists(v0, v1, r) :- virtIM(v0, v1), Rule(r).
+Mneq_notexists(v0, v1, r) :- Mneq(v0, v1), Rule(r).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v1, r), Rule(r), r != 1, Rule(1).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), Rule(r), r != 3, Rule(3).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), Rule(r), r != 4, Rule(4).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 5, Rule(5).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 6, Rule(6).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 7, Rule(7).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v1, r), Rule(r), r != 9, Rule(9).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v2, r), Rule(r), r != 10, Rule(10).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v1, r), Rule(r), r != 11, Rule(11).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v2, r), Rule(r), r != 12, Rule(12).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v3, v2, r), virtIM_notexists(v3, v1, r), Rule(r), r != 13, Rule(13).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v3, v1, r), virtIM_notexists(v3, v2, r), Rule(r), r != 14, Rule(14).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v1, r), Mneq_notexists(v2, v1, r), Rule(r), r != 15, Rule(15).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v1, r), Mneq_notexists(v1, v2, r), Rule(r), r != 16, Rule(16).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), Rule(r), r != 17, Rule(17).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), Rule(r), r != 18, Rule(18).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), Rule(r), r != 19, Rule(19).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), Rule(r), r != 20, Rule(20).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 21, Rule(21).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), virtIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 22, Rule(22).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 23, Rule(23).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 24, Rule(24).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v3, v2, r), insvIM_notexists(v3, v1, r), Rule(r), r != 25, Rule(25).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), virtIM_notexists(v3, v1, r), insvIM_notexists(v3, v2, r), Rule(r), r != 26, Rule(26).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v1, v2, r), Mneq_notexists(v2, v1, r), Rule(r), r != 27, Rule(27).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v1, v2, r), Mneq_notexists(v1, v2, r), Rule(r), r != 28, Rule(28).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v2, v1, r), Mneq_notexists(v2, v1, r), Rule(r), r != 29, Rule(29).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v2, v1, r), Mneq_notexists(v1, v2, r), Rule(r), r != 30, Rule(30).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), Mneq_notexists(v2, v1, r), Rule(r), r != 31, Rule(31).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), Mneq_notexists(v1, v2, r), Rule(r), r != 32, Rule(32).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), Mneq_notexists(v2, v1, r), Rule(r), r != 33, Rule(33).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), Mneq_notexists(v1, v2, r), Rule(r), r != 34, Rule(34).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v3, v2, r), Mneq_notexists(v3, v1, r), Rule(r), r != 35, Rule(35).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v3, v1, r), Mneq_notexists(v2, v3, r), Rule(r), r != 36, Rule(36).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v3, v2, r), Mneq_notexists(v1, v3, r), Rule(r), r != 37, Rule(37).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v3, r), Mneq_notexists(v2, v3, r), Rule(r), r != 38, Rule(38).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v2, v3, r), Mneq_notexists(v2, v3, r), Rule(r), r != 39, Rule(39).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v3, r), Mneq_notexists(v1, v3, r), Rule(r), r != 40, Rule(40).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v3, r), Mneq_notexists(v3, v1, r), Rule(r), r != 41, Rule(41).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v3, v1, r), Mneq_notexists(v3, v2, r), Rule(r), r != 42, Rule(42).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v3, r), Mneq_notexists(v3, v2, r), Rule(r), r != 43, Rule(43).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v2, v3, r), Mneq_notexists(v3, v2, r), Rule(r), r != 44, Rule(44).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 45, Rule(45).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 46, Rule(46).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 47, Rule(47).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 48, Rule(48).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 49, Rule(49).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 50, Rule(50).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 51, Rule(51).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 52, Rule(52).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 53, Rule(53).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 54, Rule(54).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), insvIM_notexists(v3, v2, r), insvIM_notexists(v3, v1, r), Rule(r), r != 55, Rule(55).
+insvIM_notexists(v0, v1, r) :- virtIM_notexists(v0, v2, r), insvIM_notexists(v3, v1, r), insvIM_notexists(v3, v2, r), Rule(r), r != 56, Rule(56).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 57, Rule(57).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 58, Rule(58).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 59, Rule(59).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 60, Rule(60).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 61, Rule(61).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 62, Rule(62).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 63, Rule(63).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 64, Rule(64).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v3, r), Mneq_notexists(v2, v3, r), insvIM_notexists(v0, v1, r), Rule(r), r != 65, Rule(65).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v3, r), Mneq_notexists(v3, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 66, Rule(66).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v3, r), Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v3, r), Rule(r), r != 67, Rule(67).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v3, r), Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v3, r), Rule(r), r != 68, Rule(68).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), Mneq_notexists(v2, v3, r), insvIM_notexists(v0, v3, r), Rule(r), r != 69, Rule(69).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), Mneq_notexists(v3, v2, r), insvIM_notexists(v0, v3, r), Rule(r), r != 70, Rule(70).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), Mneq_notexists(v2, v3, r), insvIM_notexists(v0, v3, r), Rule(r), r != 71, Rule(71).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), Mneq_notexists(v3, v2, r), insvIM_notexists(v0, v3, r), Rule(r), r != 72, Rule(72).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v3, r), Mneq_notexists(v1, v3, r), insvIM_notexists(v0, v2, r), Rule(r), r != 73, Rule(73).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v3, r), Mneq_notexists(v3, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 74, Rule(74).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 75, Rule(75).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 76, Rule(76).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 77, Rule(77).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 78, Rule(78).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v2, v1, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 79, Rule(79).
+insvIM_notexists(v0, v1, r) :- Mneq_notexists(v1, v2, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 80, Rule(80).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v1, r), Rule(r), r != 81, Rule(81).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), Rule(r), r != 82, Rule(82).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), Rule(r), r != 83, Rule(83).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v2, r), insvIM_notexists(v0, v1, r), insvIM_notexists(v0, v2, r), Rule(r), r != 84, Rule(84).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v2, r), insvIM_notexists(v3, v2, r), insvIM_notexists(v3, v1, r), Rule(r), r != 85, Rule(85).
+insvIM_notexists(v0, v1, r) :- insvIM_notexists(v0, v2, r), insvIM_notexists(v3, v1, r), insvIM_notexists(v3, v2, r), Rule(r), r != 86, Rule(86).
+virtI_notexists(v0, r) :- virtI_notexists(v0, r), Rule(r), r != 87, Rule(87).
+virtI_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v0, r), Rule(r), r != 88, Rule(88).
+virtI_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v0, r), virtI_notexists(v0, r), Rule(r), r != 89, Rule(89).
+virtI_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v1, r), virtI_notexists(v1, r), Rule(r), r != 90, Rule(90).
+virtI_notexists(v0, r) :- virtI_notexists(v1, r), virtI_notexists(v1, r), virtI_notexists(v0, r), Rule(r), r != 91, Rule(91).
+virtI_notexists(v0, r) :- virtI_notexists(v1, r), virtI_notexists(v0, r), virtI_notexists(v1, r), Rule(r), r != 92, Rule(92).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), Rule(r), r != 93, Rule(93).
+polySite_notexists(v0, r) :- polySite_notexists(v0, r), Rule(r), r != 94, Rule(94).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v0, r), Rule(r), r != 95, Rule(95).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), polySite_notexists(v0, r), Rule(r), r != 96, Rule(96).
+polySite_notexists(v0, r) :- polySite_notexists(v0, r), polySite_notexists(v0, r), Rule(r), r != 97, Rule(97).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v0, r), virtI_notexists(v0, r), Rule(r), r != 98, Rule(98).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v1, r), virtI_notexists(v1, r), Rule(r), r != 99, Rule(99).
+polySite_notexists(v0, r) :- virtI_notexists(v1, r), virtI_notexists(v1, r), virtI_notexists(v0, r), Rule(r), r != 100, Rule(100).
+polySite_notexists(v0, r) :- virtI_notexists(v1, r), virtI_notexists(v0, r), virtI_notexists(v1, r), Rule(r), r != 101, Rule(101).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v0, r), polySite_notexists(v0, r), Rule(r), r != 102, Rule(102).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), virtI_notexists(v1, r), polySite_notexists(v1, r), Rule(r), r != 103, Rule(103).
+polySite_notexists(v0, r) :- virtI_notexists(v1, r), virtI_notexists(v1, r), polySite_notexists(v0, r), Rule(r), r != 104, Rule(104).
+polySite_notexists(v0, r) :- virtI_notexists(v1, r), virtI_notexists(v0, r), polySite_notexists(v1, r), Rule(r), r != 105, Rule(105).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), polySite_notexists(v0, r), polySite_notexists(v0, r), Rule(r), r != 106, Rule(106).
+polySite_notexists(v0, r) :- virtI_notexists(v0, r), polySite_notexists(v1, r), polySite_notexists(v1, r), Rule(r), r != 107, Rule(107).
+polySite_notexists(v0, r) :- virtI_notexists(v1, r), polySite_notexists(v1, r), polySite_notexists(v0, r), Rule(r), r != 108, Rule(108).
+polySite_notexists(v0, r) :- virtI_notexists(v1, r), polySite_notexists(v0, r), polySite_notexists(v1, r), Rule(r), r != 109, Rule(109).
+polySite_notexists(v0, r) :- polySite_notexists(v0, r), polySite_notexists(v0, r), polySite_notexists(v0, r), Rule(r), r != 110, Rule(110).
+polySite_notexists(v0, r) :- polySite_notexists(v0, r), polySite_notexists(v1, r), polySite_notexists(v1, r), Rule(r), r != 111, Rule(111).
+polySite_notexists(v0, r) :- polySite_notexists(v1, r), polySite_notexists(v1, r), polySite_notexists(v0, r), Rule(r), r != 112, Rule(112).
+polySite_notexists(v0, r) :- polySite_notexists(v1, r), polySite_notexists(v0, r), polySite_notexists(v1, r), Rule(r), r != 113, Rule(113).

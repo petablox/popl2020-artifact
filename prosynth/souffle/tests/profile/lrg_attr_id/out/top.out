@@ -1,0 +1,31 @@
+    runtime  loadtime  savetime relations     rules    tuples generated
+      .000s     .000s     .000s         2         3             4
+
+Slowest relations to fully evaluate
+ ----- Relation Table -----
+   TOT_T  NREC_T   REC_T  COPY_T  LOAD_T  SAVE_T         TUPLES   READS   kTUPLES/s    ID NAME
+
+   .000s   .000s   .000s   .000s   .000s   .000s              3      24          17    R2 rel
+   .000s   .000s   .000s   .000s   .000s   .000s              1       1          24    R1 first
+
+Slowest rules to fully evaluate
+  ----- Rule Table -----
+   TOT_T  NREC_T   REC_T         TUPLES   kTUPLES/s      ID RELATION
+
+   .000s   .000s   .000s              0           0    C2.1 rel
+   .000s   .000s   .000s              1          71    N1.1 first
+   .000s   .000s   .000s              1          83    N2.4 rel
+  cpu total
+      .003s
+   178%
+   160%
+   142%
+   124%
+   106%
+    89%  ***********
+    71%  ***********
+    53%  ***********
+    35%  ***********
+    17%  ***********
+        ------------
+

@@ -1,0 +1,23 @@
+3.1 - too many tuples produced
+	- we see this in all iterations, but we focus on iterations 1 and 2
+	e.g. in iteration 1 (rMinus: []):
+		WHY constraint added: [not (3 and 6 and 2 and 1 and 7)] because ('6', '1') is undesirable and produced
+	e.g. in iteration 2 (rMinus: ['0', '2', '3', '7'], which is consistent with constraints added in iteration 1):
+		WHY constraint added: [not (1 and 4)] because ('3', '5') is undesirable and produced
+
+3.2 - delta (story in iteration 5):
+	- rMinus: ['0', '3', '4', '5', '6', '7'], consistent with feedback in iteration 1-4
+	note that expected but unproduced: ('3', '1'). 
+			
+	- delta debugging has rMinus = ['0', '3', '4', '5', '6', '7'] to choose from
+	- delta debugging adds constraint [4 or 5 or 3 or 0] by determining that rules 6, 7 do not help in producing tuple ('3', '1') - this tuple is chosen at random from the set of expected but unproduced tuples
+		- note that rules 6 and 7 make up the path-reverse definition, so this shows that the algorithm chose to go with the regular defintion of path in this run
+
+3.3 - coprov (story in iteration 4)
+	- based on constraints added in iteration 1-3, many tuples in iteration 4 have a non-empty coprovenance (i.e. there are rules that must be included to produce the tuple)
+	e.g. in iteration 4 (rMinus: ['0', '3', '4', '7']):
+		('3', '1') has coprov {'5'}
+	as a result of the coprovenances, we have the following constraint generated (but we didn't add it to demonstrate that without it, we run why-not-delta) in iteration 4:
+		COPROV constraint generate: (not 0 and not 3 and not 7 and not 4) => (2 and 5)
+		- (2 and 5) rather than just (5) because other tuples have both 2 and 5 in their coprov
+	note that this would cause us to skip the delta debugging step in iteration 5 if we had added it (see 3.2), since rule 5 would have been in rPlus and therefore ('3', '1') would have been produced

@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Provenance-aware Datalog Synthesis Tool
+# The Ad-hoc Clause Learning Algorithm
+
+# Invocation: ./scripts/variants/ma PROBLEM_DIR
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.dl: Specifies the signatures of the EDB and IDB relations, and the set of candidate rules
+#              Also contains a one-place input relation named Rule(n)
+# 2. ruleNames.txt: Provides the set of valid rule names, which can be used to populate the Rule.facts file
+# 3. R.facts, for each input relation R other than Rule: Specifies the EDB
+# 4. R.expected, for each output relation R: Specified the expected IDB
+# 5. a.out: Executable produced by Souffle with -t explain enabled
+
+# rules.dl and R.facts are expected to be a in a format recognized by Souffle
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import logging
+import re
+import sys
+import time
+import z3
+
+import mbase
+
+problemDirName = sys.argv[1]
+
+logging.info('Hello! Solving ' + problemDirName)
+
+# 1a. Load the set of rules and IDB relations
+
+z3RuleVar = mbase.loadRules(problemDirName)
+expectedOut = mbase.loadExpectedOut(problemDirName)
+
+# 1b. Initialize the constraint solver, and the why- (to avoid the production of undesirable tuples), and whyNot- (to
+#     force the production of desirable tuples) provenances
+
+solver = z3.Solver()
+thetas = mbase.analyzeThetaSubsumptions(problemDirName, z3RuleVar, solver)
+whyProvs = set()
+whyNotProvs = set()
+
+########################################################################################################################
+# 2. Algorithm for minimizing why-not provenance
+#    Given a set of rules whose exclusion fails to produce relName(t),
+#    produces a smaller subset of rules whose exclusion also fails to produce relName(t)
+
+def minimize(includedRules, excludedRules, relName, t):
+    def subsetProv(subsetExcludedRules):
+        assert(subsetExcludedRules.issubset(excludedRules))
+        reintroducedRules = excludedRules - subsetExcludedRules
+        souffle, tuplesProduced = mbase.initProvSouffle(problemDirName, expectedOut, includedRules | reintroducedRules)
+        with souffle:
+            if t not in tuplesProduced[relName]: return None
+            ans = mbase.queryProvenance(souffle, relName, t, expectedOut=None)
+            ans = ans & reintroducedRules
+            assert(len(ans) > 0)
+            return ans
+
+    # return frozenset(excludedRules)
+
+    subsetExcludedRules = set()
+    while True:
+        logging.info('{} excluded rules. {} subset excluded rules.'.format(len(excludedRules), len(subsetExcludedRules)))
+        prov = subsetProv(subsetExcludedRules)
+        if prov == None:
+            ans = frozenset(subsetExcludedRules)
+            return ans
+        subsetExcludedRules = subsetExcludedRules | prov
+
+########################################################################################################################
+# 3. Repeatedly add constraints until a satisfying assignment is found
+
+numIters = 0
+solved = False
+while not solved:
+    iterStartTime = time.time()
+
+    currRuleSetLarge = mbase.satisfyingRuleSet(solver, z3RuleVar, True)
+    if currRuleSetLarge == None:
+        print('unsat')
+        sys.exit(1)
+
+    souffle, tuplesProduced = mbase.initProvSouffle(problemDirName, expectedOut, currRuleSetLarge)
+    with souffle:
+
+        ################################################################################################################
+        # 3a. Analyze tuples produced by currRuleSetLarge
+
+        solved = True
+
+        for relName in expectedOut:
+            # 5a(i) Tuples relName(t) which are both expected and produced
+            # We do not have anything to learn from such tuples
+            for t in tuplesProduced[relName] & expectedOut[relName]:
+                logging.debug('Solution produces desirable tuple: ' + mbase.printSouffleString(relName, t))
+
+            # 5a(ii) Tuples relName(t) which were not expected but still produced
+            # Here, we ask the question: ``Why was this tuple produced?''
+            for t in tuplesProduced[relName] - expectedOut[relName]:
+                logging.debug('Solution produces undesirable tuple ' + mbase.printSouffleString(relName, t))
+                solved = False
+                provenance = mbase.queryProvenance(souffle, relName, t, expectedOut)
+                if provenance != None:
+                    whyProvs.add(provenance)
+                    provenance = { z3RuleVar[rule] for rule in provenance }
+                    provenance = z3.And(provenance)
+                    solver.add(z3.Not(provenance))
+
+            # 5a(iii) Tuples which were expected but not produced
+            # Here, we ask the question: ``Why was this tuple not produced?''
+            tuplesNotProduced = expectedOut[relName] - tuplesProduced[relName]
+            if tuplesNotProduced:
+                logging.debug('Solution fails to produce {} desirable tuples'.format(len(tuplesNotProduced)))
+                solved = False
+                for t in tuplesNotProduced:
+                    excludedRules = z3RuleVar.keys() - currRuleSetLarge
+                    explanation = minimize(currRuleSetLarge, excludedRules, relName, t)
+                    whyNotProvs.add(explanation)
+                    block = { z3RuleVar[rule] for rule in explanation }
+                    solver.add(z3.Or(block))
+                    break
+
+        ################################################################################################################
+        # 3b. Check if problem solved
+
+        if solved:
+            ans = { rule for relName in expectedOut \
+                         for t in expectedOut[relName] \
+                         for rule in mbase.queryProvenance(souffle, relName, t, expectedOut) }
+            ans = '|'.join(ans)
+            ans = r'Rule\(({})\)'.format(ans)
+            logging.info(ans)
+            ans = re.compile(ans)
+            ans = { line.strip() for line in open(problemDirName + '/rules.dl') if ans.search(line) }
+            for line in ans: print(line)
+
+    iterEndTime = time.time()
+    numIters = numIters + 1
+    logging.info(' '.join([ 'Iteration {}.'.format(numIters), \
+                            '{} seconds.'.format(iterEndTime - iterStartTime), \
+                            '{} why provenances.'.format(len(whyProvs)), \
+                            '{} why-not provenances.'.format(len(whyNotProvs)) ]))

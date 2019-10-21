@@ -1,0 +1,48 @@
+# Bash completions for souffle                   -*- shell-script -*-
+
+_souffle()
+{
+    local cur prev opts
+    _init_completion -s || return
+
+    case "$prev" in
+        --fact-dir|-F|--output-dir|-D|--include-dir)
+            _filedir -d
+            return
+            ;;
+        --generate|-g)
+            _filedir "cpp"
+            return
+            ;;
+        --dl-program|-o)
+            _filedir
+            return
+            ;;
+        --profile|-p)
+            _filedir "json|log"
+            return
+            ;;
+        --jobs|-j)
+            COMPREPLY=( $(compgen -W $(_ncpus) -- "$cur" ) )
+            return
+            ;;
+        --provenance|-t)
+            COMPREPLY=( $(compgen -W "{0..1}" -- "$cur" ) )
+            return
+            ;;
+    esac
+
+    COMPREPLY=()
+    opts="--help --verbose --version --fact-dir --include-dir --output-dir \
+    --jobs --compile --generate --no-warn -dl-program --live-profile \
+    --profile --debug-report --pragma --profile-use --provenance"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return
+    fi
+
+    _filedir dl
+
+} &&
+complete -F _souffle souffle

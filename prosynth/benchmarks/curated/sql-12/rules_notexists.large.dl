@@ -1,0 +1,122 @@
+.type part_id
+.type color
+.type sname
+.type supplier_key
+
+.decl Rule(n: number)
+.input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+
+.decl isRed(v0: color)
+.input isRed
+
+.decl isGreen(v0: color)
+.input isGreen
+
+.decl input2(v0: part_id, v1: color)
+.input input2
+
+.decl input3(v0: supplier_key, v1: sname)
+.input input3
+
+.decl input1_notexists(v0: supplier_key, v1: part_id, r: number)
+.output input1_notexists
+
+.decl isRed_notexists(v0: color, r: number)
+.output isRed_notexists
+
+.decl isGreen_notexists(v0: color, r: number)
+.output isGreen_notexists
+
+.decl input2_notexists(v0: part_id, v1: color, r: number)
+.output input2_notexists
+
+.decl input3_notexists(v0: supplier_key, v1: sname, r: number)
+.output input3_notexists
+
+.decl inv_notexists(v0: part_id, v1: color, r: number)
+.output inv_notexists
+
+.decl ans_notexists(v0: sname, r: number)
+.output ans_notexists
+
+
+
+input1_notexists(v0, v1, r) :- input1(v0, v1), Rule(r).
+isRed_notexists(v0, r) :- isRed(v0), Rule(r).
+isGreen_notexists(v0, r) :- isGreen(v0), Rule(r).
+input2_notexists(v0, v1, r) :- input2(v0, v1), Rule(r).
+input3_notexists(v0, v1, r) :- input3(v0, v1), Rule(r).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+inv_notexists(v0, v1, r) :- inv_notexists(v0, v1, r), Rule(r), r != 1, Rule(1).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), input2_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), inv_notexists(v0, v1, r), Rule(r), r != 3, Rule(3).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), input2_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), inv_notexists(v0, v1, r), Rule(r), r != 5, Rule(5).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v0, v1, r), Rule(r), r != 6, Rule(6).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 7, Rule(7).
+inv_notexists(v0, v1, r) :- inv_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), isRed_notexists(v1, r), input2_notexists(v0, v1, r), Rule(r), r != 9, Rule(9).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), isRed_notexists(v1, r), inv_notexists(v0, v1, r), Rule(r), r != 10, Rule(10).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), isGreen_notexists(v1, r), input2_notexists(v0, v1, r), Rule(r), r != 11, Rule(11).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), isGreen_notexists(v1, r), inv_notexists(v0, v1, r), Rule(r), r != 12, Rule(12).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), input2_notexists(v0, v1, r), input2_notexists(v0, v1, r), Rule(r), r != 13, Rule(13).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), input2_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 14, Rule(14).
+inv_notexists(v0, v1, r) :- isRed_notexists(v1, r), inv_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 15, Rule(15).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), isGreen_notexists(v1, r), input2_notexists(v0, v1, r), Rule(r), r != 16, Rule(16).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), isGreen_notexists(v1, r), inv_notexists(v0, v1, r), Rule(r), r != 17, Rule(17).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), input2_notexists(v0, v1, r), input2_notexists(v0, v1, r), Rule(r), r != 18, Rule(18).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), input2_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 19, Rule(19).
+inv_notexists(v0, v1, r) :- isGreen_notexists(v1, r), inv_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 20, Rule(20).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v0, v1, r), input2_notexists(v0, v1, r), Rule(r), r != 21, Rule(21).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v2, v1, r), input2_notexists(v2, v1, r), Rule(r), r != 22, Rule(22).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v2, v1, r), input2_notexists(v0, v1, r), Rule(r), r != 23, Rule(23).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v0, v1, r), input2_notexists(v2, v1, r), Rule(r), r != 24, Rule(24).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v2, v3, r), input2_notexists(v2, v3, r), Rule(r), r != 25, Rule(25).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v2, v3, r), input2_notexists(v0, v3, r), Rule(r), r != 26, Rule(26).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v0, v3, r), input2_notexists(v2, v3, r), Rule(r), r != 27, Rule(27).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v2, v3, r), input2_notexists(v0, v1, r), Rule(r), r != 28, Rule(28).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v0, v3, r), input2_notexists(v2, v1, r), Rule(r), r != 29, Rule(29).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v2, v1, r), input2_notexists(v0, v3, r), Rule(r), r != 30, Rule(30).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v0, v1, r), input2_notexists(v2, v3, r), Rule(r), r != 31, Rule(31).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 32, Rule(32).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v2, v1, r), inv_notexists(v2, v1, r), Rule(r), r != 33, Rule(33).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v2, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 34, Rule(34).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v0, v1, r), inv_notexists(v2, v1, r), Rule(r), r != 35, Rule(35).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), input2_notexists(v2, v3, r), inv_notexists(v2, v3, r), Rule(r), r != 36, Rule(36).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v2, v3, r), inv_notexists(v0, v3, r), Rule(r), r != 37, Rule(37).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), input2_notexists(v0, v3, r), inv_notexists(v2, v3, r), Rule(r), r != 38, Rule(38).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v2, v3, r), inv_notexists(v0, v1, r), Rule(r), r != 39, Rule(39).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v0, v3, r), inv_notexists(v2, v1, r), Rule(r), r != 40, Rule(40).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v2, v1, r), inv_notexists(v0, v3, r), Rule(r), r != 41, Rule(41).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), input2_notexists(v0, v1, r), inv_notexists(v2, v3, r), Rule(r), r != 42, Rule(42).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), inv_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 43, Rule(43).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), inv_notexists(v2, v1, r), inv_notexists(v2, v1, r), Rule(r), r != 44, Rule(44).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), inv_notexists(v2, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 45, Rule(45).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), inv_notexists(v0, v1, r), inv_notexists(v2, v1, r), Rule(r), r != 46, Rule(46).
+inv_notexists(v0, v1, r) :- input2_notexists(v0, v1, r), inv_notexists(v2, v3, r), inv_notexists(v2, v3, r), Rule(r), r != 47, Rule(47).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), inv_notexists(v2, v3, r), inv_notexists(v0, v3, r), Rule(r), r != 48, Rule(48).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v1, r), inv_notexists(v0, v3, r), inv_notexists(v2, v3, r), Rule(r), r != 49, Rule(49).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), inv_notexists(v2, v3, r), inv_notexists(v0, v1, r), Rule(r), r != 50, Rule(50).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), inv_notexists(v0, v3, r), inv_notexists(v2, v1, r), Rule(r), r != 51, Rule(51).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), inv_notexists(v2, v1, r), inv_notexists(v0, v3, r), Rule(r), r != 52, Rule(52).
+inv_notexists(v0, v1, r) :- input2_notexists(v2, v3, r), inv_notexists(v0, v1, r), inv_notexists(v2, v3, r), Rule(r), r != 53, Rule(53).
+inv_notexists(v0, v1, r) :- inv_notexists(v0, v1, r), inv_notexists(v0, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 54, Rule(54).
+inv_notexists(v0, v1, r) :- inv_notexists(v0, v1, r), inv_notexists(v2, v1, r), inv_notexists(v2, v1, r), Rule(r), r != 55, Rule(55).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v1, r), inv_notexists(v2, v1, r), inv_notexists(v0, v1, r), Rule(r), r != 56, Rule(56).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v1, r), inv_notexists(v0, v1, r), inv_notexists(v2, v1, r), Rule(r), r != 57, Rule(57).
+inv_notexists(v0, v1, r) :- inv_notexists(v0, v1, r), inv_notexists(v2, v3, r), inv_notexists(v2, v3, r), Rule(r), r != 58, Rule(58).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v1, r), inv_notexists(v2, v3, r), inv_notexists(v0, v3, r), Rule(r), r != 59, Rule(59).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v1, r), inv_notexists(v0, v3, r), inv_notexists(v2, v3, r), Rule(r), r != 60, Rule(60).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v3, r), inv_notexists(v2, v3, r), inv_notexists(v0, v1, r), Rule(r), r != 61, Rule(61).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v3, r), inv_notexists(v0, v3, r), inv_notexists(v2, v1, r), Rule(r), r != 62, Rule(62).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v3, r), inv_notexists(v2, v1, r), inv_notexists(v0, v3, r), Rule(r), r != 63, Rule(63).
+inv_notexists(v0, v1, r) :- inv_notexists(v2, v3, r), inv_notexists(v0, v1, r), inv_notexists(v2, v3, r), Rule(r), r != 64, Rule(64).
+ans_notexists(v0, r) :- ans_notexists(v0, r), Rule(r), r != 65, Rule(65).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v0, r), Rule(r), r != 66, Rule(66).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v0, r), ans_notexists(v0, r), Rule(r), r != 67, Rule(67).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v1, r), ans_notexists(v1, r), Rule(r), r != 68, Rule(68).
+ans_notexists(v0, r) :- ans_notexists(v1, r), ans_notexists(v1, r), ans_notexists(v0, r), Rule(r), r != 69, Rule(69).
+ans_notexists(v0, r) :- ans_notexists(v1, r), ans_notexists(v0, r), ans_notexists(v1, r), Rule(r), r != 70, Rule(70).

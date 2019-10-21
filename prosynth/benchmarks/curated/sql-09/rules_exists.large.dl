@@ -1,0 +1,509 @@
+.type status
+.type country
+.type id
+
+.decl Rule(n: number)
+.input Rule
+
+.decl treat(v0: status)
+.input treat
+
+.decl untreat(v0: status)
+.input untreat
+
+.decl input1(v0: id, v1: country, v2: status)
+.input input1
+
+.decl invent_country(v0: country)
+.decl ans(v0: id, v1: country, v2: status)
+.decl treat_exists(v0: status, r: number)
+.output treat_exists
+
+.decl untreat_exists(v0: status, r: number)
+.output untreat_exists
+
+.decl input1_exists(v0: id, v1: country, v2: status, r: number)
+.output input1_exists
+
+.decl invent_country_exists(v0: country, r: number)
+.output invent_country_exists
+
+.decl ans_exists(v0: id, v1: country, v2: status, r: number)
+.output ans_exists
+
+
+
+invent_country(v0) :- invent_country(v0), Rule(0).
+invent_country_exists(v0, r) :- invent_country(v0), r = 0, Rule(0).
+invent_country_exists(v0, r) :- invent_country_exists(v0, r), Rule(r), Rule(0).
+invent_country(v0) :- invent_country(v0), invent_country(v0), Rule(1).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country(v0), r = 1, Rule(1).
+invent_country_exists(v0, r) :- invent_country_exists(v0, r), invent_country(v0), Rule(r), Rule(1).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country_exists(v0, r), Rule(r), Rule(1).
+invent_country(v0) :- invent_country(v0), invent_country(v0), invent_country(v0), Rule(2).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country(v0), invent_country(v0), r = 2, Rule(2).
+invent_country_exists(v0, r) :- invent_country_exists(v0, r), invent_country(v0), invent_country(v0), Rule(r), Rule(2).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country_exists(v0, r), invent_country(v0), Rule(r), Rule(2).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country(v0), invent_country_exists(v0, r), Rule(r), Rule(2).
+invent_country(v0) :- invent_country(v0), invent_country(v1), invent_country(v1), Rule(3).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country(v1), invent_country(v1), r = 3, Rule(3).
+invent_country_exists(v0, r) :- invent_country_exists(v0, r), invent_country(v1), invent_country(v1), Rule(r), Rule(3).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country_exists(v1, r), invent_country(v1), Rule(r), Rule(3).
+invent_country_exists(v0, r) :- invent_country(v0), invent_country(v1), invent_country_exists(v1, r), Rule(r), Rule(3).
+invent_country(v0) :- invent_country(v1), invent_country(v1), invent_country(v0), Rule(4).
+invent_country_exists(v0, r) :- invent_country(v1), invent_country(v1), invent_country(v0), r = 4, Rule(4).
+invent_country_exists(v0, r) :- invent_country_exists(v1, r), invent_country(v1), invent_country(v0), Rule(r), Rule(4).
+invent_country_exists(v0, r) :- invent_country(v1), invent_country_exists(v1, r), invent_country(v0), Rule(r), Rule(4).
+invent_country_exists(v0, r) :- invent_country(v1), invent_country(v1), invent_country_exists(v0, r), Rule(r), Rule(4).
+invent_country(v0) :- invent_country(v1), invent_country(v0), invent_country(v1), Rule(5).
+invent_country_exists(v0, r) :- invent_country(v1), invent_country(v0), invent_country(v1), r = 5, Rule(5).
+invent_country_exists(v0, r) :- invent_country_exists(v1, r), invent_country(v0), invent_country(v1), Rule(r), Rule(5).
+invent_country_exists(v0, r) :- invent_country(v1), invent_country_exists(v0, r), invent_country(v1), Rule(r), Rule(5).
+invent_country_exists(v0, r) :- invent_country(v1), invent_country(v0), invent_country_exists(v1, r), Rule(r), Rule(5).
+ans(v0, v1, v2) :- input1(v0, v1, v2), Rule(6).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), r = 6, Rule(6).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), Rule(r), Rule(6).
+ans(v0, v1, v2) :- ans(v0, v1, v2), Rule(7).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), r = 7, Rule(7).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v2, r), Rule(r), Rule(7).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), Rule(8).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), r = 8, Rule(8).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), input1(v0, v1, v2), Rule(r), Rule(8).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(8).
+ans(v0, v1, v2) :- treat(v2), ans(v0, v1, v2), Rule(9).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans(v0, v1, v2), r = 9, Rule(9).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), ans(v0, v1, v2), Rule(r), Rule(9).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(9).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), Rule(10).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), r = 10, Rule(10).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), input1(v0, v1, v2), Rule(r), Rule(10).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(10).
+ans(v0, v1, v2) :- untreat(v2), ans(v0, v1, v2), Rule(11).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans(v0, v1, v2), r = 11, Rule(11).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), ans(v0, v1, v2), Rule(r), Rule(11).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(11).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), Rule(12).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), r = 12, Rule(12).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), input1(v0, v1, v2), Rule(r), Rule(12).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(12).
+ans(v0, v1, v2) :- input1(v0, v1, v2), invent_country(v1), Rule(13).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country(v1), r = 13, Rule(13).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), invent_country(v1), Rule(r), Rule(13).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country_exists(v1, r), Rule(r), Rule(13).
+ans(v0, v1, v2) :- input1(v0, v1, v2), ans(v0, v1, v2), Rule(14).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans(v0, v1, v2), r = 14, Rule(14).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(14).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(14).
+ans(v0, v1, v2) :- invent_country(v1), ans(v0, v1, v2), Rule(15).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), ans(v0, v1, v2), r = 15, Rule(15).
+ans_exists(v0, v1, v2, r) :- invent_country_exists(v1, r), ans(v0, v1, v2), Rule(r), Rule(15).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), ans_exists(v0, v1, v2, r), Rule(r), Rule(15).
+ans(v0, v1, v2) :- ans(v0, v1, v2), ans(v0, v1, v2), Rule(16).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans(v0, v1, v2), r = 16, Rule(16).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(16).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(16).
+ans(v0, v1, v2) :- treat(v2), treat(v2), input1(v0, v1, v2), Rule(17).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v2), input1(v0, v1, v2), r = 17, Rule(17).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), treat(v2), input1(v0, v1, v2), Rule(r), Rule(17).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat_exists(v2, r), input1(v0, v1, v2), Rule(r), Rule(17).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(17).
+ans(v0, v1, v2) :- treat(v2), treat(v3), input1(v0, v1, v3), Rule(18).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v3), input1(v0, v1, v3), r = 18, Rule(18).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), treat(v3), input1(v0, v1, v3), Rule(r), Rule(18).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat_exists(v3, r), input1(v0, v1, v3), Rule(r), Rule(18).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v3), input1_exists(v0, v1, v3, r), Rule(r), Rule(18).
+ans(v0, v1, v2) :- treat(v3), treat(v3), input1(v0, v1, v2), Rule(19).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v3), input1(v0, v1, v2), r = 19, Rule(19).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), treat(v3), input1(v0, v1, v2), Rule(r), Rule(19).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat_exists(v3, r), input1(v0, v1, v2), Rule(r), Rule(19).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v3), input1_exists(v0, v1, v2, r), Rule(r), Rule(19).
+ans(v0, v1, v2) :- treat(v3), treat(v2), input1(v0, v1, v3), Rule(20).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v2), input1(v0, v1, v3), r = 20, Rule(20).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), treat(v2), input1(v0, v1, v3), Rule(r), Rule(20).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat_exists(v2, r), input1(v0, v1, v3), Rule(r), Rule(20).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v2), input1_exists(v0, v1, v3, r), Rule(r), Rule(20).
+ans(v0, v1, v2) :- treat(v2), treat(v2), ans(v0, v1, v2), Rule(21).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v2), ans(v0, v1, v2), r = 21, Rule(21).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), treat(v2), ans(v0, v1, v2), Rule(r), Rule(21).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat_exists(v2, r), ans(v0, v1, v2), Rule(r), Rule(21).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(21).
+ans(v0, v1, v2) :- treat(v2), treat(v3), ans(v0, v1, v3), Rule(22).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v3), ans(v0, v1, v3), r = 22, Rule(22).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), treat(v3), ans(v0, v1, v3), Rule(r), Rule(22).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat_exists(v3, r), ans(v0, v1, v3), Rule(r), Rule(22).
+ans_exists(v0, v1, v2, r) :- treat(v2), treat(v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(22).
+ans(v0, v1, v2) :- treat(v3), treat(v3), ans(v0, v1, v2), Rule(23).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v3), ans(v0, v1, v2), r = 23, Rule(23).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), treat(v3), ans(v0, v1, v2), Rule(r), Rule(23).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat_exists(v3, r), ans(v0, v1, v2), Rule(r), Rule(23).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(23).
+ans(v0, v1, v2) :- treat(v3), treat(v2), ans(v0, v1, v3), Rule(24).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v2), ans(v0, v1, v3), r = 24, Rule(24).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), treat(v2), ans(v0, v1, v3), Rule(r), Rule(24).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat_exists(v2, r), ans(v0, v1, v3), Rule(r), Rule(24).
+ans_exists(v0, v1, v2, r) :- treat(v3), treat(v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(24).
+ans(v0, v1, v2) :- treat(v2), untreat(v2), input1(v0, v1, v2), Rule(25).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v2), input1(v0, v1, v2), r = 25, Rule(25).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), untreat(v2), input1(v0, v1, v2), Rule(r), Rule(25).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat_exists(v2, r), input1(v0, v1, v2), Rule(r), Rule(25).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(25).
+ans(v0, v1, v2) :- treat(v2), untreat(v3), input1(v0, v1, v3), Rule(26).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v3), input1(v0, v1, v3), r = 26, Rule(26).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), untreat(v3), input1(v0, v1, v3), Rule(r), Rule(26).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat_exists(v3, r), input1(v0, v1, v3), Rule(r), Rule(26).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v3), input1_exists(v0, v1, v3, r), Rule(r), Rule(26).
+ans(v0, v1, v2) :- treat(v3), untreat(v3), input1(v0, v1, v2), Rule(27).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v3), input1(v0, v1, v2), r = 27, Rule(27).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), untreat(v3), input1(v0, v1, v2), Rule(r), Rule(27).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat_exists(v3, r), input1(v0, v1, v2), Rule(r), Rule(27).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v3), input1_exists(v0, v1, v2, r), Rule(r), Rule(27).
+ans(v0, v1, v2) :- treat(v3), untreat(v2), input1(v0, v1, v3), Rule(28).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v2), input1(v0, v1, v3), r = 28, Rule(28).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), untreat(v2), input1(v0, v1, v3), Rule(r), Rule(28).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat_exists(v2, r), input1(v0, v1, v3), Rule(r), Rule(28).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v2), input1_exists(v0, v1, v3, r), Rule(r), Rule(28).
+ans(v0, v1, v2) :- treat(v2), untreat(v2), ans(v0, v1, v2), Rule(29).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v2), ans(v0, v1, v2), r = 29, Rule(29).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), untreat(v2), ans(v0, v1, v2), Rule(r), Rule(29).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat_exists(v2, r), ans(v0, v1, v2), Rule(r), Rule(29).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(29).
+ans(v0, v1, v2) :- treat(v2), untreat(v3), ans(v0, v1, v3), Rule(30).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v3), ans(v0, v1, v3), r = 30, Rule(30).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), untreat(v3), ans(v0, v1, v3), Rule(r), Rule(30).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat_exists(v3, r), ans(v0, v1, v3), Rule(r), Rule(30).
+ans_exists(v0, v1, v2, r) :- treat(v2), untreat(v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(30).
+ans(v0, v1, v2) :- treat(v3), untreat(v3), ans(v0, v1, v2), Rule(31).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v3), ans(v0, v1, v2), r = 31, Rule(31).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), untreat(v3), ans(v0, v1, v2), Rule(r), Rule(31).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat_exists(v3, r), ans(v0, v1, v2), Rule(r), Rule(31).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(31).
+ans(v0, v1, v2) :- treat(v3), untreat(v2), ans(v0, v1, v3), Rule(32).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v2), ans(v0, v1, v3), r = 32, Rule(32).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), untreat(v2), ans(v0, v1, v3), Rule(r), Rule(32).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat_exists(v2, r), ans(v0, v1, v3), Rule(r), Rule(32).
+ans_exists(v0, v1, v2, r) :- treat(v3), untreat(v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(32).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), input1(v0, v1, v2), Rule(33).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), input1(v0, v1, v2), r = 33, Rule(33).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), input1(v0, v1, v2), input1(v0, v1, v2), Rule(r), Rule(33).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1_exists(v0, v1, v2, r), input1(v0, v1, v2), Rule(r), Rule(33).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(33).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v3), input1(v0, v1, v3), Rule(34).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v3), input1(v0, v1, v3), r = 34, Rule(34).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), input1(v0, v1, v3), input1(v0, v1, v3), Rule(r), Rule(34).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1_exists(v0, v1, v3, r), input1(v0, v1, v3), Rule(r), Rule(34).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v3), input1_exists(v0, v1, v3, r), Rule(r), Rule(34).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v3), input1(v0, v1, v2), Rule(35).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v3), input1(v0, v1, v2), r = 35, Rule(35).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), input1(v0, v1, v3), input1(v0, v1, v2), Rule(r), Rule(35).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1_exists(v0, v1, v3, r), input1(v0, v1, v2), Rule(r), Rule(35).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v3), input1_exists(v0, v1, v2, r), Rule(r), Rule(35).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v2), input1(v0, v1, v3), Rule(36).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v2), input1(v0, v1, v3), r = 36, Rule(36).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), input1(v0, v1, v2), input1(v0, v1, v3), Rule(r), Rule(36).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1_exists(v0, v1, v2, r), input1(v0, v1, v3), Rule(r), Rule(36).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v2), input1_exists(v0, v1, v3, r), Rule(r), Rule(36).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), invent_country(v1), Rule(37).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), invent_country(v1), r = 37, Rule(37).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), input1(v0, v1, v2), invent_country(v1), Rule(r), Rule(37).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1_exists(v0, v1, v2, r), invent_country(v1), Rule(r), Rule(37).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), invent_country_exists(v1, r), Rule(r), Rule(37).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v2), ans(v0, v1, v2), Rule(38).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), ans(v0, v1, v2), r = 38, Rule(38).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), input1(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(38).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(38).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(38).
+ans(v0, v1, v2) :- treat(v2), input1(v0, v1, v3), ans(v0, v1, v3), Rule(39).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v3), ans(v0, v1, v3), r = 39, Rule(39).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), input1(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(39).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(39).
+ans_exists(v0, v1, v2, r) :- treat(v2), input1(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(39).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v3), ans(v0, v1, v2), Rule(40).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v3), ans(v0, v1, v2), r = 40, Rule(40).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), input1(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(40).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(40).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(40).
+ans(v0, v1, v2) :- treat(v3), input1(v0, v1, v2), ans(v0, v1, v3), Rule(41).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v2), ans(v0, v1, v3), r = 41, Rule(41).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), input1(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(41).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(41).
+ans_exists(v0, v1, v2, r) :- treat(v3), input1(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(41).
+ans(v0, v1, v2) :- treat(v2), invent_country(v1), ans(v0, v1, v2), Rule(42).
+ans_exists(v0, v1, v2, r) :- treat(v2), invent_country(v1), ans(v0, v1, v2), r = 42, Rule(42).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), invent_country(v1), ans(v0, v1, v2), Rule(r), Rule(42).
+ans_exists(v0, v1, v2, r) :- treat(v2), invent_country_exists(v1, r), ans(v0, v1, v2), Rule(r), Rule(42).
+ans_exists(v0, v1, v2, r) :- treat(v2), invent_country(v1), ans_exists(v0, v1, v2, r), Rule(r), Rule(42).
+ans(v0, v1, v2) :- treat(v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(43).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans(v0, v1, v2), ans(v0, v1, v2), r = 43, Rule(43).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), ans(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(43).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(43).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(43).
+ans(v0, v1, v2) :- treat(v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(44).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans(v0, v1, v3), ans(v0, v1, v3), r = 44, Rule(44).
+ans_exists(v0, v1, v2, r) :- treat_exists(v2, r), ans(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(44).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(44).
+ans_exists(v0, v1, v2, r) :- treat(v2), ans(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(44).
+ans(v0, v1, v2) :- treat(v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(45).
+ans_exists(v0, v1, v2, r) :- treat(v3), ans(v0, v1, v3), ans(v0, v1, v2), r = 45, Rule(45).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), ans(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(45).
+ans_exists(v0, v1, v2, r) :- treat(v3), ans_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(45).
+ans_exists(v0, v1, v2, r) :- treat(v3), ans(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(45).
+ans(v0, v1, v2) :- treat(v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(46).
+ans_exists(v0, v1, v2, r) :- treat(v3), ans(v0, v1, v2), ans(v0, v1, v3), r = 46, Rule(46).
+ans_exists(v0, v1, v2, r) :- treat_exists(v3, r), ans(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(46).
+ans_exists(v0, v1, v2, r) :- treat(v3), ans_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(46).
+ans_exists(v0, v1, v2, r) :- treat(v3), ans(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(46).
+ans(v0, v1, v2) :- untreat(v2), untreat(v2), input1(v0, v1, v2), Rule(47).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v2), input1(v0, v1, v2), r = 47, Rule(47).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), untreat(v2), input1(v0, v1, v2), Rule(r), Rule(47).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat_exists(v2, r), input1(v0, v1, v2), Rule(r), Rule(47).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(47).
+ans(v0, v1, v2) :- untreat(v2), untreat(v3), input1(v0, v1, v3), Rule(48).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v3), input1(v0, v1, v3), r = 48, Rule(48).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), untreat(v3), input1(v0, v1, v3), Rule(r), Rule(48).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat_exists(v3, r), input1(v0, v1, v3), Rule(r), Rule(48).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v3), input1_exists(v0, v1, v3, r), Rule(r), Rule(48).
+ans(v0, v1, v2) :- untreat(v3), untreat(v3), input1(v0, v1, v2), Rule(49).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v3), input1(v0, v1, v2), r = 49, Rule(49).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), untreat(v3), input1(v0, v1, v2), Rule(r), Rule(49).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat_exists(v3, r), input1(v0, v1, v2), Rule(r), Rule(49).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v3), input1_exists(v0, v1, v2, r), Rule(r), Rule(49).
+ans(v0, v1, v2) :- untreat(v3), untreat(v2), input1(v0, v1, v3), Rule(50).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v2), input1(v0, v1, v3), r = 50, Rule(50).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), untreat(v2), input1(v0, v1, v3), Rule(r), Rule(50).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat_exists(v2, r), input1(v0, v1, v3), Rule(r), Rule(50).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v2), input1_exists(v0, v1, v3, r), Rule(r), Rule(50).
+ans(v0, v1, v2) :- untreat(v2), untreat(v2), ans(v0, v1, v2), Rule(51).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v2), ans(v0, v1, v2), r = 51, Rule(51).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), untreat(v2), ans(v0, v1, v2), Rule(r), Rule(51).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat_exists(v2, r), ans(v0, v1, v2), Rule(r), Rule(51).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(51).
+ans(v0, v1, v2) :- untreat(v2), untreat(v3), ans(v0, v1, v3), Rule(52).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v3), ans(v0, v1, v3), r = 52, Rule(52).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), untreat(v3), ans(v0, v1, v3), Rule(r), Rule(52).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat_exists(v3, r), ans(v0, v1, v3), Rule(r), Rule(52).
+ans_exists(v0, v1, v2, r) :- untreat(v2), untreat(v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(52).
+ans(v0, v1, v2) :- untreat(v3), untreat(v3), ans(v0, v1, v2), Rule(53).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v3), ans(v0, v1, v2), r = 53, Rule(53).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), untreat(v3), ans(v0, v1, v2), Rule(r), Rule(53).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat_exists(v3, r), ans(v0, v1, v2), Rule(r), Rule(53).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(53).
+ans(v0, v1, v2) :- untreat(v3), untreat(v2), ans(v0, v1, v3), Rule(54).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v2), ans(v0, v1, v3), r = 54, Rule(54).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), untreat(v2), ans(v0, v1, v3), Rule(r), Rule(54).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat_exists(v2, r), ans(v0, v1, v3), Rule(r), Rule(54).
+ans_exists(v0, v1, v2, r) :- untreat(v3), untreat(v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(54).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), input1(v0, v1, v2), Rule(55).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), input1(v0, v1, v2), r = 55, Rule(55).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), input1(v0, v1, v2), input1(v0, v1, v2), Rule(r), Rule(55).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1_exists(v0, v1, v2, r), input1(v0, v1, v2), Rule(r), Rule(55).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(55).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v3), input1(v0, v1, v3), Rule(56).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v3), input1(v0, v1, v3), r = 56, Rule(56).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), input1(v0, v1, v3), input1(v0, v1, v3), Rule(r), Rule(56).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1_exists(v0, v1, v3, r), input1(v0, v1, v3), Rule(r), Rule(56).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v3), input1_exists(v0, v1, v3, r), Rule(r), Rule(56).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v3), input1(v0, v1, v2), Rule(57).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v3), input1(v0, v1, v2), r = 57, Rule(57).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), input1(v0, v1, v3), input1(v0, v1, v2), Rule(r), Rule(57).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1_exists(v0, v1, v3, r), input1(v0, v1, v2), Rule(r), Rule(57).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v3), input1_exists(v0, v1, v2, r), Rule(r), Rule(57).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v2), input1(v0, v1, v3), Rule(58).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v2), input1(v0, v1, v3), r = 58, Rule(58).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), input1(v0, v1, v2), input1(v0, v1, v3), Rule(r), Rule(58).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1_exists(v0, v1, v2, r), input1(v0, v1, v3), Rule(r), Rule(58).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v2), input1_exists(v0, v1, v3, r), Rule(r), Rule(58).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), invent_country(v1), Rule(59).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), invent_country(v1), r = 59, Rule(59).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), input1(v0, v1, v2), invent_country(v1), Rule(r), Rule(59).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1_exists(v0, v1, v2, r), invent_country(v1), Rule(r), Rule(59).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), invent_country_exists(v1, r), Rule(r), Rule(59).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v2), ans(v0, v1, v2), Rule(60).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), ans(v0, v1, v2), r = 60, Rule(60).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), input1(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(60).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(60).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(60).
+ans(v0, v1, v2) :- untreat(v2), input1(v0, v1, v3), ans(v0, v1, v3), Rule(61).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v3), ans(v0, v1, v3), r = 61, Rule(61).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), input1(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(61).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(61).
+ans_exists(v0, v1, v2, r) :- untreat(v2), input1(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(61).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v3), ans(v0, v1, v2), Rule(62).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v3), ans(v0, v1, v2), r = 62, Rule(62).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), input1(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(62).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(62).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(62).
+ans(v0, v1, v2) :- untreat(v3), input1(v0, v1, v2), ans(v0, v1, v3), Rule(63).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v2), ans(v0, v1, v3), r = 63, Rule(63).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), input1(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(63).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(63).
+ans_exists(v0, v1, v2, r) :- untreat(v3), input1(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(63).
+ans(v0, v1, v2) :- untreat(v2), invent_country(v1), ans(v0, v1, v2), Rule(64).
+ans_exists(v0, v1, v2, r) :- untreat(v2), invent_country(v1), ans(v0, v1, v2), r = 64, Rule(64).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), invent_country(v1), ans(v0, v1, v2), Rule(r), Rule(64).
+ans_exists(v0, v1, v2, r) :- untreat(v2), invent_country_exists(v1, r), ans(v0, v1, v2), Rule(r), Rule(64).
+ans_exists(v0, v1, v2, r) :- untreat(v2), invent_country(v1), ans_exists(v0, v1, v2, r), Rule(r), Rule(64).
+ans(v0, v1, v2) :- untreat(v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(65).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans(v0, v1, v2), ans(v0, v1, v2), r = 65, Rule(65).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), ans(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(65).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(65).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(65).
+ans(v0, v1, v2) :- untreat(v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(66).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans(v0, v1, v3), ans(v0, v1, v3), r = 66, Rule(66).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v2, r), ans(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(66).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(66).
+ans_exists(v0, v1, v2, r) :- untreat(v2), ans(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(66).
+ans(v0, v1, v2) :- untreat(v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(67).
+ans_exists(v0, v1, v2, r) :- untreat(v3), ans(v0, v1, v3), ans(v0, v1, v2), r = 67, Rule(67).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), ans(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(67).
+ans_exists(v0, v1, v2, r) :- untreat(v3), ans_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(67).
+ans_exists(v0, v1, v2, r) :- untreat(v3), ans(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(67).
+ans(v0, v1, v2) :- untreat(v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(68).
+ans_exists(v0, v1, v2, r) :- untreat(v3), ans(v0, v1, v2), ans(v0, v1, v3), r = 68, Rule(68).
+ans_exists(v0, v1, v2, r) :- untreat_exists(v3, r), ans(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(68).
+ans_exists(v0, v1, v2, r) :- untreat(v3), ans_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(68).
+ans_exists(v0, v1, v2, r) :- untreat(v3), ans(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(68).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), input1(v0, v1, v2), Rule(69).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), input1(v0, v1, v2), r = 69, Rule(69).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), input1(v0, v1, v2), input1(v0, v1, v2), Rule(r), Rule(69).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1_exists(v0, v1, v2, r), input1(v0, v1, v2), Rule(r), Rule(69).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), input1_exists(v0, v1, v2, r), Rule(r), Rule(69).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v3), input1(v0, v1, v3), Rule(70).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v3), input1(v0, v1, v3), r = 70, Rule(70).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), input1(v0, v1, v3), input1(v0, v1, v3), Rule(r), Rule(70).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1_exists(v0, v1, v3, r), input1(v0, v1, v3), Rule(r), Rule(70).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v3), input1_exists(v0, v1, v3, r), Rule(r), Rule(70).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v3), input1(v0, v1, v2), Rule(71).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v3), input1(v0, v1, v2), r = 71, Rule(71).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v1, v3), input1(v0, v1, v2), Rule(r), Rule(71).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v1, v3, r), input1(v0, v1, v2), Rule(r), Rule(71).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v3), input1_exists(v0, v1, v2, r), Rule(r), Rule(71).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v2), input1(v0, v1, v3), Rule(72).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v2), input1(v0, v1, v3), r = 72, Rule(72).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v1, v2), input1(v0, v1, v3), Rule(r), Rule(72).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v1, v2, r), input1(v0, v1, v3), Rule(r), Rule(72).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v2), input1_exists(v0, v1, v3, r), Rule(r), Rule(72).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v3), input1(v0, v4, v2), Rule(73).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v3), input1(v0, v4, v2), r = 73, Rule(73).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v4, v3), input1(v0, v4, v2), Rule(r), Rule(73).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v4, v3, r), input1(v0, v4, v2), Rule(r), Rule(73).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v3), input1_exists(v0, v4, v2, r), Rule(r), Rule(73).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v2), input1(v0, v4, v3), Rule(74).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v2), input1(v0, v4, v3), r = 74, Rule(74).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v4, v2), input1(v0, v4, v3), Rule(r), Rule(74).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v4, v2, r), input1(v0, v4, v3), Rule(r), Rule(74).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v2), input1_exists(v0, v4, v3, r), Rule(r), Rule(74).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), invent_country(v1), Rule(75).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), invent_country(v1), r = 75, Rule(75).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), input1(v0, v1, v2), invent_country(v1), Rule(r), Rule(75).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1_exists(v0, v1, v2, r), invent_country(v1), Rule(r), Rule(75).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), invent_country_exists(v1, r), Rule(r), Rule(75).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v2), ans(v0, v1, v2), Rule(76).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), ans(v0, v1, v2), r = 76, Rule(76).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), input1(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(76).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(76).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(76).
+ans(v0, v1, v2) :- input1(v0, v1, v2), input1(v0, v1, v3), ans(v0, v1, v3), Rule(77).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v3), ans(v0, v1, v3), r = 77, Rule(77).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), input1(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(77).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(77).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), input1(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(77).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v3), ans(v0, v1, v2), Rule(78).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v3), ans(v0, v1, v2), r = 78, Rule(78).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(78).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(78).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(78).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v1, v2), ans(v0, v1, v3), Rule(79).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v2), ans(v0, v1, v3), r = 79, Rule(79).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(79).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(79).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(79).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v3), ans(v0, v4, v2), Rule(80).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v3), ans(v0, v4, v2), r = 80, Rule(80).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v4, v3), ans(v0, v4, v2), Rule(r), Rule(80).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v4, v3, r), ans(v0, v4, v2), Rule(r), Rule(80).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v3), ans_exists(v0, v4, v2, r), Rule(r), Rule(80).
+ans(v0, v1, v2) :- input1(v0, v1, v3), input1(v0, v4, v2), ans(v0, v4, v3), Rule(81).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v2), ans(v0, v4, v3), r = 81, Rule(81).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), input1(v0, v4, v2), ans(v0, v4, v3), Rule(r), Rule(81).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1_exists(v0, v4, v2, r), ans(v0, v4, v3), Rule(r), Rule(81).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), input1(v0, v4, v2), ans_exists(v0, v4, v3, r), Rule(r), Rule(81).
+ans(v0, v1, v2) :- input1(v0, v1, v2), invent_country(v1), invent_country(v1), Rule(82).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country(v1), invent_country(v1), r = 82, Rule(82).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), invent_country(v1), invent_country(v1), Rule(r), Rule(82).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country_exists(v1, r), invent_country(v1), Rule(r), Rule(82).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country(v1), invent_country_exists(v1, r), Rule(r), Rule(82).
+ans(v0, v1, v2) :- input1(v0, v1, v2), invent_country(v1), ans(v0, v1, v2), Rule(83).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country(v1), ans(v0, v1, v2), r = 83, Rule(83).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), invent_country(v1), ans(v0, v1, v2), Rule(r), Rule(83).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country_exists(v1, r), ans(v0, v1, v2), Rule(r), Rule(83).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), invent_country(v1), ans_exists(v0, v1, v2, r), Rule(r), Rule(83).
+ans(v0, v1, v2) :- input1(v0, v1, v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(84).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans(v0, v1, v2), ans(v0, v1, v2), r = 84, Rule(84).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), ans(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(84).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(84).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(84).
+ans(v0, v1, v2) :- input1(v0, v1, v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(85).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans(v0, v1, v3), ans(v0, v1, v3), r = 85, Rule(85).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v2, r), ans(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(85).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(85).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v2), ans(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(85).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(86).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v1, v3), ans(v0, v1, v2), r = 86, Rule(86).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), ans(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(86).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(86).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(86).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(87).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v1, v2), ans(v0, v1, v3), r = 87, Rule(87).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), ans(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(87).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(87).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(87).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v4, v3), ans(v0, v4, v2), Rule(88).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v4, v3), ans(v0, v4, v2), r = 88, Rule(88).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), ans(v0, v4, v3), ans(v0, v4, v2), Rule(r), Rule(88).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans_exists(v0, v4, v3, r), ans(v0, v4, v2), Rule(r), Rule(88).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v4, v3), ans_exists(v0, v4, v2, r), Rule(r), Rule(88).
+ans(v0, v1, v2) :- input1(v0, v1, v3), ans(v0, v4, v2), ans(v0, v4, v3), Rule(89).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v4, v2), ans(v0, v4, v3), r = 89, Rule(89).
+ans_exists(v0, v1, v2, r) :- input1_exists(v0, v1, v3, r), ans(v0, v4, v2), ans(v0, v4, v3), Rule(r), Rule(89).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans_exists(v0, v4, v2, r), ans(v0, v4, v3), Rule(r), Rule(89).
+ans_exists(v0, v1, v2, r) :- input1(v0, v1, v3), ans(v0, v4, v2), ans_exists(v0, v4, v3, r), Rule(r), Rule(89).
+ans(v0, v1, v2) :- invent_country(v1), invent_country(v1), ans(v0, v1, v2), Rule(90).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), invent_country(v1), ans(v0, v1, v2), r = 90, Rule(90).
+ans_exists(v0, v1, v2, r) :- invent_country_exists(v1, r), invent_country(v1), ans(v0, v1, v2), Rule(r), Rule(90).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), invent_country_exists(v1, r), ans(v0, v1, v2), Rule(r), Rule(90).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), invent_country(v1), ans_exists(v0, v1, v2, r), Rule(r), Rule(90).
+ans(v0, v1, v2) :- invent_country(v1), ans(v0, v1, v2), ans(v0, v1, v2), Rule(91).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), ans(v0, v1, v2), ans(v0, v1, v2), r = 91, Rule(91).
+ans_exists(v0, v1, v2, r) :- invent_country_exists(v1, r), ans(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(91).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), ans_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(91).
+ans_exists(v0, v1, v2, r) :- invent_country(v1), ans(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(91).
+ans(v0, v1, v2) :- ans(v0, v1, v2), ans(v0, v1, v2), ans(v0, v1, v2), Rule(92).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans(v0, v1, v2), ans(v0, v1, v2), r = 92, Rule(92).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v2, r), ans(v0, v1, v2), ans(v0, v1, v2), Rule(r), Rule(92).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans_exists(v0, v1, v2, r), ans(v0, v1, v2), Rule(r), Rule(92).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans(v0, v1, v2), ans_exists(v0, v1, v2, r), Rule(r), Rule(92).
+ans(v0, v1, v2) :- ans(v0, v1, v2), ans(v0, v1, v3), ans(v0, v1, v3), Rule(93).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans(v0, v1, v3), ans(v0, v1, v3), r = 93, Rule(93).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v2, r), ans(v0, v1, v3), ans(v0, v1, v3), Rule(r), Rule(93).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans_exists(v0, v1, v3, r), ans(v0, v1, v3), Rule(r), Rule(93).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v2), ans(v0, v1, v3), ans_exists(v0, v1, v3, r), Rule(r), Rule(93).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v1, v3), ans(v0, v1, v2), Rule(94).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v1, v3), ans(v0, v1, v2), r = 94, Rule(94).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v3, r), ans(v0, v1, v3), ans(v0, v1, v2), Rule(r), Rule(94).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans_exists(v0, v1, v3, r), ans(v0, v1, v2), Rule(r), Rule(94).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v1, v3), ans_exists(v0, v1, v2, r), Rule(r), Rule(94).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v1, v2), ans(v0, v1, v3), Rule(95).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v1, v2), ans(v0, v1, v3), r = 95, Rule(95).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v3, r), ans(v0, v1, v2), ans(v0, v1, v3), Rule(r), Rule(95).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans_exists(v0, v1, v2, r), ans(v0, v1, v3), Rule(r), Rule(95).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v1, v2), ans_exists(v0, v1, v3, r), Rule(r), Rule(95).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v4, v3), ans(v0, v4, v2), Rule(96).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v4, v3), ans(v0, v4, v2), r = 96, Rule(96).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v3, r), ans(v0, v4, v3), ans(v0, v4, v2), Rule(r), Rule(96).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans_exists(v0, v4, v3, r), ans(v0, v4, v2), Rule(r), Rule(96).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v4, v3), ans_exists(v0, v4, v2, r), Rule(r), Rule(96).
+ans(v0, v1, v2) :- ans(v0, v1, v3), ans(v0, v4, v2), ans(v0, v4, v3), Rule(97).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v4, v2), ans(v0, v4, v3), r = 97, Rule(97).
+ans_exists(v0, v1, v2, r) :- ans_exists(v0, v1, v3, r), ans(v0, v4, v2), ans(v0, v4, v3), Rule(r), Rule(97).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans_exists(v0, v4, v2, r), ans(v0, v4, v3), Rule(r), Rule(97).
+ans_exists(v0, v1, v2, r) :- ans(v0, v1, v3), ans(v0, v4, v2), ans_exists(v0, v4, v3, r), Rule(r), Rule(97).

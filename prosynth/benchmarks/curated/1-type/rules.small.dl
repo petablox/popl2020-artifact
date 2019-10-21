@@ -1,0 +1,76 @@
+.type H
+.type F
+.type M
+.type T
+.type V
+.type Z
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl invocation(v0: H, v1: M)
+.input invocation
+.decl store(v0: V, v1: F, v2: V)
+.input store
+.decl actual(v0: H, v1: Z, v2: V)
+.input actual
+.decl points_initial(v0: V, v1: H)
+.input points_initial
+.decl formal(v0: M, v1: Z, v2: V)
+.input formal
+.decl assign(v0: T, v1: V, v2: T, v3: V)
+.input assign
+.decl enclosing_type(v0: V, v1: T)
+.input enclosing_type
+.decl receiver_formal(v0: H, v1: V)
+.input receiver_formal
+.decl receiver_actual(v0: M, v1: V)
+.input receiver_actual
+.decl load(v0: V, v1: F, v2: V)
+.input load
+
+
+.decl pointsto(v0: T, v1: V, v2: H)
+.output pointsto
+.decl heappointsto(v0: H, v1: F, v2: H)
+.output heappointsto
+
+pointsto(v1, v0, v3) :- enclosing_type(v0, v1), pointsto(v1, v2, v3), Rule(29).
+heappointsto(v3, v4, v2) :- heappointsto(v0, v1, v2), heappointsto(v3, v4, v0), Rule(3).
+pointsto(v0, v4, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(18).
+pointsto(v0, v3, v4) :- assign(v0, v1, v2, v3), receiver_formal(v4, v1), Rule(10).
+pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), receiver_formal(v4, v1), Rule(32).
+pointsto(v0, v3, v4) :- assign(v0, v1, v2, v3), points_initial(v3, v4), Rule(20).
+pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v1, v5), Rule(16).
+heappointsto(v0, v1, v4) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), Rule(21).
+heappointsto(v3, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v3, v4, v0), Rule(24).
+pointsto(v2, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(37).
+pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(34).
+pointsto(v4, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(33).
+pointsto(v0, v3, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(7).
+pointsto(v0, v3, v2) :- pointsto(v0, v1, v2), receiver_formal(v2, v3), Rule(0).
+pointsto(v2, v0, v1) :- points_initial(v0, v1), pointsto(v2, v0, v3), Rule(27).
+heappointsto(v0, v4, v2) :- heappointsto(v0, v1, v2), heappointsto(v3, v4, v0), Rule(35).
+pointsto(v2, v0, v1) :- points_initial(v0, v1), pointsto(v2, v3, v1), Rule(22).
+pointsto(v3, v4, v2) :- pointsto(v0, v1, v2), assign(v3, v4, v0, v1), Rule(9).
+pointsto(v3, v5, v2) :- heappointsto(v0, v1, v2), pointsto(v3, v4, v0), store(v4, v1, v5), Rule(36).
+pointsto(v3, v0, v4) :- load(v0, v1, v2), pointsto(v3, v2, v4), Rule(26).
+pointsto(v0, v1, v4) :- pointsto(v0, v1, v2), pointsto(v3, v1, v4), Rule(11).
+pointsto(v5, v4, v2) :- heappointsto(v0, v1, v2), load(v3, v1, v4), pointsto(v5, v3, v0), Rule(6).
+pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v0, v4, v5), Rule(15).
+pointsto(v0, v3, v4) :- assign(v0, v1, v2, v3), points_initial(v1, v4), Rule(2).
+pointsto(v2, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v1, v4), Rule(19).
+pointsto(v1, v0, v2) :- enclosing_type(v0, v1), points_initial(v0, v2), Rule(13).
+heappointsto(v0, v1, v4) :- heappointsto(v0, v1, v2), heappointsto(v3, v1, v4), Rule(23).
+pointsto(v3, v4, v2) :- heappointsto(v0, v1, v2), pointsto(v3, v4, v0), Rule(28).
+heappointsto(v4, v1, v5) :- load(v0, v1, v2), pointsto(v3, v0, v4), pointsto(v3, v2, v5), Rule(14).
+pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v3, v4), Rule(17).
+pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v1, v4), Rule(1).
+pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(30).
+pointsto(v0, v3, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(38).
+pointsto(v2, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(5).
+pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), receiver_formal(v4, v3), Rule(4).
+pointsto(v2, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v3, v4), Rule(8).
+pointsto(v0, v1, v4) :- pointsto(v0, v1, v2), pointsto(v0, v3, v4), Rule(25).
+heappointsto(v2, v5, v4) :- pointsto(v0, v1, v2), pointsto(v0, v3, v4), store(v1, v5, v3), Rule(12).
+pointsto(v0, v3, v2) :- pointsto(v0, v1, v2), store(v3, v4, v1), Rule(31).

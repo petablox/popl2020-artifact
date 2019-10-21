@@ -1,0 +1,7 @@
+  C2.1  rel(thisIsAnotherreallyLongAttributeNameWhichCanBecomeUnreadbleVeryQuicklyButIsNeededForTesting,m) :- \n   rel(thisIsAnotherreallyLongAttributeNameWhichCanBecomeUnreadbleVeryQuicklyButIsNeededForTesting,_),\n   rel(m,_),\n   thisIsAnotherreallyLongAttributeNameWhichCanBecomeUnreadbleVeryQuicklyButIsNeededForTesting < m.
+
+  NO   TUPLES
+
+   0        0 | 
+   1        0 | 
+

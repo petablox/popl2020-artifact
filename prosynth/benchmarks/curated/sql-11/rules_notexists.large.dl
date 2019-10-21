@@ -1,0 +1,90 @@
+.type level
+.type S_key
+.type F_name
+.type C_name
+.type F_key
+.type S_name
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Junior(v0: level)
+.input Junior
+
+.decl focus(v0: F_name)
+.input focus
+
+.decl Class(v0: C_name, v1: F_key)
+.input Class
+
+.decl Enroll(v0: S_key, v1: C_name)
+.input Enroll
+
+.decl Faculty(v0: F_key, v1: F_name)
+.input Faculty
+
+.decl Student(v0: S_key, v1: S_name, v2: level)
+.input Student
+
+.decl Junior_notexists(v0: level, r: number)
+.output Junior_notexists
+
+.decl focus_notexists(v0: F_name, r: number)
+.output focus_notexists
+
+.decl Class_notexists(v0: C_name, v1: F_key, r: number)
+.output Class_notexists
+
+.decl Enroll_notexists(v0: S_key, v1: C_name, r: number)
+.output Enroll_notexists
+
+.decl Faculty_notexists(v0: F_key, v1: F_name, r: number)
+.output Faculty_notexists
+
+.decl Student_notexists(v0: S_key, v1: S_name, v2: level, r: number)
+.output Student_notexists
+
+.decl inv1_notexists(v0: F_key, r: number)
+.output inv1_notexists
+
+.decl inv2_notexists(v0: C_name, r: number)
+.output inv2_notexists
+
+.decl inv3_notexists(v0: S_key, r: number)
+.output inv3_notexists
+
+.decl ans_notexists(v0: S_name, r: number)
+.output ans_notexists
+
+
+
+Junior_notexists(v0, r) :- Junior(v0), Rule(r).
+focus_notexists(v0, r) :- focus(v0), Rule(r).
+Class_notexists(v0, v1, r) :- Class(v0, v1), Rule(r).
+Enroll_notexists(v0, v1, r) :- Enroll(v0, v1), Rule(r).
+Faculty_notexists(v0, v1, r) :- Faculty(v0, v1), Rule(r).
+Student_notexists(v0, v1, v2, r) :- Student(v0, v1, v2), Rule(r).
+inv1_notexists(v0, r) :- inv1_notexists(v0, r), Rule(r), r != 0, Rule(0).
+inv1_notexists(v0, r) :- inv1_notexists(v0, r), inv1_notexists(v0, r), Rule(r), r != 1, Rule(1).
+inv1_notexists(v0, r) :- inv1_notexists(v0, r), inv1_notexists(v0, r), inv1_notexists(v0, r), Rule(r), r != 2, Rule(2).
+inv1_notexists(v0, r) :- inv1_notexists(v0, r), inv1_notexists(v1, r), inv1_notexists(v1, r), Rule(r), r != 3, Rule(3).
+inv1_notexists(v0, r) :- inv1_notexists(v1, r), inv1_notexists(v1, r), inv1_notexists(v0, r), Rule(r), r != 4, Rule(4).
+inv1_notexists(v0, r) :- inv1_notexists(v1, r), inv1_notexists(v0, r), inv1_notexists(v1, r), Rule(r), r != 5, Rule(5).
+inv2_notexists(v0, r) :- inv2_notexists(v0, r), Rule(r), r != 6, Rule(6).
+inv2_notexists(v0, r) :- inv2_notexists(v0, r), inv2_notexists(v0, r), Rule(r), r != 7, Rule(7).
+inv2_notexists(v0, r) :- inv2_notexists(v0, r), inv2_notexists(v0, r), inv2_notexists(v0, r), Rule(r), r != 8, Rule(8).
+inv2_notexists(v0, r) :- inv2_notexists(v0, r), inv2_notexists(v1, r), inv2_notexists(v1, r), Rule(r), r != 9, Rule(9).
+inv2_notexists(v0, r) :- inv2_notexists(v1, r), inv2_notexists(v1, r), inv2_notexists(v0, r), Rule(r), r != 10, Rule(10).
+inv2_notexists(v0, r) :- inv2_notexists(v1, r), inv2_notexists(v0, r), inv2_notexists(v1, r), Rule(r), r != 11, Rule(11).
+inv3_notexists(v0, r) :- inv3_notexists(v0, r), Rule(r), r != 12, Rule(12).
+inv3_notexists(v0, r) :- inv3_notexists(v0, r), inv3_notexists(v0, r), Rule(r), r != 13, Rule(13).
+inv3_notexists(v0, r) :- inv3_notexists(v0, r), inv3_notexists(v0, r), inv3_notexists(v0, r), Rule(r), r != 14, Rule(14).
+inv3_notexists(v0, r) :- inv3_notexists(v0, r), inv3_notexists(v1, r), inv3_notexists(v1, r), Rule(r), r != 15, Rule(15).
+inv3_notexists(v0, r) :- inv3_notexists(v1, r), inv3_notexists(v1, r), inv3_notexists(v0, r), Rule(r), r != 16, Rule(16).
+inv3_notexists(v0, r) :- inv3_notexists(v1, r), inv3_notexists(v0, r), inv3_notexists(v1, r), Rule(r), r != 17, Rule(17).
+ans_notexists(v0, r) :- ans_notexists(v0, r), Rule(r), r != 18, Rule(18).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v0, r), Rule(r), r != 19, Rule(19).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v0, r), ans_notexists(v0, r), Rule(r), r != 20, Rule(20).
+ans_notexists(v0, r) :- ans_notexists(v0, r), ans_notexists(v1, r), ans_notexists(v1, r), Rule(r), r != 21, Rule(21).
+ans_notexists(v0, r) :- ans_notexists(v1, r), ans_notexists(v1, r), ans_notexists(v0, r), Rule(r), r != 22, Rule(22).
+ans_notexists(v0, r) :- ans_notexists(v1, r), ans_notexists(v0, r), ans_notexists(v1, r), Rule(r), r != 23, Rule(23).

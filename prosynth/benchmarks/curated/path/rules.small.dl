@@ -1,0 +1,17 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl edge(v0: V, v1: V)
+.input edge
+
+
+.decl path(v0: V, v1: V)
+.output path
+
+path(v2, v1) :- edge(v0, v1), edge(v2, v0), Rule(2).
+path(v2, v1) :- edge(v0, v1), path(v2, v0), Rule(1).
+path(v0, v1) :- edge(v0, v1), Rule(3).
+path(v2, v1) :- path(v0, v1), path(v2, v0), Rule(4).
+path(v0, v2) :- edge(v0, v1), path(v1, v2), Rule(0).

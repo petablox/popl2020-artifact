@@ -1,0 +1,111 @@
+.type C
+.type A
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl hair(v0: C)
+.input hair
+.decl scales(v0: C)
+.input scales
+.decl has_gills(v0: A)
+.input has_gills
+.decl has_eggs(v0: A)
+.input has_eggs
+.decl has_covering(v0: A, v1: C)
+.input has_covering
+.decl homeothermic(v0: A)
+.input homeothermic
+.decl feathers(v0: C)
+.input feathers
+.decl none(v0: C)
+.input none
+.decl has_milk(v0: A)
+.input has_milk
+
+
+.decl mammal(v0: A)
+.output mammal
+.decl fish(v0: A)
+.output fish
+.decl reptile(v0: A)
+.output reptile
+.decl bird(v0: A)
+.output bird
+
+bird(v0) :- has_covering(v0, v1), has_gills(v0), Rule(18).
+reptile(v0) :- has_gills(v0), Rule(31).
+bird(v0) :- homeothermic(v0), Rule(16).
+reptile(v1) :- none(v0), has_covering(v1, v0), Rule(61).
+bird(v0) :- has_milk(v0), Rule(21).
+fish(v0) :- bird(v0), has_covering(v0, v1), Rule(48).
+bird(v0) :- has_covering(v0, v1), has_milk(v0), Rule(56).
+mammal(v0) :- bird(v0), Rule(67).
+fish(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(22).
+bird(v1) :- feathers(v0), has_covering(v1, v0), Rule(72).
+mammal(v0) :- has_gills(v0), Rule(38).
+reptile(v0) :- has_eggs(v0), Rule(32).
+mammal(v1) :- scales(v0), has_covering(v1, v0), Rule(33).
+fish(v0) :- bird(v0), Rule(54).
+mammal(v0) :- has_milk(v0), Rule(25).
+mammal(v1) :- none(v0), has_covering(v1, v0), Rule(8).
+reptile(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(23).
+bird(v0) :- has_eggs(v0), Rule(15).
+reptile(v0) :- fish(v0), has_covering(v0, v1), Rule(44).
+reptile(v1) :- scales(v0), has_covering(v1, v0), Rule(24).
+mammal(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(64).
+fish(v0) :- has_covering(v0, v1), has_milk(v0), Rule(68).
+fish(v0) :- has_covering(v0, v1), has_gills(v0), Rule(51).
+mammal(v0) :- has_eggs(v0), Rule(42).
+reptile(v1) :- hair(v0), has_covering(v1, v0), Rule(58).
+fish(v0) :- has_covering(v0, v1), Rule(39).
+reptile(v0) :- has_covering(v0, v1), has_gills(v0), Rule(7).
+reptile(v0) :- has_covering(v0, v1), Rule(28).
+bird(v0) :- fish(v0), has_covering(v0, v1), Rule(6).
+fish(v0) :- homeothermic(v0), Rule(0).
+fish(v0) :- has_milk(v0), Rule(10).
+bird(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(20).
+mammal(v0) :- fish(v0), has_covering(v0, v1), Rule(57).
+reptile(v0) :- has_milk(v0), Rule(13).
+reptile(v0) :- has_covering(v0, v1), has_milk(v0), Rule(66).
+mammal(v0) :- has_covering(v0, v1), has_milk(v0), Rule(36).
+fish(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(4).
+mammal(v0) :- has_covering(v0, v1), reptile(v0), Rule(55).
+reptile(v0) :- mammal(v0), Rule(49).
+mammal(v0) :- has_covering(v0, v1), has_gills(v0), Rule(46).
+bird(v0) :- has_covering(v0, v1), mammal(v0), Rule(2).
+fish(v0) :- has_covering(v0, v1), mammal(v0), Rule(62).
+mammal(v1) :- hair(v0), has_covering(v1, v0), Rule(5).
+bird(v1) :- scales(v0), has_covering(v1, v0), Rule(1).
+reptile(v0) :- fish(v0), Rule(30).
+bird(v1) :- hair(v0), has_covering(v1, v0), Rule(59).
+mammal(v0) :- bird(v0), has_covering(v0, v1), Rule(11).
+mammal(v1) :- feathers(v0), has_covering(v1, v0), Rule(27).
+reptile(v1) :- feathers(v0), has_covering(v1, v0), Rule(3).
+fish(v1) :- feathers(v0), has_covering(v1, v0), Rule(52).
+fish(v1) :- none(v0), has_covering(v1, v0), Rule(71).
+fish(v0) :- has_covering(v0, v1), reptile(v0), Rule(14).
+reptile(v0) :- bird(v0), Rule(70).
+fish(v0) :- has_gills(v0), Rule(53).
+bird(v0) :- has_covering(v0, v1), reptile(v0), Rule(29).
+bird(v0) :- mammal(v0), Rule(60).
+fish(v0) :- mammal(v0), Rule(63).
+bird(v1) :- none(v0), has_covering(v1, v0), Rule(45).
+fish(v0) :- reptile(v0), Rule(50).
+reptile(v0) :- bird(v0), has_covering(v0, v1), Rule(26).
+reptile(v0) :- has_covering(v0, v1), mammal(v0), Rule(19).
+reptile(v0) :- homeothermic(v0), Rule(43).
+mammal(v0) :- fish(v0), Rule(37).
+fish(v1) :- hair(v0), has_covering(v1, v0), Rule(40).
+mammal(v0) :- reptile(v0), Rule(47).
+mammal(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(65).
+bird(v0) :- has_gills(v0), Rule(73).
+bird(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(75).
+fish(v1) :- scales(v0), has_covering(v1, v0), Rule(35).
+fish(v0) :- has_eggs(v0), Rule(34).
+bird(v0) :- has_covering(v0, v1), Rule(41).
+reptile(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(69).
+mammal(v0) :- homeothermic(v0), Rule(12).
+bird(v0) :- reptile(v0), Rule(17).
+bird(v0) :- fish(v0), Rule(74).
+mammal(v0) :- has_covering(v0, v1), Rule(9).

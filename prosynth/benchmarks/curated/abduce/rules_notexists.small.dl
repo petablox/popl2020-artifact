@@ -1,0 +1,60 @@
+.type P
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl father(v0: P, v1: P)
+.input father
+.decl mother(v0: P, v1: P)
+.input mother
+
+.decl father_notexists(v0: P, v1: P, v2: number)
+.output father_notexists
+.decl mother_notexists(v0: P, v1: P, v2: number)
+.output mother_notexists
+
+.decl inv_notexists(v0: P, v1: P, v2: number)
+.output inv_notexists
+.decl grandparent_notexists(v0: P, v1: P, v2: number)
+.output grandparent_notexists
+
+father_notexists(v0, v1, ruleIndex) :- father(v0, v1), Rule(ruleIndex).
+mother_notexists(v0, v1, ruleIndex) :- mother(v0, v1), Rule(ruleIndex).
+inv_notexists(v0, v1, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), ruleIndex != 8, Rule(8).
+inv_notexists(v2, v1, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), mother_notexists(v2, v0, ruleIndex), ruleIndex != 19, Rule(19).
+grandparent_notexists(v0, v2, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), mother_notexists(v1, v2, ruleIndex), ruleIndex != 3, Rule(3).
+grandparent_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), grandparent_notexists(v2, v0, ruleIndex), ruleIndex != 1, Rule(1).
+grandparent_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), mother_notexists(v2, v0, ruleIndex), ruleIndex != 10, Rule(10).
+grandparent_notexists(v0, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), ruleIndex != 7, Rule(7).
+grandparent_notexists(v0, v2, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 11, Rule(11).
+grandparent_notexists(v2, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), mother_notexists(v2, v0, ruleIndex), ruleIndex != 9, Rule(9).
+grandparent_notexists(v0, v2, ruleIndex) :- father_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 18, Rule(18).
+inv_notexists(v2, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), mother_notexists(v2, v0, ruleIndex), ruleIndex != 34, Rule(34).
+inv_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 32, Rule(32).
+grandparent_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 22, Rule(22).
+inv_notexists(v0, v2, ruleIndex) :- father_notexists(v0, v1, ruleIndex), grandparent_notexists(v1, v2, ruleIndex), ruleIndex != 13, Rule(13).
+grandparent_notexists(v2, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 27, Rule(27).
+inv_notexists(v2, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), grandparent_notexists(v2, v0, ruleIndex), ruleIndex != 24, Rule(24).
+inv_notexists(v0, v2, ruleIndex) :- father_notexists(v0, v1, ruleIndex), mother_notexists(v1, v2, ruleIndex), ruleIndex != 36, Rule(36).
+inv_notexists(v2, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 21, Rule(21).
+grandparent_notexists(v2, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 33, Rule(33).
+inv_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), father_notexists(v2, v0, ruleIndex), ruleIndex != 4, Rule(4).
+grandparent_notexists(v2, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), grandparent_notexists(v2, v0, ruleIndex), ruleIndex != 37, Rule(37).
+grandparent_notexists(v0, v2, ruleIndex) :- father_notexists(v0, v1, ruleIndex), mother_notexists(v1, v2, ruleIndex), ruleIndex != 28, Rule(28).
+grandparent_notexists(v0, v2, ruleIndex) :- father_notexists(v0, v1, ruleIndex), grandparent_notexists(v1, v2, ruleIndex), ruleIndex != 20, Rule(20).
+inv_notexists(v0, v1, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), ruleIndex != 26, Rule(26).
+inv_notexists(v0, v2, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), mother_notexists(v1, v2, ruleIndex), ruleIndex != 31, Rule(31).
+inv_notexists(v0, v2, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 29, Rule(29).
+grandparent_notexists(v2, v1, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), mother_notexists(v2, v0, ruleIndex), ruleIndex != 16, Rule(16).
+grandparent_notexists(v0, v1, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), ruleIndex != 30, Rule(30).
+inv_notexists(v0, v2, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 23, Rule(23).
+inv_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), grandparent_notexists(v2, v0, ruleIndex), ruleIndex != 35, Rule(35).
+inv_notexists(v0, v2, ruleIndex) :- father_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 2, Rule(2).
+inv_notexists(v0, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), ruleIndex != 5, Rule(5).
+grandparent_notexists(v0, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), ruleIndex != 0, Rule(0).
+inv_notexists(v2, v1, ruleIndex) :- inv_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 6, Rule(6).
+grandparent_notexists(v2, v1, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 25, Rule(25).
+inv_notexists(v2, v1, ruleIndex) :- mother_notexists(v0, v1, ruleIndex), inv_notexists(v2, v0, ruleIndex), ruleIndex != 14, Rule(14).
+grandparent_notexists(v0, v2, ruleIndex) :- grandparent_notexists(v0, v1, ruleIndex), inv_notexists(v1, v2, ruleIndex), ruleIndex != 17, Rule(17).
+inv_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), mother_notexists(v2, v0, ruleIndex), ruleIndex != 12, Rule(12).
+grandparent_notexists(v2, v1, ruleIndex) :- father_notexists(v0, v1, ruleIndex), father_notexists(v2, v0, ruleIndex), ruleIndex != 15, Rule(15).

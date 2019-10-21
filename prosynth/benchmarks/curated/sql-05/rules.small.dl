@@ -1,0 +1,25 @@
+.type supplier_key
+.type part_id
+.type part_name
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+.decl input2(v0: part_id, v1: part_name)
+.input input2
+
+
+.decl ans(v0: part_name)
+.output ans
+
+ans(v1) :- input2(v0, v1), input2(v2, v1), Rule(5).
+ans(v3) :- input1(v0, v1), input1(v0, v2), input2(v2, v3), Rule(8).
+ans(v2) :- input2(v0, v1), input2(v0, v2), Rule(2).
+ans(v2) :- ans(v0), input2(v1, v0), input2(v1, v2), Rule(1).
+ans(v1) :- input2(v0, v1), Rule(7).
+ans(v2) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(0).
+ans(v3) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), Rule(3).
+ans(v2) :- input1(v0, v1), input2(v1, v2), Rule(6).
+ans(v2) :- input1(v0, v1), input2(v1, v2), input2(v3, v2), Rule(4).

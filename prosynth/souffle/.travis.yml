@@ -1,0 +1,302 @@
+language: generic
+dist: bionic
+
+aliases:
+  -  &linux_deps
+    - automake
+    - autoconf
+    - bison
+    - build-essential
+    - flex
+    - libffi-dev
+    - libncurses5-dev
+    - libopenmpi-dev
+    - libtool
+    - lsb-release
+    - mcpp
+  - &linuxgcc
+    stage: Testing
+    sudo: false
+    os: linux
+    compiler: gcc
+    language: cpp
+    addons:
+      apt:
+        packages:
+        - *linux_deps
+    before_script: ".travis/init_test.sh"
+    script: ".travis/run_test.sh"
+    after_failure: ".travis/after_failure.sh"
+  - &linuxclang
+    stage: Testing
+    os: linux
+    compiler: clang
+    language: cpp
+    addons:
+      apt:
+        packages:
+        - *linux_deps
+        - libomp-dev
+    before_script: ".travis/init_test.sh"
+    script: ".travis/run_test.sh"
+    after_failure: ".travis/after_failure.sh"
+  - &docker
+    os: linux
+    services: docker
+    sudo: false
+  - &linuxmpi
+    <<: *docker
+    stage: Testing
+    script: ".travis/run_docker.sh"
+  - &linuxpackage
+    <<: *docker
+    stage: Packaging
+  - &osxgcc
+    stage: Testing
+    os: osx
+    osx_image: xcode11.2
+    compiler: gcc
+    install: ". .travis/osx/install_withgcc.sh"
+    before_script: ".travis/init_test.sh"
+    script: ".travis/run_test.sh"
+    after_failure: ".travis/after_failure.sh"
+    cache:
+      directories: $HOME/Library/Caches/Homebrew
+  - &osxclang
+    <<: *osxgcc
+    install: ". .travis/osx/install.sh"
+    compiler: clang
+    language: cpp
+  - &osxpackage
+    <<: *osxclang
+    stage: Packaging
+    before_script: ".travis/init_make_package.sh"
+    script: ".travis/osx/make_package.sh"
+  - &gcc_environment CC=gcc CXX=g++
+  - &clang_environment CC=clang CXX=clang++
+
+jobs:
+  include:
+# Style check stage
+  - stage: Style
+    os: linux
+    sudo: false
+    addons:
+      apt:
+        packages:
+        # The formatting may change with different versions of clang-format.
+        # Check before modifying!
+        - clang-format-7
+    script: ".travis/run_test_format.sh"
+
+# Testing stage (-j8,-c -j8)
+  - <<: *linuxgcc
+    env:
+    - "gcc-setup"
+    - *gcc_environment
+    - SOUFFLE_CATEGORY=Unit,Syntactic,Semantic,Interface,Profile,Provenance SOUFFLE_CONFS="-j8,-c -j8"
+  - <<: *osxgcc
+    env:
+    - "gcc-setup"
+    - SOUFFLE_CATEGORY=Unit,Syntactic,Semantic,Interface,Profile,Provenance SOUFFLE_CONFS="-j8,-c -j8"
+
+# Testing stage for clang without OpenMP (,-c)
+  - <<: *linuxclang
+    env:
+    - "clang-setup"
+    - *clang_environment
+    - SOUFFLE_CATEGORY=Unit,Syntactic,Semantic,Interface,Profile,Provenance SOUFFLE_CONFS=",-c"
+  - <<: *osxclang
+    env:
+    - "clang-setup"
+    - SOUFFLE_CATEGORY=Unit,Syntactic,Semantic,Interface,Profile,Provenance SOUFFLE_CONFS=",-c"
+
+# Testing stage with 64bit RamDomains (-j8,-c -j8, skipping the 32bit Semantic tests)
+  - <<: *linuxgcc
+    before_script: ".travis/init_test_64bit.sh"
+    env:
+    - "gcc-64bit-setup"
+    - *gcc_environment
+    - SOUFFLE_CATEGORY=Unit,Syntactic,Interface,Profile,Provenance SOUFFLE_CONFS="-j8,-c -j8"
+
+# Testing stage with engine option (-c -j8 -efile, FastEvaluation and select others)
+  - <<: *linuxgcc
+    env:
+    - "gcc-efile"
+    - *gcc_environment
+    - SOUFFLE_CATEGORY=FastEvaluation,Interface,Profile SOUFFLE_CONFS="-c -j8 -efile"
+
+# Testing stage with mpi (-c -j8 -empi, FastEvaluation and select others)
+  - <<: *linuxmpi
+    env:
+    - "gcc-empi"
+    - *gcc_environment
+    - SOUFFLE_DOCKER_BASE_IMAGE="souffle/ubuntu:bionic-base"
+    # TODO (lyndonhenry): should get this working with Interface, Profile, and Provenance (it does work already with Syntactic and Semantic)
+    - SOUFFLE_CATEGORY="Unit,FastEvaluation"
+    - SOUFFLE_CONFIGURE_OPTIONS="--enable-mpi"
+    - SOUFFLE_CONFS="-c -j8 -empi"
+    - SOUFFLE_MAKE_JOBS="2"
+
+# Testing stage (-j8,-c -j8)
+  - <<: *linuxgcc
+    env:
+    - "gcc-evaluation"
+    - *gcc_environment
+    - SOUFFLE_CATEGORY=Evaluation SOUFFLE_CONFS="-j8,-c -j8"
+
+# Testing stage for clang without OpenMP (,-c)
+  - <<: *linuxclang
+    env:
+    - "clang-evaluation"
+    - *clang_environment
+    - SOUFFLE_CATEGORY=Evaluation SOUFFLE_CONFS=",-c"
+  - <<: *osxclang
+    env:
+    - "clang-evaluation"
+    - SOUFFLE_CATEGORY=Evaluation SOUFFLE_CONFS=",-c"
+
+# Packaging stage
+  # Test make install installs a working souffle.
+  - <<: *linuxpackage
+    script: docker run -v `pwd`:/souffle ubuntu:bionic /bin/sh -c "cd /souffle && .travis/linux/install_debian_deps.sh && .travis/init_make_package.sh && .travis/test_make_install.sh"
+    env: "debian-make-install"
+  # Make the linux deb packages and if successful upload to github releases and bintray
+  # All PRs go to bintray unstable, tagged releases to bintray stable
+  - <<: *linuxpackage
+    script: docker run -v `pwd`:/souffle ubuntu:bionic /bin/sh -c "cd /souffle && .travis/linux/install_debian_deps.sh && .travis/init_make_package.sh && .travis/linux/make_package.sh"
+    env: "debian-package"
+    before_deploy:
+      - .travis/bintray_json.sh debian
+    # deploy to bintray if we're in the souffle-lang repo
+    # https://docs.travis-ci.com/user/deployment/bintray
+    deploy:
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-deb-unstable.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          branch: master
+          repo: souffle-lang/souffle
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-deb-stable.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          repo: souffle-lang/souffle
+          tags: true
+      - provider: releases
+        skip_cleanup: true
+        api_key: $GHRELEASES_TOKEN
+        file_glob: true
+        file: deploy/*
+        on:
+          repo: souffle-lang/souffle
+          tags: true
+  # Make the centos rpm packages and if successful upload to bintray
+  # All PRs go to bintray unstable, tagged releases to bintray stable
+  # Try to build in a raw centos container to test that our dependencies are correct
+  - <<: *linuxpackage
+    script: docker run -v `pwd`:/souffle centos:7 /bin/sh -c "cd /souffle && .travis/linux/install_centos_deps.sh && .travis/linux/make_centos_package.sh"
+    env: "centos-package"
+    before_deploy:
+      - .travis/bintray_json.sh centos
+    # deploy to bintray if we're in the souffle-lang repo
+    # https://docs.travis-ci.com/user/deployment/bintray
+    deploy:
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-rpm-unstable.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          branch: master
+          repo: souffle-lang/souffle
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-rpm-stable.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          repo: souffle-lang/souffle
+          tags: true
+
+  # Make the fedora rpm packages and if successful upload to bintray
+  # All PRs go to bintray unstable, tagged releases to bintray stable
+  # Try to build in a raw fedora container to test that our dependencies are correct
+  - <<: *linuxpackage
+    script: docker run -v `pwd`:/souffle fedora:27 /bin/sh -c "cd /souffle && .travis/linux/install_fedora_deps.sh && .travis/linux/make_fedora_package.sh"
+    env: "fedora-package"
+    before_deploy:
+      - .travis/bintray_json.sh fedora
+    # deploy to bintray if we're in the souffle-lang repo
+    # https://docs.travis-ci.com/user/deployment/bintray
+    deploy:
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-rpm-unstable.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          branch: master
+          repo: souffle-lang/souffle
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-rpm-stable.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          repo: souffle-lang/souffle
+          tags: true
+  # Make the OSX packages and if successful upload to github releases.
+  - <<: *osxpackage
+    env: "osx-package"
+    before_deploy: .travis/bintray_json.sh osx
+    deploy:
+      - provider: releases
+        skip_cleanup: true
+        api_key: $GHRELEASES_TOKEN
+        file_glob: true
+        file: deploy/*
+        on:
+          repo: souffle-lang/souffle
+          tags: true
+      - provider: bintray
+        skip-cleanup: true
+        file: bintray-osx.json
+        user: souffle-lang
+        key: $BINTRAY_KEY
+        on:
+          tags: true
+          repo: souffle-lang/souffle
+      - provider: script
+        skip-cleanup: true
+        script: ".travis/osx/brew.sh $HOMEBREW_SOUFFLE_KEY"
+        on:
+          tags: true
+          repo: souffle-lang/souffle
+  # Generate doxygen html
+  - stage: Packaging
+    env: "documenting"
+    os: linux
+    sudo: false
+    addons:
+      apt:
+        packages:
+        - *linux_deps
+        - doxygen
+        - graphviz
+    script: "./bootstrap && ./configure && make doxygen-doc"
+    # update the gh-pages branch with doxygen output if the required github token has been set
+    # https://pages.github.com/
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      github-token: $GHPAGES_TOKEN
+      keep-history: false
+      local-dir: doc/html
+      on:
+        branch: master
+        condition: -n $GHPAGES_TOKEN

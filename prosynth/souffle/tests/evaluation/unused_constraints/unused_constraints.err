@@ -1,0 +1,3 @@
+Warning: Variable y only occurs once in file unused_constraints.dl at line 14
+c(x) :- a(x), y = 0.
+--------------^------

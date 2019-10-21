@@ -1,0 +1,687 @@
+.type T
+.type M
+.type H
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl reachableM(v0: M)
+.input reachableM
+
+.decl VH(v0: V, v1: H)
+.input VH
+
+.decl HT(v0: H, v1: T)
+.input HT
+
+.decl McheckCastInst(v0: M, v1: V, v2: T, v3: V)
+.input McheckCastInst
+
+.decl notSub(v0: T, v1: T)
+.input notSub
+
+.decl reachableCast(v0: T, v1: V)
+.output reachableCast
+
+.decl ptsVT(v0: V, v1: T)
+.output ptsVT
+
+.decl unsafeDowncast(v0: V, v1: T)
+.output unsafeDowncast
+
+.decl badCast(v0: V, v1: T)
+.output badCast
+
+
+
+reachableCast(v0, v1) :- reachableCast(v0, v1), Rule(0).
+reachableCast(v0, v1) :- notSub(v0, v2), reachableCast(v2, v1), Rule(1).
+reachableCast(v0, v1) :- notSub(v2, v0), reachableCast(v2, v1), Rule(2).
+reachableCast(v0, v1) :- reachableCast(v0, v1), reachableCast(v0, v1), Rule(3).
+reachableCast(v0, v1) :- notSub(v2, v0), notSub(v2, v0), reachableCast(v0, v1), Rule(4).
+reachableCast(v0, v1) :- notSub(v0, v2), notSub(v2, v0), reachableCast(v0, v1), Rule(5).
+reachableCast(v0, v1) :- notSub(v0, v2), notSub(v0, v2), reachableCast(v0, v1), Rule(6).
+reachableCast(v0, v1) :- notSub(v2, v0), notSub(v0, v2), reachableCast(v0, v1), Rule(7).
+reachableCast(v0, v1) :- notSub(v0, v2), notSub(v0, v2), reachableCast(v2, v1), Rule(8).
+reachableCast(v0, v1) :- notSub(v0, v2), notSub(v2, v0), reachableCast(v2, v1), Rule(9).
+reachableCast(v0, v1) :- notSub(v2, v0), notSub(v0, v2), reachableCast(v2, v1), Rule(10).
+reachableCast(v0, v1) :- notSub(v2, v0), notSub(v2, v0), reachableCast(v2, v1), Rule(11).
+reachableCast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), reachableCast(v0, v1), Rule(12).
+reachableCast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), reachableCast(v0, v1), Rule(13).
+reachableCast(v0, v1) :- notSub(v2, v3), notSub(v0, v2), reachableCast(v3, v1), Rule(14).
+reachableCast(v0, v1) :- notSub(v2, v3), notSub(v2, v0), reachableCast(v3, v1), Rule(15).
+reachableCast(v0, v1) :- notSub(v2, v0), notSub(v2, v3), reachableCast(v3, v1), Rule(16).
+reachableCast(v0, v1) :- notSub(v2, v0), notSub(v3, v2), reachableCast(v3, v1), Rule(17).
+reachableCast(v0, v1) :- notSub(v0, v2), notSub(v2, v3), reachableCast(v3, v1), Rule(18).
+reachableCast(v0, v1) :- notSub(v0, v2), notSub(v3, v2), reachableCast(v3, v1), Rule(19).
+reachableCast(v0, v1) :- notSub(v2, v3), notSub(v0, v3), reachableCast(v2, v1), Rule(20).
+reachableCast(v0, v1) :- notSub(v2, v3), notSub(v3, v0), reachableCast(v2, v1), Rule(21).
+reachableCast(v0, v1) :- notSub(v2, v0), reachableCast(v2, v1), reachableCast(v0, v1), Rule(22).
+reachableCast(v0, v1) :- notSub(v2, v0), reachableCast(v0, v1), reachableCast(v2, v1), Rule(23).
+reachableCast(v0, v1) :- notSub(v0, v2), reachableCast(v2, v1), reachableCast(v0, v1), Rule(24).
+reachableCast(v0, v1) :- notSub(v0, v2), reachableCast(v0, v1), reachableCast(v2, v1), Rule(25).
+reachableCast(v0, v1) :- notSub(v2, v0), reachableCast(v2, v1), reachableCast(v2, v1), Rule(26).
+reachableCast(v0, v1) :- notSub(v0, v2), reachableCast(v2, v1), reachableCast(v2, v1), Rule(27).
+reachableCast(v0, v1) :- reachableCast(v0, v1), reachableCast(v0, v1), reachableCast(v0, v1), Rule(28).
+reachableCast(v0, v1) :- reachableCast(v0, v1), reachableCast(v2, v1), reachableCast(v2, v1), Rule(29).
+reachableCast(v0, v1) :- reachableCast(v0, v1), reachableCast(v2, v3), reachableCast(v2, v3), Rule(30).
+reachableCast(v0, v1) :- reachableCast(v2, v1), reachableCast(v2, v1), reachableCast(v0, v1), Rule(31).
+reachableCast(v0, v1) :- reachableCast(v2, v1), reachableCast(v2, v3), reachableCast(v0, v3), Rule(32).
+reachableCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), reachableCast(v0, v1), Rule(33).
+reachableCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v1), reachableCast(v0, v3), Rule(34).
+reachableCast(v0, v1) :- reachableCast(v2, v1), reachableCast(v0, v1), reachableCast(v2, v1), Rule(35).
+reachableCast(v0, v1) :- reachableCast(v2, v1), reachableCast(v0, v3), reachableCast(v2, v3), Rule(36).
+reachableCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v0, v3), reachableCast(v2, v1), Rule(37).
+reachableCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v0, v1), reachableCast(v2, v3), Rule(38).
+ptsVT(v0, v1) :- reachableCast(v1, v0), Rule(39).
+ptsVT(v0, v1) :- ptsVT(v0, v1), Rule(40).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), Rule(41).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), Rule(42).
+ptsVT(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), Rule(43).
+ptsVT(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), Rule(44).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), Rule(45).
+ptsVT(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), Rule(46).
+ptsVT(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), Rule(47).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v2, v1), reachableCast(v1, v0), Rule(48).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v2, v1), reachableCast(v1, v0), Rule(49).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v1, v2), reachableCast(v1, v0), Rule(50).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v1, v2), reachableCast(v1, v0), Rule(51).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v1, v2), reachableCast(v2, v0), Rule(52).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v2, v1), reachableCast(v2, v0), Rule(53).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v1, v2), reachableCast(v2, v0), Rule(54).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v2, v1), reachableCast(v2, v0), Rule(55).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v2, v3), reachableCast(v1, v0), Rule(56).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v3, v2), reachableCast(v1, v0), Rule(57).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v1, v2), reachableCast(v3, v0), Rule(58).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v2, v1), reachableCast(v3, v0), Rule(59).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v2, v3), reachableCast(v3, v0), Rule(60).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v3, v2), reachableCast(v3, v0), Rule(61).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v2, v3), reachableCast(v3, v0), Rule(62).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v3, v2), reachableCast(v3, v0), Rule(63).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v1, v3), reachableCast(v2, v0), Rule(64).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v3, v1), reachableCast(v2, v0), Rule(65).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v2, v1), ptsVT(v0, v1), Rule(66).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v2, v1), ptsVT(v0, v1), Rule(67).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v1, v2), ptsVT(v0, v1), Rule(68).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v1, v2), ptsVT(v0, v1), Rule(69).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v1, v2), ptsVT(v0, v2), Rule(70).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v2, v1), ptsVT(v0, v2), Rule(71).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v1, v2), ptsVT(v0, v2), Rule(72).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v2, v1), ptsVT(v0, v2), Rule(73).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v2, v3), ptsVT(v0, v1), Rule(74).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v3, v2), ptsVT(v0, v1), Rule(75).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v1, v2), ptsVT(v0, v3), Rule(76).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v2, v1), ptsVT(v0, v3), Rule(77).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v2, v3), ptsVT(v0, v3), Rule(78).
+ptsVT(v0, v1) :- notSub(v2, v1), notSub(v3, v2), ptsVT(v0, v3), Rule(79).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v2, v3), ptsVT(v0, v3), Rule(80).
+ptsVT(v0, v1) :- notSub(v1, v2), notSub(v3, v2), ptsVT(v0, v3), Rule(81).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v1, v3), ptsVT(v0, v2), Rule(82).
+ptsVT(v0, v1) :- notSub(v2, v3), notSub(v3, v1), ptsVT(v0, v2), Rule(83).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), reachableCast(v1, v0), Rule(84).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), reachableCast(v2, v0), Rule(85).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), reachableCast(v1, v0), Rule(86).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), reachableCast(v2, v0), Rule(87).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), reachableCast(v2, v0), Rule(88).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), reachableCast(v2, v0), Rule(89).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), ptsVT(v0, v1), Rule(90).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), ptsVT(v0, v2), Rule(91).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), ptsVT(v0, v1), Rule(92).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), ptsVT(v0, v2), Rule(93).
+ptsVT(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), ptsVT(v0, v2), Rule(94).
+ptsVT(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), ptsVT(v0, v2), Rule(95).
+ptsVT(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), ptsVT(v0, v1), Rule(96).
+ptsVT(v0, v1) :- notSub(v2, v1), ptsVT(v0, v1), ptsVT(v0, v2), Rule(97).
+ptsVT(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), ptsVT(v0, v1), Rule(98).
+ptsVT(v0, v1) :- notSub(v1, v2), ptsVT(v0, v1), ptsVT(v0, v2), Rule(99).
+ptsVT(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), ptsVT(v0, v2), Rule(100).
+ptsVT(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), ptsVT(v0, v2), Rule(101).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), reachableCast(v1, v0), Rule(102).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), reachableCast(v2, v0), Rule(103).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), reachableCast(v2, v3), Rule(104).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), reachableCast(v1, v0), Rule(105).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), reachableCast(v1, v3), Rule(106).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), reachableCast(v1, v0), Rule(107).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), reachableCast(v1, v3), Rule(108).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), reachableCast(v2, v0), Rule(109).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), reachableCast(v2, v3), Rule(110).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), reachableCast(v2, v0), Rule(111).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), reachableCast(v2, v3), Rule(112).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), ptsVT(v0, v1), Rule(113).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), ptsVT(v0, v2), Rule(114).
+ptsVT(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), ptsVT(v3, v2), Rule(115).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), ptsVT(v0, v1), Rule(116).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), ptsVT(v3, v1), Rule(117).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), ptsVT(v0, v1), Rule(118).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), ptsVT(v3, v1), Rule(119).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), ptsVT(v0, v2), Rule(120).
+ptsVT(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), ptsVT(v3, v2), Rule(121).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), ptsVT(v0, v2), Rule(122).
+ptsVT(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), ptsVT(v3, v2), Rule(123).
+ptsVT(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), ptsVT(v0, v1), Rule(124).
+ptsVT(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v2), ptsVT(v0, v2), Rule(125).
+ptsVT(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v2), ptsVT(v0, v1), Rule(126).
+ptsVT(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v2), ptsVT(v3, v1), Rule(127).
+ptsVT(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v2), ptsVT(v0, v1), Rule(128).
+ptsVT(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v2), ptsVT(v3, v1), Rule(129).
+ptsVT(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v1), ptsVT(v0, v2), Rule(130).
+ptsVT(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v1), ptsVT(v3, v2), Rule(131).
+ptsVT(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v1), ptsVT(v0, v2), Rule(132).
+ptsVT(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v1), ptsVT(v3, v2), Rule(133).
+ptsVT(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), ptsVT(v0, v1), Rule(134).
+ptsVT(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v2), ptsVT(v0, v2), Rule(135).
+ptsVT(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v2), ptsVT(v0, v1), Rule(136).
+ptsVT(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v2), ptsVT(v3, v1), Rule(137).
+ptsVT(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v1), ptsVT(v0, v2), Rule(138).
+ptsVT(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v1), ptsVT(v3, v2), Rule(139).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), Rule(140).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), Rule(141).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v1), Rule(142).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), Rule(143).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), Rule(144).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), Rule(145).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), Rule(146).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), Rule(147).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), Rule(148).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), Rule(149).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), Rule(150).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v1), Rule(151).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), Rule(152).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v1), Rule(153).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(154).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), reachableCast(v1, v0), Rule(155).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), reachableCast(v1, v0), Rule(156).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), reachableCast(v1, v0), Rule(157).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), reachableCast(v1, v0), Rule(158).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), reachableCast(v2, v0), Rule(159).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), reachableCast(v2, v0), Rule(160).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), reachableCast(v2, v0), Rule(161).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), reachableCast(v2, v0), Rule(162).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), reachableCast(v1, v0), Rule(163).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), reachableCast(v1, v0), Rule(164).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), reachableCast(v3, v0), Rule(165).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), reachableCast(v3, v0), Rule(166).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), reachableCast(v3, v0), Rule(167).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), reachableCast(v3, v0), Rule(168).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), reachableCast(v3, v0), Rule(169).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), reachableCast(v3, v0), Rule(170).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), reachableCast(v2, v0), Rule(171).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), reachableCast(v2, v0), Rule(172).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), ptsVT(v0, v1), Rule(173).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), ptsVT(v0, v1), Rule(174).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), ptsVT(v0, v1), Rule(175).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), ptsVT(v0, v1), Rule(176).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), ptsVT(v0, v2), Rule(177).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), ptsVT(v0, v2), Rule(178).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), ptsVT(v0, v2), Rule(179).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), ptsVT(v0, v2), Rule(180).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), ptsVT(v0, v1), Rule(181).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), ptsVT(v0, v1), Rule(182).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), ptsVT(v0, v3), Rule(183).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), ptsVT(v0, v3), Rule(184).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), ptsVT(v0, v3), Rule(185).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), ptsVT(v0, v3), Rule(186).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), ptsVT(v0, v3), Rule(187).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), ptsVT(v0, v3), Rule(188).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), ptsVT(v0, v2), Rule(189).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), ptsVT(v0, v2), Rule(190).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), unsafeDowncast(v0, v1), Rule(191).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), unsafeDowncast(v0, v1), Rule(192).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), unsafeDowncast(v0, v1), Rule(193).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), unsafeDowncast(v0, v1), Rule(194).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), unsafeDowncast(v0, v2), Rule(195).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), unsafeDowncast(v0, v2), Rule(196).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), unsafeDowncast(v0, v2), Rule(197).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), unsafeDowncast(v0, v2), Rule(198).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), unsafeDowncast(v0, v1), Rule(199).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), unsafeDowncast(v0, v1), Rule(200).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), unsafeDowncast(v0, v3), Rule(201).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), unsafeDowncast(v0, v3), Rule(202).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), unsafeDowncast(v0, v3), Rule(203).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), unsafeDowncast(v0, v3), Rule(204).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), unsafeDowncast(v0, v3), Rule(205).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), unsafeDowncast(v0, v3), Rule(206).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), unsafeDowncast(v0, v2), Rule(207).
+unsafeDowncast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), unsafeDowncast(v0, v2), Rule(208).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), reachableCast(v1, v0), Rule(209).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), reachableCast(v2, v0), Rule(210).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), reachableCast(v1, v0), Rule(211).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), reachableCast(v2, v0), Rule(212).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), reachableCast(v2, v0), Rule(213).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), reachableCast(v2, v0), Rule(214).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), ptsVT(v0, v1), Rule(215).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), ptsVT(v0, v2), Rule(216).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), ptsVT(v0, v1), Rule(217).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), ptsVT(v0, v2), Rule(218).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), ptsVT(v0, v2), Rule(219).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), ptsVT(v0, v2), Rule(220).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), unsafeDowncast(v0, v1), Rule(221).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), unsafeDowncast(v0, v2), Rule(222).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), unsafeDowncast(v0, v1), Rule(223).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), unsafeDowncast(v0, v2), Rule(224).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), unsafeDowncast(v0, v2), Rule(225).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), unsafeDowncast(v0, v2), Rule(226).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), ptsVT(v0, v1), Rule(227).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v1), ptsVT(v0, v2), Rule(228).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), ptsVT(v0, v1), Rule(229).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v1), ptsVT(v0, v2), Rule(230).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), ptsVT(v0, v2), Rule(231).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), ptsVT(v0, v2), Rule(232).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(233).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(234).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(235).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(236).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(237).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(238).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(239).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(240).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(241).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(242).
+unsafeDowncast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(243).
+unsafeDowncast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(244).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), reachableCast(v1, v0), Rule(245).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), reachableCast(v2, v0), Rule(246).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), reachableCast(v2, v3), Rule(247).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), reachableCast(v1, v0), Rule(248).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), reachableCast(v1, v3), Rule(249).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), reachableCast(v1, v0), Rule(250).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), reachableCast(v1, v3), Rule(251).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), reachableCast(v2, v0), Rule(252).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), reachableCast(v2, v3), Rule(253).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), reachableCast(v2, v0), Rule(254).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), reachableCast(v2, v3), Rule(255).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), ptsVT(v0, v1), Rule(256).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), ptsVT(v0, v2), Rule(257).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), ptsVT(v3, v2), Rule(258).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), ptsVT(v0, v1), Rule(259).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), ptsVT(v3, v1), Rule(260).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), ptsVT(v0, v1), Rule(261).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), ptsVT(v3, v1), Rule(262).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), ptsVT(v0, v2), Rule(263).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), ptsVT(v3, v2), Rule(264).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), ptsVT(v0, v2), Rule(265).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), ptsVT(v3, v2), Rule(266).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), unsafeDowncast(v0, v1), Rule(267).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), unsafeDowncast(v0, v2), Rule(268).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), unsafeDowncast(v3, v2), Rule(269).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), unsafeDowncast(v0, v1), Rule(270).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), unsafeDowncast(v3, v1), Rule(271).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), unsafeDowncast(v0, v1), Rule(272).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), unsafeDowncast(v3, v1), Rule(273).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), unsafeDowncast(v0, v2), Rule(274).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), unsafeDowncast(v3, v2), Rule(275).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), unsafeDowncast(v0, v2), Rule(276).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), unsafeDowncast(v3, v2), Rule(277).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), ptsVT(v0, v1), Rule(278).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v2), ptsVT(v0, v2), Rule(279).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v2), ptsVT(v0, v1), Rule(280).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v2), ptsVT(v3, v1), Rule(281).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v2), ptsVT(v0, v1), Rule(282).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v2), ptsVT(v3, v1), Rule(283).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v1), ptsVT(v0, v2), Rule(284).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v1), ptsVT(v3, v2), Rule(285).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v1), ptsVT(v0, v2), Rule(286).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v1), ptsVT(v3, v2), Rule(287).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), unsafeDowncast(v0, v1), Rule(288).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(289).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(290).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v2), unsafeDowncast(v3, v1), Rule(291).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v2), unsafeDowncast(v0, v1), Rule(292).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v2), unsafeDowncast(v3, v1), Rule(293).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(294).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v1), unsafeDowncast(v3, v2), Rule(295).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v1), unsafeDowncast(v0, v2), Rule(296).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v1), unsafeDowncast(v3, v2), Rule(297).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(298).
+unsafeDowncast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(299).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(300).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v3, v2), unsafeDowncast(v3, v1), Rule(301).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v3, v2), unsafeDowncast(v0, v1), Rule(302).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v0, v2), unsafeDowncast(v3, v1), Rule(303).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(304).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v3, v1), unsafeDowncast(v3, v2), Rule(305).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v3, v1), unsafeDowncast(v0, v2), Rule(306).
+unsafeDowncast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v0, v1), unsafeDowncast(v3, v2), Rule(307).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), ptsVT(v0, v1), Rule(308).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v2), ptsVT(v0, v2), Rule(309).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v2), ptsVT(v0, v1), Rule(310).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v2), ptsVT(v3, v1), Rule(311).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v1), ptsVT(v0, v2), Rule(312).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v1), ptsVT(v3, v2), Rule(313).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), unsafeDowncast(v0, v1), Rule(314).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(315).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(316).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v2), unsafeDowncast(v3, v1), Rule(317).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(318).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v1), unsafeDowncast(v3, v2), Rule(319).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(320).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(321).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(322).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v3, v2), unsafeDowncast(v3, v1), Rule(323).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(324).
+unsafeDowncast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v3, v1), unsafeDowncast(v3, v2), Rule(325).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(326).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(327).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(328).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v3, v2), unsafeDowncast(v3, v1), Rule(329).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(330).
+unsafeDowncast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v3, v1), unsafeDowncast(v3, v2), Rule(331).
+badCast(v0, v1) :- reachableCast(v1, v0), Rule(332).
+badCast(v0, v1) :- ptsVT(v0, v1), Rule(333).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), Rule(334).
+badCast(v0, v1) :- badCast(v0, v1), Rule(335).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), Rule(336).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), Rule(337).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), Rule(338).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), Rule(339).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), Rule(340).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), Rule(341).
+badCast(v0, v1) :- notSub(v1, v2), badCast(v0, v2), Rule(342).
+badCast(v0, v1) :- notSub(v2, v1), badCast(v0, v2), Rule(343).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), Rule(344).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), Rule(345).
+badCast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v1), Rule(346).
+badCast(v0, v1) :- reachableCast(v1, v0), badCast(v0, v1), Rule(347).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), Rule(348).
+badCast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v1), Rule(349).
+badCast(v0, v1) :- ptsVT(v0, v1), badCast(v0, v1), Rule(350).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(351).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), badCast(v0, v1), Rule(352).
+badCast(v0, v1) :- badCast(v0, v1), badCast(v0, v1), Rule(353).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), reachableCast(v1, v0), Rule(354).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), reachableCast(v1, v0), Rule(355).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), reachableCast(v1, v0), Rule(356).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), reachableCast(v1, v0), Rule(357).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), reachableCast(v2, v0), Rule(358).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), reachableCast(v2, v0), Rule(359).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), reachableCast(v2, v0), Rule(360).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), reachableCast(v2, v0), Rule(361).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), reachableCast(v1, v0), Rule(362).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), reachableCast(v1, v0), Rule(363).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), reachableCast(v3, v0), Rule(364).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), reachableCast(v3, v0), Rule(365).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), reachableCast(v3, v0), Rule(366).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), reachableCast(v3, v0), Rule(367).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), reachableCast(v3, v0), Rule(368).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), reachableCast(v3, v0), Rule(369).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), reachableCast(v2, v0), Rule(370).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), reachableCast(v2, v0), Rule(371).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), ptsVT(v0, v1), Rule(372).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), ptsVT(v0, v1), Rule(373).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), ptsVT(v0, v1), Rule(374).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), ptsVT(v0, v1), Rule(375).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), ptsVT(v0, v2), Rule(376).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), ptsVT(v0, v2), Rule(377).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), ptsVT(v0, v2), Rule(378).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), ptsVT(v0, v2), Rule(379).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), ptsVT(v0, v1), Rule(380).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), ptsVT(v0, v1), Rule(381).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), ptsVT(v0, v3), Rule(382).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), ptsVT(v0, v3), Rule(383).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), ptsVT(v0, v3), Rule(384).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), ptsVT(v0, v3), Rule(385).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), ptsVT(v0, v3), Rule(386).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), ptsVT(v0, v3), Rule(387).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), ptsVT(v0, v2), Rule(388).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), ptsVT(v0, v2), Rule(389).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), unsafeDowncast(v0, v1), Rule(390).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), unsafeDowncast(v0, v1), Rule(391).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), unsafeDowncast(v0, v1), Rule(392).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), unsafeDowncast(v0, v1), Rule(393).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), unsafeDowncast(v0, v2), Rule(394).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), unsafeDowncast(v0, v2), Rule(395).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), unsafeDowncast(v0, v2), Rule(396).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), unsafeDowncast(v0, v2), Rule(397).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), unsafeDowncast(v0, v1), Rule(398).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), unsafeDowncast(v0, v1), Rule(399).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), unsafeDowncast(v0, v3), Rule(400).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), unsafeDowncast(v0, v3), Rule(401).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), unsafeDowncast(v0, v3), Rule(402).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), unsafeDowncast(v0, v3), Rule(403).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), unsafeDowncast(v0, v3), Rule(404).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), unsafeDowncast(v0, v3), Rule(405).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), unsafeDowncast(v0, v2), Rule(406).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), unsafeDowncast(v0, v2), Rule(407).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), badCast(v0, v1), Rule(408).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), badCast(v0, v1), Rule(409).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), badCast(v0, v1), Rule(410).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), badCast(v0, v1), Rule(411).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v1, v2), badCast(v0, v2), Rule(412).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v1), badCast(v0, v2), Rule(413).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v1, v2), badCast(v0, v2), Rule(414).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v1), badCast(v0, v2), Rule(415).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v3), badCast(v0, v1), Rule(416).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v2), badCast(v0, v1), Rule(417).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v2), badCast(v0, v3), Rule(418).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v2, v1), badCast(v0, v3), Rule(419).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v2, v3), badCast(v0, v3), Rule(420).
+badCast(v0, v1) :- notSub(v2, v1), notSub(v3, v2), badCast(v0, v3), Rule(421).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v2, v3), badCast(v0, v3), Rule(422).
+badCast(v0, v1) :- notSub(v1, v2), notSub(v3, v2), badCast(v0, v3), Rule(423).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v1, v3), badCast(v0, v2), Rule(424).
+badCast(v0, v1) :- notSub(v2, v3), notSub(v3, v1), badCast(v0, v2), Rule(425).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), reachableCast(v1, v0), Rule(426).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), reachableCast(v2, v0), Rule(427).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), reachableCast(v1, v0), Rule(428).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), reachableCast(v2, v0), Rule(429).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), reachableCast(v2, v0), Rule(430).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), reachableCast(v2, v0), Rule(431).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), ptsVT(v0, v1), Rule(432).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), ptsVT(v0, v2), Rule(433).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), ptsVT(v0, v1), Rule(434).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), ptsVT(v0, v2), Rule(435).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), ptsVT(v0, v2), Rule(436).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), ptsVT(v0, v2), Rule(437).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), unsafeDowncast(v0, v1), Rule(438).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), unsafeDowncast(v0, v2), Rule(439).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), unsafeDowncast(v0, v1), Rule(440).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), unsafeDowncast(v0, v2), Rule(441).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), unsafeDowncast(v0, v2), Rule(442).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), unsafeDowncast(v0, v2), Rule(443).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), badCast(v0, v1), Rule(444).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v1, v0), badCast(v0, v2), Rule(445).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), badCast(v0, v1), Rule(446).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v1, v0), badCast(v0, v2), Rule(447).
+badCast(v0, v1) :- notSub(v2, v1), reachableCast(v2, v0), badCast(v0, v2), Rule(448).
+badCast(v0, v1) :- notSub(v1, v2), reachableCast(v2, v0), badCast(v0, v2), Rule(449).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), ptsVT(v0, v1), Rule(450).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v1), ptsVT(v0, v2), Rule(451).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), ptsVT(v0, v1), Rule(452).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v1), ptsVT(v0, v2), Rule(453).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), ptsVT(v0, v2), Rule(454).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), ptsVT(v0, v2), Rule(455).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(456).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(457).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(458).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(459).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(460).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(461).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), badCast(v0, v1), Rule(462).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v1), badCast(v0, v2), Rule(463).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), badCast(v0, v1), Rule(464).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v1), badCast(v0, v2), Rule(465).
+badCast(v0, v1) :- notSub(v2, v1), ptsVT(v0, v2), badCast(v0, v2), Rule(466).
+badCast(v0, v1) :- notSub(v1, v2), ptsVT(v0, v2), badCast(v0, v2), Rule(467).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(468).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(469).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(470).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(471).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(472).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(473).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), badCast(v0, v1), Rule(474).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v1), badCast(v0, v2), Rule(475).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), badCast(v0, v1), Rule(476).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v1), badCast(v0, v2), Rule(477).
+badCast(v0, v1) :- notSub(v2, v1), unsafeDowncast(v0, v2), badCast(v0, v2), Rule(478).
+badCast(v0, v1) :- notSub(v1, v2), unsafeDowncast(v0, v2), badCast(v0, v2), Rule(479).
+badCast(v0, v1) :- notSub(v2, v1), badCast(v0, v2), badCast(v0, v1), Rule(480).
+badCast(v0, v1) :- notSub(v2, v1), badCast(v0, v1), badCast(v0, v2), Rule(481).
+badCast(v0, v1) :- notSub(v1, v2), badCast(v0, v2), badCast(v0, v1), Rule(482).
+badCast(v0, v1) :- notSub(v1, v2), badCast(v0, v1), badCast(v0, v2), Rule(483).
+badCast(v0, v1) :- notSub(v2, v1), badCast(v0, v2), badCast(v0, v2), Rule(484).
+badCast(v0, v1) :- notSub(v1, v2), badCast(v0, v2), badCast(v0, v2), Rule(485).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), reachableCast(v1, v0), Rule(486).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), reachableCast(v2, v0), Rule(487).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), reachableCast(v2, v3), Rule(488).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), reachableCast(v1, v0), Rule(489).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), reachableCast(v1, v3), Rule(490).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), reachableCast(v1, v0), Rule(491).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), reachableCast(v1, v3), Rule(492).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), reachableCast(v2, v0), Rule(493).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), reachableCast(v2, v3), Rule(494).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), reachableCast(v2, v0), Rule(495).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), reachableCast(v2, v3), Rule(496).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), ptsVT(v0, v1), Rule(497).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), ptsVT(v0, v2), Rule(498).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), ptsVT(v3, v2), Rule(499).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), ptsVT(v0, v1), Rule(500).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), ptsVT(v3, v1), Rule(501).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), ptsVT(v0, v1), Rule(502).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), ptsVT(v3, v1), Rule(503).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), ptsVT(v0, v2), Rule(504).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), ptsVT(v3, v2), Rule(505).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), ptsVT(v0, v2), Rule(506).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), ptsVT(v3, v2), Rule(507).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), unsafeDowncast(v0, v1), Rule(508).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), unsafeDowncast(v0, v2), Rule(509).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), unsafeDowncast(v3, v2), Rule(510).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), unsafeDowncast(v0, v1), Rule(511).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), unsafeDowncast(v3, v1), Rule(512).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), unsafeDowncast(v0, v1), Rule(513).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), unsafeDowncast(v3, v1), Rule(514).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), unsafeDowncast(v0, v2), Rule(515).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), unsafeDowncast(v3, v2), Rule(516).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), unsafeDowncast(v0, v2), Rule(517).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), unsafeDowncast(v3, v2), Rule(518).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v1, v0), badCast(v0, v1), Rule(519).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v0), badCast(v0, v2), Rule(520).
+badCast(v0, v1) :- reachableCast(v1, v0), reachableCast(v2, v3), badCast(v3, v2), Rule(521).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v0), badCast(v0, v1), Rule(522).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v2, v3), badCast(v3, v1), Rule(523).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v3), badCast(v0, v1), Rule(524).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v2, v0), badCast(v3, v1), Rule(525).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v0), badCast(v0, v2), Rule(526).
+badCast(v0, v1) :- reachableCast(v2, v0), reachableCast(v1, v3), badCast(v3, v2), Rule(527).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v3), badCast(v0, v2), Rule(528).
+badCast(v0, v1) :- reachableCast(v2, v3), reachableCast(v1, v0), badCast(v3, v2), Rule(529).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), ptsVT(v0, v1), Rule(530).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v2), ptsVT(v0, v2), Rule(531).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v2), ptsVT(v0, v1), Rule(532).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v2), ptsVT(v3, v1), Rule(533).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v2), ptsVT(v0, v1), Rule(534).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v2), ptsVT(v3, v1), Rule(535).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v1), ptsVT(v0, v2), Rule(536).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v1), ptsVT(v3, v2), Rule(537).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v1), ptsVT(v0, v2), Rule(538).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v1), ptsVT(v3, v2), Rule(539).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), unsafeDowncast(v0, v1), Rule(540).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(541).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(542).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v2), unsafeDowncast(v3, v1), Rule(543).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v2), unsafeDowncast(v0, v1), Rule(544).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v2), unsafeDowncast(v3, v1), Rule(545).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(546).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v1), unsafeDowncast(v3, v2), Rule(547).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v1), unsafeDowncast(v0, v2), Rule(548).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v1), unsafeDowncast(v3, v2), Rule(549).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v1), badCast(v0, v1), Rule(550).
+badCast(v0, v1) :- reachableCast(v1, v0), ptsVT(v0, v2), badCast(v0, v2), Rule(551).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v2), badCast(v0, v1), Rule(552).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v2), badCast(v3, v1), Rule(553).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v2), badCast(v0, v1), Rule(554).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v2), badCast(v3, v1), Rule(555).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v0, v1), badCast(v0, v2), Rule(556).
+badCast(v0, v1) :- reachableCast(v2, v0), ptsVT(v3, v1), badCast(v3, v2), Rule(557).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v3, v1), badCast(v0, v2), Rule(558).
+badCast(v0, v1) :- reachableCast(v2, v3), ptsVT(v0, v1), badCast(v3, v2), Rule(559).
+badCast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(560).
+badCast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(561).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(562).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v3, v2), unsafeDowncast(v3, v1), Rule(563).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v3, v2), unsafeDowncast(v0, v1), Rule(564).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v0, v2), unsafeDowncast(v3, v1), Rule(565).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(566).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v3, v1), unsafeDowncast(v3, v2), Rule(567).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v3, v1), unsafeDowncast(v0, v2), Rule(568).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v0, v1), unsafeDowncast(v3, v2), Rule(569).
+badCast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v1), badCast(v0, v1), Rule(570).
+badCast(v0, v1) :- reachableCast(v1, v0), unsafeDowncast(v0, v2), badCast(v0, v2), Rule(571).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v0, v2), badCast(v0, v1), Rule(572).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v3, v2), badCast(v3, v1), Rule(573).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v3, v2), badCast(v0, v1), Rule(574).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v0, v2), badCast(v3, v1), Rule(575).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v0, v1), badCast(v0, v2), Rule(576).
+badCast(v0, v1) :- reachableCast(v2, v0), unsafeDowncast(v3, v1), badCast(v3, v2), Rule(577).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v3, v1), badCast(v0, v2), Rule(578).
+badCast(v0, v1) :- reachableCast(v2, v3), unsafeDowncast(v0, v1), badCast(v3, v2), Rule(579).
+badCast(v0, v1) :- reachableCast(v1, v0), badCast(v0, v1), badCast(v0, v1), Rule(580).
+badCast(v0, v1) :- reachableCast(v1, v0), badCast(v0, v2), badCast(v0, v2), Rule(581).
+badCast(v0, v1) :- reachableCast(v2, v0), badCast(v0, v2), badCast(v0, v1), Rule(582).
+badCast(v0, v1) :- reachableCast(v2, v0), badCast(v3, v2), badCast(v3, v1), Rule(583).
+badCast(v0, v1) :- reachableCast(v2, v3), badCast(v3, v2), badCast(v0, v1), Rule(584).
+badCast(v0, v1) :- reachableCast(v2, v3), badCast(v0, v2), badCast(v3, v1), Rule(585).
+badCast(v0, v1) :- reachableCast(v2, v0), badCast(v0, v1), badCast(v0, v2), Rule(586).
+badCast(v0, v1) :- reachableCast(v2, v0), badCast(v3, v1), badCast(v3, v2), Rule(587).
+badCast(v0, v1) :- reachableCast(v2, v3), badCast(v3, v1), badCast(v0, v2), Rule(588).
+badCast(v0, v1) :- reachableCast(v2, v3), badCast(v0, v1), badCast(v3, v2), Rule(589).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), ptsVT(v0, v1), Rule(590).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v2), ptsVT(v0, v2), Rule(591).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v2), ptsVT(v0, v1), Rule(592).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v2), ptsVT(v3, v1), Rule(593).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v1), ptsVT(v0, v2), Rule(594).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v1), ptsVT(v3, v2), Rule(595).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), unsafeDowncast(v0, v1), Rule(596).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v2), unsafeDowncast(v0, v2), Rule(597).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v2), unsafeDowncast(v0, v1), Rule(598).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v2), unsafeDowncast(v3, v1), Rule(599).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v1), unsafeDowncast(v0, v2), Rule(600).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v1), unsafeDowncast(v3, v2), Rule(601).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v1), badCast(v0, v1), Rule(602).
+badCast(v0, v1) :- ptsVT(v0, v1), ptsVT(v0, v2), badCast(v0, v2), Rule(603).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v2), badCast(v0, v1), Rule(604).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v2), badCast(v3, v1), Rule(605).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v0, v1), badCast(v0, v2), Rule(606).
+badCast(v0, v1) :- ptsVT(v0, v2), ptsVT(v3, v1), badCast(v3, v2), Rule(607).
+badCast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(608).
+badCast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(609).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(610).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v3, v2), unsafeDowncast(v3, v1), Rule(611).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(612).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v3, v1), unsafeDowncast(v3, v2), Rule(613).
+badCast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v1), badCast(v0, v1), Rule(614).
+badCast(v0, v1) :- ptsVT(v0, v1), unsafeDowncast(v0, v2), badCast(v0, v2), Rule(615).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v0, v2), badCast(v0, v1), Rule(616).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v3, v2), badCast(v3, v1), Rule(617).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v0, v1), badCast(v0, v2), Rule(618).
+badCast(v0, v1) :- ptsVT(v0, v2), unsafeDowncast(v3, v1), badCast(v3, v2), Rule(619).
+badCast(v0, v1) :- ptsVT(v0, v1), badCast(v0, v1), badCast(v0, v1), Rule(620).
+badCast(v0, v1) :- ptsVT(v0, v1), badCast(v0, v2), badCast(v0, v2), Rule(621).
+badCast(v0, v1) :- ptsVT(v0, v2), badCast(v0, v2), badCast(v0, v1), Rule(622).
+badCast(v0, v1) :- ptsVT(v0, v2), badCast(v3, v2), badCast(v3, v1), Rule(623).
+badCast(v0, v1) :- ptsVT(v0, v2), badCast(v0, v1), badCast(v0, v2), Rule(624).
+badCast(v0, v1) :- ptsVT(v0, v2), badCast(v3, v1), badCast(v3, v2), Rule(625).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), Rule(626).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), Rule(627).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), Rule(628).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v3, v2), unsafeDowncast(v3, v1), Rule(629).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), Rule(630).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v3, v1), unsafeDowncast(v3, v2), Rule(631).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v1), badCast(v0, v1), Rule(632).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), unsafeDowncast(v0, v2), badCast(v0, v2), Rule(633).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v0, v2), badCast(v0, v1), Rule(634).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v3, v2), badCast(v3, v1), Rule(635).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v0, v1), badCast(v0, v2), Rule(636).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), unsafeDowncast(v3, v1), badCast(v3, v2), Rule(637).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), badCast(v0, v1), badCast(v0, v1), Rule(638).
+badCast(v0, v1) :- unsafeDowncast(v0, v1), badCast(v0, v2), badCast(v0, v2), Rule(639).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), badCast(v0, v2), badCast(v0, v1), Rule(640).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), badCast(v3, v2), badCast(v3, v1), Rule(641).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), badCast(v0, v1), badCast(v0, v2), Rule(642).
+badCast(v0, v1) :- unsafeDowncast(v0, v2), badCast(v3, v1), badCast(v3, v2), Rule(643).
+badCast(v0, v1) :- badCast(v0, v1), badCast(v0, v1), badCast(v0, v1), Rule(644).
+badCast(v0, v1) :- badCast(v0, v1), badCast(v0, v2), badCast(v0, v2), Rule(645).
+badCast(v0, v1) :- badCast(v0, v2), badCast(v0, v2), badCast(v0, v1), Rule(646).
+badCast(v0, v1) :- badCast(v0, v2), badCast(v3, v2), badCast(v3, v1), Rule(647).
+badCast(v0, v1) :- badCast(v0, v2), badCast(v0, v1), badCast(v0, v2), Rule(648).
+badCast(v0, v1) :- badCast(v0, v2), badCast(v3, v1), badCast(v3, v2), Rule(649).

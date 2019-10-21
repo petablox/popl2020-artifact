@@ -1,0 +1,138 @@
+.type T
+.type P
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl not_nausea(v0: P)
+.input not_nausea
+.decl not_lumbar_pain(v0: P)
+.input not_lumbar_pain
+.decl urine_pushing(v0: P)
+.input urine_pushing
+.decl gte38(v0: T)
+.input gte38
+.decl not_micturition_pain(v0: P)
+.input not_micturition_pain
+.decl not_burning_urethra(v0: P)
+.input not_burning_urethra
+.decl micturition_pain(v0: P)
+.input micturition_pain
+.decl lumbar_pain(v0: P)
+.input lumbar_pain
+.decl nausea(v0: P)
+.input nausea
+.decl not_urine_pushing(v0: P)
+.input not_urine_pushing
+.decl burning_urethra(v0: P)
+.input burning_urethra
+.decl temparature(v0: P, v1: T)
+.input temparature
+
+.decl not_nausea_notexists(v0: P, v1: number)
+.output not_nausea_notexists
+.decl not_lumbar_pain_notexists(v0: P, v1: number)
+.output not_lumbar_pain_notexists
+.decl urine_pushing_notexists(v0: P, v1: number)
+.output urine_pushing_notexists
+.decl gte38_notexists(v0: T, v1: number)
+.output gte38_notexists
+.decl not_micturition_pain_notexists(v0: P, v1: number)
+.output not_micturition_pain_notexists
+.decl not_burning_urethra_notexists(v0: P, v1: number)
+.output not_burning_urethra_notexists
+.decl micturition_pain_notexists(v0: P, v1: number)
+.output micturition_pain_notexists
+.decl lumbar_pain_notexists(v0: P, v1: number)
+.output lumbar_pain_notexists
+.decl nausea_notexists(v0: P, v1: number)
+.output nausea_notexists
+.decl not_urine_pushing_notexists(v0: P, v1: number)
+.output not_urine_pushing_notexists
+.decl burning_urethra_notexists(v0: P, v1: number)
+.output burning_urethra_notexists
+.decl temparature_notexists(v0: P, v1: T, v2: number)
+.output temparature_notexists
+
+.decl inflamation_notexists(v0: P, v1: number)
+.output inflamation_notexists
+
+not_nausea_notexists(v0, ruleIndex) :- not_nausea(v0), Rule(ruleIndex).
+not_lumbar_pain_notexists(v0, ruleIndex) :- not_lumbar_pain(v0), Rule(ruleIndex).
+urine_pushing_notexists(v0, ruleIndex) :- urine_pushing(v0), Rule(ruleIndex).
+gte38_notexists(v0, ruleIndex) :- gte38(v0), Rule(ruleIndex).
+not_micturition_pain_notexists(v0, ruleIndex) :- not_micturition_pain(v0), Rule(ruleIndex).
+not_burning_urethra_notexists(v0, ruleIndex) :- not_burning_urethra(v0), Rule(ruleIndex).
+micturition_pain_notexists(v0, ruleIndex) :- micturition_pain(v0), Rule(ruleIndex).
+lumbar_pain_notexists(v0, ruleIndex) :- lumbar_pain(v0), Rule(ruleIndex).
+nausea_notexists(v0, ruleIndex) :- nausea(v0), Rule(ruleIndex).
+not_urine_pushing_notexists(v0, ruleIndex) :- not_urine_pushing(v0), Rule(ruleIndex).
+burning_urethra_notexists(v0, ruleIndex) :- burning_urethra(v0), Rule(ruleIndex).
+temparature_notexists(v0, v1, ruleIndex) :- temparature(v0, v1), Rule(ruleIndex).
+inflamation_notexists(v0, ruleIndex) :- not_lumbar_pain_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 62, Rule(62).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 49, Rule(49).
+inflamation_notexists(v0, ruleIndex) :- temparature_notexists(v0, v1, ruleIndex), temparature_notexists(v0, v2, ruleIndex), ruleIndex != 50, Rule(50).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 53, Rule(53).
+inflamation_notexists(v0, ruleIndex) :- temparature_notexists(v0, v1, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 56, Rule(56).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 24, Rule(24).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), not_burning_urethra_notexists(v0, ruleIndex), ruleIndex != 36, Rule(36).
+inflamation_notexists(v0, ruleIndex) :- urine_pushing_notexists(v0, ruleIndex), ruleIndex != 63, Rule(63).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 1, Rule(1).
+inflamation_notexists(v1, ruleIndex) :- gte38_notexists(v0, ruleIndex), temparature_notexists(v1, v0, ruleIndex), ruleIndex != 41, Rule(41).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 23, Rule(23).
+inflamation_notexists(v0, ruleIndex) :- not_micturition_pain_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 65, Rule(65).
+inflamation_notexists(v0, ruleIndex) :- not_lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 64, Rule(64).
+inflamation_notexists(v0, ruleIndex) :- not_nausea_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 38, Rule(38).
+inflamation_notexists(v0, ruleIndex) :- not_lumbar_pain_notexists(v0, ruleIndex), not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 34, Rule(34).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 7, Rule(7).
+inflamation_notexists(v0, ruleIndex) :- not_urine_pushing_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 15, Rule(15).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 31, Rule(31).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 44, Rule(44).
+inflamation_notexists(v0, ruleIndex) :- not_lumbar_pain_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 6, Rule(6).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), micturition_pain_notexists(v0, ruleIndex), ruleIndex != 18, Rule(18).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 21, Rule(21).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 58, Rule(58).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 10, Rule(10).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 43, Rule(43).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), not_burning_urethra_notexists(v0, ruleIndex), ruleIndex != 54, Rule(54).
+inflamation_notexists(v0, ruleIndex) :- not_micturition_pain_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 14, Rule(14).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 47, Rule(47).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 32, Rule(32).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), nausea_notexists(v0, ruleIndex), ruleIndex != 51, Rule(51).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), nausea_notexists(v0, ruleIndex), ruleIndex != 11, Rule(11).
+inflamation_notexists(v0, ruleIndex) :- not_urine_pushing_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 8, Rule(8).
+inflamation_notexists(v0, ruleIndex) :- not_lumbar_pain_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 19, Rule(19).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), nausea_notexists(v0, ruleIndex), ruleIndex != 52, Rule(52).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), not_burning_urethra_notexists(v0, ruleIndex), ruleIndex != 29, Rule(29).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 46, Rule(46).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 66, Rule(66).
+inflamation_notexists(v0, ruleIndex) :- not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 20, Rule(20).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), not_lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 25, Rule(25).
+inflamation_notexists(v0, ruleIndex) :- not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 60, Rule(60).
+inflamation_notexists(v0, ruleIndex) :- not_nausea_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 0, Rule(0).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), not_lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 57, Rule(57).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 40, Rule(40).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 13, Rule(13).
+inflamation_notexists(v0, ruleIndex) :- not_micturition_pain_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 9, Rule(9).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 17, Rule(17).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), not_micturition_pain_notexists(v0, ruleIndex), ruleIndex != 27, Rule(27).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), not_lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 45, Rule(45).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 37, Rule(37).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), ruleIndex != 61, Rule(61).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), not_lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 42, Rule(42).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 5, Rule(5).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), not_lumbar_pain_notexists(v0, ruleIndex), ruleIndex != 26, Rule(26).
+inflamation_notexists(v0, ruleIndex) :- not_micturition_pain_notexists(v0, ruleIndex), not_nausea_notexists(v0, ruleIndex), ruleIndex != 3, Rule(3).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 4, Rule(4).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), ruleIndex != 28, Rule(28).
+inflamation_notexists(v0, ruleIndex) :- lumbar_pain_notexists(v0, ruleIndex), micturition_pain_notexists(v0, ruleIndex), ruleIndex != 48, Rule(48).
+inflamation_notexists(v0, ruleIndex) :- nausea_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 30, Rule(30).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), ruleIndex != 59, Rule(59).
+inflamation_notexists(v0, ruleIndex) :- not_nausea_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 16, Rule(16).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 2, Rule(2).
+inflamation_notexists(v0, ruleIndex) :- burning_urethra_notexists(v0, ruleIndex), not_burning_urethra_notexists(v0, ruleIndex), ruleIndex != 22, Rule(22).
+inflamation_notexists(v0, ruleIndex) :- not_lumbar_pain_notexists(v0, ruleIndex), urine_pushing_notexists(v0, ruleIndex), ruleIndex != 39, Rule(39).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), temparature_notexists(v0, v1, ruleIndex), ruleIndex != 33, Rule(33).
+inflamation_notexists(v0, ruleIndex) :- micturition_pain_notexists(v0, ruleIndex), ruleIndex != 55, Rule(55).
+inflamation_notexists(v0, ruleIndex) :- not_burning_urethra_notexists(v0, ruleIndex), not_urine_pushing_notexists(v0, ruleIndex), ruleIndex != 35, Rule(35).
+inflamation_notexists(v0, ruleIndex) :- not_nausea_notexists(v0, ruleIndex), ruleIndex != 12, Rule(12).

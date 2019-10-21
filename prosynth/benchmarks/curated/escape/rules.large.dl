@@ -1,0 +1,260 @@
+.type H
+.type Z
+.type M
+.type F
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl MmethArg(v0: M, v1: Z, v2: V)
+.input MmethArg
+
+.decl MmethRet(v0: M, v1: Z, v2: V)
+.input MmethRet
+
+.decl VH(v0: V, v1: H)
+.input VH
+
+.decl HFH(v0: H, v1: F, v2: H)
+.input HFH
+
+.decl rMH(v0: M, v1: H)
+.output rMH
+
+.decl rRH(v0: M, v1: H)
+.output rRH
+
+.decl rHH(v0: H, v1: H)
+.output rHH
+
+
+
+rMH(v0, v1) :- rMH(v0, v1), Rule(0).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), Rule(1).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), rMH(v0, v1), Rule(2).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v2, v1), rMH(v2, v1), Rule(3).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v2, v1), rMH(v0, v1), Rule(4).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v0, v1), rMH(v2, v1), Rule(5).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v2, v3), rMH(v2, v3), Rule(6).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v2, v3), rMH(v0, v3), Rule(7).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v0, v3), rMH(v2, v3), Rule(8).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v2, v3), rMH(v0, v1), Rule(9).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v0, v3), rMH(v2, v1), Rule(10).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v2, v1), rMH(v0, v3), Rule(11).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v0, v1), rMH(v2, v3), Rule(12).
+rRH(v0, v1) :- rMH(v0, v1), Rule(13).
+rRH(v0, v1) :- rRH(v0, v1), Rule(14).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), Rule(15).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v0, v1), Rule(16).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v0, v1), Rule(17).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), rMH(v0, v1), Rule(18).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v1), rMH(v2, v1), Rule(19).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v1), rMH(v0, v1), Rule(20).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v1), rMH(v2, v1), Rule(21).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v3), rMH(v2, v3), Rule(22).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v3), rMH(v0, v3), Rule(23).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v3), rMH(v2, v3), Rule(24).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v3), rMH(v0, v1), Rule(25).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v3), rMH(v2, v1), Rule(26).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v1), rMH(v0, v3), Rule(27).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v1), rMH(v2, v3), Rule(28).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), rRH(v0, v1), Rule(29).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v1), rRH(v2, v1), Rule(30).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v1), rRH(v0, v1), Rule(31).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v1), rRH(v2, v1), Rule(32).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v3), rRH(v2, v3), Rule(33).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v3), rRH(v0, v3), Rule(34).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v3), rRH(v2, v3), Rule(35).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v3), rRH(v0, v1), Rule(36).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v3), rRH(v2, v1), Rule(37).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v1), rRH(v0, v3), Rule(38).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v1), rRH(v2, v3), Rule(39).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v0, v1), rRH(v0, v1), Rule(40).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v2, v1), rRH(v2, v1), Rule(41).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v2, v1), rRH(v0, v1), Rule(42).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v0, v1), rRH(v2, v1), Rule(43).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v2, v3), rRH(v2, v3), Rule(44).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v2, v3), rRH(v0, v3), Rule(45).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v0, v3), rRH(v2, v3), Rule(46).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v2, v3), rRH(v0, v1), Rule(47).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v0, v3), rRH(v2, v1), Rule(48).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v2, v1), rRH(v0, v3), Rule(49).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v0, v1), rRH(v2, v3), Rule(50).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v0, v1), rRH(v0, v1), Rule(51).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v2, v1), rRH(v2, v1), Rule(52).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v2, v1), rRH(v0, v1), Rule(53).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v0, v1), rRH(v2, v1), Rule(54).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v2, v3), rRH(v2, v3), Rule(55).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v2, v3), rRH(v0, v3), Rule(56).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v0, v3), rRH(v2, v3), Rule(57).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v2, v3), rRH(v0, v1), Rule(58).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v0, v3), rRH(v2, v1), Rule(59).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v2, v1), rRH(v0, v3), Rule(60).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v0, v1), rRH(v2, v3), Rule(61).
+rHH(v0, v1) :- rHH(v0, v1), Rule(62).
+rHH(v0, v1) :- rHH(v1, v0), Rule(63).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v0), Rule(64).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v1), Rule(65).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v0), Rule(66).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v1), Rule(67).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), Rule(68).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), Rule(69).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), Rule(70).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), Rule(71).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), Rule(72).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), Rule(73).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), Rule(74).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), Rule(75).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v1), rHH(v1, v0), Rule(76).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v1), rHH(v0, v1), Rule(77).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v1), rHH(v1, v0), Rule(78).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v0), rHH(v0, v1), Rule(79).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v0), rHH(v1, v0), Rule(80).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v0), rHH(v0, v1), Rule(81).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v0), rHH(v1, v0), Rule(82).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v1), rHH(v0, v1), Rule(83).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v0, v2), Rule(84).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v2, v0), Rule(85).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v0, v2), Rule(86).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v2, v0), Rule(87).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v0, v1), Rule(88).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v0, v2), Rule(89).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v2, v0), Rule(90).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v0, v2), Rule(91).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v2, v0), Rule(92).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v0, v1), Rule(93).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v1, v0), Rule(94).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v1, v0), Rule(95).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v0, v2), Rule(96).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v2, v0), Rule(97).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v0, v1), Rule(98).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v1, v0), Rule(99).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v0, v2), Rule(100).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v2, v0), Rule(101).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v0, v1), Rule(102).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v0, v2), Rule(103).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v2, v0), Rule(104).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v0, v2), Rule(105).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v2, v0), Rule(106).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v1, v0), Rule(107).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v1, v2), Rule(108).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v2, v0), Rule(109).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v0, v2), Rule(110).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v1, v0), Rule(111).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v1, v0), Rule(112).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v0, v2), Rule(113).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v1, v2), Rule(114).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v0, v2), Rule(115).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v2, v1), Rule(116).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v0, v1), Rule(117).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v0, v1), Rule(118).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v2, v1), Rule(119).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v2, v1), Rule(120).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v0, v1), Rule(121).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v0, v2), Rule(122).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v0, v2), Rule(123).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v0, v2), Rule(124).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v1, v0), Rule(125).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v0, v2), Rule(126).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v1, v0), Rule(127).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v1, v0), Rule(128).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v2, v1), Rule(129).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v1, v2), Rule(130).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v0, v2), Rule(131).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v1, v2), Rule(132).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v0, v1), Rule(133).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v2, v0), Rule(134).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v1, v2), Rule(135).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v0, v1), Rule(136).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v2, v0), Rule(137).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v0, v1), Rule(138).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v2, v0), Rule(139).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v1, v2), Rule(140).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v2, v0), Rule(141).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v2, v0), Rule(142).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v1, v0), Rule(143).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v2, v1), Rule(144).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v1, v0), Rule(145).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v1, v0), Rule(146).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v2, v1), Rule(147).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v0, v1), Rule(148).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v1, v2), Rule(149).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v0, v1), Rule(150).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v2, v0), Rule(151).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v1, v2), Rule(152).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v2, v1), Rule(153).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v2, v1), Rule(154).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v2, v0), Rule(155).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v0, v2), Rule(156).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v2, v0), Rule(157).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v0, v2), Rule(158).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v2, v0), Rule(159).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v2, v1), Rule(160).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v0, v2), Rule(161).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v2, v0), Rule(162).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v1, v2), Rule(163).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v0, v2), Rule(164).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v2, v0), Rule(165).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v2, v1), Rule(166).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v1, v2), Rule(167).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v0, v2), Rule(168).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v2, v0), Rule(169).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v0, v2), Rule(170).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v2, v0), Rule(171).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v0, v2), Rule(172).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v2, v0), Rule(173).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v2, v1), Rule(174).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v0, v2), Rule(175).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v2, v0), Rule(176).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v2, v1), Rule(177).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v1, v2), Rule(178).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v1, v2), Rule(179).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v2, v1), Rule(180).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v0, v1), Rule(181).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v1, v2), Rule(182).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v0, v1), Rule(183).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v1, v2), Rule(184).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v2, v1), Rule(185).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v0, v1), Rule(186).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v1, v2), Rule(187).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v1, v0), Rule(188).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v1, v0), Rule(189).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v1, v2), Rule(190).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v1, v0), Rule(191).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v2, v1), Rule(192).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v0, v1), Rule(193).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v2, v1), Rule(194).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v1, v2), Rule(195).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v1, v0), Rule(196).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v1, v2), Rule(197).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v2, v1), Rule(198).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v2, v1), Rule(199).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v1, v2), Rule(200).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v1, v2), Rule(201).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v2, v1), Rule(202).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v2, v1), Rule(203).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v1, v2), Rule(204).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v1, v2), Rule(205).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v1, v2), Rule(206).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v2, v1), Rule(207).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v0, v2), Rule(208).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v2, v0), Rule(209).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v2, v0), Rule(210).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v2, v1), Rule(211).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v2, v1), Rule(212).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v2, v1), Rule(213).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v1, v2), Rule(214).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v0, v2), Rule(215).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v1, v2), Rule(216).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v2, v0), Rule(217).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v0, v2), Rule(218).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v2, v1), Rule(219).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v0, v2), Rule(220).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v1, v2), Rule(221).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v1, v2), Rule(222).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v2, v0), Rule(223).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v2, v1), Rule(224).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v2, v1), Rule(225).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v2, v1), Rule(226).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v1, v2), Rule(227).

@@ -1,0 +1,403 @@
+.type H
+.type M
+.type T
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl McheckCastInst(v0: M, v1: V, v2: T, v3: V)
+.input McheckCastInst
+.decl reachableM(v0: M)
+.input reachableM
+.decl VH(v0: V, v1: H)
+.input VH
+.decl HT(v0: H, v1: T)
+.input HT
+.decl notSub(v0: T, v1: T)
+.input notSub
+
+.decl McheckCastInst_notexists(v0: M, v1: V, v2: T, v3: V, v4: number)
+.output McheckCastInst_notexists
+.decl reachableM_notexists(v0: M, v1: number)
+.output reachableM_notexists
+.decl VH_notexists(v0: V, v1: H, v2: number)
+.output VH_notexists
+.decl HT_notexists(v0: H, v1: T, v2: number)
+.output HT_notexists
+.decl notSub_notexists(v0: T, v1: T, v2: number)
+.output notSub_notexists
+
+.decl reachableCast_notexists(v0: T, v1: V, v2: number)
+.output reachableCast_notexists
+.decl ptsVT_notexists(v0: V, v1: T, v2: number)
+.output ptsVT_notexists
+.decl unsafeDowncast_notexists(v0: V, v1: T, v2: number)
+.output unsafeDowncast_notexists
+.decl badCast_notexists(v0: V, v1: T, v2: number)
+.output badCast_notexists
+
+McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex) :- McheckCastInst(v0, v1, v2, v3), Rule(ruleIndex).
+reachableM_notexists(v0, ruleIndex) :- reachableM(v0), Rule(ruleIndex).
+VH_notexists(v0, v1, ruleIndex) :- VH(v0, v1), Rule(ruleIndex).
+HT_notexists(v0, v1, ruleIndex) :- HT(v0, v1), Rule(ruleIndex).
+notSub_notexists(v0, v1, ruleIndex) :- notSub(v0, v1), Rule(ruleIndex).
+ptsVT_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 216, Rule(216).
+badCast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 6, Rule(6).
+ptsVT_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 56, Rule(56).
+ptsVT_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 10, Rule(10).
+reachableCast_notexists(v1, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 154, Rule(154).
+ptsVT_notexists(v4, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v4, v2, ruleIndex), ruleIndex != 229, Rule(229).
+ptsVT_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), VH_notexists(v2, v0, ruleIndex), ruleIndex != 104, Rule(104).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 96, Rule(96).
+badCast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 146, Rule(146).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 14, Rule(14).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 243, Rule(243).
+reachableCast_notexists(v0, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 293, Rule(293).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 90, Rule(90).
+reachableCast_notexists(v1, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 80, Rule(80).
+badCast_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 20, Rule(20).
+badCast_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 150, Rule(150).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v4, v2, ruleIndex), ruleIndex != 230, Rule(230).
+reachableCast_notexists(v1, v3, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 238, Rule(238).
+reachableCast_notexists(v2, v0, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 65, Rule(65).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 272, Rule(272).
+unsafeDowncast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 178, Rule(178).
+unsafeDowncast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 300, Rule(300).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 124, Rule(124).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 63, Rule(63).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), badCast_notexists(v0, v2, ruleIndex), ruleIndex != 356, Rule(356).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 190, Rule(190).
+ptsVT_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 129, Rule(129).
+badCast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ruleIndex != 127, Rule(127).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 236, Rule(236).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ruleIndex != 330, Rule(330).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 168, Rule(168).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 321, Rule(321).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v4, v2, ruleIndex), ruleIndex != 253, Rule(253).
+ptsVT_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 81, Rule(81).
+badCast_notexists(v3, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 188, Rule(188).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 144, Rule(144).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v4, v2, ruleIndex), ruleIndex != 207, Rule(207).
+reachableCast_notexists(v0, v2, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 111, Rule(111).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v2, ruleIndex), ruleIndex != 33, Rule(33).
+reachableCast_notexists(v1, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 69, Rule(69).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 282, Rule(282).
+badCast_notexists(v0, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), ruleIndex != 122, Rule(122).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v4, v2, ruleIndex), ruleIndex != 331, Rule(331).
+reachableCast_notexists(v1, v2, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 289, Rule(289).
+ptsVT_notexists(v0, v2, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 349, Rule(349).
+ptsVT_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 52, Rule(52).
+badCast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 247, Rule(247).
+badCast_notexists(v3, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 102, Rule(102).
+ptsVT_notexists(v1, v2, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v1, ruleIndex), ruleIndex != 59, Rule(59).
+unsafeDowncast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 195, Rule(195).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 266, Rule(266).
+ptsVT_notexists(v4, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v4, v2, ruleIndex), ruleIndex != 319, Rule(319).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v4, v2, ruleIndex), ruleIndex != 341, Rule(341).
+ptsVT_notexists(v0, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), ruleIndex != 98, Rule(98).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 180, Rule(180).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 276, Rule(276).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 46, Rule(46).
+badCast_notexists(v2, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 4, Rule(4).
+reachableCast_notexists(v1, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 101, Rule(101).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 170, Rule(170).
+reachableCast_notexists(v1, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 149, Rule(149).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v1, v4, ruleIndex), ruleIndex != 156, Rule(156).
+reachableCast_notexists(v2, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), badCast_notexists(v0, v2, ruleIndex), ruleIndex != 299, Rule(299).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v4, v2, ruleIndex), ruleIndex != 54, Rule(54).
+ptsVT_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), badCast_notexists(v0, v2, ruleIndex), ruleIndex != 228, Rule(228).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v1, v4, ruleIndex), ruleIndex != 335, Rule(335).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 227, Rule(227).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v2, ruleIndex), ruleIndex != 327, Rule(327).
+unsafeDowncast_notexists(v2, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 239, Rule(239).
+reachableCast_notexists(v2, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 38, Rule(38).
+ptsVT_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v0, ruleIndex), ruleIndex != 157, Rule(157).
+unsafeDowncast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 212, Rule(212).
+ptsVT_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 175, Rule(175).
+ptsVT_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 134, Rule(134).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 320, Rule(320).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 9, Rule(9).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ruleIndex != 143, Rule(143).
+badCast_notexists(v2, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 64, Rule(64).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 18, Rule(18).
+unsafeDowncast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 163, Rule(163).
+badCast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 326, Rule(326).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 220, Rule(220).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 267, Rule(267).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v4, v2, ruleIndex), ruleIndex != 246, Rule(246).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v2, ruleIndex), ruleIndex != 32, Rule(32).
+ptsVT_notexists(v3, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v4, ruleIndex), ruleIndex != 292, Rule(292).
+reachableCast_notexists(v2, v0, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 28, Rule(28).
+reachableCast_notexists(v2, v1, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 137, Rule(137).
+badCast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 182, Rule(182).
+badCast_notexists(v3, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 357, Rule(357).
+badCast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 261, Rule(261).
+unsafeDowncast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 281, Rule(281).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 206, Rule(206).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v2, v4, ruleIndex), ruleIndex != 152, Rule(152).
+badCast_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 347, Rule(347).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 345, Rule(345).
+badCast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v0, ruleIndex), ruleIndex != 316, Rule(316).
+ptsVT_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 259, Rule(259).
+ptsVT_notexists(v3, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v1, v0, v3, ruleIndex), ruleIndex != 141, Rule(141).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v1, ruleIndex), ruleIndex != 74, Rule(74).
+badCast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), VH_notexists(v2, v0, ruleIndex), ruleIndex != 263, Rule(263).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 25, Rule(25).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 301, Rule(301).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 87, Rule(87).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 109, Rule(109).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), VH_notexists(v2, v0, ruleIndex), ruleIndex != 36, Rule(36).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v4, ruleIndex), ruleIndex != 323, Rule(323).
+ptsVT_notexists(v2, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 183, Rule(183).
+reachableCast_notexists(v2, v1, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v1, ruleIndex), ruleIndex != 196, Rule(196).
+unsafeDowncast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 29, Rule(29).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 213, Rule(213).
+unsafeDowncast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 295, Rule(295).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 7, Rule(7).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 286, Rule(286).
+badCast_notexists(v0, v2, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 77, Rule(77).
+reachableCast_notexists(v2, v1, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 221, Rule(221).
+unsafeDowncast_notexists(v4, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v4, v2, ruleIndex), ruleIndex != 287, Rule(287).
+ptsVT_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 76, Rule(76).
+reachableCast_notexists(v2, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 19, Rule(19).
+ptsVT_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 298, Rule(298).
+ptsVT_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 199, Rule(199).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v3, v4, ruleIndex), ruleIndex != 201, Rule(201).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 202, Rule(202).
+unsafeDowncast_notexists(v3, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v1, v0, v3, ruleIndex), ruleIndex != 275, Rule(275).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 233, Rule(233).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 84, Rule(84).
+ptsVT_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 308, Rule(308).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v0, ruleIndex), ruleIndex != 3, Rule(3).
+badCast_notexists(v3, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v0, v1, ruleIndex), ruleIndex != 105, Rule(105).
+ptsVT_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 187, Rule(187).
+badCast_notexists(v1, v2, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 44, Rule(44).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 197, Rule(197).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 254, Rule(254).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 274, Rule(274).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v1, ruleIndex), ruleIndex != 244, Rule(244).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v1, v4, ruleIndex), ruleIndex != 176, Rule(176).
+badCast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 317, Rule(317).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 62, Rule(62).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 303, Rule(303).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v3, ruleIndex), ruleIndex != 251, Rule(251).
+reachableCast_notexists(v1, v4, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v4, ruleIndex), ruleIndex != 179, Rule(179).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v2, ruleIndex), ruleIndex != 200, Rule(200).
+badCast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 271, Rule(271).
+ptsVT_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), badCast_notexists(v2, v1, ruleIndex), ruleIndex != 121, Rule(121).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 208, Rule(208).
+ptsVT_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), badCast_notexists(v2, v1, ruleIndex), ruleIndex != 351, Rule(351).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 66, Rule(66).
+ptsVT_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 24, Rule(24).
+reachableCast_notexists(v1, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 93, Rule(93).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ruleIndex != 15, Rule(15).
+badCast_notexists(v2, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 334, Rule(334).
+badCast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 142, Rule(142).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 280, Rule(280).
+reachableCast_notexists(v0, v3, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v1, v0, v3, ruleIndex), ruleIndex != 332, Rule(332).
+reachableCast_notexists(v4, v1, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v3, ruleIndex), ruleIndex != 285, Rule(285).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v4, v2, ruleIndex), ruleIndex != 112, Rule(112).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v4, v2, ruleIndex), ruleIndex != 75, Rule(75).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v4, v2, ruleIndex), ruleIndex != 61, Rule(61).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v4, v2, ruleIndex), ruleIndex != 83, Rule(83).
+unsafeDowncast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 43, Rule(43).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v2, ruleIndex), ruleIndex != 55, Rule(55).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 151, Rule(151).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 338, Rule(338).
+badCast_notexists(v4, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v4, v2, ruleIndex), ruleIndex != 322, Rule(322).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 31, Rule(31).
+reachableCast_notexists(v0, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 290, Rule(290).
+badCast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 94, Rule(94).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), badCast_notexists(v2, v1, ruleIndex), ruleIndex != 307, Rule(307).
+ptsVT_notexists(v3, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 222, Rule(222).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 88, Rule(88).
+ptsVT_notexists(v2, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 173, Rule(173).
+badCast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 189, Rule(189).
+reachableCast_notexists(v4, v1, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v4, v2, ruleIndex), ruleIndex != 73, Rule(73).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v2, ruleIndex), ruleIndex != 162, Rule(162).
+ptsVT_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 328, Rule(328).
+reachableCast_notexists(v0, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 198, Rule(198).
+badCast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 95, Rule(95).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), badCast_notexists(v2, v1, ruleIndex), ruleIndex != 194, Rule(194).
+badCast_notexists(v4, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v4, v2, ruleIndex), ruleIndex != 172, Rule(172).
+unsafeDowncast_notexists(v3, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 288, Rule(288).
+ptsVT_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 78, Rule(78).
+reachableCast_notexists(v1, v3, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 110, Rule(110).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v0, ruleIndex), ruleIndex != 161, Rule(161).
+reachableCast_notexists(v2, v1, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 353, Rule(353).
+reachableCast_notexists(v1, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 269, Rule(269).
+ptsVT_notexists(v3, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 108, Rule(108).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v4, v2, ruleIndex), ruleIndex != 125, Rule(125).
+badCast_notexists(v3, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 166, Rule(166).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v2, ruleIndex), ruleIndex != 114, Rule(114).
+reachableCast_notexists(v2, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 279, Rule(279).
+badCast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 17, Rule(17).
+ptsVT_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 148, Rule(148).
+ptsVT_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 205, Rule(205).
+unsafeDowncast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 204, Rule(204).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v4, v2, ruleIndex), ruleIndex != 235, Rule(235).
+ptsVT_notexists(v3, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 309, Rule(309).
+badCast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 100, Rule(100).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 16, Rule(16).
+ptsVT_notexists(v3, v1, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 13, Rule(13).
+reachableCast_notexists(v1, v0, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), ruleIndex != 219, Rule(219).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), ptsVT_notexists(v0, v2, ruleIndex), ruleIndex != 40, Rule(40).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v1, ruleIndex), ruleIndex != 355, Rule(355).
+ptsVT_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 37, Rule(37).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 268, Rule(268).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 145, Rule(145).
+ptsVT_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 181, Rule(181).
+reachableCast_notexists(v2, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 312, Rule(312).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 242, Rule(242).
+badCast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 115, Rule(115).
+badCast_notexists(v3, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v1, v0, v3, ruleIndex), ruleIndex != 123, Rule(123).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 294, Rule(294).
+ptsVT_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 68, Rule(68).
+reachableCast_notexists(v2, v0, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 136, Rule(136).
+ptsVT_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 82, Rule(82).
+ptsVT_notexists(v1, v2, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 217, Rule(217).
+ptsVT_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 215, Rule(215).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 5, Rule(5).
+reachableCast_notexists(v2, v0, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), badCast_notexists(v0, v2, ruleIndex), ruleIndex != 185, Rule(185).
+reachableCast_notexists(v2, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 324, Rule(324).
+ptsVT_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 120, Rule(120).
+badCast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 311, Rule(311).
+badCast_notexists(v3, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 265, Rule(265).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 118, Rule(118).
+ptsVT_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), ruleIndex != 240, Rule(240).
+ptsVT_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 264, Rule(264).
+ptsVT_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 86, Rule(86).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 346, Rule(346).
+reachableCast_notexists(v1, v3, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 186, Rule(186).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 314, Rule(314).
+badCast_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 34, Rule(34).
+reachableCast_notexists(v1, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 277, Rule(277).
+ptsVT_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 30, Rule(30).
+unsafeDowncast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 237, Rule(237).
+ptsVT_notexists(v3, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 116, Rule(116).
+ptsVT_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 126, Rule(126).
+badCast_notexists(v1, v2, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v1, ruleIndex), ruleIndex != 1, Rule(1).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v4, v2, ruleIndex), ruleIndex != 0, Rule(0).
+badCast_notexists(v3, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 192, Rule(192).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), badCast_notexists(v0, v2, ruleIndex), ruleIndex != 318, Rule(318).
+badCast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 225, Rule(225).
+badCast_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 333, Rule(333).
+reachableCast_notexists(v1, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 26, Rule(26).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 169, Rule(169).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 257, Rule(257).
+unsafeDowncast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), ruleIndex != 231, Rule(231).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v2, ruleIndex), ruleIndex != 226, Rule(226).
+badCast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 51, Rule(51).
+reachableCast_notexists(v4, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v4, v2, ruleIndex), ruleIndex != 85, Rule(85).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v2, v4, ruleIndex), ruleIndex != 234, Rule(234).
+reachableCast_notexists(v1, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 60, Rule(60).
+ptsVT_notexists(v3, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 106, Rule(106).
+badCast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 71, Rule(71).
+badCast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 97, Rule(97).
+unsafeDowncast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 41, Rule(41).
+badCast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 107, Rule(107).
+ptsVT_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 45, Rule(45).
+badCast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 304, Rule(304).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v2, v4, ruleIndex), ruleIndex != 191, Rule(191).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v1, ruleIndex), ruleIndex != 260, Rule(260).
+reachableCast_notexists(v1, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 262, Rule(262).
+badCast_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 177, Rule(177).
+reachableCast_notexists(v1, v3, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 336, Rule(336).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v3, v4, ruleIndex), ruleIndex != 99, Rule(99).
+reachableCast_notexists(v2, v0, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 47, Rule(47).
+badCast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v0, ruleIndex), ruleIndex != 184, Rule(184).
+badCast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 132, Rule(132).
+badCast_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 214, Rule(214).
+ptsVT_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 252, Rule(252).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 302, Rule(302).
+reachableCast_notexists(v1, v2, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 209, Rule(209).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 160, Rule(160).
+badCast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 140, Rule(140).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 58, Rule(58).
+badCast_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 283, Rule(283).
+ptsVT_notexists(v2, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 8, Rule(8).
+unsafeDowncast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 92, Rule(92).
+badCast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 329, Rule(329).
+ptsVT_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 284, Rule(284).
+unsafeDowncast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 117, Rule(117).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v4, v2, ruleIndex), ruleIndex != 153, Rule(153).
+badCast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 158, Rule(158).
+badCast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 325, Rule(325).
+reachableCast_notexists(v0, v3, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v0, v1, ruleIndex), ruleIndex != 165, Rule(165).
+badCast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), ruleIndex != 291, Rule(291).
+reachableCast_notexists(v0, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 255, Rule(255).
+badCast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 130, Rule(130).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 128, Rule(128).
+reachableCast_notexists(v1, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 305, Rule(305).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 133, Rule(133).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v0, ruleIndex), ruleIndex != 348, Rule(348).
+badCast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 273, Rule(273).
+reachableCast_notexists(v1, v2, ruleIndex) :- unsafeDowncast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 241, Rule(241).
+reachableCast_notexists(v1, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 167, Rule(167).
+badCast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 70, Rule(70).
+reachableCast_notexists(v1, v2, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), badCast_notexists(v2, v1, ruleIndex), ruleIndex != 11, Rule(11).
+unsafeDowncast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 57, Rule(57).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 135, Rule(135).
+reachableCast_notexists(v0, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 48, Rule(48).
+badCast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 39, Rule(39).
+ptsVT_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 306, Rule(306).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 250, Rule(250).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v3, v4, ruleIndex), ruleIndex != 139, Rule(139).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v2, ruleIndex), ruleIndex != 2, Rule(2).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 171, Rule(171).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), VH_notexists(v3, v4, ruleIndex), ruleIndex != 337, Rule(337).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ruleIndex != 91, Rule(91).
+unsafeDowncast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 310, Rule(310).
+badCast_notexists(v1, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v1, v2, ruleIndex), ruleIndex != 53, Rule(53).
+ptsVT_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 23, Rule(23).
+badCast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 343, Rule(343).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 278, Rule(278).
+badCast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 113, Rule(113).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v4, v2, ruleIndex), ruleIndex != 203, Rule(203).
+reachableCast_notexists(v1, v0, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), ruleIndex != 350, Rule(350).
+reachableCast_notexists(v1, v3, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v0, ruleIndex), ruleIndex != 358, Rule(358).
+badCast_notexists(v2, v0, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 67, Rule(67).
+badCast_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 245, Rule(245).
+ptsVT_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v4, ruleIndex), ruleIndex != 159, Rule(159).
+unsafeDowncast_notexists(v3, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v0, v1, ruleIndex), ruleIndex != 49, Rule(49).
+ptsVT_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 193, Rule(193).
+reachableCast_notexists(v4, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v4, v1, ruleIndex), ruleIndex != 72, Rule(72).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), reachableCast_notexists(v2, v0, ruleIndex), ruleIndex != 344, Rule(344).
+badCast_notexists(v2, v1, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 297, Rule(297).
+reachableCast_notexists(v1, v2, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 249, Rule(249).
+unsafeDowncast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 138, Rule(138).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v0, ruleIndex), ruleIndex != 119, Rule(119).
+badCast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), notSub_notexists(v2, v4, ruleIndex), ruleIndex != 35, Rule(35).
+reachableCast_notexists(v1, v3, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v0, v1, v3, ruleIndex), ruleIndex != 315, Rule(315).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ruleIndex != 155, Rule(155).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 27, Rule(27).
+reachableCast_notexists(v2, v3, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 50, Rule(50).
+badCast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v1, ruleIndex), ruleIndex != 352, Rule(352).
+ptsVT_notexists(v3, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v0, v1, ruleIndex), ruleIndex != 340, Rule(340).
+unsafeDowncast_notexists(v4, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v4, v2, ruleIndex), ruleIndex != 270, Rule(270).
+ptsVT_notexists(v2, v0, ruleIndex) :- reachableCast_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 223, Rule(223).
+unsafeDowncast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 232, Rule(232).
+badCast_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 313, Rule(313).
+reachableCast_notexists(v1, v2, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), VH_notexists(v2, v0, ruleIndex), ruleIndex != 342, Rule(342).
+ptsVT_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 296, Rule(296).
+ptsVT_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v0, v2, ruleIndex), ruleIndex != 103, Rule(103).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), ptsVT_notexists(v2, v1, ruleIndex), ruleIndex != 42, Rule(42).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v2, v4, ruleIndex), ruleIndex != 248, Rule(248).
+unsafeDowncast_notexists(v3, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v3, v4, ruleIndex), ruleIndex != 89, Rule(89).
+badCast_notexists(v1, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v3, v4, ruleIndex), ruleIndex != 164, Rule(164).
+reachableCast_notexists(v1, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), badCast_notexists(v2, v1, ruleIndex), ruleIndex != 258, Rule(258).
+unsafeDowncast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v1, v2, ruleIndex), ruleIndex != 256, Rule(256).
+badCast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 131, Rule(131).
+ptsVT_notexists(v0, v2, ruleIndex) :- VH_notexists(v0, v1, ruleIndex), badCast_notexists(v0, v2, ruleIndex), ruleIndex != 210, Rule(210).
+unsafeDowncast_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), ptsVT_notexists(v3, v4, ruleIndex), ruleIndex != 174, Rule(174).
+unsafeDowncast_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v1, v2, ruleIndex), ruleIndex != 354, Rule(354).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v2, v0, ruleIndex), ruleIndex != 21, Rule(21).
+unsafeDowncast_notexists(v0, v1, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 339, Rule(339).
+badCast_notexists(v3, v1, ruleIndex) :- HT_notexists(v0, v1, ruleIndex), McheckCastInst_notexists(v2, v3, v1, v4, ruleIndex), ruleIndex != 79, Rule(79).
+badCast_notexists(v0, v2, ruleIndex) :- ptsVT_notexists(v0, v1, ruleIndex), unsafeDowncast_notexists(v0, v2, ruleIndex), ruleIndex != 147, Rule(147).
+reachableCast_notexists(v2, v1, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), reachableCast_notexists(v2, v4, ruleIndex), ruleIndex != 224, Rule(224).
+ptsVT_notexists(v0, v2, ruleIndex) :- badCast_notexists(v0, v1, ruleIndex), notSub_notexists(v2, v1, ruleIndex), ruleIndex != 12, Rule(12).
+badCast_notexists(v1, v2, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), unsafeDowncast_notexists(v1, v4, ruleIndex), ruleIndex != 218, Rule(218).
+ptsVT_notexists(v3, v4, ruleIndex) :- McheckCastInst_notexists(v0, v1, v2, v3, ruleIndex), badCast_notexists(v1, v4, ruleIndex), ruleIndex != 211, Rule(211).
+unsafeDowncast_notexists(v2, v1, ruleIndex) :- notSub_notexists(v0, v1, ruleIndex), reachableCast_notexists(v1, v2, ruleIndex), ruleIndex != 22, Rule(22).

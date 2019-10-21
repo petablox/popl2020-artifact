@@ -1,0 +1,26 @@
+.type yrq
+.type date
+
+.decl Rule(n: number)
+.input Rule
+
+.decl LE20130201(v0: date)
+.input LE20130201
+
+.decl GE20130215(v0: date)
+.input GE20130215
+
+.decl input1(v0: yrq, v1: date, v2: date)
+.input input1
+
+.decl ans(v0: yrq)
+.output ans
+
+
+
+ans(v0) :- ans(v0), Rule(0).
+ans(v0) :- ans(v0), ans(v0), Rule(1).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(2).
+ans(v0) :- ans(v0), ans(v1), ans(v1), Rule(3).
+ans(v0) :- ans(v1), ans(v1), ans(v0), Rule(4).
+ans(v0) :- ans(v1), ans(v0), ans(v1), Rule(5).

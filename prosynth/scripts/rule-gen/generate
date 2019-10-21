@@ -1,0 +1,499 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Rule Generation Tool
+
+# Invocation: ./scripts/rule-gen/generate PROBLEM_DIR RULE_WIDTH
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.t: Specifies the signatures of the EDB and IDB relations in the following format:
+#   *Format(Type, Type) specifies an input relation
+#   Format(Type, Type) specifies an output relation
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import json
+import logging
+import os
+import subprocess
+import sys
+import z3
+import random
+import itertools
+import copy
+
+def addVars(s):
+    s = s[:s.index("(")+1] + "v0: " + s[(s.index("(")+1):]
+    count = 1
+    while "," in s:
+        s = s[:s.index(",")] + "@ v" + str(count) + ":" + s[(s.index(",")+1):]
+        count += 1
+    s = s.replace("@", ",")
+    return s
+
+def createAggDef(agg, aggName, ruleName, i):
+    count = 0
+    aggName = aggName[:len(aggName)-1] + ","
+    while "," in aggName:
+        aggName = aggName[:aggName.rfind("(")+1] + "x" + str(count) + "(" + aggName[aggName.index(",")+1:]
+        count += 1
+    aggName = aggName[:aggName.index("(")+1] + aggName[aggName.index("(")+1:].replace("(", ",")
+    aggName = aggName[:len(aggName)-1] + ")"
+
+    count = 0
+    ruleName = ruleName[:len(aggName)-1] + ","
+    while "," in ruleName:
+        if i == count:
+            ruleName = ruleName[:ruleName.rfind("(")+1] + "_" + "(" + ruleName[ruleName.index(",")+1:]
+        else:
+            ruleName = ruleName[:ruleName.rfind("(")+1] + "x" + str(count) + "(" + ruleName[ruleName.index(",")+1:]
+        count += 1
+    ruleName = ruleName[:ruleName.index("(")+1] + ruleName[ruleName.index("(")+1:].replace("(", ",")
+    ruleName = ruleName[:len(ruleName)-1] + ")"
+
+    cRule = aggName + " :- " + ruleName + ", x" + str(i) + " = " + agg + " Z : " + ruleName.replace("_", "Z") + "."
+    return cRule
+
+if len(sys.argv) != 3:
+    print("usage: ./generateRules [PROBLEM DIR] [CHAIN LENGTH]")
+    quit()
+
+scriptPath = sys.argv[0]
+problemDirName = sys.argv[1]
+chainLength = int(sys.argv[2])
+
+maxAggregators = 1  #maximum number of aggregators per rule
+maxInventedArguments = 1  #maximum number of arguments that appear in clauses but not in rule
+maxFunctions = 1 # maximum number of functions per rule
+maxArgPermutations = 100 # maximum number of argument permutations per rule combination
+
+aggregators = {}
+functions = {}
+
+logging.basicConfig(level=logging.INFO, \
+                    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s", \
+                    datefmt="%H:%M:%S")
+
+rules = list()
+types = set()
+
+functionRules = list()
+functionRules.append({"name": "empty", "flag": "function"})
+
+for f in functions:
+    if f == "addition":
+        fr = {"name": "addition", "types": ["number", "number", "number"], "flag":"function"}
+        rules.append(fr)
+        functionRules.append(fr)
+
+with open(problemDirName + '/rules.t') as fin:
+    for line in fin:
+        if line == '':
+            break
+        #allLines.add(line)
+        currRule = {}
+        currRule["name"] = line[:line.index('(')]
+        currRule["types"] = []
+
+        line = line[line.index('(')+1:line.index(')')]
+        for t in line.split(','):
+            currType = t.replace(" ", "")
+            types.add(currType)
+            currRule["types"].append(currType)
+        
+        if currRule["name"][0:1] == '*':
+            currRule["name"] = currRule["name"][1:]
+            currRule["flag"] = "input"
+            rules.append(currRule)
+        else:
+            currRule["flag"] = "output"
+            rules.append(currRule)
+        
+
+
+f = open("rules.dl", "w")
+f_ne = open("rules_notexists.dl", "w")
+f_e = open("rules_exists.dl", "w")
+rn = open("ruleNames.txt", "w")
+
+for t in types:
+    if t != "number":
+        f.write(".type " + t + "\n")
+        f_ne.write(".type " + t + "\n")
+        f_e.write(".type " + t + "\n")
+    #alpsProc.stdin.flush()
+
+f.write("\n")
+f_ne.write("\n")
+f_e.write("\n")
+f.write(".decl Rule(n: number)\n.input Rule\n\n")
+f_ne.write(".decl Rule(n: number)\n.input Rule\n\n")
+f_e.write(".decl Rule(n: number)\n.input Rule\n\n")
+#alpsProc.stdin.flush()
+ne_header_string = ""
+e_header_string = ""
+for r in rules:
+    f.write(".decl " + r["name"] + "(")
+    if r["flag"] == "input":
+        f_ne.write(".decl " + r["name"] + "(")
+    f_e.write(".decl " + r["name"] + "(")
+    ne_header_string += ".decl " + r["name"] + "_notexists("
+    e_header_string += ".decl " + r["name"] + "_exists("
+    relationString = ""
+    count = 0
+    for t in r["types"]:
+        relationString += ("v" + str(count) + ": " + t + ", ")
+        count += 1
+    ne_relationString = relationString
+    e_relationString = relationString
+    ne_relationString += "r: number)"
+    e_relationString += "r: number)"
+    relationString = relationString[:len(relationString)-2] + ")"
+    f.write(relationString + "\n")
+    f_e.write(relationString + "\n")
+    if r["flag"] == "input":
+        f_ne.write(relationString + "\n")
+    ne_header_string += ne_relationString + "\n"
+    e_header_string += e_relationString + "\n"
+    if r["flag"] == "input":
+        f.write(".input " + r["name"] + "\n\n")
+        f_ne.write(".input " + r["name"] + "\n\n")
+        f_e.write(".input " + r["name"] + "\n\n")
+    elif r["flag"] == "output" or r["flag"] == "function":
+        f.write(".output " + r["name"] + "\n\n")
+    ne_header_string += ".output " + r["name"] + "_notexists\n\n"
+    e_header_string += ".output " + r["name"] + "_exists\n\n"
+f_ne.write(ne_header_string)
+f_e.write(e_header_string)
+
+for fun in functions:
+    if fun == "addition":
+        f.write("addition(x, y, z) :- z=x+y.\n")
+        f_ne.write("addition(x, y, z) :- z=x+y.\n")
+        f_e.write("addition(x, y, z) :- z=x+y.\n")
+    elif fun == "subtraction":
+        f.write("subtraction(x, y, z) :- z=x-y.\n")
+        f_ne.write("subtraction(x, y, z) :- z=x-y.\n")
+        f_e.write("subtraction(x, y, z) :- z=x-y.\n")
+
+for a in aggregators:
+    for r in rules:
+        count = 0
+        for t in r["types"]:
+            if t == "number" and r["flag"] != "aggregator" and r["flag"] != "function":
+                ruleName = a + str(count) + "_" + r["name"]
+                ruleString = ruleName + "("
+                argNum = 0
+                for i in list(range(len(r["types"]))):
+                    ruleString += "v" + str(argNum) + ", "
+                    argNum += 1
+                ruleString = ruleString[:len(ruleString)-2] + ") :- "
+                ruleString += r["name"] + "("
+                argNum = 0
+                for i in list(range(len(r["types"]))):
+                    if i != count:
+                        ruleString += "v" + str(argNum) + ", "
+                    else:
+                        ruleString += "_, "
+                    argNum += 1
+                ruleString = ruleString[:len(ruleString)-2] + "), v" + str(count) + " = min Z : " + r["name"] + "("
+                argNum = 0
+                for i in list(range(len(r["types"]))):
+                    if i != count:
+                        ruleString += "v" + str(argNum) + ", "
+                    else:
+                        ruleString += "Z, "
+                    argNum += 1
+                ruleString = ruleString[:len(ruleString)-2] + ")."
+                f.write(ruleString + "\n")
+                f_ne.write(ruleString + "\n")
+                f_e.write(ruleString + "\n")
+                rules.append({"name": ruleName, "types": r["types"], "flag":"aggregator", "originName": r["name"]})
+            count += 1
+f.write("\n")
+f_ne.write("\n")
+f_e.write("\n")
+
+aggIndex = -1
+for idx, r in enumerate(rules):
+    if r["flag"] == "aggregator":
+        aggIndex = idx
+        break
+
+if aggIndex != -1:
+    nonAggRules = rules[:aggIndex]
+    aggRules = rules[aggIndex:]
+    rules = []
+    for r in nonAggRules:
+        rules.append(r)
+        for ar in aggRules:
+            if ar["originName"] == r["name"]:
+                rules.append(ar)
+
+for r in rules:
+    if r["flag"] != "output":
+        ne_ruleString = r["name"] + "_notexists("
+        #e_ruleString = r["name"] + "_exists("
+        argNum = 0
+        for q in list(range(len(r["types"]))):
+            ne_ruleString += "v" + str(argNum) + ", "
+            #e_ruleString += "v" + str(argNum) + ", "
+            argNum += 1
+        ne_ruleString += "r) :- " + r["name"] + "("
+        #e_ruleString += "r) :- " + r["name"] + "("
+
+        argNum = 0
+        for q in list(range(len(r["types"]))):
+            ne_ruleString += "v" + str(argNum) + ", "
+            #e_ruleString += "v" + str(argNum) + ", "
+            argNum += 1
+        ne_ruleString = ne_ruleString[:len(ne_ruleString)-2] + "), Rule(r)."
+        #e_ruleString = e_ruleString[:len(e_ruleString)-2] + "), Rule(r)."
+
+        f_ne.write(ne_ruleString + "\n")
+        #f_e.write(e_ruleString + "\n")
+
+def argsOfType(types, t):
+    argIndices = []
+    for idx, m in enumerate(types):
+        if m == t:
+            argIndices.append(idx)
+    return argIndices
+
+#auxArgs = list()
+#for t in types:
+#    if t == "number":
+#        for i in range(chainLength):
+#            auxArgs.append(t)
+#    else:
+#        auxArgs.append(t)
+
+#print(auxArgs)
+ruleNum = 0
+for idx, r in enumerate(rules):
+    priorRules = list()
+    for canRule in rules[:idx+1]:
+        if canRule["flag"] != "function":
+            priorRules.append(canRule)
+    #print(priorRules)
+    if r["flag"] == "output":
+        for cl in range(chainLength):
+            for noFunctionComb in list(itertools.combinations_with_replacement(priorRules, cl+1)):
+                for fr in functionRules:
+                    comb = noFunctionComb
+                    currMaxInventedArguments = maxInventedArguments
+                    if not fr["name"] == "empty":
+                    #    currMaxInventedArguments = maxInventedArguments
+                    #else:
+                        #currMaxInventedArguments = maxInventedArguments+1
+                        comb = comb + (fr,)
+                    #print(comb)
+                    numAggregators = 0
+                    for clause in comb:
+                        if clause["flag"] == "aggregator":
+                            numAggregators += 1
+                    if numAggregators <= maxAggregators:
+                        neededArgs = 0
+                        #print(comb)
+                        for clause in comb:
+                            neededArgs += len(clause["types"])
+                        print("neededArgs: " + str(neededArgs))
+                        numArgs = len(r["types"])+chainLength+1
+                        print("numArgs: " + str(numArgs))
+                        for ac in list(itertools.combinations_with_replacement(range(numArgs), neededArgs)):
+                            for argComb in set(itertools.permutations(ac)):
+                                #print(argComb)
+                                validAssignment = True
+
+                                #valid assignment only if arg not repeated in clause, e.g. Edge(v0, v0)
+                                startIndex = 0 
+                                for clauseIndex, clause in enumerate(comb): 
+                                    if len(set(argComb[startIndex:startIndex+len(clause["types"])])) != len(argComb[startIndex:startIndex+len(clause["types"])]):
+                                        #f.write("repeated in clause: " + str(clauseIndex) + "\n")
+                                        validAssignment = False
+                                        break
+                                    startIndex += len(clause["types"])
+
+                                #valid assignment only if no args appear exactly once
+                                if validAssignment:
+                                    for an in (range(numArgs)):
+                                        argCount = argComb.count(an)
+                                        #print(argCount)
+                                        if an < len(r["types"]):
+                                            argCount += 1
+                                        if argCount == 1:
+                                            #f.write("Only one occurence of v" + str(an) + "\n")
+                                            validAssignment = False
+                                            break
+
+                                if validAssignment:
+                                    countInventedArgs = 0
+                                    for an in (range(len(types))):
+                                        if argComb.count(len(r["types"])+an) != 0:
+                                            countInventedArgs += 1
+                                    #if countInventedArgs > currMaxInventedArguments:
+                                        #validAssignment = False
+
+                                #valid assignment only if arg types match
+                                #if validAssignment:
+                                #    for argIndex, n in enumerate(argComb):  
+                                #        offset = argIndex
+                                #        for clause in comb:
+                                #            if offset >= len(clause["types"]):
+                                #                offset -= len(clause["types"])
+                                #            else:
+                                #                if n < len(r["types"]):
+                                #                    if clause["types"][offset] != r["types"][n]:
+                                #                        f.write("Didn't match on " + str(n) + "\n")
+                                #                        validAssignment = False
+                                #                        break
+                                                #else:
+                                                #    if clause["types"][offset] != auxArgs[n-len(r["types"])]:
+                                                        #validAssignment = False
+                                                        #print(clause)
+                                                        #print("clause types offset: " + clause["types"][offset])
+                                                        #print("auxArgs types: " + auxArgs[n-len(r["types"])])
+                                                #       break  
+                                #for clause in comb:
+                                    #print(clause["types"])
+
+                                # assumes that var is always same type as itself, and makes sure that all spots that each var is in is of correct type
+                                fullRuleType = list()
+                                for clause in comb:
+                                    fullRuleType.extend(clause["types"])
+                                #print(fullRuleType)
+
+                                for currVar in range(numArgs):
+                                    varType = "none"
+                                    if currVar < len(r["types"]):
+                                        varType = r["types"][currVar]
+                                    for argIndex, n in enumerate(argComb):
+                                        if n == currVar:
+                                            if varType != fullRuleType[argIndex]:
+                                                if varType == "none":
+                                                    varType = fullRuleType[argIndex]
+                                                else:
+                                                    #f.write("var not correct. v" + str(currVar) + " is of type " + varType + ", but found it of type " + fullRuleType[argIndex] + " at offset " + str(argIndex) + "\n")
+                                                    #f.write("[")
+                                                    #for crt in fullRuleType:
+                                                    #    f.write(" " + crt)
+                                                    #f.write("]" + "\n")
+                                                    validAssignment = False
+
+                                # checks that vars are in lexicographical order 
+                                # this is equivalent to Xujie's normalization technique - e.g. Edge(v0, v3, v2) is equivalent to Edge(v0, v4, v2)
+                                highestSeenVar = len(r["types"])-1
+                                for n in argComb:
+                                    if n > highestSeenVar:
+                                        if n != highestSeenVar+1:
+                                            validAssignment = False
+                                            break
+                                        else:
+                                            highestSeenVar = n
+
+                                #currOffset = 0
+                                #clauseIndex = 0
+                                #typeAssignments = {}
+                                #for argIndex, n in enumerate(argComb):
+                                #    typeAssignments[n] = "none"
+                                #for argIndex, n in enumerate(argComb):
+                                #    if argIndex - currOffset > len(clause[clauseIndex]):
+                                #        currOffset += len(clause[clauseIndex])
+                                #        clauseIndex += 1
+                                #    if typeAssignments[n] == "none":
+                                #        typeAssignments[n] = clause[clauseIndex]
+
+                                #valid assignment only if two clauses do not share same set of args in same order, e.g. Edge(v0, v1), Edge(v0, v1)
+                                if validAssignment:
+                                    for clauseRule in rules:
+                                        numSuchClauses = 0
+                                        startIndex = 0
+                                        argLists = set()
+                                        for clause in comb:
+                                            if clause["name"] == clauseRule["name"]:
+                                                numSuchClauses += 1
+                                                argLists.add(argComb[startIndex:startIndex+len(clause["types"])])
+                                            startIndex += len(clause["types"])
+                                            if len(argLists) != numSuchClauses:
+                                                validAssignment = False
+                                            break
+
+                                
+                                #validAssignment = True
+                                #ruleString = ""
+                                #if not validAssignment:
+                                #    ruleString = "BAD: " 
+                                if validAssignment:
+                                    ruleString = r["name"] + "("
+                                    ne_ruleString = r["name"] + "_notexists("
+                                    e_ruleString = r["name"] + "_exists("
+                                    argNum = 0
+                                    for q in list(range(len(r["types"]))):
+                                        ruleString += "v" + str(argNum) + ", "
+                                        ne_ruleString += "v" + str(argNum) + ", "
+                                        e_ruleString += "v" + str(argNum) + ", "
+                                        argNum += 1
+
+                                    ruleString = ruleString[:len(ruleString)-2] + ") :- Rule(" + str(ruleNum) + "), "
+                                    ne_ruleString += "r) :- Rule(" + str(ruleNum) + "), "
+                                    e_ruleString += "r) :- Rule(" + str(ruleNum) + "), "
+
+                                    argNum = 0
+                                    for clause in comb:
+                                        ruleString += clause["name"] + "("
+                                        ne_ruleString += clause["name"] + "_notexists("
+                                        e_ruleString += clause["name"] + "("
+                                        for q in range(len(clause["types"])):
+                                            ruleString += "v" + str(argComb[argNum]) + ", "
+                                            ne_ruleString += "v" + str(argComb[argNum]) + ", "
+                                            e_ruleString += "v" + str(argComb[argNum]) + ", "
+                                            argNum += 1
+                                        ruleString = ruleString[:len(ruleString)-2] + "), "
+                                        ne_ruleString += "r), "
+                                        e_ruleString = e_ruleString[:len(e_ruleString)-2] + "), "
+
+                                    ruleString = ruleString[:len(ruleString)-2] + "."
+                                    ne_ruleString = ne_ruleString[:len(ne_ruleString)-2] + ", Rule(r), r != " + str(ruleNum) + "."
+                                    e_ruleString = e_ruleString[:len(e_ruleString)-2] + ", r = " + str(ruleNum) + "."
+                                    f.write(ruleString + "\n")
+                                    f_e.write(ruleString + "\n")
+
+                                    f_ne.write(ne_ruleString + "\n")
+                                    f_e.write(e_ruleString + "\n")
+                                    for existsCount in range(len(list(comb))):
+                                        e_ruleString = r["name"] + "_exists("
+                                        argNum = 0
+                                        for q in list(range(len(r["types"]))):
+                                            e_ruleString += "v" + str(argNum) + ", "
+                                            argNum += 1
+                                        e_ruleString += "r) :- Rule(" + str(ruleNum) + "), "
+
+                                        argNum = 0
+                                        for currClauseIdx, clause in enumerate(comb):
+                                            if existsCount == currClauseIdx:
+                                                e_ruleString += clause["name"] + "_exists("
+                                            else:
+                                                e_ruleString += clause["name"] + "("
+
+                                            for q in range(len(clause["types"])):
+                                                e_ruleString += "v" + str(argComb[argNum]) + ", "
+                                                argNum += 1
+
+                                            if existsCount == currClauseIdx:
+                                                e_ruleString += "r), "
+                                            else:
+                                                e_ruleString = e_ruleString = e_ruleString[:len(e_ruleString)-2] + "), "
+                                        e_ruleString = e_ruleString[:len(e_ruleString)-2] + ", Rule(r)."
+                                        f_e.write(e_ruleString + "\n")
+
+
+                                    rn.write(str(ruleNum) + "\n")
+                                    ruleNum += 1
+#f.write("done!")
+#f_ne.write("done!")
+f.close()
+f_ne.close()
+rn.close()

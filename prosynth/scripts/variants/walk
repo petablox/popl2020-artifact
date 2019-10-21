@@ -1,0 +1,380 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Provenance-aware Datalog Synthesis Tool
+# The Backtracking Algorithm
+
+# Invocation: ./scripts/variants/walk PROBLEM_DIR
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.dl: Specifies the signatures of the EDB and IDB relations, and the set of candidate rules
+#              Also contains a one-place input relation named Rule(n)
+# 2. ruleNames.txt: Provides the set of valid rule names, which can be used to populate the Rule.facts file
+# 3. R.facts, for each input relation R other than Rule: Specifies the EDB
+# 4. R.expected, for each output relation R: Specified the expected IDB
+# 5. a.out: Executable produced by Souffle with -t explain enabled
+
+# rules.dl and R.facts are expected to be a in a format recognized by Souffle
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import json
+import logging
+import os
+import subprocess
+import sys
+import z3
+
+numWhy = 0
+numWhyNot = 0
+
+scriptPath = sys.argv[0]
+problemDirName = sys.argv[1]
+
+logging.basicConfig(level=logging.INFO, \
+                    format=" %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s", \
+                    datefmt="%H:%M:%S")
+
+# 1a. Load the set of rules and IDB relations
+
+allRuleNames = { name.strip() for name in open(problemDirName + '/ruleNames.txt') if name.strip() }
+allRuleNames = { name: z3.Bool(name) for name in allRuleNames }
+
+def loadRelation(filename):
+    ans = { line.strip() for line in open(filename) if line.strip() }
+    ans = { tuple(line.split('\t')) for line in ans }
+    return ans
+
+idbRelationsExpected = { name for name in os.listdir(problemDirName) if name.endswith('.expected') }
+idbRelationsExpected = { name[:-len('.expected')] for name in idbRelationsExpected }
+idbRelationsExpected = { name: loadRelation(problemDirName + '/' + name + '.expected') for name in idbRelationsExpected }
+
+# 1b. Initialize the constraint solver
+
+solver = z3.Solver()
+solver.add(z3.Bool(True))
+solver.check()
+
+#def satisfyingRuleSet(default):
+    # Determines the set of rules that should be switched on to satisfy the current set of constraints
+    # Includes presently unconstrained rules iff default is true
+    #solver.check() # each solver.check() randomizes z3's output in deterministic fashion
+    #solver.check()
+    #solver.check()
+    #m = solver.model()
+    #ans1 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == True }
+    #ans2 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == None } if default else set()
+    #return ans1 | ans2
+
+#custConstraint = z3.BoolVal(False)
+#for ruleName in { '101' }: custConstraint = z3.Or(custConstraint, allRuleNames[ruleName])
+#solver.add(custConstraint)
+
+#def doSanity():
+    #solver.push()
+    # solver.add(solnConstraint)
+    #solver.check()
+    #solver.model()
+    #solver.pop()
+#doSanity()
+
+# rootConstraint = z3.BoolVal(False)
+# for ruleName in allRuleNames: rootConstraint = z3.Or(allRuleNames[ruleName])
+# solver.add(rootConstraint)
+
+# 1c. Helper method to create Rule.facts file
+
+def printRuleEDB(ruleSet):
+    with open(problemDirName + '/Rule.facts', 'w') as outFile:
+        for name in ruleSet: print(name, file=outFile)
+
+def printSouffleString(relName, t):
+    t = tuple( '"{}"'.format(x) for x in t )
+    t = ', '.join(t)
+    return '{}({})'.format(relName, t)
+
+def parseSouffleString(string):
+    xs = string.split('(')
+    assert(len(xs) == 2)
+    relName = xs[0].strip()
+    xs = xs[1]
+    xs = xs.split(')')[0].strip()
+    xs = [ x.strip() for x in xs.split(',') ]
+    for x in xs: assert(x.startswith('"') and x.endswith('"'))
+    xs = tuple([ x[1:-1].strip() for x in xs ])
+    return (relName, xs)
+
+def cleanProvenanceJson(provenance):
+    def cleanProvenanceJsonInt(p):
+        if type(p) is dict:
+            p = { key: value for key, value in p.items() if key != 'rules' }
+            p = { key: value for key, value in p.items() if key != 'rule-number' }
+            p = { key: cleanProvenanceJsonInt(value) for key, value in p.items() }
+        elif type(p) is list:
+            p = [ cleanProvenanceJsonInt(value) for value in p ]
+        return p
+    provenance = cleanProvenanceJsonInt(provenance)
+    assert(len(provenance) == 1)
+    assert('proof' in provenance)
+    provenance = provenance['proof']['children']
+    return provenance
+
+def squashDesirableConclusions(provenance):
+    if type(provenance) is dict:
+        if 'premises' in provenance:
+            premiseRel, premiseT = parseSouffleString(provenance['premises'])
+            if premiseRel in idbRelationsExpected and premiseT in idbRelationsExpected[premiseRel]:
+                provenance = { 'axiom': provenance['premises'] }
+            else: provenance = { key: squashDesirableConclusions(value) for key, value in provenance.items() }
+    elif type(provenance) is list:
+       provenance = [ squashDesirableConclusions(elem) for elem in provenance ]
+    return provenance
+
+def collectIntermediateConclusions(provenance):
+    if type(provenance) is dict:
+        premises = { premise for key, value in provenance.items() \
+                             for premise in collectIntermediateConclusions(value) }
+        if 'premises' in provenance: premises = premises | { parseSouffleString(provenance['premises']) }
+        return premises
+    elif type(provenance) is list:
+        return { premise for elem in provenance for premise in collectIntermediateConclusions(elem) }
+    else: return set()
+
+def collectRules(provenance):
+    if type(provenance) is dict:
+        rules = { rule for key, value in provenance.items() for rule in collectRules(value) }
+        if 'axiom' in provenance and provenance['axiom'].startswith('Rule'):
+            rules = rules | { provenance['axiom'][len('Rule') + 1:-1] }
+        return rules
+    elif type(provenance) is list:
+        rules = { rule for elem in provenance for rule in collectRules(elem) }
+        return rules
+    else: return set()
+
+
+########################################################################################################################
+# 3. Repeatedly add constraints until a satisfying assignment is found
+
+def solve(rPlus, rMinus, rQuestion, levels):
+    global numWhy
+    global numWhyNot
+    print("Number of assertions: " + str(len(solver.assertions())))
+    print("Levels of recursion: " + str(levels))
+    print("Number why: " + str(numWhy))
+    print("Number whyNot: " + str(numWhyNot))
+    #print(rPlus)
+    pi = z3.Bool(True)
+    for ruleName in rPlus:
+        pi = z3.And(pi, allRuleNames[ruleName])
+    for ruleName in rMinus:
+        pi = z3.And(pi, z3.Not(allRuleNames[ruleName]))
+
+    solver.push()
+    solver.add(pi)
+    if solver.check() == z3.unsat:
+        solver.pop()
+        return None
+    solver.pop()
+
+    #unit propagation
+    for r in rQuestion:
+        currPiNotR = z3.And(pi, z3.Not(allRuleNames[r]))
+        currPiR = z3.And(pi, allRuleNames[r])
+
+        notRUnsat = False
+        rUnsat = False
+        solver.push()
+        solver.add(currPiNotR)
+        if solver.check() == z3.unsat:
+            notRUnsat = True
+            rPlus.add(r)
+            rQuestion = rQuestion - set(r)
+            pi = z3.And(pi, allRuleNames[r])
+        solver.pop()
+
+        solver.push()
+        solver.add(currPiR)
+        if solver.check() == z3.unsat:
+            rUnsat = True
+            rMinus.add(r)
+            rQuestion = rQuestion - set(r)
+            pi = z3.And(pi, z3.Not(allRuleNames[r]))
+        solver.pop()
+
+        #logging.info('notRUnsat then rUnsat:')
+        #logging.info(notRUnsat)
+        #logging.info(rUnsat)
+
+        if notRUnsat and rUnsat:
+            logging.info("Both unsat! Shouldn't happen!")
+
+    rS = rPlus
+    rL = rPlus.union(rQuestion)
+
+    tSRelationTight = True
+    tLRelationTight = True
+
+    printRuleEDB(rS)
+    with subprocess.Popen([ problemDirName + '/a.out', '-F', problemDirName, '-D', problemDirName ], \
+      stdin=subprocess.PIPE, \
+      stdout=subprocess.PIPE, \
+      universal_newlines=True) as souffleProc:
+        while souffleProc.stdout.readline().strip() != '###': pass
+        while souffleProc.stdout.readline().strip() != '###': pass
+        def execSouffleCmd(cmd):
+            #logging.info('prosynth to souffle: ' + cmd)
+            print(cmd, file=souffleProc.stdin)
+            souffleProc.stdin.flush()
+
+            response = [ souffleProc.stdout.readline().strip() ]
+            while response[-1] != '###': response.append(souffleProc.stdout.readline().strip())
+            response = response[:-1]
+            ans = '\n'.join(response)
+            #logging.info('souffle to prosynth: ' + ans)
+            return ans
+        execSouffleCmd('format json')
+
+        def getProvenance(relName, t):
+            provenance1 = execSouffleCmd('explain ' + printSouffleString(relName, t))
+            provenance2 = json.loads(provenance1)
+            provenance3 = cleanProvenanceJson(provenance2)
+            provenance4 = squashDesirableConclusions(provenance3)
+            return provenance4
+
+        def why(relName, t):
+            provenance = getProvenance(relName, t)
+            rules = collectRules(provenance)
+
+            ans = z3.BoolVal(True)
+            currentRuleList = []
+            for ruleName in rules: 
+                currentRuleList.append(ruleName)
+            for ruleName in (currentRuleList):
+                ans = z3.And(ans, allRuleNames[ruleName])
+            return ans
+
+        for relName in idbRelationsExpected:
+            tS = loadRelation(problemDirName + '/' + relName + '.csv')
+            tE = idbRelationsExpected[relName]
+
+            #print(tS)
+            #print(tE)
+            for t in (tS - tE): #why - this subtree makes us to create these undesirable tuples
+                whyRelT = why(relName, t)
+                if whyRelT != None:
+                    solver.add(z3.Not(whyRelT))
+                    numWhy += 1
+
+            if len(tS - tE) != 0:
+                print("returning none since tE is a subset of tS")
+                return None
+            if tS != tE:
+                tSRelationTight = False
+            
+
+    printRuleEDB(rL)
+    with subprocess.Popen([ problemDirName + '/a.out', '-F', problemDirName, '-D', problemDirName ], \
+      stdin=subprocess.PIPE, \
+      stdout=subprocess.PIPE, \
+      universal_newlines=True) as souffleProc:
+        while souffleProc.stdout.readline().strip() != '###': pass
+        while souffleProc.stdout.readline().strip() != '###': pass
+        def execSouffleCmd(cmd):
+            #logging.info('prosynth to souffle: ' + cmd)
+            print(cmd, file=souffleProc.stdin)
+            souffleProc.stdin.flush()
+
+            response = [ souffleProc.stdout.readline().strip() ]
+            while response[-1] != '###': response.append(souffleProc.stdout.readline().strip())
+            response = response[:-1]
+            ans = '\n'.join(response)
+            #logging.info('souffle to prosynth: ' + ans)
+            return ans
+        execSouffleCmd('format json')
+
+        def getProvenance(relName, t):
+            provenance1 = execSouffleCmd('explain ' + printSouffleString(relName, t))
+            provenance2 = json.loads(provenance1)
+            provenance3 = cleanProvenanceJson(provenance2)
+            provenance4 = squashDesirableConclusions(provenance3)
+            return provenance4
+
+        def why(relName, t):
+            provenance = getProvenance(relName, t)
+            rules = collectRules(provenance)
+
+            ans = z3.BoolVal(True)
+            currentRuleList = []
+            for ruleName in rules: 
+                currentRuleList.append(ruleName)
+            for ruleName in (currentRuleList):
+                ans = z3.And(ans, allRuleNames[ruleName])
+            return ans
+
+        def whyNot():
+            ans = z3.BoolVal(False)
+            currentRuleList = []
+            for ruleName in rMinus:
+                currentRuleList.append(ruleName)
+            for ruleName in (currentRuleList):
+                ans = z3.Or(ans, allRuleNames[ruleName])     
+            return ans
+
+
+        for relName in idbRelationsExpected:
+            
+            tL = loadRelation(problemDirName + '/' + relName + '.csv')
+            tE = idbRelationsExpected[relName]
+            
+            for t in (tL - tE): #why - this subtree makes us to create these undesirable tuples
+                whyRelT = why(relName, t)
+                if whyRelT != None:
+                    solver.add(z3.Not(whyRelT))
+                    numWhy += 1
+
+            for t in (tE - tL): #whynot - this subtree cannot create these desirable tuples
+                whyNotRelT = whyNot()
+                if whyNotRelT != None:
+                    solver.add(whyNotRelT)
+                    numWhyNot += 1
+
+            if len(tE - tL) != 0:
+                print("returning none since tL is a subset of tE")
+                return None
+            if tE != tL:
+                tLRelationTight = False
+            
+    if tSRelationTight:
+        return rS
+    if tLRelationTight:
+        return rL
+
+    #print(rQuestion)
+    for r in rQuestion:
+        rSet = set()
+        rSet.add(r)
+        print("adding r: " + str(rSet))
+        solveWithR = solve(rPlus, rMinus.union(rSet), (rQuestion - rSet), (levels+1))
+        if solveWithR != None:
+            return solveWithR
+        return solve(rPlus.union(rSet), rMinus, (rQuestion - rSet), (levels+1))
+    #if tS == 
+    #printRuleEDB(rL)
+    #subproc = subprocess.Popen([ problemDirName + '/a.out', '-F', problemDirName, '-D', problemDirName ], \
+    #  stdin=subprocess.PIPE, \
+    #  stdout=subprocess.PIPE, \
+    #  universal_newlines=True)
+    #subproc.communicate()
+    #tL = loadRelation(problemDirName + '/' + relName + '.csv')
+
+
+myStarterSet = set()
+myStarterSet.add("101")
+
+myQuestionSet = allRuleNames.keys() - myStarterSet
+print(solve(myStarterSet, set(), myQuestionSet, 1))
+
+

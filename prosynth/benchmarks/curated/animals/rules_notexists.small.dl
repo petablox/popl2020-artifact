@@ -1,0 +1,138 @@
+.type C
+.type A
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl hair(v0: C)
+.input hair
+.decl scales(v0: C)
+.input scales
+.decl has_gills(v0: A)
+.input has_gills
+.decl has_eggs(v0: A)
+.input has_eggs
+.decl has_covering(v0: A, v1: C)
+.input has_covering
+.decl homeothermic(v0: A)
+.input homeothermic
+.decl feathers(v0: C)
+.input feathers
+.decl none(v0: C)
+.input none
+.decl has_milk(v0: A)
+.input has_milk
+
+.decl hair_notexists(v0: C, v1: number)
+.output hair_notexists
+.decl scales_notexists(v0: C, v1: number)
+.output scales_notexists
+.decl has_gills_notexists(v0: A, v1: number)
+.output has_gills_notexists
+.decl has_eggs_notexists(v0: A, v1: number)
+.output has_eggs_notexists
+.decl has_covering_notexists(v0: A, v1: C, v2: number)
+.output has_covering_notexists
+.decl homeothermic_notexists(v0: A, v1: number)
+.output homeothermic_notexists
+.decl feathers_notexists(v0: C, v1: number)
+.output feathers_notexists
+.decl none_notexists(v0: C, v1: number)
+.output none_notexists
+.decl has_milk_notexists(v0: A, v1: number)
+.output has_milk_notexists
+
+.decl mammal_notexists(v0: A, v1: number)
+.output mammal_notexists
+.decl fish_notexists(v0: A, v1: number)
+.output fish_notexists
+.decl reptile_notexists(v0: A, v1: number)
+.output reptile_notexists
+.decl bird_notexists(v0: A, v1: number)
+.output bird_notexists
+
+hair_notexists(v0, ruleIndex) :- hair(v0), Rule(ruleIndex).
+scales_notexists(v0, ruleIndex) :- scales(v0), Rule(ruleIndex).
+has_gills_notexists(v0, ruleIndex) :- has_gills(v0), Rule(ruleIndex).
+has_eggs_notexists(v0, ruleIndex) :- has_eggs(v0), Rule(ruleIndex).
+has_covering_notexists(v0, v1, ruleIndex) :- has_covering(v0, v1), Rule(ruleIndex).
+homeothermic_notexists(v0, ruleIndex) :- homeothermic(v0), Rule(ruleIndex).
+feathers_notexists(v0, ruleIndex) :- feathers(v0), Rule(ruleIndex).
+none_notexists(v0, ruleIndex) :- none(v0), Rule(ruleIndex).
+has_milk_notexists(v0, ruleIndex) :- has_milk(v0), Rule(ruleIndex).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_gills_notexists(v0, ruleIndex), ruleIndex != 18, Rule(18).
+reptile_notexists(v0, ruleIndex) :- has_gills_notexists(v0, ruleIndex), ruleIndex != 31, Rule(31).
+bird_notexists(v0, ruleIndex) :- homeothermic_notexists(v0, ruleIndex), ruleIndex != 16, Rule(16).
+reptile_notexists(v1, ruleIndex) :- none_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 61, Rule(61).
+bird_notexists(v0, ruleIndex) :- has_milk_notexists(v0, ruleIndex), ruleIndex != 21, Rule(21).
+fish_notexists(v0, ruleIndex) :- bird_notexists(v0, ruleIndex), has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 48, Rule(48).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_milk_notexists(v0, ruleIndex), ruleIndex != 56, Rule(56).
+mammal_notexists(v0, ruleIndex) :- bird_notexists(v0, ruleIndex), ruleIndex != 67, Rule(67).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), homeothermic_notexists(v0, ruleIndex), ruleIndex != 22, Rule(22).
+bird_notexists(v1, ruleIndex) :- feathers_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 72, Rule(72).
+mammal_notexists(v0, ruleIndex) :- has_gills_notexists(v0, ruleIndex), ruleIndex != 38, Rule(38).
+reptile_notexists(v0, ruleIndex) :- has_eggs_notexists(v0, ruleIndex), ruleIndex != 32, Rule(32).
+mammal_notexists(v1, ruleIndex) :- scales_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 33, Rule(33).
+fish_notexists(v0, ruleIndex) :- bird_notexists(v0, ruleIndex), ruleIndex != 54, Rule(54).
+mammal_notexists(v0, ruleIndex) :- has_milk_notexists(v0, ruleIndex), ruleIndex != 25, Rule(25).
+mammal_notexists(v1, ruleIndex) :- none_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 8, Rule(8).
+reptile_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_eggs_notexists(v0, ruleIndex), ruleIndex != 23, Rule(23).
+bird_notexists(v0, ruleIndex) :- has_eggs_notexists(v0, ruleIndex), ruleIndex != 15, Rule(15).
+reptile_notexists(v0, ruleIndex) :- fish_notexists(v0, ruleIndex), has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 44, Rule(44).
+reptile_notexists(v1, ruleIndex) :- scales_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 24, Rule(24).
+mammal_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), homeothermic_notexists(v0, ruleIndex), ruleIndex != 64, Rule(64).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_milk_notexists(v0, ruleIndex), ruleIndex != 68, Rule(68).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_gills_notexists(v0, ruleIndex), ruleIndex != 51, Rule(51).
+mammal_notexists(v0, ruleIndex) :- has_eggs_notexists(v0, ruleIndex), ruleIndex != 42, Rule(42).
+reptile_notexists(v1, ruleIndex) :- hair_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 58, Rule(58).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 39, Rule(39).
+reptile_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_gills_notexists(v0, ruleIndex), ruleIndex != 7, Rule(7).
+reptile_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 28, Rule(28).
+bird_notexists(v0, ruleIndex) :- fish_notexists(v0, ruleIndex), has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 6, Rule(6).
+fish_notexists(v0, ruleIndex) :- homeothermic_notexists(v0, ruleIndex), ruleIndex != 0, Rule(0).
+fish_notexists(v0, ruleIndex) :- has_milk_notexists(v0, ruleIndex), ruleIndex != 10, Rule(10).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), homeothermic_notexists(v0, ruleIndex), ruleIndex != 20, Rule(20).
+mammal_notexists(v0, ruleIndex) :- fish_notexists(v0, ruleIndex), has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 57, Rule(57).
+reptile_notexists(v0, ruleIndex) :- has_milk_notexists(v0, ruleIndex), ruleIndex != 13, Rule(13).
+reptile_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_milk_notexists(v0, ruleIndex), ruleIndex != 66, Rule(66).
+mammal_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_milk_notexists(v0, ruleIndex), ruleIndex != 36, Rule(36).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_eggs_notexists(v0, ruleIndex), ruleIndex != 4, Rule(4).
+mammal_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), reptile_notexists(v0, ruleIndex), ruleIndex != 55, Rule(55).
+reptile_notexists(v0, ruleIndex) :- mammal_notexists(v0, ruleIndex), ruleIndex != 49, Rule(49).
+mammal_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_gills_notexists(v0, ruleIndex), ruleIndex != 46, Rule(46).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), mammal_notexists(v0, ruleIndex), ruleIndex != 2, Rule(2).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), mammal_notexists(v0, ruleIndex), ruleIndex != 62, Rule(62).
+mammal_notexists(v1, ruleIndex) :- hair_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 5, Rule(5).
+bird_notexists(v1, ruleIndex) :- scales_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 1, Rule(1).
+reptile_notexists(v0, ruleIndex) :- fish_notexists(v0, ruleIndex), ruleIndex != 30, Rule(30).
+bird_notexists(v1, ruleIndex) :- hair_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 59, Rule(59).
+mammal_notexists(v0, ruleIndex) :- bird_notexists(v0, ruleIndex), has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 11, Rule(11).
+mammal_notexists(v1, ruleIndex) :- feathers_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 27, Rule(27).
+reptile_notexists(v1, ruleIndex) :- feathers_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 3, Rule(3).
+fish_notexists(v1, ruleIndex) :- feathers_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 52, Rule(52).
+fish_notexists(v1, ruleIndex) :- none_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 71, Rule(71).
+fish_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), reptile_notexists(v0, ruleIndex), ruleIndex != 14, Rule(14).
+reptile_notexists(v0, ruleIndex) :- bird_notexists(v0, ruleIndex), ruleIndex != 70, Rule(70).
+fish_notexists(v0, ruleIndex) :- has_gills_notexists(v0, ruleIndex), ruleIndex != 53, Rule(53).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), reptile_notexists(v0, ruleIndex), ruleIndex != 29, Rule(29).
+bird_notexists(v0, ruleIndex) :- mammal_notexists(v0, ruleIndex), ruleIndex != 60, Rule(60).
+fish_notexists(v0, ruleIndex) :- mammal_notexists(v0, ruleIndex), ruleIndex != 63, Rule(63).
+bird_notexists(v1, ruleIndex) :- none_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 45, Rule(45).
+fish_notexists(v0, ruleIndex) :- reptile_notexists(v0, ruleIndex), ruleIndex != 50, Rule(50).
+reptile_notexists(v0, ruleIndex) :- bird_notexists(v0, ruleIndex), has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 26, Rule(26).
+reptile_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), mammal_notexists(v0, ruleIndex), ruleIndex != 19, Rule(19).
+reptile_notexists(v0, ruleIndex) :- homeothermic_notexists(v0, ruleIndex), ruleIndex != 43, Rule(43).
+mammal_notexists(v0, ruleIndex) :- fish_notexists(v0, ruleIndex), ruleIndex != 37, Rule(37).
+fish_notexists(v1, ruleIndex) :- hair_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 40, Rule(40).
+mammal_notexists(v0, ruleIndex) :- reptile_notexists(v0, ruleIndex), ruleIndex != 47, Rule(47).
+mammal_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_eggs_notexists(v0, ruleIndex), ruleIndex != 65, Rule(65).
+bird_notexists(v0, ruleIndex) :- has_gills_notexists(v0, ruleIndex), ruleIndex != 73, Rule(73).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), has_eggs_notexists(v0, ruleIndex), ruleIndex != 75, Rule(75).
+fish_notexists(v1, ruleIndex) :- scales_notexists(v0, ruleIndex), has_covering_notexists(v1, v0, ruleIndex), ruleIndex != 35, Rule(35).
+fish_notexists(v0, ruleIndex) :- has_eggs_notexists(v0, ruleIndex), ruleIndex != 34, Rule(34).
+bird_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 41, Rule(41).
+reptile_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), homeothermic_notexists(v0, ruleIndex), ruleIndex != 69, Rule(69).
+mammal_notexists(v0, ruleIndex) :- homeothermic_notexists(v0, ruleIndex), ruleIndex != 12, Rule(12).
+bird_notexists(v0, ruleIndex) :- reptile_notexists(v0, ruleIndex), ruleIndex != 17, Rule(17).
+bird_notexists(v0, ruleIndex) :- fish_notexists(v0, ruleIndex), ruleIndex != 74, Rule(74).
+mammal_notexists(v0, ruleIndex) :- has_covering_notexists(v0, v1, ruleIndex), ruleIndex != 9, Rule(9).

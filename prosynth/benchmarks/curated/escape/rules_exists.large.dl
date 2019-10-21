@@ -1,0 +1,1161 @@
+.type H
+.type Z
+.type M
+.type F
+.type V
+
+.decl Rule(n: number)
+.input Rule
+
+.decl MmethArg(v0: M, v1: Z, v2: V)
+.input MmethArg
+
+.decl MmethRet(v0: M, v1: Z, v2: V)
+.input MmethRet
+
+.decl VH(v0: V, v1: H)
+.input VH
+
+.decl HFH(v0: H, v1: F, v2: H)
+.input HFH
+
+.decl rMH(v0: M, v1: H)
+.decl rRH(v0: M, v1: H)
+.decl rHH(v0: H, v1: H)
+.decl MmethArg_exists(v0: M, v1: Z, v2: V, r: number)
+.output MmethArg_exists
+
+.decl MmethRet_exists(v0: M, v1: Z, v2: V, r: number)
+.output MmethRet_exists
+
+.decl VH_exists(v0: V, v1: H, r: number)
+.output VH_exists
+
+.decl HFH_exists(v0: H, v1: F, v2: H, r: number)
+.output HFH_exists
+
+.decl rMH_exists(v0: M, v1: H, r: number)
+.output rMH_exists
+
+.decl rRH_exists(v0: M, v1: H, r: number)
+.output rRH_exists
+
+.decl rHH_exists(v0: H, v1: H, r: number)
+.output rHH_exists
+
+
+
+rMH(v0, v1) :- rMH(v0, v1), Rule(0).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), r = 0, Rule(0).
+rMH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), Rule(r), Rule(0).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), Rule(1).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), r = 1, Rule(1).
+rMH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v0, v1), Rule(r), Rule(1).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v0, v1, r), Rule(r), Rule(1).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), rMH(v0, v1), Rule(2).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), rMH(v0, v1), r = 2, Rule(2).
+rMH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v0, v1), rMH(v0, v1), Rule(r), Rule(2).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v0, v1, r), rMH(v0, v1), Rule(r), Rule(2).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), rMH_exists(v0, v1, r), Rule(r), Rule(2).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v2, v1), rMH(v2, v1), Rule(3).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v1), rMH(v2, v1), r = 3, Rule(3).
+rMH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v2, v1), rMH(v2, v1), Rule(r), Rule(3).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v2, v1, r), rMH(v2, v1), Rule(r), Rule(3).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v1), rMH_exists(v2, v1, r), Rule(r), Rule(3).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v2, v1), rMH(v0, v1), Rule(4).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v1), rMH(v0, v1), r = 4, Rule(4).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v2, v1), rMH(v0, v1), Rule(r), Rule(4).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v2, v1, r), rMH(v0, v1), Rule(r), Rule(4).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v1), rMH_exists(v0, v1, r), Rule(r), Rule(4).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v0, v1), rMH(v2, v1), Rule(5).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v1), rMH(v2, v1), r = 5, Rule(5).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v0, v1), rMH(v2, v1), Rule(r), Rule(5).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v0, v1, r), rMH(v2, v1), Rule(r), Rule(5).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v1), rMH_exists(v2, v1, r), Rule(r), Rule(5).
+rMH(v0, v1) :- rMH(v0, v1), rMH(v2, v3), rMH(v2, v3), Rule(6).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v3), rMH(v2, v3), r = 6, Rule(6).
+rMH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v2, v3), rMH(v2, v3), Rule(r), Rule(6).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v2, v3, r), rMH(v2, v3), Rule(r), Rule(6).
+rMH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v3), rMH_exists(v2, v3, r), Rule(r), Rule(6).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v2, v3), rMH(v0, v3), Rule(7).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v3), rMH(v0, v3), r = 7, Rule(7).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v2, v3), rMH(v0, v3), Rule(r), Rule(7).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v2, v3, r), rMH(v0, v3), Rule(r), Rule(7).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v3), rMH_exists(v0, v3, r), Rule(r), Rule(7).
+rMH(v0, v1) :- rMH(v2, v1), rMH(v0, v3), rMH(v2, v3), Rule(8).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v3), rMH(v2, v3), r = 8, Rule(8).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v0, v3), rMH(v2, v3), Rule(r), Rule(8).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v0, v3, r), rMH(v2, v3), Rule(r), Rule(8).
+rMH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v3), rMH_exists(v2, v3, r), Rule(r), Rule(8).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v2, v3), rMH(v0, v1), Rule(9).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v3), rMH(v0, v1), r = 9, Rule(9).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v2, v3), rMH(v0, v1), Rule(r), Rule(9).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v2, v3, r), rMH(v0, v1), Rule(r), Rule(9).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v3), rMH_exists(v0, v1, r), Rule(r), Rule(9).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v0, v3), rMH(v2, v1), Rule(10).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v3), rMH(v2, v1), r = 10, Rule(10).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v0, v3), rMH(v2, v1), Rule(r), Rule(10).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v0, v3, r), rMH(v2, v1), Rule(r), Rule(10).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v3), rMH_exists(v2, v1, r), Rule(r), Rule(10).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v2, v1), rMH(v0, v3), Rule(11).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v1), rMH(v0, v3), r = 11, Rule(11).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v2, v1), rMH(v0, v3), Rule(r), Rule(11).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v2, v1, r), rMH(v0, v3), Rule(r), Rule(11).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v1), rMH_exists(v0, v3, r), Rule(r), Rule(11).
+rMH(v0, v1) :- rMH(v2, v3), rMH(v0, v1), rMH(v2, v3), Rule(12).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v1), rMH(v2, v3), r = 12, Rule(12).
+rMH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v0, v1), rMH(v2, v3), Rule(r), Rule(12).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v0, v1, r), rMH(v2, v3), Rule(r), Rule(12).
+rMH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v1), rMH_exists(v2, v3, r), Rule(r), Rule(12).
+rRH(v0, v1) :- rMH(v0, v1), Rule(13).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), r = 13, Rule(13).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), Rule(r), Rule(13).
+rRH(v0, v1) :- rRH(v0, v1), Rule(14).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), r = 14, Rule(14).
+rRH_exists(v0, v1, r) :- rRH_exists(v0, v1, r), Rule(r), Rule(14).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), Rule(15).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), r = 15, Rule(15).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v0, v1), Rule(r), Rule(15).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v0, v1, r), Rule(r), Rule(15).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v0, v1), Rule(16).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v0, v1), r = 16, Rule(16).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rRH(v0, v1), Rule(r), Rule(16).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH_exists(v0, v1, r), Rule(r), Rule(16).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v0, v1), Rule(17).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v0, v1), r = 17, Rule(17).
+rRH_exists(v0, v1, r) :- rRH_exists(v0, v1, r), rRH(v0, v1), Rule(r), Rule(17).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH_exists(v0, v1, r), Rule(r), Rule(17).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), rMH(v0, v1), Rule(18).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), rMH(v0, v1), r = 18, Rule(18).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v0, v1), rMH(v0, v1), Rule(r), Rule(18).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v0, v1, r), rMH(v0, v1), Rule(r), Rule(18).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), rMH_exists(v0, v1, r), Rule(r), Rule(18).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v1), rMH(v2, v1), Rule(19).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v1), rMH(v2, v1), r = 19, Rule(19).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v2, v1), rMH(v2, v1), Rule(r), Rule(19).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v2, v1, r), rMH(v2, v1), Rule(r), Rule(19).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v1), rMH_exists(v2, v1, r), Rule(r), Rule(19).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v1), rMH(v0, v1), Rule(20).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v1), rMH(v0, v1), r = 20, Rule(20).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v2, v1), rMH(v0, v1), Rule(r), Rule(20).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v2, v1, r), rMH(v0, v1), Rule(r), Rule(20).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v1), rMH_exists(v0, v1, r), Rule(r), Rule(20).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v1), rMH(v2, v1), Rule(21).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v1), rMH(v2, v1), r = 21, Rule(21).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v0, v1), rMH(v2, v1), Rule(r), Rule(21).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v0, v1, r), rMH(v2, v1), Rule(r), Rule(21).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v1), rMH_exists(v2, v1, r), Rule(r), Rule(21).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v3), rMH(v2, v3), Rule(22).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v3), rMH(v2, v3), r = 22, Rule(22).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v2, v3), rMH(v2, v3), Rule(r), Rule(22).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v2, v3, r), rMH(v2, v3), Rule(r), Rule(22).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v3), rMH_exists(v2, v3, r), Rule(r), Rule(22).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v3), rMH(v0, v3), Rule(23).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v3), rMH(v0, v3), r = 23, Rule(23).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v2, v3), rMH(v0, v3), Rule(r), Rule(23).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v2, v3, r), rMH(v0, v3), Rule(r), Rule(23).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v3), rMH_exists(v0, v3, r), Rule(r), Rule(23).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v3), rMH(v2, v3), Rule(24).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v3), rMH(v2, v3), r = 24, Rule(24).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v0, v3), rMH(v2, v3), Rule(r), Rule(24).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v0, v3, r), rMH(v2, v3), Rule(r), Rule(24).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v3), rMH_exists(v2, v3, r), Rule(r), Rule(24).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v3), rMH(v0, v1), Rule(25).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v3), rMH(v0, v1), r = 25, Rule(25).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v2, v3), rMH(v0, v1), Rule(r), Rule(25).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v2, v3, r), rMH(v0, v1), Rule(r), Rule(25).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v3), rMH_exists(v0, v1, r), Rule(r), Rule(25).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v3), rMH(v2, v1), Rule(26).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v3), rMH(v2, v1), r = 26, Rule(26).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v0, v3), rMH(v2, v1), Rule(r), Rule(26).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v0, v3, r), rMH(v2, v1), Rule(r), Rule(26).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v3), rMH_exists(v2, v1, r), Rule(r), Rule(26).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v1), rMH(v0, v3), Rule(27).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v1), rMH(v0, v3), r = 27, Rule(27).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v2, v1), rMH(v0, v3), Rule(r), Rule(27).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v2, v1, r), rMH(v0, v3), Rule(r), Rule(27).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v1), rMH_exists(v0, v3, r), Rule(r), Rule(27).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v1), rMH(v2, v3), Rule(28).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v1), rMH(v2, v3), r = 28, Rule(28).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v0, v1), rMH(v2, v3), Rule(r), Rule(28).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v0, v1, r), rMH(v2, v3), Rule(r), Rule(28).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v1), rMH_exists(v2, v3, r), Rule(r), Rule(28).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v0, v1), rRH(v0, v1), Rule(29).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), rRH(v0, v1), r = 29, Rule(29).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v0, v1), rRH(v0, v1), Rule(r), Rule(29).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v0, v1, r), rRH(v0, v1), Rule(r), Rule(29).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v0, v1), rRH_exists(v0, v1, r), Rule(r), Rule(29).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v1), rRH(v2, v1), Rule(30).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v1), rRH(v2, v1), r = 30, Rule(30).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v2, v1), rRH(v2, v1), Rule(r), Rule(30).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v2, v1, r), rRH(v2, v1), Rule(r), Rule(30).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v1), rRH_exists(v2, v1, r), Rule(r), Rule(30).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v1), rRH(v0, v1), Rule(31).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v1), rRH(v0, v1), r = 31, Rule(31).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v2, v1), rRH(v0, v1), Rule(r), Rule(31).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v2, v1, r), rRH(v0, v1), Rule(r), Rule(31).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v1), rRH_exists(v0, v1, r), Rule(r), Rule(31).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v1), rRH(v2, v1), Rule(32).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v1), rRH(v2, v1), r = 32, Rule(32).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v0, v1), rRH(v2, v1), Rule(r), Rule(32).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v0, v1, r), rRH(v2, v1), Rule(r), Rule(32).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v1), rRH_exists(v2, v1, r), Rule(r), Rule(32).
+rRH(v0, v1) :- rMH(v0, v1), rMH(v2, v3), rRH(v2, v3), Rule(33).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v3), rRH(v2, v3), r = 33, Rule(33).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rMH(v2, v3), rRH(v2, v3), Rule(r), Rule(33).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH_exists(v2, v3, r), rRH(v2, v3), Rule(r), Rule(33).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rMH(v2, v3), rRH_exists(v2, v3, r), Rule(r), Rule(33).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v2, v3), rRH(v0, v3), Rule(34).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v3), rRH(v0, v3), r = 34, Rule(34).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v2, v3), rRH(v0, v3), Rule(r), Rule(34).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v2, v3, r), rRH(v0, v3), Rule(r), Rule(34).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v2, v3), rRH_exists(v0, v3, r), Rule(r), Rule(34).
+rRH(v0, v1) :- rMH(v2, v1), rMH(v0, v3), rRH(v2, v3), Rule(35).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v3), rRH(v2, v3), r = 35, Rule(35).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rMH(v0, v3), rRH(v2, v3), Rule(r), Rule(35).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH_exists(v0, v3, r), rRH(v2, v3), Rule(r), Rule(35).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rMH(v0, v3), rRH_exists(v2, v3, r), Rule(r), Rule(35).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v3), rRH(v0, v1), Rule(36).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v3), rRH(v0, v1), r = 36, Rule(36).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v2, v3), rRH(v0, v1), Rule(r), Rule(36).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v2, v3, r), rRH(v0, v1), Rule(r), Rule(36).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v3), rRH_exists(v0, v1, r), Rule(r), Rule(36).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v3), rRH(v2, v1), Rule(37).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v3), rRH(v2, v1), r = 37, Rule(37).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v0, v3), rRH(v2, v1), Rule(r), Rule(37).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v0, v3, r), rRH(v2, v1), Rule(r), Rule(37).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v3), rRH_exists(v2, v1, r), Rule(r), Rule(37).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v2, v1), rRH(v0, v3), Rule(38).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v1), rRH(v0, v3), r = 38, Rule(38).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v2, v1), rRH(v0, v3), Rule(r), Rule(38).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v2, v1, r), rRH(v0, v3), Rule(r), Rule(38).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v2, v1), rRH_exists(v0, v3, r), Rule(r), Rule(38).
+rRH(v0, v1) :- rMH(v2, v3), rMH(v0, v1), rRH(v2, v3), Rule(39).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v1), rRH(v2, v3), r = 39, Rule(39).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rMH(v0, v1), rRH(v2, v3), Rule(r), Rule(39).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH_exists(v0, v1, r), rRH(v2, v3), Rule(r), Rule(39).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rMH(v0, v1), rRH_exists(v2, v3, r), Rule(r), Rule(39).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v0, v1), rRH(v0, v1), Rule(40).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v0, v1), rRH(v0, v1), r = 40, Rule(40).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rRH(v0, v1), rRH(v0, v1), Rule(r), Rule(40).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH_exists(v0, v1, r), rRH(v0, v1), Rule(r), Rule(40).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v0, v1), rRH_exists(v0, v1, r), Rule(r), Rule(40).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v2, v1), rRH(v2, v1), Rule(41).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v2, v1), rRH(v2, v1), r = 41, Rule(41).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rRH(v2, v1), rRH(v2, v1), Rule(r), Rule(41).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH_exists(v2, v1, r), rRH(v2, v1), Rule(r), Rule(41).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v2, v1), rRH_exists(v2, v1, r), Rule(r), Rule(41).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v2, v1), rRH(v0, v1), Rule(42).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v2, v1), rRH(v0, v1), r = 42, Rule(42).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rRH(v2, v1), rRH(v0, v1), Rule(r), Rule(42).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH_exists(v2, v1, r), rRH(v0, v1), Rule(r), Rule(42).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v2, v1), rRH_exists(v0, v1, r), Rule(r), Rule(42).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v0, v1), rRH(v2, v1), Rule(43).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v0, v1), rRH(v2, v1), r = 43, Rule(43).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rRH(v0, v1), rRH(v2, v1), Rule(r), Rule(43).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH_exists(v0, v1, r), rRH(v2, v1), Rule(r), Rule(43).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v0, v1), rRH_exists(v2, v1, r), Rule(r), Rule(43).
+rRH(v0, v1) :- rMH(v0, v1), rRH(v2, v3), rRH(v2, v3), Rule(44).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v2, v3), rRH(v2, v3), r = 44, Rule(44).
+rRH_exists(v0, v1, r) :- rMH_exists(v0, v1, r), rRH(v2, v3), rRH(v2, v3), Rule(r), Rule(44).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH_exists(v2, v3, r), rRH(v2, v3), Rule(r), Rule(44).
+rRH_exists(v0, v1, r) :- rMH(v0, v1), rRH(v2, v3), rRH_exists(v2, v3, r), Rule(r), Rule(44).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v2, v3), rRH(v0, v3), Rule(45).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v2, v3), rRH(v0, v3), r = 45, Rule(45).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rRH(v2, v3), rRH(v0, v3), Rule(r), Rule(45).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH_exists(v2, v3, r), rRH(v0, v3), Rule(r), Rule(45).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v2, v3), rRH_exists(v0, v3, r), Rule(r), Rule(45).
+rRH(v0, v1) :- rMH(v2, v1), rRH(v0, v3), rRH(v2, v3), Rule(46).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v0, v3), rRH(v2, v3), r = 46, Rule(46).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v1, r), rRH(v0, v3), rRH(v2, v3), Rule(r), Rule(46).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH_exists(v0, v3, r), rRH(v2, v3), Rule(r), Rule(46).
+rRH_exists(v0, v1, r) :- rMH(v2, v1), rRH(v0, v3), rRH_exists(v2, v3, r), Rule(r), Rule(46).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v2, v3), rRH(v0, v1), Rule(47).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v2, v3), rRH(v0, v1), r = 47, Rule(47).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rRH(v2, v3), rRH(v0, v1), Rule(r), Rule(47).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH_exists(v2, v3, r), rRH(v0, v1), Rule(r), Rule(47).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v2, v3), rRH_exists(v0, v1, r), Rule(r), Rule(47).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v0, v3), rRH(v2, v1), Rule(48).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v0, v3), rRH(v2, v1), r = 48, Rule(48).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rRH(v0, v3), rRH(v2, v1), Rule(r), Rule(48).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH_exists(v0, v3, r), rRH(v2, v1), Rule(r), Rule(48).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v0, v3), rRH_exists(v2, v1, r), Rule(r), Rule(48).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v2, v1), rRH(v0, v3), Rule(49).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v2, v1), rRH(v0, v3), r = 49, Rule(49).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rRH(v2, v1), rRH(v0, v3), Rule(r), Rule(49).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH_exists(v2, v1, r), rRH(v0, v3), Rule(r), Rule(49).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v2, v1), rRH_exists(v0, v3, r), Rule(r), Rule(49).
+rRH(v0, v1) :- rMH(v2, v3), rRH(v0, v1), rRH(v2, v3), Rule(50).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v0, v1), rRH(v2, v3), r = 50, Rule(50).
+rRH_exists(v0, v1, r) :- rMH_exists(v2, v3, r), rRH(v0, v1), rRH(v2, v3), Rule(r), Rule(50).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH_exists(v0, v1, r), rRH(v2, v3), Rule(r), Rule(50).
+rRH_exists(v0, v1, r) :- rMH(v2, v3), rRH(v0, v1), rRH_exists(v2, v3, r), Rule(r), Rule(50).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v0, v1), rRH(v0, v1), Rule(51).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v0, v1), rRH(v0, v1), r = 51, Rule(51).
+rRH_exists(v0, v1, r) :- rRH_exists(v0, v1, r), rRH(v0, v1), rRH(v0, v1), Rule(r), Rule(51).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH_exists(v0, v1, r), rRH(v0, v1), Rule(r), Rule(51).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v0, v1), rRH_exists(v0, v1, r), Rule(r), Rule(51).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v2, v1), rRH(v2, v1), Rule(52).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v2, v1), rRH(v2, v1), r = 52, Rule(52).
+rRH_exists(v0, v1, r) :- rRH_exists(v0, v1, r), rRH(v2, v1), rRH(v2, v1), Rule(r), Rule(52).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH_exists(v2, v1, r), rRH(v2, v1), Rule(r), Rule(52).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v2, v1), rRH_exists(v2, v1, r), Rule(r), Rule(52).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v2, v1), rRH(v0, v1), Rule(53).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v2, v1), rRH(v0, v1), r = 53, Rule(53).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v1, r), rRH(v2, v1), rRH(v0, v1), Rule(r), Rule(53).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH_exists(v2, v1, r), rRH(v0, v1), Rule(r), Rule(53).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v2, v1), rRH_exists(v0, v1, r), Rule(r), Rule(53).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v0, v1), rRH(v2, v1), Rule(54).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v0, v1), rRH(v2, v1), r = 54, Rule(54).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v1, r), rRH(v0, v1), rRH(v2, v1), Rule(r), Rule(54).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH_exists(v0, v1, r), rRH(v2, v1), Rule(r), Rule(54).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v0, v1), rRH_exists(v2, v1, r), Rule(r), Rule(54).
+rRH(v0, v1) :- rRH(v0, v1), rRH(v2, v3), rRH(v2, v3), Rule(55).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v2, v3), rRH(v2, v3), r = 55, Rule(55).
+rRH_exists(v0, v1, r) :- rRH_exists(v0, v1, r), rRH(v2, v3), rRH(v2, v3), Rule(r), Rule(55).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH_exists(v2, v3, r), rRH(v2, v3), Rule(r), Rule(55).
+rRH_exists(v0, v1, r) :- rRH(v0, v1), rRH(v2, v3), rRH_exists(v2, v3, r), Rule(r), Rule(55).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v2, v3), rRH(v0, v3), Rule(56).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v2, v3), rRH(v0, v3), r = 56, Rule(56).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v1, r), rRH(v2, v3), rRH(v0, v3), Rule(r), Rule(56).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH_exists(v2, v3, r), rRH(v0, v3), Rule(r), Rule(56).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v2, v3), rRH_exists(v0, v3, r), Rule(r), Rule(56).
+rRH(v0, v1) :- rRH(v2, v1), rRH(v0, v3), rRH(v2, v3), Rule(57).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v0, v3), rRH(v2, v3), r = 57, Rule(57).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v1, r), rRH(v0, v3), rRH(v2, v3), Rule(r), Rule(57).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH_exists(v0, v3, r), rRH(v2, v3), Rule(r), Rule(57).
+rRH_exists(v0, v1, r) :- rRH(v2, v1), rRH(v0, v3), rRH_exists(v2, v3, r), Rule(r), Rule(57).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v2, v3), rRH(v0, v1), Rule(58).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v2, v3), rRH(v0, v1), r = 58, Rule(58).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v3, r), rRH(v2, v3), rRH(v0, v1), Rule(r), Rule(58).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH_exists(v2, v3, r), rRH(v0, v1), Rule(r), Rule(58).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v2, v3), rRH_exists(v0, v1, r), Rule(r), Rule(58).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v0, v3), rRH(v2, v1), Rule(59).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v0, v3), rRH(v2, v1), r = 59, Rule(59).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v3, r), rRH(v0, v3), rRH(v2, v1), Rule(r), Rule(59).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH_exists(v0, v3, r), rRH(v2, v1), Rule(r), Rule(59).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v0, v3), rRH_exists(v2, v1, r), Rule(r), Rule(59).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v2, v1), rRH(v0, v3), Rule(60).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v2, v1), rRH(v0, v3), r = 60, Rule(60).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v3, r), rRH(v2, v1), rRH(v0, v3), Rule(r), Rule(60).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH_exists(v2, v1, r), rRH(v0, v3), Rule(r), Rule(60).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v2, v1), rRH_exists(v0, v3, r), Rule(r), Rule(60).
+rRH(v0, v1) :- rRH(v2, v3), rRH(v0, v1), rRH(v2, v3), Rule(61).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v0, v1), rRH(v2, v3), r = 61, Rule(61).
+rRH_exists(v0, v1, r) :- rRH_exists(v2, v3, r), rRH(v0, v1), rRH(v2, v3), Rule(r), Rule(61).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH_exists(v0, v1, r), rRH(v2, v3), Rule(r), Rule(61).
+rRH_exists(v0, v1, r) :- rRH(v2, v3), rRH(v0, v1), rRH_exists(v2, v3, r), Rule(r), Rule(61).
+rHH(v0, v1) :- rHH(v0, v1), Rule(62).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), r = 62, Rule(62).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), Rule(r), Rule(62).
+rHH(v0, v1) :- rHH(v1, v0), Rule(63).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), r = 63, Rule(63).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), Rule(r), Rule(63).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v0), Rule(64).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v0), r = 64, Rule(64).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v0), Rule(r), Rule(64).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v0, r), Rule(r), Rule(64).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v1), Rule(65).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v1), r = 65, Rule(65).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v1), Rule(r), Rule(65).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v1, r), Rule(r), Rule(65).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v0), Rule(66).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v0), r = 66, Rule(66).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v0), Rule(r), Rule(66).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v0, r), Rule(r), Rule(66).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v1), Rule(67).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v1), r = 67, Rule(67).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v1), Rule(r), Rule(67).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v1, r), Rule(r), Rule(67).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), Rule(68).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), r = 68, Rule(68).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(68).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(68).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), Rule(69).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), r = 69, Rule(69).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(69).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(69).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), Rule(70).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), r = 70, Rule(70).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(70).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(70).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), Rule(71).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), r = 71, Rule(71).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(71).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(71).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), Rule(72).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), r = 72, Rule(72).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(72).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(72).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), Rule(73).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), r = 73, Rule(73).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(73).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(73).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), Rule(74).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), r = 74, Rule(74).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(74).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(74).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), Rule(75).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), r = 75, Rule(75).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(75).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(75).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v1), rHH(v1, v0), Rule(76).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v1), rHH(v1, v0), r = 76, Rule(76).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v1), rHH(v1, v0), Rule(r), Rule(76).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v1, r), rHH(v1, v0), Rule(r), Rule(76).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v1), rHH_exists(v1, v0, r), Rule(r), Rule(76).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v1), rHH(v0, v1), Rule(77).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v1), rHH(v0, v1), r = 77, Rule(77).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v1), rHH(v0, v1), Rule(r), Rule(77).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v1, r), rHH(v0, v1), Rule(r), Rule(77).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v1), rHH_exists(v0, v1, r), Rule(r), Rule(77).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v1), rHH(v1, v0), Rule(78).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v1), rHH(v1, v0), r = 78, Rule(78).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v1), rHH(v1, v0), Rule(r), Rule(78).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v1, r), rHH(v1, v0), Rule(r), Rule(78).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v1), rHH_exists(v1, v0, r), Rule(r), Rule(78).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v0), rHH(v0, v1), Rule(79).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v0), rHH(v0, v1), r = 79, Rule(79).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v0), rHH(v0, v1), Rule(r), Rule(79).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v0, r), rHH(v0, v1), Rule(r), Rule(79).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v0), rHH_exists(v0, v1, r), Rule(r), Rule(79).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v0), rHH(v1, v0), Rule(80).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v0), rHH(v1, v0), r = 80, Rule(80).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v0), rHH(v1, v0), Rule(r), Rule(80).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v0, r), rHH(v1, v0), Rule(r), Rule(80).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v0), rHH_exists(v1, v0, r), Rule(r), Rule(80).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v0), rHH(v0, v1), Rule(81).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v0), rHH(v0, v1), r = 81, Rule(81).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v0), rHH(v0, v1), Rule(r), Rule(81).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v0, r), rHH(v0, v1), Rule(r), Rule(81).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v0), rHH_exists(v0, v1, r), Rule(r), Rule(81).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v0), rHH(v1, v0), Rule(82).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v0), rHH(v1, v0), r = 82, Rule(82).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v0), rHH(v1, v0), Rule(r), Rule(82).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v0, r), rHH(v1, v0), Rule(r), Rule(82).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v0), rHH_exists(v1, v0, r), Rule(r), Rule(82).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v1), rHH(v0, v1), Rule(83).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v1), rHH(v0, v1), r = 83, Rule(83).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v1), rHH(v0, v1), Rule(r), Rule(83).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v1, r), rHH(v0, v1), Rule(r), Rule(83).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v1), rHH_exists(v0, v1, r), Rule(r), Rule(83).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v0, v2), Rule(84).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH(v0, v2), r = 84, Rule(84).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v1), rHH(v0, v2), Rule(r), Rule(84).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v1, r), rHH(v0, v2), Rule(r), Rule(84).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH_exists(v0, v2, r), Rule(r), Rule(84).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v2, v0), Rule(85).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH(v2, v0), r = 85, Rule(85).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v1), rHH(v2, v0), Rule(r), Rule(85).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v1, r), rHH(v2, v0), Rule(r), Rule(85).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH_exists(v2, v0, r), Rule(r), Rule(85).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v0, v2), Rule(86).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH(v0, v2), r = 86, Rule(86).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v0), rHH(v0, v2), Rule(r), Rule(86).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v0, r), rHH(v0, v2), Rule(r), Rule(86).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH_exists(v0, v2, r), Rule(r), Rule(86).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v2, v0), Rule(87).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH(v2, v0), r = 87, Rule(87).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v0), rHH(v2, v0), Rule(r), Rule(87).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v0, r), rHH(v2, v0), Rule(r), Rule(87).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH_exists(v2, v0, r), Rule(r), Rule(87).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v0, v1), Rule(88).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH(v0, v1), r = 88, Rule(88).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v2), rHH(v0, v1), Rule(r), Rule(88).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v2, r), rHH(v0, v1), Rule(r), Rule(88).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH_exists(v0, v1, r), Rule(r), Rule(88).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v0, v2), Rule(89).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH(v0, v2), r = 89, Rule(89).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v0), rHH(v0, v2), Rule(r), Rule(89).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v0, r), rHH(v0, v2), Rule(r), Rule(89).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH_exists(v0, v2, r), Rule(r), Rule(89).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v2, v0), Rule(90).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH(v2, v0), r = 90, Rule(90).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v0), rHH(v2, v0), Rule(r), Rule(90).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v0, r), rHH(v2, v0), Rule(r), Rule(90).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH_exists(v2, v0, r), Rule(r), Rule(90).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v0, v2), Rule(91).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH(v0, v2), r = 91, Rule(91).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v2), rHH(v0, v2), Rule(r), Rule(91).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v2, r), rHH(v0, v2), Rule(r), Rule(91).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH_exists(v0, v2, r), Rule(r), Rule(91).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v2, v0), Rule(92).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH(v2, v0), r = 92, Rule(92).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v2), rHH(v2, v0), Rule(r), Rule(92).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v2, r), rHH(v2, v0), Rule(r), Rule(92).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH_exists(v2, v0, r), Rule(r), Rule(92).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v0, v1), Rule(93).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH(v0, v1), r = 93, Rule(93).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v0), rHH(v0, v1), Rule(r), Rule(93).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v0, r), rHH(v0, v1), Rule(r), Rule(93).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH_exists(v0, v1, r), Rule(r), Rule(93).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v1, v0), Rule(94).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH(v1, v0), r = 94, Rule(94).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v2), rHH(v1, v0), Rule(r), Rule(94).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v2, r), rHH(v1, v0), Rule(r), Rule(94).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH_exists(v1, v0, r), Rule(r), Rule(94).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v1, v0), Rule(95).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH(v1, v0), r = 95, Rule(95).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v0), rHH(v1, v0), Rule(r), Rule(95).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v0, r), rHH(v1, v0), Rule(r), Rule(95).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH_exists(v1, v0, r), Rule(r), Rule(95).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v0, v2), Rule(96).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH(v0, v2), r = 96, Rule(96).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v1), rHH(v0, v2), Rule(r), Rule(96).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v1, r), rHH(v0, v2), Rule(r), Rule(96).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH_exists(v0, v2, r), Rule(r), Rule(96).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v2, v0), Rule(97).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH(v2, v0), r = 97, Rule(97).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v1), rHH(v2, v0), Rule(r), Rule(97).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v1, r), rHH(v2, v0), Rule(r), Rule(97).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH_exists(v2, v0, r), Rule(r), Rule(97).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v0, v1), Rule(98).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH(v0, v1), r = 98, Rule(98).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v2), rHH(v0, v1), Rule(r), Rule(98).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v2, r), rHH(v0, v1), Rule(r), Rule(98).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH_exists(v0, v1, r), Rule(r), Rule(98).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v1, v0), Rule(99).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH(v1, v0), r = 99, Rule(99).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v2), rHH(v1, v0), Rule(r), Rule(99).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v2, r), rHH(v1, v0), Rule(r), Rule(99).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH_exists(v1, v0, r), Rule(r), Rule(99).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v0, v2), Rule(100).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH(v0, v2), r = 100, Rule(100).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v0), rHH(v0, v2), Rule(r), Rule(100).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v0, r), rHH(v0, v2), Rule(r), Rule(100).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH_exists(v0, v2, r), Rule(r), Rule(100).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v2, v0), Rule(101).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH(v2, v0), r = 101, Rule(101).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v0), rHH(v2, v0), Rule(r), Rule(101).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v0, r), rHH(v2, v0), Rule(r), Rule(101).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH_exists(v2, v0, r), Rule(r), Rule(101).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v0, v1), Rule(102).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH(v0, v1), r = 102, Rule(102).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v0), rHH(v0, v1), Rule(r), Rule(102).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v0, r), rHH(v0, v1), Rule(r), Rule(102).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH_exists(v0, v1, r), Rule(r), Rule(102).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v0, v2), Rule(103).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH(v0, v2), r = 103, Rule(103).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v2), rHH(v0, v2), Rule(r), Rule(103).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v2, r), rHH(v0, v2), Rule(r), Rule(103).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH_exists(v0, v2, r), Rule(r), Rule(103).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v2, v0), Rule(104).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH(v2, v0), r = 104, Rule(104).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v2), rHH(v2, v0), Rule(r), Rule(104).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v2, r), rHH(v2, v0), Rule(r), Rule(104).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH_exists(v2, v0, r), Rule(r), Rule(104).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v0, v2), Rule(105).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH(v0, v2), r = 105, Rule(105).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v0), rHH(v0, v2), Rule(r), Rule(105).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v0, r), rHH(v0, v2), Rule(r), Rule(105).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH_exists(v0, v2, r), Rule(r), Rule(105).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v2, v0), Rule(106).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH(v2, v0), r = 106, Rule(106).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v0), rHH(v2, v0), Rule(r), Rule(106).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v0, r), rHH(v2, v0), Rule(r), Rule(106).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH_exists(v2, v0, r), Rule(r), Rule(106).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v1, v0), Rule(107).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH(v1, v0), r = 107, Rule(107).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v0), rHH(v1, v0), Rule(r), Rule(107).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v0, r), rHH(v1, v0), Rule(r), Rule(107).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH_exists(v1, v0, r), Rule(r), Rule(107).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v1, v2), Rule(108).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH(v1, v2), r = 108, Rule(108).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v2), rHH(v1, v2), Rule(r), Rule(108).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(108).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(108).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v2, v0), Rule(109).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH(v2, v0), r = 109, Rule(109).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v0), rHH(v2, v0), Rule(r), Rule(109).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v0, r), rHH(v2, v0), Rule(r), Rule(109).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH_exists(v2, v0, r), Rule(r), Rule(109).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v0, v2), Rule(110).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH(v0, v2), r = 110, Rule(110).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v2), rHH(v0, v2), Rule(r), Rule(110).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(110).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(110).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v1, v0), Rule(111).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH(v1, v0), r = 111, Rule(111).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), rHH(v1, v0), Rule(r), Rule(111).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), rHH(v1, v0), Rule(r), Rule(111).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH_exists(v1, v0, r), Rule(r), Rule(111).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v1, v0), Rule(112).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH(v1, v0), r = 112, Rule(112).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), rHH(v1, v0), Rule(r), Rule(112).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), rHH(v1, v0), Rule(r), Rule(112).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH_exists(v1, v0, r), Rule(r), Rule(112).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v0, v2), Rule(113).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH(v0, v2), r = 113, Rule(113).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v1), rHH(v0, v2), Rule(r), Rule(113).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v1, r), rHH(v0, v2), Rule(r), Rule(113).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH_exists(v0, v2, r), Rule(r), Rule(113).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v1, v2), Rule(114).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH(v1, v2), r = 114, Rule(114).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v0), rHH(v1, v2), Rule(r), Rule(114).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v0, r), rHH(v1, v2), Rule(r), Rule(114).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH_exists(v1, v2, r), Rule(r), Rule(114).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v0, v2), Rule(115).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH(v0, v2), r = 115, Rule(115).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v1), rHH(v0, v2), Rule(r), Rule(115).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v1, r), rHH(v0, v2), Rule(r), Rule(115).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH_exists(v0, v2, r), Rule(r), Rule(115).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v2, v1), Rule(116).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH(v2, v1), r = 116, Rule(116).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v1), rHH(v2, v1), Rule(r), Rule(116).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v1, r), rHH(v2, v1), Rule(r), Rule(116).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH_exists(v2, v1, r), Rule(r), Rule(116).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v0, v1), Rule(117).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH(v0, v1), r = 117, Rule(117).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), rHH(v0, v1), Rule(r), Rule(117).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), rHH(v0, v1), Rule(r), Rule(117).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH_exists(v0, v1, r), Rule(r), Rule(117).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v0, v1), Rule(118).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH(v0, v1), r = 118, Rule(118).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), rHH(v0, v1), Rule(r), Rule(118).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), rHH(v0, v1), Rule(r), Rule(118).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH_exists(v0, v1, r), Rule(r), Rule(118).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v2, v1), Rule(119).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH(v2, v1), r = 119, Rule(119).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v0), rHH(v2, v1), Rule(r), Rule(119).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(119).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(119).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v0, v2), rHH(v2, v1), Rule(120).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH(v2, v1), r = 120, Rule(120).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v0, v2), rHH(v2, v1), Rule(r), Rule(120).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(120).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(120).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v0, v1), Rule(121).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH(v0, v1), r = 121, Rule(121).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), rHH(v0, v1), Rule(r), Rule(121).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), rHH(v0, v1), Rule(r), Rule(121).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH_exists(v0, v1, r), Rule(r), Rule(121).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v0, v2), Rule(122).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH(v0, v2), r = 122, Rule(122).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v1), rHH(v0, v2), Rule(r), Rule(122).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(122).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(122).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v0, v2), Rule(123).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH(v0, v2), r = 123, Rule(123).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v2), rHH(v0, v2), Rule(r), Rule(123).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(123).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(123).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v0, v2), Rule(124).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH(v0, v2), r = 124, Rule(124).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v1), rHH(v0, v2), Rule(r), Rule(124).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(124).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(124).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v1, v0), Rule(125).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH(v1, v0), r = 125, Rule(125).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), rHH(v1, v0), Rule(r), Rule(125).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), rHH(v1, v0), Rule(r), Rule(125).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH_exists(v1, v0, r), Rule(r), Rule(125).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v0, v2), Rule(126).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH(v0, v2), r = 126, Rule(126).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v0), rHH(v0, v2), Rule(r), Rule(126).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v0, r), rHH(v0, v2), Rule(r), Rule(126).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH_exists(v0, v2, r), Rule(r), Rule(126).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v1, v0), Rule(127).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH(v1, v0), r = 127, Rule(127).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), rHH(v1, v0), Rule(r), Rule(127).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), rHH(v1, v0), Rule(r), Rule(127).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH_exists(v1, v0, r), Rule(r), Rule(127).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v1, v0), Rule(128).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH(v1, v0), r = 128, Rule(128).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), rHH(v1, v0), Rule(r), Rule(128).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), rHH(v1, v0), Rule(r), Rule(128).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH_exists(v1, v0, r), Rule(r), Rule(128).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v0), rHH(v2, v1), Rule(129).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH(v2, v1), r = 129, Rule(129).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v0), rHH(v2, v1), Rule(r), Rule(129).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v0, r), rHH(v2, v1), Rule(r), Rule(129).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v0), rHH_exists(v2, v1, r), Rule(r), Rule(129).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v1, v2), Rule(130).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH(v1, v2), r = 130, Rule(130).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v1), rHH(v1, v2), Rule(r), Rule(130).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v1, r), rHH(v1, v2), Rule(r), Rule(130).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH_exists(v1, v2, r), Rule(r), Rule(130).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v0, v2), Rule(131).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH(v0, v2), r = 131, Rule(131).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v0), rHH(v0, v2), Rule(r), Rule(131).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v0, r), rHH(v0, v2), Rule(r), Rule(131).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH_exists(v0, v2, r), Rule(r), Rule(131).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v1, v2), Rule(132).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH(v1, v2), r = 132, Rule(132).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v0), rHH(v1, v2), Rule(r), Rule(132).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v0, r), rHH(v1, v2), Rule(r), Rule(132).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH_exists(v1, v2, r), Rule(r), Rule(132).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v0, v1), Rule(133).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH(v0, v1), r = 133, Rule(133).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), rHH(v0, v1), Rule(r), Rule(133).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), rHH(v0, v1), Rule(r), Rule(133).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH_exists(v0, v1, r), Rule(r), Rule(133).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v2, v0), Rule(134).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH(v2, v0), r = 134, Rule(134).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v1), rHH(v2, v0), Rule(r), Rule(134).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v1, r), rHH(v2, v0), Rule(r), Rule(134).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH_exists(v2, v0, r), Rule(r), Rule(134).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v1, v2), Rule(135).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH(v1, v2), r = 135, Rule(135).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v2), rHH(v1, v2), Rule(r), Rule(135).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(135).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(135).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v0, v1), Rule(136).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH(v0, v1), r = 136, Rule(136).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), rHH(v0, v1), Rule(r), Rule(136).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), rHH(v0, v1), Rule(r), Rule(136).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH_exists(v0, v1, r), Rule(r), Rule(136).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v2, v0), Rule(137).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH(v2, v0), r = 137, Rule(137).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v2), rHH(v2, v0), Rule(r), Rule(137).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(137).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(137).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v0, v1), Rule(138).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH(v0, v1), r = 138, Rule(138).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), rHH(v0, v1), Rule(r), Rule(138).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), rHH(v0, v1), Rule(r), Rule(138).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH_exists(v0, v1, r), Rule(r), Rule(138).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v2, v0), Rule(139).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH(v2, v0), r = 139, Rule(139).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v1), rHH(v2, v0), Rule(r), Rule(139).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(139).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(139).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v1, v2), Rule(140).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH(v1, v2), r = 140, Rule(140).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v0), rHH(v1, v2), Rule(r), Rule(140).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(140).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(140).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v2, v0), Rule(141).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH(v2, v0), r = 141, Rule(141).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v2), rHH(v2, v0), Rule(r), Rule(141).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(141).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(141).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v2, v0), Rule(142).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH(v2, v0), r = 142, Rule(142).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v1), rHH(v2, v0), Rule(r), Rule(142).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v1, r), rHH(v2, v0), Rule(r), Rule(142).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH_exists(v2, v0, r), Rule(r), Rule(142).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v1, v0), Rule(143).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH(v1, v0), r = 143, Rule(143).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), rHH(v1, v0), Rule(r), Rule(143).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), rHH(v1, v0), Rule(r), Rule(143).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH_exists(v1, v0, r), Rule(r), Rule(143).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v1), rHH(v2, v1), Rule(144).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH(v2, v1), r = 144, Rule(144).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v1), rHH(v2, v1), Rule(r), Rule(144).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v1, r), rHH(v2, v1), Rule(r), Rule(144).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v1), rHH_exists(v2, v1, r), Rule(r), Rule(144).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v1, v0), Rule(145).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH(v1, v0), r = 145, Rule(145).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), rHH(v1, v0), Rule(r), Rule(145).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), rHH(v1, v0), Rule(r), Rule(145).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH_exists(v1, v0, r), Rule(r), Rule(145).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v1, v0), Rule(146).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH(v1, v0), r = 146, Rule(146).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), rHH(v1, v0), Rule(r), Rule(146).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), rHH(v1, v0), Rule(r), Rule(146).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH_exists(v1, v0, r), Rule(r), Rule(146).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v0), rHH(v2, v1), Rule(147).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH(v2, v1), r = 147, Rule(147).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v0), rHH(v2, v1), Rule(r), Rule(147).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v0, r), rHH(v2, v1), Rule(r), Rule(147).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v0), rHH_exists(v2, v1, r), Rule(r), Rule(147).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v0, v1), Rule(148).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH(v0, v1), r = 148, Rule(148).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), rHH(v0, v1), Rule(r), Rule(148).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), rHH(v0, v1), Rule(r), Rule(148).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH_exists(v0, v1, r), Rule(r), Rule(148).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v1), rHH(v1, v2), Rule(149).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH(v1, v2), r = 149, Rule(149).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v1), rHH(v1, v2), Rule(r), Rule(149).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v1, r), rHH(v1, v2), Rule(r), Rule(149).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v1), rHH_exists(v1, v2, r), Rule(r), Rule(149).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v0, v1), Rule(150).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH(v0, v1), r = 150, Rule(150).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), rHH(v0, v1), Rule(r), Rule(150).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), rHH(v0, v1), Rule(r), Rule(150).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH_exists(v0, v1, r), Rule(r), Rule(150).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v2, v0), Rule(151).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH(v2, v0), r = 151, Rule(151).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v0), rHH(v2, v0), Rule(r), Rule(151).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v0, r), rHH(v2, v0), Rule(r), Rule(151).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH_exists(v2, v0, r), Rule(r), Rule(151).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v0), rHH(v1, v2), Rule(152).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH(v1, v2), r = 152, Rule(152).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v0), rHH(v1, v2), Rule(r), Rule(152).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(152).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(152).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v0, v2), rHH(v2, v1), Rule(153).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH(v2, v1), r = 153, Rule(153).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v0, v2), rHH(v2, v1), Rule(r), Rule(153).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(153).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(153).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v0), rHH(v2, v1), Rule(154).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH(v2, v1), r = 154, Rule(154).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v0), rHH(v2, v1), Rule(r), Rule(154).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(154).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(154).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v2, v0), Rule(155).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH(v2, v0), r = 155, Rule(155).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v1), rHH(v2, v0), Rule(r), Rule(155).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(155).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(155).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v0, v2), Rule(156).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH(v0, v2), r = 156, Rule(156).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), rHH(v0, v2), Rule(r), Rule(156).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), rHH(v0, v2), Rule(r), Rule(156).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH_exists(v0, v2, r), Rule(r), Rule(156).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v2, v0), Rule(157).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH(v2, v0), r = 157, Rule(157).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), rHH(v2, v0), Rule(r), Rule(157).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), rHH(v2, v0), Rule(r), Rule(157).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH_exists(v2, v0, r), Rule(r), Rule(157).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v0, v2), Rule(158).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH(v0, v2), r = 158, Rule(158).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), rHH(v0, v2), Rule(r), Rule(158).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(158).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(158).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v2, v0), Rule(159).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH(v2, v0), r = 159, Rule(159).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), rHH(v2, v0), Rule(r), Rule(159).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(159).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(159).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v2, v1), Rule(160).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH(v2, v1), r = 160, Rule(160).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v2), rHH(v2, v1), Rule(r), Rule(160).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(160).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(160).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v0, v2), Rule(161).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH(v0, v2), r = 161, Rule(161).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), rHH(v0, v2), Rule(r), Rule(161).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(161).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(161).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v2, v0), Rule(162).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH(v2, v0), r = 162, Rule(162).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), rHH(v2, v0), Rule(r), Rule(162).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(162).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(162).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v0, v2), rHH(v1, v2), Rule(163).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH(v1, v2), r = 163, Rule(163).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v0, v2), rHH(v1, v2), Rule(r), Rule(163).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(163).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(163).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v0, v2), Rule(164).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH(v0, v2), r = 164, Rule(164).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), rHH(v0, v2), Rule(r), Rule(164).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), rHH(v0, v2), Rule(r), Rule(164).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH_exists(v0, v2, r), Rule(r), Rule(164).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v2, v0), Rule(165).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH(v2, v0), r = 165, Rule(165).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), rHH(v2, v0), Rule(r), Rule(165).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), rHH(v2, v0), Rule(r), Rule(165).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH_exists(v2, v0, r), Rule(r), Rule(165).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v2, v1), Rule(166).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH(v2, v1), r = 166, Rule(166).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v0), rHH(v2, v1), Rule(r), Rule(166).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(166).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(166).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v0), rHH(v1, v2), Rule(167).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH(v1, v2), r = 167, Rule(167).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v0), rHH(v1, v2), Rule(r), Rule(167).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(167).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(167).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v0, v2), Rule(168).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH(v0, v2), r = 168, Rule(168).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), rHH(v0, v2), Rule(r), Rule(168).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(168).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(168).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v2, v0), Rule(169).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH(v2, v0), r = 169, Rule(169).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), rHH(v2, v0), Rule(r), Rule(169).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(169).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(169).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v0, v2), Rule(170).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH(v0, v2), r = 170, Rule(170).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), rHH(v0, v2), Rule(r), Rule(170).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(170).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(170).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v2, v0), Rule(171).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH(v2, v0), r = 171, Rule(171).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), rHH(v2, v0), Rule(r), Rule(171).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(171).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(171).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v0, v2), Rule(172).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH(v0, v2), r = 172, Rule(172).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), rHH(v0, v2), Rule(r), Rule(172).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), rHH(v0, v2), Rule(r), Rule(172).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH_exists(v0, v2, r), Rule(r), Rule(172).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v2, v0), Rule(173).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH(v2, v0), r = 173, Rule(173).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), rHH(v2, v0), Rule(r), Rule(173).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), rHH(v2, v0), Rule(r), Rule(173).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH_exists(v2, v0, r), Rule(r), Rule(173).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v2, v1), Rule(174).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH(v2, v1), r = 174, Rule(174).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v2), rHH(v2, v1), Rule(r), Rule(174).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(174).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(174).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v0, v2), Rule(175).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH(v0, v2), r = 175, Rule(175).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), rHH(v0, v2), Rule(r), Rule(175).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), rHH(v0, v2), Rule(r), Rule(175).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH_exists(v0, v2, r), Rule(r), Rule(175).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v2, v0), Rule(176).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH(v2, v0), r = 176, Rule(176).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), rHH(v2, v0), Rule(r), Rule(176).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), rHH(v2, v0), Rule(r), Rule(176).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH_exists(v2, v0, r), Rule(r), Rule(176).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v2, v1), Rule(177).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH(v2, v1), r = 177, Rule(177).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v0), rHH(v2, v1), Rule(r), Rule(177).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(177).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(177).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v0, v2), rHH(v1, v2), Rule(178).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH(v1, v2), r = 178, Rule(178).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v0, v2), rHH(v1, v2), Rule(r), Rule(178).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(178).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(178).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v0), rHH(v1, v2), Rule(179).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH(v1, v2), r = 179, Rule(179).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v0), rHH(v1, v2), Rule(r), Rule(179).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(179).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(179).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v2, v1), Rule(180).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH(v2, v1), r = 180, Rule(180).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v1), rHH(v2, v1), Rule(r), Rule(180).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v1, r), rHH(v2, v1), Rule(r), Rule(180).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH_exists(v2, v1, r), Rule(r), Rule(180).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v0, v1), Rule(181).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH(v0, v1), r = 181, Rule(181).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v2), rHH(v0, v1), Rule(r), Rule(181).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v2, r), rHH(v0, v1), Rule(r), Rule(181).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH_exists(v0, v1, r), Rule(r), Rule(181).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v1, v2), Rule(182).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH(v1, v2), r = 182, Rule(182).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v1), rHH(v1, v2), Rule(r), Rule(182).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v1, r), rHH(v1, v2), Rule(r), Rule(182).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH_exists(v1, v2, r), Rule(r), Rule(182).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v0, v1), Rule(183).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH(v0, v1), r = 183, Rule(183).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v1), rHH(v0, v1), Rule(r), Rule(183).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v1, r), rHH(v0, v1), Rule(r), Rule(183).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH_exists(v0, v1, r), Rule(r), Rule(183).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v1, v2), Rule(184).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH(v1, v2), r = 184, Rule(184).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v2), rHH(v1, v2), Rule(r), Rule(184).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v2, r), rHH(v1, v2), Rule(r), Rule(184).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH_exists(v1, v2, r), Rule(r), Rule(184).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v2, v1), Rule(185).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH(v2, v1), r = 185, Rule(185).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v1), rHH(v2, v1), Rule(r), Rule(185).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v1, r), rHH(v2, v1), Rule(r), Rule(185).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH_exists(v2, v1, r), Rule(r), Rule(185).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v0, v1), Rule(186).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH(v0, v1), r = 186, Rule(186).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v2), rHH(v0, v1), Rule(r), Rule(186).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v2, r), rHH(v0, v1), Rule(r), Rule(186).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH_exists(v0, v1, r), Rule(r), Rule(186).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v1), rHH(v1, v2), Rule(187).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH(v1, v2), r = 187, Rule(187).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v1), rHH(v1, v2), Rule(r), Rule(187).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v1, r), rHH(v1, v2), Rule(r), Rule(187).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v1), rHH_exists(v1, v2, r), Rule(r), Rule(187).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v1, v0), Rule(188).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH(v1, v0), r = 188, Rule(188).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v2), rHH(v1, v0), Rule(r), Rule(188).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v2, r), rHH(v1, v0), Rule(r), Rule(188).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH_exists(v1, v0, r), Rule(r), Rule(188).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v1, v0), Rule(189).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH(v1, v0), r = 189, Rule(189).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v1), rHH(v1, v0), Rule(r), Rule(189).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v1, r), rHH(v1, v0), Rule(r), Rule(189).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH_exists(v1, v0, r), Rule(r), Rule(189).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v2, v1), rHH(v1, v2), Rule(190).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH(v1, v2), r = 190, Rule(190).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v2, v1), rHH(v1, v2), Rule(r), Rule(190).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v2, v1, r), rHH(v1, v2), Rule(r), Rule(190).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v2, v1), rHH_exists(v1, v2, r), Rule(r), Rule(190).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v1, v0), Rule(191).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH(v1, v0), r = 191, Rule(191).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v2), rHH(v1, v0), Rule(r), Rule(191).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v2, r), rHH(v1, v0), Rule(r), Rule(191).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH_exists(v1, v0, r), Rule(r), Rule(191).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v2, v1), Rule(192).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH(v2, v1), r = 192, Rule(192).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v0), rHH(v2, v1), Rule(r), Rule(192).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v0, r), rHH(v2, v1), Rule(r), Rule(192).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH_exists(v2, v1, r), Rule(r), Rule(192).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v0, v1), Rule(193).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH(v0, v1), r = 193, Rule(193).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v1), rHH(v0, v1), Rule(r), Rule(193).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v1, r), rHH(v0, v1), Rule(r), Rule(193).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH_exists(v0, v1, r), Rule(r), Rule(193).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v2, v1), Rule(194).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH(v2, v1), r = 194, Rule(194).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v1), rHH(v2, v1), Rule(r), Rule(194).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v1, r), rHH(v2, v1), Rule(r), Rule(194).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH_exists(v2, v1, r), Rule(r), Rule(194).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v0), rHH(v1, v2), Rule(195).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH(v1, v2), r = 195, Rule(195).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v0), rHH(v1, v2), Rule(r), Rule(195).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v0, r), rHH(v1, v2), Rule(r), Rule(195).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v0), rHH_exists(v1, v2, r), Rule(r), Rule(195).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v1, v0), Rule(196).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH(v1, v0), r = 196, Rule(196).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v1), rHH(v1, v0), Rule(r), Rule(196).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v1, r), rHH(v1, v0), Rule(r), Rule(196).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH_exists(v1, v0, r), Rule(r), Rule(196).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v1), rHH(v1, v2), Rule(197).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH(v1, v2), r = 197, Rule(197).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v1), rHH(v1, v2), Rule(r), Rule(197).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v1, r), rHH(v1, v2), Rule(r), Rule(197).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v1), rHH_exists(v1, v2, r), Rule(r), Rule(197).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v2, v1), Rule(198).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH(v2, v1), r = 198, Rule(198).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v2), rHH(v2, v1), Rule(r), Rule(198).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v2, r), rHH(v2, v1), Rule(r), Rule(198).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH_exists(v2, v1, r), Rule(r), Rule(198).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v2, v1), Rule(199).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH(v2, v1), r = 199, Rule(199).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v0), rHH(v2, v1), Rule(r), Rule(199).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v0, r), rHH(v2, v1), Rule(r), Rule(199).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH_exists(v2, v1, r), Rule(r), Rule(199).
+rHH(v0, v1) :- rHH(v1, v0), rHH(v1, v2), rHH(v1, v2), Rule(200).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH(v1, v2), r = 200, Rule(200).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v0, r), rHH(v1, v2), rHH(v1, v2), Rule(r), Rule(200).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH_exists(v1, v2, r), rHH(v1, v2), Rule(r), Rule(200).
+rHH_exists(v0, v1, r) :- rHH(v1, v0), rHH(v1, v2), rHH_exists(v1, v2, r), Rule(r), Rule(200).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v0), rHH(v1, v2), Rule(201).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH(v1, v2), r = 201, Rule(201).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v0), rHH(v1, v2), Rule(r), Rule(201).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v0, r), rHH(v1, v2), Rule(r), Rule(201).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v0), rHH_exists(v1, v2, r), Rule(r), Rule(201).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v2, v1), rHH(v2, v1), Rule(202).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH(v2, v1), r = 202, Rule(202).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v2, v1), rHH(v2, v1), Rule(r), Rule(202).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v2, v1, r), rHH(v2, v1), Rule(r), Rule(202).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v2, v1), rHH_exists(v2, v1, r), Rule(r), Rule(202).
+rHH(v0, v1) :- rHH(v0, v1), rHH(v1, v2), rHH(v2, v1), Rule(203).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH(v2, v1), r = 203, Rule(203).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v1, r), rHH(v1, v2), rHH(v2, v1), Rule(r), Rule(203).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH_exists(v1, v2, r), rHH(v2, v1), Rule(r), Rule(203).
+rHH_exists(v0, v1, r) :- rHH(v0, v1), rHH(v1, v2), rHH_exists(v2, v1, r), Rule(r), Rule(203).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v1, v2), Rule(204).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH(v1, v2), r = 204, Rule(204).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), rHH(v1, v2), Rule(r), Rule(204).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), rHH(v1, v2), Rule(r), Rule(204).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH_exists(v1, v2, r), Rule(r), Rule(204).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v1, v2), Rule(205).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH(v1, v2), r = 205, Rule(205).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), rHH(v1, v2), Rule(r), Rule(205).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), rHH(v1, v2), Rule(r), Rule(205).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH_exists(v1, v2, r), Rule(r), Rule(205).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v1, v2), Rule(206).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH(v1, v2), r = 206, Rule(206).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), rHH(v1, v2), Rule(r), Rule(206).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(206).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(206).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v2, v1), Rule(207).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH(v2, v1), r = 207, Rule(207).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), rHH(v2, v1), Rule(r), Rule(207).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(207).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(207).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v0, v2), Rule(208).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH(v0, v2), r = 208, Rule(208).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v2), rHH(v0, v2), Rule(r), Rule(208).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(208).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(208).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v2, v0), Rule(209).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH(v2, v0), r = 209, Rule(209).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v1), rHH(v2, v0), Rule(r), Rule(209).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(209).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(209).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v2, v0), Rule(210).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH(v2, v0), r = 210, Rule(210).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v2), rHH(v2, v0), Rule(r), Rule(210).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(210).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(210).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v2, v1), Rule(211).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH(v2, v1), r = 211, Rule(211).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), rHH(v2, v1), Rule(r), Rule(211).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), rHH(v2, v1), Rule(r), Rule(211).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH_exists(v2, v1, r), Rule(r), Rule(211).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v2, v1), Rule(212).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH(v2, v1), r = 212, Rule(212).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), rHH(v2, v1), Rule(r), Rule(212).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), rHH(v2, v1), Rule(r), Rule(212).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH_exists(v2, v1, r), Rule(r), Rule(212).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v0), rHH(v2, v1), Rule(213).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH(v2, v1), r = 213, Rule(213).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v0), rHH(v2, v1), Rule(r), Rule(213).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(213).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(213).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v1, v2), rHH(v1, v2), Rule(214).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH(v1, v2), r = 214, Rule(214).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v1, v2), rHH(v1, v2), Rule(r), Rule(214).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v1, v2, r), rHH(v1, v2), Rule(r), Rule(214).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v1, v2), rHH_exists(v1, v2, r), Rule(r), Rule(214).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v2, v1), rHH(v0, v2), Rule(215).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH(v0, v2), r = 215, Rule(215).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v2, v1), rHH(v0, v2), Rule(r), Rule(215).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(215).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(215).
+rHH(v0, v1) :- rHH(v2, v0), rHH(v2, v1), rHH(v1, v2), Rule(216).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH(v1, v2), r = 216, Rule(216).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v0, r), rHH(v2, v1), rHH(v1, v2), Rule(r), Rule(216).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH_exists(v2, v1, r), rHH(v1, v2), Rule(r), Rule(216).
+rHH_exists(v0, v1, r) :- rHH(v2, v0), rHH(v2, v1), rHH_exists(v1, v2, r), Rule(r), Rule(216).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v1, v2), rHH(v2, v0), Rule(217).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH(v2, v0), r = 217, Rule(217).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v1, v2), rHH(v2, v0), Rule(r), Rule(217).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v1, v2, r), rHH(v2, v0), Rule(r), Rule(217).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v1, v2), rHH_exists(v2, v0, r), Rule(r), Rule(217).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v1, v2), rHH(v0, v2), Rule(218).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH(v0, v2), r = 218, Rule(218).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v1, v2), rHH(v0, v2), Rule(r), Rule(218).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v1, v2, r), rHH(v0, v2), Rule(r), Rule(218).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v1, v2), rHH_exists(v0, v2, r), Rule(r), Rule(218).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v2, v1), Rule(219).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH(v2, v1), r = 219, Rule(219).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), rHH(v2, v1), Rule(r), Rule(219).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), rHH(v2, v1), Rule(r), Rule(219).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH_exists(v2, v1, r), Rule(r), Rule(219).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v0, v2), Rule(220).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH(v0, v2), r = 220, Rule(220).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v1), rHH(v0, v2), Rule(r), Rule(220).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v1, r), rHH(v0, v2), Rule(r), Rule(220).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH_exists(v0, v2, r), Rule(r), Rule(220).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v0), rHH(v1, v2), Rule(221).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH(v1, v2), r = 221, Rule(221).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v0), rHH(v1, v2), Rule(r), Rule(221).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v0, r), rHH(v1, v2), Rule(r), Rule(221).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v0), rHH_exists(v1, v2, r), Rule(r), Rule(221).
+rHH(v0, v1) :- rHH(v1, v2), rHH(v0, v2), rHH(v1, v2), Rule(222).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH(v1, v2), r = 222, Rule(222).
+rHH_exists(v0, v1, r) :- rHH_exists(v1, v2, r), rHH(v0, v2), rHH(v1, v2), Rule(r), Rule(222).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(222).
+rHH_exists(v0, v1, r) :- rHH(v1, v2), rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(222).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v2, v1), rHH(v2, v0), Rule(223).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH(v2, v0), r = 223, Rule(223).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v2, v1), rHH(v2, v0), Rule(r), Rule(223).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v2, v1, r), rHH(v2, v0), Rule(r), Rule(223).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v2, v1), rHH_exists(v2, v0, r), Rule(r), Rule(223).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v2, v1), Rule(224).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH(v2, v1), r = 224, Rule(224).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), rHH(v2, v1), Rule(r), Rule(224).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), rHH(v2, v1), Rule(r), Rule(224).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH_exists(v2, v1, r), Rule(r), Rule(224).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v1, v2), rHH(v2, v1), Rule(225).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH(v2, v1), r = 225, Rule(225).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v1, v2), rHH(v2, v1), Rule(r), Rule(225).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v1, v2, r), rHH(v2, v1), Rule(r), Rule(225).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v1, v2), rHH_exists(v2, v1, r), Rule(r), Rule(225).
+rHH(v0, v1) :- rHH(v0, v2), rHH(v2, v1), rHH(v2, v1), Rule(226).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH(v2, v1), r = 226, Rule(226).
+rHH_exists(v0, v1, r) :- rHH_exists(v0, v2, r), rHH(v2, v1), rHH(v2, v1), Rule(r), Rule(226).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH_exists(v2, v1, r), rHH(v2, v1), Rule(r), Rule(226).
+rHH_exists(v0, v1, r) :- rHH(v0, v2), rHH(v2, v1), rHH_exists(v2, v1, r), Rule(r), Rule(226).
+rHH(v0, v1) :- rHH(v2, v1), rHH(v0, v2), rHH(v1, v2), Rule(227).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH(v1, v2), r = 227, Rule(227).
+rHH_exists(v0, v1, r) :- rHH_exists(v2, v1, r), rHH(v0, v2), rHH(v1, v2), Rule(r), Rule(227).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH_exists(v0, v2, r), rHH(v1, v2), Rule(r), Rule(227).
+rHH_exists(v0, v1, r) :- rHH(v2, v1), rHH(v0, v2), rHH_exists(v1, v2, r), Rule(r), Rule(227).

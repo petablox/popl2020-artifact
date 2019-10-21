@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Provenance-aware Datalog Synthesis Tool
+# The CDCL Tracking Algorithm
+
+# Invocation: ./scripts/variants/mw PROBLEM_DIR
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.dl: Specifies the signatures of the EDB and IDB relations, and the set of candidate rules
+#              Also contains a one-place input relation named Rule(n)
+# 2. ruleNames.txt: Provides the set of valid rule names, which can be used to populate the Rule.facts file
+# 3. R.facts, for each input relation R other than Rule: Specifies the EDB
+# 4. R.expected, for each output relation R: Specified the expected IDB
+# 5. a.out: Executable produced by Souffle with -t explain enabled
+
+# rules.dl and R.facts are expected to be a in a format recognized by Souffle
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import json
+import logging
+import os
+import re
+import subprocess
+import sys
+import time
+import z3
+
+problemDirName = sys.argv[1]
+
+logging.basicConfig(level=logging.INFO, \
+                    format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s", \
+                    datefmt="%H:%M:%S")
+
+logging.info('Hello! Solving ' + problemDirName)
+
+timers = {}
+def logTime(name, t):
+    if name not in timers: timers[name] = 0
+    timers[name] = timers[name] + t
+
+# 1a. Load the set of rules and IDB relations
+
+z3Var = { name.strip() for name in open(problemDirName + '/ruleNames.txt') if name.strip() }
+z3Var = { name: z3.Bool(name) for name in z3Var }
+
+def loadRelation(filename):
+    ans = { line.strip() for line in open(filename) if line.strip() }
+    ans = { tuple(line.split('\t')) for line in ans }
+    return ans
+
+expectedOut = { name for name in os.listdir(problemDirName) if name.endswith('.expected') }
+expectedOut = { name[:-len('.expected')] for name in expectedOut }
+expectedOut = { name: loadRelation(problemDirName + '/' + name + '.expected') for name in expectedOut }
+
+# 1b. Initialize the constraint solver, and the why- (to avoid the production of undesirable tuples), and whyNot- (to
+#     force the production of desirable tuples) provenances
+
+solver = z3.Solver()
+thetas = set()
+whyProvs = set()
+whyNotProvs = set()
+
+def satisfyingRuleSet(default):
+    # Determines the set of rules that should be switched on to satisfy the current set of constraints
+    # Includes presently unconstrained rules iff default is true
+    startTime = time.time()
+    isSat = solver.check()
+    model = solver.model()
+    ans1 = { ruleName for ruleName, ruleVar in z3Var.items() if model[ruleVar] == True }
+    ans2 = { ruleName for ruleName, ruleVar in z3Var.items() if model[ruleVar] == None } if default else set()
+    ans = ans1 | ans2
+    endTime = time.time()
+    logTime('z3', endTime - startTime)
+    return ans
+
+# 1d. Helper methods to create Rule.facts files and to communicate with Souffle
+
+def execSouffleCmd(souffle, cmd):
+    startTime = time.time()
+    print(cmd, file=souffle.stdin)
+    souffle.stdin.flush()
+    response = [ souffle.stdout.readline().strip() ]
+    while response[-1] != '###': response.append(souffle.stdout.readline().strip())
+    response = response[:-1]
+    ans = '\n'.join(response)
+    endTime = time.time()
+    logTime('souffle', endTime - startTime)
+    return ans
+
+def initSouffle(ruleSet):
+    with open(problemDirName + '/Rule.facts', 'w') as outFile:
+        for name in ruleSet: print(name, file=outFile)
+
+    startTime = time.time()
+    souffle = subprocess.Popen([ problemDirName + '/a.out', '-F', problemDirName, '-D', problemDirName ], \
+                               stdin=subprocess.PIPE, \
+                               stdout=subprocess.PIPE, \
+                               universal_newlines=True)
+    while souffle.stdout.readline().strip() != '###': pass
+    while souffle.stdout.readline().strip() != '###': pass
+    execSouffleCmd(souffle, 'format json')
+    endTime = time.time()
+    logTime('souffle', endTime - startTime)
+    tuplesProduced = { relName: loadRelation(problemDirName + '/' + relName + '.csv') for relName in expectedOut }
+    return (souffle, tuplesProduced)
+
+########################################################################################################################
+# 2. Add constraints corresponding to theta-subsumption
+
+#    Consider two rules rs, rl as follows:
+#    rs: hs :- b1, b2, ..., bm.
+#    rl: hl :- c1, c2, ..., cn.
+#    such that hs = hl, and such that { b1, b_2, ..., bm } is a subset of { c1, c2, ..., cn }.
+#    Then, we add the constraint not(rl) => not(rs).
+
+ruleTexts = [ line for line in open(problemDirName + '/rules.dl') if ':-' in line ]
+literalRegex = re.compile(r'\w+\([^\)]*\)')
+ruleTexts = [ literalRegex.findall(rule) for rule in ruleTexts ]
+ruleTexts = [ (rule[0], set(rule[1:-1]), rule[-1]) for rule in ruleTexts ]
+
+idRegex = re.compile(r'\w+')
+for heads, bodys, ns in ruleTexts:
+    assert(ns.startswith('Rule('))
+    ns = idRegex.findall(ns)[1]
+    for headl, bodyl, nl in ruleTexts:
+        assert(nl.startswith('Rule('))
+        nl = idRegex.findall(nl)[1]
+        if heads == headl and bodys.issubset(bodyl) and ns != nl:
+            logging.info('Rule {} subsumes rule {}'.format(ns, nl))
+            vs = z3Var[ns]
+            vl = z3Var[nl]
+            thetas.add((ns, nl))
+            solver.add(z3.Implies(z3.Not(vl), z3.Not(vs)))
+
+########################################################################################################################
+# 3. Methods to query and manipulate provenance information
+#    Formally, the provenance object returned by Souffle is a list of hypothesis provenance objects H*, each of which is
+#    of the form:
+#    1. { 'axiom': T }, for a tuple T, or
+#    2. { 'premises': T, 'children': H* }, for a tuple T, and a list of hypothesis provenance objects, H*
+
+def printSouffleString(relName, t):
+    t = tuple( '"{}"'.format(x) for x in t )
+    t = ', '.join(t)
+    return '{}({})'.format(relName, t)
+
+def parseSouffleString(string):
+    startTime = time.time()
+    xs = string.split('(')
+    relName, xs = [ x.strip() for x in xs ]
+    xs = xs.split(')')[0].strip()
+    xs = [ x.strip() for x in xs.split(',') ]
+    xs = tuple([ x[1:-1].strip() if x.startswith('"') and x.endswith('"') else x for x in xs ])
+    ans = (relName, xs)
+    endTime = time.time()
+    return ans
+
+def collectAxioms(provenance):
+    if type(provenance) is dict:
+        if 'axiom' in provenance:
+            return { parseSouffleString(provenance['axiom']) }
+        else:
+            assert('children' in provenance)
+            return collectAxioms(provenance['children'])
+    elif type(provenance) is list: return { axiom for elem in provenance for axiom in collectAxioms(elem) }
+    else: return set()
+
+def collectIntermediateConclusions(provenance):
+    if type(provenance) is dict:
+        if 'axiom' in provenance: return set()
+        else:
+            assert('premises' in provenance)
+            assert('children' in provenance)
+            return collectIntermediateConclusions(provenance['children']) | \
+                   { parseSouffleString(provenance['premises']) }
+    elif type(provenance) is list: return { rt for elem in provenance for rt in collectIntermediateConclusions(elem) }
+    else: return set()
+
+def squashDesirableConclusions(provenance):
+    if type(provenance) is dict:
+        if 'premises' in provenance:
+            relName, t = parseSouffleString(provenance['premises'])
+            if relName in expectedOut and t in expectedOut[relName]:
+                return { 'axiom': provenance['premises'] }
+        return { k: squashDesirableConclusions(v) for k, v in provenance.items() }
+    elif type(provenance) is list:
+        return [ squashDesirableConclusions(elem) for elem in provenance ]
+    else: return provenance
+
+def queryProvenance(souffle, relName, t, simplify=True):
+    startTime = time.time()
+
+    ans = execSouffleCmd(souffle, 'explain ' + printSouffleString(relName, t))
+    ans = json.loads(ans)
+    ans = ans['proof']['children']
+
+    if simplify:
+        ans = squashDesirableConclusions(ans)
+        for ir, it in collectIntermediateConclusions(ans):
+            if ir in expectedOut and it not in expectedOut[ir]:
+                # If the production of relName(t) depends on the production of some other undesirable tuple ir(it), then
+                # do not emit provenance information
+                return None
+
+    ans = collectAxioms(ans)
+    ans = { t[0] for relName, t in ans if relName == 'Rule' }
+    ans = frozenset(ans)
+
+    endTime = time.time()
+    logTime('queryProvenance', endTime - startTime)
+    return ans
+
+########################################################################################################################
+# 4. Algorithm for minimizing why-not provenance
+#    Given a set of rules whose exclusion fails to produce relName(t),
+#    produces a smaller subset of rules whose exclusion also fails to produce relName(t)
+
+def minimize(includedRules, excludedRules, relName, t):
+    def subsetProv(subsetExcludedRules):
+        assert(subsetExcludedRules.issubset(excludedRules))
+        reintroducedRules = excludedRules - subsetExcludedRules
+        souffle, tuplesProduced = initSouffle(includedRules | reintroducedRules)
+        with souffle:
+            if t not in tuplesProduced[relName]: return None
+            ans = queryProvenance(souffle, relName, t, simplify=False)
+            ans = ans & reintroducedRules
+            assert(len(ans) > 0)
+            return ans
+
+    # return frozenset(excludedRules)
+
+    subsetExcludedRules = set()
+    while True:
+        logging.info('{} excluded rules. {} subset excluded rules.'.format(len(excludedRules), len(subsetExcludedRules)))
+        prov = subsetProv(subsetExcludedRules)
+        if prov == None:
+            ans = frozenset(subsetExcludedRules)
+            return ans
+        subsetExcludedRules = subsetExcludedRules | prov
+
+########################################################################################################################
+# 5. The Core CDCL Simulator
+
+def solve(Rpos, Rneg, Runk, pi):
+    Rs = Rpos
+    Rl = Rpos | Runk
+
+    # 5a. Perform unit propagation
+    while True:
+        souffleS, Ts = initSouffle(Rs)
+        souffleL, Tl = initSouffle(Rl)
+        with souffleS:
+            with souffleL:
+                ???
+
+ans = solve(set(), set(), z3Var.keys(), z3.BoolVal(True))
+logging.info(timers)
+
+if ans != None:
+    ans = { rule for relName in expectedOut \
+                 for t in expectedOut[relName] \
+                 for rule in queryProvenance(souffle, relName, t) }
+    ans = '|'.join(ans)
+    ans = r'Rule\(({})\)'.format(ans)
+    logging.info(ans)
+    ans = re.compile(ans)
+    ans = { line.strip() for line in open(problemDirName + '/rules.dl') if ans.search(line) }
+    for line in ans: print(line)
+else:
+    print('unsat')
+    sys.exit(1)

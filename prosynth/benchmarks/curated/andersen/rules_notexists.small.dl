@@ -1,0 +1,94 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl addr(v0: V, v1: V)
+.input addr
+.decl assgn(v0: V, v1: V)
+.input assgn
+.decl store(v0: V, v1: V)
+.input store
+.decl load(v0: V, v1: V)
+.input load
+
+.decl addr_notexists(v0: V, v1: V, v2: number)
+.output addr_notexists
+.decl assgn_notexists(v0: V, v1: V, v2: number)
+.output assgn_notexists
+.decl store_notexists(v0: V, v1: V, v2: number)
+.output store_notexists
+.decl load_notexists(v0: V, v1: V, v2: number)
+.output load_notexists
+
+.decl pt_notexists(v0: V, v1: V, v2: number)
+.output pt_notexists
+
+addr_notexists(v0, v1, ruleIndex) :- addr(v0, v1), Rule(ruleIndex).
+assgn_notexists(v0, v1, ruleIndex) :- assgn(v0, v1), Rule(ruleIndex).
+store_notexists(v0, v1, ruleIndex) :- store(v0, v1), Rule(ruleIndex).
+load_notexists(v0, v1, ruleIndex) :- load(v0, v1), Rule(ruleIndex).
+pt_notexists(v2, v1, ruleIndex) :- load_notexists(v0, v1, ruleIndex), store_notexists(v2, v0, ruleIndex), ruleIndex != 10, Rule(10).
+pt_notexists(v2, v1, ruleIndex) :- load_notexists(v0, v1, ruleIndex), pt_notexists(v2, v0, ruleIndex), ruleIndex != 53, Rule(53).
+pt_notexists(v1, v3, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), store_notexists(v0, v2, ruleIndex), pt_notexists(v2, v3, ruleIndex), ruleIndex != 3, Rule(3).
+pt_notexists(v2, v1, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), store_notexists(v2, v0, ruleIndex), ruleIndex != 49, Rule(49).
+pt_notexists(v0, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), pt_notexists(v1, v0, ruleIndex), ruleIndex != 55, Rule(55).
+pt_notexists(v0, v1, ruleIndex) :- store_notexists(v0, v1, ruleIndex), ruleIndex != 22, Rule(22).
+pt_notexists(v0, v2, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), assgn_notexists(v1, v2, ruleIndex), ruleIndex != 1, Rule(1).
+pt_notexists(v0, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), ruleIndex != 45, Rule(45).
+pt_notexists(v0, v2, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), assgn_notexists(v2, v1, ruleIndex), ruleIndex != 15, Rule(15).
+pt_notexists(v3, v2, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), store_notexists(v3, v0, ruleIndex), ruleIndex != 35, Rule(35).
+pt_notexists(v0, v1, ruleIndex) :- load_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 50, Rule(50).
+pt_notexists(v0, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), load_notexists(v1, v0, ruleIndex), ruleIndex != 9, Rule(9).
+pt_notexists(v0, v2, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), ruleIndex != 20, Rule(20).
+pt_notexists(v0, v2, ruleIndex) :- load_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), ruleIndex != 40, Rule(40).
+pt_notexists(v1, v3, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), pt_notexists(v0, v2, ruleIndex), pt_notexists(v2, v3, ruleIndex), ruleIndex != 23, Rule(23).
+pt_notexists(v0, v2, ruleIndex) :- load_notexists(v0, v1, ruleIndex), store_notexists(v1, v2, ruleIndex), ruleIndex != 16, Rule(16).
+pt_notexists(v2, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), store_notexists(v2, v0, ruleIndex), ruleIndex != 48, Rule(48).
+pt_notexists(v0, v2, ruleIndex) :- load_notexists(v0, v1, ruleIndex), load_notexists(v2, v1, ruleIndex), ruleIndex != 62, Rule(62).
+pt_notexists(v0, v1, ruleIndex) :- load_notexists(v0, v1, ruleIndex), load_notexists(v1, v0, ruleIndex), ruleIndex != 41, Rule(41).
+pt_notexists(v1, v0, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), load_notexists(v1, v0, ruleIndex), ruleIndex != 13, Rule(13).
+pt_notexists(v1, v0, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 28, Rule(28).
+pt_notexists(v0, v3, ruleIndex) :- load_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), pt_notexists(v2, v3, ruleIndex), ruleIndex != 37, Rule(37).
+pt_notexists(v0, v2, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), ruleIndex != 42, Rule(42).
+pt_notexists(v2, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), store_notexists(v2, v0, ruleIndex), ruleIndex != 0, Rule(0).
+pt_notexists(v1, v0, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 56, Rule(56).
+pt_notexists(v0, v2, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), store_notexists(v1, v2, ruleIndex), ruleIndex != 26, Rule(26).
+pt_notexists(v2, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), load_notexists(v2, v0, ruleIndex), ruleIndex != 5, Rule(5).
+pt_notexists(v1, v0, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), assgn_notexists(v1, v0, ruleIndex), ruleIndex != 54, Rule(54).
+pt_notexists(v1, v0, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), load_notexists(v1, v0, ruleIndex), ruleIndex != 18, Rule(18).
+pt_notexists(v2, v3, ruleIndex) :- load_notexists(v0, v1, ruleIndex), pt_notexists(v0, v2, ruleIndex), pt_notexists(v1, v3, ruleIndex), ruleIndex != 33, Rule(33).
+pt_notexists(v0, v2, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), load_notexists(v1, v2, ruleIndex), ruleIndex != 52, Rule(52).
+pt_notexists(v0, v3, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), pt_notexists(v2, v3, ruleIndex), ruleIndex != 31, Rule(31).
+pt_notexists(v1, v0, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 46, Rule(46).
+pt_notexists(v2, v3, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), pt_notexists(v0, v2, ruleIndex), pt_notexists(v1, v3, ruleIndex), ruleIndex != 57, Rule(57).
+pt_notexists(v0, v2, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), ruleIndex != 44, Rule(44).
+pt_notexists(v0, v1, ruleIndex) :- load_notexists(v0, v1, ruleIndex), ruleIndex != 51, Rule(51).
+pt_notexists(v1, v0, ruleIndex) :- load_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 6, Rule(6).
+pt_notexists(v0, v2, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), assgn_notexists(v1, v2, ruleIndex), ruleIndex != 27, Rule(27).
+pt_notexists(v0, v3, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), pt_notexists(v2, v3, ruleIndex), ruleIndex != 17, Rule(17).
+pt_notexists(v0, v2, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), store_notexists(v1, v2, ruleIndex), ruleIndex != 36, Rule(36).
+pt_notexists(v2, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), assgn_notexists(v2, v0, ruleIndex), ruleIndex != 4, Rule(4).
+pt_notexists(v0, v2, ruleIndex) :- store_notexists(v0, v1, ruleIndex), store_notexists(v1, v2, ruleIndex), ruleIndex != 58, Rule(58).
+pt_notexists(v2, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), pt_notexists(v2, v0, ruleIndex), ruleIndex != 21, Rule(21).
+pt_notexists(v0, v3, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), pt_notexists(v1, v2, ruleIndex), pt_notexists(v2, v3, ruleIndex), ruleIndex != 29, Rule(29).
+pt_notexists(v0, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), assgn_notexists(v1, v0, ruleIndex), ruleIndex != 24, Rule(24).
+pt_notexists(v0, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), assgn_notexists(v1, v0, ruleIndex), ruleIndex != 30, Rule(30).
+pt_notexists(v2, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), pt_notexists(v2, v0, ruleIndex), ruleIndex != 38, Rule(38).
+pt_notexists(v0, v2, ruleIndex) :- load_notexists(v0, v1, ruleIndex), load_notexists(v1, v2, ruleIndex), ruleIndex != 59, Rule(59).
+pt_notexists(v0, v2, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), store_notexists(v1, v2, ruleIndex), ruleIndex != 47, Rule(47).
+pt_notexists(v0, v2, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), addr_notexists(v2, v1, ruleIndex), ruleIndex != 43, Rule(43).
+pt_notexists(v0, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 61, Rule(61).
+pt_notexists(v0, v1, ruleIndex) :- load_notexists(v0, v1, ruleIndex), pt_notexists(v1, v0, ruleIndex), ruleIndex != 12, Rule(12).
+pt_notexists(v0, v2, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), load_notexists(v1, v2, ruleIndex), ruleIndex != 14, Rule(14).
+pt_notexists(v0, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), load_notexists(v1, v0, ruleIndex), ruleIndex != 7, Rule(7).
+pt_notexists(v0, v1, ruleIndex) :- store_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 25, Rule(25).
+pt_notexists(v0, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), store_notexists(v1, v0, ruleIndex), ruleIndex != 2, Rule(2).
+pt_notexists(v0, v2, ruleIndex) :- store_notexists(v0, v1, ruleIndex), store_notexists(v2, v1, ruleIndex), ruleIndex != 60, Rule(60).
+pt_notexists(v0, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), addr_notexists(v1, v0, ruleIndex), ruleIndex != 11, Rule(11).
+pt_notexists(v0, v2, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), addr_notexists(v1, v2, ruleIndex), ruleIndex != 63, Rule(63).
+pt_notexists(v0, v1, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), pt_notexists(v1, v0, ruleIndex), ruleIndex != 34, Rule(34).
+pt_notexists(v2, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), load_notexists(v2, v0, ruleIndex), ruleIndex != 32, Rule(32).
+pt_notexists(v0, v1, ruleIndex) :- assgn_notexists(v0, v1, ruleIndex), ruleIndex != 19, Rule(19).
+pt_notexists(v0, v2, ruleIndex) :- pt_notexists(v0, v1, ruleIndex), pt_notexists(v2, v1, ruleIndex), ruleIndex != 39, Rule(39).
+pt_notexists(v2, v3, ruleIndex) :- addr_notexists(v0, v1, ruleIndex), pt_notexists(v0, v2, ruleIndex), pt_notexists(v1, v3, ruleIndex), ruleIndex != 8, Rule(8).

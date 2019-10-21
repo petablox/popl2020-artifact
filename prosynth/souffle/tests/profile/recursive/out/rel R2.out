@@ -1,0 +1,13 @@
+  ----- Rules of a Relation -----
+   TOT_T  NREC_T   REC_T  COPY_T    TUPLES      ID NAME
+
+    .003    .000    .003    .000         1      R2 C
+ ---------------------------------------------------------
+    .003    .000    .003    .000         0    C2.1 C
+    .000    .000    .000    .000         1    N2.1 C
+
+Src locator: recursive.dl [1:11-0:0]
+
+   C2.1  C(x) :-     A(x),    B(x).
+   N2.1  C(1).
+

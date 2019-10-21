@@ -1,0 +1,20 @@
+.type V
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl edge(v0: V, v1: V)
+.input edge
+
+.decl edge_notexists(v0: V, v1: V, v2: number)
+.output edge_notexists
+
+.decl path_notexists(v0: V, v1: V, v2: number)
+.output path_notexists
+
+edge_notexists(v0, v1, ruleIndex) :- edge(v0, v1), Rule(ruleIndex).
+path_notexists(v2, v1, ruleIndex) :- edge_notexists(v0, v1, ruleIndex), edge_notexists(v2, v0, ruleIndex), ruleIndex != 2, Rule(2).
+path_notexists(v2, v1, ruleIndex) :- edge_notexists(v0, v1, ruleIndex), path_notexists(v2, v0, ruleIndex), ruleIndex != 1, Rule(1).
+path_notexists(v0, v1, ruleIndex) :- edge_notexists(v0, v1, ruleIndex), ruleIndex != 3, Rule(3).
+path_notexists(v2, v1, ruleIndex) :- path_notexists(v0, v1, ruleIndex), path_notexists(v2, v0, ruleIndex), ruleIndex != 4, Rule(4).
+path_notexists(v0, v2, ruleIndex) :- edge_notexists(v0, v1, ruleIndex), path_notexists(v1, v2, ruleIndex), ruleIndex != 0, Rule(0).

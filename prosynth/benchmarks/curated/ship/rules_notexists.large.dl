@@ -1,0 +1,60 @@
+.type H
+.type N
+.type C
+.type P
+
+.decl Rule(n: number)
+.input Rule
+
+.decl ProductName(v0: N, v1: P)
+.input ProductName
+
+.decl CustomerCity(v0: H, v1: C)
+.input CustomerCity
+
+.decl HasOrdered(v0: H, v1: N)
+.input HasOrdered
+
+.decl ProductName_notexists(v0: N, v1: P, r: number)
+.output ProductName_notexists
+
+.decl CustomerCity_notexists(v0: H, v1: C, r: number)
+.output CustomerCity_notexists
+
+.decl HasOrdered_notexists(v0: H, v1: N, r: number)
+.output HasOrdered_notexists
+
+.decl ShipTo_notexists(v0: P, v1: C, r: number)
+.output ShipTo_notexists
+
+ProductName_notexists(v0, v1, r) :- ProductName(v0, v1), Rule(r).
+CustomerCity_notexists(v0, v1, r) :- CustomerCity(v0, v1), Rule(r).
+HasOrdered_notexists(v0, v1, r) :- HasOrdered(v0, v1), Rule(r).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v1, r), Rule(r), r != 0, Rule(0).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v1, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 1, Rule(1).
+ShipTo_notexists(v0, v1, r) :- ProductName_notexists(v2, v0, r), ProductName_notexists(v2, v0, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 2, Rule(2).
+ShipTo_notexists(v0, v1, r) :- ProductName_notexists(v2, v3, r), ProductName_notexists(v2, v0, r), ShipTo_notexists(v3, v1, r), Rule(r), r != 3, Rule(3).
+ShipTo_notexists(v0, v1, r) :- ProductName_notexists(v2, v3, r), ProductName_notexists(v2, v3, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 4, Rule(4).
+ShipTo_notexists(v0, v1, r) :- ProductName_notexists(v2, v0, r), ProductName_notexists(v2, v3, r), ShipTo_notexists(v3, v1, r), Rule(r), r != 5, Rule(5).
+ShipTo_notexists(v0, v1, r) :- ProductName_notexists(v2, v0, r), CustomerCity_notexists(v3, v1, r), HasOrdered_notexists(v3, v2, r), Rule(r), r != 6, Rule(6).
+ShipTo_notexists(v0, v1, r) :- CustomerCity_notexists(v2, v1, r), CustomerCity_notexists(v2, v1, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 7, Rule(7).
+ShipTo_notexists(v0, v1, r) :- CustomerCity_notexists(v2, v3, r), CustomerCity_notexists(v2, v3, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 8, Rule(8).
+ShipTo_notexists(v0, v1, r) :- CustomerCity_notexists(v2, v1, r), CustomerCity_notexists(v2, v3, r), ShipTo_notexists(v0, v3, r), Rule(r), r != 9, Rule(9).
+ShipTo_notexists(v0, v1, r) :- CustomerCity_notexists(v2, v3, r), CustomerCity_notexists(v2, v1, r), ShipTo_notexists(v0, v3, r), Rule(r), r != 10, Rule(10).
+ShipTo_notexists(v0, v1, r) :- HasOrdered_notexists(v2, v3, r), HasOrdered_notexists(v2, v3, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 11, Rule(11).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v1, r), ShipTo_notexists(v0, v1, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 12, Rule(12).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v2, r), ShipTo_notexists(v0, v1, r), ShipTo_notexists(v0, v2, r), Rule(r), r != 13, Rule(13).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v2, r), ShipTo_notexists(v0, v2, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 14, Rule(14).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v1, r), ShipTo_notexists(v0, v2, r), ShipTo_notexists(v0, v2, r), Rule(r), r != 15, Rule(15).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v1, r), ShipTo_notexists(v2, v1, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 16, Rule(16).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v1, r), ShipTo_notexists(v0, v1, r), ShipTo_notexists(v2, v1, r), Rule(r), r != 17, Rule(17).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v1, r), ShipTo_notexists(v2, v1, r), ShipTo_notexists(v2, v1, r), Rule(r), r != 18, Rule(18).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v3, r), ShipTo_notexists(v0, v3, r), ShipTo_notexists(v2, v1, r), Rule(r), r != 19, Rule(19).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v1, r), ShipTo_notexists(v0, v3, r), ShipTo_notexists(v2, v3, r), Rule(r), r != 20, Rule(20).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v1, r), ShipTo_notexists(v2, v3, r), ShipTo_notexists(v2, v3, r), Rule(r), r != 21, Rule(21).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v3, r), ShipTo_notexists(v2, v3, r), ShipTo_notexists(v0, v1, r), Rule(r), r != 22, Rule(22).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v3, r), ShipTo_notexists(v0, v1, r), ShipTo_notexists(v2, v3, r), Rule(r), r != 23, Rule(23).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v2, r), ShipTo_notexists(v3, v1, r), ShipTo_notexists(v3, v2, r), Rule(r), r != 24, Rule(24).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v0, v2, r), ShipTo_notexists(v3, v2, r), ShipTo_notexists(v3, v1, r), Rule(r), r != 25, Rule(25).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v1, r), ShipTo_notexists(v2, v3, r), ShipTo_notexists(v0, v3, r), Rule(r), r != 26, Rule(26).
+ShipTo_notexists(v0, v1, r) :- ShipTo_notexists(v2, v3, r), ShipTo_notexists(v2, v1, r), ShipTo_notexists(v0, v3, r), Rule(r), r != 27, Rule(27).

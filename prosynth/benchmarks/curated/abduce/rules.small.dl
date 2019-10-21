@@ -1,0 +1,54 @@
+.type P
+
+.decl Rule(v0: number)
+.input Rule
+
+.decl father(v0: P, v1: P)
+.input father
+.decl mother(v0: P, v1: P)
+.input mother
+
+
+.decl inv(v0: P, v1: P)
+.output inv
+.decl grandparent(v0: P, v1: P)
+.output grandparent
+
+inv(v0, v1) :- mother(v0, v1), Rule(8).
+inv(v2, v1) :- mother(v0, v1), mother(v2, v0), Rule(19).
+grandparent(v0, v2) :- grandparent(v0, v1), mother(v1, v2), Rule(3).
+grandparent(v2, v1) :- father(v0, v1), grandparent(v2, v0), Rule(1).
+grandparent(v2, v1) :- father(v0, v1), mother(v2, v0), Rule(10).
+grandparent(v0, v1) :- inv(v0, v1), Rule(7).
+grandparent(v0, v2) :- mother(v0, v1), inv(v1, v2), Rule(11).
+grandparent(v2, v1) :- grandparent(v0, v1), mother(v2, v0), Rule(9).
+grandparent(v0, v2) :- father(v0, v1), inv(v1, v2), Rule(18).
+inv(v2, v1) :- grandparent(v0, v1), mother(v2, v0), Rule(34).
+inv(v2, v1) :- father(v0, v1), inv(v2, v0), Rule(32).
+grandparent(v2, v1) :- father(v0, v1), inv(v2, v0), Rule(22).
+inv(v0, v2) :- father(v0, v1), grandparent(v1, v2), Rule(13).
+grandparent(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(27).
+inv(v2, v1) :- grandparent(v0, v1), grandparent(v2, v0), Rule(24).
+inv(v0, v2) :- father(v0, v1), mother(v1, v2), Rule(36).
+inv(v2, v1) :- grandparent(v0, v1), inv(v2, v0), Rule(21).
+grandparent(v2, v1) :- grandparent(v0, v1), inv(v2, v0), Rule(33).
+inv(v2, v1) :- father(v0, v1), father(v2, v0), Rule(4).
+grandparent(v2, v1) :- grandparent(v0, v1), grandparent(v2, v0), Rule(37).
+grandparent(v0, v2) :- father(v0, v1), mother(v1, v2), Rule(28).
+grandparent(v0, v2) :- father(v0, v1), grandparent(v1, v2), Rule(20).
+inv(v0, v1) :- grandparent(v0, v1), Rule(26).
+inv(v0, v2) :- grandparent(v0, v1), mother(v1, v2), Rule(31).
+inv(v0, v2) :- mother(v0, v1), inv(v1, v2), Rule(29).
+grandparent(v2, v1) :- mother(v0, v1), mother(v2, v0), Rule(16).
+grandparent(v0, v1) :- mother(v0, v1), Rule(30).
+inv(v0, v2) :- grandparent(v0, v1), inv(v1, v2), Rule(23).
+inv(v2, v1) :- father(v0, v1), grandparent(v2, v0), Rule(35).
+inv(v0, v2) :- father(v0, v1), inv(v1, v2), Rule(2).
+inv(v0, v1) :- father(v0, v1), Rule(5).
+grandparent(v0, v1) :- father(v0, v1), Rule(0).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(6).
+grandparent(v2, v1) :- mother(v0, v1), inv(v2, v0), Rule(25).
+inv(v2, v1) :- mother(v0, v1), inv(v2, v0), Rule(14).
+grandparent(v0, v2) :- grandparent(v0, v1), inv(v1, v2), Rule(17).
+inv(v2, v1) :- father(v0, v1), mother(v2, v0), Rule(12).
+grandparent(v2, v1) :- father(v0, v1), father(v2, v0), Rule(15).

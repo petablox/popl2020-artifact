@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Provenance-aware Datalog Synthesis Tool
+# The Branch and Bound-Based Learning Algorithm
+
+# Invocation: ./scripts/variants/branch-bound PROBLEM_DIR
+
+# The PROBLEM_DIR folder is expected to contain:
+# 1. rules.dl: Specifies the signatures of the EDB and IDB relations, and the set of candidate rules
+#              Also contains a one-place input relation named Rule(n)
+# 2. rules_exists.dl: Contains rules computing the exists-provenance
+# 3. rules_notexists.dl: Contains rule computing the not-exists-provenance
+# 4. ruleNames.txt: Provides the set of valid rule names, which can be used to populate the Rule.facts file
+# 5. R.facts, for each input relation R other than Rule: Specifies the EDB
+# 6. R.expected, for each output relation R: Specified the expected IDB
+# 7. a.out: Executable produced by Souffle with -t explain enabled
+# 8. a.exists.out: Executable computing exists-provenance
+# 9. a.notexists.out: Executable computing notexists-provenance
+
+# rules.dl and R.facts are expected to be a in a format recognized by Souffle
+
+# If synthesis is successful, then it prints to stdout one subset of rules with the desired input-output behavior
+
+########################################################################################################################
+# 1. Prelude
+
+import logging
+import re
+import sys
+import heapq
+import math
+
+import mbase
+
+problemDirName = sys.argv[1]
+
+logging.info('Hello! Solving ' + problemDirName)
+
+# 1a. Load the rules and IDB relations
+
+ruleNames = set(mbase.loadRules(problemDirName).keys())
+expectedOut = mbase.loadExpectedOut(problemDirName)
+
+########################################################################################################################
+
+# 2. Auxiliary functions required for branch and bound algorithm
+
+def fitness(ruleSet):
+    return len(ruleSet) # + m * sum(map(len, ruleSet))
+
+def heuristic(tupleSet):
+    return -1 * sum(map(len, tupleSet.values()))
+
+def hasInvalidTuples(tupleSet):
+    for (relName, tuples) in tupleSet.items():
+        if len(set(tuples) - set(expectedOut[relName])) > 0:
+            return True
+
+# Initialize a set of rules which are invalid for a particular ruleset
+# Of the form rule : {ruleSets}, where rule is an invalid rule for each ruleSet
+invalidRules = {}
+
+def hasInvalidRules(ruleSet):
+    for rule in ruleSet:
+        if rule in invalidRules:
+            for rules in invalidRules[rule]:
+                if set(rules).issubset(set(ruleSet)):
+                    return True
+
+def invalidateRules(ruleSet, rules):
+    for rule in rules:
+        if rule not in invalidRules:
+            invalidRules[rule] = set()
+        invalidRules[rule].add(tuple(sorted(list(ruleSet))))
+
+########################################################################################################################
+
+# 3. Initialize the branch and bound algorithm
+
+# Initialize the exists and not exists provenance
+notExistsProvenance = set()
+prov = mbase.getNotExistsProvenance(problemDirName, expectedOut, ruleNames)
+for (relName, tuples) in prov.items():
+    for (t, rules) in tuples.items():
+        notExistsProvenance.update(rules)
+        
+existsProvenance = set()
+prov = mbase.getExistsProvenance(problemDirName, expectedOut, ruleNames)
+for (relName, tuples) in prov.items():
+    for (t, rules) in tuples.items():
+        existsProvenance.update(rules)
+
+ruleSet = notExistsProvenance
+
+# Get tuples produced by initial ruleset, may be empty if the initial ruleset is empty
+initialTuples = mbase.runNoProvSouffle(problemDirName, expectedOut, ruleSet)
+
+# Initialize a priority queue which determines which rule set we should look at next
+# Items of the priority queue are of the form (heuristic, ruleSet, addedRules)
+# where ruleSet is the set of rules, and addedRules is the set of rules added to ruleSet
+# from the parent
+partialSolutions = set()
+partialSolutions.add(tuple(sorted(list(ruleSet))))
+partialSolutionsHeap = []
+heapq.heapify(partialSolutionsHeap)
+heapq.heappush(partialSolutionsHeap, (heuristic(initialTuples), ruleSet, ruleSet))
+
+# Initialize value and ruleset of best solution found so far
+minF = math.inf
+minR = None
+
+########################################################################################################################
+
+# 4. Run branch and bound
+while len(partialSolutionsHeap) > 0:
+    currentRules = heapq.heappop(partialSolutionsHeap)
+    currentRuleSet = currentRules[1] # index 1 gets the actual ruleset, not the heuristic value
+    addedRules = currentRules[2]
+
+    currentOutput = mbase.runNoProvSouffle(problemDirName, expectedOut, currentRuleSet)
+
+    if not hasInvalidRules(currentRuleSet) and fitness(currentRuleSet) < minF:
+        logging.info('{} rules in current selection, producing {} tuples.'.format(len(currentRuleSet), str(sum(map(len, currentOutput.values())))))
+
+        # if currentRuleSet is a valid solution
+        if currentOutput == expectedOut:
+            logging.info('{} is a valid solution'.format(currentRuleSet))
+            minF = fitness(currentRuleSet)
+            minR = currentRuleSet
+            break
+
+        # else if currentRuleSet is invalid
+        elif hasInvalidTuples(currentOutput):
+            logging.info('Rule set {} is invalid, due to {}'.format(currentRuleSet, addedRules))
+            invalidateRules(currentRuleSet - addedRules, addedRules)
+
+        # else, we haven't found a solution yet, so add more candidate rulesets
+        else:
+            for rule in existsProvenance - currentRuleSet:
+                # compute a heuristic value for the updated ruleset
+                h = 0
+                for (relName, tuples) in expectedOut.items():
+                    # print(relName, tuples, currentOutput[relName])
+                    for t in tuples - currentOutput[relName]:
+                        if rule in prov[relName][t]:
+                            h += 1
+
+                newRuleSet = currentRuleSet.copy()
+                newRuleSet.add(rule)
+
+                if tuple(sorted(list(newRuleSet))) not in partialSolutions:
+                    partialSolutions.add(tuple(sorted(list(newRuleSet))))
+                    heapq.heappush(partialSolutionsHeap, (heuristic(currentOutput) - h, newRuleSet, set([rule])))

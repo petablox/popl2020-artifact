@@ -1,0 +1,46 @@
+Error: Unable to deduce type for variable X in file type_system3.dl at line 42
+number_primi_relation_1(X) :- number_primi_relation_2(X). // error
+------------------------^------------------------------------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 42
+number_primi_relation_1(X) :- number_primi_relation_2(X). // error
+------------------------------------------------------^------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 46
+number_primi_relation_1_2_A(X) :- number_primi_relation_1(X), number_primi_relation_2(X). // error
+----------------------------^----------------------------------------------------------------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 46
+number_primi_relation_1_2_A(X) :- number_primi_relation_1(X), number_primi_relation_2(X). // error
+----------------------------------------------------------^----------------------------------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 46
+number_primi_relation_1_2_A(X) :- number_primi_relation_1(X), number_primi_relation_2(X). // error
+--------------------------------------------------------------------------------------^------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 120
+symbol_primi_relation_1(X) :- symbol_primi_relation_2(X). // error
+------------------------^------------------------------------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 120
+symbol_primi_relation_1(X) :- symbol_primi_relation_2(X). // error
+------------------------------------------------------^------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 124
+symbol_primi_relation_1_2_A(X) :- symbol_primi_relation_1(X), symbol_primi_relation_2(X). // error
+----------------------------^----------------------------------------------------------------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 124
+symbol_primi_relation_1_2_A(X) :- symbol_primi_relation_1(X), symbol_primi_relation_2(X). // error
+----------------------------------------------------------^----------------------------------------
+Error: Unable to deduce type for variable X in file type_system3.dl at line 124
+symbol_primi_relation_1_2_A(X) :- symbol_primi_relation_1(X), symbol_primi_relation_2(X). // error
+--------------------------------------------------------------------------------------^------------
+Error: Union type number_symbol contains a mixture of symbol and number types in file type_system3.dl at line 167
+.type number_symbol = number | symbol // error
+^----------------------------------------------
+Error: Union type number_symbol_primi contains a mixture of symbol and number types in file type_system3.dl at line 169
+.type number_symbol_primi = number_primi_1 | symbol_primi_1 // error
+^--------------------------------------------------------------------
+Error: Union type number_symbol_primi_1_2 contains a mixture of symbol and number types in file type_system3.dl at line 170
+.type number_symbol_primi_1_2 = number_primi_1_2 | symbol_primi_1_2 // error
+^----------------------------------------------------------------------------
+Error: Union type number_symbol_union contains a mixture of symbol and number types in file type_system3.dl at line 172
+.type number_symbol_union = number_union_1 | symbol_union_1 // error
+^--------------------------------------------------------------------
+Error: Union type number_symbol_union_1_2 contains a mixture of symbol and number types in file type_system3.dl at line 173
+.type number_symbol_union_1_2 = number_union_1_2 | symbol_union_1_2 // error
+^----------------------------------------------------------------------------
+15 errors generated, evaluation aborted
