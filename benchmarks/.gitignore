@@ -1,4 +1,5 @@
 *.cpp
 *.out
 *.csv
+*.ccerr
 Rule.facts

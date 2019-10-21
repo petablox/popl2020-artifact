@@ -1,7 +1,7 @@
 Provenance-Guided Synthesis of Datalog Programs
 ===============================================
 
-Mukund Raghothaman; Jonathan Mendelson; David Zhao; Bernhard Scholz; Mayur Naik
+Mukund Raghothaman; Jonathan Mendelson; David Zhao; Mayur Naik; Bernhard Scholz
 
 Introduction
 ------------
@@ -19,6 +19,9 @@ Hardware and Estimated Time for Reproduction
 --------------------------------------------
 
 __TODO:__ How long do the experiments take to reproduce?
+
+Mukund's SAL 308 desktop
+With tsp -S 4, exp2 prepare took 16 minutes.
 
 __TODO:__ Explain the `tsp -S` command
 

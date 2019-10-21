@@ -70,14 +70,14 @@ idbRelationsExpected = { name: loadRelation(problemDirName + '/' + name + '.expe
 
 solver = z3.Solver()
 def satisfyingRuleSet(default):
-    global callsToz3
+    global callsToZ3
     # Determines the set of rules that should be switched on to satisfy the current set of constraints
     # Includes presently unconstrained rules iff default is true
 
     currTime = time.clock_gettime(0)
     m = solver.model()
     logging.info("z3 model generated")
-    callsToz3 += 1
+    callsToZ3 += 1
 
     ans1 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == True }
     ans2 = { ruleName for ruleName, ruleVar in allRuleNames.items() if m[ruleVar] == None } if default else set()
@@ -112,7 +112,7 @@ def printRuleEDB(ruleSet):
 # 3. Repeatedly add constraints until a satisfying assignment is found
 
 iterationNum = 0
-callsToz3 = 0
+callsToZ3 = 0
 callsToSouffle = 0
 while True:
 
@@ -124,7 +124,7 @@ while True:
     iterationNum += 1
     logging.info("--------Iteration " + str(iterationNum) + "--------")
     logging.info("\n\n--------Iteration " + str(iterationNum) + "--------")
-    logging.info("Calls to z3: " + str(callsToz3) + ", Calls to Souffle: " + str(callsToSouffle))
+    logging.info("Calls to z3: " + str(callsToZ3) + ", Calls to Souffle: " + str(callsToSouffle))
     logging.info("rPlus: " + str(sorted(currRuleSetLarge)))
     logging.info("rMinus: " + str(sorted(set(allRuleNames) - currRuleSetLarge)))
     logging.info("Culumative Number of Constraints -- Why: " + str(numWhy) + ', WhyNot: ' + str(numWhyNot))
@@ -473,7 +473,7 @@ while True:
                     try:
                         doSanity()
                     except:
-                        dataLogStr = "{" + f"name: '{problemDirName}_{runCount}', " + \
+                        dataLogStr = "{" + f"name: '{problemDirName}_{run_count}', " + \
                                            f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
                                            f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
                                            f"setting_delta: {setting_delta}" + "}"
@@ -485,7 +485,7 @@ while True:
         # 3d. Find useful rules
 
         if solved:
-            dataLogStr = "{" + f"name: '{problemDirName}_{runCount}', " + \
+            dataLogStr = "{" + f"name: '{problemDirName}_{run_count}', " + \
                                f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
                                f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
                                f"setting_delta: {setting_delta}" + "}"

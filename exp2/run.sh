@@ -1,25 +1,73 @@
 #!/usr/bin/env bash
 
-BENCHES='1-object-1-type scc'
+########################################################################################################################
+# Experiment 2: Run ProSynth (with delta analysis turned on) on various sizes of 1-object-1-type and scc
+# Produces Figure 7 of the main paper and Figure 1 in the supplementary data
+
+# Intended to be run from the root directory
+# [tsp -S NUM_CORES]
+# ./exp2/run.sh
+
+########################################################################################################################
+# 0. Preamble
+
+set -e
+
+# Trap Ctrl-C for clean exit
+# https://raymii.org/s/snippets/Bash_Bits_Trap_Control_C_SIGTERM.html
+
+function cleanup {
+    tsp -K
+    tsp
+}
+trap cleanup SIGINT
+trap cleanup SIGTERM
+
+########################################################################################################################
+
+# BENCHES='1-object-1-type scc'
+BENCHES='scc'
 
 # 1. Prepare benchmarks
 
-for BENCH in $BENCHES; do
+if [ -z "$SKIP_PREPARE" ]; then
     for NUM_RULES in `seq 100 100 1000`; do
-        PROBLEM_NAME="${BENCH}_${NUM_RULES}"
-        PROBLEM_DIR="benchmarks/scale/$PROBLEM_NAME"
-        echo "Preparing $PROBLEM_NAME"
-        ./prosynth/scripts/prepare $PROBLEM_DIR
+        for BENCH in $BENCHES; do
+            echo "Preparing $BENCH with $NUM_RULES rules."
+            PROBLEM_NAME="${BENCH}_${NUM_RULES}"
+            PROBLEM_DIR=./benchmarks/scale/$PROBLEM_NAME
+            tsp ./prosynth/scripts/prepare $PROBLEM_DIR
+        done
     done
-done
+    ./scripts/tsp-wait.sh
+else
+    echo "Skipping benchmark preparation!"
+fi
 
-# 2. Run experiments
+# 2. Run experiment
 
+if [ -z "$NUM_REPS" ]; then
+    NUM_REPS=8
+fi
+
+mkdir -p exp2-work
 touch data.log
+for NUM_RULES in `seq 100 100 1000`; do
+    for BENCH in $BENCHES; do
+        for i in `seq 1 $NUM_REPS`; do
+            echo "Running $BENCH with $NUM_RULES rules. Iteration $i."
 
-for BENCH in $BENCHES; do
-    for NUM_RULES in `seq 100 100 1000`; do
-        echo "${BENCH}_${NUM_RULES}"
-        # echo $NUM_RULES
+            PROBLEM_NAME="${BENCH}_${NUM_RULES}"
+            PROBLEM_DIR="./exp2-work/${PROBLEM_NAME}_${i}"
+            cp -r ./benchmarks/scale/$PROBLEM_NAME $PROBLEM_DIR
+
+            # LOG_FILE="exp2-logs/${PROBLEM_NAME}_${i}.log"
+            # cp -r $PROBLEM_DIR "./exp2-work/${BENCH}_${NUM_RULES}_$i"
+            # tsp ./prosynth/scripts/prosynth $PROBLEM_DIR 0 1 $i # &> $LOG_FILE
+        done
     done
 done
+
+./scripts/tsp-wait.sh
+
+# 3. Draw figures
