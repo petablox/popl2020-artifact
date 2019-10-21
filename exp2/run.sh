@@ -6,8 +6,9 @@ BENCHES='1-object-1-type scc'
 
 for BENCH in $BENCHES; do
     for NUM_RULES in `seq 100 100 1000`; do
-        PROBLEM_DIR="${BENCH}_${NUM_RULES}"
-        echo "Preparing $PROBLEM_DIR"
+        PROBLEM_NAME="${BENCH}_${NUM_RULES}"
+        PROBLEM_DIR="benchmarks/scale/$PROBLEM_NAME"
+        echo "Preparing $PROBLEM_NAME"
         ./prosynth/scripts/prepare $PROBLEM_DIR
     done
 done
