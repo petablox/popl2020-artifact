@@ -53,6 +53,8 @@ All results presented in the paper arise out of two experiments:
    The data from this experiment is used to produce __Figure 7__ in the main paper, and __Figure 1__ in the
    supplementary data provided to the reviewers.
 
+__TODO__: Generally note not to interpret whiskers too literally
+
 Reproducing Experiment 1
 ------------------------
 
