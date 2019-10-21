@@ -1,0 +1,16 @@
+Input { addr(Heap, Heap), asgn(Heap, Heap), load(Heap, Heap), store(Heap, Heap) }
+Invented {  }
+Output { pt(Heap, Heap) }
+
+EDB {
+  addr(v2, v6), addr(v4, v1), addr(v3, v10), addr(v0, v10), addr(v1, v7), addr(v10, v3),
+  asgn(v2, v4), asgn(v6, v9), asgn(v6, v0), asgn(v7, v2), asgn(v3, v5),
+  load(v6, v4), load(v1, v0), load(v4, v4), load(v0, v5), load(v8, v7),
+  store(v10, v1)
+}
+
+IDB {
+  pt(v7, v3), pt(v4, v7), pt(v1, v3), pt(v6, v6), pt(v7, v7), pt(v2, v1), pt(v0, v10), pt(v3, v7), pt(v10, v3),
+  pt(v6, v7), pt(v3, v3), pt(v8, v1), pt(v3, v10), pt(v6, v10), pt(v8, v10), pt(v6, v3), pt(v7, v10), pt(v8, v6), pt(v4, v1), pt(v4, v10),
+  pt(v2, v6), pt(v7, v1), pt(v2, v10), pt(v2, v3), pt(v8, v7), pt(v2, v7), pt(v8, v3), pt(v4, v6), pt(v6, v1), pt(v4, v3), pt(v1, v7), pt(v7, v6)
+}

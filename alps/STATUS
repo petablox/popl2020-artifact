@@ -1,0 +1,6 @@
+We are applying for the Replicated badge for following reasons:
+
+- we released our implementation source code as well as benchmarks for evaluation
+- our tool has an easy interface, which can be reused as an underlying synthesis engine for future application work
+- the benchmarks we collected can also benefit future work in the area of inductive logic programming (ILP) and Datalog synthesis
+- we provide detailed instructions to re-run experiment so that it is starightforward to replicate our results

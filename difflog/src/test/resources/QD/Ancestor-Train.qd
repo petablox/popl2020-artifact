@@ -1,0 +1,59 @@
+Input { father(Person, Person), mother(Person, Person) }
+Invented { }
+Output { parent(Person, Person), anc(Person, Person) }
+
+EDB {
+  father(v1, v0), father(v4, v3),
+  mother(v2, v1), mother(v3, v2)
+}
+
+IDB {
+  parent(v4, v3), parent(v3, v2), parent(v2, v1), parent(v1, v0),
+  anc(v4, v3), anc(v4, v2), anc(v4, v1), anc(v4, v0),
+  anc(v3, v2), anc(v3, v1), anc(v3, v0),
+  anc(v2, v1), anc(v2, v0),
+  anc(v1, v0)
+}
+
+Rules {
+  parent(x0P,x1P) :- anc(x0P,x1P).
+  parent(x0P,x1P) :- father(x0P,x1P).
+  parent(x0P,x1P) :- mother(x0P,x1P).
+  parent(x2P,x1P) :- anc(x0P,x1P),anc(x2P,x0P).
+  parent(x2P,x1P) :- anc(x0P,x1P),parent(x2P,x0P).
+  parent(x2P,x1P) :- anc(x0P,x1P),father(x2P,x0P).
+  parent(x2P,x1P) :- anc(x0P,x1P),mother(x2P,x0P).
+  parent(x2P,x1P) :- anc(x2P,x0P),parent(x0P,x1P).
+  parent(x2P,x1P) :- parent(x0P,x1P),parent(x2P,x0P).
+  parent(x2P,x1P) :- father(x2P,x0P),parent(x0P,x1P).
+  parent(x2P,x1P) :- mother(x2P,x0P),parent(x0P,x1P).
+  parent(x2P,x1P) :- anc(x2P,x0P),father(x0P,x1P).
+  parent(x2P,x1P) :- father(x0P,x1P),parent(x2P,x0P).
+  parent(x2P,x1P) :- father(x0P,x1P),father(x2P,x0P).
+  parent(x2P,x1P) :- father(x0P,x1P),mother(x2P,x0P).
+  parent(x2P,x1P) :- anc(x2P,x0P),mother(x0P,x1P).
+  parent(x2P,x1P) :- mother(x0P,x1P),parent(x2P,x0P).
+  parent(x2P,x1P) :- father(x2P,x0P),mother(x0P,x1P).
+  parent(x2P,x1P) :- mother(x0P,x1P),mother(x2P,x0P).
+  anc(x0P,x1P) :- parent(x0P,x1P).
+  anc(x0P,x1P) :- father(x0P,x1P).
+  anc(x0P,x1P) :- mother(x0P,x1P).
+  anc(x2P,x1P) :- anc(x0P,x1P),anc(x2P,x0P).
+  anc(x2P,x1P) :- anc(x0P,x1P),parent(x2P,x0P).
+  anc(x2P,x1P) :- anc(x0P,x1P),father(x2P,x0P).
+  anc(x2P,x1P) :- anc(x0P,x1P),mother(x2P,x0P).
+  anc(x2P,x1P) :- anc(x2P,x0P),parent(x0P,x1P).
+  anc(x2P,x1P) :- parent(x0P,x1P),parent(x2P,x0P).
+  anc(x2P,x1P) :- father(x2P,x0P),parent(x0P,x1P).
+  anc(x2P,x1P) :- mother(x2P,x0P),parent(x0P,x1P).
+  anc(x2P,x1P) :- anc(x2P,x0P),father(x0P,x1P).
+  anc(x2P,x1P) :- father(x0P,x1P),parent(x2P,x0P).
+  anc(x2P,x1P) :- father(x0P,x1P),father(x2P,x0P).
+  anc(x2P,x1P) :- father(x0P,x1P),mother(x2P,x0P).
+  anc(x2P,x1P) :- anc(x2P,x0P),mother(x0P,x1P).
+  anc(x2P,x1P) :- mother(x0P,x1P),parent(x2P,x0P).
+  anc(x2P,x1P) :- father(x2P,x0P),mother(x0P,x1P).
+  anc(x2P,x1P) :- mother(x0P,x1P),mother(x2P,x0P).
+}
+
+// MinRules(500, 3, 3)

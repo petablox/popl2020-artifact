@@ -1,0 +1,33 @@
+Input {
+  feathers(C), scales(C), hair(C), none(C),
+  has_covering(A, C), has_milk(A), homeothermic(A), has_eggs(A), has_gills(A)
+}
+Invented { }
+Output { mammal(A), fish(A), reptile(A), bird(A) }
+
+EDB {
+  feathers(v0), scales(v1), hair(v2), none(v3),
+
+  has_covering(a0, v2), has_covering(a1, v3), has_covering(a2, v2), has_covering(a3, v2), has_covering(a4, v3), has_covering(a5, v3), has_covering(a6, v3), has_covering(a7, v3), has_covering(a8, v1), has_covering(a9, v1), has_covering(a10, v1), has_covering(a11, v1), has_covering(a12, v1), has_covering(a13, v0), has_covering(a14, v0), has_covering(a15, v0),
+
+  has_milk(a0), has_milk(a1), has_milk(a2), has_milk(a3), has_milk(a16),
+  homeothermic(a0), homeothermic(a1), homeothermic(a2), homeothermic(a3), homeothermic(a13), homeothermic(a14), homeothermic(a15), homeothermic(a16),
+  has_eggs(a2), has_eggs(a4), has_eggs(a5), has_eggs(a6), has_eggs(a7), has_eggs(a8), has_eggs(a9), has_eggs(a10), has_eggs(a11), has_eggs(a12), has_eggs(a13), has_eggs(a14), has_eggs(a15),
+  has_gills(a4), has_gills(a5), has_gills(a6), has_gills(a7)
+}
+
+IDB {
+  mammal(a0), mammal(a1), mammal(a2), mammal(a3),
+  fish(a4), fish(a5), fish(a6), fish(a7),
+  reptile(a8), reptile(a9), reptile(a10), reptile(a11), reptile(a12),
+  bird(a13), bird(a14), bird(a15)
+}
+
+Rules {
+  bird(A):-homeothermic(A).
+  fish(A):-has_gills(A).
+  mammal(A):-homeothermic(A).
+  reptile(A):-has_eggs(A).
+}
+
+// MinRules(500, 3, 3)

@@ -1,0 +1,44 @@
+Input { addr(Heap, Heap), asgn(Heap, Heap), load(Heap, Heap), store(Heap, Heap) }
+Invented {  }
+Output { pt(Heap, Heap) }
+
+EDB {
+  addr(v1, v2), addr(v2, v3), addr(v3, v5), addr(v5, v6),
+  asgn(v4, v1),
+  store(v4, v5),
+  load(v7, v2)
+}
+
+IDB { pt(v1, v2), pt(v2, v3), pt(v3, v5), pt(v5, v6), pt(v4, v2), pt(v7, v5), pt(v2, v6) }
+
+Rules {
+  pt(x0, x1) :- addr(x0, x1).
+  pt(x0, x1) :- asgn(x0, x1).
+  pt(x0, x1) :- load(x0, x1).
+  pt(x0, x1) :- store(x0, x1).
+  pt(x2, x1) :- pt(x0, x1), pt(x2, x0).
+  pt(x2, x1) :- addr(x2, x0), pt(x0, x1).
+  pt(x2, x1) :- asgn(x2, x0), pt(x0, x1).
+  pt(x2, x1) :- load(x2, x0), pt(x0, x1).
+  pt(x2, x1) :- pt(x0, x1), store(x2, x0).
+  pt(x2, x1) :- addr(x0, x1), pt(x2, x0).
+  pt(x2, x1) :- asgn(x0, x1), pt(x2, x0).
+  pt(x2, x1) :- load(x0, x1), pt(x2, x0).
+  pt(x2, x1) :- pt(x2, x0), store(x0, x1).
+  pt(x3, x1) :- pt(x0, x1), pt(x2, x0), pt(x3, x2).
+  pt(x3, x1) :- addr(x3, x2), pt(x0, x1), pt(x2, x0).
+  pt(x3, x1) :- asgn(x3, x2), pt(x0, x1), pt(x2, x0).
+  pt(x3, x1) :- load(x3, x2), pt(x0, x1), pt(x2, x0).
+  pt(x3, x1) :- pt(x0, x1), pt(x2, x0), store(x3, x2).
+  pt(x3, x1) :- addr(x2, x0), pt(x0, x1), pt(x3, x2).
+  pt(x3, x1) :- asgn(x2, x0), pt(x0, x1), pt(x3, x2).
+  pt(x3, x1) :- load(x2, x0), pt(x0, x1), pt(x3, x2).
+  pt(x3, x1) :- pt(x0, x1), pt(x3, x2), store(x2, x0).
+  pt(x3, x1) :- store(x2, x0), pt(x0, x1), pt(x2, x3).
+  pt(x3, x1) :- addr(x0, x1), pt(x2, x0), pt(x3, x2).
+  pt(x3, x1) :- asgn(x0, x1), pt(x2, x0), pt(x3, x2).
+  pt(x3, x1) :- load(x0, x1), pt(x2, x0), pt(x3, x2).
+  pt(x3, x1) :- pt(x2, x0), pt(x3, x2), store(x0, x1).
+}
+
+// MinRules(500, 3, 3)

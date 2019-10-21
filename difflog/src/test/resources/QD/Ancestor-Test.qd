@@ -1,0 +1,13 @@
+Input { father(Person, Person), mother(Person, Person) }
+Invented { }
+Output { parent(Person, Person), anc(Person, Person) }
+
+EDB {
+  father(v3, v7), father(v0, v3), father(v3, v6),
+  mother(v6, v7)
+}
+
+IDB {
+  parent(v3, v7), parent(v0, v3), parent(v3, v6), parent(v6, v7),
+  anc(v6, v7), anc(v0, v7), anc(v0, v6), anc(v3, v6), anc(v3, v7), anc(v0, v3)
+}

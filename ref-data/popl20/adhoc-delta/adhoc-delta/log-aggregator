@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+
+########################################################################################################################
+# Log Aggregator
+
+# Invocation: ./log-aggregator logs TRIALS
+
+########################################################################################################################
+# 1. Prelude
+
+import json
+import logging
+import os
+import subprocess
+import sys
+import z3
+import time
+import copy
+import random
+
+currPath = sys.argv[0]
+scriptPath = sys.argv[1]
+trials = sys.argv[2]
+
+mr = open("runtime.csv", "w")
+mz = open("numz3.csv", "w")
+ms = open("numsouffle.csv", "w")
+
+bf = open("benchmarks.txt", "r")
+for benchmarkName in bf:
+    currRuntimeLine = benchmarkName.strip()
+    currZ3Line = benchmarkName.strip()
+    currSouffleLine = benchmarkName.strip()
+    for i in range(int(trials)):
+        currBenchName = scriptPath + "/" + benchmarkName.strip() + "-" + str(i+1) + ".log"
+        print(currBenchName)
+
+        cf = open(currBenchName, "r")
+        myText = cf.read()
+        cf.close()
+
+        j = myText.rfind("Calls to z3: ")
+        myText = myText[(j+13):]
+        numZ3Calls = int(myText[:myText.find(",")])
+        j = myText.rfind("Calls to Souffle: ")
+        myText = myText[(j+18):]
+        numSouffleCalls = int(myText[:myText.find("\n")])
+        j = myText.rfind("Total runtime: ")
+        myText = myText[(j+15):]
+        totalRuntime = float(myText)
+
+        currRuntimeLine += "," + str(totalRuntime)
+        currZ3Line += "," + str(numZ3Calls)
+        currSouffleLine += "," + str(numSouffleCalls)
+
+        #print("numZ3Calls: " + str(numZ3Calls))
+        #print("numSouffleCalls: " + str(numSouffleCalls))
+        #print("totalRuntime: " + str(1 + totalRuntime))
+        #k = myText.rfind("Total runtime: ")
+        
+        #m = myText.rfind("Calls to Souffle: ")
+
+        #currRuntime = float(myText[:(k+14)])
+        #currRuntime = float(myText[:(k+14)])
+    mr.write(currRuntimeLine + "\n")
+    mz.write(currZ3Line + "\n")
+    ms.write(currSouffleLine + "\n")
+bf.close()
+mr.close()
+mz.close()
+ms.close()

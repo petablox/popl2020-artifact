@@ -1,0 +1,333 @@
+Input { CICM(C, I, M), virtIM(I, M), Mneq(M, M) }
+Invented { }
+Output { insvIM(I, M), virtI(I), polySite(I) }
+
+EDB {
+  CICM(v0,v0,v10),CICM(v0,v8,v5),CICM(v0,v4,v8),CICM(v0,v12,v7),CICM(v0,v2,v1),CICM(v0,v10,v6),CICM(v0,v6,v7),CICM(v0,v14,v4),
+  CICM(v0,v14,v6),CICM(v0,v1,v1),CICM(v0,v9,v7),CICM(v0,v5,v1),CICM(v0,v13,v4),CICM(v0,v3,v4),CICM(v0,v3,v2),CICM(v0,v3,v6),
+  CICM(v0,v11,v3),CICM(v0,v7,v2),CICM(v0,v15,v7),
+
+  virtIM(v10,v2), virtIM(v14,v2), virtIM(v13,v2), virtIM(v3,v2), virtIM(v7,v2), virtIM(v16,v11),
+
+  Mneq(v0, v1), Mneq(v0, v2), Mneq(v0, v3), Mneq(v0, v4), Mneq(v0, v5), Mneq(v0, v6), Mneq(v0, v7), Mneq(v0, v8),
+  Mneq(v0, v9), Mneq(v0, v10), Mneq(v0, v11), Mneq(v1, v0), Mneq(v1, v2), Mneq(v1, v3), Mneq(v1, v4), Mneq(v1, v5),
+  Mneq(v1, v6), Mneq(v1, v7), Mneq(v1, v8), Mneq(v1, v9), Mneq(v1, v10), Mneq(v1, v11), Mneq(v2, v0), Mneq(v2, v1),
+  Mneq(v2, v3), Mneq(v2, v4), Mneq(v2, v5), Mneq(v2, v6), Mneq(v2, v7), Mneq(v2, v8), Mneq(v2, v9), Mneq(v2, v10),
+  Mneq(v2, v11), Mneq(v3, v0), Mneq(v3, v1), Mneq(v3, v2), Mneq(v3, v4), Mneq(v3, v5), Mneq(v3, v6), Mneq(v3, v7),
+  Mneq(v3, v8), Mneq(v3, v9), Mneq(v3, v10), Mneq(v3, v11), Mneq(v4, v0), Mneq(v4, v1), Mneq(v4, v2), Mneq(v4, v3),
+  Mneq(v4, v5), Mneq(v4, v6), Mneq(v4, v7), Mneq(v4, v8), Mneq(v4, v9), Mneq(v4, v10), Mneq(v4, v11), Mneq(v5, v0),
+  Mneq(v5, v1), Mneq(v5, v2), Mneq(v5, v3), Mneq(v5, v4), Mneq(v5, v6), Mneq(v5, v7), Mneq(v5, v8), Mneq(v5, v9),
+  Mneq(v5, v10), Mneq(v5, v11), Mneq(v6, v0), Mneq(v6, v1), Mneq(v6, v2), Mneq(v6, v3), Mneq(v6, v4), Mneq(v6, v5),
+  Mneq(v6, v7), Mneq(v6, v8), Mneq(v6, v9), Mneq(v6, v10), Mneq(v6, v11), Mneq(v7, v0), Mneq(v7, v1), Mneq(v7, v2),
+  Mneq(v7, v3), Mneq(v7, v4), Mneq(v7, v5), Mneq(v7, v6), Mneq(v7, v8), Mneq(v7, v9), Mneq(v7, v10), Mneq(v7, v11),
+  Mneq(v8, v0), Mneq(v8, v1), Mneq(v8, v2), Mneq(v8, v3), Mneq(v8, v4), Mneq(v8, v5), Mneq(v8, v6), Mneq(v8, v7),
+  Mneq(v8, v9), Mneq(v8, v10), Mneq(v8, v11), Mneq(v9, v0), Mneq(v9, v1), Mneq(v9, v2), Mneq(v9, v3), Mneq(v9, v4),
+  Mneq(v9, v5), Mneq(v9, v6), Mneq(v9, v7), Mneq(v9, v8), Mneq(v9, v10), Mneq(v9, v11), Mneq(v10, v0), Mneq(v10, v1),
+  Mneq(v10, v2), Mneq(v10, v3), Mneq(v10, v4), Mneq(v10, v5), Mneq(v10, v6), Mneq(v10, v7), Mneq(v10, v8), Mneq(v10, v9),
+  Mneq(v10, v11), Mneq(v11, v0), Mneq(v11, v1), Mneq(v11, v2), Mneq(v11, v3), Mneq(v11, v4), Mneq(v11, v5), Mneq(v11, v6),
+  Mneq(v11, v7), Mneq(v11, v8), Mneq(v11, v9), Mneq(v11, v10)
+}
+
+IDB {
+  insvIM(v0,v10),insvIM(v8,v5),insvIM(v4,v8),insvIM(v12,v7),insvIM(v2,v1),insvIM(v10,v6),insvIM(v6,v7),
+  insvIM(v14,v4),insvIM(v14,v6),insvIM(v1,v1),insvIM(v9,v7),insvIM(v5,v1),insvIM(v13,v4),insvIM(v3,v4),
+  insvIM(v3,v2),insvIM(v3,v6),insvIM(v11,v3),insvIM(v7,v2),insvIM(v15,v7),
+
+  virtI(v16), virtI(v10), virtI(v14), virtI(v13), virtI(v3), virtI(v7),
+
+  polySite(v14), polySite(v3)
+}
+
+Rules {
+  virtI(x0I) :- insvIM(x0I,x1M).
+  virtI(x0I) :- virtIM(x0I,x1M).
+  virtI(x1I) :- CICM(x0C,x1I,x2M).
+  virtI(x0I) :- polySite(x0I).
+  virtI(x3I) :- insvIM(x0I,x1M),insvIM(x3I,x2M),virtIM(x0I,x2M).
+  virtI(x3I) :- insvIM(x0I,x1M),virtIM(x0I,x2M),virtIM(x3I,x2M).
+  virtI(x3I) :- insvIM(x0I,x2M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  virtI(x3I) :- insvIM(x0I,x2M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x1M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x1M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x1M,x2M),insvIM(x0I,x1M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x1M,x2M),insvIM(x0I,x1M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x1M),Mneq(x1M,x2M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x1M),Mneq(x1M,x2M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  virtI(x3I) :- Mneq(x1M,x2M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x2M,x1M),insvIM(x0I,x1M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x2M,x1M),insvIM(x0I,x1M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x2M,x1M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  virtI(x3I) :- Mneq(x2M,x1M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x2M,x0M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x0I,x1M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x1M,x2M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x0I,x1M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x0I,x1M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x0I,x1M).
+  virtI(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  virtI(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  virtI(x2I) :- Mneq(x0M,x1M),insvIM(x2I,x0M),polySite(x2I).
+  virtI(x2I) :- Mneq(x0M,x1M),polySite(x2I),virtIM(x2I,x0M).
+  virtI(x3I) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),insvIM(x3I,x4M).
+  virtI(x3I) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtIM(x3I,x4M).
+  virtI(x3I) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),polySite(x3I).
+  virtI(x0I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x0I,x1M).
+  virtI(x0I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x0I,x1M).
+  virtI(x0I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x0I,x1M).
+  virtI(x0I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x0I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),insvIM(x2I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),virtIM(x2I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x4M),insvIM(x2I,x1M),virtIM(x0I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x4M),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  virtI(x0I) :- insvIM(x0I,x1M),insvIM(x2I,x1M),virtI(x2I).
+  virtI(x0I) :- insvIM(x0I,x1M),insvIM(x2I,x1M),polySite(x2I).
+  virtI(x0I) :- insvIM(x0I,x1M),virtI(x2I),virtIM(x2I,x1M).
+  virtI(x0I) :- insvIM(x0I,x1M),polySite(x2I),virtIM(x2I,x1M).
+  virtI(x0I) :- insvIM(x2I,x1M),virtI(x2I),virtIM(x0I,x1M).
+  virtI(x0I) :- insvIM(x2I,x1M),polySite(x2I),virtIM(x0I,x1M).
+  virtI(x0I) :- virtI(x2I),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  virtI(x0I) :- polySite(x2I),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  virtI(x4I) :- CICM(x2C,x0I,x3M),insvIM(x0I,x1M),insvIM(x4I,x3M).
+  virtI(x4I) :- CICM(x2C,x0I,x3M),insvIM(x0I,x1M),virtIM(x4I,x3M).
+  virtI(x4I) :- CICM(x2C,x0I,x3M),insvIM(x4I,x3M),virtIM(x0I,x1M).
+  virtI(x4I) :- CICM(x2C,x0I,x3M),virtIM(x0I,x1M),virtIM(x4I,x3M).
+  virtI(x3I) :- Mneq(x0M,x0M),Mneq(x0M,x2M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x0M),Mneq(x0M,x2M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x2M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x2M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x0M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x0M,x0M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x1M),insvIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x1M),virtIM(x3I,x2M).
+  virtI(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x2M),virtIM(x3I,x1M).
+  virtI(x3I) :- Mneq(x1M,x2M),virtIM(x3I,x1M),virtIM(x3I,x2M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x2M),Mneq(x2M,x0M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x0M),Mneq(x2M,x0M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x4I,x1M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x4I,x1M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x4I,x1M).
+  virtI(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x4I,x1M).
+  virtI(x2I) :- Mneq(x0M,x0M),insvIM(x2I,x0M),virtIM(x2I,x3M).
+  virtI(x2I) :- Mneq(x0M,x0M),insvIM(x2I,x3M),virtIM(x2I,x0M).
+  virtI(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x0M),insvIM(x2I,x0M).
+  virtI(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x0M),virtIM(x2I,x0M).
+  virtI(x2I) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  virtI(x2I) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  virtI(x0I) :- CICM(x3C,x2I,x1M),insvIM(x0I,x1M),insvIM(x2I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x1M),insvIM(x0I,x1M),virtIM(x2I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x1M),insvIM(x2I,x1M),virtIM(x0I,x1M).
+  virtI(x0I) :- CICM(x3C,x2I,x1M),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  polySite(x0I) :- insvIM(x0I,x1M).
+  polySite(x0I) :- virtIM(x0I,x1M).
+  polySite(x1I) :- CICM(x0C,x1I,x2M).
+  polySite(x0I) :- virtI(x0I).
+  polySite(x3I) :- insvIM(x0I,x1M),insvIM(x3I,x2M),virtIM(x0I,x2M).
+  polySite(x3I) :- insvIM(x0I,x1M),virtIM(x0I,x2M),virtIM(x3I,x2M).
+  polySite(x3I) :- insvIM(x0I,x2M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  polySite(x3I) :- insvIM(x0I,x2M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x1M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x1M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x1M,x2M),insvIM(x0I,x1M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x1M,x2M),insvIM(x0I,x1M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x1M),Mneq(x1M,x2M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x1M),Mneq(x1M,x2M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  polySite(x3I) :- Mneq(x1M,x2M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x2M,x1M),insvIM(x0I,x1M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x2M,x1M),insvIM(x0I,x1M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x2M,x1M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  polySite(x3I) :- Mneq(x2M,x1M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x2M,x0M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x0I,x1M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x1M,x2M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x0I,x1M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x0I,x1M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x0I,x1M).
+  polySite(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  polySite(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  polySite(x2I) :- Mneq(x0M,x1M),insvIM(x2I,x0M),virtI(x2I).
+  polySite(x2I) :- Mneq(x0M,x1M),virtI(x2I),virtIM(x2I,x0M).
+  polySite(x3I) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),insvIM(x3I,x4M).
+  polySite(x3I) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtIM(x3I,x4M).
+  polySite(x3I) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtI(x3I).
+  polySite(x0I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x0I,x1M).
+  polySite(x0I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x0I,x1M).
+  polySite(x0I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x0I,x1M).
+  polySite(x0I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x0I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),insvIM(x2I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),virtIM(x2I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x4M),insvIM(x2I,x1M),virtIM(x0I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x4M),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  polySite(x0I) :- insvIM(x0I,x1M),insvIM(x2I,x1M),virtI(x2I).
+  polySite(x0I) :- insvIM(x0I,x1M),insvIM(x2I,x1M),polySite(x2I).
+  polySite(x0I) :- insvIM(x0I,x1M),virtI(x2I),virtIM(x2I,x1M).
+  polySite(x0I) :- insvIM(x0I,x1M),polySite(x2I),virtIM(x2I,x1M).
+  polySite(x0I) :- insvIM(x2I,x1M),virtI(x2I),virtIM(x0I,x1M).
+  polySite(x0I) :- insvIM(x2I,x1M),polySite(x2I),virtIM(x0I,x1M).
+  polySite(x0I) :- virtI(x2I),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  polySite(x0I) :- polySite(x2I),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  polySite(x4I) :- CICM(x2C,x0I,x3M),insvIM(x0I,x1M),insvIM(x4I,x3M).
+  polySite(x4I) :- CICM(x2C,x0I,x3M),insvIM(x0I,x1M),virtIM(x4I,x3M).
+  polySite(x4I) :- CICM(x2C,x0I,x3M),insvIM(x4I,x3M),virtIM(x0I,x1M).
+  polySite(x4I) :- CICM(x2C,x0I,x3M),virtIM(x0I,x1M),virtIM(x4I,x3M).
+  polySite(x3I) :- Mneq(x0M,x0M),Mneq(x0M,x2M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x0M),Mneq(x0M,x2M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x2M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x2M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x0M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x0M,x0M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x1M),insvIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x1M),virtIM(x3I,x2M).
+  polySite(x3I) :- Mneq(x1M,x2M),insvIM(x3I,x2M),virtIM(x3I,x1M).
+  polySite(x3I) :- Mneq(x1M,x2M),virtIM(x3I,x1M),virtIM(x3I,x2M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x2M),Mneq(x2M,x0M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x0M,x0M),Mneq(x2M,x0M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x4I,x1M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x4I,x1M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x4I,x1M).
+  polySite(x4I) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x4I,x1M).
+  polySite(x2I) :- Mneq(x0M,x0M),insvIM(x2I,x0M),virtIM(x2I,x3M).
+  polySite(x2I) :- Mneq(x0M,x0M),insvIM(x2I,x3M),virtIM(x2I,x0M).
+  polySite(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x0M),insvIM(x2I,x0M).
+  polySite(x2I) :- CICM(x3C,x2I,x4M),Mneq(x0M,x0M),virtIM(x2I,x0M).
+  polySite(x2I) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  polySite(x2I) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  polySite(x0I) :- CICM(x3C,x2I,x1M),insvIM(x0I,x1M),insvIM(x2I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x1M),insvIM(x0I,x1M),virtIM(x2I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x1M),insvIM(x2I,x1M),virtIM(x0I,x1M).
+  polySite(x0I) :- CICM(x3C,x2I,x1M),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  insvIM(x0I,x1M) :- virtIM(x0I,x1M).
+  insvIM(x1I,x2M) :- CICM(x0C,x1I,x2M).
+  insvIM(x3I,x1M) :- insvIM(x0I,x1M),insvIM(x0I,x2M),insvIM(x3I,x2M).
+  insvIM(x3I,x1M) :- insvIM(x0I,x1M),insvIM(x0I,x2M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- insvIM(x0I,x1M),insvIM(x3I,x2M),virtIM(x0I,x2M).
+  insvIM(x3I,x1M) :- insvIM(x0I,x1M),virtIM(x0I,x2M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x0M,x1M),Mneq(x0M,x2M),insvIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x0M,x1M),Mneq(x0M,x2M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- insvIM(x0I,x2M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  insvIM(x3I,x1M) :- insvIM(x0I,x2M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- insvIM(x3I,x2M),virtIM(x0I,x1M),virtIM(x0I,x2M).
+  insvIM(x3I,x1M) :- virtIM(x0I,x1M),virtIM(x0I,x2M),virtIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x1M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x1M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x0M,x1M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x0M,x1M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x1M),Mneq(x1M,x2M),insvIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x1M),Mneq(x1M,x2M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x1M,x2M),insvIM(x0I,x1M),insvIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x1M,x2M),insvIM(x0I,x1M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x0M,x1M),Mneq(x1M,x2M),insvIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x0M,x1M),Mneq(x1M,x2M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x1M,x2M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  insvIM(x3I,x1M) :- Mneq(x1M,x2M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x1M),Mneq(x2M,x1M),insvIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x1M),Mneq(x2M,x1M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x2M,x1M),insvIM(x0I,x1M),insvIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x2M,x1M),insvIM(x0I,x1M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x2M,x1M),insvIM(x3I,x2M),virtIM(x0I,x1M).
+  insvIM(x3I,x1M) :- Mneq(x2M,x1M),virtIM(x0I,x1M),virtIM(x3I,x2M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),insvIM(x0I,x1M),insvIM(x0I,x2M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),insvIM(x0I,x1M),virtIM(x0I,x2M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x0M,x2M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),insvIM(x0I,x2M),virtIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),virtIM(x0I,x1M),virtIM(x0I,x2M).
+  insvIM(x4I,x0M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x2M,x0M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x2M,x0M).
+  insvIM(x4I,x0M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x1M,x2M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x1M,x2M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x0I,x1M).
+  insvIM(x4I,x0M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x1M),Mneq(x2M,x1M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x0I,x1M).
+  insvIM(x2I,x0M) :- Mneq(x0M,x1M),insvIM(x2I,x3M),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- insvIM(x0I,x1M),insvIM(x2I,x3M),virtIM(x2I,x1M).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),insvIM(x2I,x3M),virtIM(x2I,x1M).
+  insvIM(x2I,x0M) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),virtIM(x2I,x1M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x4M),Mneq(x0M,x1M),virtIM(x2I,x1M).
+  insvIM(x2I,x0M) :- Mneq(x0M,x1M),virtI(x2I),virtIM(x2I,x0M).
+  insvIM(x2I,x0M) :- Mneq(x0M,x1M),polySite(x2I),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),insvIM(x2I,x0M),virtI(x2I).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),insvIM(x2I,x0M),polySite(x2I).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),virtI(x2I),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),polySite(x2I),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- insvIM(x0I,x1M),virtI(x2I),virtIM(x2I,x1M).
+  insvIM(x2I,x1M) :- insvIM(x0I,x1M),polySite(x2I),virtIM(x2I,x1M).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),virtI(x2I),virtIM(x2I,x1M).
+  insvIM(x2I,x1M) :- Mneq(x0M,x1M),polySite(x2I),virtIM(x2I,x1M).
+  insvIM(x3I,x0M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),insvIM(x3I,x4M).
+  insvIM(x3I,x0M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),insvIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),insvIM(x0I,x1M),insvIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),insvIM(x0I,x1M),virtIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),Mneq(x0M,x1M),insvIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),Mneq(x0M,x1M),virtIM(x3I,x4M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),insvIM(x3I,x4M),virtIM(x0I,x1M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),virtIM(x0I,x1M),virtIM(x3I,x4M).
+  insvIM(x4I,x1M) :- CICM(x2C,x3I,x0M),CICM(x2C,x4I,x5M),Mneq(x0M,x1M).
+  insvIM(x3I,x0M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtI(x3I).
+  insvIM(x3I,x0M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),polySite(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),virtI(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x0M),Mneq(x0M,x1M),polySite(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),insvIM(x0I,x1M),virtI(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),insvIM(x0I,x1M),polySite(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),Mneq(x0M,x1M),virtI(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),Mneq(x0M,x1M),polySite(x3I).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),virtI(x3I),virtIM(x0I,x1M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x1M),polySite(x3I),virtIM(x0I,x1M).
+  insvIM(x0I,x2M) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),insvIM(x0I,x1M).
+  insvIM(x0I,x2M) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x0I,x1M).
+  insvIM(x0I,x2M) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),insvIM(x0I,x1M).
+  insvIM(x0I,x2M) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x0I,x1M).
+  insvIM(x0I,x2M) :- CICM(x3C,x4I,x2M),insvIM(x0I,x1M),virtIM(x0I,x2M).
+  insvIM(x0I,x4M) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),insvIM(x2I,x1M).
+  insvIM(x0I,x4M) :- CICM(x3C,x2I,x4M),insvIM(x0I,x1M),virtIM(x2I,x1M).
+  insvIM(x0I,x4M) :- CICM(x3C,x2I,x4M),insvIM(x2I,x1M),virtIM(x0I,x1M).
+  insvIM(x0I,x4M) :- CICM(x3C,x2I,x4M),virtIM(x0I,x1M),virtIM(x2I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),insvIM(x0I,x1M),insvIM(x4I,x3M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),insvIM(x0I,x1M),virtIM(x4I,x3M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),insvIM(x4I,x3M),virtIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),virtIM(x0I,x1M),virtIM(x4I,x3M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),CICM(x2C,x4I,x5M),insvIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),CICM(x2C,x4I,x5M),virtIM(x0I,x1M).
+  insvIM(x5I,x1M) :- CICM(x2C,x0I,x3M),CICM(x4C,x5I,x3M),insvIM(x0I,x1M).
+  insvIM(x5I,x1M) :- CICM(x2C,x0I,x3M),CICM(x4C,x5I,x3M),virtIM(x0I,x1M).
+  insvIM(x0I,x5M) :- CICM(x2C,x3I,x1M),CICM(x4C,x3I,x5M),insvIM(x0I,x1M).
+  insvIM(x0I,x5M) :- CICM(x2C,x3I,x1M),CICM(x4C,x3I,x5M),virtIM(x0I,x1M).
+  insvIM(x1I,x3M) :- CICM(x0C,x1I,x2M),CICM(x4C,x5I,x3M),Mneq(x2M,x3M).
+  insvIM(x3I,x2M) :- CICM(x0C,x1I,x2M),virtI(x3I),virtIM(x3I,x2M).
+  insvIM(x3I,x2M) :- CICM(x0C,x1I,x2M),polySite(x3I),virtIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x2M),Mneq(x2M,x0M),insvIM(x3I,x2M).
+  insvIM(x3I,x0M) :- Mneq(x0M,x2M),Mneq(x2M,x0M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x1M,x2M),insvIM(x3I,x2M),virtIM(x3I,x1M).
+  insvIM(x3I,x1M) :- Mneq(x1M,x2M),virtIM(x3I,x1M),virtIM(x3I,x2M).
+  insvIM(x3I,x1M) :- Mneq(x2M,x1M),insvIM(x3I,x2M),virtIM(x3I,x1M).
+  insvIM(x3I,x1M) :- Mneq(x2M,x1M),virtIM(x3I,x1M),virtIM(x3I,x2M).
+  insvIM(x4I,x0M) :- CICM(x3C,x4I,x2M),Mneq(x0M,x2M),Mneq(x2M,x0M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x1M,x2M),virtIM(x4I,x1M).
+  insvIM(x4I,x1M) :- CICM(x3C,x4I,x2M),Mneq(x2M,x1M),virtIM(x4I,x1M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x1M),Mneq(x0M,x1M),insvIM(x2I,x0M).
+  insvIM(x2I,x1M) :- CICM(x3C,x2I,x1M),Mneq(x0M,x1M),virtIM(x2I,x0M).
+  insvIM(x2I,x0M) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),insvIM(x2I,x1M).
+  insvIM(x2I,x0M) :- CICM(x3C,x2I,x0M),Mneq(x0M,x1M),virtIM(x2I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x3I,x0M),CICM(x2C,x4I,x1M),Mneq(x0M,x1M).
+  insvIM(x3I,x1M) :- CICM(x2C,x3I,x0M),CICM(x4C,x3I,x1M),Mneq(x0M,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x3I,x1M),CICM(x2C,x4I,x5M),insvIM(x3I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x3I,x1M),CICM(x2C,x4I,x5M),virtIM(x3I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x3I,x1M),CICM(x2C,x4I,x5M),Mneq(x5M,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x5M),CICM(x2C,x4I,x5M),insvIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x5M),CICM(x2C,x4I,x5M),virtIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),CICM(x2C,x4I,x1M),insvIM(x0I,x1M).
+  insvIM(x4I,x1M) :- CICM(x2C,x0I,x3M),CICM(x2C,x4I,x1M),virtIM(x0I,x1M).
+  insvIM(x0I,x5M) :- CICM(x2C,x4I,x1M),CICM(x2C,x4I,x5M),insvIM(x0I,x1M).
+  insvIM(x0I,x5M) :- CICM(x2C,x4I,x1M),CICM(x2C,x4I,x5M),virtIM(x0I,x1M).
+}
+
+// MinRules(500, 3, 3)

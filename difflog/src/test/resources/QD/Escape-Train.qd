@@ -1,0 +1,48 @@
+Input { MmethArg(method, variable), MmethRet(method, variable), VH(variable, heap), HFH(heap, heap) }
+Invented { }
+Output { rMH(method, heap), rRH(method, heap), rHH(heap, heap) }
+
+EDB {
+  MmethArg(v7, v4), MmethArg(v7, v1), MmethArg(v1, v6), MmethArg(v0, v7), MmethArg(v1, v7),
+  MmethRet(v6, v4), MmethRet(v0, v0), MmethRet(v3, v3), MmethRet(v7, v3), MmethRet(v1, v4), MmethRet(v7, v4), MmethRet(v0, v6), MmethRet(v2, v4),
+  VH(v5, v4), VH(v6, v7), VH(v6, v1), VH(v1, v5), VH(v2, v2), VH(v1, v0), VH(v3, v4),
+  HFH(v6, v4), HFH(v5, v0), HFH(v3, v3), HFH(v7, v1), HFH(v4, v5), HFH(v5, v7), HFH(v0, v6), HFH(v0, v5), HFH(v4, v3), HFH(v2, v2), HFH(v5, v2)
+}
+
+IDB {
+  rMH(v7, v3), rMH(v7, v0), rMH(v7, v1), rMH(v7, v6), rMH(v7, v7), rMH(v7, v4), rMH(v7, v5), rMH(v1, v7), rMH(v1, v1), rMH(v7, v2),
+  rRH(v0, v1), rRH(v7, v3), rRH(v3, v2), rRH(v7, v0), rRH(v3, v3), rRH(v7, v1), rRH(v3, v0), rRH(v7, v6), rRH(v3, v1), rRH(v7, v7), rRH(v0, v7), rRH(v7, v4), rRH(v7, v5), rRH(v3, v6), rRH(v3, v7), rRH(v3, v4), rRH(v7, v2), rRH(v3, v5),
+  rHH(v4, v7), rHH(v6, v6), rHH(v5, v6), rHH(v0, v7), rHH(v6, v2), rHH(v5, v1), rHH(v0, v3), rHH(v4, v0), rHH(v6, v7), rHH(v3, v3), rHH(v4, v4), rHH(v6, v3), rHH(v5, v0), rHH(v2, v2), rHH(v5, v3), rHH(v4, v1), rHH(v6, v4), rHH(v5, v4), rHH(v0, v0), rHH(v7, v1), rHH(v4, v5), rHH(v0, v4), rHH(v6, v0), rHH(v0, v5), rHH(v4, v2), rHH(v6, v5), rHH(v5, v5), rHH(v0, v1), rHH(v4, v6), rHH(v6, v1), rHH(v5, v7), rHH(v0, v6), rHH(v4, v3), rHH(v5, v2), rHH(v0, v2)
+}
+
+Rules {
+  rHH(x0H, x2H) :- HFH(x0H, x2H).
+  rHH(x2H, x1H) :- rHH(x0H, x1H), rHH(x2H, x0H).
+  rMH(x2M, x1H) :- MmethArg(x2M, x0V), VH(x0V, x1H).
+  rMH(x0M, x2H) :- rHH(x1H, x2H), rMH(x0M, x1H).
+  rRH(x2M, x1H) :- MmethRet(x2M, x0V), VH(x0V, x1H).
+  rRH(x3M, x2H) :- HFH(x0H, x2H), rRH(x3M, x0H).
+
+  rHH(x3H, x2H) :- HFH(x0H, x2H), rHH(x3H, x0H).
+  rHH(x0H, x3H) :- HFH(x0H, x2H), rHH(x2H, x3H).
+  rMH(x0M, x1H) :- rRH(x0M, x1H).
+  rMH(x2M, x1H) :- MmethRet(x2M, x0V), VH(x0V, x1H).
+  rMH(x2M, x1H) :- rMH(x0M, x1H), rRH(x2M, x1H).
+  rMH(x2M, x1H) :- rHH(x0H, x1H), rRH(x2M, x1H).
+  rMH(x2M, x1H) :- VH(x0V, x1H), rRH(x2M, x1H).
+  rMH(x3M, x2H) :- HFH(x0H, x2H), rRH(x3M, x0H).
+  rMH(x3M, x2H) :- HFH(x0H, x2H), rMH(x3M, x0H).
+  rMH(x0M, x1H) :- rHH(x1H, x2H), rRH(x0M, x1H).
+  rMH(x0M, x2H) :- rHH(x1H, x2H), rRH(x0M, x1H).
+  rRH(x0M, x1H) :- rMH(x0M, x1H).
+  rRH(x2M, x1H) :- MmethArg(x2M, x0V), VH(x0V, x1H).
+  rRH(x2M, x1H) :- rMH(x2M, x1H), rRH(x0M, x1H).
+  rRH(x2M, x1H) :- rHH(x0H, x1H), rMH(x2M, x1H).
+  rRH(x2M, x1H) :- VH(x0V, x1H), rMH(x2M, x1H).
+  rRH(x3M, x2H) :- HFH(x0H, x2H), rMH(x3M, x0H).
+  rRH(x0M, x1H) :- rHH(x1H, x2H), rMH(x0M, x1H).
+  rRH(x0M, x2H) :- rHH(x1H, x2H), rRH(x0M, x1H).
+  rRH(x0M, x2H) :- rHH(x1H, x2H), rMH(x0M, x1H).
+}
+
+// MinRules(500, 3, 3)

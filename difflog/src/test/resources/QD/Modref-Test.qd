@@ -1,0 +1,115 @@
+Input {
+  MgetInstFldInst(Method, Variable, Variable, F),
+  MputInstFldInst(Method, Variable, F, Variable),
+  MgetStatFldInst(Method, Variable, F),
+  MputStatFldInst(Method, F, Variable),
+  VH(Variable, Heap),
+  IM(I, Method),
+  MI(Method, I)
+}
+Invented { }
+Output {
+  rMM(Method, Method),
+  refStatField(Method, F),
+  modStatField(Method, F),
+  refInstField(Method, Heap, F),
+  modInstField(Method, Heap, F)
+}
+
+EDB {
+  MgetInstFldInst(v4, v6, v7, v0),
+  MgetInstFldInst(v6, v2, v4, v2),
+  MgetInstFldInst(v0, v2, v1, v0),
+  MgetInstFldInst(v3, v1, v2, v4),
+  MgetInstFldInst(v2, v5, v0, v0),
+
+  MputInstFldInst(v4, v1, v5, v3),
+  MputInstFldInst(v7, v3, v0, v2),
+  MputInstFldInst(v0, v5, v2, v1),
+  MputInstFldInst(v5, v1, v5, v2),
+  MputInstFldInst(v7, v5, v1, v4),
+  MputInstFldInst(v2, v4, v2, v3),
+  MputInstFldInst(v2, v2, v1, v6),
+
+  MgetStatFldInst(v4, v0, v1),
+  MgetStatFldInst(v0, v1, v2),
+  MgetStatFldInst(v2, v7, v0),
+  MgetStatFldInst(v7, v7, v6),
+  MgetStatFldInst(v1, v0, v4),
+  MgetStatFldInst(v0, v1, v1),
+  MgetStatFldInst(v6, v2, v3),
+
+  MputStatFldInst(v2, v2, v1),
+  MputStatFldInst(v0, v2, v0),
+  MputStatFldInst(v7, v7, v7),
+  MputStatFldInst(v7, v2, v3),
+
+  VH(v5, v2),
+  VH(v1, v1),
+  VH(v3, v6),
+  VH(v2, v2),
+
+  IM(v7, v1),
+  IM(v1, v5),
+  IM(v5, v1),
+  IM(v0, v5),
+  IM(v6, v3),
+  IM(v4, v5),
+  IM(v4, v2),
+  IM(v3, v7),
+  IM(v0, v1),
+
+  MI(v5, v0),
+  MI(v6, v6),
+  MI(v4, v1),
+  MI(v5, v5),
+  MI(v3, v7),
+  MI(v1, v7),
+  MI(v2, v1),
+  MI(v6, v0)
+}
+
+IDB {
+  rMM(v2, v5),
+  rMM(v5, v1),
+  rMM(v3, v1),
+  rMM(v6, v1),
+  rMM(v4, v1),
+  rMM(v6, v5),
+  rMM(v1, v1),
+  rMM(v6, v3),
+  rMM(v4, v5),
+  rMM(v5, v5),
+  rMM(v2, v1),
+
+  refStatField(v7, v6),
+  refStatField(v0, v2),
+  refStatField(v3, v4),
+  refStatField(v6, v4),
+  refStatField(v4, v1),
+  refStatField(v2, v0),
+  refStatField(v4, v4),
+  refStatField(v6, v3),
+  refStatField(v1, v4),
+  refStatField(v5, v4),
+  refStatField(v2, v4),
+  refStatField(v0, v1),
+
+  modStatField(v2, v2),
+  modStatField(v7, v7),
+  modStatField(v7, v2),
+  modStatField(v0, v2),
+
+  refInstField(v0, v1, v0),
+  refInstField(v3, v2, v4),
+  refInstField(v6, v2, v4),
+
+  modInstField(v7, v2, v1),
+  modInstField(v6, v1, v5),
+  modInstField(v2, v1, v5),
+  modInstField(v4, v1, v5),
+  modInstField(v0, v2, v2),
+  modInstField(v2, v2, v1),
+  modInstField(v7, v6, v0),
+  modInstField(v5, v1, v5)
+}

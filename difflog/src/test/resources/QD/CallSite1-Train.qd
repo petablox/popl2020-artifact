@@ -1,0 +1,125 @@
+Input {
+  points_initial(V, H), store(V, F, V), load(V, F, V), invocation(C, H, C, M),
+  actual(H, Z, V), formal(M, Z, V), assign(C, V, C, V)
+}
+Invented { }
+Output {
+  pts(C, V, H), heappts(H, F, H)
+}
+
+EDB {
+  points_initial(v1,v1), points_initial(v2,v2), points_initial(v5,v1), points_initial(v9,v9), points_initial(v1v1,v1v1),
+  store(v7,v2,v5), store(v5,v1,v1), store(v9,v2,v5), store(v9,v1,v1v1),
+  load(v2,v2,v8), load(v5,v1,v10), load(v5,v1,v7),
+  invocation(v1,v1,v2,v1), invocation(v3,v2,v2,v1), invocation(v2,v9,v1,v1), invocation(v3,v1v1,v1,v1),
+  actual(v1,v0,v5), actual(v1,v1,v7), actual(v2,v0,v6), actual(v2,v1,v2),
+  formal(v1,v0,v5), formal(v1,v1,v7), formal(v2,v0,v3), formal(v2,v1,v6),
+  assign(v2,v5,v1,v5), assign(v2,v7,v1,v7), assign(v2,v5,v3,v6), assign(v2,v7,v3,v2)
+}
+
+IDB {
+  pts(v1,v1,v1),pts(v1,v5,v1),pts(v3,v2,v2),pts(v3,v1v1,v1v1),pts(v2,v9,v9),pts(v2,v5,v1),
+  pts(v2,v7,v2),pts(v1,v10,v1),pts(v1,v7,v1),pts(v2,v7,v1),pts(v3,v8,v1),pts(v2,v10,v1),
+
+  heappts(v1,v1,v1),heappts(v2,v2,v1),heappts(v1,v2,v1),heappts(v9,v2,v1)
+}
+
+Rules {
+  pts(x2C,x0V,x1H) :-  invocation(x2C,x1H,x3C,x4M),points_initial(x0V,x1H).
+  pts(x3C,x0V,x1H) :-  invocation(x2C,x1H,x3C,x4M),points_initial(x0V,x1H).
+  pts(x2C,x0V,x1H) :-  assign(x2C,x0V,x3C,x4V),points_initial(x0V,x1H).
+  pts(x2C,x4V,x1H) :-  assign(x2C,x0V,x3C,x4V),points_initial(x0V,x1H).
+  pts(x3C,x0V,x1H) :-  assign(x2C,x0V,x3C,x4V),points_initial(x0V,x1H).
+  pts(x3C,x4V,x1H) :-  assign(x2C,x0V,x3C,x4V),points_initial(x0V,x1H).
+  pts(x2C,x0V,x1H) :-  assign(x2C,x3V,x4C,x0V),points_initial(x0V,x1H).
+  pts(x2C,x3V,x1H) :-  assign(x2C,x3V,x4C,x0V),points_initial(x0V,x1H).
+  pts(x4C,x0V,x1H) :-  assign(x2C,x3V,x4C,x0V),points_initial(x0V,x1H).
+  pts(x4C,x3V,x1H) :-  assign(x2C,x3V,x4C,x0V),points_initial(x0V,x1H).
+  pts(x2C,x0V,x1H) :-  points_initial(x0V,x1H),pts(x2C,x0V,x3H).
+  pts(x2C,x0V,x1H) :-  points_initial(x0V,x1H),pts(x2C,x3V,x1H).
+  pts(x3C,x2V,x0H) :-  actual(x0H,x1Z,x2V),assign(x3C,x2V,x4C,x5V).
+  pts(x3C,x4V,x0H) :-  actual(x0H,x1Z,x2V),assign(x3C,x4V,x5C,x2V).
+  pts(x3C,x2V,x0H) :-  actual(x0H,x1Z,x2V),pts(x3C,x4V,x0H).
+  pts(x3C,x2V,x0H) :-  actual(x0H,x1Z,x2V),pts(x3C,x2V,x4H).
+  pts(x3C,x2V,x4H) :-  pts(x3C,x0V,x4H),store(x0V,x1F,x2V).
+  pts(x3C,x2V,x4H) :-  load(x0V,x1F,x2V),pts(x3C,x0V,x4H).
+  pts(x3C,x0V,x4H) :-  pts(x3C,x2V,x4H),store(x0V,x1F,x2V).
+  pts(x3C,x0V,x4H) :-  load(x0V,x1F,x2V),pts(x3C,x2V,x4H).
+  pts(x4C,x5V,x1H) :-  assign(x4C,x5V,x0C,x6V),invocation(x0C,x1H,x2C,x3M).
+  pts(x0C,x5V,x1H) :-  invocation(x0C,x1H,x2C,x3M),pts(x4C,x5V,x1H).
+  pts(x0C,x4V,x1H) :-  invocation(x0C,x1H,x2C,x3M),pts(x2C,x4V,x5H).
+  pts(x0C,x4V,x5H) :-  invocation(x0C,x1H,x2C,x3M),pts(x2C,x4V,x5H).
+  pts(x0C,x4V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x2C,x4V,x5H).
+  pts(x0C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x0C,x4V,x5H).
+  pts(x0C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x0C,x4V,x5H).
+  pts(x2C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x0C,x4V,x5H).
+  pts(x0C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x1V,x5H).
+  pts(x0C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x1V,x5H).
+  pts(x2C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x1V,x5H).
+  pts(x0C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x2C,x4V,x5H).
+  pts(x0C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x2C,x4V,x5H).
+  pts(x2C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x2C,x4V,x5H).
+  pts(x2C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x2C,x4V,x5H).
+  pts(x0C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x3V,x5H).
+  pts(x0C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x3V,x5H).
+  pts(x2C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x3V,x5H).
+  pts(x2C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x3V,x5H).
+  pts(x4C,x1V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x4C,x3V,x5H).
+  pts(x3C,x4V,x2H) :-  heappts(x0H,x1F,x2H),pts(x3C,x4V,x0H).
+  pts(x3C,x4V,x0H) :-  heappts(x0H,x1F,x2H),pts(x3C,x4V,x2H).
+  pts(x0C,x1V,x4H) :-  pts(x0C,x1V,x2H),pts(x0C,x3V,x4H).
+  pts(x0C,x1V,x4H) :-  pts(x0C,x1V,x2H),pts(x3C,x1V,x4H).
+  pts(x0C,x4V,x2H) :-  pts(x0C,x1V,x2H),pts(x3C,x4V,x2H).
+  pts(x2C,x5V,x1H) :-  assign(x2C,x5V,x0C,x6V),invocation(x0C,x1H,x2C,x3M).
+  pts(x4C,x5V,x1H) :-  assign(x4C,x5V,x0C,x6V),invocation(x0C,x1H,x0C,x3M).
+  pts(x2C,x4V,x5H) :-  assign(x0C,x4V,x2C,x3V),pts(x0C,x4V,x5H).
+  pts(x2C,x4V,x5H) :-  assign(x0C,x1V,x2C,x4V),pts(x0C,x4V,x5H).
+  pts(x0C,x5V,x1H) :-  invocation(x0C,x1H,x4C,x3M),pts(x4C,x5V,x1H).
+  pts(x0C,x4V,x5H) :-  assign(x0C,x4V,x2C,x3V),pts(x2C,x4V,x5H).
+  pts(x0C,x4V,x5H) :-  assign(x0C,x1V,x2C,x4V),pts(x2C,x4V,x5H).
+  pts(x0C,x1V,x5H) :-  assign(x0C,x1V,x2C,x4V),pts(x0C,x4V,x5H).
+  pts(x0C,x3V,x5H) :-  assign(x0C,x4V,x2C,x3V),pts(x0C,x4V,x5H).
+  pts(x2C,x1V,x5H) :-  assign(x0C,x1V,x2C,x4V),pts(x0C,x4V,x5H).
+  pts(x0C,x3V,x5H) :-  assign(x0C,x1V,x4C,x3V),pts(x4C,x1V,x5H).
+  pts(x2C,x3V,x5H) :-  assign(x0C,x1V,x2C,x3V),pts(x2C,x1V,x5H).
+  pts(x0C,x1V,x5H) :-  assign(x0C,x1V,x2C,x4V),pts(x2C,x4V,x5H).
+  pts(x2C,x1V,x5H) :-  assign(x0C,x1V,x2C,x4V),pts(x2C,x4V,x5H).
+  pts(x0C,x1V,x2H) :-  heappts(x5H,x4F,x2H),pts(x0C,x3V,x5H),store(x3V,x4F,x1V).
+  pts(x0C,x1V,x2H) :-  heappts(x5H,x4F,x2H),load(x3V,x4F,x1V),pts(x0C,x3V,x5H).
+
+  heappts(x2H,x1F,x0H) :-  heappts(x0H,x1F,x2H).
+  heappts(x3H,x2F,x1H) :-  heappts(x1H,x2F,x3H),points_initial(x0V,x1H).
+  heappts(x1H,x3F,x2H) :-  heappts(x2H,x3F,x1H),points_initial(x0V,x1H).
+  heappts(x0H,x4F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x0H,x4F,x3H) :-  actual(x0H,x1Z,x2V),heappts(x3H,x4F,x0H).
+  heappts(x4H,x1F,x3H) :-  heappts(x3H,x1F,x4H),store(x0V,x1F,x2V).
+  heappts(x4H,x1F,x3H) :-  heappts(x3H,x1F,x4H),load(x0V,x1F,x2V).
+  heappts(x0H,x1F,x4H) :-  heappts(x0H,x1F,x2H),heappts(x0H,x3F,x4H).
+  heappts(x2H,x1F,x4H) :-  heappts(x0H,x1F,x2H),heappts(x0H,x3F,x4H).
+  heappts(x2H,x3F,x4H) :-  heappts(x0H,x1F,x2H),heappts(x0H,x3F,x4H).
+  heappts(x0H,x1F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x0H,x4F,x2H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x2H,x1F,x0H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x2H,x1F,x0H) :-  heappts(x0H,x1F,x2H),pts(x3C,x4V,x0H).
+  heappts(x2H,x4F,x0H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x2H,x4F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x3H,x1F,x0H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x3H,x1F,x2H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x3H,x4F,x2H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x0H,x1F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x1F,x4H).
+  heappts(x0H,x1F,x4H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x1F,x4H).
+  heappts(x2H,x1F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x1F,x4H).
+  heappts(x2H,x1F,x4H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x1F,x4H).
+  heappts(x0H,x1F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x2H).
+  heappts(x0H,x4F,x2H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x4F,x2H).
+  heappts(x0H,x4F,x3H) :-  heappts(x0H,x4F,x2H),heappts(x3H,x4F,x0H).
+  heappts(x0H,x4F,x3H) :-  heappts(x0H,x1F,x3H),heappts(x3H,x4F,x0H).
+  heappts(x4H,x1F,x3H) :-  heappts(x0H,x1F,x3H),heappts(x3H,x1F,x4H).
+  heappts(x2H,x1F,x4H) :-  heappts(x0H,x1F,x2H),heappts(x0H,x1F,x4H).
+  heappts(x2H,x1F,x3H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x1F,x0H).
+  heappts(x3H,x1F,x2H) :-  heappts(x0H,x1F,x2H),heappts(x3H,x1F,x0H).
+  heappts(x0H,x1F,x2H) :-  pts(x5C,x3V,x0H),pts(x5C,x4V,x2H),store(x3V,x1F,x4V).
+  heappts(x0H,x1F,x2H) :-  load(x3V,x1F,x4V),pts(x5C,x3V,x0H),pts(x5C,x4V,x2H).
+}
+
+// MinRules(500, 3, 3)

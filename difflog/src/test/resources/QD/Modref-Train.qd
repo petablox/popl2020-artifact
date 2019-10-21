@@ -1,0 +1,74 @@
+Input {
+  MgetInstFldInst(Method, Variable, Variable, F),
+  MputInstFldInst(Method, Variable, F, Variable),
+  MgetStatFldInst(Method, Variable, F),
+  MputStatFldInst(Method, F, Variable),
+  VH(Variable, Heap),
+  IM(I, Method),
+  MI(Method, I)
+}
+Invented { }
+Output {
+  rMM(Method, Method),
+  refStatField(Method, F),
+  modStatField(Method, F),
+  refInstField(Method, Heap, F),
+  modInstField(Method, Heap, F)
+}
+
+EDB {
+  MgetInstFldInst(v4, v3, v2, v2),
+  MputInstFldInst(v4, v4, v3, v5),
+  MgetStatFldInst(v4, v0, v0), MgetStatFldInst(v5, v6, v4), MgetStatFldInst(v7, v6, v6),
+  MputStatFldInst(v4, v1, v1), MputStatFldInst(v6, v5, v7), MputStatFldInst(v7, v6, v7),
+  VH(v2, v2), VH(v4, v4),
+  IM(v0, v1), IM(v1, v2), IM(v2, v3), IM(v3, v4),
+  MI(v0, v0), MI(v1, v1), MI(v2, v2), MI(v3, v3)
+}
+
+IDB {
+  rMM(v0, v1), rMM(v0, v2), rMM(v0, v3), rMM(v0, v4), rMM(v1, v2), rMM(v1, v3), rMM(v1, v4), rMM(v2, v3), rMM(v2, v4), rMM(v3, v4),
+  refStatField(v0, v0), refStatField(v1, v0), refStatField(v2, v0), refStatField(v3, v0), refStatField(v4, v0), refStatField(v5, v4), refStatField(v7, v6),
+  modStatField(v0,v1), modStatField(v1,v1), modStatField(v2,v1), modStatField(v3,v1), modStatField(v4,v1), modStatField(v6,v5), modStatField(v7,v6),
+  refInstField(v0,v2,v2),refInstField(v1,v2,v2),refInstField(v2,v2,v2),refInstField(v3,v2,v2),refInstField(v4,v2,v2),
+  modInstField(v0,v4,v3),modInstField(v1,v4,v3),modInstField(v2,v4,v3),modInstField(v3,v4,v3),modInstField(v4,v4,v3)
+}
+
+Rules {
+  rMM(x0M,x1M) :- rMM(x0M,x2M),rMM(x2M,x1M).
+  rMM(x0M,x1M) :- IM(x2I,x1M),MI(x0M,x2I).
+  rMM(x0M,x1M) :- rMM(x2M,x0M),rMM(x2M,x3M),rMM(x3M,x1M).
+  rMM(x0M,x1M) :- rMM(x0M,x2M),rMM(x2M,x3M),rMM(x3M,x1M).
+  rMM(x0M,x1M) :- rMM(x0M,x2M),rMM(x1M,x2M).
+  rMM(x0M,x1M) :- refStatField(x0M,x2F),refStatField(x1M,x2F).
+  rMM(x0M,x1M) :- modStatField(x0M,x2F),modStatField(x1M,x2F).
+  rMM(x0M,x1M) :- MI(x0M,x2I),MI(x1M,x2I).
+
+  refStatField(x0M,x1F) :- rMM(x0M,x2M),refStatField(x2M,x1F).
+  refStatField(x0M,x1F) :- modStatField(x2M,x1F),rMM(x0M,x2M).
+  refStatField(x0M,x1F) :- refInstField(x0M,x2H,x1F).
+  refStatField(x0M,x1F) :- modInstField(x0M,x2H,x1F).
+  refStatField(x0M,x1F) :- MgetStatFldInst(x0M,x2V,x1F).
+  refStatField(x0M,x1F) :- modStatField(x0M,x1F).
+  refStatField(x0M,x1F) :- MputStatFldInst(x0M,x1F,x2V).
+
+  modStatField(x0M,x1F) :- rMM(x0M,x2M),refStatField(x2M,x1F).
+  modStatField(x0M,x1F) :- modStatField(x2M,x1F),rMM(x0M,x2M).
+  modStatField(x0M,x1F) :- refInstField(x0M,x2H,x1F).
+  modStatField(x0M,x1F) :- modInstField(x0M,x2H,x1F).
+  modStatField(x0M,x1F) :- MgetStatFldInst(x0M,x2V,x1F).
+  modStatField(x0M,x1F) :- refStatField(x0M,x1F).
+  modStatField(x0M,x1F) :- MputStatFldInst(x0M,x1F,x2V).
+
+  refInstField(x0M,x1H,x2F) :- MputInstFldInst(x0M,x3V,x2F,x4V),VH(x3V,x1H).
+  refInstField(x0M,x1H,x2F) :- modInstField(x0M,x1H,x2F).
+  refInstField(x0M,x1H,x2F) :- rMM(x0M,x3M),refInstField(x3M,x1H,x2F).
+  refInstField(x0M,x1H,x2F) :- MgetInstFldInst(x0M,x3V,x4V,x2F),VH(x4V,x1H).
+
+  modInstField(x0M,x1H,x2F) :- MputInstFldInst(x0M,x3V,x2F,x4V),VH(x3V,x1H).
+  modInstField(x0M,x1H,x2F) :- refInstField(x0M,x1H,x2F).
+  modInstField(x0M,x1H,x2F) :- modInstField(x3M,x1H,x2F),rMM(x0M,x3M).
+  modInstField(x0M,x1H,x2F) :- MgetInstFldInst(x0M,x3V,x4V,x2F),VH(x4V,x1H).
+}
+
+// MinRules(500, 3, 3)

@@ -1,0 +1,90 @@
+.type F_name
+.type level
+.type F_key
+.type C_name
+.type S_name
+.type S_key
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Junior(v0: level)
+.input Junior
+.decl Enroll(v0: S_key, v1: C_name)
+.input Enroll
+.decl focus(v0: F_name)
+.input focus
+.decl Student(v0: S_key, v1: S_name, v2: level)
+.input Student
+.decl Class(v0: C_name, v1: F_key)
+.input Class
+.decl Faculty(v0: F_key, v1: F_name)
+.input Faculty
+
+.decl invent_F(v0: F_key)
+.output invent_F
+.decl invent_C(v0: C_name)
+.output invent_C
+.decl invent_K(v0: S_key)
+.output invent_K
+.decl output(v0: S_name)
+.output output
+
+invent_C(v2) :- Enroll(v0, v1), Enroll(v0, v2), Rule(24).
+invent_K(v1) :- output(v0), Student(v1, v0, v2), Student(v1, v3, v4), Rule(22).
+output(v3) :- output(v0), Student(v1, v0, v2), Student(v1, v3, v4), Rule(42).
+invent_C(v1) :- invent_K(v0), Enroll(v0, v1), Class(v1, v2), Rule(12).
+output(v3) :- Junior(v0), Student(v1, v2, v0), Student(v1, v3, v4), Rule(30).
+output(v3) :- Student(v0, v1, v2), invent_K(v0), Student(v0, v3, v4), Rule(40).
+invent_C(v2) :- Faculty(v0, v1), Class(v2, v0), Rule(46).
+output(v2) :- Enroll(v0, v1), Student(v0, v2, v3), Rule(31).
+invent_K(v1) :- Junior(v0), Student(v1, v2, v0), Rule(55).
+invent_F(v1) :- Class(v0, v1), Faculty(v1, v2), Rule(53).
+invent_F(v2) :- Class(v0, v1), invent_C(v0), Class(v0, v2), Rule(8).
+invent_C(v3) :- Student(v0, v1, v2), invent_K(v0), Enroll(v0, v3), Rule(34).
+output(v4) :- output(v0), Student(v1, v0, v2), Student(v3, v4, v2), Rule(4).
+invent_K(v0) :- Enroll(v0, v1), Enroll(v0, v2), Rule(0).
+invent_K(v3) :- Junior(v0), Student(v1, v2, v0), Student(v3, v2, v4), Rule(37).
+invent_K(v1) :- output(v0), Student(v1, v0, v2), Rule(3).
+output(v1) :- invent_K(v0), Student(v0, v1, v2), Rule(56).
+invent_K(v3) :- invent_K(v0), Student(v0, v1, v2), Student(v3, v4, v2), Rule(48).
+output(v2) :- Junior(v0), Student(v1, v2, v0), Rule(17).
+invent_K(v3) :- output(v0), Student(v1, v0, v2), Student(v3, v4, v2), Rule(19).
+output(v2) :- Junior(v0), Student(v1, v2, v0), Student(v1, v3, v4), Rule(44).
+invent_C(v1) :- invent_K(v0), Enroll(v0, v1), Rule(47).
+invent_C(v1) :- invent_F(v0), Class(v1, v0), Class(v1, v2), Rule(32).
+invent_C(v0) :- Class(v0, v1), Enroll(v2, v0), Rule(20).
+invent_F(v2) :- invent_K(v0), Enroll(v0, v1), Class(v1, v2), Rule(23).
+invent_F(v2) :- Enroll(v0, v1), invent_C(v1), Class(v1, v2), Rule(18).
+output(v3) :- Student(v0, v1, v2), Student(v0, v3, v4), Rule(45).
+invent_C(v2) :- invent_C(v0), Class(v0, v1), Class(v2, v1), Rule(7).
+invent_F(v2) :- Enroll(v0, v1), Class(v1, v2), Rule(38).
+invent_F(v1) :- focus(v0), Faculty(v1, v0), Rule(52).
+invent_F(v1) :- invent_C(v0), Class(v0, v1), Faculty(v1, v2), Rule(41).
+invent_F(v2) :- invent_F(v0), Class(v1, v0), Class(v1, v2), Rule(57).
+invent_C(v2) :- Enroll(v0, v1), invent_K(v0), Enroll(v0, v2), Rule(25).
+output(v4) :- invent_K(v0), Student(v0, v1, v2), Student(v3, v4, v2), Rule(26).
+invent_C(v1) :- invent_F(v0), Class(v1, v0), Rule(1).
+invent_C(v0) :- Class(v0, v1), Class(v0, v2), Rule(49).
+invent_F(v1) :- invent_C(v0), Class(v0, v1), Rule(5).
+invent_K(v1) :- Junior(v0), Student(v1, v2, v0), Student(v1, v3, v4), Rule(39).
+output(v2) :- invent_C(v0), Enroll(v1, v0), Student(v1, v2, v3), Rule(14).
+invent_K(v0) :- Enroll(v0, v1), Student(v0, v2, v3), Rule(51).
+invent_K(v2) :- Class(v0, v1), Enroll(v2, v0), Rule(2).
+invent_K(v1) :- invent_C(v0), Enroll(v1, v0), Enroll(v1, v2), Rule(54).
+output(v2) :- Junior(v0), Student(v1, v2, v0), invent_K(v1), Rule(27).
+invent_F(v2) :- invent_F(v0), Faculty(v0, v1), Faculty(v2, v1), Rule(16).
+output(v2) :- Enroll(v0, v1), invent_K(v0), Student(v0, v2, v3), Rule(50).
+invent_K(v1) :- invent_C(v0), Enroll(v1, v0), Rule(21).
+invent_F(v2) :- Class(v0, v1), Class(v0, v2), Rule(43).
+invent_K(v1) :- Junior(v0), Student(v1, v2, v0), output(v2), Rule(35).
+invent_C(v2) :- Faculty(v0, v1), invent_F(v0), Class(v2, v0), Rule(36).
+invent_C(v3) :- Student(v0, v1, v2), Enroll(v0, v3), Rule(33).
+invent_C(v2) :- invent_C(v0), Enroll(v1, v0), Enroll(v1, v2), Rule(9).
+invent_K(v3) :- invent_K(v0), Student(v0, v1, v2), Student(v3, v1, v4), Rule(10).
+invent_K(v1) :- invent_C(v0), Enroll(v1, v0), Student(v1, v2, v3), Rule(15).
+invent_K(v2) :- Class(v0, v1), invent_C(v0), Enroll(v2, v0), Rule(28).
+invent_F(v0) :- Faculty(v0, v1), Faculty(v0, v2), Rule(29).
+invent_F(v1) :- focus(v0), Faculty(v1, v0), Faculty(v1, v2), Rule(6).
+invent_K(v0) :- Student(v0, v1, v2), Student(v0, v3, v4), Rule(13).
+invent_K(v2) :- invent_K(v0), Enroll(v0, v1), Enroll(v2, v1), Rule(11).

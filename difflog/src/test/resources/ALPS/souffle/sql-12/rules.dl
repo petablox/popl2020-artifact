@@ -1,0 +1,46 @@
+.type sname
+.type color
+.type supplier_key
+.type part_id
+
+.decl Rule(n: number)
+.input Rule
+
+.decl isRed(v0: color)
+.input isRed
+.decl isGreen(v0: color)
+.input isGreen
+.decl input3(v0: supplier_key, v1: sname)
+.input input3
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
+.decl input2(v0: part_id, v1: color)
+.input input2
+
+.decl invent_sel(v0: part_id, v1: color)
+.output invent_sel
+.decl output(v0: sname)
+.output output
+
+invent_sel(v3, v1) :- input2(v0, v1), invent_sel(v0, v2), invent_sel(v3, v2), Rule(20).
+output(v3) :- input2(v0, v1), input1(v2, v0), input3(v2, v3), Rule(17).
+invent_sel(v0, v1) :- input2(v0, v1), isRed(v1), Rule(2).
+invent_sel(v1, v3) :- input1(v0, v1), input1(v0, v2), invent_sel(v2, v3), Rule(6).
+invent_sel(v3, v1) :- invent_sel(v0, v1), invent_sel(v0, v2), invent_sel(v3, v2), Rule(19).
+invent_sel(v3, v1) :- input2(v0, v1), input2(v0, v2), invent_sel(v3, v2), Rule(12).
+invent_sel(v0, v3) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(14).
+invent_sel(v2, v3) :- input2(v0, v1), input2(v2, v1), invent_sel(v0, v3), Rule(5).
+invent_sel(v0, v1) :- input2(v0, v1), isGreen(v1), Rule(7).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v0, v3), Rule(8).
+invent_sel(v0, v1) :- input2(v0, v1), Rule(10).
+output(v1) :- input3(v0, v1), Rule(18).
+invent_sel(v3, v1) :- input2(v0, v1), invent_sel(v0, v2), input2(v3, v2), Rule(3).
+invent_sel(v0, v2) :- input2(v0, v1), input2(v0, v2), invent_sel(v3, v2), Rule(0).
+invent_sel(v1, v2) :- input1(v0, v1), input2(v1, v2), input2(v3, v2), Rule(21).
+invent_sel(v1, v2) :- input1(v0, v1), input2(v1, v2), invent_sel(v3, v2), Rule(9).
+invent_sel(v0, v2) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(15).
+invent_sel(v3, v1) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(1).
+output(v3) :- invent_sel(v0, v1), input1(v2, v0), input3(v2, v3), Rule(4).
+invent_sel(v1, v3) :- input1(v0, v1), input1(v0, v2), input2(v2, v3), Rule(11).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v2), invent_sel(v3, v1), Rule(13).
+invent_sel(v3, v2) :- input2(v0, v1), invent_sel(v0, v2), invent_sel(v3, v1), Rule(16).

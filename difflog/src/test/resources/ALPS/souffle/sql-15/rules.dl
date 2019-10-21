@@ -1,0 +1,172 @@
+.type meets_at
+.type C_name
+.type S_key
+
+.decl Rule(n: number)
+.input Rule
+
+.decl class(v0: C_name, v1: meets_at)
+.input class
+.decl LT(v0: C_name, v1: C_name)
+.input LT
+.decl enroll(v0: S_key, v1: C_name)
+.input enroll
+
+.decl invent_A(v0: S_key, v1: C_name, v2: meets_at)
+.output invent_A
+.decl output(v0: S_key)
+.output output
+
+invent_A(v4, v1, v3) :- enroll(v0, v1), invent_A(v0, v2, v3), enroll(v4, v2), Rule(85).
+invent_A(v2, v0, v3) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v1, v3), Rule(116).
+output(v2) :- LT(v0, v1), invent_A(v2, v0, v3), enroll(v2, v4), Rule(16).
+invent_A(v2, v3, v1) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(29).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), Rule(40).
+invent_A(v3, v2, v1) :- class(v0, v1), class(v2, v1), enroll(v3, v0), Rule(50).
+invent_A(v2, v1, v4) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(46).
+invent_A(v3, v1, v4) :- LT(v0, v1), LT(v2, v1), invent_A(v3, v2, v4), Rule(109).
+output(v3) :- enroll(v0, v1), class(v1, v2), invent_A(v3, v4, v2), Rule(119).
+invent_A(v2, v1, v4) :- LT(v0, v1), enroll(v2, v3), invent_A(v2, v0, v4), Rule(104).
+output(v3) :- class(v0, v1), LT(v2, v0), invent_A(v3, v2, v4), Rule(121).
+output(v2) :- LT(v0, v0), LT(v1, v0), enroll(v2, v1), Rule(98).
+invent_A(v0, v1, v4) :- invent_A(v0, v1, v2), invent_A(v3, v1, v4), Rule(8).
+invent_A(v2, v0, v5) :- LT(v0, v1), invent_A(v2, v0, v3), invent_A(v4, v1, v5), Rule(74).
+invent_A(v2, v1, v3) :- LT(v0, v1), invent_A(v2, v0, v3), invent_A(v4, v1, v3), Rule(83).
+output(v3) :- class(v0, v1), class(v2, v1), invent_A(v3, v2, v4), Rule(133).
+output(v2) :- class(v0, v1), invent_A(v2, v3, v1), Rule(23).
+output(v3) :- LT(v0, v1), LT(v2, v0), enroll(v3, v2), Rule(2).
+output(v2) :- class(v0, v1), invent_A(v2, v0, v3), enroll(v2, v4), Rule(142).
+output(v3) :- class(v0, v1), LT(v0, v2), enroll(v3, v2), Rule(137).
+output(v1) :- LT(v0, v0), invent_A(v1, v0, v2), enroll(v1, v3), Rule(39).
+output(v2) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v0, v3), Rule(88).
+output(v3) :- enroll(v0, v1), LT(v2, v1), invent_A(v3, v2, v4), Rule(32).
+output(v2) :- class(v0, v1), invent_A(v2, v0, v1), Rule(102).
+output(v2) :- LT(v0, v1), invent_A(v2, v0, v3), Rule(125).
+output(v2) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(107).
+output(v4) :- invent_A(v0, v1, v2), LT(v3, v1), enroll(v4, v3), Rule(134).
+output(v2) :- output(v0), enroll(v0, v1), invent_A(v2, v1, v3), Rule(31).
+output(v3) :- class(v0, v1), enroll(v2, v0), invent_A(v3, v0, v1), Rule(77).
+invent_A(v3, v1, v4) :- LT(v0, v1), LT(v1, v2), invent_A(v3, v2, v4), Rule(100).
+invent_A(v2, v0, v1) :- class(v0, v1), invent_A(v2, v0, v3), Rule(140).
+output(v2) :- class(v0, v1), enroll(v2, v0), Rule(152).
+invent_A(v2, v4, v1) :- class(v0, v1), invent_A(v2, v0, v3), enroll(v2, v4), Rule(118).
+output(v3) :- LT(v0, v1), LT(v0, v2), enroll(v3, v2), Rule(53).
+invent_A(v3, v1, v4) :- LT(v0, v1), enroll(v2, v1), invent_A(v3, v0, v4), Rule(127).
+invent_A(v2, v3, v1) :- class(v0, v1), enroll(v2, v0), enroll(v2, v3), Rule(4).
+invent_A(v2, v0, v4) :- LT(v0, v1), enroll(v2, v0), invent_A(v3, v1, v4), Rule(3).
+output(v3) :- LT(v0, v1), class(v1, v2), invent_A(v3, v0, v2), Rule(37).
+output(v3) :- invent_A(v0, v1, v2), invent_A(v3, v1, v4), Rule(149).
+output(v2) :- LT(v0, v0), LT(v0, v1), enroll(v2, v1), Rule(113).
+invent_A(v3, v1, v2) :- LT(v0, v1), class(v1, v2), invent_A(v3, v4, v2), Rule(71).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(79).
+output(v3) :- invent_A(v0, v1, v2), enroll(v3, v1), Rule(136).
+invent_A(v3, v0, v4) :- LT(v0, v1), enroll(v2, v0), invent_A(v3, v1, v4), Rule(145).
+output(v3) :- LT(v0, v1), LT(v2, v0), invent_A(v3, v2, v4), Rule(129).
+output(v4) :- class(v0, v1), class(v2, v3), invent_A(v4, v0, v3), Rule(110).
+output(v1) :- LT(v0, v0), invent_A(v1, v0, v2), Rule(114).
+output(v3) :- class(v0, v1), class(v2, v1), enroll(v3, v2), Rule(9).
+invent_A(v2, v0, v4) :- LT(v0, v1), invent_A(v2, v0, v3), invent_A(v2, v1, v4), Rule(11).
+output(v2) :- enroll(v0, v1), enroll(v2, v1), invent_A(v2, v1, v3), Rule(27).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v3), enroll(v2, v0), Rule(132).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), invent_A(v3, v4, v1), Rule(66).
+output(v3) :- LT(v0, v1), LT(v1, v2), invent_A(v3, v2, v4), Rule(112).
+output(v4) :- LT(v0, v1), class(v2, v3), invent_A(v4, v0, v3), Rule(147).
+invent_A(v3, v0, v4) :- LT(v0, v1), LT(v0, v2), invent_A(v3, v2, v4), Rule(35).
+output(v0) :- enroll(v0, v1), invent_A(v0, v1, v2), Rule(14).
+output(v4) :- class(v0, v1), invent_A(v2, v3, v1), enroll(v4, v3), Rule(108).
+invent_A(v2, v0, v4) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(69).
+invent_A(v0, v1, v3) :- enroll(v0, v1), invent_A(v0, v2, v3), Rule(55).
+invent_A(v2, v0, v3) :- LT(v0, v1), invent_A(v2, v1, v3), Rule(143).
+invent_A(v0, v3, v2) :- enroll(v0, v1), invent_A(v0, v1, v2), class(v3, v2), Rule(34).
+output(v2) :- LT(v0, v0), LT(v0, v1), invent_A(v2, v1, v3), Rule(22).
+output(v2) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v1, v3), Rule(70).
+output(v3) :- invent_A(v0, v1, v2), enroll(v3, v1), enroll(v3, v4), Rule(24).
+invent_A(v3, v0, v4) :- LT(v0, v1), class(v0, v2), invent_A(v3, v1, v4), Rule(103).
+output(v2) :- enroll(v0, v1), invent_A(v2, v1, v3), Rule(0).
+output(v2) :- LT(v0, v0), class(v0, v1), invent_A(v2, v3, v1), Rule(13).
+output(v3) :- LT(v0, v1), LT(v2, v1), enroll(v3, v2), Rule(105).
+output(v2) :- LT(v0, v1), enroll(v2, v1), Rule(58).
+output(v3) :- class(v0, v1), LT(v2, v0), enroll(v3, v2), Rule(115).
+invent_A(v2, v1, v4) :- LT(v0, v1), enroll(v2, v1), invent_A(v3, v0, v4), Rule(76).
+invent_A(v3, v1, v2) :- LT(v0, v1), class(v1, v2), invent_A(v3, v0, v2), Rule(60).
+invent_A(v3, v0, v4) :- LT(v0, v1), LT(v2, v0), invent_A(v3, v2, v4), Rule(1).
+output(v2) :- class(v0, v1), invent_A(v2, v0, v1), enroll(v2, v3), Rule(144).
+output(v2) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(81).
+invent_A(v3, v1, v2) :- LT(v0, v1), class(v1, v2), invent_A(v3, v0, v4), Rule(10).
+output(v2) :- class(v0, v1), invent_A(v2, v3, v1), enroll(v2, v3), Rule(28).
+invent_A(v3, v1, v4) :- LT(v0, v1), class(v1, v2), invent_A(v3, v0, v4), Rule(38).
+invent_A(v0, v1, v3) :- enroll(v0, v1), invent_A(v2, v1, v3), Rule(30).
+invent_A(v2, v1, v5) :- LT(v0, v1), invent_A(v2, v0, v3), invent_A(v4, v1, v5), Rule(106).
+output(v2) :- LT(v0, v1), invent_A(v2, v1, v3), enroll(v2, v4), Rule(26).
+invent_A(v3, v0, v2) :- LT(v0, v1), class(v0, v2), enroll(v3, v1), Rule(131).
+invent_A(v0, v1, v4) :- enroll(v0, v1), enroll(v0, v2), invent_A(v3, v2, v4), Rule(42).
+output(v2) :- enroll(v0, v1), invent_A(v2, v1, v3), enroll(v2, v4), Rule(96).
+invent_A(v3, v1, v2) :- LT(v0, v1), class(v0, v2), invent_A(v3, v0, v2), Rule(97).
+output(v3) :- output(v0), invent_A(v0, v1, v2), enroll(v3, v1), Rule(138).
+output(v3) :- LT(v0, v1), LT(v2, v1), invent_A(v3, v2, v4), Rule(19).
+output(v2) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v3, v1), Rule(47).
+invent_A(v3, v0, v1) :- class(v0, v1), enroll(v2, v0), invent_A(v3, v4, v1), Rule(139).
+invent_A(v2, v0, v4) :- LT(v0, v1), enroll(v2, v3), invent_A(v2, v1, v4), Rule(135).
+invent_A(v4, v1, v3) :- LT(v0, v1), class(v2, v3), invent_A(v4, v0, v3), Rule(68).
+output(v3) :- LT(v0, v0), class(v1, v2), invent_A(v3, v0, v2), Rule(5).
+invent_A(v3, v1, v4) :- LT(v0, v1), LT(v2, v0), invent_A(v3, v2, v4), Rule(128).
+output(v3) :- enroll(v0, v1), LT(v1, v2), invent_A(v3, v2, v4), Rule(124).
+output(v1) :- LT(v0, v0), enroll(v1, v0), Rule(57).
+output(v3) :- enroll(v0, v1), enroll(v0, v2), enroll(v3, v2), Rule(18).
+invent_A(v3, v0, v2) :- LT(v0, v1), class(v1, v2), invent_A(v3, v1, v2), Rule(78).
+invent_A(v2, v4, v1) :- class(v0, v1), invent_A(v2, v0, v3), class(v4, v3), Rule(15).
+output(v2) :- LT(v0, v1), LT(v1, v0), enroll(v2, v1), Rule(36).
+output(v3) :- enroll(v0, v1), LT(v1, v2), enroll(v3, v2), Rule(73).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v3), invent_A(v2, v0, v4), Rule(12).
+output(v3) :- LT(v0, v1), class(v1, v2), invent_A(v3, v1, v2), Rule(99).
+invent_A(v2, v1, v4) :- LT(v0, v1), enroll(v2, v0), invent_A(v3, v1, v4), Rule(21).
+invent_A(v3, v0, v2) :- LT(v0, v1), class(v1, v2), invent_A(v3, v0, v4), Rule(87).
+invent_A(v4, v0, v1) :- class(v0, v1), invent_A(v2, v3, v1), enroll(v4, v3), Rule(72).
+output(v3) :- class(v0, v1), class(v2, v1), invent_A(v3, v2, v1), Rule(126).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), output(v2), Rule(117).
+output(v3) :- LT(v0, v1), class(v1, v2), invent_A(v3, v4, v2), Rule(89).
+output(v4) :- invent_A(v0, v1, v2), class(v3, v2), enroll(v4, v3), Rule(141).
+invent_A(v2, v4, v1) :- class(v0, v1), enroll(v2, v0), invent_A(v3, v4, v1), Rule(80).
+output(v3) :- enroll(v0, v1), invent_A(v0, v1, v2), enroll(v3, v1), Rule(101).
+invent_A(v3, v0, v2) :- LT(v0, v1), class(v1, v2), invent_A(v3, v4, v2), Rule(111).
+output(v1) :- LT(v0, v0), enroll(v1, v0), invent_A(v1, v2, v3), Rule(6).
+output(v2) :- LT(v0, v1), invent_A(v2, v1, v3), Rule(54).
+invent_A(v3, v0, v2) :- LT(v0, v1), class(v1, v2), enroll(v3, v0), Rule(52).
+output(v2) :- LT(v0, v1), LT(v1, v0), invent_A(v2, v1, v3), Rule(64).
+output(v3) :- enroll(v0, v1), LT(v2, v1), enroll(v3, v2), Rule(62).
+invent_A(v3, v1, v2) :- LT(v0, v1), class(v0, v2), enroll(v3, v1), Rule(59).
+invent_A(v2, v0, v1) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v3, v1), Rule(94).
+invent_A(v2, v1, v3) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v0, v3), Rule(48).
+invent_A(v2, v0, v3) :- LT(v0, v1), enroll(v2, v1), invent_A(v2, v1, v3), Rule(90).
+invent_A(v4, v0, v3) :- LT(v0, v1), class(v2, v3), invent_A(v4, v1, v3), Rule(91).
+output(v4) :- invent_A(v0, v1, v2), LT(v3, v1), invent_A(v4, v3, v5), Rule(123).
+output(v1) :- LT(v0, v0), enroll(v1, v0), enroll(v1, v2), Rule(44).
+invent_A(v2, v3, v1) :- class(v0, v1), invent_A(v2, v0, v1), enroll(v2, v3), Rule(82).
+output(v2) :- LT(v0, v1), enroll(v2, v1), invent_A(v2, v1, v3), Rule(17).
+output(v4) :- LT(v0, v1), invent_A(v2, v1, v3), invent_A(v4, v0, v3), Rule(84).
+output(v2) :- LT(v0, v1), invent_A(v2, v0, v3), invent_A(v2, v1, v3), Rule(130).
+output(v4) :- enroll(v0, v1), invent_A(v0, v2, v3), enroll(v4, v2), Rule(61).
+output(v2) :- LT(v0, v1), enroll(v2, v0), invent_A(v2, v0, v3), Rule(7).
+invent_A(v2, v0, v4) :- class(v0, v1), enroll(v2, v0), invent_A(v2, v3, v4), Rule(148).
+output(v2) :- output(v0), enroll(v0, v1), enroll(v2, v1), Rule(51).
+invent_A(v2, v0, v3) :- LT(v0, v1), LT(v1, v0), invent_A(v2, v1, v3), Rule(25).
+invent_A(v3, v1, v2) :- LT(v0, v1), class(v1, v2), enroll(v3, v0), Rule(75).
+output(v3) :- LT(v0, v1), LT(v1, v2), enroll(v3, v2), Rule(41).
+invent_A(v3, v0, v1) :- class(v0, v1), class(v2, v1), invent_A(v3, v2, v4), Rule(120).
+output(v2) :- enroll(v0, v1), enroll(v2, v1), Rule(56).
+output(v2) :- LT(v0, v1), invent_A(v2, v0, v3), invent_A(v2, v1, v4), Rule(86).
+output(v2) :- class(v0, v1), invent_A(v2, v0, v3), Rule(122).
+invent_A(v0, v2, v4) :- enroll(v0, v1), enroll(v0, v2), invent_A(v3, v2, v4), Rule(93).
+invent_A(v3, v0, v4) :- LT(v0, v1), LT(v1, v2), invent_A(v3, v2, v4), Rule(45).
+invent_A(v2, v1, v3) :- LT(v0, v1), invent_A(v2, v0, v3), Rule(20).
+output(v2) :- LT(v0, v1), enroll(v2, v0), Rule(67).
+output(v2) :- LT(v0, v1), enroll(v2, v0), enroll(v2, v1), Rule(43).
+invent_A(v2, v3, v1) :- class(v0, v1), enroll(v2, v3), invent_A(v4, v3, v1), Rule(146).
+invent_A(v3, v2, v1) :- class(v0, v1), class(v2, v1), invent_A(v3, v2, v4), Rule(150).
+invent_A(v2, v0, v1) :- class(v0, v1), invent_A(v2, v3, v1), Rule(92).
+invent_A(v2, v0, v3) :- LT(v0, v1), invent_A(v2, v1, v3), output(v2), Rule(95).
+output(v4) :- invent_A(v0, v1, v2), LT(v1, v3), enroll(v4, v3), Rule(49).
+invent_A(v3, v0, v2) :- LT(v0, v1), class(v0, v2), invent_A(v3, v1, v4), Rule(151).
+output(v3) :- class(v0, v1), invent_A(v2, v0, v1), enroll(v3, v0), Rule(65).
+output(v2) :- LT(v0, v0), LT(v1, v0), invent_A(v2, v1, v3), Rule(33).
+output(v0) :- enroll(v0, v1), invent_A(v0, v2, v3), Rule(63).

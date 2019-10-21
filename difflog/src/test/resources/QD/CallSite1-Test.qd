@@ -1,0 +1,66 @@
+Input {
+  points_initial(V, H), store(V, F, V), load(V, F, V), invocation(C, H, C, M),
+  actual(H, Z, V), formal(M, Z, V), assign(C, V, C, V)
+}
+Invented { }
+Output {
+  pts(C, V, H), heappts(H, F, H)
+}
+
+EDB {
+  points_initial(v4, v0), points_initial(v0, v6), points_initial(v3, v1), points_initial(v0, v2), points_initial(v3, v7),
+
+  store(v0, v1, v1), store(v5, v0, v5), store(v6, v0, v6), store(v2, v0, v4), store(v2, v1, v4), store(v3, v1, v4), store(v2, v0, v2),
+  store(v4, v0, v0), store(v2, v0, v6), store(v4, v0, v6), store(v1, v1, v5), store(v1, v0, v2), store(v2, v1, v5), store(v7, v1, v6),
+  store(v2, v1, v6),
+
+  load(v5, v0, v4), load(v1, v0, v3), load(v5, v0, v1), load(v2, v0, v3), load(v2, v0, v4), load(v0, v1, v2), load(v7, v0, v5),
+  load(v0, v1, v7), load(v3, v1, v4), load(v3, v1, v5), load(v6, v0, v0), load(v7, v1, v1), load(v6, v1, v3), load(v5, v1, v7),
+
+  invocation(v1, v1, v0, v1), invocation(v2, v4, v0, v1), invocation(v2, v4, v0, v0), invocation(v2, v0, v1, v1),
+  invocation(v0, v6, v0, v1), invocation(v1, v1, v2, v1), invocation(v1, v3, v1, v1), invocation(v0, v7, v1, v1),
+  invocation(v0, v2, v1, v1), invocation(v0, v0, v1, v0), invocation(v2, v7, v0, v1), invocation(v2, v0, v0, v0),
+  invocation(v1, v2, v0, v1), invocation(v1, v5, v0, v1), invocation(v1, v5, v1, v1), invocation(v1, v4, v2, v0),
+  invocation(v1, v2, v1, v1), invocation(v0, v5, v1, v0),
+
+  actual(v0, v0, v6), actual(v6, v0, v4),
+  formal(v1, v0, v4), formal(v1, v0, v6),
+  assign(v2, v7, v0, v6), assign(v0, v3, v0, v7), assign(v2, v4, v1, v2), assign(v2, v3, v1, v2), assign(v2, v7, v1, v4),
+  assign(v1, v4, v2, v3), assign(v0, v4, v2, v0), assign(v2, v1, v2, v4), assign(v2, v5, v1, v6), assign(v1, v5, v1, v6),
+  assign(v2, v3, v1, v0)
+}
+
+IDB {
+  pts(v1, v1, v7), pts(v2, v7, v1), pts(v2, v7, v2), pts(v0, v5, v7), pts(v1, v4, v2),
+  pts(v0, v2, v1), pts(v0, v5, v1), pts(v1, v7, v2), pts(v2, v7, v6), pts(v1, v7, v0),
+  pts(v1, v2, v0), pts(v1, v7, v6), pts(v0, v2, v7), pts(v1, v2, v2), pts(v0, v3, v2),
+  pts(v0, v7, v2), pts(v0, v7, v0), pts(v2, v5, v7), pts(v0, v4, v2), pts(v1, v3, v7),
+  pts(v1, v2, v6), pts(v1, v5, v7), pts(v0, v4, v0), pts(v1, v5, v1), pts(v0, v1, v0),
+  pts(v0, v4, v6), pts(v1, v2, v7), pts(v2, v3, v6), pts(v1, v3, v1), pts(v2, v3, v0),
+  pts(v2, v4, v0), pts(v2, v3, v2), pts(v2, v4, v2), pts(v2, v1, v7), pts(v2, v4, v6),
+  pts(v0, v3, v1), pts(v1, v4, v0), pts(v0, v3, v7), pts(v1, v1, v0), pts(v2, v1, v1),
+  pts(v1, v1, v2), pts(v1, v4, v7), pts(v1, v4, v1), pts(v0, v3, v6), pts(v0, v5, v6),
+  pts(v1, v1, v6), pts(v0, v5, v0), pts(v0, v2, v0), pts(v0, v5, v2), pts(v1, v7, v1),
+  pts(v2, v7, v7), pts(v0, v2, v2), pts(v0, v1, v2), pts(v1, v7, v7), pts(v2, v5, v2),
+  pts(v0, v7, v7), pts(v2, v5, v0), pts(v0, v2, v6), pts(v2, v5, v6), pts(v0, v7, v6),
+  pts(v0, v4, v1), pts(v1, v3, v6), pts(v0, v7, v1), pts(v1, v5, v6), pts(v0, v4, v7),
+  pts(v1, v0, v2), pts(v1, v5, v0), pts(v0, v1, v1), pts(v1, v3, v2), pts(v1, v2, v1),
+  pts(v1, v5, v2), pts(v2, v3, v7), pts(v1, v3, v0), pts(v2, v4, v1), pts(v2, v3, v1),
+  pts(v0, v0, v6), pts(v0, v1, v7), pts(v2, v1, v6), pts(v2, v4, v7), pts(v0, v0, v2),
+  pts(v0, v3, v0), pts(v2, v1, v2), pts(v0, v1, v6), pts(v1, v1, v1), pts(v2, v5, v1),
+  pts(v2, v7, v0), pts(v2, v1, v0), pts(v1, v4, v6),
+
+  heappts(v7, v1, v0), heappts(v0, v1, v1), heappts(v1, v1, v7), heappts(v0, v1, v2),
+  heappts(v6, v0, v1), heappts(v1, v1, v6), heappts(v1, v0, v1), heappts(v7, v1, v2),
+  heappts(v1, v0, v6), heappts(v7, v1, v1), heappts(v1, v0, v7), heappts(v6, v0, v2),
+  heappts(v0, v0, v7), heappts(v0, v1, v6), heappts(v7, v0, v0), heappts(v7, v1, v7),
+  heappts(v2, v0, v7), heappts(v0, v0, v6), heappts(v6, v1, v2), heappts(v0, v1, v7),
+  heappts(v7, v1, v6), heappts(v2, v0, v6), heappts(v1, v0, v0), heappts(v6, v0, v7),
+  heappts(v2, v0, v1), heappts(v6, v1, v0), heappts(v2, v1, v6), heappts(v6, v0, v6),
+  heappts(v2, v0, v0), heappts(v7, v0, v7), heappts(v2, v1, v7), heappts(v0, v0, v2),
+  heappts(v6, v1, v6), heappts(v2, v0, v2), heappts(v0, v0, v1), heappts(v7, v0, v1),
+  heappts(v6, v1, v7), heappts(v7, v0, v6), heappts(v0, v0, v0), heappts(v7, v0, v2),
+  heappts(v2, v1, v2), heappts(v1, v1, v1), heappts(v0, v1, v0), heappts(v1, v1, v0),
+  heappts(v2, v1, v0), heappts(v6, v0, v0), heappts(v2, v1, v1), heappts(v1, v1, v2),
+  heappts(v1, v0, v2), heappts(v6, v1, v1)
+}

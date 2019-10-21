@@ -1,0 +1,9 @@
+Installation instructions:
+
+1. (optional) build and install z3 (https://github.com/Z3Prover/z3), then update the z3 header and library paths in Makefile accordingly. This is optional, because we already include a pre-built z3 located in the directory `z3_env`.
+
+2. To compile ALPS, please run `make`.
+
+3. If the precompiled z3 does not work, build and install z3 as per step 1.
+
+4. Before running ALPS, add the z3 dynamic library to LD_LIBRARY_PATH, e.g. `export LD_LIBRARY_PATH=$PATH_TO_ARTIFACT/z3_env/z3/bin`

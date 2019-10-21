@@ -1,0 +1,3 @@
+Calls to z3: 6, Calls to Souffle: 6
+{'28', '15', '10', '16', '5', '8'}
+Total runtime: 0.1460273265838623

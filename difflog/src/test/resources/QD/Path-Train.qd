@@ -1,0 +1,42 @@
+Input { edge(Node, Node) }
+Invented { }
+Output { path(Node, Node) }
+
+EDB {
+  edge(v0, v1), edge(v1, v2), edge(v2, v3), edge(v3, v4), edge(v4, v5),
+  edge(v5, v6), edge(v6, v7), edge(v7, v8), edge(v8, v9), edge(v9, v5)
+}
+
+IDB {
+  path(v0, v1), path(v0, v2), path(v0, v3), path(v0, v4), path(v0, v5), path(v0, v6), path(v0, v7), path(v0, v8), path(v0, v9),
+                path(v1, v2), path(v1, v3), path(v1, v4), path(v1, v5), path(v1, v6), path(v1, v7), path(v1, v8), path(v1, v9),
+                              path(v2, v3), path(v2, v4), path(v2, v5), path(v2, v6), path(v2, v7), path(v2, v8), path(v2, v9),
+                                            path(v3, v4), path(v3, v5), path(v3, v6), path(v3, v7), path(v3, v8), path(v3, v9),
+                                                          path(v4, v5), path(v4, v6), path(v4, v7), path(v4, v8), path(v4, v9),
+                                                          path(v5, v5), path(v5, v6), path(v5, v7), path(v5, v8), path(v5, v9),
+                                                          path(v6, v5), path(v6, v6), path(v6, v7), path(v6, v8), path(v6, v9),
+                                                          path(v7, v5), path(v7, v6), path(v7, v7), path(v7, v8), path(v7, v9),
+                                                          path(v8, v5), path(v8, v6), path(v8, v7), path(v8, v8), path(v8, v9),
+                                                          path(v9, v5), path(v9, v6), path(v9, v7), path(v9, v8), path(v9, v9)
+}
+
+Rules {
+  path(x0V, x1V) :- edge(x0V, x1V).
+  path(x0V, x1V) :- edge(x0V, x1V), path(x0V, x2V).
+  path(x1V, x0V) :- edge(x0V, x2V), path(x0V, x1V).
+  path(x1V, x0V) :- edge(x0V, x1V), path(x0V, x2V).
+  path(x1V, x2V) :- path(x0V, x1V), path(x0V, x2V).
+  path(x1V, x2V) :- edge(x0V, x2V), path(x0V, x1V).
+  path(x1V, x2V) :- edge(x0V, x1V), path(x0V, x2V).
+  path(x1V, x2V) :- edge(x0V, x1V), edge(x0V, x2V).
+  path(x0V, x1V) :- edge(x0V, x1V), path(x2V, x0V).
+  path(x0V, x1V) :- edge(x0V, x1V), edge(x2V, x0V).
+  path(x2V, x0V) :- edge(x2V, x0V), path(x0V, x1V).
+  path(x2V, x0V) :- edge(x0V, x1V), edge(x2V, x0V).
+  path(x2V, x1V) :- path(x0V, x1V), path(x2V, x0V).
+  path(x2V, x1V) :- edge(x2V, x0V), path(x0V, x1V).
+  path(x2V, x1V) :- edge(x0V, x1V), path(x2V, x0V).
+  path(x2V, x1V) :- edge(x0V, x1V), edge(x2V, x0V).
+}
+
+// MinRules(500, 3, 3)

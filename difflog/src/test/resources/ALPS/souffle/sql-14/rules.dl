@@ -1,0 +1,33 @@
+.type Plan
+.type Attributes
+.type Id
+.type Value
+
+.decl Rule(n: number)
+.input Rule
+
+.decl active(v0: Attributes)
+.input active
+.decl true(v0: Value)
+.input true
+.decl input1(v0: Id, v1: Plan, v2: Attributes, v3: Value)
+.input input1
+
+.decl invent_sel(v0: Plan)
+.output invent_sel
+.decl output(v0: Id, v1: Plan, v2: Attributes, v3: Value)
+.output output
+
+output(v1, v2, v0, v3) :- active(v0), input1(v1, v2, v0, v3), Rule(11).
+invent_sel(v2) :- active(v0), input1(v1, v2, v0, v3), Rule(2).
+invent_sel(v5) :- output(v0, v1, v2, v3), output(v4, v5, v2, v6), Rule(8).
+invent_sel(v2) :- active(v0), output(v1, v2, v0, v3), true(v3), Rule(5).
+output(v0, v1, v2, v3) :- input1(v0, v1, v2, v3), true(v3), Rule(0).
+invent_sel(v5) :- input1(v0, v1, v2, v3), output(v4, v5, v2, v6), Rule(6).
+output(v0, v1, v2, v3) :- input1(v0, v1, v2, v3), invent_sel(v1), Rule(1).
+invent_sel(v5) :- output(v0, v1, v2, v3), input1(v4, v5, v2, v6), Rule(7).
+invent_sel(v2) :- active(v0), output(v1, v2, v0, v3), Rule(12).
+invent_sel(v2) :- active(v0), input1(v1, v2, v0, v3), true(v3), Rule(3).
+invent_sel(v2) :- true(v0), input1(v1, v2, v3, v0), Rule(10).
+invent_sel(v5) :- input1(v0, v1, v2, v3), input1(v4, v5, v2, v6), Rule(4).
+invent_sel(v2) :- true(v0), output(v1, v2, v3, v0), Rule(9).

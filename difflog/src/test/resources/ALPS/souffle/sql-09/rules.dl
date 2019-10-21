@@ -1,0 +1,59 @@
+.type country
+.type id
+.type status
+
+.decl Rule(n: number)
+.input Rule
+
+.decl treat(v0: status)
+.input treat
+.decl untreat(v0: status)
+.input untreat
+.decl input1(v0: id, v1: country, v2: status)
+.input input1
+
+.decl invent_country(v0: country)
+.output invent_country
+.decl output(v0: id, v1: country, v2: status)
+.output output
+
+invent_country(v3) :- invent_country(v0), output(v1, v0, v2), input1(v1, v3, v4), Rule(16).
+output(v0, v3, v2) :- input1(v0, v1, v2), invent_country(v3), output(v0, v3, v4), Rule(11).
+output(v0, v1, v2) :- input1(v0, v1, v2), input1(v3, v1, v4), treat(v2), Rule(6).
+invent_country(v3) :- untreat(v0), input1(v1, v2, v0), input1(v1, v3, v4), Rule(23).
+invent_country(v3) :- input1(v0, v1, v2), input1(v0, v3, v4), treat(v4), Rule(13).
+output(v0, v1, v2) :- input1(v0, v1, v2), output(v3, v1, v4), untreat(v2), Rule(26).
+output(v1, v0, v3) :- invent_country(v0), output(v1, v2, v3), output(v1, v0, v4), Rule(37).
+output(v0, v4, v2) :- input1(v0, v1, v2), input1(v3, v4, v2), invent_country(v4), Rule(27).
+invent_country(v4) :- invent_country(v0), output(v1, v0, v2), input1(v3, v4, v2), Rule(34).
+output(v0, v1, v2) :- input1(v0, v1, v2), output(v3, v1, v4), treat(v2), Rule(1).
+invent_country(v3) :- untreat(v0), output(v1, v2, v0), input1(v1, v3, v4), Rule(30).
+invent_country(v3) :- output(v0, v1, v2), output(v0, v3, v4), treat(v4), Rule(22).
+invent_country(v3) :- input1(v0, v1, v2), output(v0, v3, v4), treat(v4), Rule(3).
+output(v0, v3, v4) :- input1(v0, v1, v2), input1(v0, v3, v4), invent_country(v3), Rule(31).
+invent_country(v4) :- invent_country(v0), input1(v1, v0, v2), output(v3, v4, v2), Rule(4).
+output(v0, v3, v2) :- input1(v0, v1, v2), input1(v0, v3, v4), invent_country(v3), Rule(20).
+invent_country(v3) :- treat(v0), input1(v1, v2, v0), input1(v1, v3, v4), Rule(32).
+invent_country(v3) :- treat(v0), output(v1, v2, v0), output(v1, v3, v4), Rule(19).
+output(v0, v1, v2) :- input1(v0, v1, v2), invent_country(v1), untreat(v2), Rule(17).
+invent_country(v3) :- output(v0, v1, v2), output(v0, v3, v4), untreat(v4), Rule(14).
+output(v0, v1, v2) :- input1(v0, v1, v2), invent_country(v1), treat(v2), Rule(9).
+output(v0, v1, v4) :- input1(v0, v1, v2), invent_country(v1), output(v0, v3, v4), Rule(28).
+invent_country(v3) :- invent_country(v0), output(v1, v0, v2), output(v1, v3, v4), Rule(2).
+invent_country(v3) :- untreat(v0), output(v1, v2, v0), output(v1, v3, v4), Rule(10).
+invent_country(v3) :- input1(v0, v1, v2), output(v0, v3, v4), untreat(v4), Rule(38).
+output(v0, v1, v2) :- input1(v0, v1, v2), invent_country(v1), output(v0, v3, v4), Rule(12).
+invent_country(v3) :- invent_country(v0), input1(v1, v0, v2), input1(v1, v3, v4), Rule(21).
+invent_country(v3) :- untreat(v0), input1(v1, v2, v0), output(v1, v3, v4), Rule(18).
+invent_country(v3) :- output(v0, v1, v2), input1(v0, v3, v4), untreat(v4), Rule(39).
+output(v0, v1, v2) :- input1(v0, v1, v2), input1(v3, v1, v4), untreat(v2), Rule(25).
+invent_country(v3) :- input1(v0, v1, v2), input1(v0, v3, v4), untreat(v4), Rule(35).
+output(v1, v0, v3) :- invent_country(v0), output(v1, v2, v3), output(v4, v0, v3), Rule(33).
+invent_country(v4) :- invent_country(v0), input1(v1, v0, v2), input1(v3, v4, v2), Rule(15).
+output(v3, v1, v2) :- input1(v0, v1, v2), invent_country(v1), output(v3, v4, v2), Rule(8).
+invent_country(v3) :- output(v0, v1, v2), input1(v0, v3, v4), treat(v4), Rule(5).
+output(v0, v3, v2) :- input1(v0, v1, v2), invent_country(v3), output(v4, v3, v2), Rule(7).
+invent_country(v3) :- invent_country(v0), input1(v1, v0, v2), output(v1, v3, v4), Rule(0).
+invent_country(v3) :- treat(v0), output(v1, v2, v0), input1(v1, v3, v4), Rule(36).
+invent_country(v4) :- invent_country(v0), output(v1, v0, v2), output(v3, v4, v2), Rule(24).
+invent_country(v3) :- treat(v0), input1(v1, v2, v0), output(v1, v3, v4), Rule(29).

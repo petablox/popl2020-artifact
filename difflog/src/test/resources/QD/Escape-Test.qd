@@ -1,0 +1,17 @@
+Input { MmethArg(method, variable), MmethRet(method, variable), VH(variable, heap), HFH(heap, heap) }
+Invented { }
+Output { rMH(method, heap), rRH(method, heap), rHH(heap, heap) }
+
+EDB {
+  MmethArg(v3, v7), MmethArg(v3, v4), MmethArg(v1, v1),
+  MmethRet(v0, v1), MmethRet(v6, v4), MmethRet(v4, v7), MmethRet(v0, v0), MmethRet(v7, v3), MmethRet(v6, v6), MmethRet(v3, v1), MmethRet(v5, v2), MmethRet(v1, v1),
+  VH(v3, v2), VH(v2, v6), VH(v4, v5), VH(v1, v4), VH(v5, v6), VH(v3, v7),
+  HFH(v1, v2), HFH(v4, v6), HFH(v5, v6), HFH(v6, v1), HFH(v3, v7), HFH(v3, v5)
+}
+
+IDB {
+  rMH(v1, v2), rMH(v3, v2), rMH(v3, v1), rMH(v1, v4), rMH(v1, v6), rMH(v3, v6), rMH(v1, v1), rMH(v3, v5),
+  rRH(v0, v1), rRH(v1, v2), rRH(v3, v2), rRH(v6, v6), rRH(v5, v6), rRH(v5, v2), rRH(v6, v1), rRH(v3, v1), rRH(v7, v7), rRH(v1, v4),
+  rRH(v0, v2), rRH(v0, v6), rRH(v6, v2), rRH(v1, v6), rRH(v7, v2), rRH(v3, v6), rRH(v0, v4), rRH(v5, v1), rRH(v3, v4), rRH(v1, v1), rRH(v6, v5),
+  rHH(v1, v2), rHH(v3, v2), rHH(v4, v6), rHH(v5, v6), rHH(v5, v2), rHH(v6, v1), rHH(v3, v1), rHH(v4, v2), rHH(v6, v2), rHH(v3, v6), rHH(v5, v1), rHH(v3, v7), rHH(v4, v1), rHH(v3, v5)
+}

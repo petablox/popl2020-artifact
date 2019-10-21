@@ -1,0 +1,42 @@
+Input {
+  feathers(C), scales(C), hair(C), none(C),
+  has_covering(A, C), has_milk(A), homeothermic(A), has_eggs(A), has_gills(A)
+}
+Invented { }
+Output { mammal(A), fish(A), reptile(A), bird(A) }
+
+EDB {
+  feathers(v0), scales(v1), hair(v2), none(v3),
+
+  has_covering(a50, v3), has_covering(a47, v2), has_covering(a3, v0), has_covering(a61, v3), has_covering(a8, v0),
+  has_covering(a53, v3), has_covering(a42, v2), has_covering(a56, v3), has_covering(a27, v1), has_covering(a28, v1),
+  has_covering(a14, v0), has_covering(a34, v2), has_covering(a37, v2), has_covering(a32, v2), has_covering(a18, v1),
+  has_covering(a4, v0), has_covering(a9, v0), has_covering(a52, v3), has_covering(a29, v1), has_covering(a62, v3),
+  has_covering(a21, v1), has_covering(a43, v2), has_covering(a15, v0), has_covering(a59, v3), has_covering(a41, v2),
+  has_covering(a38, v2), has_covering(a49, v3), has_covering(a5, v0), has_covering(a24, v1), has_covering(a10, v0),
+  has_covering(a31, v1), has_covering(a39, v2), has_covering(a33, v2), has_covering(a44, v2), has_covering(a30, v1),
+  has_covering(a0, v0), has_covering(a58, v3), has_covering(a48, v3), has_covering(a20, v1), has_covering(a6, v0),
+  has_covering(a17, v1), has_covering(a11, v0), has_covering(a51, v3), has_covering(a23, v1), has_covering(a45, v2),
+  has_covering(a1, v0), has_covering(a57, v3), has_covering(a54, v3), has_covering(a55, v3), has_covering(a35, v2),
+  has_covering(a46, v2), has_covering(a7, v0), has_covering(a40, v2), has_covering(a26, v1), has_covering(a12, v0),
+  has_covering(a63, v3), has_covering(a60, v3), has_covering(a16, v1), has_covering(a2, v0), has_covering(a36, v2),
+  has_covering(a22, v1), has_covering(a19, v1), has_covering(a13, v0), has_covering(a25, v1),
+
+  has_milk(a21), has_milk(a32), has_milk(a34), has_milk(a61), has_milk(a13), has_milk(a24), has_milk(a15), has_milk(a53), has_milk(a16), has_milk(a45), has_milk(a56), has_milk(a58), has_milk(a22), has_milk(a8), has_milk(a62), has_milk(a39), has_milk(a14), has_milk(a0), has_milk(a2), has_milk(a40), has_milk(a42), has_milk(a44), has_milk(a57),
+
+  homeothermic(a58), homeothermic(a53), homeothermic(a0), homeothermic(a59), homeothermic(a28), homeothermic(a40), homeothermic(a35), homeothermic(a62), homeothermic(a9), homeothermic(a10), homeothermic(a42), homeothermic(a6), homeothermic(a7), homeothermic(a18), homeothermic(a45), homeothermic(a41), homeothermic(a14),
+
+  has_eggs(a15), has_eggs(a53), has_eggs(a40), has_eggs(a42), has_eggs(a2), has_eggs(a29), has_eggs(a8), has_eggs(a37), has_eggs(a41), has_eggs(a10), has_eggs(a5), has_eggs(a48), has_eggs(a44), has_eggs(a18), has_eggs(a45), has_eggs(a60),
+
+  has_gills(a53), has_gills(a32), has_gills(a59), has_gills(a33), has_gills(a1), has_gills(a62), has_gills(a34), has_gills(a61), has_gills(a40), has_gills(a3), has_gills(a30), has_gills(a36), has_gills(a63), has_gills(a37), has_gills(a11), has_gills(a17), has_gills(a24), has_gills(a46), has_gills(a25)
+}
+
+IDB {
+  mammal(a21), mammal(a32), mammal(a34), mammal(a61), mammal(a13), mammal(a24), mammal(a15), mammal(a53), mammal(a16), mammal(a45), mammal(a56), mammal(a58), mammal(a22), mammal(a8), mammal(a62), mammal(a39), mammal(a14), mammal(a0), mammal(a2), mammal(a40), mammal(a42), mammal(a44), mammal(a57),
+
+  fish(a36), fish(a53), fish(a32), fish(a59), fish(a33), fish(a1), fish(a34), fish(a61), fish(a40), fish(a3), fish(a62), fish(a30), fish(a63), fish(a37), fish(a11), fish(a17), fish(a24), fish(a46), fish(a25),
+
+  reptile(a26), reptile(a21), reptile(a27), reptile(a22), reptile(a28), reptile(a23), reptile(a29), reptile(a30), reptile(a31), reptile(a16), reptile(a17), reptile(a18), reptile(a24), reptile(a19), reptile(a25), reptile(a20),
+
+  bird(a15), bird(a0), bird(a1), bird(a2), bird(a8), bird(a3), bird(a9), bird(a4), bird(a10), bird(a5), bird(a11), bird(a6), bird(a12), bird(a7), bird(a13), bird(a14)
+}

@@ -1,0 +1,19 @@
+Input { edge(Node, Node) }
+Invented { }
+Output { path(Node, Node) }
+
+EDB {
+  edge(v0, v1), edge(v1, v2), edge(v2, v3), edge(v3, v4), edge(v4, v5), edge(v5, v6),
+                              edge(v2, v7),
+                              edge(v6, v3), edge(v4, v2)
+}
+
+IDB {
+  path(v0, v1), path(v0, v2), path(v0, v3), path(v0, v4), path(v0, v5), path(v0, v6), path(v0, v7),
+                path(v1, v2), path(v1, v3), path(v1, v4), path(v1, v5), path(v1, v6), path(v1, v7),
+                path(v2, v2), path(v2, v3), path(v2, v4), path(v2, v5), path(v2, v6), path(v2, v7),
+                path(v3, v2), path(v3, v3), path(v3, v4), path(v3, v5), path(v3, v6), path(v3, v7),
+                path(v4, v2), path(v4, v3), path(v4, v4), path(v4, v5), path(v4, v6), path(v4, v7),
+                path(v5, v2), path(v5, v3), path(v5, v4), path(v5, v5), path(v5, v6), path(v5, v7),
+                path(v6, v2), path(v6, v3), path(v6, v4), path(v6, v5), path(v6, v6), path(v6, v7)
+}

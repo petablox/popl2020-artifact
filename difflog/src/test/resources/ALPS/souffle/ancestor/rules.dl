@@ -1,0 +1,53 @@
+.type P
+
+.decl Rule(n: number)
+.input Rule
+
+.decl father(v0: P, v1: P)
+.input father
+.decl mother(v0: P, v1: P)
+.input mother
+
+.decl parent(v0: P, v1: P)
+.output parent
+.decl ancestor(v0: P, v1: P)
+.output ancestor
+
+parent(v2, v1) :- ancestor(v0, v1), parent(v2, v0), Rule(25).
+parent(v0, v1) :- mother(v0, v1), Rule(8).
+parent(v2, v1) :- father(v0, v1), father(v2, v0), Rule(5).
+parent(v2, v1) :- ancestor(v0, v1), father(v2, v0), Rule(15).
+parent(v0, v2) :- ancestor(v0, v1), father(v1, v2), Rule(33).
+parent(v0, v2) :- father(v0, v1), parent(v1, v2), Rule(37).
+parent(v0, v2) :- ancestor(v0, v1), parent(v1, v2), Rule(11).
+parent(v2, v1) :- father(v0, v1), mother(v2, v0), Rule(34).
+parent(v0, v2) :- mother(v0, v1), parent(v1, v2), Rule(1).
+ancestor(v0, v1) :- mother(v0, v1), Rule(0).
+parent(v0, v2) :- ancestor(v0, v1), mother(v1, v2), Rule(14).
+ancestor(v2, v1) :- ancestor(v0, v1), parent(v2, v0), Rule(29).
+ancestor(v2, v1) :- ancestor(v0, v1), father(v2, v0), Rule(28).
+parent(v0, v1) :- ancestor(v0, v1), Rule(30).
+parent(v2, v1) :- parent(v0, v1), parent(v2, v0), Rule(7).
+ancestor(v2, v1) :- ancestor(v0, v1), ancestor(v2, v0), Rule(12).
+ancestor(v2, v1) :- father(v0, v1), father(v2, v0), Rule(21).
+ancestor(v2, v1) :- ancestor(v0, v1), mother(v2, v0), Rule(27).
+parent(v0, v1) :- father(v0, v1), Rule(6).
+parent(v0, v2) :- father(v0, v1), mother(v1, v2), Rule(35).
+ancestor(v0, v2) :- father(v0, v1), mother(v1, v2), Rule(17).
+ancestor(v2, v1) :- parent(v0, v1), parent(v2, v0), Rule(3).
+ancestor(v0, v2) :- mother(v0, v1), parent(v1, v2), Rule(18).
+ancestor(v0, v2) :- father(v0, v1), parent(v1, v2), Rule(2).
+parent(v2, v1) :- mother(v0, v1), mother(v2, v0), Rule(26).
+ancestor(v0, v2) :- ancestor(v0, v1), father(v1, v2), Rule(36).
+parent(v2, v1) :- father(v0, v1), parent(v2, v0), Rule(9).
+ancestor(v2, v1) :- father(v0, v1), mother(v2, v0), Rule(20).
+parent(v2, v1) :- ancestor(v0, v1), mother(v2, v0), Rule(4).
+ancestor(v0, v1) :- parent(v0, v1), Rule(13).
+ancestor(v0, v2) :- ancestor(v0, v1), mother(v1, v2), Rule(24).
+ancestor(v0, v2) :- ancestor(v0, v1), parent(v1, v2), Rule(32).
+ancestor(v0, v1) :- father(v0, v1), Rule(19).
+parent(v2, v1) :- mother(v0, v1), parent(v2, v0), Rule(10).
+ancestor(v2, v1) :- mother(v0, v1), parent(v2, v0), Rule(22).
+parent(v2, v1) :- ancestor(v0, v1), ancestor(v2, v0), Rule(23).
+ancestor(v2, v1) :- mother(v0, v1), mother(v2, v0), Rule(31).
+ancestor(v2, v1) :- father(v0, v1), parent(v2, v0), Rule(16).

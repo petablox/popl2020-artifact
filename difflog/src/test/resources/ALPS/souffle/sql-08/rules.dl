@@ -1,0 +1,112 @@
+.type T
+.type C
+.type S
+
+.decl Rule(n: number)
+.input Rule
+
+.decl Active(v0: S)
+.input Active
+.decl Inactive(v0: S)
+.input Inactive
+.decl Input1(v0: T, v1: S, v2: C)
+.input Input1
+
+.decl invent_1(v0: T, v1: C)
+.output invent_1
+.decl invent_2(v0: T, v1: C)
+.output invent_2
+.decl Output(v0: T, v1: C, v2: C)
+.output Output
+
+Output(v3, v1, v2) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(26).
+invent_2(v0, v1) :- invent_1(v0, v1), Rule(1).
+Output(v0, v1, v2) :- invent_1(v0, v1), invent_2(v0, v2), Rule(4).
+invent_2(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_1(v3, v2), Rule(43).
+invent_1(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), Rule(8).
+Output(v0, v2, v1) :- invent_1(v0, v1), invent_2(v0, v2), Rule(90).
+invent_1(v0, v1) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(3).
+invent_1(v0, v2) :- Output(v0, v1, v2), invent_2(v3, v2), Rule(76).
+invent_1(v0, v2) :- Input1(v0, v1, v2), invent_2(v0, v3), Rule(23).
+invent_1(v0, v4) :- Input1(v0, v1, v2), Output(v3, v2, v4), Rule(68).
+invent_1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_1(v3, v2), Rule(13).
+invent_2(v0, v2) :- Input1(v0, v1, v2), invent_1(v0, v3), Rule(34).
+invent_1(v0, v3) :- Output(v0, v1, v2), invent_2(v0, v3), Rule(47).
+invent_2(v0, v2) :- Input1(v0, v1, v2), invent_2(v0, v3), Rule(16).
+invent_1(v1, v2) :- Active(v0), Input1(v1, v0, v2), Rule(46).
+Output(v3, v1, v2) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(77).
+invent_1(v0, v2) :- Output(v0, v1, v2), invent_1(v0, v3), Rule(75).
+invent_1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_2(v1, v3), Rule(10).
+invent_2(v3, v1) :- Output(v0, v1, v2), invent_2(v3, v2), Rule(59).
+invent_2(v3, v2) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(69).
+invent_1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_1(v1, v3), Rule(62).
+invent_2(v0, v2) :- Output(v0, v1, v2), invent_2(v3, v2), Rule(86).
+invent_1(v3, v2) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(24).
+invent_2(v0, v2) :- Input1(v0, v1, v2), invent_2(v3, v2), Rule(85).
+invent_1(v0, v3) :- Input1(v0, v1, v2), invent_2(v0, v3), Rule(19).
+invent_1(v0, v2) :- Output(v0, v1, v2), invent_1(v3, v2), Rule(87).
+invent_1(v0, v4) :- Input1(v0, v1, v2), Input1(v3, v1, v4), Rule(0).
+invent_2(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_1(v1, v3), Rule(31).
+Output(v0, v1, v2) :- invent_1(v0, v1), invent_1(v0, v2), Rule(45).
+invent_2(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_2(v3, v2), Rule(65).
+invent_2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_2(v1, v3), Rule(27).
+invent_2(v0, v4) :- Input1(v0, v1, v2), Output(v3, v2, v4), Rule(32).
+invent_2(v0, v2) :- Output(v0, v1, v2), Rule(73).
+invent_1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), Rule(60).
+Output(v3, v2, v1) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(18).
+invent_1(v3, v2) :- Input1(v0, v1, v2), invent_2(v3, v2), Rule(74).
+invent_1(v0, v2) :- Input1(v0, v1, v2), invent_1(v0, v3), Rule(38).
+Output(v3, v2, v1) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(17).
+invent_1(v0, v1) :- Output(v0, v1, v2), Rule(55).
+invent_2(v0, v2) :- Output(v0, v1, v2), invent_1(v0, v3), Rule(53).
+invent_2(v0, v1) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(51).
+invent_2(v0, v3) :- Output(v0, v1, v2), invent_1(v0, v3), Rule(48).
+invent_2(v0, v2) :- Input1(v0, v1, v2), Rule(84).
+invent_1(v3, v2) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(72).
+invent_2(v0, v4) :- Output(v0, v1, v2), Output(v3, v1, v4), Rule(88).
+invent_1(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_1(v1, v3), Rule(9).
+invent_1(v3, v1) :- Output(v0, v1, v2), invent_1(v3, v2), Rule(63).
+invent_1(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_2(v3, v2), Rule(25).
+invent_1(v0, v2) :- Output(v0, v1, v2), Rule(14).
+invent_2(v0, v2) :- Output(v0, v1, v2), invent_1(v3, v2), Rule(33).
+invent_2(v0, v1) :- Output(v0, v1, v2), invent_1(v0, v3), Rule(89).
+invent_2(v0, v3) :- Input1(v0, v1, v2), invent_1(v0, v3), Rule(79).
+invent_1(v0, v1) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(56).
+invent_2(v1, v2) :- Active(v0), Input1(v1, v0, v2), Rule(28).
+invent_2(v0, v2) :- Input1(v0, v1, v2), invent_1(v3, v2), Rule(52).
+invent_2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_1(v3, v2), Rule(44).
+invent_1(v3, v2) :- Output(v0, v1, v2), invent_2(v3, v2), Rule(12).
+invent_2(v0, v4) :- Input1(v0, v1, v2), Input1(v3, v1, v4), Rule(35).
+invent_2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), Rule(49).
+invent_2(v0, v1) :- Output(v0, v1, v2), Rule(36).
+invent_2(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_2(v1, v3), Rule(50).
+invent_1(v0, v4) :- Output(v0, v1, v2), Output(v3, v1, v4), Rule(40).
+invent_2(v0, v2) :- Output(v0, v1, v2), invent_2(v0, v3), Rule(57).
+Output(v0, v2, v1) :- Output(v0, v1, v2), Rule(82).
+invent_2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_2(v3, v2), Rule(80).
+invent_2(v0, v4) :- Output(v0, v1, v2), Output(v3, v2, v4), Rule(78).
+invent_2(v0, v1) :- invent_1(v0, v1), invent_1(v0, v2), Rule(5).
+invent_2(v3, v2) :- Output(v0, v1, v2), invent_1(v3, v2), Rule(15).
+invent_1(v0, v2) :- invent_1(v0, v1), invent_2(v0, v2), Rule(37).
+invent_2(v3, v2) :- Input1(v0, v1, v2), invent_1(v3, v2), Rule(7).
+invent_1(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_2(v3, v2), Rule(64).
+invent_1(v3, v1) :- Output(v0, v1, v2), invent_2(v3, v2), Rule(42).
+invent_1(v0, v1) :- Output(v0, v1, v2), invent_2(v0, v3), Rule(21).
+invent_2(v1, v2) :- Inactive(v0), Input1(v1, v0, v2), invent_1(v1, v3), Rule(30).
+invent_1(v0, v1) :- Output(v0, v1, v2), invent_1(v0, v3), Rule(6).
+invent_1(v3, v1) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(22).
+invent_1(v0, v2) :- Input1(v0, v1, v2), Rule(61).
+invent_2(v3, v1) :- Output(v0, v1, v2), invent_1(v3, v2), Rule(83).
+invent_1(v0, v1) :- invent_2(v0, v1), Rule(54).
+invent_2(v3, v1) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(67).
+invent_1(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_1(v3, v2), Rule(41).
+invent_2(v0, v1) :- Output(v0, v1, v2), invent_2(v3, v1), Rule(66).
+invent_2(v0, v1) :- invent_1(v0, v1), invent_2(v0, v2), Rule(71).
+invent_1(v0, v2) :- Input1(v0, v1, v2), invent_2(v3, v2), Rule(11).
+invent_1(v0, v2) :- Output(v0, v1, v2), invent_2(v0, v3), Rule(2).
+invent_2(v3, v2) :- Output(v0, v1, v2), invent_1(v3, v1), Rule(39).
+invent_1(v0, v2) :- Input1(v0, v1, v2), invent_1(v3, v2), Rule(81).
+Output(v0, v1, v2) :- invent_2(v0, v1), invent_2(v0, v2), Rule(70).
+invent_1(v0, v4) :- Output(v0, v1, v2), Output(v3, v2, v4), Rule(29).
+invent_2(v0, v1) :- Output(v0, v1, v2), invent_2(v0, v3), Rule(20).
+invent_1(v1, v2) :- Active(v0), Input1(v1, v0, v2), invent_2(v1, v3), Rule(58).

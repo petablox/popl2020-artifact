@@ -1,0 +1,12 @@
+Input { parent(V, V) }
+Invented { }
+Output { sgen(V, V) }
+
+EDB {
+  parent(v0, v1), parent(v6, v4), parent(v7, v1), parent(v4, v5), parent(v5, v0), parent(v1, v7), parent(v4, v2)
+}
+
+IDB {
+  sgen(v4, v7), sgen(v0, v0), sgen(v7, v0), sgen(v5, v5), sgen(v6, v6), sgen(v5, v6), sgen(v6, v1), sgen(v4, v4), sgen(v7, v7),
+  sgen(v0, v7), sgen(v7, v4), sgen(v1, v5), sgen(v1, v6), sgen(v0, v4), sgen(v5, v1), sgen(v1, v1), sgen(v6, v5), sgen(v4, v0)
+}
