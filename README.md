@@ -20,6 +20,8 @@ Hardware and Estimated Time for Reproduction
 
 __TODO:__ How long do the experiments take to reproduce?
 
+__TODO:__ Explain the `tsp -S` command
+
 We conducted our experiments on a server with an 18-core Xeon 6154 CPU clocked at 3 GHz and with 394 GB of RAM. However,
 we only used the multiple cores to simultaneously run multiple experiments and iterate quickly. Furthermore, all
 benchmarks are CPU-bound rather than memory-bound. We expect similar results to be obtained on workstations and laptops
@@ -46,3 +48,14 @@ All results presented in the paper arise out of two experiments:
 
    The data from this experiment is used to produce __Figure 7__ in the main paper, and __Figure 1__ in the
    supplementary data provided to the reviewers.
+
+Reproducing Experiment 1
+------------------------
+
+Reproducing Experiment 2
+------------------------
+
+Running ProSynth on New Problems
+--------------------------------
+
+
