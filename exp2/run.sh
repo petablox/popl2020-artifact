@@ -76,3 +76,4 @@ fi
 # 3. Plot figures
 
 ./exp2/plot_f7.py box
+./exp2/plot_supf1.py box

@@ -38,7 +38,7 @@ prosynth_program_count_souffle = dict()
 alps_program_count = dict()
 difflog_program_count = dict()
 
-f = open("data.log", "r")
+f = open("exp2-work/data.log", "r")
 for line in f:
     benchmark_name = line[line.find("name: '")+7:line.find("',")]
     benchmark_type = benchmark_name[benchmark_name.find("/")+1:benchmark_name.rfind("/")]
@@ -179,6 +179,6 @@ def autolabel():
 
 fig.tight_layout()
 
-plt.savefig('f7.pdf')#, bbox_inches='tight')
+plt.savefig('supf1.pdf')#, bbox_inches='tight')
 
 #plt.show()
