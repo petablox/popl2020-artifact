@@ -83,9 +83,9 @@ f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in prosynth_scale_program_count_z3:
-    if benchmark_name[:benchmark_name.find("_")] == "1-object-1-type":
-        andersen_stats[benchmark_name] = list(prosynth_scale_program_count_z3[benchmark_name])
+for benchmark_name in prosynth_running_time:
+    if benchmark_name[:benchmark_name.find("_")] == "scc":
+        andersen_stats[benchmark_name] = list(prosynth_running_time[benchmark_name])
         sizes.append(benchmark_name)
 
 #sizes = [x*100 for x in range(1, 11)]
@@ -179,6 +179,6 @@ def autolabel():
 
 fig.tight_layout()
 
-plt.savefig('supf1.pdf')#, bbox_inches='tight')
+plt.savefig('f7.pdf')#, bbox_inches='tight')
 
 #plt.show()
