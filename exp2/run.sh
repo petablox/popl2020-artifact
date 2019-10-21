@@ -25,8 +25,7 @@ trap cleanup SIGTERM
 
 ########################################################################################################################
 
-# BENCHES='1-object-1-type scc'
-BENCHES='scc'
+BENCHES='1-object-1-type scc'
 
 # 1. Prepare benchmarks
 
@@ -51,7 +50,8 @@ if [ -z "$NUM_REPS" ]; then
 fi
 
 mkdir -p exp2-work
-touch data.log
+DATA_FILE=./exp2-work/data.log
+> $DATA_FILE
 for NUM_RULES in `seq 100 100 1000`; do
     for BENCH in $BENCHES; do
         for i in `seq 1 $NUM_REPS`; do
@@ -59,11 +59,10 @@ for NUM_RULES in `seq 100 100 1000`; do
 
             PROBLEM_NAME="${BENCH}_${NUM_RULES}"
             PROBLEM_DIR="./exp2-work/${PROBLEM_NAME}_${i}"
-            cp -r ./benchmarks/scale/$PROBLEM_NAME $PROBLEM_DIR
+            LOG_FILE=$PROBLEM_DIR/log.txt
 
-            # LOG_FILE="exp2-logs/${PROBLEM_NAME}_${i}.log"
-            # cp -r $PROBLEM_DIR "./exp2-work/${BENCH}_${NUM_RULES}_$i"
-            # tsp ./prosynth/scripts/prosynth $PROBLEM_DIR 0 1 $i # &> $LOG_FILE
+            cp -r ./benchmarks/scale/$PROBLEM_NAME $PROBLEM_DIR
+            tsp ./exp2/run-int.sh $PROBLEM_DIR $i $LOG_FILE $DATA_FILE
         done
     done
 done

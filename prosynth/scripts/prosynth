@@ -42,6 +42,7 @@ problemDirName = sys.argv[1]
 setting_coprov = sys.argv[2]
 setting_delta = sys.argv[3]
 run_count = sys.argv[4]
+data_file = sys.argv[5]
 
 scriptStartTime = time.clock_gettime(0)
 def printTimer():
@@ -477,7 +478,8 @@ while True:
                                            f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
                                            f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
                                            f"setting_delta: {setting_delta}" + "}"
-                        with open('data.log', 'a+') as f: print(dataLogStr, file=f)
+                        with open(data_file, 'a+') as f: print(dataLogStr, file=f)
+                        print('Z3 reports error in generating a model. Problem unsat.')
                         quit()
                 break
 
@@ -489,7 +491,7 @@ while True:
                                f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
                                f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
                                f"setting_delta: {setting_delta}" + "}"
-            with open('data.log', 'a+') as f: print(dataLogStr, file=f)
+            with open(data_file, 'a+') as f: print(dataLogStr, file=f)
 
             ans = { ruleName for relName in idbRelationsExpected \
                              for t in idbRelationsExpected[relName] \
