@@ -79,13 +79,17 @@ for line in f:
                 prosynth_scale_program_count_z3[benchmark_name] = set()
             prosynth_scale_program_count_z3[benchmark_name].add(program_count_z3)
 
+            if not benchmark_name in prosynth_running_time:
+                prosynth_running_time[benchmark_name] = set()
+            prosynth_running_time[benchmark_name].add(running_time)
+
 f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in prosynth_scale_program_count_z3:
+for benchmark_name in prosynth_running_time:
     if benchmark_name[:benchmark_name.find("_")] == "1-object-1-type":
-        andersen_stats[benchmark_name] = list(prosynth_scale_program_count_z3[benchmark_name])
+        andersen_stats[benchmark_name] = list(prosynth_running_time[benchmark_name])
         sizes.append(benchmark_name)
 
 #sizes = [x*100 for x in range(1, 11)]
@@ -140,7 +144,7 @@ ax.set_aspect(aspect)
 
 #xlabel = "Number of templates"
 #ylabel = "Running time (min)"
-ylabel = "Number of Z3 Calls"
+ylabel = "Running Time"
 #ylabel = "Avg. evaluation time (sec)"
 
 xlabel = "Number of Candidate Rules"
