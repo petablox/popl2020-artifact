@@ -144,7 +144,7 @@ ax.set_aspect(aspect)
 
 #xlabel = "Number of templates"
 #ylabel = "Running time (min)"
-ylabel = "Running Time"
+ylabel = "Running Time (sec)"
 #ylabel = "Avg. evaluation time (sec)"
 
 xlabel = "Number of Candidate Rules"
