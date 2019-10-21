@@ -79,6 +79,10 @@ for line in f:
                 prosynth_scale_program_count_z3[benchmark_name] = set()
             prosynth_scale_program_count_z3[benchmark_name].add(program_count_z3)
 
+            if not benchmark_name in prosynth_running_time:
+                prosynth_running_time[benchmark_name] = set()
+            prosynth_running_time[benchmark_name].add(running_time)
+
 f.close()
 
 andersen_stats = dict()
@@ -140,7 +144,7 @@ ax.set_aspect(aspect)
 
 #xlabel = "Number of templates"
 #ylabel = "Running time (min)"
-ylabel = "Number of Z3 Calls"
+ylabel = "Running Time"
 #ylabel = "Avg. evaluation time (sec)"
 
 xlabel = "Number of Candidate Rules"
@@ -179,6 +183,6 @@ def autolabel():
 
 fig.tight_layout()
 
-plt.savefig('f7t.pdf')#, bbox_inches='tight')
+plt.savefig('f7_t.pdf')#, bbox_inches='tight')
 
 #plt.show()
