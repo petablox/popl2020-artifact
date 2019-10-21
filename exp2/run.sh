@@ -5,8 +5,7 @@
 # Produces Figure 7 of the main paper and Figure 1 in the supplementary data
 
 # Intended to be run from the root directory
-# [tsp -S NUM_CORES]
-# ./exp2/run.sh
+# ./exp2/run.sh NUM_CORES
 
 ########################################################################################################################
 # 0. Preamble
@@ -22,6 +21,9 @@ function cleanup {
 }
 trap cleanup SIGINT
 trap cleanup SIGTERM
+
+NUM_CORES=$1
+tsp -S $NUM_CORES
 
 ########################################################################################################################
 
@@ -49,24 +51,28 @@ if [ -z "$NUM_REPS" ]; then
     NUM_REPS=8
 fi
 
-mkdir -p exp2-work
-DATA_FILE=./exp2-work/data.log
-> $DATA_FILE
-for NUM_RULES in `seq 100 100 1000`; do
-    for BENCH in $BENCHES; do
+if [ -z "$SKIP_WORK" ]; then
+    mkdir -p exp2-work
+    DATA_FILE=./exp2-work/data.log
+    > $DATA_FILE
+    for NUM_RULES in `seq 100 100 1000`; do
         for i in `seq 1 $NUM_REPS`; do
-            echo "Running $BENCH with $NUM_RULES rules. Iteration $i."
+            for BENCH in $BENCHES; do
+                echo "Running $BENCH with $NUM_RULES rules. Iteration $i."
 
-            PROBLEM_NAME="${BENCH}_${NUM_RULES}"
-            PROBLEM_DIR="./exp2-work/${PROBLEM_NAME}_${i}"
-            LOG_FILE=$PROBLEM_DIR/log.txt
+                PROBLEM_NAME="${BENCH}_${NUM_RULES}"
+                PROBLEM_DIR="./exp2-work/${PROBLEM_NAME}_${i}"
+                LOG_FILE=$PROBLEM_DIR/log.txt
 
-            cp -r ./benchmarks/scale/$PROBLEM_NAME $PROBLEM_DIR
-            tsp ./exp2/run-int.sh $PROBLEM_DIR $i $LOG_FILE $DATA_FILE
+                tsp ./exp2/run-int.sh $BENCH $NUM_RULES $i $DATA_FILE
+            done
         done
     done
-done
+    ./scripts/tsp-wait.sh
+else
+    echo "Skipping experiment run!"
+fi
 
-./scripts/tsp-wait.sh
+# 3. Plot figures
 
-# 3. Draw figures
+./exp2/plot_f7.py box

@@ -33,6 +33,9 @@ import z3
 import copy
 import atexit
 
+prevConstraints, currConstraints = (-1, 0)
+numLoops = 0
+
 currRuleSetLarge = set()
 numWhy = 0
 numWhyNot = 0
@@ -71,10 +74,28 @@ idbRelationsExpected = { name: loadRelation(problemDirName + '/' + name + '.expe
 solver = z3.Solver()
 def satisfyingRuleSet(default):
     global callsToZ3
+    global prevConstraints
+    global currConstraints
+    global numLoops
     # Determines the set of rules that should be switched on to satisfy the current set of constraints
     # Includes presently unconstrained rules iff default is true
 
     currTime = time.clock_gettime(0)
+    if prevConstraints == currConstraints:
+        logging.info('Loop detected')
+        numLoops = numLoops + 1
+        if numLoops > 500: sys.exit(1)
+        # sys.exit(1)
+    else: logging.info(f'{prevConstraints}, {currConstraints}')
+    prevConstraints = currConstraints
+    if solver.check() == z3.unsat or time.clock_gettime(0) - scriptStartTime > 3600:
+        dataLogStr = "{" + f"name: '{problemDirName}', " + \
+                           f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                           f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                           f"setting_delta: {setting_delta}" + "}"
+        with open(data_file, 'a+') as f: print(dataLogStr, file=f)
+        print('Z3 reports error in generating a model. Problem unsat.')
+        sys.exit(1)
     m = solver.model()
     logging.info("z3 model generated")
     callsToZ3 += 1
@@ -88,13 +109,22 @@ def satisfyingRuleSet(default):
 #solver.add(solnConstraint)
 
 def doSanity():
+    global prevConstraints
+    global currConstraints
     try:
         solver.push()
-        solver.check()
+        if solver.check() == z3.unsat:
+            dataLogStr = "{" + f"name: '{problemDirName}', " + \
+                               f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                               f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                               f"setting_delta: {setting_delta}" + "}"
+            with open(data_file, 'a+') as f: print(dataLogStr, file=f)
+            print('Z3 reports error in generating a model. Problem unsat.')
+            sys.exit(1)
         solver.model()
         solver.pop()
         return True
-    except Z3Exception:
+    except z3.Z3Exception:
         return False
 doSanity()
 
@@ -153,8 +183,7 @@ while True:
 
             response = [ souffleProc.stdout.readline().strip() ]
             if response[-1] == '':
-                logging.info('Error reading')
-                sys.exit(1)
+                logging.info('Error reading 1')
                 return "error reading" #doesn't deal with underlying problem, just passes error through and skips question
                 #return execSouffleCmd(cmd)
             while response[-1] != '###': 
@@ -206,8 +235,7 @@ while True:
             assert(len(provenance) == 1)
             assert('proof' in provenance)
             if 'children' not in provenance['proof']:
-                logging.info('Error reading')
-                sys.exit(1)
+                logging.info('Error reading 2')
                 return "error reading"
             provenance = provenance['proof']['children']
             return provenance
@@ -247,16 +275,14 @@ while True:
         def getProvenance(relName, t):
             provenance1 = execSouffleCmd('explain ' + printSouffleString(relName, t))
             if provenance1 == "error reading":
-                logging.info('Error reading')
-                sys.exit(1)
+                logging.info('Error reading 3')
                 return "error reading"
             provenance2 = json.loads(provenance1)
 
             #print(t)
             provenance3 = cleanProvenanceJson(provenance2)
             if provenance3 == "error reading":
-                logging.info('Error reading')
-                sys.exit(1)
+                logging.info('Error reading 4')
                 return "error reading"
             provenance4 = squashDesirableConclusions(provenance3)
             # if provenance3 != provenance4:
@@ -267,8 +293,7 @@ while True:
         def why(relName, t):
             provenance = getProvenance(relName, t)
             if provenance == "error reading":
-                logging.info('Error reading')
-                sys.exit(1)
+                logging.info('Error reading 5')
                 return ("error reading", False)
             #for hypRelName, hypT in collectIntermediateConclusions(provenance):
             #    if hypRelName in idbRelationsExpected and hypT not in idbRelationsExpected[hypRelName]:
@@ -427,6 +452,7 @@ while True:
                     logging.info(outputStr)
 
                     solver.add(z3.Implies(allNotRMinus, allNeededRules))
+                    currConstraints = currConstraints + 1
 
         for relName in idbRelationsExpected:
             relProduced = loadRelation(problemDirName + '/' + relName + '.csv')
@@ -448,11 +474,11 @@ while True:
                 if whyRelT[0] == "error reading":
                     logging.info("\n")
                     logging.info(t)
-                    logging.info('Error reading')
-                    sys.exit(1)
+                    logging.info('Error reading 6')
                     break
                 elif whyRelT[1] != None:     
                     solver.add(z3.Not(whyRelT[1]))
+                    currConstraints = currConstraints + 1
                     numWhy+=1
                     newWhys+=1
                     doSanity()
@@ -479,6 +505,7 @@ while True:
 
                 if whyNotRelT != None:
                     solver.add(whyNotRelT)
+                    currConstraints = currConstraints + 1
                     numWhyNot += 1
                     unproducedDesirable = True
                     try:
