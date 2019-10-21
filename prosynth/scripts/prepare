@@ -15,7 +15,7 @@
 
 PROBLEM_DIR=$1
 
-SOUFFLE=$PWD/souffle/src/souffle
+SOUFFLE=$PWD/prosynth/souffle/src/souffle
 
 cd $PROBLEM_DIR
 $SOUFFLE -t explain -osouffle.small.out rules.small.dl
