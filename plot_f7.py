@@ -33,6 +33,7 @@ prosynth_running_time_no_delta = dict()
 alps_running_time = dict()
 difflog_running_time = dict()
 prosynth_program_count_z3 = dict()
+prosynth_scale_program_count_z3 = dict()
 prosynth_program_count_souffle = dict()
 alps_program_count = dict()
 difflog_program_count = dict()
@@ -72,14 +73,20 @@ for line in f:
             if not benchmark_name in prosynth_running_time:
                 prosynth_running_time[benchmark_name] = set()
             prosynth_running_time[benchmark_name].add(running_time)
+    else:
+        if setting_delta == "1":
+            if not benchmark_name in prosynth_scale_program_count_z3:
+                prosynth_scale_program_count_z3[benchmark_name] = set()
+            prosynth_scale_program_count_z3[benchmark_name].add(program_count_z3)
 
 f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in prosynth_running_time:
-    andersen_stats[benchmark_name] = list(prosynth_running_time[benchmark_name])
-    sizes.append(benchmark_name)
+for benchmark_name in prosynth_scale_program_count_z3:
+    if benchmark_name[:benchmark_name.find("_")] == "scc":
+        andersen_stats[benchmark_name] = list(prosynth_scale_program_count_z3[benchmark_name])
+        sizes.append(benchmark_name)
 
 #sizes = [x*100 for x in range(1, 11)]
 #sizes.append(100)
@@ -116,10 +123,10 @@ if andersen_performance:
 
 ticksize=12
 #plt.yticks([14,15,16,17, 18])
-x_tick_labels = sizes
+x_tick_labels = [s[s.find("_")+1:] for s in sizes]
 
 xss = [i for i in range(1, len(x_tick_labels)+1)]
-plt.xticks(xss, x_tick_labels, rotation='vertical')
+plt.xticks(xss, x_tick_labels)
 ax.tick_params(labelsize=ticksize)
 
 
@@ -133,10 +140,10 @@ ax.set_aspect(aspect)
 
 #xlabel = "Number of templates"
 #ylabel = "Running time (min)"
-ylabel = "Running Time"
+ylabel = "Number of Z3 Calls"
 #ylabel = "Avg. evaluation time (sec)"
 
-xlabel = "Benchmark Name"
+xlabel = "Number of Candidate Rules"
 ax.set_ylabel(ylabel, fontsize=15)#, fontweight='bold')
 ax.set_xlabel(xlabel, fontsize=11)
 
@@ -172,6 +179,6 @@ def autolabel():
 
 fig.tight_layout()
 
-plt.savefig('f6_b.pdf')#, bbox_inches='tight')
+plt.savefig('f7.pdf')#, bbox_inches='tight')
 
 #plt.show()

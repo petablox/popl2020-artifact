@@ -33,6 +33,7 @@ prosynth_running_time_no_delta = dict()
 alps_running_time = dict()
 difflog_running_time = dict()
 prosynth_program_count_z3 = dict()
+prosynth_program_count_z3_no_delta = dict()
 prosynth_program_count_souffle = dict()
 alps_program_count = dict()
 difflog_program_count = dict()
@@ -60,6 +61,10 @@ for line in f:
             if not benchmark_name in prosynth_running_time_no_delta:
                 prosynth_running_time_no_delta[benchmark_name] = set()
             prosynth_running_time_no_delta[benchmark_name].add(running_time)
+
+            if not benchmark_name in prosynth_program_count_z3_no_delta:
+                prosynth_program_count_z3_no_delta[benchmark_name] = set()
+            prosynth_program_count_z3_no_delta[benchmark_name].add(program_count_z3)
         else:
             if not benchmark_name in prosynth_program_count_z3:
                 prosynth_program_count_z3[benchmark_name] = set()
@@ -77,8 +82,8 @@ f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in prosynth_running_time:
-    andersen_stats[benchmark_name] = list(prosynth_running_time[benchmark_name])
+for benchmark_name in ["buildwall", "downcast", "nearlyscc", "rvcheck", "scc", "sql-10", "sql-15"]:
+    andersen_stats[benchmark_name] = list(prosynth_program_count_z3_no_delta[benchmark_name])
     sizes.append(benchmark_name)
 
 #sizes = [x*100 for x in range(1, 11)]
@@ -119,7 +124,7 @@ ticksize=12
 x_tick_labels = sizes
 
 xss = [i for i in range(1, len(x_tick_labels)+1)]
-plt.xticks(xss, x_tick_labels, rotation='vertical')
+plt.xticks(xss, x_tick_labels)
 ax.tick_params(labelsize=ticksize)
 
 
@@ -172,6 +177,6 @@ def autolabel():
 
 fig.tight_layout()
 
-plt.savefig('f6_b.pdf')#, bbox_inches='tight')
+plt.savefig('f8_b.pdf')#, bbox_inches='tight')
 
 #plt.show()

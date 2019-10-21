@@ -77,7 +77,7 @@ f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in prosynth_running_time:
+for benchmark_name in ["buildwall", "downcast", "nearlyscc", "rvcheck", "scc", "sql-10", "sql-15"]:
     andersen_stats[benchmark_name] = list(prosynth_running_time[benchmark_name])
     sizes.append(benchmark_name)
 
@@ -119,7 +119,7 @@ ticksize=12
 x_tick_labels = sizes
 
 xss = [i for i in range(1, len(x_tick_labels)+1)]
-plt.xticks(xss, x_tick_labels, rotation='vertical')
+plt.xticks(xss, x_tick_labels)
 ax.tick_params(labelsize=ticksize)
 
 
@@ -172,6 +172,6 @@ def autolabel():
 
 fig.tight_layout()
 
-plt.savefig('f6_b.pdf')#, bbox_inches='tight')
+plt.savefig('supf2_a.pdf')#, bbox_inches='tight')
 
 #plt.show()
