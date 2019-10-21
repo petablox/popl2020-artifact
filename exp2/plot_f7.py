@@ -124,7 +124,6 @@ if andersen_performance:
 ticksize=12
 #plt.yticks([14,15,16,17, 18])
 x_tick_labels = [s[s.find("_")+1:-1] for s in sizes]
-print(x_tick_labels)
 
 xss = [i for i in range(1, len(x_tick_labels)+1)]
 plt.xticks(xss, x_tick_labels)
