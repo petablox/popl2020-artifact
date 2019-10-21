@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 ########################################################################################################################
-# Provenance-aware Datalog Synthesis Tool
-# The Ad-hoc Clause Learning Algorithm with Delta Debugging-based Why Not Provenance
+# Prosynth: Provenance-Guided Synthesis of Datalog Programs
+# The Ad-hoc Clause Learning Algorithm with Coprovenance Analysis and Delta Debugging-based Why Not Provenance
 
 # Invocation: ./scripts/prosynth PROBLEM_DIR USE_COPROV USE_DELTA_WHYNOTS
 
@@ -24,12 +24,13 @@
 import json
 import logging
 import os
+import random
+import re
 import subprocess
 import sys
-import z3
 import time
+import z3
 import copy
-import random
 import atexit
 
 currRuleSetLarge = set()
@@ -284,7 +285,7 @@ while True:
             #logging.info('adding constraint: not [%s]' % ' and '.join(map(str, sorted(currentRuleList))))
             return ("", ans)
 
-        def breakIntoPieces(l, numPieces): 
+        def breakIntoPieces(l, numPieces):
             avg = len(l) / float(numPieces)
             out = []
             last = 0.0
@@ -392,7 +393,6 @@ while True:
                         #    logging.info(str(t) + " has coprov " + str(coprov[t]))
                         neededRules = neededRules.union(set(coprov[t]))
 
-
                 if len(neededRules) != 0:
                     smallRMinus = set(allRuleNames) - currRuleSetLarge
 
@@ -473,29 +473,33 @@ while True:
                     try:
                         doSanity()
                     except:
-                        f = open("data.log", "a+")
-                        f.write("{name: '" + problemDirName + "_" + str(run_count) + "', z3: " + str(callsToz3) + ", souffle: " + str(callsToSouffle) + ", runtime: " + str(time.clock_gettime(0) - scriptStartTime) + ", setting_delta: " + str(setting_delta) + "}\n")
-                        f.close()
+                        dataLogStr = "{" + f"name: '{problemDirName}_{runCount}', " + \
+                                           f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                                           f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                                           f"setting_delta: {setting_delta}" + "}"
+                        with open('data.log', 'a+') as f: print(dataLogStr, file=f)
                         quit()
                 break
-                
-        
-                
-
-                    # pass
 
         ################################################################################################################
         # 3d. Find useful rules
 
         if solved:
-            f = open("data.log", "a+")
-            f.write("{name: '" + problemDirName + "_" + str(run_count) + "', z3: " + str(callsToz3) + ", souffle: " + str(callsToSouffle) + ", runtime: " + str(time.clock_gettime(0) - scriptStartTime) + ", setting_delta: " + str(setting_delta) + "}\n")
-            f.close()
-            print("Calls to z3: " + str(callsToz3) + ", Calls to Souffle: " + str(callsToSouffle))
+            dataLogStr = "{" + f"name: '{problemDirName}_{runCount}', " + \
+                               f"z3: {callsToZ3}, souffle: {callsToSouffle}, " + \
+                               f"runtime: {time.clock_gettime(0) - scriptStartTime}, " + \
+                               f"setting_delta: {setting_delta}" + "}"
+            with open('data.log', 'a+') as f: print(dataLogStr, file=f)
 
             ans = { ruleName for relName in idbRelationsExpected \
                              for t in idbRelationsExpected[relName] \
                              for ruleName in collectRules(getProvenance(relName, t)) }
+            ans = '|'.join(ans)
+            ans = r'Rule\(({})\)'.format(ans)
             logging.info(ans)
-            print(ans)
+            ans = re.compile(ans)
+            ans = { line.strip() for line in open(problemDirName + '/rules.small.dl') if ans.search(line) }
+            for line in ans: print(line)
+
+            logging.info(f'Calls to Z3: {callsToZ3}, Calls to Souffle: {callsToSouffle}')
             break
