@@ -1,0 +1,203 @@
+Graph distance is enabled
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 3
+Maximum #rules for programs will be 4
+Using Templates: ./data/templates/1-object.tp
+Number of templates: 0
+augmentation distance: 1
+chain1 is enabled
+chain3 is enabled
+
+Relation *points_initial
+
+Relation *store
+
+Relation *load
+
+Relation *invocation
+
+Relation *receiver_actual
+
+Relation *receiver_formal
+
+Relation *formal
+
+Relation *actual
+
+Relation *assign
+
+Relation pointsto
+
+Relation heappointsto
+
+**Loading input is done: 1 ms.
+
+Relation: heappointsto(H,F,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: pointsto(V,V,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: heappointsto(H,F,H)
+
+before explore projection: candidates size: 0
+explore projection for target: heappointsto(H,F,H)
+after explore projection: candidates size: 2
+
+before explore chain-3: candidates size: 2
+
+after explore chain-3: candidates size: 1442
+
+before filtering by augmentation: candidates size: 1442
+
+after filtering: candidates size: 0
+before deduplication, candidates size: 0
+after deduplication, candidates size: 0
+100 examples of candidates: 
+
+before deduplicate rules, matching size: 0
+after deduplicate rules, matching size: 0
+
+number of instantiated rules: 0
+all matchings : 
+normalizing PO..
+overall templates: 0
+most general: 0
+most specific: 0
+independent: 0
+Relation: pointsto(V,V,H)
+
+before explore projection: candidates size: 0
+explore projection for target: pointsto(V,V,H)
+after explore projection: candidates size: 2
+
+before explore chain-3: candidates size: 2
+
+after explore chain-3: candidates size: 34772
+
+before filtering by augmentation: candidates size: 34772
+
+after filtering: candidates size: 10
+before deduplication, candidates size: 10
+after deduplication, candidates size: 7
+100 examples of candidates: 
+P0(v0,v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+P0(v3,v0,v1) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+P0(v0,v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v0,v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v3,v0,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+
+>> Template: P0(v0,v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).,  matches: 1
+>> Template: P0(v3,v0,v1) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).,  matches: 1
+>> Template: P0(v0,v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 1
+>> Template: P0(v0,v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 1
+>> Template: P0(v3,v0,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 1
+>> Template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 1
+>> Template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 1
+before deduplicate rules, matching size: 7
+after deduplicate rules, matching size: 7
+
+number of instantiated rules: 7
+all matchings : 
+0, pointsto(x0:V,x3:V,x1:H) :- invocation(x1:H,x2:M),points_initial(x0:V,x1:H),receiver_actual(x2:M,x3:V),
+1, pointsto(x3:V,x0:V,x1:H) :- invocation(x1:H,x2:M),points_initial(x0:V,x1:H),receiver_actual(x2:M,x3:V),
+2, pointsto(x0:V,x3:V,x1:H) :- points_initial(x0:V,x1:H),points_initial(x0:V,x2:H),receiver_formal(x2:H,x3:V),
+3, pointsto(x0:V,x3:V,x1:H) :- points_initial(x0:V,x1:H),points_initial(x3:V,x2:H),receiver_formal(x2:H,x0:V),
+4, pointsto(x3:V,x0:V,x1:H) :- points_initial(x0:V,x1:H),points_initial(x3:V,x2:H),receiver_formal(x2:H,x0:V),
+5, pointsto(x0:V,x2:V,x3:H) :- points_initial(x0:V,x1:H),receiver_formal(x1:H,x2:V),receiver_formal(x3:H,x2:V),
+6, pointsto(x2:V,x1:V,x3:H) :- points_initial(x2:V,x0:H),receiver_formal(x0:H,x1:V),receiver_formal(x3:H,x2:V),
+normalizing PO..
+overall templates: 7
+most general: 7
+most specific: 7
+independent: 7
+
+**exploreCandidateRules is done: 515468 ms.
+
+query_space for heappointsto: 50
+true_label for heappointsto: 4
+query_space for pointsto: 605
+true_label for pointsto: 9
+overall_query_space: 655
+overall_true_label: 13
+erase useless rule: pointsto(x0:V,x3:V,x1:H) :- invocation(x1:H,x2:M),points_initial(x0:V,x1:H),receiver_actual(x2:M,x3:V),  from template: P0(v0,v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+erase useless rule: pointsto(x3:V,x0:V,x1:H) :- invocation(x1:H,x2:M),points_initial(x0:V,x1:H),receiver_actual(x2:M,x3:V),  from template: P0(v3,v0,v1) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+erase useless rule: pointsto(x0:V,x3:V,x1:H) :- points_initial(x0:V,x1:H),points_initial(x0:V,x2:H),receiver_formal(x2:H,x3:V),  from template: P0(v0,v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: pointsto(x0:V,x3:V,x1:H) :- points_initial(x0:V,x1:H),points_initial(x3:V,x2:H),receiver_formal(x2:H,x0:V),  from template: P0(v0,v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: pointsto(x3:V,x0:V,x1:H) :- points_initial(x0:V,x1:H),points_initial(x3:V,x2:H),receiver_formal(x2:H,x0:V),  from template: P0(v3,v0,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: pointsto(x0:V,x2:V,x3:H) :- points_initial(x0:V,x1:H),receiver_formal(x1:H,x2:V),receiver_formal(x3:H,x2:V),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: pointsto(x2:V,x1:V,x3:H) :- points_initial(x2:V,x0:H),receiver_formal(x0:H,x1:V),receiver_formal(x3:H,x2:V),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+(Time_Measure) examine_each_IDBTR takes 21 ms, longest_run: 0 max_threads: 7
+over estimated configs : 6
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {1 heappointsto(H,F,H), 1 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {1 heappointsto(H,F,H), 2 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {1 heappointsto(H,F,H), 3 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {2 heappointsto(H,F,H), 1 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {2 heappointsto(H,F,H), 2 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {3 heappointsto(H,F,H), 1 pointsto(V,V,H), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 6
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {1 heappointsto(H,F,H), 1 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {1 heappointsto(H,F,H), 2 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {1 heappointsto(H,F,H), 3 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {2 heappointsto(H,F,H), 1 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {2 heappointsto(H,F,H), 2 pointsto(V,V,H), },  number of programs: 0
+extractRules, tmpls.size = 0, res.size=0
+extractRules, tmpls.size = 7, res.size=0
+Config: {3 heappointsto(H,F,H), 1 pointsto(V,V,H), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 21 ms.
+
+**ALPS_end_to_end takes 515490 ms.

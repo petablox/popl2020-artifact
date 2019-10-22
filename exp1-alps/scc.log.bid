@@ -1,0 +1,551 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 3
+Using Templates: ./data/templates/scc.tp
+Number of templates: 0
+augmentation distance: 2
+number of bindings: 1
+chain1 is enabled
+chain2 is enabled
+
+Relation *Edge
+
+Relation Path
+
+Relation SCC
+
+**Loading input is done: 17 ms.
+
+Relation: SCC(V,V)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: Path(V,V)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: SCC(V,V)
+
+before explore projection: candidates size: 0
+explore projection for target: SCC(V,V)
+after explore projection: candidates size: 6
+
+before explore chain-2: candidates size: 6
+
+after explore chain-2: candidates size: 150
+
+before add new binding in Body: candidates size: 150
+after add new binding in Body: candidates size: 246
+
+before filtering by augmentation: candidates size: 246
+
+after filtering: candidates size: 198
+before deduplication, candidates size: 198
+after deduplication, candidates size: 12
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v1,v0) :- P1(v0,v1).
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+
+skip useless rule: SCC(x0:V,x1:V) :- SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 2
+>> Template: P0(v1,v0) :- P1(v0,v1).,  matches: 3
+skip useless rule: SCC(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).,  matches: 4
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).,  matches: 9
+skip useless rule: SCC(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: SCC(x0:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: SCC(x0:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+skip useless rule: SCC(x2:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: SCC(x2:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: SCC(x2:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).,  matches: 9
+skip useless rule: SCC(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+skip useless rule: SCC(x0:V,x1:V) :- Path(x1:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+skip useless rule: SCC(x0:V,x1:V) :- Edge(x1:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).,  matches: 6
+before deduplicate rules, matching size: 81
+after deduplicate rules, matching size: 81
+
+number of instantiated rules: 81
+all matchings : 
+0, SCC(x0:V,x1:V) :- Path(x0:V,x1:V),
+1, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),
+2, SCC(x1:V,x0:V) :- SCC(x0:V,x1:V),
+3, SCC(x1:V,x0:V) :- Path(x0:V,x1:V),
+4, SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),
+5, SCC(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),
+6, SCC(x0:V,x1:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),
+7, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),
+8, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),
+9, SCC(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x0:V,x2:V),
+10, SCC(x1:V,x2:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),
+11, SCC(x1:V,x2:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),
+12, SCC(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),
+13, SCC(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x0:V,x2:V),
+14, SCC(x1:V,x2:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),
+15, SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),
+16, SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),
+17, SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),
+18, SCC(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+19, SCC(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+20, SCC(x0:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+21, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+22, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+23, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+24, SCC(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+25, SCC(x0:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+26, SCC(x0:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+27, SCC(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+28, SCC(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+29, SCC(x0:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+30, SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+31, SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+32, SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+33, SCC(x1:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+34, SCC(x1:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+35, SCC(x1:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+36, SCC(x1:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+37, SCC(x1:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+38, SCC(x1:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+39, SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+40, SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+41, SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+42, SCC(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+43, SCC(x1:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+44, SCC(x1:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+45, SCC(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+46, SCC(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+47, SCC(x1:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+48, SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+49, SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+50, SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+51, SCC(x2:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+52, SCC(x2:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+53, SCC(x2:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+54, SCC(x2:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+55, SCC(x2:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+56, SCC(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+57, SCC(x2:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+58, SCC(x2:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+59, SCC(x2:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+60, SCC(x2:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+61, SCC(x2:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+62, SCC(x2:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+63, SCC(x2:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+64, SCC(x2:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+65, SCC(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+66, SCC(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x1:V),
+67, SCC(x0:V,x2:V) :- Path(x2:V,x1:V),SCC(x0:V,x1:V),
+68, SCC(x0:V,x2:V) :- Edge(x2:V,x1:V),SCC(x0:V,x1:V),
+69, SCC(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x1:V),
+70, SCC(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x1:V),
+71, SCC(x0:V,x2:V) :- Edge(x2:V,x1:V),Path(x0:V,x1:V),
+72, SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x1:V),
+73, SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x1:V),
+74, SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),
+75, SCC(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x1:V,x0:V),
+76, SCC(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x1:V,x0:V),
+77, SCC(x0:V,x1:V) :- Edge(x1:V,x0:V),Path(x0:V,x1:V),
+78, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x1:V,x0:V),
+79, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x1:V,x0:V),
+80, SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x1:V,x0:V),
+normalizing PO..
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).  vs  P0(v0,v1) :- P1(v0,v1).
+overall templates: 12
+most general: 6
+most specific: 5
+independent: 4
+Relation: Path(V,V)
+
+before explore projection: candidates size: 0
+explore projection for target: Path(V,V)
+after explore projection: candidates size: 6
+
+before explore chain-2: candidates size: 6
+
+after explore chain-2: candidates size: 150
+
+before add new binding in Body: candidates size: 150
+after add new binding in Body: candidates size: 246
+
+before filtering by augmentation: candidates size: 246
+
+after filtering: candidates size: 198
+before deduplication, candidates size: 198
+after deduplication, candidates size: 12
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v1,v0) :- P1(v0,v1).
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 2
+>> Template: P0(v1,v0) :- P1(v0,v1).,  matches: 3
+skip useless rule: Path(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).,  matches: 4
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).,  matches: 9
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: Path(x0:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+skip useless rule: Path(x2:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: Path(x2:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: Path(x2:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).,  matches: 9
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+skip useless rule: Path(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+skip useless rule: Path(x0:V,x1:V) :- Edge(x1:V,x0:V),Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).,  matches: 6
+before deduplicate rules, matching size: 81
+after deduplicate rules, matching size: 81
+
+number of instantiated rules: 81
+all matchings : 
+0, Path(x0:V,x1:V) :- SCC(x0:V,x1:V),
+1, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),
+2, Path(x1:V,x0:V) :- SCC(x0:V,x1:V),
+3, Path(x1:V,x0:V) :- Path(x0:V,x1:V),
+4, Path(x1:V,x0:V) :- Edge(x0:V,x1:V),
+5, Path(x0:V,x1:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),
+6, Path(x0:V,x1:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),
+7, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),
+8, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),
+9, Path(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x0:V,x2:V),
+10, Path(x1:V,x2:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),
+11, Path(x1:V,x2:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),
+12, Path(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),
+13, Path(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x0:V,x2:V),
+14, Path(x1:V,x2:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),
+15, Path(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),
+16, Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),
+17, Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),
+18, Path(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+19, Path(x0:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+20, Path(x0:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+21, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+22, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+23, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+24, Path(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+25, Path(x0:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+26, Path(x0:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+27, Path(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+28, Path(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+29, Path(x0:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+30, Path(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+31, Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+32, Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+33, Path(x1:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+34, Path(x1:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+35, Path(x1:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+36, Path(x1:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+37, Path(x1:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+38, Path(x1:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+39, Path(x1:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+40, Path(x1:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+41, Path(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+42, Path(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+43, Path(x1:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+44, Path(x1:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+45, Path(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+46, Path(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+47, Path(x1:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+48, Path(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+49, Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+50, Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+51, Path(x2:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+52, Path(x2:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+53, Path(x2:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+54, Path(x2:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+55, Path(x2:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+56, Path(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+57, Path(x2:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),
+58, Path(x2:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),
+59, Path(x2:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),
+60, Path(x2:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),
+61, Path(x2:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),
+62, Path(x2:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),
+63, Path(x2:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),
+64, Path(x2:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),
+65, Path(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+66, Path(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x1:V),
+67, Path(x0:V,x2:V) :- Path(x2:V,x1:V),SCC(x0:V,x1:V),
+68, Path(x0:V,x2:V) :- Edge(x2:V,x1:V),SCC(x0:V,x1:V),
+69, Path(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x1:V),
+70, Path(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x1:V),
+71, Path(x0:V,x2:V) :- Edge(x2:V,x1:V),Path(x0:V,x1:V),
+72, Path(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x1:V),
+73, Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x1:V),
+74, Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),
+75, Path(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x1:V,x0:V),
+76, Path(x0:V,x1:V) :- Path(x1:V,x0:V),SCC(x0:V,x1:V),
+77, Path(x0:V,x1:V) :- Edge(x1:V,x0:V),SCC(x0:V,x1:V),
+78, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x1:V,x0:V),
+79, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x1:V,x0:V),
+80, Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x1:V,x0:V),
+normalizing PO..
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).  vs  P0(v0,v1) :- P1(v0,v1).
+overall templates: 12
+most general: 6
+most specific: 5
+independent: 4
+
+**exploreCandidateRules is done: 248 ms.
+
+query_space for SCC: 64
+true_label for SCC: 25
+query_space for Path: 64
+true_label for Path: 43
+overall_query_space: 128
+overall_true_label: 68
+erase useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: SCC(x1:V,x0:V) :- SCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: SCC(x1:V,x0:V) :- Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: SCC(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Path(x2:V,x1:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x2:V,x1:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x2:V,x1:V),Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),SCC(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Path(x0:V,x1:V),Path(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x1:V,x0:V),Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: SCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: Path(x0:V,x1:V) :- SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: Path(x1:V,x0:V) :- SCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: Path(x1:V,x0:V) :- Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: Path(x1:V,x0:V) :- Edge(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: Path(x0:V,x1:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Path(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x2:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x2:V),Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: Path(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x0:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x0:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x0:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x0:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x0:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- SCC(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Path(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Edge(x2:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Path(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Path(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Edge(x2:V,x0:V),Path(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Edge(x0:V,x1:V),SCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Edge(x0:V,x1:V),Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: Path(x0:V,x2:V) :- SCC(x0:V,x1:V),SCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Path(x2:V,x1:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x2:V,x1:V),SCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Path(x0:V,x1:V),SCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Path(x0:V,x1:V),Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x2:V,x1:V),Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x0:V,x1:V),SCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: Path(x0:V,x1:V) :- SCC(x0:V,x1:V),SCC(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: Path(x0:V,x1:V) :- Path(x1:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x1:V,x0:V),SCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),SCC(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Path(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+erase useless rule: Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x1:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v0).
+(Time_Measure) examine_each_IDBTR takes 758 ms, longest_run: 0 max_threads: 162
+over estimated configs : 3
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 6, res.size=0
+Config: {1 SCC(V,V), 1 Path(V,V), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 6, res.size=0
+Config: {1 SCC(V,V), 2 Path(V,V), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 6, res.size=0
+Config: {2 SCC(V,V), 1 Path(V,V), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 3
+extractRules, tmpls.size = 5, res.size=0
+extractRules, tmpls.size = 5, res.size=0
+Config: {1 SCC(V,V), 1 Path(V,V), },  number of programs: 0
+extractRules, tmpls.size = 5, res.size=0
+extractRules, tmpls.size = 5, res.size=0
+Config: {1 SCC(V,V), 2 Path(V,V), },  number of programs: 0
+extractRules, tmpls.size = 5, res.size=0
+extractRules, tmpls.size = 5, res.size=0
+Config: {2 SCC(V,V), 1 Path(V,V), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 759 ms.
+
+**ALPS_end_to_end takes 1007 ms.

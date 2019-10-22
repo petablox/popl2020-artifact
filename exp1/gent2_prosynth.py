@@ -55,9 +55,10 @@ print(prosynth_program_count_z3)
 print(prosynth_program_count_souffle)
 
 
-f_t2 = open("table2.csv", "w")
-f_t2.write("Prosynth Run Time, Prosynth Number Evaluated Programs (Z3), Prosynth Number Evaluated Programs (Souffle)")
+f_t2 = open("table2-prosynth.csv", "w")
+f_t2.write("Benchmark Name, Prosynth Run Time, Prosynth Number Evaluated Programs (Z3), Prosynth Number Evaluated Programs (Souffle)\n")
 for benchmark_name in prosynth_running_time:
+	f_t2.write(benchmark_name + ",")
 	f_t2.write(str(np.median(list(prosynth_running_time[benchmark_name]))) + ",")
 	f_t2.write(str(np.median(list(prosynth_program_count_z3[benchmark_name]))) + ",")
 	f_t2.write(str(np.median(list(prosynth_program_count_souffle[benchmark_name]))) + ",")

@@ -1,0 +1,221 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 1
+Maximum #rules for programs will be 1
+Using Templates: ./data/templates/dev_set_005.tp
+Number of templates: 0
+augmentation distance: 4
+chain3 is enabled
+
+Relation *LE20130201
+
+Relation *GE20130215
+
+Relation *input1
+
+Relation output
+
+**Loading input is done: 1 ms.
+
+Relation: output(yrq)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: output(yrq)
+
+before explore chain-3: candidates size: 0
+
+after explore chain-3: candidates size: 78
+
+before filtering by augmentation: candidates size: 78
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v3).
+
+after filtering: candidates size: 41
+before deduplication, candidates size: 41
+after deduplication, candidates size: 20
+100 examples of candidates: 
+P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v2).
+P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v1,v3,v4).
+P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).
+P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).
+P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v4,v2).
+P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).
+P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).
+P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v1).
+P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v1).
+P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v5,v4,v6).
+P0(v5) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v5,v6,v4).
+P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v3).
+P0(v3) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v3).
+P0(v0) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v3).
+P0(v3) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v3).
+P0(v0) :- P1(v0,v1,v2),P2(v3,v2,v4),P3(v3).
+P0(v3) :- P1(v0,v1,v2),P2(v3,v2,v4),P3(v3).
+P0(v0) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v3).
+
+>> Template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v2).,  matches: 4
+skip useless rule: output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x1:yrq,x3:date,x4:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v1,v3,v4).
+skip useless rule: output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x1:yrq,x3:date,x4:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v1,v3,v4).
+>> Template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).,  matches: 2
+>> Template: P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).,  matches: 2
+>> Template: P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v4,v2).,  matches: 2
+skip useless rule: output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x1:yrq,x3:date,x4:date),  from template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+skip useless rule: output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x1:yrq,x3:date,x4:date),  from template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+>> Template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).,  matches: 2
+>> Template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).,  matches: 2
+>> Template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).,  matches: 2
+skip useless rule: output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),output(x1:yrq),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v1).
+skip useless rule: output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),output(x1:yrq),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v1).
+skip useless rule: output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),output(x1:yrq),  from template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v1).
+skip useless rule: output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),output(x1:yrq),  from template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v1).
+>> Template: P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v5,v4,v6).,  matches: 1
+>> Template: P0(v5) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v5,v6,v4).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v3).,  matches: 1
+skip useless rule: output(x3:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x1:date,x4:date),output(x3:yrq),  from template: P0(v3) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v3).
+>> Template: P0(v0) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v3).,  matches: 1
+skip useless rule: output(x3:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x4:date,x1:date),output(x3:yrq),  from template: P0(v3) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v3).
+>> Template: P0(v0) :- P1(v0,v1,v2),P2(v3,v2,v4),P3(v3).,  matches: 1
+skip useless rule: output(x3:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x2:date,x4:date),output(x3:yrq),  from template: P0(v3) :- P1(v0,v1,v2),P2(v3,v2,v4),P3(v3).
+>> Template: P0(v0) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v3).,  matches: 1
+before deduplicate rules, matching size: 22
+after deduplicate rules, matching size: 22
+
+number of instantiated rules: 22
+all matchings : 
+0, output(x1:yrq) :- LE20130201(x0:date),LE20130201(x2:date),input1(x1:yrq,x0:date,x2:date),
+1, output(x1:yrq) :- GE20130215(x2:date),LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),
+2, output(x1:yrq) :- GE20130215(x0:date),LE20130201(x2:date),input1(x1:yrq,x0:date,x2:date),
+3, output(x1:yrq) :- GE20130215(x0:date),GE20130215(x2:date),input1(x1:yrq,x0:date,x2:date),
+4, output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),
+5, output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),
+6, output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),
+7, output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),
+8, output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x4:date,x2:date),
+9, output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x4:date,x2:date),
+10, output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x2:date,x4:date),
+11, output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x2:date,x4:date),
+12, output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),
+13, output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),
+14, output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),
+15, output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),
+16, output(x0:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x1:date,x4:date),input1(x5:yrq,x4:date,x6:date),
+17, output(x5:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x4:date,x1:date),input1(x5:yrq,x6:date,x4:date),
+18, output(x0:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x1:date,x4:date),output(x3:yrq),
+19, output(x0:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x4:date,x1:date),output(x3:yrq),
+20, output(x0:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x2:date,x4:date),output(x3:yrq),
+21, output(x0:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x4:date,x2:date),output(x3:yrq),
+normalizing PO..
+overall templates: 13
+most general: 7
+most specific: 10
+independent: 4
+
+**exploreCandidateRules is done: 101 ms.
+
+query_space for output: 7
+true_label for output: 2
+overall_query_space: 7
+overall_true_label: 2
+over estimated configs : 1
+extractRules, tmpls.size = 7, res.size=10
+
+#elements: 10 K = 1, res.size: 10
+Config: {1 output(yrq), },  number of programs: 10
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 10
+Gs.size = 7
+over estimated configs : 1
+extractRules, tmpls.size = 10, res.size=17
+
+#elements: 17 K = 1, res.size: 17
+Config: {1 output(yrq), },  number of programs: 17
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 17
+Ss.size = 11
+(Time_Measure) execute_one_round_helper takes 4 ms, longest_run: 0 max_threads: 7
+(Time_Measure) execute_one_round_helper takes 6 ms, longest_run: 0 max_threads: 11
+total_votes: 18
+
+tuple stats: 
+Gs: 4 5 6 7 8 9 10 
+Ss: 15 16 17 18 19 22 23 24 25 26 27 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 7
+
+
+output(x0:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x1:date,x4:date),input1(x5:yrq,x4:date,x6:date),  from template: P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4),P3(v5,v4,v6).
+
+
+output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x2:date,x4:date),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+
+
+output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x2:date,x4:date),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+
+
+output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x4:date,x2:date),  from template: P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v4,v2).
+
+
+output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x4:date,x2:date),  from template: P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v4,v2).
+
+
+output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),  from template: P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).
+
+
+output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),  from template: P0(v3) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).
+remaining specific programs: 11
+
+
+output(x5:yrq) :- input1(x0:yrq,x1:date,x2:date),input1(x3:yrq,x4:date,x1:date),input1(x5:yrq,x6:date,x4:date),  from template: P0(v5) :- P1(v0,v1,v2),P2(v3,v4,v1),P3(v5,v6,v4).
+
+
+output(x3:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).
+
+
+output(x3:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).
+
+
+output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),  from template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).
+
+
+output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x2:date,x0:date),input1(x3:yrq,x4:date,x2:date),  from template: P0(v1) :- P1(v0),P2(v1,v2,v0),P3(v3,v4,v2).
+
+
+output(x1:yrq) :- GE20130215(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).
+
+
+output(x1:yrq) :- LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),input1(x3:yrq,x2:date,x4:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v3,v2,v4).
+
+
+output(x1:yrq) :- GE20130215(x0:date),GE20130215(x2:date),input1(x1:yrq,x0:date,x2:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v2).
+
+
+output(x1:yrq) :- GE20130215(x0:date),LE20130201(x2:date),input1(x1:yrq,x0:date,x2:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v2).
+
+
+output(x1:yrq) :- GE20130215(x2:date),LE20130201(x0:date),input1(x1:yrq,x0:date,x2:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v2).
+
+
+output(x1:yrq) :- LE20130201(x0:date),LE20130201(x2:date),input1(x1:yrq,x0:date,x2:date),  from template: P0(v1) :- P1(v0),P2(v1,v0,v2),P3(v2).
+Refinement takes 0 ms.
+End-to-End takes 11 ms.
+
+**ALPS_end_to_end takes 126 ms.

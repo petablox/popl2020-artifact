@@ -1,0 +1,346 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 6
+Using Templates: ./data/templates/escape.tp
+Number of templates: 0
+augmentation distance: 1
+chain1 is enabled
+chain2 is enabled
+
+Relation *MmethArg
+
+Relation *MmethRet
+
+Relation *VH
+
+Relation *HFH
+
+Relation rMH
+
+Relation rRH
+
+Relation rHH
+
+**Loading input is done: 1 ms.
+
+Relation: rRH(M,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: rMH(M,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: rHH(H,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: rRH(M,H)
+
+before explore projection: candidates size: 0
+explore projection for target: rRH(M,H)
+after explore projection: candidates size: 2
+
+before explore chain-2: candidates size: 2
+
+after explore chain-2: candidates size: 38
+
+before filtering by augmentation: candidates size: 38
+
+after filtering: candidates size: 26
+before deduplication, candidates size: 26
+after deduplication, candidates size: 6
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+
+skip useless rule: rRH(x0:M,x1:H) :- rRH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 1
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).,  matches: 2
+skip useless rule: rRH(x2:M,x1:H) :- rRH(x0:M,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rRH(x2:M,x1:H) :- rMH(x0:M,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rRH(x2:M,x1:H) :- rMH(x0:M,x1:H),rMH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rRH(x2:M,x1:H) :- rHH(x0:H,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rRH(x2:M,x1:H) :- VH(x0:V,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).,  matches: 3
+>> Template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).,  matches: 2
+skip useless rule: rRH(x0:M,x1:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).,  matches: 1
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).,  matches: 2
+before deduplicate rules, matching size: 11
+after deduplicate rules, matching size: 11
+
+number of instantiated rules: 11
+all matchings : 
+0, rRH(x0:M,x1:H) :- rMH(x0:M,x1:H),
+1, rRH(x2:M,x1:H) :- MmethArg(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),
+2, rRH(x2:M,x1:H) :- MmethRet(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),
+3, rRH(x2:M,x1:H) :- rMH(x2:M,x1:H),rRH(x0:M,x1:H),
+4, rRH(x2:M,x1:H) :- rHH(x0:H,x1:H),rMH(x2:M,x1:H),
+5, rRH(x2:M,x1:H) :- VH(x0:V,x1:H),rMH(x2:M,x1:H),
+6, rRH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rRH(x3:M,x0:H),
+7, rRH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rMH(x3:M,x0:H),
+8, rRH(x0:M,x1:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),
+9, rRH(x0:M,x2:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),
+10, rRH(x0:M,x2:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),
+normalizing PO..
+P0(v2,v1) :- P1(v0,v1),P2(v2,v1).  vs  P0(v0,v1) :- P1(v0,v1).
+overall templates: 6
+most general: 4
+most specific: 4
+independent: 3
+Relation: rMH(M,H)
+
+before explore projection: candidates size: 0
+explore projection for target: rMH(M,H)
+after explore projection: candidates size: 2
+
+before explore chain-2: candidates size: 2
+
+after explore chain-2: candidates size: 38
+
+before filtering by augmentation: candidates size: 38
+
+after filtering: candidates size: 26
+before deduplication, candidates size: 26
+after deduplication, candidates size: 6
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+
+skip useless rule: rMH(x0:M,x1:H) :- rMH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 1
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).,  matches: 2
+skip useless rule: rMH(x2:M,x1:H) :- rRH(x0:M,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rMH(x2:M,x1:H) :- rMH(x2:M,x1:H),rRH(x0:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rMH(x2:M,x1:H) :- rMH(x0:M,x1:H),rMH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rMH(x2:M,x1:H) :- rHH(x0:H,x1:H),rMH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rMH(x2:M,x1:H) :- VH(x0:V,x1:H),rMH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).,  matches: 3
+>> Template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).,  matches: 2
+skip useless rule: rMH(x0:M,x1:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).,  matches: 1
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).,  matches: 2
+before deduplicate rules, matching size: 11
+after deduplicate rules, matching size: 11
+
+number of instantiated rules: 11
+all matchings : 
+0, rMH(x0:M,x1:H) :- rRH(x0:M,x1:H),
+1, rMH(x2:M,x1:H) :- MmethArg(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),
+2, rMH(x2:M,x1:H) :- MmethRet(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),
+3, rMH(x2:M,x1:H) :- rMH(x0:M,x1:H),rRH(x2:M,x1:H),
+4, rMH(x2:M,x1:H) :- rHH(x0:H,x1:H),rRH(x2:M,x1:H),
+5, rMH(x2:M,x1:H) :- VH(x0:V,x1:H),rRH(x2:M,x1:H),
+6, rMH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rRH(x3:M,x0:H),
+7, rMH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rMH(x3:M,x0:H),
+8, rMH(x0:M,x1:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),
+9, rMH(x0:M,x2:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),
+10, rMH(x0:M,x2:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),
+normalizing PO..
+P0(v2,v1) :- P1(v0,v1),P2(v2,v1).  vs  P0(v0,v1) :- P1(v0,v1).
+overall templates: 6
+most general: 4
+most specific: 4
+independent: 3
+Relation: rHH(H,H)
+
+before explore projection: candidates size: 0
+explore projection for target: rHH(H,H)
+after explore projection: candidates size: 4
+
+before explore chain-2: candidates size: 4
+
+after explore chain-2: candidates size: 116
+
+before filtering by augmentation: candidates size: 116
+
+after filtering: candidates size: 20
+before deduplication, candidates size: 20
+after deduplication, candidates size: 8
+100 examples of candidates: 
+P0(v0,v2) :- P1(v0,v1,v2).
+P0(v0,v1) :- P1(v0,v1).
+P0(v1,v2) :- P1(v0,v1),P2(v1,v2).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+P0(v0,v3) :- P1(v0,v1,v2),P2(v2,v3).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+
+>> Template: P0(v0,v2) :- P1(v0,v1,v2).,  matches: 1
+skip useless rule: rHH(x0:H,x1:H) :- rHH(x0:H,x1:H),  from template: P0(v0,v1) :- P1(v0,v1).
+skip useless rule: rHH(x1:H,x2:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2).
+skip useless rule: rHH(x1:H,x2:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2).
+skip useless rule: rHH(x1:H,x2:H) :- rHH(x0:H,x1:H),rHH(x1:H,x2:H),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2).
+skip useless rule: rHH(x1:H,x2:H) :- VH(x0:V,x1:H),rHH(x1:H,x2:H),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2).
+skip useless rule: rHH(x2:H,x1:H) :- rHH(x2:H,x1:H),rRH(x0:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rHH(x2:H,x1:H) :- rHH(x2:H,x1:H),rMH(x0:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rHH(x2:H,x1:H) :- rHH(x0:H,x1:H),rHH(x2:H,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+skip useless rule: rHH(x2:H,x1:H) :- VH(x0:V,x1:H),rHH(x2:H,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+>> Template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).,  matches: 1
+>> Template: P0(v0,v3) :- P1(v0,v1,v2),P2(v2,v3).,  matches: 1
+skip useless rule: rHH(x2:H,x0:H) :- rHH(x0:H,x1:H),rHH(x2:H,x0:H),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 1
+before deduplicate rules, matching size: 4
+after deduplicate rules, matching size: 4
+
+number of instantiated rules: 4
+all matchings : 
+0, rHH(x0:H,x2:H) :- HFH(x0:H,x1:F,x2:H),
+1, rHH(x3:H,x2:H) :- HFH(x0:H,x1:F,x2:H),rHH(x3:H,x0:H),
+2, rHH(x0:H,x3:H) :- HFH(x0:H,x1:F,x2:H),rHH(x2:H,x3:H),
+3, rHH(x2:H,x1:H) :- rHH(x0:H,x1:H),rHH(x2:H,x0:H),
+normalizing PO..
+overall templates: 4
+most general: 4
+most specific: 4
+independent: 4
+
+**exploreCandidateRules is done: 26 ms.
+
+query_space for rRH: 12
+true_label for rRH: 6
+query_space for rMH: 12
+true_label for rMH: 7
+query_space for rHH: 16
+true_label for rHH: 6
+overall_query_space: 40
+overall_true_label: 19
+erase useless rule: rRH(x0:M,x1:H) :- rMH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: rRH(x2:M,x1:H) :- MmethArg(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).
+erase useless rule: rRH(x2:M,x1:H) :- MmethRet(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).
+erase useless rule: rRH(x2:M,x1:H) :- rMH(x2:M,x1:H),rRH(x0:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: rRH(x2:M,x1:H) :- rHH(x0:H,x1:H),rMH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: rRH(x2:M,x1:H) :- VH(x0:V,x1:H),rMH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: rRH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rRH(x3:M,x0:H),  from template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+erase useless rule: rRH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rMH(x3:M,x0:H),  from template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+erase useless rule: rRH(x0:M,x1:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+erase useless rule: rRH(x0:M,x2:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),  from template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+erase useless rule: rRH(x0:M,x2:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),  from template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+erase useless rule: rMH(x0:M,x1:H) :- rRH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: rMH(x2:M,x1:H) :- MmethArg(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).
+erase useless rule: rMH(x2:M,x1:H) :- MmethRet(x2:M,x3:Z,x0:V),VH(x0:V,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v3,v0).
+erase useless rule: rMH(x2:M,x1:H) :- rMH(x0:M,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: rMH(x2:M,x1:H) :- rHH(x0:H,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: rMH(x2:M,x1:H) :- VH(x0:V,x1:H),rRH(x2:M,x1:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: rMH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rRH(x3:M,x0:H),  from template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+erase useless rule: rMH(x3:M,x2:H) :- HFH(x0:H,x1:F,x2:H),rMH(x3:M,x0:H),  from template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+erase useless rule: rMH(x0:M,x1:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+erase useless rule: rMH(x0:M,x2:H) :- rHH(x1:H,x2:H),rRH(x0:M,x1:H),  from template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+erase useless rule: rMH(x0:M,x2:H) :- rHH(x1:H,x2:H),rMH(x0:M,x1:H),  from template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+erase useless rule: rHH(x0:H,x2:H) :- HFH(x0:H,x1:F,x2:H),  from template: P0(v0,v2) :- P1(v0,v1,v2).
+erase useless rule: rHH(x3:H,x2:H) :- HFH(x0:H,x1:F,x2:H),rHH(x3:H,x0:H),  from template: P0(v3,v2) :- P1(v0,v1,v2),P2(v3,v0).
+erase useless rule: rHH(x0:H,x3:H) :- HFH(x0:H,x1:F,x2:H),rHH(x2:H,x3:H),  from template: P0(v0,v3) :- P1(v0,v1,v2),P2(v2,v3).
+erase useless rule: rHH(x2:H,x1:H) :- rHH(x0:H,x1:H),rHH(x2:H,x0:H),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+(Time_Measure) examine_each_IDBTR takes 117 ms, longest_run: 0 max_threads: 26
+over estimated configs : 8
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 1 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 1 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 2 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 2 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 1 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 1 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 2 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 2 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 8
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 1 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 1 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 2 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {1 rRH(M,H), 2 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 1 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 1 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 2 rMH(M,H), 1 rHH(H,H), },  number of programs: 0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+extractRules, tmpls.size = 4, res.size=0
+Config: {2 rRH(M,H), 2 rMH(M,H), 2 rHH(H,H), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 117 ms.
+
+**ALPS_end_to_end takes 144 ms.

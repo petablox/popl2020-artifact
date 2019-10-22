@@ -1,0 +1,507 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 2
+Using Templates: ./data/templates/nearlyscc.tp
+Number of templates: 0
+filter-1 is enabled
+augmentation distance: 2
+chain1 is enabled
+chain2 is enabled
+
+Relation *Edge
+
+Relation invent_Path
+
+Relation NSCC
+
+**Loading input is done: 22 ms.
+
+Relation: NSCC(V,V)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: invent_Path(V,V)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: NSCC(V,V)
+
+before explore projection: candidates size: 0
+explore projection for target: NSCC(V,V)
+after explore projection: candidates size: 6
+
+before explore chain-2: candidates size: 6
+
+after explore chain-2: candidates size: 150
+
+before add filtering: candidates size: 150
+no EDB can be used as a filter
+after add filtering: candidates size: 150
+
+before filtering by augmentation: candidates size: 150
+
+after filtering: candidates size: 126
+before deduplication, candidates size: 126
+after deduplication, candidates size: 11
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v1,v0) :- P1(v0,v1).
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+
+skip useless rule: NSCC(x0:V,x1:V) :- NSCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 2
+>> Template: P0(v1,v0) :- P1(v0,v1).,  matches: 3
+skip useless rule: NSCC(x0:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: NSCC(x0:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: NSCC(x0:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).,  matches: 4
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).,  matches: 9
+skip useless rule: NSCC(x0:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: NSCC(x0:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: NSCC(x0:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+skip useless rule: NSCC(x2:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: NSCC(x2:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: NSCC(x2:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).,  matches: 9
+before deduplicate rules, matching size: 75
+after deduplicate rules, matching size: 75
+
+number of instantiated rules: 75
+all matchings : 
+0, NSCC(x0:V,x1:V) :- invent_Path(x0:V,x1:V),
+1, NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),
+2, NSCC(x1:V,x0:V) :- NSCC(x0:V,x1:V),
+3, NSCC(x1:V,x0:V) :- invent_Path(x0:V,x1:V),
+4, NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),
+5, NSCC(x0:V,x1:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),
+6, NSCC(x0:V,x1:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),
+7, NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),
+8, NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),
+9, NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x0:V,x2:V),
+10, NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),
+11, NSCC(x1:V,x2:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),
+12, NSCC(x1:V,x2:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),
+13, NSCC(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x0:V,x2:V),
+14, NSCC(x1:V,x2:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),
+15, NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),
+16, NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),
+17, NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),
+18, NSCC(x0:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+19, NSCC(x0:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+20, NSCC(x0:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+21, NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+22, NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+23, NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+24, NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+25, NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+26, NSCC(x0:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+27, NSCC(x0:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+28, NSCC(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+29, NSCC(x0:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+30, NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+31, NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+32, NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+33, NSCC(x1:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+34, NSCC(x1:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+35, NSCC(x1:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+36, NSCC(x1:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+37, NSCC(x1:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+38, NSCC(x1:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+39, NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+40, NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+41, NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+42, NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+43, NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+44, NSCC(x1:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+45, NSCC(x1:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+46, NSCC(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+47, NSCC(x1:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+48, NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+49, NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+50, NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+51, NSCC(x2:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+52, NSCC(x2:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+53, NSCC(x2:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+54, NSCC(x2:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+55, NSCC(x2:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+56, NSCC(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+57, NSCC(x2:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+58, NSCC(x2:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+59, NSCC(x2:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+60, NSCC(x2:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+61, NSCC(x2:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+62, NSCC(x2:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+63, NSCC(x2:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+64, NSCC(x2:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+65, NSCC(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+66, NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x1:V),
+67, NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x1:V),
+68, NSCC(x0:V,x2:V) :- Edge(x2:V,x1:V),NSCC(x0:V,x1:V),
+69, NSCC(x0:V,x2:V) :- NSCC(x2:V,x1:V),invent_Path(x0:V,x1:V),
+70, NSCC(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x1:V),
+71, NSCC(x0:V,x2:V) :- Edge(x2:V,x1:V),invent_Path(x0:V,x1:V),
+72, NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x1:V),
+73, NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x1:V),
+74, NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),
+normalizing PO..
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).  vs  P0(v0,v1) :- P1(v0,v1).
+overall templates: 11
+most general: 6
+most specific: 8
+independent: 4
+Relation: invent_Path(V,V)
+
+before explore projection: candidates size: 0
+explore projection for target: invent_Path(V,V)
+after explore projection: candidates size: 6
+
+before explore chain-2: candidates size: 6
+
+after explore chain-2: candidates size: 150
+
+before add filtering: candidates size: 150
+no EDB can be used as a filter
+after add filtering: candidates size: 150
+
+before filtering by augmentation: candidates size: 150
+
+after filtering: candidates size: 126
+before deduplication, candidates size: 126
+after deduplication, candidates size: 11
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v1,v0) :- P1(v0,v1).
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+
+skip useless rule: invent_Path(x0:V,x1:V) :- invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 2
+>> Template: P0(v1,v0) :- P1(v0,v1).,  matches: 3
+skip useless rule: invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: invent_Path(x0:V,x1:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: invent_Path(x0:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).,  matches: 4
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).,  matches: 9
+skip useless rule: invent_Path(x0:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: invent_Path(x0:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: invent_Path(x0:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+skip useless rule: invent_Path(x2:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: invent_Path(x2:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: invent_Path(x2:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 6
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 9
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).,  matches: 9
+before deduplicate rules, matching size: 75
+after deduplicate rules, matching size: 75
+
+number of instantiated rules: 75
+all matchings : 
+0, invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),
+1, invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),
+2, invent_Path(x1:V,x0:V) :- NSCC(x0:V,x1:V),
+3, invent_Path(x1:V,x0:V) :- invent_Path(x0:V,x1:V),
+4, invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),
+5, invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),
+6, invent_Path(x0:V,x1:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),
+7, invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),
+8, invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),
+9, invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x0:V,x2:V),
+10, invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),
+11, invent_Path(x1:V,x2:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),
+12, invent_Path(x1:V,x2:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),
+13, invent_Path(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x0:V,x2:V),
+14, invent_Path(x1:V,x2:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),
+15, invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),
+16, invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),
+17, invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),
+18, invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+19, invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+20, invent_Path(x0:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+21, invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+22, invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+23, invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+24, invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+25, invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+26, invent_Path(x0:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+27, invent_Path(x0:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+28, invent_Path(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+29, invent_Path(x0:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+30, invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+31, invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+32, invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+33, invent_Path(x1:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+34, invent_Path(x1:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+35, invent_Path(x1:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+36, invent_Path(x1:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+37, invent_Path(x1:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+38, invent_Path(x1:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+39, invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+40, invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+41, invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+42, invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+43, invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+44, invent_Path(x1:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+45, invent_Path(x1:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+46, invent_Path(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+47, invent_Path(x1:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+48, invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+49, invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+50, invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+51, invent_Path(x2:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+52, invent_Path(x2:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+53, invent_Path(x2:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+54, invent_Path(x2:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+55, invent_Path(x2:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+56, invent_Path(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+57, invent_Path(x2:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),
+58, invent_Path(x2:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),
+59, invent_Path(x2:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),
+60, invent_Path(x2:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),
+61, invent_Path(x2:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),
+62, invent_Path(x2:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),
+63, invent_Path(x2:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),
+64, invent_Path(x2:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),
+65, invent_Path(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),
+66, invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x1:V),
+67, invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x1:V),
+68, invent_Path(x0:V,x2:V) :- Edge(x2:V,x1:V),NSCC(x0:V,x1:V),
+69, invent_Path(x0:V,x2:V) :- NSCC(x2:V,x1:V),invent_Path(x0:V,x1:V),
+70, invent_Path(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x1:V),
+71, invent_Path(x0:V,x2:V) :- Edge(x2:V,x1:V),invent_Path(x0:V,x1:V),
+72, invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x1:V),
+73, invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x1:V),
+74, invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),
+normalizing PO..
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).  vs  P0(v0,v1) :- P1(v0,v1).
+overall templates: 11
+most general: 6
+most specific: 8
+independent: 4
+
+**exploreCandidateRules is done: 358 ms.
+
+query_space for NSCC: 81
+true_label for NSCC: 18
+query_space for invent_Path: 81
+true_label for invent_Path: 0
+overall_query_space: 162
+overall_true_label: 18
+erase useless rule: NSCC(x0:V,x1:V) :- invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: NSCC(x1:V,x0:V) :- NSCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: NSCC(x1:V,x0:V) :- invent_Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: NSCC(x0:V,x1:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: NSCC(x0:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x2:V,x1:V),NSCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- NSCC(x2:V,x1:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x2:V,x1:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: NSCC(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: invent_Path(x1:V,x0:V) :- NSCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: invent_Path(x1:V,x0:V) :- invent_Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1).
+erase useless rule: invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x2:V),NSCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- NSCC(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x2:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x1:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x0:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x0:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x0:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x0:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x0:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x0:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- Edge(x2:V,x0:V),NSCC(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- NSCC(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- Edge(x2:V,x0:V),invent_Path(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x2:V,x1:V) :- Edge(x0:V,x1:V),Edge(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),NSCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- NSCC(x0:V,x1:V),invent_Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x2:V,x1:V),NSCC(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- NSCC(x2:V,x1:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- invent_Path(x0:V,x1:V),invent_Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x2:V,x1:V),invent_Path(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),NSCC(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),invent_Path(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: invent_Path(x0:V,x2:V) :- Edge(x0:V,x1:V),Edge(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+(Time_Measure) examine_each_IDBTR takes 780 ms, longest_run: 0 max_threads: 150
+over estimated configs : 1
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 6, res.size=0
+Config: {1 NSCC(V,V), 1 invent_Path(V,V), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 1
+extractRules, tmpls.size = 8, res.size=0
+extractRules, tmpls.size = 8, res.size=0
+Config: {1 NSCC(V,V), 1 invent_Path(V,V), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 780 ms.
+
+**ALPS_end_to_end takes 1139 ms.

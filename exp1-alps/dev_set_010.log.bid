@@ -1,0 +1,633 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 1
+Maximum #rules for programs will be 2
+Using Templates: ./data/templates/dev_set_010.tp
+Number of templates: 0
+augmentation distance: 4
+chain3 is enabled
+
+Relation *treat
+
+Relation *untreat
+
+Relation *input1
+
+Relation invent_country
+
+Relation output
+
+**Loading input is done: 1 ms.
+
+Relation: invent_country(country)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: output(id,country,status)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: invent_country(country)
+
+before explore chain-3: candidates size: 0
+
+after explore chain-3: candidates size: 128
+
+before filtering by augmentation: candidates size: 128
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v4) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v4) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v1,v0,v2),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v1,v0,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v1,v0,v2),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v1,v0,v2),P3(v3,v4,v2).
+
+after filtering: candidates size: 36
+before deduplication, candidates size: 36
+after deduplication, candidates size: 5
+100 examples of candidates: 
+P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v2).
+P0(v1) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+P0(v1) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).
+
+skip useless rule: invent_country(x2:country) :- output(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),treat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+skip useless rule: invent_country(x2:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),treat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+skip useless rule: invent_country(x2:country) :- output(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),untreat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+skip useless rule: invent_country(x2:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),untreat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+>> Template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).,  matches: 4
+>> Template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).,  matches: 8
+skip useless rule: invent_country(x2:country) :- invent_country(x2:country),output(x1:id,x2:country,x0:status),treat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v2).
+skip useless rule: invent_country(x2:country) :- input1(x1:id,x2:country,x0:status),invent_country(x2:country),treat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v2).
+skip useless rule: invent_country(x2:country) :- invent_country(x2:country),output(x1:id,x2:country,x0:status),untreat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v2).
+skip useless rule: invent_country(x2:country) :- input1(x1:id,x2:country,x0:status),invent_country(x2:country),untreat(x0:status),  from template: P0(v2) :- P1(v0),P2(v1,v2,v0),P3(v2).
+>> Template: P0(v1) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).,  matches: 4
+>> Template: P0(v1) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).,  matches: 4
+before deduplicate rules, matching size: 20
+after deduplicate rules, matching size: 20
+
+number of instantiated rules: 20
+all matchings : 
+0, invent_country(x2:country) :- input1(x1:id,x3:country,x4:status),output(x1:id,x2:country,x0:status),treat(x0:status),
+1, invent_country(x2:country) :- input1(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),treat(x0:status),
+2, invent_country(x2:country) :- input1(x1:id,x3:country,x4:status),output(x1:id,x2:country,x0:status),untreat(x0:status),
+3, invent_country(x2:country) :- input1(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),untreat(x0:status),
+4, invent_country(x3:country) :- output(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),treat(x0:status),
+5, invent_country(x3:country) :- input1(x1:id,x3:country,x4:status),output(x1:id,x2:country,x0:status),treat(x0:status),
+6, invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),treat(x0:status),
+7, invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),treat(x0:status),
+8, invent_country(x3:country) :- output(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),untreat(x0:status),
+9, invent_country(x3:country) :- input1(x1:id,x3:country,x4:status),output(x1:id,x2:country,x0:status),untreat(x0:status),
+10, invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),output(x1:id,x3:country,x4:status),untreat(x0:status),
+11, invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),untreat(x0:status),
+12, invent_country(x1:country) :- invent_country(x3:country),output(x0:id,x1:country,x2:status),output(x0:id,x3:country,x4:status),
+13, invent_country(x1:country) :- input1(x0:id,x3:country,x4:status),invent_country(x3:country),output(x0:id,x1:country,x2:status),
+14, invent_country(x1:country) :- input1(x0:id,x1:country,x2:status),invent_country(x3:country),output(x0:id,x3:country,x4:status),
+15, invent_country(x1:country) :- input1(x0:id,x1:country,x2:status),input1(x0:id,x3:country,x4:status),invent_country(x3:country),
+16, invent_country(x1:country) :- invent_country(x4:country),output(x0:id,x1:country,x2:status),output(x3:id,x4:country,x2:status),
+17, invent_country(x1:country) :- input1(x3:id,x4:country,x2:status),invent_country(x4:country),output(x0:id,x1:country,x2:status),
+18, invent_country(x1:country) :- input1(x0:id,x1:country,x2:status),invent_country(x4:country),output(x3:id,x4:country,x2:status),
+19, invent_country(x1:country) :- input1(x0:id,x1:country,x2:status),input1(x3:id,x4:country,x2:status),invent_country(x4:country),
+normalizing PO..
+overall templates: 4
+most general: 3
+most specific: 3
+independent: 2
+Relation: output(id,country,status)
+
+before explore chain-3: candidates size: 0
+
+after explore chain-3: candidates size: 340
+
+before filtering by augmentation: candidates size: 340
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v1,v3,v0) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+
+after filtering: candidates size: 28
+before deduplication, candidates size: 28
+after deduplication, candidates size: 5
+100 examples of candidates: 
+P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v2).
+P0(v0,v3,v2) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+P0(v0,v3,v4) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).
+
+skip useless rule: output(x1:id,x2:country,x0:status) :- output(x1:id,x2:country,x0:status),output(x3:id,x2:country,x4:status),treat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+skip useless rule: output(x1:id,x2:country,x0:status) :- input1(x3:id,x2:country,x4:status),output(x1:id,x2:country,x0:status),treat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+skip useless rule: output(x1:id,x2:country,x0:status) :- input1(x1:id,x2:country,x0:status),input1(x3:id,x2:country,x4:status),treat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+skip useless rule: output(x1:id,x2:country,x0:status) :- output(x1:id,x2:country,x0:status),output(x3:id,x2:country,x4:status),untreat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+skip useless rule: output(x1:id,x2:country,x0:status) :- input1(x3:id,x2:country,x4:status),output(x1:id,x2:country,x0:status),untreat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+skip useless rule: output(x1:id,x2:country,x0:status) :- input1(x1:id,x2:country,x0:status),input1(x3:id,x2:country,x4:status),untreat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).
+>> Template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v3,v2,v4).,  matches: 2
+skip useless rule: output(x1:id,x2:country,x0:status) :- invent_country(x2:country),output(x1:id,x2:country,x0:status),treat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v2).
+skip useless rule: output(x1:id,x2:country,x0:status) :- invent_country(x2:country),output(x1:id,x2:country,x0:status),untreat(x0:status),  from template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v2).
+>> Template: P0(v1,v2,v0) :- P1(v0),P2(v1,v2,v0),P3(v2).,  matches: 2
+>> Template: P0(v0,v3,v2) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).,  matches: 4
+skip useless rule: output(x0:id,x3:country,x4:status) :- invent_country(x3:country),output(x0:id,x1:country,x2:status),output(x0:id,x3:country,x4:status),  from template: P0(v0,v3,v4) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+skip useless rule: output(x0:id,x3:country,x4:status) :- input1(x0:id,x1:country,x2:status),invent_country(x3:country),output(x0:id,x3:country,x4:status),  from template: P0(v0,v3,v4) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+skip useless rule: output(x0:id,x3:country,x4:status) :- input1(x0:id,x1:country,x2:status),input1(x0:id,x3:country,x4:status),invent_country(x3:country),  from template: P0(v0,v3,v4) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+>> Template: P0(v0,v3,v4) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).,  matches: 1
+>> Template: P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).,  matches: 4
+before deduplicate rules, matching size: 13
+after deduplicate rules, matching size: 13
+
+number of instantiated rules: 13
+all matchings : 
+0, output(x1:id,x2:country,x0:status) :- input1(x1:id,x2:country,x0:status),output(x3:id,x2:country,x4:status),treat(x0:status),
+1, output(x1:id,x2:country,x0:status) :- input1(x1:id,x2:country,x0:status),output(x3:id,x2:country,x4:status),untreat(x0:status),
+2, output(x1:id,x2:country,x0:status) :- input1(x1:id,x2:country,x0:status),invent_country(x2:country),treat(x0:status),
+3, output(x1:id,x2:country,x0:status) :- input1(x1:id,x2:country,x0:status),invent_country(x2:country),untreat(x0:status),
+4, output(x0:id,x3:country,x2:status) :- invent_country(x3:country),output(x0:id,x1:country,x2:status),output(x0:id,x3:country,x4:status),
+5, output(x0:id,x3:country,x2:status) :- input1(x0:id,x3:country,x4:status),invent_country(x3:country),output(x0:id,x1:country,x2:status),
+6, output(x0:id,x3:country,x2:status) :- input1(x0:id,x1:country,x2:status),invent_country(x3:country),output(x0:id,x3:country,x4:status),
+7, output(x0:id,x3:country,x2:status) :- input1(x0:id,x1:country,x2:status),input1(x0:id,x3:country,x4:status),invent_country(x3:country),
+8, output(x0:id,x3:country,x4:status) :- input1(x0:id,x3:country,x4:status),invent_country(x3:country),output(x0:id,x1:country,x2:status),
+9, output(x0:id,x4:country,x2:status) :- invent_country(x4:country),output(x0:id,x1:country,x2:status),output(x3:id,x4:country,x2:status),
+10, output(x0:id,x4:country,x2:status) :- input1(x3:id,x4:country,x2:status),invent_country(x4:country),output(x0:id,x1:country,x2:status),
+11, output(x0:id,x4:country,x2:status) :- input1(x0:id,x1:country,x2:status),invent_country(x4:country),output(x3:id,x4:country,x2:status),
+12, output(x0:id,x4:country,x2:status) :- input1(x0:id,x1:country,x2:status),input1(x3:id,x4:country,x2:status),invent_country(x4:country),
+normalizing PO..
+overall templates: 5
+most general: 3
+most specific: 1
+independent: 0
+
+**exploreCandidateRules is done: 550 ms.
+
+query_space for invent_country: 3
+true_label for invent_country: 0
+query_space for output: 24
+true_label for output: 1
+overall_query_space: 27
+overall_true_label: 1
+over estimated configs : 1
+extractRules, tmpls.size = 3, res.size=16
+
+#elements: 16 K = 1, res.size: 16
+extractRules, tmpls.size = 3, res.size=10
+
+#elements: 10 K = 1, res.size: 10
+Config: {1 invent_country(country), 1 output(id,country,status), },  number of programs: 160
+(Time_Measure) init_helper_efficient takes 2 ms, longest_run: 0 max_threads: 160
+Gs.size = 4
+over estimated configs : 1
+extractRules, tmpls.size = 3, res.size=12
+
+#elements: 12 K = 1, res.size: 12
+extractRules, tmpls.size = 1, res.size=2
+
+#elements: 2 K = 1, res.size: 2
+Config: {1 invent_country(country), 1 output(id,country,status), },  number of programs: 24
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 24
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 4 ms, longest_run: 1 max_threads: 4
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 4
+
+tuple stats: 
+Gs: 9 13 73 77 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 4
+
+
+invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),untreat(x0:status),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+output(x0:id,x4:country,x2:status) :- input1(x0:id,x1:country,x2:status),input1(x3:id,x4:country,x2:status),invent_country(x4:country),  from template: P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).
+
+
+invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),treat(x0:status),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+output(x0:id,x4:country,x2:status) :- input1(x0:id,x1:country,x2:status),input1(x3:id,x4:country,x2:status),invent_country(x4:country),  from template: P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v2),P3(v4).
+
+
+invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),untreat(x0:status),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+output(x0:id,x3:country,x2:status) :- input1(x0:id,x1:country,x2:status),input1(x0:id,x3:country,x4:status),invent_country(x3:country),  from template: P0(v0,v3,v2) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+
+
+invent_country(x3:country) :- input1(x1:id,x2:country,x0:status),input1(x1:id,x3:country,x4:status),treat(x0:status),  from template: P0(v3) :- P1(v0),P2(v1,v2,v0),P3(v1,v3,v4).
+output(x0:id,x3:country,x2:status) :- input1(x0:id,x1:country,x2:status),input1(x0:id,x3:country,x4:status),invent_country(x3:country),  from template: P0(v0,v3,v2) :- P1(v0,v1,v2),P2(v0,v3,v4),P3(v3).
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 7 ms.
+
+**ALPS_end_to_end takes 558 ms.

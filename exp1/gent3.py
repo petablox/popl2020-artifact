@@ -53,7 +53,7 @@ for line in f:
 		prosynth_running_time[benchmark_name].add(running_time)
 
 with open('table3.csv', 'w') as f_t3:
-	print("Benchmark Name, Prosynth No Delta Median Run Time, Prosynth Delta Median Run Time, Prosynth No Delta Maximum Run Time, Prosynth Delta Maximum Run Time", file=f_t3)
+	print("Benchmark Name, Prosynth No Delta Median Run Time, Prosynth Delta Median Run Time, Prosynth No Delta Maximum Run Time, Prosynth Delta Maximum Run Time\n", file=f_t3)
 	for benchmark_name in prosynth_running_time:
 		f_t3.write(benchmark_name +',')
 		f_t3.write(str(np.median(list(prosynth_running_time_no_delta[benchmark_name]))) + ",")

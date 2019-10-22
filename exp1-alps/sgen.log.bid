@@ -1,0 +1,493 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 2
+Using Templates: ./data/templates/sgen.tp
+Number of templates: 0
+augmentation distance: 2
+chain2 is enabled
+chain3 is enabled
+
+Relation *parent
+
+Relation sgen
+    (warning: contains duplicate positive tuples)
+
+**Loading input is done: 7 ms.
+
+Relation: sgen(V,V)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: sgen(V,V)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 72
+
+before explore chain-3: candidates size: 72
+
+after explore chain-3: candidates size: 456
+
+before filtering by augmentation: candidates size: 456
+
+after filtering: candidates size: 300
+before deduplication, candidates size: 300
+after deduplication, candidates size: 28
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+skip useless rule: sgen(x0:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: sgen(x0:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: sgen(x0:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).,  matches: 1
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).,  matches: 4
+skip useless rule: sgen(x0:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: sgen(x0:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 2
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 4
+>> Template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 4
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).,  matches: 4
+skip useless rule: sgen(x2:V,x0:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+skip useless rule: sgen(x2:V,x0:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+>> Template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).,  matches: 2
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 4
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).,  matches: 4
+skip useless rule: sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 2
+skip useless rule: sgen(x0:V,x3:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x3:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+skip useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+>> Template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 4
+>> Template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 8
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 8
+>> Template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 8
+skip useless rule: sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x0:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).,  matches: 1
+>> Template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).,  matches: 8
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+>> Template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+>> Template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+skip useless rule: sgen(x2:V,x0:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+skip useless rule: sgen(x2:V,x0:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+skip useless rule: sgen(x2:V,x0:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+skip useless rule: sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+>> Template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 4
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+>> Template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+>> Template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 8
+>> Template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 8
+skip useless rule: sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+skip useless rule: sgen(x1:V,x2:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+skip useless rule: sgen(x1:V,x2:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+skip useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+skip useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+skip useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+>> Template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 2
+>> Template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 8
+>> Template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 8
+before deduplicate rules, matching size: 154
+after deduplicate rules, matching size: 154
+
+number of instantiated rules: 154
+all matchings : 
+0, sgen(x0:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),
+1, sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),
+2, sgen(x1:V,x2:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),
+3, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),
+4, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),
+5, sgen(x0:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),
+6, sgen(x0:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),
+7, sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+8, sgen(x0:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),
+9, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),
+10, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),
+11, sgen(x1:V,x0:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+12, sgen(x1:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),
+13, sgen(x1:V,x0:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),
+14, sgen(x1:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),
+15, sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+16, sgen(x1:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),
+17, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),
+18, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),
+19, sgen(x2:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),
+20, sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),
+21, sgen(x2:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+22, sgen(x2:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),
+23, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),
+24, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),
+25, sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x1:V),
+26, sgen(x0:V,x2:V) :- parent(x2:V,x1:V),sgen(x0:V,x1:V),
+27, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x1:V),
+28, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x1:V),
+29, sgen(x0:V,x2:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),
+30, sgen(x0:V,x2:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),
+31, sgen(x0:V,x3:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),
+32, sgen(x0:V,x3:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),
+33, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+34, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),
+35, sgen(x1:V,x3:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+36, sgen(x1:V,x3:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),
+37, sgen(x1:V,x3:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),
+38, sgen(x1:V,x3:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),
+39, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+40, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),
+41, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),
+42, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),
+43, sgen(x2:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+44, sgen(x2:V,x1:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),
+45, sgen(x2:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),
+46, sgen(x2:V,x1:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),
+47, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+48, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),
+49, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),
+50, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),
+51, sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+52, sgen(x3:V,x1:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),
+53, sgen(x3:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),
+54, sgen(x3:V,x1:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),
+55, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),
+56, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),
+57, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),
+58, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),
+59, sgen(x0:V,x2:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+60, sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x3:V,x2:V),
+61, sgen(x3:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),
+62, sgen(x3:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+63, sgen(x3:V,x1:V) :- parent(x0:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+64, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x3:V,x2:V),
+65, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x0:V,x2:V),
+66, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x3:V,x2:V),
+67, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x3:V,x2:V),
+68, sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+69, sgen(x0:V,x2:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+70, sgen(x0:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+71, sgen(x0:V,x2:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+72, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+73, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+74, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+75, sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+76, sgen(x0:V,x3:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+77, sgen(x0:V,x3:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+78, sgen(x0:V,x3:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+79, sgen(x0:V,x3:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+80, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+81, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+82, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+83, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+84, sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+85, sgen(x1:V,x2:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+86, sgen(x1:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+87, sgen(x1:V,x2:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+88, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+89, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+90, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+91, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+92, sgen(x1:V,x3:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+93, sgen(x1:V,x3:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+94, sgen(x1:V,x3:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+95, sgen(x1:V,x3:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+96, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+97, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+98, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+99, sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+100, sgen(x2:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+101, sgen(x2:V,x0:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+102, sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+103, sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+104, sgen(x2:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+105, sgen(x2:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+106, sgen(x2:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+107, sgen(x2:V,x1:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+108, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+109, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+110, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+111, sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+112, sgen(x3:V,x0:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+113, sgen(x3:V,x0:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+114, sgen(x3:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+115, sgen(x3:V,x0:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+116, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+117, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+118, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+119, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+120, sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+121, sgen(x3:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),
+122, sgen(x3:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+123, sgen(x3:V,x1:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+124, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),
+125, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),
+126, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),
+127, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),
+128, sgen(x0:V,x3:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),
+129, sgen(x0:V,x3:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),
+130, sgen(x0:V,x3:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+131, sgen(x0:V,x3:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+132, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),
+133, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),
+134, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),
+135, sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),
+136, sgen(x1:V,x2:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+137, sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),
+138, sgen(x3:V,x0:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),
+139, sgen(x3:V,x0:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),
+140, sgen(x3:V,x0:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+141, sgen(x3:V,x0:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+142, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),
+143, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),
+144, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),
+145, sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),
+146, sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),
+147, sgen(x3:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),
+148, sgen(x3:V,x1:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),
+149, sgen(x3:V,x1:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),
+150, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),
+151, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),
+152, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),
+153, sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),
+normalizing PO..
+P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).  vs  P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).  vs  P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).  vs  P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).  vs  P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+overall templates: 28
+most general: 11
+most specific: 10
+independent: 2
+
+**exploreCandidateRules is done: 856 ms.
+
+query_space for sgen: 81
+true_label for sgen: 22
+overall_query_space: 81
+overall_true_label: 22
+erase useless rule: sgen(x0:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v0,v2).
+erase useless rule: sgen(x0:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x0:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),  from template: P0(v0,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x0:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x0:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),  from template: P0(v1,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x2:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x2:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x2:V,x1:V),sgen(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x2:V,x3:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x3:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x2:V),parent(x2:V,x3:V),sgen(x0:V,x1:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x3:V),sgen(x0:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x2:V,x3:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x2:V,x3:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x0:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x0:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x0:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x0:V,x2:V),parent(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x1:V,x3:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v1,v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x0:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v2,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x2:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x2:V,x0:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x2:V,x0:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x2:V,x0:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x2:V,x0:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x2:V,x0:V),parent(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x0:V,x3:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),  from template: P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x1:V,x2:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x0:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),  from template: P0(v3,v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- sgen(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x3:V,x2:V),sgen(x0:V,x1:V),sgen(x1:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x1:V,x2:V),sgen(x0:V,x1:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x1:V,x2:V),parent(x3:V,x2:V),sgen(x0:V,x1:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),sgen(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x3:V,x2:V),sgen(x1:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),sgen(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+erase useless rule: sgen(x3:V,x1:V) :- parent(x0:V,x1:V),parent(x1:V,x2:V),parent(x3:V,x2:V),  from template: P0(v3,v1) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+(Time_Measure) examine_each_IDBTR takes 769 ms, longest_run: 0 max_threads: 154
+over estimated configs : 2
+extractRules, tmpls.size = 11, res.size=0
+Config: {1 sgen(V,V), },  number of programs: 0
+extractRules, tmpls.size = 11, res.size=0
+Config: {2 sgen(V,V), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 2
+extractRules, tmpls.size = 10, res.size=0
+Config: {1 sgen(V,V), },  number of programs: 0
+extractRules, tmpls.size = 10, res.size=0
+Config: {2 sgen(V,V), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 770 ms.
+
+**ALPS_end_to_end takes 1626 ms.

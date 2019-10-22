@@ -1,0 +1,9 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 2
+Using Templates: ./data/templates/rsg.tp
+Number of templates: 0
+filter-1 is enabled
+augmentation distance: 2
+chain1 is enabled
+chain2 is enabled

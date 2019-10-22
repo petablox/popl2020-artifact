@@ -1,0 +1,113 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 1
+Maximum #rules for programs will be 1
+Using Templates: ./data/templates/recent_posts_003.tp
+Number of templates: 0
+augmentation distance: 2
+chain2 is enabled
+
+Relation *A
+
+Relation *B
+
+Relation Out
+
+**Loading input is done: 13 ms.
+
+Relation: Out(ID,Item)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: Out(ID,Item)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 20
+
+before filtering by augmentation: candidates size: 20
+
+after filtering: candidates size: 20
+before deduplication, candidates size: 20
+after deduplication, candidates size: 4
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+
+skip useless rule: Out(x0:ID,x1:Item) :- Out(x0:ID,x1:Item),Out(x0:ID,x2:Item),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: Out(x0:ID,x1:Item) :- A(x0:ID,x2:Item),Out(x0:ID,x1:Item),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+skip useless rule: Out(x0:ID,x1:Item) :- A(x0:ID,x1:Item),A(x0:ID,x2:Item),  from template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v0,v2).,  matches: 1
+skip useless rule: Out(x0:ID,x1:Item) :- B(x1:Item,x2:Item),Out(x0:ID,x1:Item),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+>> Template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).,  matches: 1
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).,  matches: 2
+>> Template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).,  matches: 2
+before deduplicate rules, matching size: 6
+after deduplicate rules, matching size: 6
+
+number of instantiated rules: 6
+all matchings : 
+0, Out(x0:ID,x1:Item) :- A(x0:ID,x1:Item),Out(x0:ID,x2:Item),
+1, Out(x0:ID,x1:Item) :- A(x0:ID,x1:Item),B(x1:Item,x2:Item),
+2, Out(x0:ID,x2:Item) :- B(x1:Item,x2:Item),Out(x0:ID,x1:Item),
+3, Out(x0:ID,x2:Item) :- A(x0:ID,x1:Item),B(x1:Item,x2:Item),
+4, Out(x0:ID,x2:Item) :- B(x2:Item,x1:Item),Out(x0:ID,x1:Item),
+5, Out(x0:ID,x2:Item) :- A(x0:ID,x1:Item),B(x2:Item,x1:Item),
+normalizing PO..
+overall templates: 4
+most general: 3
+most specific: 3
+independent: 2
+
+**exploreCandidateRules is done: 15 ms.
+
+query_space for Out: 80
+true_label for Out: 7
+overall_query_space: 80
+overall_true_label: 7
+over estimated configs : 1
+extractRules, tmpls.size = 3, res.size=5
+
+#elements: 5 K = 1, res.size: 5
+Config: {1 Out(ID,Item), },  number of programs: 5
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 5
+Gs.size = 2
+over estimated configs : 1
+extractRules, tmpls.size = 3, res.size=5
+
+#elements: 5 K = 1, res.size: 5
+Config: {1 Out(ID,Item), },  number of programs: 5
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 5
+Ss.size = 1
+(Time_Measure) execute_one_round_helper takes 1 ms, longest_run: 0 max_threads: 2
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 1
+total_votes: 3
+
+tuple stats: 
+Gs: 1 3 
+Ss: 10 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 2
+
+
+Out(x0:ID,x2:Item) :- A(x0:ID,x1:Item),B(x2:Item,x1:Item),  from template: P0(v0,v2) :- P1(v0,v1),P2(v2,v1).
+
+
+Out(x0:ID,x2:Item) :- A(x0:ID,x1:Item),B(x1:Item,x2:Item),  from template: P0(v0,v2) :- P1(v0,v1),P2(v1,v2).
+remaining specific programs: 1
+
+
+Out(x0:ID,x1:Item) :- A(x0:ID,x1:Item),B(x1:Item,x2:Item),  from template: P0(v0,v1) :- P1(v0,v1),P2(v1,v2).
+Refinement takes 0 ms.
+End-to-End takes 2 ms.
+
+**ALPS_end_to_end takes 18 ms.

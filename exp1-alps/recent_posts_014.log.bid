@@ -1,0 +1,160 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 2
+Using Templates: ./data/templates/recent_posts_014.tp
+Number of templates: 0
+Head bindings are enabled
+augmentation distance: 2
+chain1 is enabled
+
+Relation *Child
+
+Relation *Parent
+
+Relation Out
+
+**Loading input is done: 4 ms.
+
+Relation: Out(ID,Name,ID)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: Out(ID,Name,ID)
+
+before explore projection: candidates size: 0
+explore projection for target: Out(ID,Name,ID)
+after explore projection: candidates size: 6
+
+before add new binding: candidates size: 6
+add new binding for template: P0(v0,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v0,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v1,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v1) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v2,v2) :- P1(v0,v1,v2).
+add new binding for template: P0(v2,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v2,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v1,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v1) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v0,v0) :- P1(v0,v1,v2).
+add new binding for template: P0(v0,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v0,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v1,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v1) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v2,v2) :- P1(v0,v1,v2).
+add new binding for template: P0(v2,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v2,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v1,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v1) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v0,v0) :- P1(v0,v1,v2).
+add new binding for template: P0(v0,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v0,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v1,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v1) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v2,v2) :- P1(v0,v1,v2).
+add new binding for template: P0(v2,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v2,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v2) :- P1(v0,v1,v2).
+new binding in head: P0(v1,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v1,v1) :- P1(v0,v1,v2).
+new binding in head: P0(v0,v1,v0) :- P1(v0,v1,v2).
+new binding in head: P0(v2,v0,v0) :- P1(v0,v1,v2).
+after add new binding: candidates size: 42
+
+before filtering by augmentation: candidates size: 42
+
+after filtering: candidates size: 27
+before deduplication, candidates size: 27
+after deduplication, candidates size: 7
+100 examples of candidates: 
+P0(v0,v1,v2) :- P1(v0,v1,v2).
+P0(v0,v0,v2) :- P1(v0,v1,v2).
+P0(v0,v1,v0) :- P1(v0,v1,v2).
+P0(v1,v1,v2) :- P1(v0,v1,v2).
+P0(v0,v1,v1) :- P1(v0,v1,v2).
+P0(v2,v1,v2) :- P1(v0,v1,v2).
+P0(v0,v2,v2) :- P1(v0,v1,v2).
+
+skip useless rule: Out(x0:ID,x1:Name,x2:ID) :- Out(x0:ID,x1:Name,x2:ID),  from template: P0(v0,v1,v2) :- P1(v0,v1,v2).
+>> Template: P0(v0,v1,v2) :- P1(v0,v1,v2).,  matches: 2
+>> Template: P0(v0,v1,v0) :- P1(v0,v1,v2).,  matches: 3
+>> Template: P0(v2,v1,v2) :- P1(v0,v1,v2).,  matches: 3
+before deduplicate rules, matching size: 8
+after deduplicate rules, matching size: 8
+
+number of instantiated rules: 8
+all matchings : 
+0, Out(x0:ID,x1:Name,x2:ID) :- Child(x0:ID,x1:Name,x2:ID),
+1, Out(x0:ID,x1:Name,x2:ID) :- Parent(x0:ID,x1:Name,x2:ID),
+2, Out(x0:ID,x1:Name,x0:ID) :- Out(x0:ID,x1:Name,x2:ID),
+3, Out(x0:ID,x1:Name,x0:ID) :- Child(x0:ID,x1:Name,x2:ID),
+4, Out(x0:ID,x1:Name,x0:ID) :- Parent(x0:ID,x1:Name,x2:ID),
+5, Out(x2:ID,x1:Name,x2:ID) :- Out(x0:ID,x1:Name,x2:ID),
+6, Out(x2:ID,x1:Name,x2:ID) :- Child(x0:ID,x1:Name,x2:ID),
+7, Out(x2:ID,x1:Name,x2:ID) :- Parent(x0:ID,x1:Name,x2:ID),
+normalizing PO..
+overall templates: 3
+most general: 3
+most specific: 3
+independent: 3
+
+**exploreCandidateRules is done: 6 ms.
+
+query_space for Out: 729
+true_label for Out: 9
+overall_query_space: 729
+overall_true_label: 9
+erase useless rule: Out(x0:ID,x1:Name,x2:ID) :- Child(x0:ID,x1:Name,x2:ID),  from template: P0(v0,v1,v2) :- P1(v0,v1,v2).
+erase useless rule: Out(x0:ID,x1:Name,x2:ID) :- Parent(x0:ID,x1:Name,x2:ID),  from template: P0(v0,v1,v2) :- P1(v0,v1,v2).
+erase useless rule: Out(x0:ID,x1:Name,x0:ID) :- Out(x0:ID,x1:Name,x2:ID),  from template: P0(v0,v1,v0) :- P1(v0,v1,v2).
+erase useless rule: Out(x0:ID,x1:Name,x0:ID) :- Child(x0:ID,x1:Name,x2:ID),  from template: P0(v0,v1,v0) :- P1(v0,v1,v2).
+erase useless rule: Out(x0:ID,x1:Name,x0:ID) :- Parent(x0:ID,x1:Name,x2:ID),  from template: P0(v0,v1,v0) :- P1(v0,v1,v2).
+erase useless rule: Out(x2:ID,x1:Name,x2:ID) :- Out(x0:ID,x1:Name,x2:ID),  from template: P0(v2,v1,v2) :- P1(v0,v1,v2).
+erase useless rule: Out(x2:ID,x1:Name,x2:ID) :- Child(x0:ID,x1:Name,x2:ID),  from template: P0(v2,v1,v2) :- P1(v0,v1,v2).
+erase useless rule: Out(x2:ID,x1:Name,x2:ID) :- Parent(x0:ID,x1:Name,x2:ID),  from template: P0(v2,v1,v2) :- P1(v0,v1,v2).
+(Time_Measure) examine_each_IDBTR takes 3 ms, longest_run: 0 max_threads: 8
+over estimated configs : 2
+extractRules, tmpls.size = 3, res.size=0
+Config: {1 Out(ID,Name,ID), },  number of programs: 0
+extractRules, tmpls.size = 3, res.size=0
+Config: {2 Out(ID,Name,ID), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 2
+extractRules, tmpls.size = 3, res.size=0
+Config: {1 Out(ID,Name,ID), },  number of programs: 0
+extractRules, tmpls.size = 3, res.size=0
+Config: {2 Out(ID,Name,ID), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 3 ms.
+
+**ALPS_end_to_end takes 15 ms.

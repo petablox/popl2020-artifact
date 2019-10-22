@@ -1,0 +1,228 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 2
+Maximum #rules for programs will be 3
+Using Templates: ./data/templates/abduce.tp
+Number of templates: 0
+augmentation distance: 0
+chain1 is enabled
+chain2 is enabled
+
+Relation *father
+
+Relation *mother
+
+Relation parent
+
+Relation grandparent
+
+**Loading input is done: 22 ms.
+
+Relation: parent(P,P)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: grandparent(P,P)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: parent(P,P)
+
+before explore projection: candidates size: 0
+explore projection for target: parent(P,P)
+after explore projection: candidates size: 8
+
+before explore chain-2: candidates size: 8
+
+after explore chain-2: candidates size: 248
+
+before filtering by augmentation: candidates size: 248
+
+after filtering: candidates size: 24
+before deduplication, candidates size: 24
+after deduplication, candidates size: 2
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+
+skip useless rule: parent(x0:P,x1:P) :- parent(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 3
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 16
+before deduplicate rules, matching size: 19
+after deduplicate rules, matching size: 19
+
+number of instantiated rules: 19
+all matchings : 
+0, parent(x0:P,x1:P) :- grandparent(x0:P,x1:P),
+1, parent(x0:P,x1:P) :- father(x0:P,x1:P),
+2, parent(x0:P,x1:P) :- mother(x0:P,x1:P),
+3, parent(x2:P,x1:P) :- parent(x0:P,x1:P),parent(x2:P,x0:P),
+4, parent(x2:P,x1:P) :- grandparent(x2:P,x0:P),parent(x0:P,x1:P),
+5, parent(x2:P,x1:P) :- father(x2:P,x0:P),parent(x0:P,x1:P),
+6, parent(x2:P,x1:P) :- mother(x2:P,x0:P),parent(x0:P,x1:P),
+7, parent(x2:P,x1:P) :- grandparent(x0:P,x1:P),parent(x2:P,x0:P),
+8, parent(x2:P,x1:P) :- grandparent(x0:P,x1:P),grandparent(x2:P,x0:P),
+9, parent(x2:P,x1:P) :- father(x2:P,x0:P),grandparent(x0:P,x1:P),
+10, parent(x2:P,x1:P) :- grandparent(x0:P,x1:P),mother(x2:P,x0:P),
+11, parent(x2:P,x1:P) :- father(x0:P,x1:P),parent(x2:P,x0:P),
+12, parent(x2:P,x1:P) :- father(x0:P,x1:P),grandparent(x2:P,x0:P),
+13, parent(x2:P,x1:P) :- father(x0:P,x1:P),father(x2:P,x0:P),
+14, parent(x2:P,x1:P) :- father(x0:P,x1:P),mother(x2:P,x0:P),
+15, parent(x2:P,x1:P) :- mother(x0:P,x1:P),parent(x2:P,x0:P),
+16, parent(x2:P,x1:P) :- grandparent(x2:P,x0:P),mother(x0:P,x1:P),
+17, parent(x2:P,x1:P) :- father(x2:P,x0:P),mother(x0:P,x1:P),
+18, parent(x2:P,x1:P) :- mother(x0:P,x1:P),mother(x2:P,x0:P),
+normalizing PO..
+overall templates: 2
+most general: 2
+most specific: 2
+independent: 2
+Relation: grandparent(P,P)
+
+before explore projection: candidates size: 0
+explore projection for target: grandparent(P,P)
+after explore projection: candidates size: 8
+
+before explore chain-2: candidates size: 8
+
+after explore chain-2: candidates size: 248
+
+before filtering by augmentation: candidates size: 248
+
+after filtering: candidates size: 24
+before deduplication, candidates size: 24
+after deduplication, candidates size: 2
+100 examples of candidates: 
+P0(v0,v1) :- P1(v0,v1).
+P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+
+skip useless rule: grandparent(x0:P,x1:P) :- grandparent(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+>> Template: P0(v0,v1) :- P1(v0,v1).,  matches: 3
+>> Template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).,  matches: 16
+before deduplicate rules, matching size: 19
+after deduplicate rules, matching size: 19
+
+number of instantiated rules: 19
+all matchings : 
+0, grandparent(x0:P,x1:P) :- parent(x0:P,x1:P),
+1, grandparent(x0:P,x1:P) :- father(x0:P,x1:P),
+2, grandparent(x0:P,x1:P) :- mother(x0:P,x1:P),
+3, grandparent(x2:P,x1:P) :- parent(x0:P,x1:P),parent(x2:P,x0:P),
+4, grandparent(x2:P,x1:P) :- grandparent(x2:P,x0:P),parent(x0:P,x1:P),
+5, grandparent(x2:P,x1:P) :- father(x2:P,x0:P),parent(x0:P,x1:P),
+6, grandparent(x2:P,x1:P) :- mother(x2:P,x0:P),parent(x0:P,x1:P),
+7, grandparent(x2:P,x1:P) :- grandparent(x0:P,x1:P),parent(x2:P,x0:P),
+8, grandparent(x2:P,x1:P) :- grandparent(x0:P,x1:P),grandparent(x2:P,x0:P),
+9, grandparent(x2:P,x1:P) :- father(x2:P,x0:P),grandparent(x0:P,x1:P),
+10, grandparent(x2:P,x1:P) :- grandparent(x0:P,x1:P),mother(x2:P,x0:P),
+11, grandparent(x2:P,x1:P) :- father(x0:P,x1:P),parent(x2:P,x0:P),
+12, grandparent(x2:P,x1:P) :- father(x0:P,x1:P),grandparent(x2:P,x0:P),
+13, grandparent(x2:P,x1:P) :- father(x0:P,x1:P),father(x2:P,x0:P),
+14, grandparent(x2:P,x1:P) :- father(x0:P,x1:P),mother(x2:P,x0:P),
+15, grandparent(x2:P,x1:P) :- mother(x0:P,x1:P),parent(x2:P,x0:P),
+16, grandparent(x2:P,x1:P) :- grandparent(x2:P,x0:P),mother(x0:P,x1:P),
+17, grandparent(x2:P,x1:P) :- father(x2:P,x0:P),mother(x0:P,x1:P),
+18, grandparent(x2:P,x1:P) :- mother(x0:P,x1:P),mother(x2:P,x0:P),
+normalizing PO..
+overall templates: 2
+most general: 2
+most specific: 2
+independent: 2
+
+**exploreCandidateRules is done: 118 ms.
+
+query_space for parent: 196
+true_label for parent: 12
+query_space for grandparent: 196
+true_label for grandparent: 8
+overall_query_space: 392
+overall_true_label: 20
+erase useless rule: parent(x0:P,x1:P) :- grandparent(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: parent(x0:P,x1:P) :- father(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: parent(x0:P,x1:P) :- mother(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: parent(x2:P,x1:P) :- parent(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- grandparent(x2:P,x0:P),parent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x2:P,x0:P),parent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- mother(x2:P,x0:P),parent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- grandparent(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- grandparent(x0:P,x1:P),grandparent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x2:P,x0:P),grandparent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- grandparent(x0:P,x1:P),mother(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x0:P,x1:P),grandparent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x0:P,x1:P),father(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x0:P,x1:P),mother(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- mother(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- grandparent(x2:P,x0:P),mother(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- father(x2:P,x0:P),mother(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: parent(x2:P,x1:P) :- mother(x0:P,x1:P),mother(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x0:P,x1:P) :- parent(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: grandparent(x0:P,x1:P) :- father(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: grandparent(x0:P,x1:P) :- mother(x0:P,x1:P),  from template: P0(v0,v1) :- P1(v0,v1).
+erase useless rule: grandparent(x2:P,x1:P) :- parent(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- grandparent(x2:P,x0:P),parent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x2:P,x0:P),parent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- mother(x2:P,x0:P),parent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- grandparent(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- grandparent(x0:P,x1:P),grandparent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x2:P,x0:P),grandparent(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- grandparent(x0:P,x1:P),mother(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x0:P,x1:P),grandparent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x0:P,x1:P),father(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x0:P,x1:P),mother(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- mother(x0:P,x1:P),parent(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- grandparent(x2:P,x0:P),mother(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- father(x2:P,x0:P),mother(x0:P,x1:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+erase useless rule: grandparent(x2:P,x1:P) :- mother(x0:P,x1:P),mother(x2:P,x0:P),  from template: P0(v2,v1) :- P1(v0,v1),P2(v2,v0).
+(Time_Measure) examine_each_IDBTR takes 354 ms, longest_run: 0 max_threads: 38
+over estimated configs : 3
+extractRules, tmpls.size = 2, res.size=0
+extractRules, tmpls.size = 2, res.size=0
+Config: {1 parent(P,P), 1 grandparent(P,P), },  number of programs: 0
+extractRules, tmpls.size = 2, res.size=0
+extractRules, tmpls.size = 2, res.size=0
+Config: {1 parent(P,P), 2 grandparent(P,P), },  number of programs: 0
+extractRules, tmpls.size = 2, res.size=0
+extractRules, tmpls.size = 2, res.size=0
+Config: {2 parent(P,P), 1 grandparent(P,P), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 3
+extractRules, tmpls.size = 2, res.size=0
+extractRules, tmpls.size = 2, res.size=0
+Config: {1 parent(P,P), 1 grandparent(P,P), },  number of programs: 0
+extractRules, tmpls.size = 2, res.size=0
+extractRules, tmpls.size = 2, res.size=0
+Config: {1 parent(P,P), 2 grandparent(P,P), },  number of programs: 0
+extractRules, tmpls.size = 2, res.size=0
+extractRules, tmpls.size = 2, res.size=0
+Config: {2 parent(P,P), 1 grandparent(P,P), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 354 ms.
+
+**ALPS_end_to_end takes 473 ms.

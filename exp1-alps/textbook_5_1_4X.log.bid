@@ -1,0 +1,3945 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 1
+Maximum #rules for programs will be 2
+Using Templates: ./data/templates/textbook_5_1_4X.tp
+Number of templates: 0
+augmentation distance: 3
+number of bindings: 2
+chain2 is enabled
+chain3 is enabled
+
+Relation *class
+
+Relation *LT
+
+Relation *enroll
+
+Relation invent_A
+
+Relation output
+
+**Loading input is done: 8 ms.
+
+Relation: output(S_key)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: invent_A(S_key,C_name,meets_at)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: output(S_key)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 21
+
+before explore chain-3: candidates size: 21
+
+after explore chain-3: candidates size: 140
+
+before add new binding in Body: candidates size: 140
+after add new binding in Body: candidates size: 1549
+
+before add new binding in Body: candidates size: 1549
+after add new binding in Body: candidates size: 11062
+
+before filtering by augmentation: candidates size: 11062
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1),P3(v2,v1,v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0,v1),P2(v2,v1,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v3,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1),P3(v1,v1,v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1),P3(v2,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v4),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v0),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v4),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v3,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v4,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v2,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v0,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v4,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v2,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0,v1),P2(v2,v1,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v0),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v3,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v1,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0,v1),P2(v2,v1,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1),P3(v1,v1,v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1),P3(v2,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v4),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v0),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v4),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v3,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v4,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v2,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v0,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v4,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v2,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v4),P3(v1,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v4),P3(v4,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v4),P3(v1,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v0),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v1),P3(v3,v1,v0).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v0),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v1).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v3,v2),P3(v3,v3,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0) :- P1(v0),P2(v0,v3,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v4,v2),P3(v4,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v4,v2),P3(v2,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v4,v2),P3(v2,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0) :- P1(v0),P2(v0,v3,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0) :- P1(v0),P2(v0,v1,v2),P3(v1,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v0,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v2,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v2,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v2,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v2,v2),P3(v3,v0,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 7, dis2: 7
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 5, dis2: 5
+will remove: P0(v3) :- P1(v0),P2(v0,v0,v2),P3(v3,v2,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v3) :- P1(v0),P2(v0,v3,v2),P3(v3,v2,v2).
+
+after filtering: candidates size: 2356
+before deduplication, candidates size: 2356
+after deduplication, candidates size: 232
+100 examples of candidates: 
+P0(v2) :- P1(v0,v1),P2(v2,v0).
+P0(v2) :- P1(v0,v1),P2(v2,v1).
+P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+P0(v0) :- P1(v0,v1),P2(v0).
+P0(v0) :- P1(v0,v1),P2(v0,v2,v3).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v3).
+P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+P0(v0) :- P1(v0),P2(v0,v1,v2).
+P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4).
+P0(v3) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+P0(v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).
+P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2).
+P0(v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).
+P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).
+P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2).
+P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).
+P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).
+P0(v2) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v4).
+P0(v2) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).
+P0(v2) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).
+P0(v2) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).
+P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v2).
+P0(v0) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).
+P0(v4) :- P1(v0,v1),P2(v0,v2,v3),P3(v4,v2).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v3).
+P0(v0) :- P1(v0,v1,v2),P2(v1,v3),P3(v4,v3,v5).
+P0(v2) :- P1(v0,v2),P2(v2,v0).
+P0(v2) :- P1(v0,v0),P2(v2,v0).
+P0(v2) :- P1(v0,v2),P2(v2,v0,v3).
+P0(v2) :- P1(v0,v0),P2(v2,v0,v3).
+P0(v2) :- P1(v0,v3),P2(v2,v0,v3).
+P0(v2) :- P1(v0,v1),P2(v2,v0,v0).
+P0(v2) :- P1(v2,v1),P2(v2,v1,v3).
+P0(v2) :- P1(v3,v1),P2(v2,v1,v3).
+P0(v2) :- P1(v0,v1),P2(v2,v1,v1).
+P0(v0) :- P1(v0,v3),P2(v0,v2,v3).
+P0(v0) :- P1(v0,v1),P2(v1,v1,v3).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v0).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v1).
+P0(v2) :- P1(v1,v1),P2(v2,v3,v1).
+P0(v0) :- P1(v0,v4,v2),P2(v0,v3,v4).
+P0(v0) :- P1(v0,v1,v3),P2(v3,v1,v4).
+P0(v4) :- P1(v3,v1),P2(v5,v1,v3),P3(v4,v5,v3).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v1,v2,v0).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v1,v2,v2).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v2,v2,v0).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v2,v2,v1).
+P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v1,v2,v0).
+P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v1,v2,v2).
+P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v2,v1,v2).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v2,v0,v2).
+P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v2,v1,v2).
+P0(v4) :- P1(v0,v4),P2(v0,v2,v0),P3(v4,v2).
+P0(v0) :- P1(v0,v1),P2(v1,v1,v3),P3(v3,v3).
+P0(v0) :- P1(v0,v2),P2(v0,v2,v4),P3(v4,v2,v5).
+P0(v0) :- P1(v0,v4),P2(v0,v2,v5),P3(v4,v2,v5).
+P0(v0) :- P1(v0,v4),P2(v0,v2,v3),P3(v4,v2,v4).
+P0(v0) :- P1(v0,v4),P2(v0,v2,v3),P3(v4,v2,v2).
+P0(v4) :- P1(v0,v2),P2(v0,v2,v3),P3(v4,v2,v0).
+P0(v4) :- P1(v0,v5),P2(v0,v2,v0),P3(v4,v2,v5).
+P0(v4) :- P1(v0,v1),P2(v0,v2,v0),P3(v4,v2,v2).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v2),P3(v2,v0,v5).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v2),P3(v2,v4,v0).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v2),P3(v2,v4,v1).
+P0(v0) :- P1(v0,v1),P2(v2,v1,v4),P3(v2,v4,v2).
+P0(v0) :- P1(v0,v1),P2(v1,v1,v3),P3(v3,v5,v3).
+P0(v0) :- P1(v0,v1),P2(v5,v1,v3),P3(v1,v5,v3).
+P0(v0) :- P1(v0,v1),P2(v5,v1,v3),P3(v3,v5,v3).
+P0(v2) :- P1(v5,v1),P2(v2,v4,v1),P3(v2,v4,v5).
+P0(v2) :- P1(v3,v1),P2(v2,v3,v1),P3(v1,v3,v5).
+P0(v2) :- P1(v5,v1),P2(v2,v3,v1),P3(v1,v3,v5).
+P0(v2) :- P1(v5,v1),P2(v2,v3,v1),P3(v3,v3,v5).
+P0(v4) :- P1(v3,v1),P2(v5,v3,v1),P3(v4,v3,v5).
+P0(v4) :- P1(v5,v1),P2(v1,v3,v1),P3(v4,v3,v5).
+P0(v0) :- P1(v0,v1,v1),P2(v1,v3),P3(v3,v3,v5).
+P0(v0) :- P1(v0,v1,v3),P2(v1,v3),P3(v1,v3,v5).
+P0(v0) :- P1(v0,v1,v4),P2(v1,v3),P3(v4,v3,v1).
+P0(v4) :- P1(v3,v1,v2),P2(v1,v3),P3(v4,v3,v1).
+P0(v4) :- P1(v5,v1,v1),P2(v1,v3),P3(v4,v3,v5).
+P0(v4) :- P1(v5,v1,v3),P2(v1,v3),P3(v4,v3,v5).
+P0(v4) :- P1(v5,v1,v4),P2(v1,v3),P3(v4,v3,v5).
+P0(v0) :- P1(v0,v4,v2),P2(v0,v3),P3(v4,v3,v4).
+P0(v0) :- P1(v0,v5,v4),P2(v0,v3),P3(v4,v3,v5).
+P0(v0) :- P1(v0,v5,v2),P2(v0,v3),P3(v3,v3,v5).
+P0(v4) :- P1(v0,v4,v0),P2(v0,v3),P3(v4,v3,v5).
+P0(v4) :- P1(v0,v5,v0),P2(v0,v3),P3(v4,v3,v5).
+P0(v4) :- P1(v0,v5,v4),P2(v0,v3),P3(v4,v3,v5).
+P0(v0) :- P1(v0,v1,v1),P2(v1,v3),P3(v3,v5,v3).
+P0(v0) :- P1(v0,v1,v5),P2(v1,v3),P3(v3,v5,v3).
+P0(v4) :- P1(v5,v1,v1),P2(v1,v3),P3(v4,v5,v3).
+P0(v4) :- P1(v5,v1,v4),P2(v1,v3),P3(v4,v5,v3).
+P0(v4) :- P1(v5,v1,v5),P2(v1,v3),P3(v4,v5,v3).
+
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v0).,  matches: 2
+skip useless rule: output(x2:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v1).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).,  matches: 2
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).,  matches: 2
+skip useless rule: output(x0:S_key) :- enroll(x0:S_key,x1:C_name),output(x0:S_key),  from template: P0(v0) :- P1(v0,v1),P2(v0).
+>> Template: P0(v0) :- P1(v0,v1),P2(v0,v2,v3).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v2,v1,v3).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).,  matches: 1
+skip useless rule: output(x0:S_key) :- invent_A(x0:S_key,x1:C_name,x2:meets_at),output(x0:S_key),  from template: P0(v0) :- P1(v0),P2(v0,v1,v2).
+skip useless rule: output(x0:S_key) :- invent_A(x0:S_key,x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x4:meets_at),  from template: P0(v0) :- P1(v0,v1,v2),P2(v3,v1,v4).
+skip useless rule: output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x0:C_name,x2:C_name),enroll(x3:S_key,x2:C_name),  from template: P0(v3) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+skip useless rule: output(x3:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),enroll(x3:S_key,x2:C_name),  from template: P0(v3) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).
+>> Template: P0(v3) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2).,  matches: 2
+>> Template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 2
+skip useless rule: output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x1:C_name),enroll(x3:S_key,x2:C_name),  from template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2).
+skip useless rule: output(x3:S_key) :- class(x0:C_name,x1:meets_at),class(x2:C_name,x1:meets_at),enroll(x3:S_key,x2:C_name),  from template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2).
+>> Template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).,  matches: 2
+>> Template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 2
+skip useless rule: output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+skip useless rule: output(x3:S_key) :- class(x0:C_name,x1:meets_at),class(x2:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+>> Template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).,  matches: 1
+skip useless rule: output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),output(x2:S_key),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2).
+skip useless rule: output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),output(x2:S_key),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2).
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).,  matches: 2
+>> Template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).,  matches: 2
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v4).,  matches: 2
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).,  matches: 2
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).,  matches: 2
+skip useless rule: output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x2:S_key),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+skip useless rule: output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x2:S_key),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+>> Template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v2).,  matches: 1
+skip useless rule: output(x0:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+>> Template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).,  matches: 1
+>> Template: P0(v4) :- P1(v0,v1),P2(v0,v2,v3),P3(v4,v2).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).,  matches: 1
+>> Template: P0(v2) :- P1(v0),P2(v0,v1),P3(v2,v1,v3).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1,v2),P2(v1,v3),P3(v4,v3,v5).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v0),P2(v2,v0).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v3),P2(v2,v0,v3).,  matches: 1
+>> Template: P0(v2) :- P1(v2,v1),P2(v2,v1,v3).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v2),P2(v2,v0),P3(v3,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v0),P2(v2,v0),P3(v3,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v3,v1),P2(v1,v2),P3(v3,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v2),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v0),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v4),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3) :- P1(v3,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 1
+skip useless rule: output(x3:S_key) :- class(x0:C_name,x1:meets_at),class(x2:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x1:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v1).
+skip useless rule: output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),enroll(x2:S_key,x3:C_name),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2,v3).
+>> Template: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2,v3,v4).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v4),P2(v2,v0),P3(v2,v3,v4).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).,  matches: 2
+skip useless rule: output(x2:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1),P3(v2,v1,v4).
+>> Template: P0(v2) :- P1(v0,v1),P2(v2,v1),P3(v2,v1,v4).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v4,v2).,  matches: 1
+>> Template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).,  matches: 2
+>> Template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2,v4).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v4).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v2) :- P1(v2,v1),P2(v2,v1,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v4),P2(v2,v0,v3),P3(v2,v4,v5).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v5),P2(v2,v0,v3),P3(v4,v5,v3).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v2,v1,v4).,  matches: 1
+>> Template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).,  matches: 1
+>> Template: P0(v2) :- P1(v0,v4),P2(v2,v0,v5),P3(v2,v4,v5).,  matches: 1
+before deduplicate rules, matching size: 70
+after deduplicate rules, matching size: 70
+
+number of instantiated rules: 70
+all matchings : 
+0, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),
+1, output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),
+2, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),
+3, output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+4, output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+5, output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+6, output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+7, output(x0:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+8, output(x0:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+9, output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),
+10, output(x3:S_key) :- LT(x0:C_name,x2:C_name),class(x0:C_name,x1:meets_at),enroll(x3:S_key,x2:C_name),
+11, output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x0:C_name),enroll(x3:S_key,x2:C_name),
+12, output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x1:meets_at),enroll(x3:S_key,x2:C_name),
+13, output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x1:C_name,x2:C_name),enroll(x3:S_key,x2:C_name),
+14, output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x0:S_key,x1:C_name),enroll(x3:S_key,x2:C_name),
+15, output(x3:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),enroll(x3:S_key,x2:C_name),
+16, output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x0:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+17, output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+18, output(x3:S_key) :- LT(x0:C_name,x1:C_name),LT(x1:C_name,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+19, output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+20, output(x3:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+21, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+22, output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+23, output(x3:S_key) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+24, output(x3:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+25, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+26, output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+27, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+28, output(x2:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+29, output(x2:S_key) :- LT(x0:C_name,x1:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+30, output(x2:S_key) :- class(x0:C_name,x1:meets_at),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+31, output(x0:S_key) :- LT(x1:C_name,x2:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+32, output(x0:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+33, output(x0:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x2:S_key,x1:C_name),output(x2:S_key),
+34, output(x0:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+35, output(x4:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x4:S_key,x2:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+36, output(x0:S_key) :- class(x4:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+37, output(x0:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x2:S_key),
+38, output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x0:S_key),
+39, output(x0:S_key) :- LT(x1:C_name,x3:C_name),invent_A(x0:S_key,x1:C_name,x2:meets_at),invent_A(x4:S_key,x3:C_name,x5:meets_at),
+40, output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),
+41, output(x2:S_key) :- LT(x0:C_name,x0:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+42, output(x2:S_key) :- class(x0:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+43, output(x2:S_key) :- enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+44, output(x3:S_key) :- LT(x0:C_name,x0:C_name),LT(x0:C_name,x2:C_name),enroll(x3:S_key,x2:C_name),
+45, output(x3:S_key) :- LT(x0:C_name,x2:C_name),LT(x2:C_name,x0:C_name),enroll(x3:S_key,x2:C_name),
+46, output(x3:S_key) :- LT(x0:C_name,x0:C_name),LT(x2:C_name,x0:C_name),enroll(x3:S_key,x2:C_name),
+47, output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),enroll(x3:S_key,x2:C_name),
+48, output(x3:S_key) :- LT(x0:C_name,x0:C_name),LT(x0:C_name,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+49, output(x3:S_key) :- LT(x0:C_name,x2:C_name),LT(x2:C_name,x0:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+50, output(x3:S_key) :- LT(x0:C_name,x0:C_name),LT(x2:C_name,x0:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+51, output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x4:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+52, output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+53, output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+54, output(x2:S_key) :- class(x0:C_name,x4:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+55, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),
+56, output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),
+57, output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x4:meets_at),
+58, output(x3:S_key) :- LT(x0:C_name,x0:C_name),class(x0:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+59, output(x3:S_key) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x2:meets_at),
+60, output(x3:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),
+61, output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+62, output(x2:S_key) :- class(x0:C_name,x3:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+63, output(x2:S_key) :- LT(x0:C_name,x0:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+64, output(x2:S_key) :- class(x4:C_name,x3:meets_at),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+65, output(x2:S_key) :- LT(x0:C_name,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x2:S_key,x4:C_name,x5:meets_at),
+66, output(x2:S_key) :- LT(x0:C_name,x5:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x4:S_key,x5:C_name,x3:meets_at),
+67, output(x0:S_key) :- enroll(x0:S_key,x1:C_name),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x4:meets_at),
+68, output(x0:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),
+69, output(x2:S_key) :- LT(x0:C_name,x4:C_name),invent_A(x2:S_key,x0:C_name,x5:meets_at),invent_A(x2:S_key,x4:C_name,x5:meets_at),
+normalizing PO..
+P0(v3) :- P1(v0,v1),P2(v0,v2),P3(v3,v2).  vs  P0(v2) :- P1(v0,v1),P2(v2,v1).
+P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2).  vs  P0(v2) :- P1(v0,v1),P2(v2,v0).
+P0(v3) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).  vs  P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+P0(v2) :- P1(v0,v1),P2(v2,v1),P3(v2,v1,v4).  vs  P0(v2) :- P1(v2,v1),P2(v2,v1,v3).
+overall templates: 56
+most general: 4
+most specific: 16
+independent: 0
+Relation: invent_A(S_key,C_name,meets_at)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 26
+
+before explore chain-3: candidates size: 26
+
+after explore chain-3: candidates size: 256
+
+before add new binding in Body: candidates size: 256
+after add new binding in Body: candidates size: 1749
+
+before add new binding in Body: candidates size: 1749
+after add new binding in Body: candidates size: 7150
+
+before filtering by augmentation: candidates size: 7150
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v3,v1) :- P1(v0,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v3) :- P1(v0),P2(v0,v1),P3(v2,v1,v3).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 7, dis2: 7
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v3) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v1,v3) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v1,v3) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v3) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v3,v1) :- P1(v3,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v4),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v1,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v3,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v4,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v1,v2),P3(v1,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v3) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v1,v3) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v1,v3) :- P1(v3,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v3) :- P1(v0,v3),P2(v2,v0,v3),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 4, dis2: 4
+will remove: P0(v2,v3,v1) :- P1(v3,v1),P2(v2,v3,v1),P3(v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v3),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v4),P3(v3,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v4) :- P1(v0),P2(v0,v1,v2),P3(v2,v1,v4).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v1,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2),P3(v3,v1,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v3,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 6, dis2: 6
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v4,v2),P3(v3,v4,v2).
+P0(v0,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+dis1: 4, dis2: 4
+P0(v0,v3) :- P1(v0,v1),P3(v2,v3),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P1(v0,v1),P3(v2,v3).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P2(v1,v2),P3(v2,v3),P1(v0,v1).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P1(v0,v1),P2(v1,v2).
+dis1: 5, dis2: 5
+P0(v0,v3) :- P3(v2,v3),P2(v1,v2),P1(v0,v1).
+dis1: 6, dis2: 6
+will remove: P0(v0,v4,v2) :- P1(v0),P2(v0,v1,v2),P3(v1,v4,v2).
+
+after filtering: candidates size: 1130
+before deduplication, candidates size: 1130
+after deduplication, candidates size: 196
+100 examples of candidates: 
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3).
+P0(v0,v1,v2) :- P1(v0,v1),P2(v1,v2).
+P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2,v3).
+P0(v0,v2,v3) :- P1(v0,v1),P2(v0,v2,v3).
+P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1,v3).
+P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v3).
+P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v3,v1).
+P0(v2,v3,v1) :- P1(v0,v1),P2(v2,v3,v1).
+P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2).
+P0(v0,v1,v4) :- P1(v0,v1,v2),P2(v3,v1,v4).
+P0(v3,v0,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+P0(v3,v0,v4) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).
+P0(v3,v1,v4) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).
+P0(v3,v0,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).
+P0(v3,v1,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).
+P0(v3,v1,v4) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+P0(v2,v0,v4) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).
+P0(v2,v1,v4) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).
+P0(v3,v0,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).
+P0(v3,v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v4).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+P0(v0,v1,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).
+P0(v0,v2,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).
+P0(v0,v1,v4) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v0,v2,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+P0(v0,v1,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+P0(v0,v2,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+P0(v0,v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).
+P0(v0,v4,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).
+P0(v4,v1,v3) :- P1(v0,v1),P2(v0,v2,v3),P3(v4,v2).
+P0(v0,v1,v4) :- P1(v0,v1),P2(v0,v2,v3),P3(v2,v4).
+P0(v0,v2,v4) :- P1(v0,v1),P2(v0,v2,v3),P3(v2,v4).
+P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).
+P0(v4,v5,v1) :- P1(v0,v1),P2(v3,v0,v3),P3(v4,v5,v3).
+P0(v2,v3,v1) :- P1(v5,v1),P2(v2,v3,v1),P3(v4,v3,v5).
+P0(v4,v0,v5) :- P1(v0,v1),P2(v1,v3,v1),P3(v4,v3,v5).
+P0(v0,v1,v5) :- P1(v0,v1,v3),P2(v1,v3),P3(v4,v3,v5).
+P0(v0,v1,v5) :- P1(v0,v1,v4),P2(v1,v3),P3(v4,v3,v5).
+P0(v0,v1,v5) :- P1(v0,v1,v2),P2(v1,v3),P3(v3,v3,v5).
+P0(v0,v3,v5) :- P1(v0,v1,v1),P2(v1,v3),P3(v4,v3,v5).
+P0(v0,v3,v5) :- P1(v0,v1,v4),P2(v1,v3),P3(v4,v3,v5).
+P0(v0,v3,v5) :- P1(v0,v1,v2),P2(v1,v3),P3(v1,v3,v5).
+P0(v4,v1,v2) :- P1(v5,v1,v2),P2(v1,v3),P3(v4,v3,v5).
+P0(v4,v3,v2) :- P1(v5,v1,v2),P2(v1,v3),P3(v4,v3,v5).
+P0(v0,v3,v2) :- P1(v0,v5,v2),P2(v0,v3),P3(v4,v3,v5).
+P0(v4,v1,v5) :- P1(v0,v1,v0),P2(v0,v3),P3(v4,v3,v5).
+P0(v0,v5,v2) :- P1(v0,v1,v2),P2(v1,v3),P3(v3,v5,v3).
+P0(v4,v1,v3) :- P1(v5,v1,v2),P2(v1,v3),P3(v4,v5,v3).
+P0(v0,v1,v2) :- P1(v0,v1,v2),P2(v0,v2,v1).
+P0(v0,v1,v2) :- P1(v0,v1,v2),P2(v2,v1,v0).
+P0(v0,v1,v2) :- P1(v0,v1,v2),P2(v1,v0,v2).
+P0(v2,v0,v3) :- P1(v0,v4),P2(v2,v0,v3),P3(v2,v4,v3).
+P0(v2,v0,v5) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v3,v5).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v1,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v3,v0).
+P0(v2,v1,v5) :- P1(v0,v1),P2(v2,v0,v0),P3(v2,v1,v5).
+P0(v2,v0,v3) :- P1(v0,v4),P2(v2,v0,v3),P3(v4,v4,v3).
+P0(v2,v0,v3) :- P1(v0,v4),P2(v2,v0,v3),P3(v4,v2,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v0,v1,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v1,v0,v3).
+P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v1,v2,v3).
+P0(v4,v0,v3) :- P1(v0,v4),P2(v5,v0,v3),P3(v4,v5,v3).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v1,v0).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v3,v0).
+P0(v2,v1,v3) :- P1(v5,v1),P2(v2,v1,v3),P3(v2,v3,v5).
+P0(v2,v1,v5) :- P1(v5,v1),P2(v2,v1,v4),P3(v2,v4,v5).
+P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v1,v2,v3).
+P0(v0,v1,v5) :- P1(v0,v1),P2(v0,v2,v5),P3(v1,v2,v5).
+P0(v0,v2,v3) :- P1(v0,v4),P2(v0,v2,v3),P3(v4,v2,v4).
+P0(v0,v2,v3) :- P1(v0,v4),P2(v0,v2,v3),P3(v4,v2,v3).
+P0(v0,v1,v5) :- P1(v0,v1),P2(v2,v1,v2),P3(v2,v0,v5).
+P0(v0,v5,v3) :- P1(v0,v1),P2(v5,v1,v3),P3(v1,v5,v3).
+P0(v2,v4,v1) :- P1(v0,v1),P2(v2,v0,v4),P3(v2,v4,v0).
+P0(v4,v0,v1) :- P1(v0,v1),P2(v3,v0,v3),P3(v4,v1,v3).
+P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v4,v1),P3(v2,v4,v0).
+P0(v2,v3,v1) :- P1(v5,v1),P2(v2,v3,v1),P3(v2,v3,v5).
+P0(v2,v3,v1) :- P1(v4,v1),P2(v2,v3,v1),P3(v4,v3,v4).
+P0(v0,v3,v2) :- P1(v0,v1,v2),P2(v1,v3),P3(v2,v3,v1).
+P0(v4,v1,v5) :- P1(v3,v1,v4),P2(v1,v3),P3(v4,v3,v5).
+P0(v0,v3,v2) :- P1(v0,v4,v2),P2(v0,v3),P3(v4,v3,v4).
+P0(v0,v3,v2) :- P1(v0,v5,v2),P2(v0,v3),P3(v2,v3,v5).
+P0(v4,v1,v3) :- P1(v5,v1,v4),P2(v1,v3),P3(v4,v5,v3).
+P0(v4,v1,v3) :- P1(v5,v1,v5),P2(v1,v3),P3(v4,v5,v3).
+
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3).
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3).
+>> Template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3).,  matches: 1
+>> Template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3).
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3).
+>> Template: P0(v0,v1,v2) :- P1(v0,v1),P2(v1,v2).,  matches: 1
+>> Template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2,v3).,  matches: 1
+skip useless rule: invent_A(x0:S_key,x2:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v0,v2,v3).
+>> Template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1,v3).,  matches: 1
+>> Template: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0,v3).,  matches: 1
+>> Template: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v3,v1).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x3:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2,v3,v1) :- P1(v0,v1),P2(v2,v3,v1).
+skip useless rule: invent_A(x0:S_key,x1:C_name,x2:meets_at) :- invent_A(x0:S_key,x1:C_name,x2:meets_at),output(x0:S_key),  from template: P0(v0,v1,v2) :- P1(v0),P2(v0,v1,v2).
+>> Template: P0(v0,v1,v4) :- P1(v0,v1,v2),P2(v3,v1,v4).,  matches: 1
+skip useless rule: invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),LT(x0:C_name,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3,v0,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+>> Template: P0(v3,v0,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v0,v4) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).,  matches: 2
+>> Template: P0(v3,v1,v4) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v0,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v1,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 2
+skip useless rule: invent_A(x3:S_key,x1:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3,v1,v4) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+>> Template: P0(v3,v1,v4) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v2,v0,v4) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).,  matches: 2
+>> Template: P0(v2,v1,v4) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).,  matches: 1
+>> Template: P0(v3,v0,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).,  matches: 1
+>> Template: P0(v3,v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).,  matches: 2
+>> Template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v4).,  matches: 1
+>> Template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2,v4).
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- class(x0:C_name,x1:meets_at),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).
+>> Template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),output(x2:S_key),  from template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),output(x2:S_key),  from template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2).
+>> Template: P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x2:S_key),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x2:S_key),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v2).
+>> Template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).,  matches: 1
+>> Template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).,  matches: 1
+>> Template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).,  matches: 1
+>> Template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).,  matches: 1
+>> Template: P0(v0,v1,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v0,v2,v4) :- P1(v0,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v0,v1,v4) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).,  matches: 1
+skip useless rule: invent_A(x0:S_key,x2:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+>> Template: P0(v0,v1,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).,  matches: 1
+skip useless rule: invent_A(x0:S_key,x2:C_name,x4:meets_at) :- enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v0,v2,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).
+>> Template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).,  matches: 1
+>> Template: P0(v0,v1,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).,  matches: 1
+>> Template: P0(v0,v4,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v4,v2).,  matches: 1
+>> Template: P0(v4,v1,v3) :- P1(v0,v1),P2(v0,v2,v3),P3(v4,v2).,  matches: 1
+>> Template: P0(v0,v1,v4) :- P1(v0,v1),P2(v0,v2,v3),P3(v2,v4).,  matches: 1
+>> Template: P0(v0,v2,v4) :- P1(v0,v1),P2(v0,v2,v3),P3(v2,v4).,  matches: 1
+>> Template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v0,v4,v3) :- P1(v0,v1),P2(v2,v1,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v3,v0,v1) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v0,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v2,v1) :- P1(v0,v1),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0),P3(v2).,  matches: 1
+>> Template: P0(v2,v0,v1) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).,  matches: 1
+>> Template: P0(v2,v3,v1) :- P1(v0,v1),P2(v2,v0),P3(v2,v3,v4).,  matches: 1
+>> Template: P0(v3,v0,v1) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).,  matches: 1
+skip useless rule: invent_A(x3:S_key,x2:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),class(x2:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3,v2,v1) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+>> Template: P0(v2,v4,v1) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v3).,  matches: 1
+>> Template: P0(v0,v1,v5) :- P1(v0,v1,v2),P2(v1,v3),P3(v4,v3,v5).,  matches: 1
+>> Template: P0(v0,v3,v5) :- P1(v0,v1,v2),P2(v1,v3),P3(v4,v3,v5).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- class(x0:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v3),P2(v2,v0,v3).
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v2,v1),P2(v2,v1,v3).
+skip useless rule: invent_A(x0:S_key,x1:C_name,x2:meets_at) :- invent_A(x0:S_key,x1:C_name,x2:meets_at),invent_A(x0:S_key,x1:C_name,x4:meets_at),  from template: P0(v0,v1,v2) :- P1(v0,v1,v2),P2(v0,v1,v4).
+>> Template: P0(v3,v0,v4) :- P1(v0,v2),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v0,v4) :- P1(v0,v4),P2(v2,v0),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v3,v1,v4) :- P1(v3,v1),P2(v1,v2),P3(v3,v2,v4).,  matches: 1
+>> Template: P0(v2,v0,v4) :- P1(v0,v4),P2(v2,v0),P3(v2,v3,v4).,  matches: 1
+>> Template: P0(v2,v1,v4) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x1:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x1:C_name,x4:meets_at),  from template: P0(v2,v1,v4) :- P1(v0,v1),P2(v2,v0),P3(v2,v1,v4).
+>> Template: P0(v2,v0,v4) :- P1(v0,v1),P2(v2,v1),P3(v2,v1,v4).,  matches: 1
+>> Template: P0(v3,v1,v2) :- P1(v0,v1),P2(v0,v2),P3(v3,v0,v2).,  matches: 1
+skip useless rule: invent_A(x3:S_key,x0:C_name,x2:meets_at) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x0:C_name,x2:meets_at),  from template: P0(v3,v0,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v0,v2).
+>> Template: P0(v3,v0,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- class(x0:C_name,x3:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v4).
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- class(x4:C_name,x3:meets_at),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v2,v1),P2(v2,v1,v3),P3(v4,v3).
+>> Template: P0(v2,v0,v5) :- P1(v0,v4),P2(v2,v0,v3),P3(v2,v4,v5).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x1:C_name,x5:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x2:S_key,x1:C_name,x5:meets_at),  from template: P0(v2,v1,v5) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v1,v5).
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x5:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x4:S_key,x5:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v5),P2(v2,v0,v3),P3(v4,v5,v3).
+>> Template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v4,v1,v3).,  matches: 1
+skip useless rule: invent_A(x0:S_key,x4:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x4:C_name,x2:meets_at),  from template: P0(v0,v4,v2) :- P1(v0,v1),P2(v1,v2),P3(v0,v4,v2).
+>> Template: P0(v0,v1,v4) :- P1(v0,v1),P2(v0,v2,v4),P3(v2,v4).,  matches: 1
+>> Template: P0(v0,v4,v3) :- P1(v0,v2),P2(v0,v2,v3),P3(v4,v3).,  matches: 1
+skip useless rule: invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x2:S_key,x4:C_name,x3:meets_at),  from template: P0(v2,v0,v3) :- P1(v0,v4),P2(v2,v0,v3),P3(v2,v4,v3).
+skip useless rule: invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3),P3(v2,v1,v3).
+before deduplicate rules, matching size: 66
+after deduplicate rules, matching size: 66
+
+number of instantiated rules: 66
+all matchings : 
+0, invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+1, invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+2, invent_A(x0:S_key,x1:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),
+3, invent_A(x0:S_key,x1:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+4, invent_A(x0:S_key,x1:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+5, invent_A(x2:S_key,x0:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+6, invent_A(x2:S_key,x0:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),
+7, invent_A(x0:S_key,x1:C_name,x4:meets_at) :- invent_A(x0:S_key,x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x4:meets_at),
+8, invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x2:C_name),class(x0:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+9, invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x0:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+10, invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+11, invent_A(x3:S_key,x1:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),LT(x2:C_name,x0:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+12, invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),LT(x1:C_name,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+13, invent_A(x3:S_key,x1:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),LT(x1:C_name,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+14, invent_A(x3:S_key,x1:C_name,x4:meets_at) :- LT(x1:C_name,x2:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+15, invent_A(x3:S_key,x1:C_name,x4:meets_at) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+16, invent_A(x2:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+17, invent_A(x2:S_key,x0:C_name,x4:meets_at) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+18, invent_A(x2:S_key,x1:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+19, invent_A(x3:S_key,x0:C_name,x2:meets_at) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+20, invent_A(x3:S_key,x1:C_name,x2:meets_at) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+21, invent_A(x3:S_key,x1:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+22, invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+23, invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+24, invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+25, invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+26, invent_A(x2:S_key,x0:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),output(x2:S_key),
+27, invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),
+28, invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),
+29, invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),
+30, invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),
+31, invent_A(x0:S_key,x1:C_name,x4:meets_at) :- LT(x1:C_name,x2:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+32, invent_A(x0:S_key,x2:C_name,x4:meets_at) :- LT(x1:C_name,x2:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+33, invent_A(x0:S_key,x1:C_name,x4:meets_at) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+34, invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),
+35, invent_A(x0:S_key,x1:C_name,x4:meets_at) :- enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+36, invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),
+37, invent_A(x0:S_key,x1:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+38, invent_A(x0:S_key,x4:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x4:C_name,x2:meets_at),
+39, invent_A(x4:S_key,x1:C_name,x3:meets_at) :- enroll(x0:S_key,x1:C_name),enroll(x4:S_key,x2:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+40, invent_A(x0:S_key,x1:C_name,x4:meets_at) :- class(x2:C_name,x4:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+41, invent_A(x0:S_key,x2:C_name,x4:meets_at) :- class(x2:C_name,x4:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+42, invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x4:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+43, invent_A(x0:S_key,x4:C_name,x3:meets_at) :- class(x4:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),
+44, invent_A(x3:S_key,x0:C_name,x1:meets_at) :- LT(x0:C_name,x2:C_name),class(x0:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+45, invent_A(x3:S_key,x0:C_name,x1:meets_at) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+46, invent_A(x3:S_key,x2:C_name,x1:meets_at) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+47, invent_A(x2:S_key,x0:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),output(x2:S_key),
+48, invent_A(x2:S_key,x0:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+49, invent_A(x2:S_key,x3:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+50, invent_A(x3:S_key,x0:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),class(x2:C_name,x1:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+51, invent_A(x2:S_key,x4:C_name,x1:meets_at) :- class(x0:C_name,x1:meets_at),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),
+52, invent_A(x0:S_key,x1:C_name,x5:meets_at) :- LT(x1:C_name,x3:C_name),invent_A(x0:S_key,x1:C_name,x2:meets_at),invent_A(x4:S_key,x3:C_name,x5:meets_at),
+53, invent_A(x0:S_key,x3:C_name,x5:meets_at) :- LT(x1:C_name,x3:C_name),invent_A(x0:S_key,x1:C_name,x2:meets_at),invent_A(x4:S_key,x3:C_name,x5:meets_at),
+54, invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x2:C_name),LT(x2:C_name,x0:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+55, invent_A(x3:S_key,x0:C_name,x4:meets_at) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x4:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+56, invent_A(x3:S_key,x1:C_name,x4:meets_at) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),
+57, invent_A(x2:S_key,x0:C_name,x4:meets_at) :- class(x0:C_name,x4:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),
+58, invent_A(x2:S_key,x1:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),
+59, invent_A(x2:S_key,x0:C_name,x4:meets_at) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x4:meets_at),
+60, invent_A(x3:S_key,x1:C_name,x2:meets_at) :- LT(x0:C_name,x1:C_name),class(x0:C_name,x2:meets_at),invent_A(x3:S_key,x0:C_name,x2:meets_at),
+61, invent_A(x3:S_key,x0:C_name,x2:meets_at) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x2:meets_at),
+62, invent_A(x2:S_key,x0:C_name,x5:meets_at) :- LT(x0:C_name,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x2:S_key,x4:C_name,x5:meets_at),
+63, invent_A(x2:S_key,x1:C_name,x3:meets_at) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),invent_A(x4:S_key,x1:C_name,x3:meets_at),
+64, invent_A(x0:S_key,x1:C_name,x4:meets_at) :- class(x2:C_name,x4:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x0:S_key,x2:C_name,x4:meets_at),
+65, invent_A(x0:S_key,x4:C_name,x3:meets_at) :- class(x4:C_name,x3:meets_at),enroll(x0:S_key,x2:C_name),invent_A(x0:S_key,x2:C_name,x3:meets_at),
+normalizing PO..
+P0(v3,v0,v4) :- P1(v0,v1),P2(v0,v2),P3(v3,v2,v4).  vs  P0(v2,v0,v3) :- P1(v0,v1),P2(v2,v1,v3).
+P0(v3,v1,v4) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).  vs  P0(v2,v1,v3) :- P1(v0,v1),P2(v2,v0,v3).
+overall templates: 62
+most general: 31
+most specific: 31
+independent: 15
+
+**exploreCandidateRules is done: 30571 ms.
+
+query_space for output: 14
+true_label for output: 7
+query_space for invent_A: 252
+true_label for invent_A: 0
+overall_query_space: 266
+overall_true_label: 7
+over estimated configs : 1
+extractRules, tmpls.size = 4, res.size=6
+
+#elements: 6 K = 1, res.size: 6
+extractRules, tmpls.size = 31, res.size=31
+
+#elements: 31 K = 1, res.size: 31
+Config: {1 output(S_key), 1 invent_A(S_key,C_name,meets_at), },  number of programs: 186
+(Time_Measure) init_helper_efficient takes 2 ms, longest_run: 0 max_threads: 186
+Gs.size = 36
+over estimated configs : 1
+extractRules, tmpls.size = 16, res.size=18
+
+#elements: 18 K = 1, res.size: 18
+extractRules, tmpls.size = 31, res.size=31
+
+#elements: 31 K = 1, res.size: 31
+Config: {1 output(S_key), 1 invent_A(S_key,C_name,meets_at), },  number of programs: 558
+(Time_Measure) init_helper_efficient takes 20 ms, longest_run: 13 max_threads: 558
+Ss.size = 60
+(Time_Measure) execute_one_round_helper takes 106 ms, longest_run: 14 max_threads: 36
+(Time_Measure) execute_one_round_helper takes 188 ms, longest_run: 14 max_threads: 60
+total_votes: 96
+
+tuple stats: 
+Gs: 73 74 75 76 77 78 85 86 87 88 89 90 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 
+Ss: 601 602 603 604 605 606 607 608 609 610 611 612 613 614 618 619 620 621 622 623 624 625 626 627 628 629 630 631 632 636 637 638 639 640 641 642 643 644 645 646 647 648 649 650 654 655 656 657 658 659 660 661 662 663 664 665 666 667 668 672 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 36
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+
+output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+invent_A(x0:S_key,x3:C_name,x2:meets_at) :- class(x1:C_name,x2:meets_at),class(x3:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v3,v2) :- P1(v0,v1),P2(v1,v2),P3(v3,v2).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),enroll(x0:S_key,x2:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v0,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x3:C_name,x1:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v3,v1).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- enroll(x0:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x1:C_name),  from template: P0(v2) :- P1(v0,v1),P2(v2,v1).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+remaining specific programs: 60
+
+
+output(x0:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x4:C_name,x3:meets_at),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v2,v1),P2(v2,v1,v3),P3(v4,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v4,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x3:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x0:C_name),class(x0:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v4,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x4:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v4),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v3,v1),P2(v1,v2),P3(v3,v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x4:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v0,v4),P2(v2,v0),P3(v3,v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x0:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x0:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x4:C_name,x3:meets_at),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v2,v1),P2(v2,v1,v3),P3(v4,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v4,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x3:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x0:C_name),class(x0:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v4,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x4:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v4),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v3,v1),P2(v1,v2),P3(v3,v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x4:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v0,v4),P2(v2,v0),P3(v3,v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x0:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x2:C_name,x1:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v2,v1),P3(v2,v3).
+
+
+output(x0:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x4:C_name,x3:meets_at),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v2,v1),P2(v2,v1,v3),P3(v4,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v4,v3).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x3:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x0:C_name),class(x0:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v4,v2).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x4:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v4),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v3,v1),P2(v1,v2),P3(v3,v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x4:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v0,v4),P2(v2,v0),P3(v3,v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x0:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+invent_A(x0:S_key,x2:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v2,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x0:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x4:C_name,x3:meets_at),enroll(x2:S_key,x1:C_name),invent_A(x2:S_key,x1:C_name,x3:meets_at),  from template: P0(v2) :- P1(v2,v1),P2(v2,v1,v3),P3(v4,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),class(x4:C_name,x3:meets_at),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v4,v3).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x3:meets_at),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v3),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x4:C_name),invent_A(x2:S_key,x0:C_name,x3:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0,v3),P3(v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- class(x1:C_name,x2:meets_at),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x1:C_name),class(x1:C_name,x2:meets_at),invent_A(x3:S_key,x1:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v1),P2(v1,v2),P3(v3,v1,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x0:C_name,x0:C_name),class(x0:C_name,x2:meets_at),invent_A(x3:S_key,x4:C_name,x2:meets_at),  from template: P0(v3) :- P1(v0,v0),P2(v0,v2),P3(v3,v4,v2).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x1:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x1:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x0:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v1),P2(v2,v0),P3(v2,v0,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- class(x0:C_name,x4:meets_at),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v4),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x2:S_key) :- LT(x0:C_name,x0:C_name),enroll(x2:S_key,x0:C_name),invent_A(x2:S_key,x3:C_name,x4:meets_at),  from template: P0(v2) :- P1(v0,v0),P2(v2,v0),P3(v2,v3,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x1:C_name,x2:C_name),enroll(x3:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v3,v1),P2(v1,v2),P3(v3,v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x3:S_key) :- LT(x2:C_name,x0:C_name),class(x0:C_name,x4:meets_at),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v3) :- P1(v0,v4),P2(v2,v0),P3(v3,v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+
+
+output(x0:S_key) :- LT(x2:C_name,x1:C_name),enroll(x0:S_key,x1:C_name),invent_A(x3:S_key,x2:C_name,x4:meets_at),  from template: P0(v0) :- P1(v0,v1),P2(v2,v1),P3(v3,v2,v4).
+invent_A(x0:S_key,x1:C_name,x3:meets_at) :- LT(x1:C_name,x2:C_name),class(x2:C_name,x3:meets_at),enroll(x0:S_key,x1:C_name),  from template: P0(v0,v1,v3) :- P1(v0,v1),P2(v1,v2),P3(v2,v3).
+Refinement takes 17 ms.
+End-to-End takes 334 ms.
+
+**ALPS_end_to_end takes 30906 ms.

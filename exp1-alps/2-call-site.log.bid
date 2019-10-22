@@ -1,0 +1,189 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 3
+Maximum #rules for programs will be 4
+Using Templates: ./data/templates/2-call-site.tp
+Number of templates: 0
+augmentation distance: 3
+chain2 is enabled
+
+Relation *points_initial
+
+Relation *store
+
+Relation *load
+
+Relation *invocation
+
+Relation *actual
+
+Relation *formal
+
+Relation pointsto
+
+Relation heappointsto
+
+Relation *assign
+
+**Loading input is done: 1 ms.
+
+Relation: heappointsto(H,F,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: pointsto(C,C,V,H)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: heappointsto(H,F,H)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 80
+
+before filtering by augmentation: candidates size: 80
+
+after filtering: candidates size: 13
+before deduplication, candidates size: 13
+after deduplication, candidates size: 8
+100 examples of candidates: 
+P0(v1,v2,v3) :- P1(v0,v1),P2(v1,v2,v3).
+P0(v3,v2,v1) :- P1(v0,v1),P2(v1,v2,v3).
+P0(v2,v3,v1) :- P1(v0,v1),P2(v2,v3,v1).
+P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).
+P0(v3,v1,v0) :- P1(v0,v1,v2),P2(v3,v4,v0).
+P0(v3,v1,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).
+P0(v3,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).
+P0(v0,v1,v4) :- P1(v0,v1,v2),P2(v3,v1,v4).
+
+skip useless rule: heappointsto(x1:H,x2:F,x3:H) :- heappointsto(x1:H,x2:F,x3:H),points_initial(x0:V,x1:H),  from template: P0(v1,v2,v3) :- P1(v0,v1),P2(v1,v2,v3).
+>> Template: P0(v3,v2,v1) :- P1(v0,v1),P2(v1,v2,v3).,  matches: 1
+skip useless rule: heappointsto(x2:H,x3:F,x1:H) :- heappointsto(x2:H,x3:F,x1:H),points_initial(x0:V,x1:H),  from template: P0(v2,v3,v1) :- P1(v0,v1),P2(v2,v3,v1).
+>> Template: P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).,  matches: 1
+>> Template: P0(v3,v1,v0) :- P1(v0,v1,v2),P2(v3,v4,v0).,  matches: 1
+>> Template: P0(v3,v1,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).,  matches: 1
+>> Template: P0(v3,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).,  matches: 1
+>> Template: P0(v0,v1,v4) :- P1(v0,v1,v2),P2(v3,v1,v4).,  matches: 1
+before deduplicate rules, matching size: 6
+after deduplicate rules, matching size: 6
+
+number of instantiated rules: 6
+all matchings : 
+0, heappointsto(x3:H,x2:F,x1:H) :- heappointsto(x1:H,x2:F,x3:H),points_initial(x0:V,x1:H),
+1, heappointsto(x0:H,x4:F,x2:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),
+2, heappointsto(x3:H,x1:F,x0:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),
+3, heappointsto(x3:H,x1:F,x2:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),
+4, heappointsto(x3:H,x4:F,x2:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),
+5, heappointsto(x0:H,x1:F,x4:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x1:F,x4:H),
+normalizing PO..
+overall templates: 6
+most general: 6
+most specific: 6
+independent: 6
+Relation: pointsto(C,C,V,H)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 2612
+
+before filtering by augmentation: candidates size: 2612
+
+after filtering: candidates size: 0
+before deduplication, candidates size: 0
+after deduplication, candidates size: 0
+100 examples of candidates: 
+
+before deduplicate rules, matching size: 0
+after deduplicate rules, matching size: 0
+
+number of instantiated rules: 0
+all matchings : 
+normalizing PO..
+overall templates: 0
+most general: 0
+most specific: 0
+independent: 0
+
+**exploreCandidateRules is done: 1118312 ms.
+
+query_space for heappointsto: 32
+true_label for heappointsto: 4
+query_space for pointsto: 640
+true_label for pointsto: 11
+overall_query_space: 672
+overall_true_label: 15
+erase useless rule: heappointsto(x3:H,x2:F,x1:H) :- heappointsto(x1:H,x2:F,x3:H),points_initial(x0:V,x1:H),  from template: P0(v3,v2,v1) :- P1(v0,v1),P2(v1,v2,v3).
+erase useless rule: heappointsto(x0:H,x4:F,x2:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),  from template: P0(v0,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).
+erase useless rule: heappointsto(x3:H,x1:F,x0:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),  from template: P0(v3,v1,v0) :- P1(v0,v1,v2),P2(v3,v4,v0).
+erase useless rule: heappointsto(x3:H,x1:F,x2:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),  from template: P0(v3,v1,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).
+erase useless rule: heappointsto(x3:H,x4:F,x2:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x4:F,x0:H),  from template: P0(v3,v4,v2) :- P1(v0,v1,v2),P2(v3,v4,v0).
+erase useless rule: heappointsto(x0:H,x1:F,x4:H) :- heappointsto(x0:H,x1:F,x2:H),heappointsto(x3:H,x1:F,x4:H),  from template: P0(v0,v1,v4) :- P1(v0,v1,v2),P2(v3,v1,v4).
+(Time_Measure) examine_each_IDBTR takes 3 ms, longest_run: 0 max_threads: 6
+over estimated configs : 6
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {1 heappointsto(H,F,H), 1 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {1 heappointsto(H,F,H), 2 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {1 heappointsto(H,F,H), 3 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {2 heappointsto(H,F,H), 1 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {2 heappointsto(H,F,H), 2 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {3 heappointsto(H,F,H), 1 pointsto(C,C,V,H), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Gs.size = 0
+over estimated configs : 6
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {1 heappointsto(H,F,H), 1 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {1 heappointsto(H,F,H), 2 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {1 heappointsto(H,F,H), 3 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {2 heappointsto(H,F,H), 1 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {2 heappointsto(H,F,H), 2 pointsto(C,C,V,H), },  number of programs: 0
+extractRules, tmpls.size = 6, res.size=0
+extractRules, tmpls.size = 0, res.size=0
+Config: {3 heappointsto(H,F,H), 1 pointsto(C,C,V,H), },  number of programs: 0
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 0
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 0
+
+tuple stats: 
+Gs: 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 0
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 3 ms.
+
+**ALPS_end_to_end takes 1118315 ms.

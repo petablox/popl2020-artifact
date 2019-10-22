@@ -1,0 +1,92 @@
+Bidirectional search is enabled
+Maximum #rules for each IDB will be 1
+Maximum #rules for programs will be 1
+Using Templates: ./data/templates/textbook_5_2_1.tp
+Number of templates: 0
+augmentation distance: 1
+chain2 is enabled
+
+Relation *input1
+
+Relation *input2
+
+Relation output
+
+**Loading input is done: 1 ms.
+
+Relation: output(part_name)
+Stats of given templates: 
+=== distance stats ===
+Number of Templates: 0
+Number of chain-1 like templates: 0
+Number of chain-2 like templates: 0
+Number of chain-3 like templates: 0
+
+
+Relation: output(part_name)
+
+before explore chain-2: candidates size: 0
+
+after explore chain-2: candidates size: 6
+
+before filtering by augmentation: candidates size: 6
+
+after filtering: candidates size: 1
+before deduplication, candidates size: 1
+after deduplication, candidates size: 1
+100 examples of candidates: 
+P0(v2) :- P1(v0,v1),P2(v1,v2).
+
+>> Template: P0(v2) :- P1(v0,v1),P2(v1,v2).,  matches: 1
+before deduplicate rules, matching size: 1
+after deduplicate rules, matching size: 1
+
+number of instantiated rules: 1
+all matchings : 
+0, output(x2:part_name) :- input1(x0:supplier_key,x1:part_id),input2(x1:part_id,x2:part_name),
+normalizing PO..
+overall templates: 1
+most general: 1
+most specific: 1
+independent: 1
+
+**exploreCandidateRules is done: 1 ms.
+
+query_space for output: 7
+true_label for output: 5
+overall_query_space: 7
+overall_true_label: 5
+over estimated configs : 1
+extractRules, tmpls.size = 1, res.size=1
+
+#elements: 1 K = 1, res.size: 1
+Config: {1 output(part_name), },  number of programs: 1
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 1
+Gs.size = 1
+over estimated configs : 1
+extractRules, tmpls.size = 1, res.size=1
+
+#elements: 1 K = 1, res.size: 1
+Config: {1 output(part_name), },  number of programs: 1
+(Time_Measure) init_helper_efficient takes 0 ms, longest_run: 0 max_threads: 1
+Ss.size = 0
+(Time_Measure) execute_one_round_helper takes 5 ms, longest_run: 5 max_threads: 1
+(Time_Measure) execute_one_round_helper takes 0 ms, longest_run: 0 max_threads: 0
+total_votes: 1
+
+tuple stats: 
+Gs: 1 
+Ss: 
+best distance: 1073741824
+different votes: 0
+Round 1 execution takes 0 ms.
+converged at round: 1
+remaining general programs: 1
+
+
+output(x2:part_name) :- input1(x0:supplier_key,x1:part_id),input2(x1:part_id,x2:part_name),  from template: P0(v2) :- P1(v0,v1),P2(v1,v2).
+remaining specific programs: 0
+Refinement takes 0 ms.
+End-to-End takes 5 ms.
+
+**ALPS_end_to_end takes 6 ms.
