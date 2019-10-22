@@ -4,6 +4,7 @@
 ########################################################################################################################
 
 FROM fedora:30
+
 RUN dnf install -y git autoconf automake make \
                    gcc gcc-c++ mcpp \
                    python python3 \
@@ -14,7 +15,9 @@ RUN dnf install -y git autoconf automake make \
                    task-spooler which
 RUN curl https://bintray.com/sbt/rpm/rpm > /etc/yum.repos.d/bintray-sbt-rpm.repo
 RUN dnf install -y java java-devel sbt-1.1.1
+
 RUN git clone https://github.com/petablox/popl2020-artifact
+RUN cd popl2020-artifact/prosynth/souffle && ./boostrap && ./configure && make -j 4
 
 ########################################################################################################################
 
