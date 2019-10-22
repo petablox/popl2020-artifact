@@ -18,7 +18,7 @@ Abercrombie St,Lawson St
 Cleveland St,Shepard St
 Elizabeth St,Goulburn St
 .
-Crashable(V,V)
+inv(V,V)
 .
 Crashes(V)
 Elizabeth St

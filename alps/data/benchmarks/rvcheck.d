@@ -1,4 +1,4 @@
-#X: 1,2.
+X: 1,2.
 L: 11,12,13,14,15,16,21,22,23,24,25,26,31,32,33,34,35,36,41,42,43,44,45,46.
 
 *Certificate(X,L)
@@ -83,13 +83,13 @@ L: 11,12,13,14,15,16,21,22,23,24,25,26,31,32,33,34,35,36,41,42,43,44,45,46.
 44,46
 45,46
 .
-invent_CertFlow(X,L)
+inv1(X,L)
 .
-invent_CertCheck(L)
+inv2(L)
 .
-invent_VeriFlow(X,L)
+inv3(X,L)
 .
-invent_VeriCheck(L)
+inv4(L)
 .
 Correct(L)
 16

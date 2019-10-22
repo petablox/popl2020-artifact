@@ -14,11 +14,11 @@ a,inactive,2
 b,active,4
 b,inactive,5
 .
-invent_1(T,C)
+inv1(T,C)
 .
-invent_2(T,C)
+inv2(T,C)
 .
-Output(T,C,C)
+ans(T,C,C)
 a,1,2
 b,4,5
 .

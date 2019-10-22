@@ -39,7 +39,7 @@ b4,d7
 b5,d8
 b6,d9
 .
-invent_2(D,D)
+inv(D,D)
 .
 buildWall(D,D)
 d1,d2

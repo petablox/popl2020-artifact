@@ -18,7 +18,7 @@ P5,PN5
 P6,PN6
 P7,PN7
 .
-output(part_name)
+ans(part_name)
 PN1
 PN2
 PN3

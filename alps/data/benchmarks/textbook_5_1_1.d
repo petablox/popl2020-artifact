@@ -47,13 +47,13 @@ S6,stu6,SR
 S7,stu7,JR
 S8,stu8,JR
 .
-invent_F(F_key)
+inv1(F_key)
 .
-invent_C(C_name)
+inv2(C_name)
 .
-invent_K(S_key)
+inv3(S_key)
 .
-output(S_name)
+ans(S_name)
 stu1
 stu5
 .

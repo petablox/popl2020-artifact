@@ -8,7 +8,7 @@ V: 1,2,3,4,5,6,7,8,9.
 6,7
 7,9
 .
-invent_Path(V,V)
+inv(V,V)
 .
 NSCC(V,V)
 1,2

@@ -58,9 +58,9 @@ S13,class4
 S14,class5
 S14,class6
 .
-invent_A(S_key,C_name,meets_at)
+inv(S_key,C_name,meets_at)
 .
-output(S_key)
+ans(S_key)
 S1
 S6
 S9

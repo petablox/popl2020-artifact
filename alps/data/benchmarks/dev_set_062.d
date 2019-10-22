@@ -17,7 +17,7 @@ G:10,20,30,40.
 20,40
 30,40
 .
-invent_1(Pid,G)
+inv(Pid,G)
 .
 Out(Pid,G,G)
 p1,10,20

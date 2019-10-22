@@ -12,7 +12,7 @@ b,d
 c,a
 d,b
 .
-Reachable(V,V)
+inv(V,V)
 .
 SameClique(V,V)
 a,a

@@ -12,7 +12,7 @@ jean-jacques,alphonse
 alphonse,mireille
 brad,john
 .
-Parent(V,V)
+inv(V,V)
 .
 Ancestor(V,V)
 claudette,ann

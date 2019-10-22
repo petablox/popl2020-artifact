@@ -14,8 +14,8 @@ untreated
 3,se,untreated
 4,de,treated
 .
-invent_country(country)
+inv(country)
 .
-output(id,country,status)
+ans(id,country,status)
 1,se,treated
 .

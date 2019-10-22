@@ -6,7 +6,7 @@ Plan: A,B,C.
 *active(Attributes)
 IsActive
 .
-*true(Value)
+*correct(Value)
 True
 .
 *input1(Id,Plan,Attributes,Value)
@@ -20,9 +20,9 @@ True
 8,C,Class,R
 9,C,IsActive,True
 .
-invent_sel(Plan)
+inv(Plan)
 .
-output(Id,Plan,Attributes,Value)
+ans(Id,Plan,Attributes,Value)
 1,A,Name,AAA
 2,A,Class,P
 3,A,IsActive,True

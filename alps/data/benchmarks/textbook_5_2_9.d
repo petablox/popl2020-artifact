@@ -37,7 +37,7 @@ P4,red
 P5,green
 P6,blue
 .
-invent_sel(part_id,color)
+inv(part_id,color)
 .
 *input3(supplier_key,sname)
 S1,SN1
@@ -51,7 +51,7 @@ S8,SN8
 S9,SN9
 S10,SN10
 .
-output(sname)
+ans(sname)
 SN1
 SN2
 SN3
