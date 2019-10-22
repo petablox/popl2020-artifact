@@ -97,7 +97,5 @@ fi
 ./exp1/plot_f6_b.py box
 ./exp1/plot_f8_a.py box
 ./exp1/plot_f8_b.py box
-
-./exp2/plot_f7.py box
-./exp2/plot_f7_t.py box
-./exp2/plot_supf1.py box
+./exp1/plot_supf2_a.py box
+./exp1/plot_supf2_b.py box
