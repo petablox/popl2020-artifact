@@ -15,6 +15,25 @@ This artifact contains all three tools (ProSynth, ALPS, and Difflog), benchmark 
 experiments described in the paper. In this document, we will describe the outline of these experiments, how to run
 them, and also describe how one may use ProSynth to solve Datalog synthesis problems of their own.
 
+Installing the Artifact
+-----------------------
+
+One can either install this artifact natively or use the provided Docker image. We recommend the use of the Docker image
+for smoother reproduction.
+
+1. To install the artifact locally:
+   a. Clone this repository
+   b. Install the pre-requisites for ProSynth, ALPS, and Difflog. On a computer running Fedora 30, one would run the
+      following command:
+      ```sudo dnf install z3 z3-devel python3-z3 \
+                          autoconf automake make g++ gcc \
+                          flex bison \
+                          doxygen git libncurses5-dev libtool libsqlite3-dev make mcpp python sqlite zlib1g-dev
+                          tsp```
+   c. In the main repository folder, `popl2020-artifact/`, run the commands: TODO!
+
+2. It is 
+
 Hardware and Estimated Time for Reproduction
 --------------------------------------------
 
@@ -22,8 +41,11 @@ __TODO:__ How long do the experiments take to reproduce?
 
 Mukund's SAL 308 desktop
 With tsp -S 6, exp1 prepare takes 10 minutes
+With tsp -S 6, exp1 prosynth takes 4 hours and 15 minutes
 With tsp -S 4, exp2 prepare took 16 minutes
 With tsp -S 6, exp2 run takes 1hr 46 minutes
+
+We recommend having approximately 30 Gigabytes of free space to store intermediate results and log files.
 
 __TODO:__ Explain the `tsp -S` command
 
