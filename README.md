@@ -55,6 +55,21 @@ Subsequently, all results presented in the paper arise out of two experiments:
 Reproducing Experiment 1
 ------------------------
 
+The broad trends in our experiments should be reproducible on most contemporary desktop and laptop workstations.
+However, because we repeatedly run scripts to capture variations in running times, they can take some time to completely
+reproduce. It is therefore helpful to have a multicore CPU to run these tasks in parallel and make the experiments
+finish quickly. Let NUM_CORES be the number of parallel cores on the computer:
+```
+export NUM_CORES=6 # (for example)
+```
+
+Experiment 1 requires us to run all three tools, ProSynth, ALPS and Difflog. Execute the following sub-tasks:
+```
+./exp1/prosynth.sh
+./exp1/alps.sh
+./exp1/difflog.sh
+```
+
 Reproducing Experiment 2
 ------------------------
 
