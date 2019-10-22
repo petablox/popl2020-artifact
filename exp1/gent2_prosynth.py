@@ -56,28 +56,13 @@ print(prosynth_program_count_souffle)
 
 
 f_t2 = open("table2.csv", "w")
-f_t2.write("Prosynth Run Time, ALPS Run Time, Difflog Run Time, Prosynth Number Evaluated Programs (Z3), Prosynth Number Evaluated Programs (Souffle), ALPS Number Evaluated Programs, Difflog Number Evaulated Programs")
+f_t2.write("Prosynth Run Time, Prosynth Number Evaluated Programs (Z3), Prosynth Number Evaluated Programs (Souffle)")
 for benchmark_name in prosynth_running_time:
 	f_t2.write(str(np.median(list(prosynth_running_time[benchmark_name]))) + ",")
-	f_t2.write(str(0) + ",")
-	f_t2.write(str(0) + ",")
 	f_t2.write(str(np.median(list(prosynth_program_count_z3[benchmark_name]))) + ",")
 	f_t2.write(str(np.median(list(prosynth_program_count_souffle[benchmark_name]))) + ",")
-	f_t2.write(str(0) + ",")
-	f_t2.write(str(0))
 	f_t2.write("\n")
 f_t2.close()
-
-f_t3 = open("table3.csv", "w")
-f_t3.write("Prosynth No Delta Median Run Time, Prosynth Delta Median Run Time, Prosynth No Delta Maximum Run Time, Prosynth Delta Maximum Run Time")
-for benchmark_name in prosynth_running_time:
-	f_t3.write(str(np.median(list(prosynth_running_time_no_delta[benchmark_name]))) + ",")
-	f_t3.write(str(np.median(list(prosynth_running_time[benchmark_name]))) + ",")
-	f_t3.write(str(np.amax(list(prosynth_running_time_no_delta[benchmark_name]))) + ",")
-	f_t3.write(str(np.amax(list(prosynth_running_time[benchmark_name]))))
-	f_t3.write("\n")
-f_t3.close()
-
 
 
 
