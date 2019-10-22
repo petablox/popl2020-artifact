@@ -33,7 +33,6 @@ prosynth_running_time_no_delta = dict()
 alps_running_time = dict()
 difflog_running_time = dict()
 prosynth_program_count_z3 = dict()
-prosynth_program_count_z3_no_delta = dict()
 prosynth_program_count_souffle = dict()
 alps_program_count = dict()
 difflog_program_count = dict()
@@ -41,8 +40,8 @@ difflog_program_count = dict()
 f = open("exp1-work/data.log", "r")
 for line in f:
     benchmark_name = line[line.find("name: '")+7:line.find("',")]
-    benchmark_type = benchmark_name[benchmark_name.find("/")+1:benchmark_name.rfind("/")]
-    benchmark_name = benchmark_name[benchmark_name.rfind("/")+1:benchmark_name.find("|")]
+    benchmark_name = benchmark_name[benchmark_name.find("/")+1:]
+    benchmark_name = benchmark_name[benchmark_name.find("/")+1:benchmark_name.rfind("/")]
 
     program_count_z3 = line[line.find("z3:")+3:]
     program_count_z3 = int(program_count_z3[:program_count_z3.find(",")])
@@ -56,33 +55,28 @@ for line in f:
     setting_delta = line[line.find("setting_delta:")+15:]
     setting_delta = setting_delta[:setting_delta.find("}")]
 
-    if benchmark_type == "benchmarks":
-        if setting_delta == "0":
-            if not benchmark_name in prosynth_running_time_no_delta:
-                prosynth_running_time_no_delta[benchmark_name] = set()
-            prosynth_running_time_no_delta[benchmark_name].add(running_time)
+    if setting_delta == "0":
+        if not benchmark_name in prosynth_running_time_no_delta:
+            prosynth_running_time_no_delta[benchmark_name] = set()
+        prosynth_running_time_no_delta[benchmark_name].add(running_time)
+    else:
+        if not benchmark_name in prosynth_program_count_z3:
+            prosynth_program_count_z3[benchmark_name] = set()
+        prosynth_program_count_z3[benchmark_name].add(program_count_z3)
 
-            if not benchmark_name in prosynth_program_count_z3_no_delta:
-                prosynth_program_count_z3_no_delta[benchmark_name] = set()
-            prosynth_program_count_z3_no_delta[benchmark_name].add(program_count_z3)
-        else:
-            if not benchmark_name in prosynth_program_count_z3:
-                prosynth_program_count_z3[benchmark_name] = set()
-            prosynth_program_count_z3[benchmark_name].add(program_count_z3)
+        if not benchmark_name in prosynth_program_count_souffle:
+            prosynth_program_count_souffle[benchmark_name] = set()
+        prosynth_program_count_souffle[benchmark_name].add(program_count_souffle)
 
-            if not benchmark_name in prosynth_program_count_souffle:
-                prosynth_program_count_souffle[benchmark_name] = set()
-            prosynth_program_count_souffle[benchmark_name].add(program_count_souffle)
-
-            if not benchmark_name in prosynth_running_time:
-                prosynth_running_time[benchmark_name] = set()
-            prosynth_running_time[benchmark_name].add(running_time)
+        if not benchmark_name in prosynth_running_time:
+            prosynth_running_time[benchmark_name] = set()
+        prosynth_running_time[benchmark_name].add(running_time)
 
 f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in ["buildwall", "downcast", "nearlyscc", "rvcheck", "scc", "sql-10", "sql-15"]:
+for benchmark_name in ["buildwall", "downcast", "nearlyscc", "scc", "sql-10", "sql-15"]:
     andersen_stats[benchmark_name] = list(prosynth_program_count_z3[benchmark_name])
     sizes.append(benchmark_name)
 
@@ -124,7 +118,7 @@ ticksize=12
 x_tick_labels = sizes
 
 xss = [i for i in range(1, len(x_tick_labels)+1)]
-plt.xticks(xss, x_tick_labels)
+plt.xticks(xss, x_tick_labels, rotation='vertical')
 ax.tick_params(labelsize=ticksize)
 
 
@@ -138,7 +132,7 @@ ax.set_aspect(aspect)
 
 #xlabel = "Number of templates"
 #ylabel = "Running time (min)"
-ylabel = "Running Time"
+ylabel = "Number of Z3 Calls"
 #ylabel = "Avg. evaluation time (sec)"
 
 xlabel = "Benchmark Name"

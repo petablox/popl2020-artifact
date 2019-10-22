@@ -24,8 +24,6 @@ trap cleanup SIGINT
 trap cleanup SIGTERM
 
 NUM_CORES=$1
-tsp -S $NUM_CORES
-
 ########################################################################################################################
 
 BENCHES='1-call-site 1-object 1-object-1-type 1-type 2-call-site abduce andersen animals buildwall clique cliquer '
@@ -68,7 +66,6 @@ else
     echo "Skipping ProSynth!"
 fi
 
-exit 1
 
 # 3. Run Difflog
 
@@ -90,7 +87,7 @@ fi
 
 # 5. Plot figures
 
-./scripts/tsp-wait.sh
+#./scripts/tsp-wait.sh
 # TODO: Table 2
 # TODO: Table 3
 ./exp1/plot_f6_a.py box

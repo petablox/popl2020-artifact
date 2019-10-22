@@ -40,8 +40,8 @@ difflog_program_count = dict()
 f = open("exp1-work/data.log", "r")
 for line in f:
     benchmark_name = line[line.find("name: '")+7:line.find("',")]
-    benchmark_type = benchmark_name[benchmark_name.find("/")+1:benchmark_name.rfind("/")]
-    benchmark_name = benchmark_name[benchmark_name.rfind("/")+1:benchmark_name.find("|")]
+    benchmark_name = benchmark_name[benchmark_name.find("/")+1:]
+    benchmark_name = benchmark_name[benchmark_name.find("/")+1:benchmark_name.rfind("/")]
 
     program_count_z3 = line[line.find("z3:")+3:]
     program_count_z3 = int(program_count_z3[:program_count_z3.find(",")])
@@ -55,23 +55,22 @@ for line in f:
     setting_delta = line[line.find("setting_delta:")+15:]
     setting_delta = setting_delta[:setting_delta.find("}")]
 
-    if benchmark_type == "benchmarks":
-        if setting_delta == "0":
-            if not benchmark_name in prosynth_running_time_no_delta:
-                prosynth_running_time_no_delta[benchmark_name] = set()
-            prosynth_running_time_no_delta[benchmark_name].add(running_time)
-        else:
-            if not benchmark_name in prosynth_program_count_z3:
-                prosynth_program_count_z3[benchmark_name] = set()
-            prosynth_program_count_z3[benchmark_name].add(program_count_z3)
+    if setting_delta == "0":
+        if not benchmark_name in prosynth_running_time_no_delta:
+            prosynth_running_time_no_delta[benchmark_name] = set()
+        prosynth_running_time_no_delta[benchmark_name].add(running_time)
+    else:
+        if not benchmark_name in prosynth_program_count_z3:
+            prosynth_program_count_z3[benchmark_name] = set()
+        prosynth_program_count_z3[benchmark_name].add(program_count_z3)
 
-            if not benchmark_name in prosynth_program_count_souffle:
-                prosynth_program_count_souffle[benchmark_name] = set()
-            prosynth_program_count_souffle[benchmark_name].add(program_count_souffle)
+        if not benchmark_name in prosynth_program_count_souffle:
+            prosynth_program_count_souffle[benchmark_name] = set()
+        prosynth_program_count_souffle[benchmark_name].add(program_count_souffle)
 
-            if not benchmark_name in prosynth_running_time:
-                prosynth_running_time[benchmark_name] = set()
-            prosynth_running_time[benchmark_name].add(running_time)
+        if not benchmark_name in prosynth_running_time:
+            prosynth_running_time[benchmark_name] = set()
+        prosynth_running_time[benchmark_name].add(running_time)
 
 f.close()
 
@@ -133,7 +132,7 @@ ax.set_aspect(aspect)
 
 #xlabel = "Number of templates"
 #ylabel = "Running time (min)"
-ylabel = "Running Time"
+ylabel = "Running Time (sec)"
 #ylabel = "Avg. evaluation time (sec)"
 
 xlabel = "Benchmark Name"
