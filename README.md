@@ -21,8 +21,9 @@ Hardware and Estimated Time for Reproduction
 __TODO:__ How long do the experiments take to reproduce?
 
 Mukund's SAL 308 desktop
-With tsp -S 4, exp2 prepare took 16 minutes.
-With tsp -S 6, exp2 run takes 1hr 46 minutes.
+With tsp -S 6, exp1 prepare takes 10 minutes
+With tsp -S 4, exp2 prepare took 16 minutes
+With tsp -S 6, exp2 run takes 1hr 46 minutes
 
 __TODO:__ Explain the `tsp -S` command
 
