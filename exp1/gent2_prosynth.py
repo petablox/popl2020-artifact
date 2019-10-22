@@ -15,10 +15,11 @@ prosynth_program_count_souffle = dict()
 alps_program_count = dict()
 difflog_program_count = dict()
 
-f = open("data.log", "r")
+f = open("exp1-work/data.log", "r")
 for line in f:
 	benchmark_name = line[line.find("name: '")+7:line.find("',")]
-	benchmark_name = benchmark_name[benchmark_name.rfind("/")+1:benchmark_name.find("_")]
+	benchmark_name = benchmark_name[benchmark_name.find("/")+1:]
+	benchmark_name = benchmark_name[benchmark_name.find("/")+1:benchmark_name.rfind("/")]
 
 	program_count_z3 = line[line.find("z3:")+3:]
 	program_count_z3 = int(program_count_z3[:program_count_z3.find(",")])

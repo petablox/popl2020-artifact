@@ -65,10 +65,19 @@ export NUM_CORES=6 # (for example)
 
 Experiment 1 requires us to run all three tools, ProSynth, ALPS and Difflog. Execute the following sub-tasks:
 ```
+cd /popl2020-artifact
 ./exp1/prosynth.sh $NUM_CORES
 ./exp1/alps.sh
 ./exp1/difflog.sh $NUM_CORES
 ```
+
+The data from the first script, `./exp1/prosynth.sh` is stored in a sub-directory named `/popl2020-artifact/exp1-work`.
+This includes detailed logs from each run of ProSynth, and a summary file named `/popl2020-artifact/exp1-work/data.log`.
+After all runs are complete, it is processed to produce:
+1. the ProSynth-specific columns of Table 2 in `table2-prosynth.csv`,
+2. the non-normalized version of Figure 6b,
+3. Table 3 and Figure 8 of the main paper, and
+4. Figure 2 in the supplementary data we provided to reviewers.
 
 Reproducing Experiment 2
 ------------------------
