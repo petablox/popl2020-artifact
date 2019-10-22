@@ -65,9 +65,9 @@ export NUM_CORES=6 # (for example)
 
 Experiment 1 requires us to run all three tools, ProSynth, ALPS and Difflog. Execute the following sub-tasks:
 ```
-./exp1/prosynth.sh
+./exp1/prosynth.sh $NUM_CORES
 ./exp1/alps.sh
-./exp1/difflog.sh
+./exp1/difflog.sh $NUM_CORES
 ```
 
 Reproducing Experiment 2
