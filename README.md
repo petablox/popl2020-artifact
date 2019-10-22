@@ -31,33 +31,12 @@ cd popl2020-artifact/scripts/docker
 [sudo] docker run -it prosynth /bin/bash
 ```
 
-Hardware and Estimated Time for Reproduction
---------------------------------------------
-
-__TODO:__ How long do the experiments take to reproduce?
-
-Mukund's SAL 308 desktop
-With tsp -S 6, exp1 prepare takes 10 minutes
-With tsp -S 6, exp1 prosynth takes 4 hours and 15 minutes
-With tsp -S 4, exp2 prepare took 16 minutes
-With tsp -S 6, exp2 run takes 1hr 46 minutes
-
-We recommend having approximately 30 Gigabytes of free space to store intermediate results and log files.
-
-__TODO:__ Explain the `tsp -S` command
-
-We conducted our experiments on a server with an 18-core Xeon 6154 CPU clocked at 3 GHz and with 394 GB of RAM. However,
-we only used the multiple cores to simultaneously run multiple experiments and iterate quickly. Furthermore, all
-benchmarks are CPU-bound rather than memory-bound. We expect similar results to be obtained on workstations and laptops
-with more modest memory resources.
-
 Structure of the Experiments
 ----------------------------
 
-In our experiments, we run ProSynth in two different modes, named `nprov-S` and `nprov-Delta` respectively. We will
-explain these modes in more detail later in this documentation.
-
-All results presented in the paper arise out of two experiments:
+In our paper, we present a method of computing why-not provenance using delta debugging. Depending on whether this is
+switched on or off, ProSynth can be run in two different modes, named `nprov-S` and `nprov-Delta` respectively.
+Subsequently, all results presented in the paper arise out of two experiments:
 
 1. __Experiment 1:__ Run ProSynth (in both modes), ALPS, and Difflog on all benchmarks, with the standard set of
    candidate rules. ProSynth (in both modes) and Difflog are each run 32 times to capture variance in running times.
@@ -73,8 +52,6 @@ All results presented in the paper arise out of two experiments:
    The data from this experiment is used to produce __Figure 7__ in the main paper, and __Figure 1__ in the
    supplementary data provided to the reviewers.
 
-__TODO__: Generally note not to interpret whiskers too literally
-
 Reproducing Experiment 1
 ------------------------
 
@@ -83,5 +60,3 @@ Reproducing Experiment 2
 
 Running ProSynth on New Problems
 --------------------------------
-
-
