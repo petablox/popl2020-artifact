@@ -70,6 +70,8 @@ cd /popl2020-artifact
 ./exp1/alps.sh
 ./exp1/difflog.sh $NUM_CORES
 ```
+Note that with `NUM_CORES=6`, and running on a 3.1GHz Core i9-9900 CPU, the first command takes approximately 4 hours to
+complete.
 
 The data from the first script, `./exp1/prosynth.sh` is stored in a sub-directory named `/popl2020-artifact/exp1-work`.
 This includes detailed logs from each run of ProSynth, and a summary file named `/popl2020-artifact/exp1-work/data.log`.
@@ -79,8 +81,22 @@ After all runs are complete, it is processed to produce:
 3. Table 3 and Figure 8 of the main paper, and
 4. Figure 2 in the supplementary data we provided to reviewers.
 
+The second script stores its data in a subdirectory named `exp1-alps`, and records the ALPS-specific columns of Table 2
+in a file named `table2-alps.csv`.
+
 Reproducing Experiment 2
 ------------------------
+
+As before, fix the number of cores available in the CPU:
+```
+export NUM_CORES=6 # (for example,)
+```
+and run:
+```
+./exp2/run.sh
+```
+After a while, the script produces Figure 7 (and `f7_t.pdf` showing running time instead of number of Z3 calls), and
+Figure 1 from the supplementary data provided to reviewers.
 
 A Brief Tutorial to Using ProSynth
 ----------------------------------

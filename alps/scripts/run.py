@@ -54,7 +54,7 @@ for name in tasks:
         common_args += " --augmentation={} ".format(bench[staged][0])
         common_args += " ".join(bench[staged][1])
 
-    bid = "%s -B " % alps
+    bid = "timeout 3600 %s -B " % alps
     bid += " -K %d " % bench[bidirect][maxK]
     if maxM in bench[bidirect]:
         bid += " -M %d " % bench[bidirect][maxM]

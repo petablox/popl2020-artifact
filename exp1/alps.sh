@@ -15,9 +15,11 @@ set -e
 
 ########################################################################################################################
 
-mkdir -p exp1-alps
-cd alps
-./scripts/run.py ./alps ./data ./data/templates ../exp1-alps
-cd ..
+if [ -z "$SKIP_ALPS" ]; then
+    mkdir -p exp1-alps
+    cd alps
+    ./scripts/run.py ./alps ./data ./data/templates ../exp1-alps
+    cd ..
+fi
 ./exp1/gent2_alps.py exp1-alps
 
