@@ -90,7 +90,7 @@ fi
 #./scripts/tsp-wait.sh
 # TODO: Table 2
 # TODO: Table 3
-./exp1/plot_f6_a.py box
+./exp1/gent3.py
 ./exp1/plot_f6_b.py box
 ./exp1/plot_f8_a.py box
 ./exp1/plot_f8_b.py box
