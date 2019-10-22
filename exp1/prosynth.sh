@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 ########################################################################################################################
-# Experiment 1: Run ProSynth (with delta analysis turned on and off respecteively), ALPS and Difflog on all benchmarks
-# Produces Tables 2 and 3 and Figures 6 and 8 of the main paper
+# Experiment 1a: Run ProSynth (with delta analysis turned on and off respecteively) on all benchmarks
+# Produces Tables 2 and 3 and Figures 6b and 8 of the main paper
 # Also produces Figure 2 from the supplementary data
 
 # Intended to be run from the root directory
-# ./exp1/run.sh NUM_CORES
+# ./exp1/prosynth.sh NUM_CORES
 
 ########################################################################################################################
 # 0. Preamble
@@ -58,7 +58,7 @@ if [ -z "$SKIP_PROSYNTH" ]; then
         for BENCH in $BENCHES; do
             for DELTA in 0 1; do
                 echo "Running ProSynth on $BENCH. Delta $DELTA. Iteration $i."
-                tsp ./exp1/run-int.sh $BENCH $DELTA $i $DATA_FILE
+                tsp ./exp1/prosynth-int.sh $BENCH $DELTA $i $DATA_FILE
             done
         done
     done

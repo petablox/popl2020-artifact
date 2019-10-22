@@ -26,11 +26,21 @@ for smoother reproduction.
    b. Install the pre-requisites for ProSynth, ALPS, and Difflog. On a computer running Fedora 30, one would run the
       following command:
       ```sudo dnf install z3 z3-devel python3-z3 \
-                          autoconf automake make g++ gcc \
+                          autoconf automake make sbt \
+                          gcc gcc-c++ mcpp \
+                          python python3 \
                           flex bison \
-                          doxygen git libncurses5-dev libtool libsqlite3-dev make mcpp python sqlite zlib1g-dev
+                          doxygen git ncurses ncurses-devel libtool sqlite sqlite-devel zlib zlib-devel \
                           tsp```
-   c. In the main repository folder, `popl2020-artifact/`, run the commands: TODO!
+   c. Run the following commands in the main repository folder, `popl2020-artifact/`.
+      i. Build Souffle
+      ```cd prosynth/souffle
+         ./bootstrap
+         ./configure
+         make```
+      ii. Build Difflog
+          ```cd difflog
+             sbt compile```
 
 2. It is 
 
