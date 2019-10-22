@@ -24,6 +24,8 @@ trap cleanup SIGINT
 trap cleanup SIGTERM
 
 NUM_CORES=$1
+tsp -S $NUM_CORES
+
 ########################################################################################################################
 
 BENCHES='1-call-site 1-object 1-object-1-type 1-type 2-call-site abduce andersen animals buildwall clique cliquer '
