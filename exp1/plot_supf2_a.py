@@ -76,7 +76,7 @@ f.close()
 
 andersen_stats = dict()
 sizes = list()
-for benchmark_name in ["buildwall", "downcast", "nearlyscc", "scc", "sql-10", "sql-15"]:
+for benchmark_name in ["buildwall", "downcast", "nearlyscc", "rvcheck", "scc", "sql-10", "sql-15"]:
     andersen_stats[benchmark_name] = list(prosynth_running_time[benchmark_name])
     sizes.append(benchmark_name)
 
