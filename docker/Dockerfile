@@ -17,7 +17,7 @@ RUN curl https://bintray.com/sbt/rpm/rpm > /etc/yum.repos.d/bintray-sbt-rpm.repo
 RUN dnf install -y java java-devel sbt-1.1.1
 
 RUN git clone https://github.com/petablox/popl2020-artifact
-RUN cd popl2020-artifact/prosynth/souffle && ./boostrap && ./configure && make -j 4
+RUN ./popl2020-artifact/scripts/build.sh
 
 ########################################################################################################################
 
