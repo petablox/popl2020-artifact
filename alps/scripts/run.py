@@ -33,7 +33,7 @@ def log_result(res):
 pool = multiprocessing.Pool()
 
 
-tasks = KD_bench + PA_bench + SQL_bench
+tasks = new_bench + KD_bench + PA_bench + SQL_bench
 
 for name in tasks:
     bench = alps_config[name]

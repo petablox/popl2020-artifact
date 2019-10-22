@@ -9,6 +9,15 @@ samegen = "sgen"
 ancestor = "ancestor"
 inflamation = "inflamation"
 
+clique = "clique"
+cliquer = "cliquer"
+nearlyscc = "nearlyscc"
+rsg = "rsg"
+ship = "ship"
+small = "small"
+traffic = "traffic"
+unionfind = "union-find"
+
 
 # PA benchmarks
 rvcheck = "rvcheck"

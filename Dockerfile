@@ -1,3 +1,0 @@
-FROM fedora:30
-# RUN dnf install ...
-RUN /bin/bash

@@ -1,7 +1,7 @@
 from bench import *
 import os
 
-KD_bench = [path, scc, abduce, ancestor, animals, buildwall, samegen, inflamation]
+KD_bench = [path, scc, abduce, animals, buildwall, samegen, inflamation]
 
 PA_simpl = [rvcheck, polysite, downcast, escape, andersen, modref]
 PA_complex = [one_call_site, one_obj, one_type, one_obj_type, two_call_site]
@@ -9,8 +9,10 @@ PA_bench = PA_simpl + PA_complex
 
 SQL_bench = [sql_1, sql_2, sql_3, sql_4, sql_5, sql_6, sql_7, sql_8, sql_9, sql_10, sql_11, sql_12, sql_13, sql_14, sql_15 ]
 
+new_bench = [cliquer, nearlyscc, rsg, ship, small, traffic, unionfind]
 
 def get_template(bench):
+    return bench + ".tp"
     if bench in PA_complex:
         if bench == one_call_site:
             return "type_pointer.t"
@@ -40,6 +42,8 @@ def get_data(bench):
         data_dir = "benchmarks/pa_complex/"
     if bench in SQL_bench:
         data_dir = "sql_bench/"
+
+    data_dir = "benchmarks/"
 
     fpath = os.path.join(data_dir, fname)
     return fpath
@@ -331,5 +335,75 @@ alps_config = {
         },
         staged : (2, [chain1, filter1, chain2]),
     },
+    sql_8 : {
+        bidirect : {
+            maxK : 2,
+            maxM : 3,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    clique : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    cliquer : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    modref : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    nearlyscc : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    rsg : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    ship : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    small : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    traffic : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    },
+    unionfind : {
+        bidirect : {
+            maxK : 2,
+            maxM : 2,
+        },
+        staged : (2, [chain1, filter1, chain2]),
+    }
 }
 

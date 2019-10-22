@@ -25,13 +25,19 @@ for smoother reproduction.
    a. Clone this repository
    b. Install the pre-requisites for ProSynth, ALPS, and Difflog. On a computer running Fedora 30, one would run the
       following command:
-      ```sudo dnf install z3 z3-devel python3-z3 \
-                          autoconf automake make sbt \
+      ```
+      sudo dnf install -y git autoconf automake make \
                           gcc gcc-c++ mcpp \
                           python python3 \
                           flex bison \
-                          doxygen git ncurses ncurses-devel libtool sqlite sqlite-devel zlib zlib-devel \
-                          tsp```
+                          sqlite sqlite-devel zlib zlib-devel \
+                          z3 z3-devel python3-z3 \
+                          doxygen ncurses ncurses-devel libtool wget \
+                          task-spooler
+
+      wget -c https://download.java.net/java/GA/jdk13.0.1/cec27d702aa74d5a8630c65ae61e4305/9/GPL/openjdk-13.0.1_linux-x64_bin.tar.gz
+      tar -xf openjdk-13.0.1_linux-x64_bin.tar.gz
+      ```
    c. Run the following commands in the main repository folder, `popl2020-artifact/`.
       i. Build Souffle
       ```cd prosynth/souffle
