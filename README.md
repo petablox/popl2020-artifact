@@ -28,7 +28,7 @@ The recommended way to install this artifact is by using Docker:
 git clone https://github.com/petablox/popl2020-artifact.git
 cd popl2020-artifact/scripts/docker
 [sudo] docker build -t prosynth .
-[sudo] docker run -it prosynth /bin/bash
+[sudo] docker run -it prosynth
 ```
 When started, the container is already running an SSH daemon, with the root password set to `abc123`. Therefore, one may
 run the following command instead of the last one:
@@ -38,6 +38,7 @@ run the following command instead of the last one:
 and connect to the container via SSH connections:
 ```
 ssh -p 2200 root@localhost
+
 ```
 The argument `-p 2200:22` binds port 2200 of the host machine to port 22 of the container. This mode of operation is
 useful if one wishes to transfer data between the container and host, such as with `ssh` and `scp`.
