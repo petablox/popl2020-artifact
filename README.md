@@ -38,7 +38,6 @@ run the following command instead of the last one:
 and connect to the container via SSH connections:
 ```
 ssh -p 2200 root@localhost
-
 ```
 The argument `-p 2200:22` binds port 2200 of the host machine to port 22 of the container. This mode of operation is
 useful if one wishes to transfer data between the container and host, such as with `ssh` and `scp`.
