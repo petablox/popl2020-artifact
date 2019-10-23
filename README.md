@@ -112,7 +112,7 @@ export NUM_CORES=6 # (for example,)
 ```
 and run:
 ```
-./exp2/run.sh
+./exp2/run.sh $NUM_CORES
 ```
 After a while, the script produces Figure 7 (and `f7_t.pdf` showing running time instead of number of Z3 calls), and
 Figure 1 from the supplementary data provided to reviewers.
