@@ -38,9 +38,17 @@ run the following command instead of the last one:
 and connect to the container via SSH connections:
 ```
 ssh -p 2200 root@localhost
+root@localhost's password: abc123
 ```
 The argument `-p 2200:22` binds port 2200 of the host machine to port 22 of the container. This mode of operation is
 useful if one wishes to transfer data between the container and host, such as with `ssh` and `scp`.
+
+To uninstall the artifact, run the following commands:
+```
+[sudo] docker images           # To list the currently installed images
+[sudo] docker rmi prosynth     # To delete the prosynth image
+[sudo] docker images           # To verify successful deletion
+```
 
 Structure of the Experiments
 ----------------------------
