@@ -32,7 +32,6 @@ for filename in os.listdir(sys.argv[1]):
         rounds = None
         query_space = None
         total_time = None
-        total_time = -1.0
         refine_ct = 0
         synth_programs = 0
         f = open(os.path.join(sys.argv[1], filename), "r")
@@ -54,8 +53,7 @@ for filename in os.listdir(sys.argv[1]):
             if line.startswith("remaining specific programs:"):
                 synth_programs += int(line.strip()[28:])
         f.close()
-        f_t2.write(benchmark_name + ",")
-        f_t2.write(str(total_time / 1000.) + ",")
-        f_t2.write(str(refine_ct) + "\n")
+        if total_time is not None: print(f'{benchmark_name}, {total_time / 1000.}, {refine_ct}', file=f_t2)
+        else: print(f'{benchmark_name}, timeout, timeout', file=f_t2)
         
 f_t2.close()

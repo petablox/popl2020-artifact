@@ -28,8 +28,23 @@ tsp -S $NUM_CORES
 
 ########################################################################################################################
 
-BENCHES='1-call-site 1-object 1-object-1-type 1-type 2-call-site abduce andersen animals buildwall clique cliquer '
+BENCHES='1-call-site 1-object 1-object-1-type 1-type 2-call-site abduce andersen animals buildwall cliquer '
 BENCHES+='downcast escape inflamation modref nearlyscc path polysite rsg rvcheck scc sgen ship small '
 BENCHES+='sql-01 sql-02 sql-03 sql-04 sql-05 sql-06 sql-07 sql-08 sql-09 sql-10 sql-11 sql-12 sql-13 sql-14 sql-15 '
 BENCHES+='traffic union-find'
 
+if [ -z "$NUM_REPS" ]; then
+    NUM_REPS=32
+fi
+
+mkdir -p exp1-difflog
+
+for i in `seq 1 $NUM_REPS`; do
+    for BENCH in $BENCHES; do
+        echo "Running Difflog on $BENCH. Iteration $i."
+        tsp ./exp1/difflog-int.sh $BENCH $i $DATA_FILE
+        sleep 5
+    done
+done
+
+./scripts/tsp-wait.sh

@@ -24,9 +24,11 @@ trap cleanup SIGINT
 trap cleanup SIGTERM
 
 NUM_CORES=$1
+tsp -S $NUM_CORES
+
 ########################################################################################################################
 
-BENCHES='1-call-site 1-object 1-object-1-type 1-type 2-call-site abduce andersen animals buildwall clique cliquer '
+BENCHES='1-call-site 1-object 1-object-1-type 1-type 2-call-site abduce andersen animals buildwall cliquer '
 BENCHES+='downcast escape inflamation modref nearlyscc path polysite rsg rvcheck scc sgen ship small '
 BENCHES+='sql-01 sql-02 sql-03 sql-04 sql-05 sql-06 sql-07 sql-08 sql-09 sql-10 sql-11 sql-12 sql-13 sql-14 sql-15 '
 BENCHES+='traffic union-find'
@@ -62,34 +64,14 @@ if [ -z "$SKIP_PROSYNTH" ]; then
             done
         done
     done
+    ./scripts/tsp-wait.sh
 else
     echo "Skipping ProSynth!"
 fi
 
+# 3. Plot figures
 
-# 3. Run Difflog
-
-if [ -z "$SKIP_DIFFLOG" ]; then
-    mkdir -p exp1-difflog
-    DATA_FILE=./exp1-difflog/data.log
-    > $DATA_FILE
-    for i in `seq 1 $NUM_REPS`; do
-        for BENCH in $BENCHES; do
-            echo "Running Difflog on $BENCH. Iteation $i."
-            tsp ./exp1/run-difflog.sh $BENCH $i $DATA_FILE
-        done
-    done
-else
-    echo "Skipping Difflog"
-fi
-
-# 4. Run ALPS
-
-# 5. Plot figures
-
-#./scripts/tsp-wait.sh
-# TODO: Table 2
-# TODO: Table 3
+./exp1/gent2_prosynth.py
 ./exp1/gent3.py
 ./exp1/plot_f6_b.py box
 ./exp1/plot_f8_a.py box
