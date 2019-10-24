@@ -45,6 +45,10 @@ To uninstall the artifact, run the following commands:
 [sudo] docker images           # To verify successful deletion
 ```
 
+__Hardware Requirements.__ We ran the experiments on a Xeon 6154 CPU with 18 cores and 36 threads. The system was
+equipped with 394 GB of RAM, and was running the Ubuntu 18.04 LTS operating system over the Linux kernel version 4.15.
+The container image was composed using Docker version 19.04.
+
 Structure of the Experiments
 ----------------------------
 
