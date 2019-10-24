@@ -11,11 +11,6 @@ Programs_. The paper presents a new algorithm to synthesize Datalog programs fro
 implemented this algorithm in a tool named ProSynth, and benchmarked them against the existing solvers, ALPS and
 Difflog.
 
-The paper is accessible from https://r-mukund.github.io/pdf/2019-Prosynth.pdf. The paper reviews may be found at
-https://www.dropbox.com/s/pk5qunsrcbe51ip/reviews.txt, and our response and supplementary data are available at
-https://www.dropbox.com/s/cnephfo5d9drtxs/rebuttal.txt and https://www.dropbox.com/s/82gyotioahgrm6p/rebuttal-app.pdf
-respectively.
-
 This artifact contains all three tools (ProSynth, ALPS, and Difflog), benchmark files, and scripts to reproduce the
 experiments described in the paper. In this document, we will describe the outline of these experiments, how to run
 them, and also describe how one may use ProSynth to solve Datalog synthesis problems of their own.
