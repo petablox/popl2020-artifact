@@ -73,7 +73,6 @@ fi
 
 ./exp1/gent2_prosynth.py
 ./exp1/gent3.py
-./exp1/plot_f6_b.py box
 ./exp1/plot_f8_a.py box
 ./exp1/plot_f8_b.py box
 ./exp1/plot_supf2_a.py box
