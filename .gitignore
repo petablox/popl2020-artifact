@@ -2,6 +2,8 @@
 *.csv
 data.log
 exp1-work
+exp1-alps
+exp1-difflog
 exp2-work
 f6_a.pdf
 f6_b.pdf
