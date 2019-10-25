@@ -88,6 +88,7 @@ cd /popl2020-artifact
 ./exp1/prosynth.sh $NUM_CORES
 ./exp1/alps.sh
 ./exp1/difflog.sh $NUM_CORES
+./exp1/plot_f6_b.py
 ```
 Note that with `NUM_CORES=6`, and running on a 3.1GHz Core i9-9900 CPU, the first command takes approximately 4 hours to
 complete.
@@ -101,8 +102,8 @@ After all runs are complete, it is processed to produce:
 4. Figure 2 in the supplementary data we provided to reviewers.
 
 The second script stores its data in a subdirectory named `exp1-alps`, and records the ALPS-specific columns of Table 2
-in a file named `table2-alps.csv`. The final script stores its data in a subdirectory named `exp1-difflog`, and produces
-the files `table2-difflog.csv` and `f6_a.pdf`.
+in a file named `table2-alps.csv`. The third script stores its data in a subdirectory named `exp1-difflog`, and produces
+the files `table2-difflog.csv` and `f6_a.pdf`, and the final script produces Figure 6b.
 
 We note that the maximum and minimum measured values (such as the ends of the whiskers in the plots and the last two
 columns of Table 3) vary significantly across runs. Aggregate values, such as the median values, are less susceptible to
