@@ -101,7 +101,12 @@ After all runs are complete, it is processed to produce:
 4. Figure 2 in the supplementary data we provided to reviewers.
 
 The second script stores its data in a subdirectory named `exp1-alps`, and records the ALPS-specific columns of Table 2
-in a file named `table2-alps.csv`.
+in a file named `table2-alps.csv`. The final script stores its data in a subdirectory named `exp1-difflog`, and produces
+the files `table2-difflog.csv` and `f6_a.pdf`.
+
+We note that the maximum and minimum measured values (such as the ends of the whiskers in the plots and the last two
+columns of Table 3) vary significantly across runs. Aggregate values, such as the median values, are less susceptible to
+variations of this form.
 
 Reproducing Experiment 2
 ------------------------
@@ -116,6 +121,16 @@ and run:
 ```
 After a while, the script produces Figure 7 (and `f7_t.pdf` showing running time instead of number of Z3 calls), and
 Figure 1 from the supplementary data provided to reviewers.
+
+### Notes
+
+1. As before, we note that the ends of the whiskers can vary significantly between runs as they record the extreme
+   values of a set of random variables. Measures of central tendency, such as the median represented by the orange line,
+   exhibits a much more robust and stable trend across experimental runs.
+
+2. Because of an error in the way the experiment was set up, the Y-axis in Figure 1 from the supplementary data is an
+  order-of-magnitude smaller than reported, but our central claim, that the running time of ProSynth grows modestly with
+  the number of candidate rules, continues to hold.
 
 A Brief Tutorial to Using ProSynth
 ----------------------------------

@@ -13,7 +13,7 @@ RUN dnf install -y git autoconf automake make \
                    sqlite sqlite-devel zlib zlib-devel \
                    z3 z3-devel python3-z3 \
                    doxygen ncurses ncurses-devel libtool libffi libffi-devel wget python3-matplotlib graphviz \
-                   task-spooler which procps passwd openssh-server
+                   task-spooler which procps passwd openssh-server vim
 RUN curl https://bintray.com/sbt/rpm/rpm > /etc/yum.repos.d/bintray-sbt-rpm.repo
 RUN dnf install -y java java-devel sbt-1.1.1
 

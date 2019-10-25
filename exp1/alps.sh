@@ -20,6 +20,8 @@ if [ -z "$SKIP_ALPS" ]; then
     cd alps
     ./scripts/run.py ./alps ./data ./data/templates ../exp1-alps
     cd ..
+else
+    echo "Skipping ALPS run!"
 fi
 ./exp1/gent2_alps.py exp1-alps
 

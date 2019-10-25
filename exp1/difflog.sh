@@ -37,14 +37,19 @@ if [ -z "$NUM_REPS" ]; then
     NUM_REPS=32
 fi
 
-mkdir -p exp1-difflog
-
-for i in `seq 1 $NUM_REPS`; do
-    for BENCH in $BENCHES; do
-        echo "Running Difflog on $BENCH. Iteration $i."
-        tsp ./exp1/difflog-int.sh $BENCH $i $DATA_FILE
-        sleep 5
+if [ -z "$SKIP_DIFFLOG" ]; then
+    mkdir -p exp1-difflog
+    for i in `seq 1 $NUM_REPS`; do
+        for BENCH in $BENCHES; do
+            echo "Running Difflog on $BENCH. Iteration $i."
+            tsp ./exp1/difflog-int.sh $BENCH $i $DATA_FILE
+            sleep 1
+        done
     done
-done
+    ./scripts/tsp-wait.sh
+else
+    echo "Skipping Difflog run!"
+fi
 
-./scripts/tsp-wait.sh
+./exp1/gent2_difflog.py
+./exp1/plot_f6_a.py

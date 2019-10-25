@@ -12,7 +12,6 @@ SQL_bench = [sql_1, sql_2, sql_3, sql_4, sql_5, sql_6, sql_7, sql_8, sql_9, sql_
 new_bench = [cliquer, nearlyscc, rsg, ship, small, traffic, unionfind]
 
 def get_template(bench):
-    return bench + ".tp"
     if bench in PA_complex:
         if bench == one_call_site:
             return "type_pointer.t"
@@ -27,7 +26,7 @@ def get_template(bench):
     elif bench in [andersen, modref]:
         return "default.t"
     else:
-        return None
+        return f'{bench}.t'
 
 
 def get_data(bench):
