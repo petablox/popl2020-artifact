@@ -55,7 +55,7 @@ flatStats = [ prosynthStats[bench] for bench in sortedBenches ]
 ########################################################################################################################
 
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use("Agg")
 matplotlib.rcParams['pdf.fonttype'] = 42
 
 import matplotlib.pyplot as plt

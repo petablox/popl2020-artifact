@@ -3,7 +3,7 @@
 import numpy as np
 
 import matplotlib
-matplotlib.use("TkAgg")
+matplotlib.use("Agg")
 matplotlib.rcParams['pdf.fonttype'] = 42
 
 import matplotlib.pyplot as plt
