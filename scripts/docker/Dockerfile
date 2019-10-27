@@ -22,11 +22,10 @@ RUN cd root; \
     tar -xf z3-4.8.6.tar.gz; \
     cd z3-z3-4.8.6; \
         mkdir -p /usr/local/lib/python3.6/dist-packages; \
-        python scripts/mk_make.py --pypkgdir=/usr/local/lib/python3.6/dist-packages; \
+        python scripts/mk_make.py --python --pypkgdir=/usr/local/lib/python3.6/dist-packages; \
         cd build; \
             make -j 8; \
-            make install; \
-            cp -r python /usr/local/lib/python3.6/dist-packages/z3
+            make install
 
 RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list && \
     curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | apt-key add && \
