@@ -355,13 +355,6 @@ alps_config = {
         },
         staged : (2, [chain1, filter1, chain2]),
     },
-    modref : {
-        bidirect : {
-            maxK : 2,
-            maxM : 2,
-        },
-        staged : (2, [chain1, filter1, chain2]),
-    },
     nearlyscc : {
         bidirect : {
             maxK : 2,

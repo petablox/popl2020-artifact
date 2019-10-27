@@ -25,18 +25,14 @@ cd popl2020-artifact/scripts/docker
 [sudo] docker build -t prosynth .
 [sudo] docker run -it prosynth
 ```
-When started, the container is already running an SSH daemon, with the root password set to `abc123`. Therefore, one may
-run the following command instead of the last one:
+The list of running containers may be obtained by executing the following command on the host:
 ```
-[sudo] docker run -it -p 2200:22 prosynth
+[sudo] docker container ls
 ```
-and connect to the container via SSH connections:
+Each container is automatically assigned a mnemonic name, using which one may open new Bash prompts as follows:
 ```
-ssh -p 2200 root@localhost
-root@localhost's password: abc123
+[sudo] docker exec -it $NAME /bin/bash
 ```
-The argument `-p 2200:22` binds port 2200 of the host machine to port 22 of the container. This mode of operation is
-useful if one wishes to transfer data between the container and host, such as with `ssh` and `scp`.
 
 To uninstall the artifact, run the following commands:
 ```
