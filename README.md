@@ -105,6 +105,9 @@ We note that the maximum and minimum measured values (such as the ends of the wh
 columns of Table 3) vary significantly across runs. Aggregate values, such as the median values, are less susceptible to
 variations of this form.
 
+We also note that because of a historical mistake, the benchmark named `samegen` in the paper corresponds to the
+benchmark named `sgen` in the artifact.
+
 Reproducing Experiment 2
 ------------------------
 
@@ -158,7 +161,7 @@ A Brief Tutorial to Using ProSynth
 
 2. Placing the training data:
    1. For each input relation `Rin`, place the set of tuples in the training data in a file named `Rin.facts`.
-   2. For each output relation `Rout`, place the set of expected output tuples in a file named `Rout.facts`.
+   2. For each output relation `Rout`, place the set of expected output tuples in a file named `Rout.expected`.
 
 3. Create a file named `rules.small.dl` using any of the existing benchmarks as a template.
 
