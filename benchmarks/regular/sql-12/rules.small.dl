@@ -1,47 +1,1031 @@
-.type sname
-.type color
-.type supplier_key
 .type part_id
+.type sname
+.type supplier_key
+.type color
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
+
+.decl input1(v0: supplier_key, v1: part_id)
+.input input1
 
 .decl isRed(v0: color)
 .input isRed
+
 .decl isGreen(v0: color)
 .input isGreen
-.decl input3(v0: supplier_key, v1: sname)
-.input input3
-.decl input1(v0: supplier_key, v1: part_id)
-.input input1
+
 .decl input2(v0: part_id, v1: color)
 .input input2
 
-.decl inv(v0: part_id, v1: color)
-.output inv
+.decl input3(v0: supplier_key, v1: sname)
+.input input3
+
+.decl invent_sel(v0: part_id, v1: color)
+.output invent_sel
 
 .decl ans(v0: sname)
 .output ans
 
-inv(v1, v2) :- input1(v0, v1), input2(v1, v2), input2(v3, v2), Rule(20).
-inv(v0, v1) :- input2(v0, v1), isRed(v1), Rule(2).
-inv(v0, v3) :- input2(v0, v1), inv(v2, v1), inv(v2, v3), Rule(14).
-inv(v0, v1) :- input2(v0, v1), isGreen(v1), Rule(6).
-inv(v0, v1) :- input2(v0, v1), input2(v2, v1), inv(v0, v3), Rule(7).
-inv(v3, v2) :- input2(v0, v1), inv(v0, v2), inv(v3, v1), Rule(17).
-inv(v0, v1) :- input2(v0, v1), Rule(9).
-inv(v1, v3) :- input1(v0, v1), input1(v0, v2), input2(v2, v3), Rule(10).
-inv(v1, v2) :- input1(v0, v1), input2(v1, v2), inv(v3, v2), Rule(8).
-inv(v3, v1) :- input2(v0, v1), input2(v0, v2), inv(v3, v2), Rule(11).
-ans(v3) :- inv(v0, v1), input1(v2, v0), input3(v2, v3), Rule(21).
-inv(v3, v1) :- input2(v0, v1), inv(v0, v2), input2(v3, v2), Rule(3).
-inv(v3, v1) :- inv(v0, v1), inv(v0, v2), inv(v3, v2), Rule(18).
-inv(v0, v2) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(16).
-inv(v0, v2) :- input2(v0, v1), input2(v0, v2), inv(v3, v2), Rule(0).
-inv(v2, v3) :- input2(v0, v1), input2(v2, v1), inv(v0, v3), Rule(4).
-inv(v3, v1) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(1).
-inv(v1, v3) :- input1(v0, v1), input1(v0, v2), inv(v2, v3), Rule(5).
-ans(v1) :- input3(v0, v1), Rule(13).
-inv(v3, v1) :- input2(v0, v1), inv(v0, v2), inv(v3, v2), Rule(19).
-inv(v0, v1) :- input2(v0, v1), inv(v0, v2), inv(v3, v1), Rule(12).
-ans(v3) :- input2(v0, v1), input1(v2, v0), input3(v2, v3), Rule(15).
+
+
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), Rule(1).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(2).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), Rule(3).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v0, v1), input2(v0, v1), Rule(4).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v0, v1), input2(v0, v3), Rule(5).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(6).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(7).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), Rule(8).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(9).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(10).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v3), invent_sel(v0, v3), Rule(11).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), Rule(12).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(13).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(14).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(15).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), Rule(16).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(17).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(18).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), isGreen(v1), input2(v0, v1), input2(v0, v1), Rule(19).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v3), Rule(20).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(21).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), Rule(22).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(23).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), Rule(24).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(25).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(26).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(27).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(28).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(29).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(30).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(31).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(32).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(33).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(34).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(35).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(36).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), Rule(37).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(38).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(39).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(40).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(41).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), Rule(42).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(43).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), Rule(44).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), Rule(45).
+inv(v1, v2) :- input1(v0, v1), input2(v1, v2), input2(v3, v2), Rule(46).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), input2(v0, v1), input2(v0, v1), Rule(47).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), Rule(48).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v1), input2(v0, v1), Rule(49).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(50).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(51).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(52).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(53).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(54).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(55).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v2, v1), Rule(56).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), Rule(57).
+inv(v3, v1) :- input2(v0, v1), inv(v0, v2), input2(v3, v2), Rule(58).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(59).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(60).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(61).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v1), Rule(62).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(63).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), Rule(64).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(65).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(66).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(67).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v3), Rule(68).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), Rule(69).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(70).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(71).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(72).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(73).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), Rule(74).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(75).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(76).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(77).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(78).
+inv(v0, v1) :- input2(v0, v1), inv(v0, v2), inv(v3, v1), Rule(79).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(80).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), Rule(81).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(82).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v0, v3), Rule(83).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(84).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(85).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(86).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(87).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(88).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(89).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(90).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(91).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(92).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(93).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(94).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(95).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(96).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(97).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v2, v1), Rule(98).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(99).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(100).
+ans(v0) :- ans(v1), ans(v0), ans(v0), ans(v1), Rule(101).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(102).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(103).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(104).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(105).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v2, v1), Rule(106).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v2, v1), Rule(107).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(108).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(109).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(110).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(111).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(112).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), Rule(113).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(114).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(115).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(116).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(117).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), Rule(118).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(119).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(120).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(121).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v2, v3), Rule(122).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(123).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(124).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(125).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(126).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(127).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(128).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(129).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(130).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v2, v1), Rule(131).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), Rule(132).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(133).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(134).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(135).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(136).
+inv(v0, v3) :- input2(v0, v1), inv(v2, v1), inv(v2, v3), Rule(137).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(138).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(139).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v1), Rule(140).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(141).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(142).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(143).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(144).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(145).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v2, v1), Rule(146).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(147).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v2, v1), Rule(148).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(149).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v0, v1), Rule(150).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(151).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v2, v3), Rule(152).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v3), Rule(153).
+Out(sname) :- input3(sid, sname), input1(sid, pid), A(pid, cl), Rule(154).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(155).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(156).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(157).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v0, v3), Rule(158).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(159).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(160).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v0, v3), Rule(161).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(162).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(163).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(164).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(165).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(166).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), Rule(167).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(168).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(169).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(170).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v0, v3), Rule(171).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(172).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(173).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(174).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(175).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(176).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(177).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(178).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(179).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(180).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(181).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(182).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v0, v1), Rule(183).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(184).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), Rule(185).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v2, v3), Rule(186).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v2, v3), Rule(187).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), Rule(188).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(189).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(190).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(191).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(192).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), Rule(193).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v2, v3), Rule(194).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(195).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(196).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(197).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(198).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(199).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(200).
+inv(v1, v3) :- input1(v0, v1), input1(v0, v2), inv(v2, v3), Rule(201).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v2, v1), Rule(202).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(203).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v0, v3), Rule(204).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(205).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v0, v1), input2(v2, v3), Rule(206).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(207).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v3), Rule(208).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(209).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(210).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), Rule(211).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(212).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(213).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v0, v1), Rule(214).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(215).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(216).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(217).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(218).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(219).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(220).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), Rule(221).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v0, v3), invent_sel(v2, v1), Rule(222).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(223).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(224).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), Rule(225).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(226).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(227).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v0, v1), Rule(228).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(229).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(230).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v1), Rule(231).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(232).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(233).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(234).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(235).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(236).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v2, v3), Rule(237).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(238).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(239).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), Rule(240).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), Rule(241).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(242).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(243).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(244).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(245).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), Rule(246).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(247).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(248).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(249).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(250).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v0, v3), Rule(251).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v2, v3), input2(v0, v3), Rule(252).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(253).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), Rule(254).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v2, v3), Rule(255).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v2, v1), Rule(256).
+inv(v3, v2) :- input2(v0, v1), inv(v0, v2), inv(v3, v1), Rule(257).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(258).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), Rule(259).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), Rule(260).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(261).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v0, v3), input2(v2, v3), Rule(262).
+ans(v0) :- ans(v1), ans(v0), ans(v1), ans(v1), ans(v0), Rule(263).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(264).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(265).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(266).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), Rule(267).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(268).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(269).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(270).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v2, v1), Rule(271).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(272).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), Rule(273).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(274).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(275).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(276).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), Rule(277).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), Rule(278).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(279).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(280).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(281).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), Rule(282).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v2, v1), Rule(283).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), input2(v2, v1), input2(v0, v3), Rule(284).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(285).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(286).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(287).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(288).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(289).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(290).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(291).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(292).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(293).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(294).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(295).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(296).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(297).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v2, v3), Rule(298).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v0, v1), Rule(299).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(300).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(301).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), Rule(302).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(303).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(304).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), Rule(305).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v2, v1), Rule(306).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(307).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v0, v3), Rule(308).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(309).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(310).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(311).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(312).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(313).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(314).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(315).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(316).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(317).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(318).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v2, v3), Rule(319).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(320).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(321).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(322).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(323).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(324).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), Rule(325).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v1), input2(v0, v3), invent_sel(v0, v3), Rule(326).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(327).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(328).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v0, v1), Rule(329).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(330).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), Rule(331).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), Rule(332).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(333).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(334).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(335).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v2, v3), input2(v2, v3), Rule(336).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(337).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(338).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(339).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(340).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(341).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(342).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(343).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(344).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v0, v3), Rule(345).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(346).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(347).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(348).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(349).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(350).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(351).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v3), Rule(352).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(353).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v2, v1), invent_sel(v0, v3), Rule(354).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(355).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(356).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v0, v1), Rule(357).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(358).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v0, v1), Rule(359).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(360).
+inv(v3, v1) :- input2(v0, v1), input2(v0, v2), inv(v3, v2), Rule(361).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(362).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(363).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(364).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v3), Rule(365).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(366).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(367).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(368).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(369).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(370).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(371).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(372).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(373).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(374).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(375).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(376).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(377).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(378).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(379).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(380).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(381).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), Rule(382).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(383).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), Rule(384).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(385).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(386).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(387).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(388).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), Rule(389).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v1), input2(v2, v1), Rule(390).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(391).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(392).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(393).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), input2(v0, v3), input2(v2, v1), Rule(394).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v2, v3), Rule(395).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v0, v3), Rule(396).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(397).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(398).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(399).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v0, v1), Rule(400).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), Rule(401).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(402).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(403).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(404).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(405).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(406).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(407).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(408).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(409).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(410).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(411).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), Rule(412).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(413).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(414).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v2, v3), invent_sel(v2, v1), Rule(415).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), Rule(416).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(417).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v3), Rule(418).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(419).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(420).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(421).
+ans(v0) :- ans(v0), ans(v0), ans(v1), ans(v1), ans(v0), Rule(422).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(423).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(424).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), Rule(425).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), Rule(426).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(427).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(428).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(429).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(430).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(431).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(432).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(433).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(434).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v2, v3), Rule(435).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(436).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v1), Rule(437).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), Rule(438).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(439).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(440).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(441).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(442).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v3), Rule(443).
+ans(v1) :- input3(v0, v1), Rule(444).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), Rule(445).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(446).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), Rule(447).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(448).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), Rule(449).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(450).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(451).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), Rule(452).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), Rule(453).
+inv(v0, v1) :- input2(v0, v1), Rule(454).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(455).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v2, v1), Rule(456).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(457).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(458).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v0, v1), Rule(459).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(460).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(461).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(462).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(463).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), Rule(464).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), Rule(465).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(466).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), Rule(467).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(468).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(469).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(470).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v2, v1), invent_sel(v0, v1), Rule(471).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(472).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(473).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v2, v3), Rule(474).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(475).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(476).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), Rule(477).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(478).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(479).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(480).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v0, v3), Rule(481).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(482).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(483).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(484).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v2, v3), Rule(485).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(486).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(487).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(488).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(489).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(490).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(491).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(492).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(493).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v0, v1), Rule(494).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(495).
+ans(v0) :- ans(v1), ans(v0), ans(v1), ans(v0), Rule(496).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(497).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(498).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v1), Rule(499).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(500).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v2, v1), input2(v0, v1), Rule(501).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(502).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(503).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(504).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), Rule(505).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(506).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(507).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(508).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(509).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(510).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(511).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(512).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(513).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v2, v1), Rule(514).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(515).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), input2(v2, v1), Rule(516).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(517).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(518).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(519).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(520).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), Rule(521).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(522).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), Rule(523).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(524).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(525).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(526).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), Rule(527).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v2, v3), Rule(528).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(529).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(530).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v0, v1), invent_sel(v2, v1), Rule(531).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), Rule(532).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v2, v1), input2(v0, v1), Rule(533).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(534).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(535).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v0, v1), Rule(536).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(537).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(538).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(539).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(540).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v1), input2(v2, v3), Rule(541).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), Rule(542).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), Rule(543).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(544).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(545).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(546).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(547).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(548).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(549).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(550).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(551).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v1), Rule(552).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(553).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(554).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), isRed(v1), input2(v0, v1), Rule(555).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(556).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(557).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v0, v1), invent_sel(v0, v1), Rule(558).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(559).
+inv(v0, v1) :- input2(v0, v1), isRed(v1), Rule(560).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), Rule(561).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(562).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(563).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), Rule(564).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(565).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(566).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(567).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v0, v3), Rule(568).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(569).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(570).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v2, v3), Rule(571).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v2, v3), Rule(572).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(573).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(574).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(575).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(576).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(577).
+invent_sel(v0, v1) :- input2(v0, v1), Rule(578).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(579).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(580).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), isRed(v1), input2(v0, v1), input2(v0, v1), Rule(581).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(582).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(583).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(584).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), input2(v2, v3), invent_sel(v2, v3), Rule(585).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(586).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(587).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v2, v1), Rule(588).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(589).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v3), Rule(590).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(591).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v2, v1), Rule(592).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v2, v3), Rule(593).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(594).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(595).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), Rule(596).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(597).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(598).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(599).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(600).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(601).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(602).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(603).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(604).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(605).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v0, v1), Rule(606).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v0, v1), Rule(607).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v2, v1), Rule(608).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(609).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), invent_sel(v0, v1), Rule(610).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(611).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v2, v1), Rule(612).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(613).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(614).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(615).
+inv(v2, v3) :- input2(v0, v1), input2(v2, v1), inv(v0, v3), Rule(616).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(617).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(618).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(619).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(620).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(621).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(622).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(623).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(624).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(625).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(626).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(627).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v3), Rule(628).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v3), input2(v0, v1), Rule(629).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(630).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(631).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(632).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v0, v1), Rule(633).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v2, v3), Rule(634).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), Rule(635).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(636).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), Rule(637).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v3), Rule(638).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(639).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v0, v3), input2(v2, v3), Rule(640).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(641).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v1), invent_sel(v0, v3), Rule(642).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(643).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(644).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(645).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(646).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(647).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(648).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v3), Rule(649).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(650).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v1), Rule(651).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(652).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v3), input2(v2, v1), input2(v2, v3), Rule(653).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(654).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), Rule(655).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(656).
+inv(v1, v2) :- input1(v0, v1), input2(v1, v2), inv(v3, v2), Rule(657).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(658).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(659).
+A(pid, cl) :- input2(pid, cl), isGreen(cl), Rule(660).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(661).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), Rule(662).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), Rule(663).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), Rule(664).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(665).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(666).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(667).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(668).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v0, v1), Rule(669).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(670).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(671).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(672).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(673).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(674).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(675).
+ans(v3) :- inv(v0, v1), input1(v2, v0), input3(v2, v3), Rule(676).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(677).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(678).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v1), invent_sel(v0, v1), Rule(679).
+inv(v0, v2) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(680).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), isGreen(v1), input2(v0, v1), invent_sel(v0, v1), Rule(681).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(682).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(683).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(684).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(685).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(686).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(687).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(688).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), input2(v0, v3), input2(v2, v1), Rule(689).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v0, v3), Rule(690).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v1), Rule(691).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), Rule(692).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(693).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(694).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(695).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(696).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v1), Rule(697).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(698).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(699).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(700).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), Rule(701).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(702).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(703).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(704).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(705).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), Rule(706).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(707).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(708).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(709).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(710).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(711).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(712).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(713).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v2, v3), Rule(714).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(715).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v0, v1), Rule(716).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(717).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(718).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v0, v1), Rule(719).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), input2(v0, v1), Rule(720).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(721).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(722).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v3), Rule(723).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), isGreen(v1), invent_sel(v0, v1), Rule(724).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v0, v1), Rule(725).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(726).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(727).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(728).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(729).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(730).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(731).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v1), Rule(732).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(733).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(734).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(735).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), Rule(736).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v2, v1), Rule(737).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(738).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v2, v3), Rule(739).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(740).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(741).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(742).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(743).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(744).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v1), input2(v2, v1), Rule(745).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), invent_sel(v2, v1), Rule(746).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v2, v3), invent_sel(v2, v1), Rule(747).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(748).
+A(pid, cl) :- input2(pid, cl), isRed(cl), Rule(749).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), Rule(750).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(751).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(752).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(753).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), input2(v0, v1), invent_sel(v2, v3), Rule(754).
+ans(v0) :- ans(v0), ans(v1), ans(v1), ans(v1), ans(v1), Rule(755).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(756).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(757).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(758).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(759).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(760).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(761).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(762).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(763).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(764).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v3), input2(v2, v1), Rule(765).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(766).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v0, v1), Rule(767).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(768).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v2, v1), Rule(769).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(770).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v2, v1), Rule(771).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(772).
+inv(v0, v2) :- input2(v0, v1), input2(v0, v2), inv(v3, v2), Rule(773).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(774).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(775).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(776).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), Rule(777).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(778).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(779).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(780).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v2, v1), Rule(781).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(782).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(783).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), Rule(784).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(785).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v0, v3), Rule(786).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), input2(v2, v3), input2(v2, v3), Rule(787).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v1), input2(v0, v1), Rule(788).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), input2(v0, v1), invent_sel(v2, v1), Rule(789).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(790).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v3), Rule(791).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v0, v3), Rule(792).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(793).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(794).
+invent_sel(v0, v1) :- isRed(v1), isGreen(v1), isGreen(v1), isGreen(v1), input2(v0, v1), Rule(795).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(796).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(797).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(798).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(799).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(800).
+ans(v0) :- ans(v1), ans(v1), ans(v0), ans(v1), Rule(801).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(802).
+inv(v3, v1) :- inv(v0, v1), inv(v0, v2), inv(v3, v2), Rule(803).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(804).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v2, v3), Rule(805).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(806).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(807).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(808).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(809).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(810).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), Rule(811).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(812).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(813).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v0, v1), Rule(814).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v0, v1), invent_sel(v0, v3), Rule(815).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(816).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), Rule(817).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), Rule(818).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v0, v3), Rule(819).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(820).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), Rule(821).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(822).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v1), Rule(823).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v0, v1), Rule(824).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(825).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v2, v1), input2(v2, v1), Rule(826).
+inv(v1, v3) :- input1(v0, v1), input1(v0, v2), input2(v2, v3), Rule(827).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(828).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v0, v1), Rule(829).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), Rule(830).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), Rule(831).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(832).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(833).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(834).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(835).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(836).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), Rule(837).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(838).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v1), input2(v2, v3), Rule(839).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(840).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(841).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(842).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(843).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(844).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(845).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(846).
+inv(v0, v1) :- input2(v0, v1), input2(v2, v1), inv(v0, v3), Rule(847).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v3), input2(v0, v1), Rule(848).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(849).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(850).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(851).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(852).
+inv(v3, v1) :- input2(v0, v1), inv(v0, v2), inv(v3, v2), Rule(853).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v1), Rule(854).
+inv(v0, v1) :- input2(v0, v1), isGreen(v1), Rule(855).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(856).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v3), input2(v0, v3), input2(v2, v1), Rule(857).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(858).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(859).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(860).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), Rule(861).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), Rule(862).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(863).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v1), Rule(864).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v0, v1), Rule(865).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(866).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(867).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(868).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), invent_sel(v0, v3), Rule(869).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(870).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(871).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(872).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v3), Rule(873).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(874).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(875).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(876).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(877).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), input2(v2, v1), Rule(878).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v2, v3), Rule(879).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(880).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(881).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), Rule(882).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), Rule(883).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v2, v1), invent_sel(v0, v3), Rule(884).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), input2(v2, v3), Rule(885).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(886).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(887).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), invent_sel(v2, v1), Rule(888).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(889).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v1), Rule(890).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), Rule(891).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(892).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v1), Rule(893).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(894).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(895).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(896).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v1), input2(v0, v3), invent_sel(v2, v3), Rule(897).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(898).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(899).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), Rule(900).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(901).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(902).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(903).
+inv(v3, v1) :- input2(v0, v1), input2(v0, v2), input2(v3, v2), Rule(904).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(905).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v0, v1), Rule(906).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), isGreen(v1), input2(v0, v1), Rule(907).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v1), input2(v0, v1), Rule(908).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(909).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v0, v3), invent_sel(v0, v1), Rule(910).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(911).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(912).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v0, v3), Rule(913).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(914).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v0, v1), input2(v2, v1), Rule(915).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(916).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v2, v1), input2(v0, v1), input2(v0, v3), Rule(917).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), Rule(918).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v3), invent_sel(v2, v3), Rule(919).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(920).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), Rule(921).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), Rule(922).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(923).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(924).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), input2(v0, v1), input2(v2, v1), Rule(925).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v1), Rule(926).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v0, v1), input2(v0, v1), Rule(927).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v0, v3), Rule(928).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(929).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v2, v3), invent_sel(v2, v1), Rule(930).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v3), input2(v2, v3), input2(v0, v1), Rule(931).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v0, v1), input2(v2, v3), invent_sel(v2, v1), Rule(932).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v1), Rule(933).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(934).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v0, v1), Rule(935).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(936).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v3), Rule(937).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v1), input2(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(938).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(939).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(940).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v1), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(941).
+invent_sel(v0, v1) :- invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(942).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), invent_sel(v0, v1), Rule(943).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v3), Rule(944).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v0, v3), invent_sel(v2, v1), Rule(945).
+invent_sel(v0, v1) :- isRed(v1), isRed(v1), input2(v0, v1), invent_sel(v0, v1), invent_sel(v0, v1), Rule(946).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(947).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v2, v3), Rule(948).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v0, v3), Rule(949).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(950).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(951).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v2, v3), invent_sel(v2, v1), Rule(952).
+invent_sel(v0, v1) :- isGreen(v1), isGreen(v1), input2(v0, v1), invent_sel(v0, v1), Rule(953).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(954).
+invent_sel(v0, v1) :- isRed(v1), invent_sel(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), invent_sel(v0, v1), Rule(955).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v3), Rule(956).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), input2(v0, v3), invent_sel(v0, v1), Rule(957).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(958).
+invent_sel(v0, v1) :- invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(959).
+ans(v3) :- input2(v0, v1), input1(v2, v0), input3(v2, v3), Rule(960).
+invent_sel(v0, v1) :- input2(v2, v1), invent_sel(v0, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(961).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(962).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), invent_sel(v2, v3), Rule(963).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v3), invent_sel(v0, v1), invent_sel(v2, v1), Rule(964).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v0, v1), input2(v2, v1), invent_sel(v0, v3), invent_sel(v2, v3), Rule(965).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v1), input2(v0, v3), input2(v2, v3), invent_sel(v2, v3), Rule(966).
+invent_sel(v0, v1) :- isGreen(v1), input2(v0, v1), input2(v0, v1), input2(v2, v1), input2(v2, v1), Rule(967).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v0, v3), input2(v0, v1), invent_sel(v2, v1), Rule(968).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), Rule(969).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(970).
+ans(v0) :- ans(v1), ans(v0), ans(v1), ans(v1), Rule(971).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), Rule(972).
+invent_sel(v0, v1) :- isGreen(v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(973).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), invent_sel(v0, v1), invent_sel(v0, v3), invent_sel(v2, v1), Rule(974).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v0, v3), invent_sel(v2, v3), Rule(975).
+ans(v0) :- ans(v1), ans(v0), ans(v1), ans(v0), ans(v1), Rule(976).
+ans(v0) :- ans(v0), ans(v0), ans(v0), Rule(977).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v3), Rule(978).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v3), input2(v2, v1), input2(v0, v1), Rule(979).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(980).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(981).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v3), input2(v0, v1), input2(v2, v1), invent_sel(v0, v3), Rule(982).
+invent_sel(v0, v1) :- invent_sel(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), invent_sel(v2, v1), Rule(983).
+invent_sel(v0, v1) :- isRed(v1), input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v2, v1), Rule(984).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v0, v3), invent_sel(v2, v3), Rule(985).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(986).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), invent_sel(v0, v3), invent_sel(v2, v1), invent_sel(v2, v3), Rule(987).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), Rule(988).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), invent_sel(v0, v3), invent_sel(v0, v1), Rule(989).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v2, v3), input2(v0, v1), input2(v0, v3), input2(v2, v1), Rule(990).
+invent_sel(v0, v1) :- input2(v2, v1), input2(v0, v3), input2(v2, v3), input2(v2, v3), input2(v0, v3), Rule(991).
+invent_sel(v0, v1) :- input2(v2, v3), invent_sel(v0, v1), invent_sel(v2, v3), invent_sel(v2, v1), invent_sel(v0, v1), Rule(992).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v1), input2(v2, v3), input2(v0, v3), Rule(993).
+invent_sel(v0, v1) :- input2(v0, v1), input2(v2, v3), input2(v0, v3), input2(v0, v3), input2(v2, v1), Rule(994).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v2, v3), input2(v0, v3), input2(v0, v1), Rule(995).
+invent_sel(v0, v1) :- isGreen(v1), input2(v2, v3), input2(v2, v3), input2(v2, v3), input2(v0, v1), Rule(996).
+invent_sel(v0, v1) :- input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v1), invent_sel(v0, v1), Rule(997).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v2, v1), input2(v0, v3), input2(v0, v1), input2(v2, v1), Rule(998).
+invent_sel(v0, v1) :- isRed(v1), input2(v0, v1), input2(v2, v1), invent_sel(v2, v3), invent_sel(v0, v3), Rule(999).
+invent_sel(v0, v1) :- input2(v2, v3), input2(v0, v1), invent_sel(v2, v1), invent_sel(v2, v3), invent_sel(v0, v1), Rule(1000).

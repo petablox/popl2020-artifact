@@ -1,111 +1,1047 @@
 .type C
 .type A
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
+
+.decl feathers(v0: C)
+.input feathers
+
+.decl scales(v0: C)
+.input scales
 
 .decl hair(v0: C)
 .input hair
-.decl scales(v0: C)
-.input scales
-.decl has_gills(v0: A)
-.input has_gills
-.decl has_eggs(v0: A)
-.input has_eggs
-.decl has_covering(v0: A, v1: C)
-.input has_covering
-.decl homeothermic(v0: A)
-.input homeothermic
-.decl feathers(v0: C)
-.input feathers
+
 .decl none(v0: C)
 .input none
+
+.decl has_covering(v0: A, v1: C)
+.input has_covering
+
 .decl has_milk(v0: A)
 .input has_milk
 
+.decl homeothermic(v0: A)
+.input homeothermic
+
+.decl has_eggs(v0: A)
+.input has_eggs
+
+.decl has_gills(v0: A)
+.input has_gills
 
 .decl mammal(v0: A)
 .output mammal
+
 .decl fish(v0: A)
 .output fish
+
 .decl reptile(v0: A)
 .output reptile
+
 .decl bird(v0: A)
 .output bird
 
-bird(v0) :- has_covering(v0, v1), has_gills(v0), Rule(18).
-reptile(v0) :- has_gills(v0), Rule(31).
-bird(v0) :- homeothermic(v0), Rule(16).
-reptile(v1) :- none(v0), has_covering(v1, v0), Rule(61).
-bird(v0) :- has_milk(v0), Rule(21).
-fish(v0) :- bird(v0), has_covering(v0, v1), Rule(48).
-bird(v0) :- has_covering(v0, v1), has_milk(v0), Rule(56).
-mammal(v0) :- bird(v0), Rule(67).
-fish(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(22).
-bird(v1) :- feathers(v0), has_covering(v1, v0), Rule(72).
-mammal(v0) :- has_gills(v0), Rule(38).
-reptile(v0) :- has_eggs(v0), Rule(32).
-mammal(v1) :- scales(v0), has_covering(v1, v0), Rule(33).
-fish(v0) :- bird(v0), Rule(54).
-mammal(v0) :- has_milk(v0), Rule(25).
-mammal(v1) :- none(v0), has_covering(v1, v0), Rule(8).
-reptile(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(23).
-bird(v0) :- has_eggs(v0), Rule(15).
-reptile(v0) :- fish(v0), has_covering(v0, v1), Rule(44).
-reptile(v1) :- scales(v0), has_covering(v1, v0), Rule(24).
-mammal(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(64).
-fish(v0) :- has_covering(v0, v1), has_milk(v0), Rule(68).
-fish(v0) :- has_covering(v0, v1), has_gills(v0), Rule(51).
-mammal(v0) :- has_eggs(v0), Rule(42).
-reptile(v1) :- hair(v0), has_covering(v1, v0), Rule(58).
-fish(v0) :- has_covering(v0, v1), Rule(39).
-reptile(v0) :- has_covering(v0, v1), has_gills(v0), Rule(7).
-reptile(v0) :- has_covering(v0, v1), Rule(28).
-bird(v0) :- fish(v0), has_covering(v0, v1), Rule(6).
-fish(v0) :- homeothermic(v0), Rule(0).
-fish(v0) :- has_milk(v0), Rule(10).
-bird(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(20).
-mammal(v0) :- fish(v0), has_covering(v0, v1), Rule(57).
-reptile(v0) :- has_milk(v0), Rule(13).
-reptile(v0) :- has_covering(v0, v1), has_milk(v0), Rule(66).
-mammal(v0) :- has_covering(v0, v1), has_milk(v0), Rule(36).
-fish(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(4).
-mammal(v0) :- has_covering(v0, v1), reptile(v0), Rule(55).
-reptile(v0) :- mammal(v0), Rule(49).
-mammal(v0) :- has_covering(v0, v1), has_gills(v0), Rule(46).
-bird(v0) :- has_covering(v0, v1), mammal(v0), Rule(2).
-fish(v0) :- has_covering(v0, v1), mammal(v0), Rule(62).
-mammal(v1) :- hair(v0), has_covering(v1, v0), Rule(5).
-bird(v1) :- scales(v0), has_covering(v1, v0), Rule(1).
-reptile(v0) :- fish(v0), Rule(30).
-bird(v1) :- hair(v0), has_covering(v1, v0), Rule(59).
-mammal(v0) :- bird(v0), has_covering(v0, v1), Rule(11).
-mammal(v1) :- feathers(v0), has_covering(v1, v0), Rule(27).
-reptile(v1) :- feathers(v0), has_covering(v1, v0), Rule(3).
-fish(v1) :- feathers(v0), has_covering(v1, v0), Rule(52).
-fish(v1) :- none(v0), has_covering(v1, v0), Rule(71).
-fish(v0) :- has_covering(v0, v1), reptile(v0), Rule(14).
-reptile(v0) :- bird(v0), Rule(70).
-fish(v0) :- has_gills(v0), Rule(53).
-bird(v0) :- has_covering(v0, v1), reptile(v0), Rule(29).
-bird(v0) :- mammal(v0), Rule(60).
-fish(v0) :- mammal(v0), Rule(63).
-bird(v1) :- none(v0), has_covering(v1, v0), Rule(45).
-fish(v0) :- reptile(v0), Rule(50).
-reptile(v0) :- bird(v0), has_covering(v0, v1), Rule(26).
-reptile(v0) :- has_covering(v0, v1), mammal(v0), Rule(19).
-reptile(v0) :- homeothermic(v0), Rule(43).
-mammal(v0) :- fish(v0), Rule(37).
-fish(v1) :- hair(v0), has_covering(v1, v0), Rule(40).
-mammal(v0) :- reptile(v0), Rule(47).
-mammal(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(65).
-bird(v0) :- has_gills(v0), Rule(73).
-bird(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(75).
-fish(v1) :- scales(v0), has_covering(v1, v0), Rule(35).
-fish(v0) :- has_eggs(v0), Rule(34).
-bird(v0) :- has_covering(v0, v1), Rule(41).
-reptile(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(69).
-mammal(v0) :- homeothermic(v0), Rule(12).
-bird(v0) :- reptile(v0), Rule(17).
-bird(v0) :- fish(v0), Rule(74).
-mammal(v0) :- has_covering(v0, v1), Rule(9).
+
+
+reptile(v0) :- has_gills(v0), has_gills(v0), fish(v0), Rule(1).
+bird(v0) :- homeothermic(v0), fish(v1), reptile(v1), Rule(2).
+reptile(v0) :- has_milk(v0), has_milk(v1), mammal(v1), Rule(3).
+fish(v1) :- hair(v0), has_covering(v1, v0), Rule(4).
+bird(v0) :- fish(v0), fish(v0), bird(v0), Rule(5).
+mammal(v0) :- has_eggs(v0), mammal(v1), mammal(v1), Rule(6).
+mammal(v0) :- has_milk(v0), has_gills(v1), mammal(v1), Rule(7).
+bird(v0) :- mammal(v0), mammal(v0), mammal(v0), Rule(8).
+reptile(v0) :- homeothermic(v0), homeothermic(v1), has_gills(v1), Rule(9).
+reptile(v0) :- has_milk(v0), Rule(10).
+bird(v0) :- homeothermic(v1), has_gills(v1), fish(v0), Rule(11).
+reptile(v0) :- has_milk(v0), homeothermic(v1), has_gills(v1), Rule(12).
+fish(v0) :- mammal(v1), mammal(v1), mammal(v0), Rule(13).
+bird(v0) :- has_eggs(v1), has_eggs(v0), has_eggs(v1), Rule(14).
+reptile(v0) :- has_milk(v0), has_milk(v0), reptile(v0), Rule(15).
+bird(v0) :- has_eggs(v1), fish(v1), fish(v0), Rule(16).
+reptile(v0) :- has_milk(v0), reptile(v1), reptile(v1), Rule(17).
+reptile(v0) :- has_eggs(v0), has_gills(v0), mammal(v0), Rule(18).
+fish(v0) :- has_eggs(v0), has_eggs(v0), has_gills(v0), Rule(19).
+reptile(v1) :- scales(v0), has_covering(v1, v0), Rule(20).
+bird(v0) :- has_gills(v0), has_gills(v1), has_gills(v1), Rule(21).
+reptile(v0) :- has_eggs(v1), reptile(v0), reptile(v1), Rule(22).
+bird(v0) :- has_milk(v1), has_eggs(v0), mammal(v1), Rule(23).
+bird(v0) :- mammal(v0), fish(v1), bird(v1), Rule(24).
+mammal(v0) :- has_milk(v0), has_gills(v0), mammal(v0), Rule(25).
+fish(v0) :- has_milk(v0), homeothermic(v0), has_eggs(v0), Rule(26).
+bird(v0) :- homeothermic(v0), fish(v0), Rule(27).
+fish(v0) :- has_eggs(v1), fish(v0), fish(v1), Rule(28).
+bird(v0) :- has_gills(v0), fish(v0), reptile(v0), Rule(29).
+bird(v0) :- homeothermic(v1), homeothermic(v0), fish(v1), Rule(30).
+reptile(v0) :- has_milk(v0), reptile(v0), reptile(v0), Rule(31).
+bird(v0) :- mammal(v0), reptile(v1), bird(v1), Rule(32).
+bird(v0) :- homeothermic(v0), has_gills(v1), reptile(v1), Rule(33).
+fish(v0) :- has_gills(v0), fish(v1), fish(v1), Rule(34).
+mammal(v0) :- homeothermic(v0), has_eggs(v0), Rule(35).
+bird(v0) :- mammal(v0), fish(v0), bird(v0), Rule(36).
+fish(v0) :- has_milk(v0), homeothermic(v0), has_gills(v0), Rule(37).
+bird(v0) :- homeothermic(v0), homeothermic(v1), has_gills(v1), Rule(38).
+reptile(v0) :- has_milk(v0), fish(v0), reptile(v0), Rule(39).
+bird(v0) :- fish(v0), Rule(40).
+reptile(v0) :- homeothermic(v0), homeothermic(v1), reptile(v1), Rule(41).
+bird(v0) :- homeothermic(v1), homeothermic(v0), has_gills(v1), Rule(42).
+bird(v0) :- has_milk(v1), fish(v1), bird(v0), Rule(43).
+reptile(v0) :- has_milk(v0), fish(v0), fish(v0), Rule(44).
+fish(v0) :- homeothermic(v1), mammal(v1), mammal(v0), Rule(45).
+mammal(v0) :- homeothermic(v0), Rule(46).
+reptile(v0) :- homeothermic(v1), has_gills(v1), fish(v0), Rule(47).
+bird(v0) :- homeothermic(v1), has_eggs(v1), reptile(v0), Rule(48).
+reptile(v0) :- has_milk(v1), has_milk(v0), homeothermic(v1), Rule(49).
+reptile(v0) :- mammal(v1), mammal(v0), fish(v1), Rule(50).
+bird(v0) :- reptile(v1), reptile(v1), bird(v0), Rule(51).
+bird(v0) :- has_eggs(v0), reptile(v0), Rule(52).
+reptile(v0) :- has_gills(v0), has_gills(v0), reptile(v0), Rule(53).
+bird(v0) :- mammal(v0), fish(v0), fish(v0), Rule(54).
+fish(v0) :- has_eggs(v0), has_eggs(v1), has_eggs(v1), Rule(55).
+mammal(v0) :- has_eggs(v1), has_gills(v0), mammal(v1), Rule(56).
+reptile(v0) :- has_milk(v1), has_gills(v1), has_gills(v0), Rule(57).
+fish(v0) :- has_milk(v0), has_eggs(v0), fish(v0), Rule(58).
+bird(v0) :- mammal(v0), bird(v1), bird(v1), Rule(59).
+bird(v0) :- has_milk(v0), homeothermic(v1), mammal(v1), Rule(60).
+mammal(v0) :- has_milk(v0), has_milk(v0), mammal(v0), Rule(61).
+fish(v0) :- has_milk(v1), homeothermic(v1), mammal(v0), Rule(62).
+fish(v0) :- has_milk(v0), has_eggs(v0), mammal(v0), Rule(63).
+fish(v0) :- has_milk(v0), mammal(v0), mammal(v0), Rule(64).
+bird(v0) :- has_milk(v0), homeothermic(v0), homeothermic(v0), Rule(65).
+bird(v0) :- has_milk(v1), homeothermic(v0), has_gills(v1), Rule(66).
+reptile(v0) :- fish(v1), fish(v0), reptile(v1), Rule(67).
+reptile(v0) :- has_milk(v0), homeothermic(v0), mammal(v0), Rule(68).
+fish(v0) :- homeothermic(v1), homeothermic(v0), has_eggs(v1), Rule(69).
+bird(v0) :- homeothermic(v0), has_gills(v0), bird(v0), Rule(70).
+bird(v0) :- homeothermic(v0), has_eggs(v0), Rule(71).
+bird(v0) :- has_gills(v0), mammal(v0), reptile(v0), Rule(72).
+bird(v0) :- fish(v1), bird(v1), bird(v0), Rule(73).
+reptile(v0) :- has_eggs(v0), has_gills(v0), Rule(74).
+reptile(v0) :- fish(v0), reptile(v1), reptile(v1), Rule(75).
+fish(v0) :- has_gills(v0), has_gills(v0), Rule(76).
+fish(v0) :- has_eggs(v1), has_gills(v1), fish(v0), Rule(77).
+fish(v0) :- has_milk(v1), homeothermic(v0), mammal(v1), Rule(78).
+reptile(v0) :- has_milk(v1), homeothermic(v0), reptile(v1), Rule(79).
+reptile(v0) :- homeothermic(v1), has_eggs(v0), reptile(v1), Rule(80).
+reptile(v0) :- has_milk(v1), homeothermic(v1), fish(v0), Rule(81).
+bird(v0) :- has_milk(v0), has_gills(v0), bird(v0), Rule(82).
+fish(v0) :- has_gills(v0), mammal(v1), mammal(v1), Rule(83).
+reptile(v0) :- has_covering(v0, v1), has_gills(v0), Rule(84).
+fish(v0) :- has_milk(v1), has_milk(v1), has_gills(v0), Rule(85).
+reptile(v0) :- has_milk(v0), homeothermic(v1), homeothermic(v1), Rule(86).
+fish(v0) :- homeothermic(v1), homeothermic(v1), has_gills(v0), Rule(87).
+bird(v0) :- mammal(v0), Rule(88).
+reptile(v0) :- has_milk(v1), homeothermic(v0), fish(v1), Rule(89).
+fish(v0) :- mammal(v0), mammal(v0), fish(v0), Rule(90).
+reptile(v0) :- homeothermic(v1), has_eggs(v1), has_gills(v0), Rule(91).
+bird(v0) :- homeothermic(v0), mammal(v0), bird(v0), Rule(92).
+fish(v0) :- has_gills(v1), mammal(v1), fish(v0), Rule(93).
+reptile(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(94).
+bird(v0) :- has_milk(v0), has_milk(v0), has_gills(v0), Rule(95).
+mammal(v0) :- has_milk(v0), homeothermic(v1), homeothermic(v1), Rule(96).
+bird(v0) :- has_milk(v0), bird(v1), bird(v1), Rule(97).
+reptile(v0) :- has_gills(v0), has_gills(v0), Rule(98).
+bird(v0) :- has_gills(v1), mammal(v1), bird(v0), Rule(99).
+mammal(v0) :- has_covering(v0, v1), has_gills(v0), Rule(100).
+fish(v0) :- homeothermic(v0), has_eggs(v0), has_eggs(v0), Rule(101).
+fish(v0) :- has_gills(v1), has_gills(v0), fish(v1), Rule(102).
+bird(v0) :- has_eggs(v1), mammal(v0), mammal(v1), Rule(103).
+bird(v0) :- mammal(v1), reptile(v0), bird(v1), Rule(104).
+bird(v0) :- has_eggs(v1), has_gills(v1), bird(v0), Rule(105).
+fish(v0) :- has_covering(v0, v1), has_milk(v0), Rule(106).
+bird(v0) :- bird(v0), Rule(107).
+reptile(v0) :- has_milk(v1), fish(v0), fish(v1), Rule(108).
+mammal(v0) :- has_gills(v0), Rule(109).
+mammal(v0) :- has_milk(v0), has_milk(v0), has_gills(v0), Rule(110).
+bird(v0) :- homeothermic(v1), reptile(v0), bird(v1), Rule(111).
+reptile(v0) :- has_milk(v1), reptile(v0), reptile(v1), Rule(112).
+reptile(v0) :- has_milk(v0), has_eggs(v1), has_gills(v1), Rule(113).
+reptile(v0) :- has_milk(v1), has_eggs(v1), has_gills(v0), Rule(114).
+mammal(v0) :- has_milk(v1), has_milk(v0), has_eggs(v1), Rule(115).
+bird(v0) :- homeothermic(v0), reptile(v0), Rule(116).
+bird(v0) :- bird(v0), bird(v0), Rule(117).
+bird(v0) :- homeothermic(v0), has_eggs(v0), has_eggs(v0), Rule(118).
+bird(v0) :- has_eggs(v0), has_gills(v1), has_gills(v1), Rule(119).
+reptile(v0) :- has_gills(v1), fish(v0), fish(v1), Rule(120).
+mammal(v0) :- has_gills(v0), mammal(v0), Rule(121).
+reptile(v0) :- fish(v1), fish(v1), reptile(v0), Rule(122).
+bird(v0) :- fish(v1), fish(v1), reptile(v0), Rule(123).
+mammal(v1) :- scales(v0), has_covering(v1, v0), Rule(124).
+bird(v0) :- has_milk(v1), homeothermic(v1), bird(v0), Rule(125).
+reptile(v0) :- has_milk(v1), homeothermic(v0), mammal(v1), Rule(126).
+mammal(v0) :- has_milk(v0), homeothermic(v0), has_gills(v0), Rule(127).
+reptile(v0) :- has_milk(v0), has_milk(v0), mammal(v0), Rule(128).
+bird(v0) :- has_eggs(v0), has_gills(v0), fish(v0), Rule(129).
+bird(v0) :- has_gills(v0), has_gills(v0), bird(v0), Rule(130).
+bird(v0) :- homeothermic(v1), has_gills(v0), has_gills(v1), Rule(131).
+reptile(v0) :- has_milk(v0), has_milk(v1), reptile(v1), Rule(132).
+bird(v0) :- reptile(v0), Rule(133).
+reptile(v0) :- has_milk(v1), has_eggs(v0), has_gills(v1), Rule(134).
+fish(v0) :- homeothermic(v1), has_eggs(v1), has_gills(v0), Rule(135).
+bird(v0) :- has_gills(v1), fish(v1), reptile(v0), Rule(136).
+fish(v0) :- has_milk(v1), has_milk(v0), homeothermic(v1), Rule(137).
+fish(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(138).
+bird(v0) :- has_eggs(v0), mammal(v1), reptile(v1), Rule(139).
+reptile(v0) :- fish(v1), reptile(v0), reptile(v1), Rule(140).
+reptile(v0) :- bird(v0), Rule(141).
+fish(v0) :- mammal(v1), fish(v0), fish(v1), Rule(142).
+bird(v0) :- has_milk(v1), bird(v0), bird(v1), Rule(143).
+fish(v0) :- has_eggs(v0), has_eggs(v1), has_gills(v1), Rule(144).
+bird(v0) :- has_eggs(v1), has_gills(v0), reptile(v1), Rule(145).
+bird(v0) :- homeothermic(v0), homeothermic(v0), Rule(146).
+bird(v0) :- has_milk(v1), has_milk(v1), has_gills(v0), Rule(147).
+reptile(v0) :- has_eggs(v1), has_eggs(v1), reptile(v0), Rule(148).
+reptile(v0) :- has_milk(v1), has_milk(v1), fish(v0), Rule(149).
+reptile(v0) :- has_gills(v0), has_gills(v1), mammal(v1), Rule(150).
+bird(v0) :- has_gills(v1), has_gills(v1), bird(v0), Rule(151).
+reptile(v0) :- has_milk(v1), has_eggs(v0), fish(v1), Rule(152).
+fish(v0) :- has_eggs(v0), has_gills(v1), mammal(v1), Rule(153).
+mammal(v0) :- has_milk(v0), has_eggs(v1), mammal(v1), Rule(154).
+bird(v0) :- has_milk(v1), homeothermic(v1), fish(v0), Rule(155).
+reptile(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(156).
+bird(v0) :- has_milk(v1), homeothermic(v1), reptile(v0), Rule(157).
+reptile(v0) :- has_eggs(v0), mammal(v0), Rule(158).
+bird(v0) :- homeothermic(v1), has_eggs(v0), has_eggs(v1), Rule(159).
+bird(v0) :- homeothermic(v0), has_eggs(v1), bird(v1), Rule(160).
+mammal(v0) :- has_milk(v1), homeothermic(v0), has_eggs(v1), Rule(161).
+fish(v0) :- has_gills(v1), fish(v0), fish(v1), Rule(162).
+fish(v0) :- reptile(v0), Rule(163).
+bird(v0) :- has_eggs(v0), Rule(164).
+reptile(v0) :- has_eggs(v1), fish(v1), fish(v0), Rule(165).
+bird(v0) :- has_milk(v0), has_milk(v1), homeothermic(v1), Rule(166).
+bird(v0) :- has_milk(v0), has_eggs(v0), fish(v0), Rule(167).
+mammal(v0) :- homeothermic(v0), mammal(v0), mammal(v0), Rule(168).
+mammal(v0) :- has_milk(v1), homeothermic(v1), mammal(v0), Rule(169).
+bird(v0) :- has_eggs(v1), mammal(v1), mammal(v0), Rule(170).
+bird(v0) :- has_milk(v1), homeothermic(v0), fish(v1), Rule(171).
+bird(v0) :- has_milk(v0), homeothermic(v0), bird(v0), Rule(172).
+fish(v0) :- has_milk(v0), mammal(v1), mammal(v1), Rule(173).
+reptile(v0) :- homeothermic(v1), reptile(v1), reptile(v0), Rule(174).
+reptile(v0) :- homeothermic(v0), homeothermic(v0), Rule(175).
+bird(v0) :- has_eggs(v1), has_gills(v1), fish(v0), Rule(176).
+bird(v0) :- has_milk(v1), mammal(v1), bird(v0), Rule(177).
+reptile(v0) :- has_milk(v1), has_gills(v0), fish(v1), Rule(178).
+reptile(v0) :- homeothermic(v1), homeothermic(v1), has_eggs(v0), Rule(179).
+bird(v0) :- has_eggs(v0), has_eggs(v1), fish(v1), Rule(180).
+fish(v0) :- has_covering(v0, v1), reptile(v0), Rule(181).
+bird(v0) :- has_milk(v1), reptile(v0), reptile(v1), Rule(182).
+bird(v0) :- has_gills(v0), fish(v0), Rule(183).
+bird(v0) :- has_gills(v0), reptile(v1), bird(v1), Rule(184).
+bird(v0) :- has_gills(v1), has_gills(v0), bird(v1), Rule(185).
+mammal(v0) :- homeothermic(v1), has_gills(v1), has_gills(v0), Rule(186).
+bird(v0) :- homeothermic(v0), has_gills(v1), bird(v1), Rule(187).
+fish(v0) :- homeothermic(v1), mammal(v0), mammal(v1), Rule(188).
+reptile(v0) :- has_milk(v0), reptile(v0), Rule(189).
+bird(v0) :- homeothermic(v0), mammal(v1), fish(v1), Rule(190).
+reptile(v0) :- has_milk(v1), homeothermic(v1), reptile(v0), Rule(191).
+fish(v0) :- has_milk(v0), Rule(192).
+fish(v0) :- has_covering(v0, v1), Rule(193).
+bird(v0) :- has_gills(v1), has_gills(v0), reptile(v1), Rule(194).
+reptile(v0) :- mammal(v0), fish(v0), fish(v0), Rule(195).
+bird(v0) :- reptile(v1), reptile(v0), bird(v1), Rule(196).
+bird(v0) :- reptile(v0), bird(v1), bird(v1), Rule(197).
+fish(v0) :- mammal(v0), mammal(v0), Rule(198).
+reptile(v0) :- homeothermic(v0), reptile(v1), reptile(v1), Rule(199).
+reptile(v0) :- has_eggs(v1), has_gills(v0), mammal(v1), Rule(200).
+reptile(v0) :- bird(v0), has_covering(v0, v1), Rule(201).
+bird(v0) :- has_milk(v1), homeothermic(v1), homeothermic(v0), Rule(202).
+reptile(v0) :- has_eggs(v1), has_gills(v0), reptile(v1), Rule(203).
+bird(v0) :- has_milk(v0), homeothermic(v0), fish(v0), Rule(204).
+mammal(v0) :- has_milk(v1), homeothermic(v1), has_eggs(v0), Rule(205).
+bird(v0) :- has_gills(v0), fish(v0), fish(v0), Rule(206).
+fish(v0) :- has_milk(v1), has_gills(v1), fish(v0), Rule(207).
+reptile(v0) :- has_milk(v1), homeothermic(v1), has_gills(v0), Rule(208).
+reptile(v0) :- homeothermic(v0), mammal(v0), reptile(v0), Rule(209).
+reptile(v0) :- has_eggs(v1), has_gills(v0), has_gills(v1), Rule(210).
+fish(v0) :- has_milk(v1), has_eggs(v0), has_eggs(v1), Rule(211).
+reptile(v0) :- has_milk(v0), has_eggs(v1), reptile(v1), Rule(212).
+bird(v0) :- has_gills(v1), has_gills(v0), mammal(v1), Rule(213).
+fish(v0) :- has_milk(v0), has_milk(v0), fish(v0), Rule(214).
+fish(v0) :- has_milk(v0), has_gills(v0), Rule(215).
+fish(v0) :- homeothermic(v1), has_gills(v0), fish(v1), Rule(216).
+bird(v0) :- mammal(v1), mammal(v0), reptile(v1), Rule(217).
+reptile(v0) :- homeothermic(v0), has_eggs(v1), fish(v1), Rule(218).
+reptile(v0) :- homeothermic(v0), fish(v1), reptile(v1), Rule(219).
+reptile(v0) :- has_gills(v0), fish(v0), fish(v0), Rule(220).
+mammal(v0) :- has_gills(v0), Rule(221).
+reptile(v0) :- mammal(v0), Rule(222).
+mammal(v0) :- has_milk(v1), has_milk(v1), mammal(v0), Rule(223).
+bird(v0) :- has_gills(v0), reptile(v0), reptile(v0), Rule(224).
+reptile(v0) :- has_milk(v0), has_gills(v1), mammal(v1), Rule(225).
+bird(v0) :- has_milk(v0), has_eggs(v0), has_eggs(v0), Rule(226).
+fish(v0) :- homeothermic(v0), mammal(v0), fish(v0), Rule(227).
+O, Rule(228).
+bird(v0) :- has_gills(v0), reptile(v0), bird(v0), Rule(229).
+reptile(v0) :- has_gills(v1), mammal(v1), fish(v0), Rule(230).
+reptile(v0) :- mammal(v0), mammal(v0), fish(v0), Rule(231).
+reptile(v0) :- homeothermic(v1), fish(v1), fish(v0), Rule(232).
+fish(v0) :- has_eggs(v1), has_gills(v0), fish(v1), Rule(233).
+mammal(v0) :- fish(v0), has_covering(v0, v1), Rule(234).
+reptile(v0) :- has_gills(v0), mammal(v0), Rule(235).
+bird(v0) :- homeothermic(v1), mammal(v1), reptile(v0), Rule(236).
+reptile(v0) :- homeothermic(v0), fish(v1), fish(v1), Rule(237).
+reptile(v0) :- has_covering(v0, v1), Rule(238).
+fish(v0) :- has_eggs(v1), has_eggs(v1), has_gills(v0), Rule(239).
+reptile(v0) :- has_eggs(v0), mammal(v0), fish(v0), Rule(240).
+reptile(v0) :- homeothermic(v0), homeothermic(v0), homeothermic(v0), Rule(241).
+reptile(v0) :- homeothermic(v0), mammal(v0), mammal(v0), Rule(242).
+bird(v0) :- homeothermic(v1), has_eggs(v0), has_gills(v1), Rule(243).
+bird(v0) :- has_milk(v0), reptile(v1), bird(v1), Rule(244).
+reptile(v0) :- has_gills(v0), mammal(v0), fish(v0), Rule(245).
+bird(v0) :- homeothermic(v0), has_gills(v1), has_gills(v1), Rule(246).
+fish(v0) :- has_milk(v0), mammal(v1), fish(v1), Rule(247).
+reptile(v0) :- has_eggs(v1), mammal(v0), reptile(v1), Rule(248).
+bird(v0) :- has_milk(v1), has_gills(v1), reptile(v0), Rule(249).
+bird(v0) :- has_eggs(v1), fish(v1), reptile(v0), Rule(250).
+reptile(v0) :- has_milk(v1), has_gills(v0), reptile(v1), Rule(251).
+bird(v0) :- has_eggs(v0), has_gills(v1), fish(v1), Rule(252).
+mammal(v0) :- has_eggs(v0), has_eggs(v1), mammal(v1), Rule(253).
+bird(v0) :- homeothermic(v0), has_gills(v0), Rule(254).
+fish(v0) :- has_eggs(v0), has_eggs(v1), fish(v1), Rule(255).
+fish(v0) :- mammal(v0), Rule(256).
+bird(v0) :- has_milk(v1), has_milk(v0), has_milk(v1), Rule(257).
+fish(v0) :- has_milk(v1), has_gills(v1), has_gills(v0), Rule(258).
+bird(v0) :- has_milk(v1), has_milk(v1), mammal(v0), Rule(259).
+fish(v0) :- homeothermic(v1), has_eggs(v0), mammal(v1), Rule(260).
+reptile(v0) :- has_milk(v0), mammal(v1), fish(v1), Rule(261).
+reptile(v0) :- homeothermic(v0), homeothermic(v1), has_eggs(v1), Rule(262).
+bird(v0) :- has_gills(v1), reptile(v1), reptile(v0), Rule(263).
+mammal(v0) :- has_milk(v1), has_milk(v1), has_eggs(v0), Rule(264).
+bird(v0) :- mammal(v0), reptile(v0), bird(v0), Rule(265).
+bird(v0) :- homeothermic(v0), homeothermic(v0), homeothermic(v0), Rule(266).
+bird(v0) :- has_gills(v0), mammal(v1), reptile(v1), Rule(267).
+mammal(v0) :- has_milk(v0), Rule(268).
+bird(v0) :- has_milk(v1), fish(v0), bird(v1), Rule(269).
+fish(v0) :- has_eggs(v1), has_gills(v1), has_gills(v0), Rule(270).
+fish(v0) :- has_gills(v1), fish(v1), fish(v0), Rule(271).
+reptile(v0) :- mammal(v0), reptile(v0), Rule(272).
+fish(v0) :- has_milk(v1), has_eggs(v0), has_gills(v1), Rule(273).
+bird(v0) :- has_milk(v0), has_milk(v0), bird(v0), Rule(274).
+fish(v0) :- homeothermic(v1), homeothermic(v0), homeothermic(v1), Rule(275).
+fish(v0) :- has_milk(v1), homeothermic(v0), has_gills(v1), Rule(276).
+fish(v0) :- has_milk(v1), homeothermic(v0), homeothermic(v1), Rule(277).
+fish(v0) :- fish(v1), fish(v1), fish(v0), Rule(278).
+reptile(v0) :- has_gills(v1), has_gills(v1), has_gills(v0), Rule(279).
+bird(v0) :- has_gills(v0), has_gills(v0), reptile(v0), Rule(280).
+mammal(v0) :- mammal(v1), mammal(v1), mammal(v0), Rule(281).
+fish(v0) :- has_eggs(v0), fish(v1), fish(v1), Rule(282).
+mammal(v0) :- mammal(v1), mammal(v0), mammal(v1), Rule(283).
+bird(v0) :- has_milk(v1), has_eggs(v1), has_gills(v0), Rule(284).
+bird(v0) :- has_milk(v0), has_milk(v0), mammal(v0), Rule(285).
+bird(v0) :- has_milk(v0), mammal(v1), bird(v1), Rule(286).
+reptile(v0) :- homeothermic(v1), reptile(v0), reptile(v1), Rule(287).
+bird(v0) :- homeothermic(v0), has_gills(v1), fish(v1), Rule(288).
+reptile(v0) :- fish(v0), Rule(289).
+mammal(v1) :- none(v0), has_covering(v1, v0), Rule(290).
+fish(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(291).
+fish(v0) :- homeothermic(v1), has_eggs(v1), mammal(v0), Rule(292).
+bird(v0) :- has_eggs(v1), has_gills(v1), reptile(v0), Rule(293).
+bird(v0) :- homeothermic(v0), mammal(v0), mammal(v0), Rule(294).
+reptile(x0) :- has_covering(x0, x1), scales(x1), Rule(295).
+bird(v0) :- has_covering(v0, v1), Rule(296).
+bird(v0) :- has_milk(v0), fish(v0), bird(v0), Rule(297).
+fish(v0) :- has_milk(v1), has_milk(v1), fish(v0), Rule(298).
+mammal(v0) :- has_milk(v1), has_gills(v0), mammal(v1), Rule(299).
+reptile(v0) :- has_gills(v0), mammal(v1), reptile(v1), Rule(300).
+bird(v0) :- fish(v1), reptile(v1), reptile(v0), Rule(301).
+bird(v0) :- has_milk(v0), reptile(v0), Rule(302).
+fish(v0) :- has_eggs(v0), has_eggs(v0), has_eggs(v0), Rule(303).
+mammal(v0) :- has_eggs(v1), has_eggs(v0), has_eggs(v1), Rule(304).
+mammal(v0) :- has_milk(v0), has_gills(v1), has_gills(v1), Rule(305).
+fish(v0) :- has_milk(v0), fish(v1), fish(v1), Rule(306).
+mammal(v0) :- has_milk(v1), has_milk(v1), has_milk(v0), Rule(307).
+bird(v0) :- mammal(v0), reptile(v1), reptile(v1), Rule(308).
+mammal(v0) :- homeothermic(v1), has_gills(v0), has_gills(v1), Rule(309).
+fish(v0) :- has_milk(v0), has_milk(v0), has_milk(v0), Rule(310).
+reptile(v0) :- has_milk(v0), has_gills(v0), has_gills(v0), Rule(311).
+reptile(v0) :- mammal(v0), mammal(v1), mammal(v1), Rule(312).
+reptile(v0) :- homeothermic(v0), has_eggs(v0), has_eggs(v0), Rule(313).
+bird(v0) :- has_eggs(v0), fish(v0), reptile(v0), Rule(314).
+bird(v0) :- has_eggs(v0), fish(v1), bird(v1), Rule(315).
+reptile(v0) :- has_milk(v1), fish(v1), reptile(v0), Rule(316).
+reptile(v0) :- has_eggs(v0), has_gills(v1), reptile(v1), Rule(317).
+reptile(v0) :- homeothermic(v1), mammal(v1), fish(v0), Rule(318).
+reptile(v0) :- has_milk(v0), has_milk(v0), Rule(319).
+reptile(v0) :- has_milk(v0), homeothermic(v1), reptile(v1), Rule(320).
+bird(v0) :- has_gills(v0), fish(v1), reptile(v1), Rule(321).
+reptile(v0) :- has_covering(v0, v1), mammal(v0), Rule(322).
+reptile(v0) :- has_eggs(v0), mammal(v0), mammal(v0), Rule(323).
+fish(v0) :- has_eggs(v0), fish(v0), fish(v0), Rule(324).
+bird(v0) :- has_milk(v0), has_gills(v0), fish(v0), Rule(325).
+bird(v0) :- homeothermic(v0), has_eggs(v0), reptile(v0), Rule(326).
+fish(v0) :- has_eggs(v0), has_gills(v1), has_gills(v1), Rule(327).
+fish(v0) :- has_milk(v1), homeothermic(v1), fish(v0), Rule(328).
+bird(v0) :- has_covering(v0, v1), has_milk(v0), Rule(329).
+mammal(v0) :- has_eggs(v0), has_eggs(v0), has_eggs(v0), Rule(330).
+fish(v0) :- homeothermic(v0), has_gills(v1), fish(v1), Rule(331).
+reptile(v0) :- has_milk(v0), has_eggs(v0), fish(v0), Rule(332).
+reptile(v0) :- has_eggs(v1), has_eggs(v0), reptile(v1), Rule(333).
+bird(v0) :- has_milk(v0), fish(v0), Rule(334).
+fish(v0) :- has_gills(v0), has_gills(v1), has_gills(v1), Rule(335).
+fish(v0) :- has_gills(v0), mammal(v0), fish(v0), Rule(336).
+reptile(v0) :- has_gills(v1), has_gills(v1), fish(v0), Rule(337).
+reptile(v0) :- has_milk(v0), has_milk(v1), has_gills(v1), Rule(338).
+fish(v1) :- none(v0), has_covering(v1, v0), Rule(339).
+bird(v0) :- has_eggs(v1), has_eggs(v1), mammal(v0), Rule(340).
+bird(v0) :- has_gills(v1), mammal(v0), mammal(v1), Rule(341).
+reptile(v0) :- has_milk(v0), mammal(v0), reptile(v0), Rule(342).
+bird(v0) :- has_gills(v1), has_gills(v1), fish(v0), Rule(343).
+reptile(v0) :- has_milk(v1), has_gills(v1), mammal(v0), Rule(344).
+bird(v0) :- has_eggs(v0), has_gills(v1), mammal(v1), Rule(345).
+reptile(v0) :- has_eggs(v1), has_eggs(v1), has_gills(v0), Rule(346).
+fish(v0) :- has_milk(v1), has_eggs(v1), has_gills(v0), Rule(347).
+mammal(x0) :- has_covering(x0, x1), has_milk(x0), Rule(348).
+bird(v0) :- has_eggs(v1), has_gills(v0), fish(v1), Rule(349).
+reptile(v0) :- homeothermic(v1), fish(v0), reptile(v1), Rule(350).
+bird(v0) :- has_eggs(v1), has_gills(v1), has_gills(v0), Rule(351).
+bird(v0) :- homeothermic(v0), has_gills(v1), mammal(v1), Rule(352).
+bird(v0) :- homeothermic(v0), fish(v0), reptile(v0), Rule(353).
+mammal(v0) :- has_eggs(v1), has_eggs(v0), mammal(v1), Rule(354).
+fish(v0) :- has_eggs(v0), has_eggs(v0), Rule(355).
+fish(v0) :- homeothermic(v0), has_gills(v0), fish(v0), Rule(356).
+mammal(v0) :- has_gills(v0), has_gills(v0), mammal(v0), Rule(357).
+bird(v0) :- has_eggs(v0), has_eggs(v1), has_eggs(v1), Rule(358).
+fish(v0) :- has_milk(v0), has_gills(v0), mammal(v0), Rule(359).
+fish(v0) :- has_milk(v0), fish(v0), fish(v0), Rule(360).
+mammal(v0) :- has_eggs(v0), Rule(361).
+fish(v0) :- has_milk(v1), mammal(v0), fish(v1), Rule(362).
+bird(v0) :- homeothermic(v0), Rule(363).
+bird(v0) :- has_milk(v0), mammal(v1), fish(v1), Rule(364).
+reptile(v0) :- has_eggs(v0), mammal(v0), reptile(v0), Rule(365).
+bird(v0) :- reptile(v0), reptile(v0), reptile(v0), Rule(366).
+reptile(v0) :- has_milk(v1), homeothermic(v0), has_eggs(v1), Rule(367).
+bird(v0) :- homeothermic(v0), fish(v1), fish(v1), Rule(368).
+fish(v0) :- has_milk(v0), has_gills(v1), mammal(v1), Rule(369).
+mammal(v0) :- has_milk(v0), has_eggs(v1), has_eggs(v1), Rule(370).
+bird(v0) :- has_milk(v1), has_eggs(v1), fish(v0), Rule(371).
+reptile(v0) :- fish(v0), fish(v1), reptile(v1), Rule(372).
+fish(v0) :- homeothermic(v0), mammal(v0), mammal(v0), Rule(373).
+bird(v0) :- has_milk(v0), has_gills(v0), has_gills(v0), Rule(374).
+reptile(v0) :- has_eggs(v0), has_gills(v0), has_gills(v0), Rule(375).
+bird(v0) :- has_gills(v1), has_gills(v0), has_gills(v1), Rule(376).
+bird(v0) :- mammal(v1), fish(v1), reptile(v0), Rule(377).
+reptile(v0) :- has_gills(v0), mammal(v1), mammal(v1), Rule(378).
+reptile(v0) :- has_milk(v1), has_milk(v1), has_milk(v0), Rule(379).
+fish(v0) :- homeothermic(v0), homeothermic(v0), mammal(v0), Rule(380).
+reptile(v0) :- homeothermic(v0), Rule(381).
+reptile(v0) :- homeothermic(v1), has_eggs(v0), mammal(v1), Rule(382).
+bird(v0) :- has_gills(v1), reptile(v0), bird(v1), Rule(383).
+bird(v0) :- has_milk(v0), has_eggs(v1), mammal(v1), Rule(384).
+fish(v0) :- has_milk(v0), has_eggs(v1), has_gills(v1), Rule(385).
+mammal(v0) :- has_eggs(v1), has_gills(v0), has_gills(v1), Rule(386).
+fish(v0) :- homeothermic(v1), homeothermic(v1), mammal(v0), Rule(387).
+mammal(v0) :- fish(v0), Rule(388).
+fish(v0) :- has_milk(v1), has_gills(v1), mammal(v0), Rule(389).
+bird(v0) :- homeothermic(v1), homeothermic(v1), has_gills(v0), Rule(390).
+fish(v0) :- mammal(v0), fish(v0), fish(v0), Rule(391).
+bird(v0) :- fish(v0), reptile(v1), reptile(v1), Rule(392).
+bird(v0) :- mammal(v1), mammal(v1), mammal(v0), Rule(393).
+reptile(v0) :- mammal(v0), fish(v1), reptile(v1), Rule(394).
+reptile(v0) :- has_eggs(v1), mammal(v1), mammal(v0), Rule(395).
+mammal(v0) :- homeothermic(v0), has_eggs(v1), mammal(v1), Rule(396).
+fish(v0) :- has_gills(v1), mammal(v0), mammal(v1), Rule(397).
+fish(v0) :- has_milk(v1), has_milk(v1), has_milk(v0), Rule(398).
+bird(v0) :- has_milk(v0), has_gills(v0), mammal(v0), Rule(399).
+bird(v0) :- has_covering(v0, v1), reptile(v0), Rule(400).
+reptile(v0) :- has_milk(v1), homeothermic(v1), mammal(v0), Rule(401).
+fish(v0) :- has_milk(v1), has_milk(v0), has_eggs(v1), Rule(402).
+fish(v0) :- homeothermic(v1), homeothermic(v1), homeothermic(v0), Rule(403).
+reptile(v0) :- homeothermic(v0), fish(v0), Rule(404).
+reptile(v0) :- fish(v0), fish(v0), reptile(v0), Rule(405).
+mammal(v1) :- hair(v0), has_covering(v1, v0), Rule(406).
+bird(v0) :- has_gills(v0), fish(v1), bird(v1), Rule(407).
+reptile(v0) :- has_milk(v0), has_milk(v0), has_milk(v0), Rule(408).
+reptile(v0) :- homeothermic(v0), has_eggs(v0), reptile(v0), Rule(409).
+mammal(v0) :- reptile(v0), Rule(410).
+fish(x0) :- has_gills(x0), Rule(411).
+bird(v0) :- has_milk(v0), homeothermic(v1), reptile(v1), Rule(412).
+reptile(v0) :- has_milk(v0), has_gills(v0), mammal(v0), Rule(413).
+reptile(v0) :- has_milk(v0), has_milk(v0), has_eggs(v0), Rule(414).
+bird(v0) :- homeothermic(v1), fish(v0), fish(v1), Rule(415).
+mammal(v0) :- has_milk(v1), homeothermic(v0), has_gills(v1), Rule(416).
+mammal(v0) :- has_milk(v0), homeothermic(v1), has_gills(v1), Rule(417).
+reptile(x0) :- has_covering(x0, x1), scales(x1), Rule(418).
+bird(v0) :- has_milk(v1), has_milk(v0), fish(v1), Rule(419).
+reptile(v0) :- has_milk(v1), has_gills(v1), fish(v0), Rule(420).
+mammal(v0) :- has_eggs(v1), has_gills(v1), has_gills(v0), Rule(421).
+reptile(v0) :- homeothermic(v0), has_gills(v0), fish(v0), Rule(422).
+bird(v0) :- homeothermic(v0), Rule(423).
+reptile(v0) :- homeothermic(v1), mammal(v0), reptile(v1), Rule(424).
+bird(v0) :- homeothermic(v1), homeothermic(v1), fish(v0), Rule(425).
+reptile(v0) :- has_milk(v1), mammal(v0), reptile(v1), Rule(426).
+reptile(v0) :- has_milk(v0), has_eggs(v0), Rule(427).
+reptile(v0) :- has_milk(v1), has_milk(v0), has_gills(v1), Rule(428).
+bird(v0) :- homeothermic(v0), bird(v0), bird(v0), Rule(429).
+reptile(v0) :- has_gills(v0), fish(v0), Rule(430).
+bird(v0) :- has_milk(v0), mammal(v1), reptile(v1), Rule(431).
+bird(v0) :- has_eggs(v0), fish(v0), Rule(432).
+fish(v0) :- has_milk(v1), has_eggs(v1), fish(v0), Rule(433).
+bird(v0) :- homeothermic(v0), homeothermic(v0), has_gills(v0), Rule(434).
+reptile(v0) :- homeothermic(v0), homeothermic(v0), fish(v0), Rule(435).
+bird(v0) :- homeothermic(v1), has_eggs(v0), reptile(v1), Rule(436).
+bird(v0) :- has_milk(v1), mammal(v0), fish(v1), Rule(437).
+bird(v0) :- has_milk(v1), has_milk(v1), has_eggs(v0), Rule(438).
+reptile(v0) :- mammal(v0), mammal(v0), Rule(439).
+bird(v0) :- homeothermic(v1), has_gills(v1), mammal(v0), Rule(440).
+bird(v0) :- has_milk(v0), fish(v1), fish(v1), Rule(441).
+reptile(v0) :- has_eggs(v0), has_eggs(v1), fish(v1), Rule(442).
+bird(v0) :- has_gills(v1), fish(v0), reptile(v1), Rule(443).
+mammal(v0) :- bird(v0), has_covering(v0, v1), Rule(444).
+reptile(v0) :- homeothermic(v1), homeothermic(v0), has_gills(v1), Rule(445).
+fish(v0) :- has_gills(v0), mammal(v0), Rule(446).
+bird(v0) :- mammal(v0), fish(v1), fish(v1), Rule(447).
+fish(v0) :- has_milk(v1), homeothermic(v1), has_gills(v0), Rule(448).
+mammal(v0) :- has_eggs(v0), Rule(449).
+fish(v0) :- homeothermic(v1), has_gills(v0), mammal(v1), Rule(450).
+fish(v0) :- mammal(v1), mammal(v0), mammal(v1), Rule(451).
+reptile(v0) :- homeothermic(v0), homeothermic(v0), mammal(v0), Rule(452).
+mammal(v0) :- has_milk(v1), mammal(v1), mammal(v0), Rule(453).
+mammal(v0) :- has_eggs(v1), has_eggs(v1), mammal(v0), Rule(454).
+fish(v0) :- homeothermic(v0), homeothermic(v1), mammal(v1), Rule(455).
+reptile(v0) :- has_milk(v0), has_milk(v0), homeothermic(v0), Rule(456).
+bird(v0) :- has_milk(v1), has_milk(v1), fish(v0), Rule(457).
+fish(v0) :- has_covering(v0, v1), has_gills(v0), Rule(458).
+bird(v0) :- has_gills(v1), mammal(v0), fish(v1), Rule(459).
+mammal(v0) :- has_milk(v1), has_milk(v1), homeothermic(v0), Rule(460).
+bird(v0) :- homeothermic(v1), reptile(v1), bird(v0), Rule(461).
+reptile(v0) :- homeothermic(v0), mammal(v0), Rule(462).
+bird(v0) :- homeothermic(v0), homeothermic(v1), fish(v1), Rule(463).
+reptile(v0) :- has_milk(v0), homeothermic(v0), has_gills(v0), Rule(464).
+bird(v0) :- reptile(v0), bird(v0), Rule(465).
+mammal(v0) :- has_milk(v0), has_milk(v0), has_eggs(v0), Rule(466).
+bird(v0) :- has_gills(v0), mammal(v1), fish(v1), Rule(467).
+bird(v0) :- has_milk(v1), has_eggs(v1), reptile(v0), Rule(468).
+mammal(v0) :- homeothermic(v0), homeothermic(v0), Rule(469).
+bird(v0) :- has_milk(v1), has_eggs(v0), bird(v1), Rule(470).
+reptile(v0) :- has_milk(v0), Rule(471).
+mammal(v0) :- has_eggs(v0), has_eggs(v1), has_eggs(v1), Rule(472).
+mammal(v0) :- homeothermic(v0), has_eggs(v0), mammal(v0), Rule(473).
+mammal(v0) :- has_covering(v0, v1), has_milk(v0), Rule(474).
+bird(v0) :- homeothermic(v0), has_gills(v0), reptile(v0), Rule(475).
+mammal(v0) :- homeothermic(v1), homeothermic(v0), has_eggs(v1), Rule(476).
+fish(v0) :- has_gills(v1), mammal(v0), fish(v1), Rule(477).
+bird(v0) :- has_gills(v0), fish(v1), fish(v1), Rule(478).
+reptile(v0) :- has_milk(v0), homeothermic(v1), mammal(v1), Rule(479).
+mammal(v0) :- homeothermic(v0), has_gills(v0), Rule(480).
+bird(v0) :- fish(v0), fish(v1), reptile(v1), Rule(481).
+bird(v0) :- has_gills(v0), bird(v0), bird(v0), Rule(482).
+reptile(v0) :- has_milk(v1), has_gills(v1), reptile(v0), Rule(483).
+reptile(v0) :- has_eggs(v0), has_gills(v0), fish(v0), Rule(484).
+reptile(v0) :- has_eggs(v1), has_eggs(v1), fish(v0), Rule(485).
+bird(v0) :- has_gills(v0), Rule(486).
+bird(v0) :- has_gills(v1), reptile(v1), bird(v0), Rule(487).
+bird(v0) :- homeothermic(v1), bird(v0), bird(v1), Rule(488).
+reptile(v0) :- has_milk(v0), has_milk(v1), homeothermic(v1), Rule(489).
+mammal(v0) :- homeothermic(v1), homeothermic(v1), mammal(v0), Rule(490).
+bird(v0) :- has_eggs(v0), mammal(v1), fish(v1), Rule(491).
+bird(v0) :- has_gills(v1), has_gills(v1), has_gills(v0), Rule(492).
+reptile(v0) :- has_milk(v0), homeothermic(v0), homeothermic(v0), Rule(493).
+bird(v0) :- has_eggs(v0), reptile(v0), reptile(v0), Rule(494).
+fish(v0) :- has_gills(v0), has_gills(v0), fish(v0), Rule(495).
+bird(v0) :- has_eggs(v1), fish(v1), bird(v0), Rule(496).
+bird(v0) :- has_eggs(v0), has_gills(v0), has_gills(v0), Rule(497).
+bird(v0) :- has_gills(v1), has_gills(v1), mammal(v0), Rule(498).
+bird(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(499).
+reptile(v0) :- fish(v0), fish(v0), fish(v0), Rule(500).
+reptile(v0) :- has_eggs(v0), has_eggs(v0), mammal(v0), Rule(501).
+bird(v0) :- homeothermic(v0), homeothermic(v1), mammal(v1), Rule(502).
+mammal(v0) :- has_milk(v0), has_milk(v0), Rule(503).
+fish(v0) :- has_covering(v0, v1), mammal(v0), Rule(504).
+bird(v0) :- mammal(v1), fish(v0), reptile(v1), Rule(505).
+mammal(v0) :- homeothermic(v0), homeothermic(v1), mammal(v1), Rule(506).
+fish(v0) :- has_gills(v1), mammal(v1), mammal(v0), Rule(507).
+reptile(v0) :- has_eggs(v1), has_gills(v1), fish(v0), Rule(508).
+reptile(v0) :- homeothermic(v0), fish(v0), reptile(v0), Rule(509).
+fish(v0) :- has_milk(v1), mammal(v1), fish(v0), Rule(510).
+reptile(v0) :- has_milk(v0), has_milk(v0), fish(v0), Rule(511).
+bird(v0) :- has_milk(v0), has_eggs(v1), has_gills(v1), Rule(512).
+fish(v0) :- has_gills(v0), Rule(513).
+fish(v0) :- has_milk(v0), mammal(v0), fish(v0), Rule(514).
+bird(v0) :- has_milk(v0), Rule(515).
+reptile(v0) :- homeothermic(v1), homeothermic(v0), reptile(v1), Rule(516).
+mammal(v0) :- has_milk(v1), homeothermic(v1), homeothermic(v0), Rule(517).
+mammal(v0) :- has_milk(v1), homeothermic(v1), has_gills(v0), Rule(518).
+bird(v0) :- has_eggs(v1), reptile(v0), reptile(v1), Rule(519).
+fish(v0) :- has_eggs(v1), mammal(v1), fish(v0), Rule(520).
+reptile(v0) :- homeothermic(v1), homeothermic(v1), reptile(v0), Rule(521).
+bird(v0) :- homeothermic(v0), homeothermic(v0), has_eggs(v0), Rule(522).
+reptile(v0) :- homeothermic(v0), homeothermic(v0), has_eggs(v0), Rule(523).
+fish(v0) :- has_milk(v1), has_milk(v0), mammal(v1), Rule(524).
+mammal(v0) :- homeothermic(v1), has_eggs(v1), has_gills(v0), Rule(525).
+bird(v0) :- has_eggs(v0), has_eggs(v1), reptile(v1), Rule(526).
+bird(v0) :- has_gills(v0), has_gills(v0), mammal(v0), Rule(527).
+bird(v0) :- has_milk(v1), has_gills(v0), reptile(v1), Rule(528).
+bird(v0) :- homeothermic(v0), has_gills(v0), fish(v0), Rule(529).
+bird(v0) :- homeothermic(v1), homeothermic(v0), reptile(v1), Rule(530).
+bird(v0) :- fish(v0), bird(v0), Rule(531).
+fish(v0) :- fish(v0), fish(v1), fish(v1), Rule(532).
+bird(v0) :- fish(v0), fish(v1), bird(v1), Rule(533).
+reptile(v0) :- mammal(v0), mammal(v1), reptile(v1), Rule(534).
+fish(v0) :- homeothermic(v0), homeothermic(v1), homeothermic(v1), Rule(535).
+reptile(v0) :- has_gills(v0), fish(v1), reptile(v1), Rule(536).
+fish(v0) :- has_milk(v1), mammal(v1), mammal(v0), Rule(537).
+fish(v0) :- has_milk(v0), has_milk(v1), homeothermic(v1), Rule(538).
+bird(v0) :- homeothermic(v1), has_eggs(v0), fish(v1), Rule(539).
+bird(v0) :- has_gills(v1), fish(v0), fish(v1), Rule(540).
+reptile(v0) :- fish(v1), reptile(v1), reptile(v0), Rule(541).
+bird(v0) :- has_milk(v0), has_milk(v0), homeothermic(v0), Rule(542).
+reptile(v0) :- has_milk(v1), mammal(v0), mammal(v1), Rule(543).
+mammal(v0) :- homeothermic(v0), has_eggs(v0), has_gills(v0), Rule(544).
+bird(v0) :- has_gills(v1), mammal(v1), mammal(v0), Rule(545).
+fish(v0) :- has_gills(v0), has_gills(v0), mammal(v0), Rule(546).
+bird(v0) :- fish(v0), bird(v0), bird(v0), Rule(547).
+bird(x0) :- feathers(x1), has_covering(x0, x1), Rule(548).
+bird(v0) :- has_milk(v1), has_milk(v0), homeothermic(v1), Rule(549).
+bird(v0) :- has_eggs(v1), has_eggs(v0), mammal(v1), Rule(550).
+bird(v0) :- homeothermic(v0), reptile(v1), bird(v1), Rule(551).
+reptile(v0) :- homeothermic(v0), has_eggs(v0), fish(v0), Rule(552).
+reptile(v0) :- has_gills(v0), mammal(v0), reptile(v0), Rule(553).
+mammal(v0) :- has_covering(v0, v1), reptile(v0), Rule(554).
+bird(v0) :- has_milk(v1), homeothermic(v0), homeothermic(v1), Rule(555).
+fish(v0) :- has_milk(v1), has_eggs(v0), fish(v1), Rule(556).
+reptile(v0) :- has_milk(v0), homeothermic(v0), has_eggs(v0), Rule(557).
+reptile(v0) :- mammal(v1), reptile(v1), reptile(v0), Rule(558).
+fish(v0) :- has_milk(v1), fish(v0), fish(v1), Rule(559).
+bird(v1) :- feathers(v0), has_covering(v1, v0), Rule(560).
+bird(v0) :- has_milk(v1), fish(v0), fish(v1), Rule(561).
+bird(v0) :- has_gills(v0), has_gills(v1), fish(v1), Rule(562).
+fish(v0) :- has_milk(v0), mammal(v0), Rule(563).
+reptile(v0) :- homeothermic(v1), has_eggs(v0), fish(v1), Rule(564).
+bird(v0) :- fish(v0), bird(v1), bird(v1), Rule(565).
+mammal(v0) :- has_milk(v0), homeothermic(v1), mammal(v1), Rule(566).
+bird(v0) :- homeothermic(v0), bird(v0), Rule(567).
+bird(v0) :- has_eggs(v1), mammal(v1), reptile(v0), Rule(568).
+bird(v0) :- has_milk(v0), has_milk(v0), has_eggs(v0), Rule(569).
+bird(v0) :- homeothermic(v1), homeothermic(v1), mammal(v0), Rule(570).
+bird(v0) :- has_gills(v1), has_gills(v0), fish(v1), Rule(571).
+bird(v0) :- has_gills(v1), mammal(v0), bird(v1), Rule(572).
+fish(v0) :- has_eggs(v0), has_gills(v0), mammal(v0), Rule(573).
+reptile(v0) :- mammal(v0), Rule(574).
+mammal(v0) :- has_gills(v1), mammal(v0), mammal(v1), Rule(575).
+reptile(v0) :- has_eggs(v1), has_eggs(v0), mammal(v1), Rule(576).
+fish(v0) :- homeothermic(v0), has_eggs(v1), has_eggs(v1), Rule(577).
+bird(v0) :- fish(v1), reptile(v1), bird(v0), Rule(578).
+bird(v0) :- has_milk(v0), fish(v1), bird(v1), Rule(579).
+bird(v0) :- has_eggs(v0), mammal(v0), bird(v0), Rule(580).
+bird(v0) :- bird(v0), bird(v1), bird(v1), Rule(581).
+reptile(v0) :- fish(v0), fish(v1), fish(v1), Rule(582).
+fish(v0) :- has_milk(v0), has_gills(v1), fish(v1), Rule(583).
+bird(v0) :- has_gills(v1), bird(v0), bird(v1), Rule(584).
+bird(v0) :- has_eggs(v0), fish(v0), fish(v0), Rule(585).
+fish(v0) :- has_gills(v1), has_gills(v1), mammal(v0), Rule(586).
+fish(v0) :- homeothermic(v1), fish(v1), fish(v0), Rule(587).
+bird(v0) :- fish(v0), has_covering(v0, v1), Rule(588).
+bird(v0) :- has_gills(v0), bird(v0), Rule(589).
+fish(v0) :- has_milk(v0), has_milk(v1), has_gills(v1), Rule(590).
+fish(v0) :- has_milk(v1), has_eggs(v0), mammal(v1), Rule(591).
+fish(v0) :- homeothermic(v0), Rule(592).
+mammal(v0) :- has_eggs(v1), has_eggs(v0), has_gills(v1), Rule(593).
+fish(v0) :- homeothermic(v0), has_gills(v0), Rule(594).
+reptile(v0) :- has_eggs(v0), has_gills(v0), reptile(v0), Rule(595).
+mammal(v0) :- has_milk(v0), has_milk(v1), has_eggs(v1), Rule(596).
+fish(v0) :- has_gills(v0), Rule(597).
+bird(v0) :- bird(v0), bird(v0), bird(v0), Rule(598).
+bird(v0) :- has_eggs(v1), has_gills(v0), bird(v1), Rule(599).
+reptile(v0) :- has_milk(v0), homeothermic(v1), fish(v1), Rule(600).
+bird(v0) :- has_milk(v0), reptile(v0), bird(v0), Rule(601).
+bird(v0) :- reptile(v1), bird(v1), bird(v0), Rule(602).
+reptile(v0) :- has_milk(v0), has_milk(v0), has_gills(v0), Rule(603).
+bird(v0) :- reptile(v1), reptile(v0), reptile(v1), Rule(604).
+fish(v0) :- has_milk(v0), has_eggs(v1), fish(v1), Rule(605).
+reptile(v0) :- homeothermic(v1), fish(v1), reptile(v0), Rule(606).
+bird(v0) :- fish(v0), fish(v0), Rule(607).
+fish(v0) :- has_milk(v0), homeothermic(v0), mammal(v0), Rule(608).
+bird(v0) :- fish(v0), Rule(609).
+reptile(v0) :- has_gills(v1), mammal(v0), reptile(v1), Rule(610).
+bird(v0) :- has_milk(v0), homeothermic(v1), homeothermic(v1), Rule(611).
+bird(v0) :- has_eggs(v0), has_eggs(v0), fish(v0), Rule(612).
+reptile(v0) :- homeothermic(v1), homeothermic(v0), fish(v1), Rule(613).
+fish(v0) :- homeothermic(v0), Rule(614).
+reptile(v0) :- has_milk(v0), has_eggs(v1), has_eggs(v1), Rule(615).
+bird(v0) :- homeothermic(v1), has_eggs(v1), bird(v0), Rule(616).
+bird(v0) :- has_eggs(v1), fish(v0), fish(v1), Rule(617).
+fish(v0) :- has_milk(v0), has_milk(v0), mammal(v0), Rule(618).
+mammal(x0) :- has_covering(x0, x1), has_milk(x0), Rule(619).
+reptile(v0) :- fish(v0), has_covering(v0, v1), Rule(620).
+bird(v0) :- fish(v1), bird(v0), bird(v1), Rule(621).
+bird(v0) :- has_eggs(v0), Rule(622).
+bird(v0) :- has_milk(v0), mammal(v0), mammal(v0), Rule(623).
+fish(v0) :- has_milk(v1), mammal(v0), mammal(v1), Rule(624).
+mammal(v0) :- has_eggs(v1), mammal(v0), mammal(v1), Rule(625).
+reptile(v0) :- homeothermic(v1), has_eggs(v1), reptile(v0), Rule(626).
+fish(v0) :- homeothermic(v0), homeothermic(v0), fish(v0), Rule(627).
+fish(v0) :- has_gills(v0), has_gills(v0), has_gills(v0), Rule(628).
+fish(v0) :- has_gills(v0), fish(v0), Rule(629).
+reptile(v0) :- homeothermic(v1), fish(v0), fish(v1), Rule(630).
+reptile(v0) :- has_milk(v1), homeothermic(v1), has_eggs(v0), Rule(631).
+bird(v0) :- has_milk(v1), has_eggs(v0), reptile(v1), Rule(632).
+bird(v0) :- homeothermic(v0), has_eggs(v1), fish(v1), Rule(633).
+reptile(v0) :- has_milk(v1), mammal(v0), fish(v1), Rule(634).
+fish(v0) :- homeothermic(v0), mammal(v0), Rule(635).
+bird(v0) :- homeothermic(v1), has_gills(v1), has_gills(v0), Rule(636).
+bird(v0) :- has_eggs(v0), reptile(v0), bird(v0), Rule(637).
+reptile(v0) :- has_milk(v0), has_gills(v0), fish(v0), Rule(638).
+fish(v0) :- has_milk(v0), homeothermic(v1), fish(v1), Rule(639).
+bird(v0) :- reptile(v0), reptile(v0), Rule(640).
+fish(v0) :- has_eggs(v0), has_eggs(v0), mammal(v0), Rule(641).
+mammal(v0) :- bird(v0), Rule(642).
+bird(v0) :- has_gills(v1), reptile(v0), reptile(v1), Rule(643).
+bird(v0) :- has_eggs(v1), has_eggs(v0), fish(v1), Rule(644).
+fish(v0) :- bird(v0), has_covering(v0, v1), Rule(645).
+mammal(v0) :- has_gills(v0), mammal(v1), mammal(v1), Rule(646).
+bird(v0) :- homeothermic(v1), mammal(v0), bird(v1), Rule(647).
+bird(v0) :- has_milk(v0), mammal(v0), Rule(648).
+bird(v0) :- has_gills(v0), mammal(v0), fish(v0), Rule(649).
+reptile(v0) :- has_gills(v0), has_gills(v1), has_gills(v1), Rule(650).
+bird(v0) :- homeothermic(v0), has_eggs(v0), fish(v0), Rule(651).
+bird(v0) :- has_milk(v1), has_gills(v0), mammal(v1), Rule(652).
+bird(v0) :- has_eggs(v0), has_gills(v0), Rule(653).
+bird(v0) :- has_eggs(v0), has_eggs(v1), mammal(v1), Rule(654).
+fish(v0) :- has_eggs(v1), has_gills(v1), mammal(v0), Rule(655).
+bird(v0) :- has_milk(v1), has_milk(v0), mammal(v1), Rule(656).
+fish(v0) :- fish(v0), Rule(657).
+reptile(v0) :- has_eggs(v0), fish(v0), reptile(v0), Rule(658).
+fish(v1) :- feathers(v0), has_covering(v1, v0), Rule(659).
+bird(v0) :- homeothermic(v0), has_eggs(v1), mammal(v1), Rule(660).
+reptile(v0) :- reptile(v1), reptile(v1), reptile(v0), Rule(661).
+bird(v0) :- has_milk(v0), homeothermic(v1), fish(v1), Rule(662).
+bird(v0) :- has_milk(v1), mammal(v1), mammal(v0), Rule(663).
+fish(v0) :- has_milk(v1), has_milk(v1), homeothermic(v0), Rule(664).
+bird(v0) :- mammal(v0), mammal(v1), reptile(v1), Rule(665).
+bird(v0) :- has_milk(v1), fish(v1), reptile(v0), Rule(666).
+reptile(v0) :- has_milk(v0), has_gills(v0), Rule(667).
+reptile(v0) :- has_eggs(v0), mammal(v1), fish(v1), Rule(668).
+bird(v0) :- mammal(v1), reptile(v0), reptile(v1), Rule(669).
+reptile(v0) :- has_milk(v0), has_gills(v1), fish(v1), Rule(670).
+reptile(v0) :- homeothermic(v1), homeothermic(v0), mammal(v1), Rule(671).
+reptile(v0) :- has_gills(v1), has_gills(v0), fish(v1), Rule(672).
+fish(v0) :- has_eggs(v1), has_eggs(v0), mammal(v1), Rule(673).
+bird(v0) :- homeothermic(v0), homeothermic(v0), bird(v0), Rule(674).
+mammal(v0) :- has_eggs(v0), has_gills(v1), has_gills(v1), Rule(675).
+reptile(v0) :- has_milk(v0), mammal(v1), mammal(v1), Rule(676).
+bird(v0) :- has_eggs(v0), has_eggs(v0), has_eggs(v0), Rule(677).
+bird(v0) :- has_milk(v1), has_eggs(v0), has_gills(v1), Rule(678).
+reptile(v1) :- feathers(v0), has_covering(v1, v0), Rule(679).
+reptile(v0) :- mammal(v1), fish(v0), fish(v1), Rule(680).
+reptile(v0) :- has_eggs(v1), has_gills(v1), mammal(v0), Rule(681).
+bird(x0) :- feathers(x1), has_covering(x0, x1), Rule(682).
+reptile(v0) :- has_milk(v1), has_milk(v0), fish(v1), Rule(683).
+fish(v0) :- homeothermic(v0), homeothermic(v0), has_eggs(v0), Rule(684).
+bird(v0) :- homeothermic(v0), bird(v1), bird(v1), Rule(685).
+fish(v0) :- homeothermic(v0), fish(v1), fish(v1), Rule(686).
+fish(v0) :- homeothermic(v1), has_eggs(v0), fish(v1), Rule(687).
+bird(v0) :- has_milk(v0), has_eggs(v1), fish(v1), Rule(688).
+reptile(v0) :- homeothermic(v0), fish(v0), fish(v0), Rule(689).
+mammal(v0) :- homeothermic(v0), homeothermic(v1), homeothermic(v1), Rule(690).
+reptile(v0) :- mammal(v0), reptile(v0), reptile(v0), Rule(691).
+bird(v0) :- reptile(v0), bird(v0), bird(v0), Rule(692).
+fish(v0) :- fish(v0), fish(v0), Rule(693).
+fish(v0) :- homeothermic(v0), has_eggs(v1), mammal(v1), Rule(694).
+bird(v0) :- has_milk(v0), has_gills(v0), reptile(v0), Rule(695).
+reptile(v0) :- mammal(v0), reptile(v1), reptile(v1), Rule(696).
+fish(v0) :- homeothermic(v1), mammal(v0), fish(v1), Rule(697).
+bird(v0) :- fish(v0), fish(v0), fish(v0), Rule(698).
+fish(v0) :- homeothermic(v0), homeothermic(v1), has_gills(v1), Rule(699).
+bird(v0) :- has_covering(v0, v1), mammal(v0), Rule(700).
+bird(v0) :- has_eggs(v0), mammal(v0), fish(v0), Rule(701).
+bird(v0) :- has_milk(v0), has_milk(v0), fish(v0), Rule(702).
+bird(v1) :- none(v0), has_covering(v1, v0), Rule(703).
+bird(v0) :- has_eggs(v0), has_eggs(v0), reptile(v0), Rule(704).
+fish(v0) :- has_eggs(v0), mammal(v0), fish(v0), Rule(705).
+fish(v1) :- scales(v0), has_covering(v1, v0), Rule(706).
+bird(v0) :- homeothermic(v1), has_eggs(v1), mammal(v0), Rule(707).
+reptile(v0) :- homeothermic(v1), has_gills(v0), has_gills(v1), Rule(708).
+reptile(v0) :- homeothermic(v1), mammal(v0), fish(v1), Rule(709).
+bird(v0) :- has_milk(v1), has_eggs(v1), has_eggs(v0), Rule(710).
+mammal(v0) :- has_milk(v1), has_eggs(v1), has_gills(v0), Rule(711).
+fish(v0) :- has_eggs(v0), has_gills(v1), fish(v1), Rule(712).
+bird(v0) :- homeothermic(v0), mammal(v1), reptile(v1), Rule(713).
+reptile(v0) :- has_milk(v0), has_eggs(v1), mammal(v1), Rule(714).
+bird(v0) :- fish(v0), reptile(v0), bird(v0), Rule(715).
+fish(v0) :- mammal(v0), mammal(v0), mammal(v0), Rule(716).
+bird(v0) :- homeothermic(v0), has_eggs(v0), mammal(v0), Rule(717).
+bird(v0) :- has_eggs(v0), has_eggs(v0), bird(v0), Rule(718).
+mammal(v0) :- has_eggs(v0), mammal(v0), mammal(v0), Rule(719).
+	).
+reptile(v0) :- has_eggs(v0), mammal(v1), reptile(v1), Rule(720).
+mammal(v0) :- has_milk(v1), has_gills(v1), has_gills(v0), Rule(721).
+bird(v0) :- has_covering(v0, v1), has_gills(v0), Rule(722).
+reptile(v0) :- homeothermic(v0), homeothermic(v0), reptile(v0), Rule(723).
+bird(v0) :- has_milk(v0), has_milk(v1), reptile(v1), Rule(724).
+reptile(v0) :- has_gills(v0), fish(v1), fish(v1), Rule(725).
+bird(v0) :- has_milk(v1), has_milk(v1), reptile(v0), Rule(726).
+bird(v0) :- homeothermic(v0), homeothermic(v1), has_eggs(v1), Rule(727).
+reptile(v0) :- mammal(v1), mammal(v1), mammal(v0), Rule(728).
+reptile(v0) :- homeothermic(v0), has_eggs(v0), Rule(729).
+fish(v0) :- has_eggs(v0), Rule(730).
+bird(v0) :- homeothermic(v1), fish(v0), bird(v1), Rule(731).
+reptile(v0) :- has_eggs(v1), has_eggs(v0), has_eggs(v1), Rule(732).
+bird(v0) :- has_gills(v0), Rule(733).
+reptile(v0) :- homeothermic(v1), has_eggs(v0), has_eggs(v1), Rule(734).
+fish(v0) :- homeothermic(v0), homeothermic(v0), Rule(735).
+bird(v1) :- hair(v0), has_covering(v1, v0), Rule(736).
+reptile(v0) :- homeothermic(v1), mammal(v1), reptile(v0), Rule(737).
+bird(v0) :- reptile(v0), reptile(v0), bird(v0), Rule(738).
+reptile(v0) :- has_milk(v1), has_gills(v0), has_gills(v1), Rule(739).
+bird(v0) :- has_milk(v1), reptile(v0), bird(v1), Rule(740).
+bird(v0) :- has_milk(v1), mammal(v1), reptile(v0), Rule(741).
+fish(v0) :- has_milk(v1), fish(v1), fish(v0), Rule(742).
+bird(v0) :- has_milk(v0), has_gills(v0), Rule(743).
+bird(v0) :- fish(v1), reptile(v0), bird(v1), Rule(744).
+fish(x0) :- has_covering(x0, x1), has_gills(x0), Rule(745).
+reptile(v0) :- has_gills(v0), has_gills(v1), reptile(v1), Rule(746).
+fish(v0) :- homeothermic(v1), homeothermic(v1), fish(v0), Rule(747).
+reptile(v0) :- homeothermic(v0), mammal(v1), fish(v1), Rule(748).
+reptile(v0) :- has_milk(v0), homeothermic(v1), has_eggs(v1), Rule(749).
+reptile(v0) :- fish(v0), reptile(v0), Rule(750).
+fish(v0) :- has_milk(v0), has_milk(v0), homeothermic(v0), Rule(751).
+mammal(v0) :- has_eggs(v0), has_eggs(v0), Rule(752).
+bird(v0) :- has_eggs(v1), reptile(v0), bird(v1), Rule(753).
+fish(v0) :- mammal(v1), mammal(v1), fish(v0), Rule(754).
+bird(v0) :- has_gills(v0), has_gills(v0), Rule(755).
+bird(v0) :- homeothermic(v1), homeothermic(v1), reptile(v0), Rule(756).
+reptile(v0) :- has_gills(v0), mammal(v1), fish(v1), Rule(757).
+reptile(v0) :- has_milk(v1), has_eggs(v0), has_eggs(v1), Rule(758).
+fish(v0) :- homeothermic(v0), has_gills(v1), mammal(v1), Rule(759).
+mammal(v0) :- homeothermic(v1), has_eggs(v0), has_gills(v1), Rule(760).
+reptile(v0) :- has_milk(v0), fish(v1), reptile(v1), Rule(761).
+bird(v0) :- homeothermic(v0), mammal(v1), mammal(v1), Rule(762).
+bird(v0) :- has_milk(v0), has_gills(v1), has_gills(v1), Rule(763).
+reptile(v0) :- has_eggs(v0), has_eggs(v0), reptile(v0), Rule(764).
+reptile(v0) :- homeothermic(v0), homeothermic(v1), fish(v1), Rule(765).
+reptile(v0) :- homeothermic(v0), has_gills(v0), mammal(v0), Rule(766).
+mammal(v0) :- homeothermic(v1), has_eggs(v0), mammal(v1), Rule(767).
+mammal(v0) :- has_eggs(v0), has_gills(v0), Rule(768).
+reptile(v0) :- homeothermic(v0), has_eggs(v1), mammal(v1), Rule(769).
+mammal(v0) :- homeothermic(v0), has_gills(v0), mammal(v0), Rule(770).
+reptile(v0) :- has_eggs(v1), has_gills(v0), fish(v1), Rule(771).
+bird(v0) :- has_gills(v0), mammal(v0), Rule(772).
+bird(v0) :- has_eggs(v0), reptile(v1), bird(v1), Rule(773).
+bird(v0) :- has_eggs(v0), has_eggs(v1), bird(v1), Rule(774).
+mammal(v0) :- homeothermic(v1), homeothermic(v0), has_gills(v1), Rule(775).
+bird(v0) :- homeothermic(v0), mammal(v0), reptile(v0), Rule(776).
+bird(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(777).
+bird(v0) :- has_gills(v0), has_gills(v0), has_gills(v0), Rule(778).
+reptile(v0) :- mammal(v1), reptile(v0), reptile(v1), Rule(779).
+fish(v0) :- has_gills(v1), has_gills(v1), fish(v0), Rule(780).
+bird(v0) :- fish(v0), fish(v0), reptile(v0), Rule(781).
+reptile(v0) :- homeothermic(v1), has_eggs(v1), fish(v0), Rule(782).
+reptile(v0) :- homeothermic(v1), has_gills(v1), has_gills(v0), Rule(783).
+mammal(v0) :- has_milk(v0), has_gills(v0), Rule(784).
+fish(v0) :- homeothermic(v1), has_eggs(v1), has_eggs(v0), Rule(785).
+mammal(v0) :- has_covering(v0, v1), has_eggs(v0), Rule(786).
+mammal(v0) :- mammal(v0), Rule(787).
+reptile(v0) :- has_milk(v1), homeothermic(v0), homeothermic(v1), Rule(788).
+fish(v0) :- has_eggs(v1), has_gills(v0), has_gills(v1), Rule(789).
+reptile(v0) :- mammal(v1), mammal(v1), fish(v0), Rule(790).
+fish(v0) :- has_milk(v0), has_milk(v0), Rule(791).
+fish(v0) :- has_gills(v0), fish(v0), fish(v0), Rule(792).
+mammal(v0) :- has_milk(v1), has_eggs(v1), has_eggs(v0), Rule(793).
+reptile(v0) :- has_milk(v1), has_eggs(v0), reptile(v1), Rule(794).
+bird(v0) :- has_eggs(v0), reptile(v1), reptile(v1), Rule(795).
+bird(v0) :- homeothermic(v1), has_gills(v0), mammal(v1), Rule(796).
+reptile(v0) :- has_milk(v1), has_milk(v0), mammal(v1), Rule(797).
+fish(v0) :- has_eggs(v0), mammal(v0), mammal(v0), Rule(798).
+bird(v0) :- has_milk(v0), has_gills(v1), fish(v1), Rule(799).
+bird(v0) :- mammal(v1), fish(v1), bird(v0), Rule(800).
+reptile(v0) :- has_milk(v0), mammal(v1), reptile(v1), Rule(801).
+mammal(v0) :- homeothermic(v1), has_eggs(v0), has_eggs(v1), Rule(802).
+fish(v0) :- homeothermic(v0), has_eggs(v1), has_gills(v1), Rule(803).
+fish(v0) :- homeothermic(v1), homeothermic(v1), has_eggs(v0), Rule(804).
+bird(v0) :- has_milk(v0), fish(v0), fish(v0), Rule(805).
+bird(v0) :- homeothermic(v1), has_eggs(v0), mammal(v1), Rule(806).
+reptile(v0) :- has_milk(v1), homeothermic(v1), homeothermic(v0), Rule(807).
+reptile(v0) :- has_milk(v0), mammal(v0), mammal(v0), Rule(808).
+mammal(v0) :- has_milk(v1), homeothermic(v0), mammal(v1), Rule(809).
+bird(v0) :- homeothermic(v0), fish(v0), bird(v0), Rule(810).
+bird(v0) :- mammal(v0), reptile(v0), reptile(v0), Rule(811).
+fish(v0) :- has_milk(v1), has_gills(v0), fish(v1), Rule(812).
+bird(v0) :- homeothermic(v1), has_gills(v1), reptile(v0), Rule(813).
+fish(v0) :- homeothermic(v1), has_gills(v1), mammal(v0), Rule(814).
+reptile(v0) :- has_milk(v0), has_eggs(v1), fish(v1), Rule(815).
+fish(v0) :- has_milk(v0), has_eggs(v0), has_gills(v0), Rule(816).
+bird(v0) :- has_gills(v1), fish(v1), bird(v0), Rule(817).
+reptile(v0) :- has_milk(v1), has_milk(v1), homeothermic(v0), Rule(818).
+bird(v0) :- has_eggs(v0), mammal(v0), Rule(819).
+mammal(v1) :- feathers(v0), has_covering(v1, v0), Rule(820).
+reptile(v0) :- has_milk(v0), fish(v1), fish(v1), Rule(821).
+reptile(v0) :- homeothermic(v0), has_gills(v0), has_gills(v0), Rule(822).
+bird(v0) :- has_eggs(v1), has_gills(v0), mammal(v1), Rule(823).
+bird(v0) :- fish(v1), fish(v0), fish(v1), Rule(824).
+reptile(v0) :- reptile(v0), reptile(v0), Rule(825).
+reptile(v0) :- has_eggs(v1), mammal(v0), fish(v1), Rule(826).
+bird(v0) :- has_eggs(v1), has_eggs(v1), bird(v0), Rule(827).
+bird(v0) :- mammal(v0), fish(v0), Rule(828).
+fish(v0) :- has_milk(v1), has_milk(v0), has_milk(v1), Rule(829).
+bird(v0) :- has_milk(v0), homeothermic(v1), has_gills(v1), Rule(830).
+mammal(v0) :- has_milk(v0), has_eggs(v0), has_eggs(v0), Rule(831).
+fish(v0) :- homeothermic(v1), homeothermic(v0), mammal(v1), Rule(832).
+fish(v0) :- has_eggs(v1), mammal(v0), fish(v1), Rule(833).
+reptile(v0) :- mammal(v0), fish(v0), Rule(834).
+fish(v0) :- has_milk(v0), has_eggs(v1), mammal(v1), Rule(835).
+bird(v0) :- mammal(v0), mammal(v1), bird(v1), Rule(836).
+reptile(v1) :- hair(v0), has_covering(v1, v0), Rule(837).
+bird(v0) :- has_milk(v1), has_eggs(v1), mammal(v0), Rule(838).
+mammal(v0) :- has_eggs(v0), has_gills(v0), has_gills(v0), Rule(839).
+mammal(v0) :- has_gills(v0), has_gills(v0), has_gills(v0), Rule(840).
+reptile(v0) :- has_eggs(v0), has_eggs(v0), Rule(841).
+mammal(v0) :- homeothermic(v0), homeothermic(v1), has_gills(v1), Rule(842).
+mammal(v0) :- has_milk(v0), has_eggs(v0), mammal(v0), Rule(843).
+bird(v0) :- homeothermic(v0), reptile(v0), bird(v0), Rule(844).
+reptile(v0) :- has_eggs(v1), has_eggs(v0), has_gills(v1), Rule(845).
+bird(v0) :- reptile(v1), bird(v0), bird(v1), Rule(846).
+bird(v0) :- has_eggs(v0), has_eggs(v0), Rule(847).
+fish(v0) :- has_eggs(v0), fish(v0), Rule(848).
+mammal(v0) :- homeothermic(v0), has_gills(v1), has_gills(v1), Rule(849).
+reptile(v1) :- none(v0), has_covering(v1, v0), Rule(850).
+bird(v0) :- homeothermic(v0), fish(v0), fish(v0), Rule(851).
+reptile(v0) :- has_milk(v0), has_gills(v0), reptile(v0), Rule(852).
+bird(v0) :- homeothermic(v0), fish(v1), bird(v1), Rule(853).
+fish(v0) :- has_milk(v1), has_milk(v0), has_gills(v1), Rule(854).
+mammal(v0) :- homeothermic(v0), has_eggs(v1), has_eggs(v1), Rule(855).
+bird(v0) :- has_eggs(v0), fish(v1), fish(v1), Rule(856).
+reptile(v0) :- has_gills(v0), reptile(v0), reptile(v0), Rule(857).
+reptile(v0) :- has_gills(v1), mammal(v1), mammal(v0), Rule(858).
+bird(v0) :- has_eggs(v0), mammal(v1), bird(v1), Rule(859).
+mammal(v0) :- has_milk(v0), has_milk(v1), has_milk(v1), Rule(860).
+bird(v0) :- homeothermic(v1), has_eggs(v0), bird(v1), Rule(861).
+bird(v0) :- has_eggs(v1), has_eggs(v0), bird(v1), Rule(862).
+bird(v0) :- has_milk(v1), fish(v0), reptile(v1), Rule(863).
+fish(v0) :- has_eggs(v0), mammal(v0), Rule(864).
+bird(v0) :- has_milk(v1), reptile(v1), reptile(v0), Rule(865).
+bird(v0) :- mammal(v0), fish(v0), reptile(v0), Rule(866).
+bird(v0) :- has_eggs(v0), mammal(v0), mammal(v0), Rule(867).
+fish(v0) :- has_milk(v0), has_gills(v0), has_gills(v0), Rule(868).
+fish(v0) :- has_eggs(v0), mammal(v1), fish(v1), Rule(869).
+	).
+reptile(v0) :- homeothermic(v0), has_eggs(v1), reptile(v1), Rule(870).
+fish(v0) :- homeothermic(v0), has_eggs(v0), Rule(871).
+fish(v0) :- mammal(v0), fish(v0), Rule(872).
+reptile(v0) :- has_milk(v1), has_milk(v0), has_eggs(v1), Rule(873).
+bird(v0) :- mammal(v0), reptile(v0), Rule(874).
+reptile(v0) :- has_gills(v0), has_gills(v0), has_gills(v0), Rule(875).
+reptile(v0) :- has_milk(v1), fish(v1), fish(v0), Rule(876).
+bird(v0) :- has_milk(v1), has_milk(v0), reptile(v1), Rule(877).
+reptile(v0) :- homeothermic(v1), homeothermic(v1), fish(v0), Rule(878).
+reptile(v0) :- has_milk(v1), fish(v0), reptile(v1), Rule(879).
+reptile(v0) :- has_eggs(v0), fish(v0), Rule(880).
+bird(v0) :- homeothermic(v1), bird(v1), bird(v0), Rule(881).
+bird(v0) :- has_eggs(v0), has_eggs(v1), has_gills(v1), Rule(882).
+fish(v0) :- has_eggs(v1), has_eggs(v1), fish(v0), Rule(883).
+bird(v0) :- has_milk(v1), has_milk(v0), has_eggs(v1), Rule(884).
+reptile(v0) :- has_eggs(v0), mammal(v1), mammal(v1), Rule(885).
+bird(v0) :- has_milk(v0), mammal(v0), reptile(v0), Rule(886).
+reptile(v0) :- reptile(v0), reptile(v0), reptile(v0), Rule(887).
+mammal(v0) :- has_milk(v0), homeothermic(v0), mammal(v0), Rule(888).
+mammal(v0) :- has_milk(v1), has_eggs(v0), has_eggs(v1), Rule(889).
+bird(v0) :- has_milk(v0), homeothermic(v1), has_eggs(v1), Rule(890).
+mammal(v0) :- homeothermic(v1), mammal(v1), mammal(v0), Rule(891).
+fish(v0) :- has_eggs(v1), mammal(v0), mammal(v1), Rule(892).
+mammal(v0) :- has_gills(v0), mammal(v0), mammal(v0), Rule(893).
+reptile(v0) :- has_eggs(v1), fish(v1), reptile(v0), Rule(894).
+fish(v0) :- homeothermic(v0), homeothermic(v1), fish(v1), Rule(895).
+reptile(v0) :- has_milk(v1), has_eggs(v1), mammal(v0), Rule(896).
+reptile(v0) :- has_milk(v0), has_eggs(v0), reptile(v0), Rule(897).
+fish(v0) :- has_milk(v0), has_eggs(v0), Rule(898).
+fish(v0) :- homeothermic(v1), has_gills(v1), has_gills(v0), Rule(899).
+reptile(v0) :- homeothermic(v1), has_eggs(v0), has_gills(v1), Rule(900).
+bird(v0) :- has_milk(v1), has_gills(v1), bird(v0), Rule(901).
+reptile(v0) :- has_eggs(v1), mammal(v0), mammal(v1), Rule(902).
+bird(v0) :- has_milk(v0), has_gills(v1), bird(v1), Rule(903).
+mammal(v0) :- has_eggs(v0), has_eggs(v0), mammal(v0), Rule(904).
+bird(v0) :- has_milk(v0), Rule(905).
+reptile(v0) :- homeothermic(v0), reptile(v0), Rule(906).
+bird(v0) :- fish(v1), fish(v1), bird(v0), Rule(907).
+mammal(v0) :- homeothermic(v1), homeothermic(v0), homeothermic(v1), Rule(908).
+bird(v0) :- reptile(v0), Rule(909).
+fish(v0) :- homeothermic(v1), has_eggs(v0), has_gills(v1), Rule(910).
+bird(v0) :- has_milk(v1), has_eggs(v0), has_eggs(v1), Rule(911).
+reptile(v0) :- homeothermic(v0), has_gills(v0), Rule(912).
+mammal(v0) :- mammal(v0), mammal(v0), Rule(913).
+fish(v0) :- has_eggs(v0), Rule(914).
+reptile(v0) :- fish(v0), reptile(v0), reptile(v0), Rule(915).
+fish(v0) :- mammal(v1), fish(v1), fish(v0), Rule(916).
+bird(v0) :- has_milk(v0), homeothermic(v0), mammal(v0), Rule(917).
+bird(v0) :- has_milk(v1), has_gills(v1), fish(v0), Rule(918).
+reptile(v0) :- has_eggs(v0), reptile(v0), Rule(919).
+bird(v0) :- has_eggs(v0), has_eggs(v0), mammal(v0), Rule(920).
+fish(v0) :- homeothermic(v0), homeothermic(v0), homeothermic(v0), Rule(921).
+bird(v0) :- has_milk(v0), mammal(v0), bird(v0), Rule(922).
+mammal(v0) :- homeothermic(v1), homeothermic(v1), has_gills(v0), Rule(923).
+reptile(v0) :- fish(v0), fish(v0), Rule(924).
+reptile(v0) :- has_gills(v0), Rule(925).
+mammal(v0) :- has_covering(v0, v1), homeothermic(v0), Rule(926).
+reptile(v0) :- has_covering(v0, v1), has_milk(v0), Rule(927).
+reptile(v0) :- has_eggs(v0), has_eggs(v1), reptile(v1), Rule(928).
+bird(v0) :- homeothermic(v0), has_eggs(v1), has_gills(v1), Rule(929).
+bird(v0) :- has_eggs(v0), fish(v0), bird(v0), Rule(930).
+reptile(v0) :- homeothermic(v0), has_eggs(v1), has_gills(v1), Rule(931).
+bird(v0) :- homeothermic(v1), mammal(v1), fish(v0), Rule(932).
+mammal(v0) :- has_milk(v0), has_milk(v0), homeothermic(v0), Rule(933).
+reptile(v0) :- has_eggs(v0), Rule(934).
+bird(v0) :- has_eggs(v1), has_eggs(v1), fish(v0), Rule(935).
+fish(v0) :- bird(v0), Rule(936).
+mammal(v0) :- mammal(v0), mammal(v0), mammal(v0), Rule(937).
+mammal(v0) :- homeothermic(v0), homeothermic(v0), has_gills(v0), Rule(938).
+reptile(v0) :- has_eggs(v1), has_gills(v1), reptile(v0), Rule(939).
+mammal(v0) :- homeothermic(v1), homeothermic(v1), homeothermic(v0), Rule(940).
+bird(v0) :- homeothermic(v1), reptile(v0), reptile(v1), Rule(941).
+reptile(v0) :- has_gills(v0), has_gills(v1), fish(v1), Rule(942).
+bird(v0) :- has_milk(v0), has_gills(v1), mammal(v1), Rule(943).
+reptile(v0) :- has_eggs(v0), has_eggs(v1), has_eggs(v1), Rule(944).
+mammal(v0) :- has_milk(v0), mammal(v1), mammal(v1), Rule(945).
+bird(v0) :- homeothermic(v1), mammal(v0), reptile(v1), Rule(946).
+reptile(v0) :- has_eggs(v0), has_eggs(v0), fish(v0), Rule(947).
+bird(v0) :- has_milk(v0), mammal(v1), mammal(v1), Rule(948).
+mammal(v0) :- homeothermic(v0), has_gills(v0), has_gills(v0), Rule(949).
+reptile(v0) :- has_milk(v1), has_eggs(v1), reptile(v0), Rule(950).
+bird(v0) :- homeothermic(v0), mammal(v1), bird(v1), Rule(951).
+fish(v0) :- has_gills(v1), has_gills(v0), mammal(v1), Rule(952).
+reptile(v0) :- homeothermic(v1), homeothermic(v1), has_gills(v0), Rule(953).
+reptile(v0) :- has_milk(v1), has_gills(v0), mammal(v1), Rule(954).
+fish(v0) :- has_eggs(v1), has_eggs(v0), has_gills(v1), Rule(955).
+reptile(v0) :- has_eggs(v0), fish(v0), fish(v0), Rule(956).
+fish(v0) :- has_milk(v1), has_eggs(v1), has_eggs(v0), Rule(957).
+fish(v0) :- has_milk(v1), has_milk(v1), mammal(v0), Rule(958).
+mammal(v0) :- homeothermic(v0), homeothermic(v0), mammal(v0), Rule(959).
+bird(v1) :- scales(v0), has_covering(v1, v0), Rule(960).
+reptile(v0) :- homeothermic(v0), homeothermic(v1), homeothermic(v1), Rule(961).
+bird(v0) :- homeothermic(v1), has_eggs(v1), has_eggs(v0), Rule(962).
+mammal(v0) :- homeothermic(v1), has_eggs(v1), mammal(v0), Rule(963).
+reptile(v0) :- fish(v0), Rule(964).
+bird(v0) :- has_milk(v1), reptile(v1), bird(v0), Rule(965).
+bird(v0) :- has_eggs(v0), fish(v1), reptile(v1), Rule(966).
+bird(v0) :- fish(v0), reptile(v1), bird(v1), Rule(967).
+mammal(v0) :- has_gills(v0), has_gills(v0), Rule(968).
+reptile(v0) :- has_milk(v1), has_milk(v1), has_gills(v0), Rule(969).
+bird(v0) :- has_milk(v0), has_eggs(v0), Rule(970).
+bird(v0) :- homeothermic(v0), homeothermic(v1), bird(v1), Rule(971).
+reptile(v0) :- fish(v1), fish(v1), fish(v0), Rule(972).
+bird(v0) :- homeothermic(v1), homeothermic(v1), bird(v0), Rule(973).
+bird(v0) :- has_eggs(v1), mammal(v1), bird(v0), Rule(974).
+fish(v0) :- has_milk(v1), has_gills(v0), mammal(v1), Rule(975).
+fish(v0) :- has_milk(v1), homeothermic(v0), has_eggs(v1), Rule(976).
+mammal(v0) :- homeothermic(v0), Rule(977).
+reptile(v0) :- has_eggs(v1), has_gills(v1), has_gills(v0), Rule(978).
+fish(v0) :- homeothermic(v1), homeothermic(v0), fish(v1), Rule(979).
+bird(v0) :- has_gills(v0), has_gills(v0), fish(v0), Rule(980).
+bird(v0) :- homeothermic(v0), mammal(v0), fish(v0), Rule(981).
+reptile(v0) :- homeothermic(v0), Rule(982).
+bird(v0) :- mammal(v1), mammal(v0), fish(v1), Rule(983).
+mammal(v0) :- homeothermic(v0), mammal(v1), mammal(v1), Rule(984).
+mammal(v0) :- has_covering(v0, v1), Rule(985).
+bird(v0) :- fish(v0), reptile(v0), reptile(v0), Rule(986).
+mammal(v0) :- has_eggs(v0), has_gills(v0), mammal(v0), Rule(987).
+reptile(v0) :- homeothermic(v0), has_gills(v1), has_gills(v1), Rule(988).
+reptile(v0) :- has_gills(v1), has_gills(v0), mammal(v1), Rule(989).
+bird(v0) :- has_eggs(v0), has_gills(v0), reptile(v0), Rule(990).
+bird(v0) :- has_milk(v1), bird(v1), bird(v0), Rule(991).
+reptile(v0) :- mammal(v0), mammal(v0), reptile(v0), Rule(992).
+reptile(v0) :- homeothermic(v0), mammal(v1), mammal(v1), Rule(993).
+fish(v0) :- has_milk(v0), Rule(994).
+reptile(v0) :- has_gills(v0), Rule(995).
+bird(v0) :- has_gills(v1), fish(v0), bird(v1), Rule(996).
+reptile(v0) :- mammal(v0), mammal(v0), mammal(v0), Rule(997).
+bird(v0) :- has_gills(v1), mammal(v1), fish(v0), Rule(998).

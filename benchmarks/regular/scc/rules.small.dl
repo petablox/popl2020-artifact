@@ -1,180 +1,1016 @@
 .type V
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
-.decl Edge(v0: V, v1: V)
-.input Edge
+.decl edge(v0: V, v1: V)
+.input edge
 
-.decl inv(v0: V, v1: V)
-.output inv
+.decl invent_path(v0: V, v1: V)
+.output invent_path
 
-.decl SCC(v0: V, v1: V)
-.output SCC
+.decl scc(v0: V, v1: V)
+.output scc
 
-SCC(v2, v1) :- SCC(v0, v1), SCC(v2, v0), Rule(126).
-inv(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(58).
-inv(v1, v0) :- Edge(v0, v1), inv(v2, v0), Rule(159).
-inv(v0, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(141).
-SCC(v1, v0) :- inv(v0, v1), inv(v2, v0), Rule(42).
-SCC(v1, v2) :- Edge(v0, v1), inv(v2, v0), Rule(62).
-inv(v2, v1) :- Edge(v0, v1), inv(v0, v2), Rule(69).
-SCC(v2, v1) :- Edge(v0, v1), inv(v2, v0), Rule(122).
-inv(v2, v0) :- SCC(v0, v1), inv(v2, v1), Rule(162).
-SCC(v2, v0) :- SCC(v0, v1), inv(v1, v2), Rule(91).
-SCC(v0, v1) :- inv(v0, v1), inv(v2, v0), Rule(81).
-inv(v0, v2) :- SCC(v0, v1), inv(v2, v0), Rule(15).
-inv(v1, v2) :- Edge(v0, v1), SCC(v0, v2), Rule(144).
-inv(v0, v1) :- SCC(v0, v1), inv(v1, v0), Rule(85).
-inv(v0, v2) :- Edge(v0, v1), SCC(v0, v2), Rule(11).
-SCC(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(123).
-inv(v0, v2) :- Edge(v0, v1), SCC(v2, v1), Rule(28).
-inv(v2, v1) :- SCC(v0, v1), inv(v0, v2), Rule(93).
-SCC(v2, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(131).
-inv(v1, v0) :- Edge(v0, v1), SCC(v1, v0), Rule(72).
-SCC(v0, v1) :- Edge(v0, v1), SCC(v1, v0), Rule(44).
-SCC(v0, v2) :- SCC(v0, v1), inv(v0, v2), Rule(36).
-SCC(v1, v2) :- SCC(v0, v1), inv(v1, v2), Rule(142).
-SCC(v2, v0) :- inv(v0, v1), inv(v2, v0), Rule(89).
-SCC(v1, v2) :- Edge(v0, v1), inv(v1, v2), Rule(49).
-inv(v1, v0) :- Edge(v0, v1), inv(v1, v2), Rule(146).
-inv(v1, v2) :- Edge(v0, v1), inv(v2, v0), Rule(156).
-SCC(v2, v0) :- SCC(v0, v1), inv(v2, v1), Rule(39).
-inv(v0, v1) :- Edge(v0, v1), Rule(134).
-inv(v0, v1) :- SCC(v0, v1), SCC(v1, v0), Rule(25).
-SCC(v2, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(82).
-SCC(v1, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(80).
-inv(v0, v1) :- Edge(v0, v1), Edge(v0, v2), Rule(150).
-inv(v2, v0) :- Edge(v0, v1), SCC(v2, v1), Rule(8).
-inv(v0, v1) :- Edge(v0, v1), inv(v0, v2), Rule(0).
-inv(v2, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(51).
-SCC(v2, v1) :- SCC(v0, v1), inv(v2, v0), Rule(94).
-SCC(v1, v0) :- Edge(v0, v1), SCC(v2, v0), Rule(17).
-SCC(v0, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(107).
-inv(v0, v2) :- SCC(v0, v1), inv(v1, v2), Rule(59).
-inv(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(71).
-inv(v0, v1) :- Edge(v0, v1), Edge(v1, v0), Rule(151).
-SCC(v2, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(4).
-inv(v0, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(65).
-inv(v1, v2) :- Edge(v0, v1), SCC(v1, v2), Rule(78).
-SCC(v1, v0) :- SCC(v0, v1), inv(v1, v0), Rule(143).
-SCC(v2, v0) :- SCC(v0, v1), inv(v2, v0), Rule(33).
-inv(v1, v0) :- SCC(v0, v1), inv(v2, v0), Rule(2).
-SCC(v0, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(137).
-inv(v2, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(109).
-SCC(v2, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(100).
-SCC(v1, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(116).
-inv(v1, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(92).
-SCC(v1, v2) :- Edge(v0, v1), SCC(v0, v2), Rule(70).
-inv(v2, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(90).
-inv(v0, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(112).
-SCC(v0, v1) :- Edge(v0, v1), inv(v0, v2), Rule(48).
-SCC(v0, v1) :- Edge(v0, v1), Edge(v0, v2), Rule(138).
-SCC(v0, v1) :- Edge(v0, v1), inv(v1, v2), Rule(23).
-SCC(v1, v0) :- inv(v0, v1), Rule(98).
-SCC(v2, v0) :- Edge(v0, v1), inv(v2, v0), Rule(22).
-SCC(v2, v0) :- Edge(v0, v1), inv(v1, v2), Rule(145).
-inv(v2, v1) :- SCC(v0, v1), inv(v2, v0), Rule(75).
-SCC(v0, v2) :- SCC(v0, v1), inv(v2, v1), Rule(120).
-SCC(v2, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(47).
-inv(v0, v1) :- SCC(v0, v1), inv(v1, v2), Rule(38).
-inv(v1, v0) :- Edge(v0, v1), Rule(50).
-inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(14).
-SCC(v1, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(1).
-SCC(v2, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(61).
-inv(v1, v2) :- SCC(v0, v1), SCC(v0, v2), Rule(111).
-inv(v0, v1) :- Edge(v0, v1), SCC(v1, v0), Rule(66).
-inv(v1, v0) :- inv(v0, v1), Rule(7).
-inv(v0, v1) :- SCC(v0, v1), SCC(v2, v0), Rule(99).
-SCC(v0, v2) :- Edge(v0, v1), SCC(v1, v2), Rule(52).
-SCC(v1, v0) :- SCC(v0, v1), Rule(73).
-SCC(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(104).
-inv(v1, v2) :- Edge(v0, v1), inv(v0, v2), Rule(102).
-SCC(v0, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(103).
-inv(v0, v1) :- SCC(v0, v1), SCC(v0, v2), Rule(128).
-SCC(v1, v2) :- SCC(v0, v1), inv(v2, v0), Rule(115).
-inv(v1, v0) :- inv(v0, v1), inv(v2, v0), Rule(139).
-inv(v1, v0) :- SCC(v0, v1), inv(v1, v2), Rule(110).
-inv(v0, v1) :- SCC(v0, v1), inv(v0, v2), Rule(113).
-inv(v1, v0) :- SCC(v0, v1), SCC(v2, v0), Rule(29).
-SCC(v1, v0) :- SCC(v0, v1), inv(v2, v0), Rule(140).
-inv(v2, v0) :- SCC(v0, v1), SCC(v2, v0), Rule(129).
-SCC(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(147).
-SCC(v0, v1) :- inv(v0, v1), Rule(77).
-inv(v1, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(157).
-SCC(v0, v2) :- Edge(v0, v1), inv(v2, v0), Rule(18).
-SCC(v0, v1) :- Edge(v0, v1), inv(v2, v0), Rule(27).
-SCC(v2, v1) :- SCC(v0, v1), inv(v1, v2), Rule(53).
-inv(v2, v0) :- Edge(v0, v1), Edge(v2, v0), Rule(83).
-inv(v2, v0) :- SCC(v0, v1), inv(v1, v2), Rule(148).
-inv(v2, v1) :- SCC(v0, v1), SCC(v2, v0), Rule(87).
-SCC(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(46).
-inv(v1, v0) :- SCC(v0, v1), Rule(136).
-inv(v0, v2) :- Edge(v0, v1), inv(v2, v1), Rule(130).
-inv(v0, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(125).
-inv(v2, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(132).
-inv(v0, v2) :- Edge(v0, v1), inv(v2, v0), Rule(152).
-inv(v2, v1) :- Edge(v0, v1), inv(v2, v0), Rule(12).
-SCC(v0, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(32).
-SCC(v2, v0) :- Edge(v0, v1), inv(v2, v1), Rule(96).
-SCC(v1, v0) :- Edge(v0, v1), inv(v2, v0), Rule(37).
-inv(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(9).
-SCC(v1, v0) :- SCC(v0, v1), inv(v1, v2), Rule(43).
-inv(v1, v2) :- SCC(v0, v1), inv(v0, v2), Rule(5).
-inv(v2, v1) :- SCC(v0, v1), inv(v1, v2), Rule(19).
-inv(v1, v2) :- Edge(v0, v1), Edge(v0, v2), Rule(31).
-inv(v1, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(57).
-inv(v0, v2) :- SCC(v0, v1), SCC(v2, v1), Rule(164).
-SCC(v0, v1) :- inv(v0, v1), inv(v1, v0), Rule(101).
-inv(v1, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(6).
-inv(v0, v1) :- SCC(v0, v1), Rule(67).
-inv(v0, v1) :- Edge(v0, v1), Edge(v2, v0), Rule(158).
-inv(v2, v1) :- Edge(v0, v1), inv(v1, v2), Rule(13).
-inv(v0, v2) :- Edge(v0, v1), Edge(v2, v1), Rule(84).
-SCC(v0, v2) :- Edge(v0, v1), inv(v1, v2), Rule(45).
-SCC(v2, v1) :- Edge(v0, v1), inv(v1, v2), Rule(97).
-SCC(v0, v2) :- SCC(v0, v1), inv(v2, v0), Rule(105).
-SCC(v0, v2) :- Edge(v0, v1), inv(v0, v2), Rule(34).
-SCC(v1, v0) :- Edge(v0, v1), inv(v1, v2), Rule(79).
-SCC(v0, v1) :- inv(v0, v1), inv(v0, v2), Rule(161).
-inv(v0, v1) :- Edge(v0, v1), inv(v2, v0), Rule(106).
-SCC(v0, v1) :- Edge(v0, v1), SCC(v0, v2), Rule(135).
-SCC(v0, v1) :- Edge(v0, v1), inv(v1, v0), Rule(124).
-inv(v0, v2) :- Edge(v0, v1), inv(v1, v2), Rule(64).
-SCC(v0, v2) :- Edge(v0, v1), Edge(v2, v1), Rule(60).
-inv(v0, v1) :- Edge(v0, v1), inv(v1, v2), Rule(56).
-inv(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(3).
-SCC(v0, v2) :- SCC(v0, v1), inv(v1, v2), Rule(108).
-SCC(v0, v2) :- Edge(v0, v1), SCC(v2, v1), Rule(86).
-SCC(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(54).
-SCC(v1, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(35).
-SCC(v1, v0) :- Edge(v0, v1), inv(v1, v0), Rule(95).
-inv(v2, v0) :- Edge(v0, v1), inv(v1, v2), Rule(76).
-SCC(v0, v1) :- Edge(v0, v1), Rule(117).
-inv(v0, v2) :- SCC(v0, v1), inv(v2, v1), Rule(63).
-SCC(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(127).
-inv(v1, v0) :- Edge(v0, v1), SCC(v1, v2), Rule(41).
-SCC(v2, v1) :- Edge(v0, v1), inv(v0, v2), Rule(133).
-inv(v2, v0) :- Edge(v0, v1), SCC(v2, v0), Rule(163).
-SCC(v0, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(121).
-SCC(v1, v2) :- SCC(v0, v1), SCC(v0, v2), Rule(160).
-SCC(v1, v0) :- SCC(v0, v1), SCC(v2, v0), Rule(114).
-SCC(v0, v2) :- SCC(v0, v1), SCC(v2, v1), Rule(165).
-SCC(v0, v2) :- Edge(v0, v1), inv(v2, v1), Rule(20).
-SCC(v1, v2) :- Edge(v0, v1), inv(v0, v2), Rule(153).
-inv(v0, v2) :- Edge(v0, v1), SCC(v1, v2), Rule(68).
-inv(v2, v1) :- Edge(v0, v1), SCC(v2, v0), Rule(21).
-SCC(v1, v2) :- Edge(v0, v1), Edge(v0, v2), Rule(10).
-inv(v2, v0) :- Edge(v0, v1), inv(v2, v1), Rule(30).
-SCC(v0, v1) :- Edge(v0, v1), SCC(v1, v2), Rule(149).
-inv(v1, v2) :- SCC(v0, v1), inv(v2, v0), Rule(155).
-inv(v0, v2) :- Edge(v0, v1), SCC(v2, v0), Rule(40).
-inv(v0, v1) :- SCC(v0, v1), inv(v2, v0), Rule(119).
-SCC(v1, v2) :- SCC(v0, v1), SCC(v2, v0), Rule(118).
-SCC(v1, v0) :- Edge(v0, v1), Rule(16).
-SCC(v2, v1) :- SCC(v0, v1), inv(v0, v2), Rule(154).
-inv(v0, v2) :- Edge(v0, v1), Edge(v2, v0), Rule(55).
-inv(v1, v0) :- Edge(v0, v1), SCC(v2, v0), Rule(74).
-inv(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(26).
-SCC(v2, v0) :- Edge(v0, v1), SCC(v2, v1), Rule(88).
-SCC(v1, v2) :- SCC(v0, v1), inv(v0, v2), Rule(24).
+
+
+scc(v0, v1) :- invent_path(v2, v1), scc(v0, v1), scc(v2, v0), Rule(1).
+scc(v0, v1) :- edge(v0, v1), edge(v1, v0), edge(v1, v0), Rule(2).
+scc(v0, v1) :- edge(v2, v1), scc(v0, v2), scc(v0, v1), Rule(3).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v1), invent_path(v1, v2), Rule(4).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v2), Rule(5).
+scc(v0, v1) :- edge(v1, v2), scc(v2, v0), scc(v2, v1), Rule(6).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v0), invent_path(v1, v0), Rule(7).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v2, v0), invent_path(v2, v1), Rule(8).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v1), edge(v1, v2), Rule(9).
+scc(v0, v1) :- invent_path(v1, v0), scc(v2, v1), scc(v1, v2), Rule(10).
+scc(v0, v1) :- invent_path(v1, v0), scc(v1, v2), scc(v0, v2), Rule(11).
+scc(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(12).
+invent_path(v0, v1) :- invent_path(v1, v0), invent_path(v1, v2), invent_path(v1, v2), Rule(13).
+scc(v0, v2) :- edge(v0, v1), edge(v2, v0), Rule(14).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v2), scc(v0, v1), Rule(15).
+inv(v2, v1) :- edge(v0, v1), scc(v2, v0), Rule(16).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), edge(v1, v0), Rule(17).
+scc(v0, v1) :- scc(v1, v2), scc(v0, v1), scc(v2, v1), Rule(18).
+inv(v0, v1) :- scc(v0, v1), Rule(19).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v0), scc(v2, v0), Rule(20).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v0), edge(v2, v1), Rule(21).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), invent_path(v1, v2), Rule(22).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), invent_path(v1, v0), Rule(23).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v2), scc(v1, v0), Rule(24).
+scc(v0, v1) :- edge(v1, v2), scc(v1, v0), scc(v0, v2), Rule(25).
+scc(v0, v1) :- edge(v1, v2), scc(v1, v2), scc(v2, v0), Rule(26).
+invent_path(v0, v1) :- edge(v0, v1), edge(v0, v1), invent_path(v1, v0), Rule(27).
+scc(v0, v1) :- edge(v1, v2), scc(v0, v1), scc(v2, v1), Rule(28).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v1), edge(v1, v2), Rule(29).
+scc(v1, v2) :- scc(v0, v1), scc(v0, v2), Rule(30).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), edge(v1, v0), Rule(31).
+scc(v1, v0) :- scc(v0, v1), inv(v1, v0), Rule(32).
+invent_path(v0, v1) :- edge(v2, v0), edge(v1, v2), invent_path(v2, v1), Rule(33).
+scc(v0, v2) :- edge(v0, v1), inv(v2, v1), Rule(34).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), invent_path(v1, v2), Rule(35).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v1), scc(v2, v1), Rule(36).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), scc(v2, v1), Rule(37).
+invent_path(v0, v1) :- edge(v1, v2), edge(v1, v0), edge(v2, v1), Rule(38).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), scc(v2, v1), Rule(39).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), edge(v2, v1), Rule(40).
+scc(v0, v1) :- invent_path(v0, v1), scc(v2, v0), scc(v0, v2), Rule(41).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v0, v2), scc(v1, v2), Rule(42).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v1), invent_path(v1, v2), Rule(43).
+inv(v0, v1) :- scc(v0, v1), inv(v2, v0), Rule(44).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), edge(v2, v0), Rule(45).
+scc(v0, v1) :- edge(v1, v2), invent_path(v1, v2), invent_path(v1, v0), Rule(46).
+scc(v0, v1) :- edge(v1, v2), scc(v2, v0), scc(v1, v2), Rule(47).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v2, v1), scc(v1, v2), Rule(48).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), invent_path(v0, v1), Rule(49).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v2), invent_path(v0, v2), Rule(50).
+scc(v0, v1) :- scc(v0, v1), scc(v1, v2), scc(v1, v2), Rule(51).
+scc(v1, v0) :- edge(v0, v1), inv(v1, v2), Rule(52).
+scc(v0, v1) :- edge(v2, v0), scc(v1, v2), scc(v2, v0), Rule(53).
+scc(v0, v1) :- scc(v1, v2), scc(v2, v0), scc(v2, v0), Rule(54).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v1), scc(v2, v0), Rule(55).
+scc(v0, v1) :- invent_path(v0, v1), scc(v2, v0), scc(v2, v1), Rule(56).
+scc(v0, v1) :- edge(v1, v2), invent_path(v1, v2), scc(v1, v0), Rule(57).
+scc(v0, v1) :- edge(v2, v0), scc(v1, v2), scc(v0, v1), Rule(58).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v2), invent_path(v1, v2), Rule(59).
+scc(v0, v1) :- scc(v0, v2), scc(v2, v0), scc(v1, v0), Rule(60).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v1, v2), invent_path(v1, v2), Rule(61).
+scc(v0, v2) :- edge(v0, v1), edge(v2, v1), Rule(62).
+scc(v1, v0) :- edge(v0, v1), inv(v2, v0), Rule(63).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v0), edge(v0, v2), Rule(64).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v0), edge(v0, v1), Rule(65).
+scc(v0, v1) :- edge(v1, v2), scc(v0, v2), scc(v2, v1), Rule(66).
+scc(v0, v1) :- inv(v0, v1), inv(v2, v0), Rule(67).
+scc(v0, v1) :- invent_path(v1, v2), scc(v2, v0), scc(v0, v1), Rule(68).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), scc(v2, v1), Rule(69).
+invent_path(v0, v1) :- edge(v0, v1), edge(v0, v1), edge(v0, v1), Rule(70).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), scc(v2, v1), Rule(71).
+scc(v0, v1) :- edge(v2, v0), scc(v0, v1), scc(v2, v0), Rule(72).
+scc(v2, v1) :- scc(v0, v1), inv(v1, v2), Rule(73).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v1), invent_path(v2, v0), Rule(74).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v0), edge(v1, v2), Rule(75).
+scc(v0, v1) :- invent_path(v1, v2), scc(v0, v2), scc(v0, v1), Rule(76).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v0, v1), invent_path(v2, v0), Rule(77).
+scc(v0, v1) :- edge(v0, v1), scc(v1, v0), scc(v1, v0), Rule(78).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v0, v2), invent_path(v0, v2), Rule(79).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), edge(v1, v2), Rule(80).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v2, v1), scc(v2, v0), Rule(81).
+invent_path(v0, v1) :- edge(v1, v0), edge(v0, v2), edge(v1, v2), Rule(82).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), scc(v1, v2), Rule(83).
+inv(v0, v2) :- edge(v0, v1), scc(v2, v0), Rule(84).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v0), scc(v2, v0), Rule(85).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v2), edge(v2, v1), Rule(86).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v2), scc(v2, v0), Rule(87).
+inv(v1, v0) :- inv(v0, v1), inv(v2, v0), Rule(88).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v1), scc(v2, v0), Rule(89).
+inv(v2, v1) :- scc(v0, v1), inv(v2, v0), Rule(90).
+inv(v0, v2) :- edge(v0, v1), inv(v2, v0), Rule(91).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v1, v0), invent_path(v1, v0), Rule(92).
+scc(v0, v1) :- edge(v0, v1), invent_path(v0, v2), scc(v1, v2), Rule(93).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), scc(v1, v2), Rule(94).
+inv(v0, v1) :- edge(v0, v1), edge(v2, v0), Rule(95).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v1, v0), invent_path(v1, v2), Rule(96).
+scc(v0, v1) :- edge(v0, v1), scc(v2, v0), scc(v1, v2), Rule(97).
+invent_path(v0, v1) :- edge(v2, v0), edge(v2, v1), edge(v0, v1), Rule(98).
+scc(v0, v1) :- scc(v1, v2), scc(v1, v2), scc(v2, v0), Rule(99).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), invent_path(v0, v2), Rule(100).
+inv(v2, v1) :- edge(v0, v1), edge(v2, v0), Rule(101).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v0), invent_path(v2, v1), Rule(102).
+scc(v0, v1) :- scc(v1, v2), scc(v1, v0), scc(v2, v1), Rule(103).
+scc(v2, v1) :- edge(v0, v1), edge(v2, v0), Rule(104).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v1), edge(v0, v1), Rule(105).
+scc(v0, v1) :- edge(v2, v1), scc(v2, v1), scc(v1, v0), Rule(106).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v0), invent_path(v1, v0), Rule(107).
+scc(v0, v1) :- edge(v1, v0), scc(v2, v0), scc(v0, v2), Rule(108).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v2), invent_path(v0, v1), Rule(109).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), scc(v0, v1), Rule(110).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), invent_path(v0, v2), Rule(111).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v2), scc(v0, v2), Rule(112).
+scc(v0, v1) :- edge(v2, v1), invent_path(v1, v0), invent_path(v2, v1), Rule(113).
+scc(v0, v1) :- invent_path(v2, v0), scc(v0, v1), scc(v2, v1), Rule(114).
+scc(v0, v1) :- invent_path(v2, v0), scc(v0, v1), scc(v2, v0), Rule(115).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v0), scc(v2, v1), Rule(116).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v1), scc(v0, v2), Rule(117).
+scc(v0, v1) :- edge(v0, v2), scc(v1, v0), scc(v2, v1), Rule(118).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), invent_path(v0, v1), Rule(119).
+invent_path(v0, v1) :- edge(v0, v2), edge(v1, v0), edge(v1, v2), Rule(120).
+inv(v2, v1) :- edge(v0, v1), scc(v1, v2), Rule(121).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v1), edge(v2, v0), Rule(122).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v1), invent_path(v2, v1), Rule(123).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v2, v0), Rule(124).
+scc(v0, v1) :- scc(v0, v2), scc(v0, v2), scc(v1, v0), Rule(125).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v2, v0), scc(v1, v2), Rule(126).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v1), invent_path(v0, v1), Rule(127).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v0), scc(v2, v1), Rule(128).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), scc(v0, v2), Rule(129).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v0), scc(v2, v1), Rule(130).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v0), edge(v1, v2), Rule(131).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v1), edge(v2, v0), Rule(132).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), invent_path(v2, v1), Rule(133).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v2, v0), invent_path(v2, v1), Rule(134).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v2, v1), invent_path(v2, v0), Rule(135).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v2, v0), invent_path(v1, v2), Rule(136).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v1), invent_path(v2, v0), Rule(137).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), invent_path(v1, v0), Rule(138).
+scc(v0, v1) :- scc(v1, v2), scc(v0, v2), Rule(139).
+scc(v0, v1) :- invent_path(v0, v1), scc(v1, v0), Rule(140).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v1), invent_path(v1, v2), Rule(141).
+scc(v1, v0) :- scc(v0, v1), Rule(142).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v1), scc(v2, v0), Rule(143).
+scc(v0, v1) :- invent_path(v0, v2), scc(v1, v2), scc(v0, v2), Rule(144).
+invent_path(v0, v1) :- edge(v2, v1), edge(v1, v2), edge(v1, v0), Rule(145).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v2), invent_path(v2, v1), Rule(146).
+scc(v0, v1) :- scc(v1, v2), scc(v2, v0), scc(v1, v2), Rule(147).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), edge(v2, v1), Rule(148).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), invent_path(v1, v2), Rule(149).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v2), scc(v2, v0), Rule(150).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), scc(v1, v2), Rule(151).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v0), invent_path(v0, v2), Rule(152).
+inv(v0, v1) :- edge(v0, v1), Rule(153).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v2), scc(v1, v2), Rule(154).
+scc(v0, v2) :- edge(v0, v1), scc(v2, v1), Rule(155).
+invent_path(v0, v1) :- edge(v1, v2), edge(v2, v0), edge(v0, v2), Rule(156).
+invent_path(v0, v1) :- edge(v0, v2), edge(v2, v1), edge(v2, v1), Rule(157).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), invent_path(v1, v0), Rule(158).
+scc(v0, v1) :- edge(v0, v1), edge(v1, v0), invent_path(v0, v1), Rule(159).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), invent_path(v1, v2), Rule(160).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v1), scc(v2, v1), Rule(161).
+scc(v0, v1) :- edge(v1, v0), invent_path(v0, v1), scc(v1, v0), Rule(162).
+scc(v2, v0) :- edge(v0, v1), inv(v2, v1), Rule(163).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v1), invent_path(v0, v2), Rule(164).
+inv(v0, v2) :- edge(v0, v1), scc(v2, v1), Rule(165).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v2), invent_path(v2, v0), Rule(166).
+inv(v2, v0) :- edge(v0, v1), scc(v2, v0), Rule(167).
+scc(v2, v1) :- scc(v0, v1), scc(v2, v0), Rule(168).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v1, v2), invent_path(v1, v2), Rule(169).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v1), scc(v2, v0), Rule(170).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), invent_path(v2, v0), Rule(171).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v1, v0), invent_path(v2, v0), Rule(172).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v0, v2), invent_path(v0, v1), Rule(173).
+scc(v0, v1) :- invent_path(v0, v1), scc(v1, v2), scc(v2, v1), Rule(174).
+inv(v1, v2) :- scc(v0, v1), scc(v2, v0), Rule(175).
+invent_path(v0, v1) :- edge(v2, v1), edge(v2, v1), edge(v1, v0), Rule(176).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(177).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v2), scc(v1, v2), Rule(178).
+scc(v0, v1) :- invent_path(v0, v1), scc(v0, v2), scc(v2, v1), Rule(179).
+invent_path(v0, v1) :- edge(v2, v0), edge(v1, v2), edge(v2, v0), Rule(180).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), scc(v2, v1), Rule(181).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v1, v2), invent_path(v2, v1), Rule(182).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v1), edge(v1, v2), Rule(183).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v1, v2), invent_path(v2, v0), Rule(184).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v1, v2), Rule(185).
+scc(v0, v1) :- edge(v0, v1), edge(v1, v2), invent_path(v0, v2), Rule(186).
+scc(v0, v1) :- invent_path(v1, v2), scc(v0, v1), scc(v2, v1), Rule(187).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v1), invent_path(v0, v2), Rule(188).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v1, v0), invent_path(v2, v1), Rule(189).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), invent_path(v0, v1), Rule(190).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v2, v1), invent_path(v2, v0), Rule(191).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), scc(v0, v1), Rule(192).
+scc(v0, v1) :- edge(v0, v2), scc(v2, v1), Rule(193).
+scc(v0, v1) :- invent_path(v2, v0), scc(v1, v0), scc(v2, v1), Rule(194).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), scc(v0, v2), Rule(195).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v2), edge(v0, v1), Rule(196).
+scc(v0, v1) :- edge(v1, v2), invent_path(v1, v2), scc(v0, v1), Rule(197).
+invent_path(v0, v1) :- edge(v0, v1), edge(v0, v2), invent_path(v1, v2), Rule(198).
+invent_path(v0, v1) :- edge(v0, v2), edge(v1, v0), invent_path(v1, v2), Rule(199).
+inv(v2, v1) :- edge(v0, v1), inv(v2, v0), Rule(200).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v1), scc(v1, v0), Rule(201).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), invent_path(v2, v0), Rule(202).
+scc(v2, v1) :- scc(v0, v1), inv(v2, v0), Rule(203).
+scc(v0, v1) :- invent_path(v1, v2), scc(v1, v2), scc(v1, v0), Rule(204).
+inv(v0, v2) :- edge(v0, v1), edge(v2, v0), Rule(205).
+scc(v0, v1) :- scc(v0, v2), scc(v1, v2), scc(v0, v1), Rule(206).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), scc(v2, v1), Rule(207).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), invent_path(v2, v0), Rule(208).
+inv(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(209).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), invent_path(v0, v1), Rule(210).
+invent_path(v0, v1) :- edge(v0, v1), edge(v0, v1), edge(v1, v0), Rule(211).
+scc(v0, v1) :- edge(v1, v2), scc(v0, v2), Rule(212).
+inv(v1, v0) :- edge(v0, v1), scc(v1, v0), Rule(213).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v1, v0), invent_path(v1, v0), Rule(214).
+scc(v0, v1) :- scc(v0, v1), scc(v0, v1), Rule(215).
+invent_path(v0, v1) :- edge(v0, v2), edge(v2, v1), invent_path(v0, v1), Rule(216).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v1), edge(v0, v2), Rule(217).
+scc(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(218).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v2, v1), Rule(219).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v2, v0), invent_path(v1, v0), Rule(220).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v1, v0), scc(v1, v2), Rule(221).
+scc(v0, v1) :- edge(v0, v2), scc(v2, v1), scc(v1, v2), Rule(222).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), Rule(223).
+scc(v0, v1) :- edge(v0, v1), scc(v1, v0), Rule(224).
+scc(v0, v1) :- edge(v1, v2), scc(v1, v0), scc(v1, v2), Rule(225).
+scc(v0, v1) :- edge(v1, v2), scc(v0, v2), scc(v2, v0), Rule(226).
+invent_path(v0, v1) :- edge(v1, v0), edge(v0, v2), edge(v2, v1), Rule(227).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v1), invent_path(v0, v2), Rule(228).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v1), scc(v0, v2), Rule(229).
+scc(v0, v1) :- edge(v1, v0), scc(v1, v2), scc(v0, v2), Rule(230).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), invent_path(v2, v1), Rule(231).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), edge(v0, v1), Rule(232).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v2), invent_path(v0, v2), Rule(233).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v2, v0), invent_path(v2, v0), Rule(234).
+scc(v0, v1) :- invent_path(v0, v2), scc(v0, v2), scc(v1, v2), Rule(235).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), scc(v1, v0), Rule(236).
+inv(v1, v0) :- scc(v0, v1), Rule(237).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v0), edge(v0, v2), Rule(238).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v1), scc(v1, v2), Rule(239).
+scc(v0, v1) :- scc(v0, v2), scc(v2, v0), scc(v0, v1), Rule(240).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(241).
+scc(v0, v1) :- edge(v1, v0), scc(v1, v0), scc(v1, v0), Rule(242).
+invent_path(v0, v1) :- edge(v0, v1), edge(v0, v2), invent_path(v0, v2), Rule(243).
+scc(v0, v1) :- invent_path(v0, v2), scc(v2, v0), scc(v1, v2), Rule(244).
+scc(v0, v1) :- invent_path(v1, v2), scc(v0, v2), scc(v1, v0), Rule(245).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v0), edge(v1, v0), Rule(246).
+scc(v0, v1) :- edge(v0, v2), invent_path(v0, v1), scc(v2, v0), Rule(247).
+inv(v0, v2) :- edge(v0, v1), scc(v1, v2), Rule(248).
+scc(v0, v1) :- scc(v1, v0), scc(v2, v0), scc(v2, v1), Rule(249).
+invent_path(v0, v1) :- invent_path(v1, v0), invent_path(v1, v0), invent_path(v1, v0), Rule(250).
+inv(v0, v1) :- edge(v0, v1), scc(v2, v0), Rule(251).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v0, v2), invent_path(v0, v1), Rule(252).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v0, v2), scc(v0, v2), Rule(253).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v0), edge(v2, v0), Rule(254).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v0), invent_path(v0, v2), Rule(255).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v1), scc(v1, v2), Rule(256).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v0), scc(v0, v2), Rule(257).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v1, v0), invent_path(v2, v0), Rule(258).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v1), edge(v2, v1), Rule(259).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v0), scc(v2, v1), Rule(260).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v1), invent_path(v0, v1), Rule(261).
+scc(v0, v1) :- edge(v1, v2), scc(v0, v2), scc(v0, v2), Rule(262).
+scc(v0, v2) :- scc(v0, v1), inv(v0, v2), Rule(263).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v2, v0), invent_path(v2, v1), Rule(264).
+scc(v0, v1) :- edge(v2, v0), scc(v1, v0), scc(v2, v1), Rule(265).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v2), scc(v1, v2), Rule(266).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), invent_path(v2, v0), Rule(267).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v0), scc(v2, v0), Rule(268).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v1, v2), Rule(269).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v1, v2), invent_path(v0, v1), Rule(270).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), invent_path(v1, v0), Rule(271).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), invent_path(v2, v1), Rule(272).
+invent_path(v0, v1) :- edge(v2, v1), edge(v2, v0), invent_path(v0, v2), Rule(273).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v1), scc(v0, v2), Rule(274).
+scc(v0, v1) :- edge(v1, v0), invent_path(v0, v2), invent_path(v1, v2), Rule(275).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), invent_path(v1, v2), Rule(276).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v0, v1), scc(v1, v0), Rule(277).
+scc(v0, v1) :- invent_path(v2, v0), scc(v1, v0), scc(v1, v2), Rule(278).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v0), invent_path(v1, v0), Rule(279).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), edge(v2, v0), Rule(280).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v0, v1), invent_path(v0, v1), Rule(281).
+inv(v2, v1) :- edge(v0, v1), inv(v0, v2), Rule(282).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v1, v2), invent_path(v2, v0), Rule(283).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v1), edge(v2, v1), Rule(284).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v1), invent_path(v0, v1), Rule(285).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), scc(v0, v1), Rule(286).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), invent_path(v0, v2), Rule(287).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), invent_path(v2, v0), Rule(288).
+inv(v1, v2) :- edge(v0, v1), inv(v0, v2), Rule(289).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v2), scc(v0, v1), Rule(290).
+scc(v0, v1) :- edge(v0, v1), scc(v1, v2), Rule(291).
+inv(v1, v0) :- inv(v0, v1), Rule(292).
+invent_path(v0, v1) :- edge(v2, v1), edge(v1, v2), edge(v2, v0), Rule(293).
+scc(v0, v1) :- scc(v0, v1), scc(v0, v1), scc(v0, v1), Rule(294).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), Rule(295).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v2), scc(v2, v0), Rule(296).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), invent_path(v2, v1), Rule(297).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), scc(v1, v2), Rule(298).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v1), invent_path(v2, v1), Rule(299).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v2), invent_path(v2, v0), Rule(300).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v2, v0), invent_path(v0, v2), Rule(301).
+invent_path(v0, v1) :- edge(v0, v1), edge(v1, v2), edge(v2, v0), Rule(302).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), invent_path(v1, v2), Rule(303).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v0), edge(v2, v1), Rule(304).
+scc(v0, v1) :- edge(v0, v1), invent_path(v1, v0), invent_path(v1, v0), Rule(305).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v2), edge(v0, v1), Rule(306).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v2), edge(v1, v0), Rule(307).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), scc(v2, v0), Rule(308).
+scc(v0, v1) :- invent_path(v1, v0), scc(v1, v0), scc(v0, v1), Rule(309).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v2), edge(v1, v0), Rule(310).
+inv(v0, v1) :- edge(v0, v1), scc(v1, v2), Rule(311).
+inv(v1, v0) :- edge(v0, v1), edge(v2, v0), Rule(312).
+scc(v0, v1) :- scc(v1, v0), scc(v2, v1), scc(v1, v2), Rule(313).
+inv(v1, v2) :- edge(v0, v1), edge(v0, v2), Rule(314).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), scc(v0, v1), Rule(315).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v1), invent_path(v1, v2), Rule(316).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), scc(v2, v0), Rule(317).
+inv(v0, v2) :- edge(v0, v1), inv(v2, v1), Rule(318).
+scc(v0, v1) :- edge(v1, v2), scc(v1, v2), scc(v0, v1), Rule(319).
+scc(v0, v1) :- scc(v1, v0), Rule(320).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v1), scc(v1, v0), Rule(321).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v0), invent_path(v0, v2), Rule(322).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), scc(v2, v0), Rule(323).
+scc(v2, v1) :- edge(v0, v1), inv(v1, v2), Rule(324).
+invent_path(v0, v1) :- edge(v1, v2), edge(v1, v0), invent_path(v1, v2), Rule(325).
+scc(v0, v1) :- edge(v2, v1), invent_path(v1, v2), invent_path(v2, v0), Rule(326).
+scc(v0, v1) :- scc(v1, v2), scc(v0, v2), scc(v0, v2), Rule(327).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v0), invent_path(v2, v0), Rule(328).
+scc(v1, v2) :- scc(v0, v1), inv(v2, v0), Rule(329).
+invent_path(v0, v1) :- edge(v2, v0), edge(v2, v1), invent_path(v1, v2), Rule(330).
+invent_path(v0, v1) :- edge(v0, v2), edge(v2, v1), invent_path(v1, v0), Rule(331).
+scc(v0, v1) :- edge(v2, v0), scc(v2, v0), scc(v2, v1), Rule(332).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v0, v2), invent_path(v0, v2), Rule(333).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v1), invent_path(v2, v0), Rule(334).
+inv(v0, v1) :- edge(v0, v1), edge(v0, v2), Rule(335).
+inv(v0, v2) :- scc(v0, v1), inv(v2, v1), Rule(336).
+scc(v0, v1) :- edge(v2, v1), scc(v2, v0), scc(v1, v2), Rule(337).
+scc(v0, v1) :- edge(v1, v0), scc(v2, v0), scc(v1, v2), Rule(338).
+scc(v0, v1) :- edge(v1, v2), invent_path(v1, v0), invent_path(v1, v2), Rule(339).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), Rule(340).
+scc(v0, v1) :- scc(v2, v1), scc(v0, v2), scc(v2, v0), Rule(341).
+scc(v2, v1) :- edge(v0, v1), inv(v0, v2), Rule(342).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v1), invent_path(v1, v0), Rule(343).
+inv(v1, v0) :- edge(v0, v1), inv(v1, v2), Rule(344).
+inv(v0, v2) :- edge(v0, v1), edge(v2, v1), Rule(345).
+invent_path(v0, v1) :- edge(v1, v2), edge(v1, v0), edge(v0, v2), Rule(346).
+invent_path(v0, v1) :- invent_path(v1, v0), invent_path(v1, v0), Rule(347).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v0, v2), invent_path(v1, v0), Rule(348).
+scc(v2, v1) :- edge(v0, v1), inv(v2, v0), Rule(349).
+invent_path(v0, v1) :- edge(v1, v2), edge(v1, v2), edge(v0, v1), Rule(350).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v2), scc(v0, v1), Rule(351).
+scc(v0, v1) :- invent_path(v1, v0), scc(v0, v2), scc(v2, v1), Rule(352).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v0, v2), invent_path(v1, v2), Rule(353).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v0), scc(v0, v2), Rule(354).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v2), edge(v2, v0), Rule(355).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v2), scc(v0, v2), Rule(356).
+inv(v2, v1) :- scc(v0, v1), inv(v1, v2), Rule(357).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), invent_path(v0, v2), Rule(358).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v0), invent_path(v2, v1), Rule(359).
+invent_path(v0, v1) :- invent_path(v1, v0), invent_path(v2, v1), invent_path(v0, v2), Rule(360).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), invent_path(v0, v1), Rule(361).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v2), scc(v2, v1), Rule(362).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), scc(v1, v2), Rule(363).
+inv(v0, v1) :- scc(v0, v1), scc(v2, v0), Rule(364).
+scc(v0, v1) :- invent_path(v1, v2), scc(v2, v0), scc(v1, v2), Rule(365).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v0), invent_path(v2, v0), Rule(366).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v0), edge(v2, v0), Rule(367).
+scc(v0, v1) :- edge(v2, v1), invent_path(v1, v2), invent_path(v0, v2), Rule(368).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v2), invent_path(v0, v2), Rule(369).
+inv(v2, v1) :- edge(v0, v1), inv(v1, v2), Rule(370).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), edge(v1, v0), Rule(371).
+scc(v0, v1) :- invent_path(v2, v0), scc(v2, v0), scc(v1, v0), Rule(372).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v1, v0), Rule(373).
+scc(v0, v1) :- scc(v2, v0), scc(v2, v1), scc(v0, v1), Rule(374).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v0, v2), invent_path(v2, v1), Rule(375).
+scc(v1, v2) :- edge(v0, v1), scc(v2, v0), Rule(376).
+invent_path(v0, v1) :- edge(v1, v2), edge(v1, v0), edge(v2, v0), Rule(377).
+scc(v1, v0) :- edge(v0, v1), inv(v1, v0), Rule(378).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v2), scc(v0, v2), Rule(379).
+inv(v0, v1) :- edge(v0, v1), inv(v1, v2), Rule(380).
+scc(v2, v0) :- scc(v0, v1), inv(v1, v2), Rule(381).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), invent_path(v0, v1), Rule(382).
+scc(v0, v1) :- edge(v0, v2), scc(v1, v2), scc(v0, v2), Rule(383).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v0), invent_path(v2, v0), Rule(384).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v0), scc(v0, v2), Rule(385).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v1), scc(v2, v0), Rule(386).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v0), invent_path(v1, v0), Rule(387).
+scc(v0, v1) :- invent_path(v1, v2), scc(v2, v0), scc(v2, v1), Rule(388).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), scc(v0, v2), Rule(389).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v1, v0), invent_path(v2, v1), Rule(390).
+scc(v0, v1) :- edge(v0, v1), edge(v1, v2), scc(v2, v0), Rule(391).
+invent_path(v0, v1) :- edge(v2, v0), edge(v2, v1), edge(v0, v2), Rule(392).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v1), invent_path(v0, v1), Rule(393).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), invent_path(v2, v0), Rule(394).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), Rule(395).
+scc(v0, v1) :- edge(v0, v1), scc(v2, v1), scc(v2, v1), Rule(396).
+scc(v0, v1) :- edge(v2, v1), scc(v2, v0), scc(v1, v0), Rule(397).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v0), scc(v2, v1), Rule(398).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v1), invent_path(v2, v0), Rule(399).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v1), invent_path(v2, v0), Rule(400).
+invent_path(v0, v1) :- edge(v2, v1), edge(v0, v1), invent_path(v1, v2), Rule(401).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v1), invent_path(v2, v1), Rule(402).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), invent_path(v1, v0), Rule(403).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v1), invent_path(v0, v2), Rule(404).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v0), invent_path(v1, v2), Rule(405).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), invent_path(v2, v1), Rule(406).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v2), scc(v0, v1), Rule(407).
+inv(v1, v2) :- scc(v0, v1), inv(v2, v0), Rule(408).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v1, v2), scc(v1, v0), Rule(409).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), scc(v1, v0), Rule(410).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), invent_path(v0, v2), Rule(411).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v2), invent_path(v2, v0), Rule(412).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v1, v0), invent_path(v2, v0), Rule(413).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v1, v2), invent_path(v1, v0), Rule(414).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v2), invent_path(v0, v2), Rule(415).
+scc(v1, v0) :- scc(v0, v1), inv(v2, v0), Rule(416).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v2), invent_path(v0, v2), Rule(417).
+inv(v0, v2) :- scc(v0, v1), scc(v2, v0), Rule(418).
+scc(v0, v1) :- invent_path(v2, v0), scc(v1, v2), scc(v2, v0), Rule(419).
+scc(v0, v1) :- edge(v2, v1), invent_path(v1, v0), scc(v1, v2), Rule(420).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v0, v2), invent_path(v2, v1), Rule(421).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v0), invent_path(v2, v0), Rule(422).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v1), invent_path(v1, v0), Rule(423).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), scc(v0, v2), Rule(424).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v0, v1), invent_path(v0, v1), Rule(425).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), edge(v0, v2), Rule(426).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v1), scc(v0, v2), Rule(427).
+scc(v0, v1) :- edge(v2, v1), scc(v1, v2), scc(v2, v0), Rule(428).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v2, v0), invent_path(v2, v1), Rule(429).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v2, v1), invent_path(v1, v2), Rule(430).
+scc(v0, v1) :- edge(v1, v2), scc(v1, v0), scc(v2, v0), Rule(431).
+scc(v0, v1) :- scc(v0, v2), scc(v0, v1), scc(v2, v0), Rule(432).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), invent_path(v0, v1), Rule(433).
+inv(v1, v0) :- edge(v0, v1), Rule(434).
+scc(v0, v1) :- edge(v2, v1), scc(v2, v0), scc(v0, v1), Rule(435).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v1), scc(v2, v0), Rule(436).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v0), scc(v1, v2), Rule(437).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v1), invent_path(v0, v2), Rule(438).
+scc(v0, v1) :- scc(v0, v2), scc(v1, v2), scc(v1, v0), Rule(439).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v1), edge(v0, v1), Rule(440).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v1, v2), invent_path(v0, v2), Rule(441).
+scc(v0, v1) :- edge(v0, v1), invent_path(v1, v2), invent_path(v2, v1), Rule(442).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v0), edge(v1, v0), Rule(443).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v2, v0), invent_path(v1, v2), Rule(444).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v2, v1), Rule(445).
+path(x, y) :- edge(x, y), Rule(446).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v0), invent_path(v2, v1), Rule(447).
+scc(v0, v1) :- edge(v1, v2), scc(v2, v0), scc(v0, v1), Rule(448).
+scc(v0, v1) :- edge(v1, v2), invent_path(v2, v0), invent_path(v2, v1), Rule(449).
+scc(v0, v1) :- scc(v0, v1), scc(v2, v0), scc(v2, v1), Rule(450).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v2), invent_path(v1, v0), Rule(451).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v1), invent_path(v2, v1), Rule(452).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), edge(v0, v1), Rule(453).
+scc(v0, v1) :- edge(v0, v2), scc(v2, v0), scc(v1, v2), Rule(454).
+scc(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(455).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v0), edge(v1, v0), Rule(456).
+scc(v2, v0) :- edge(v0, v1), inv(v1, v2), Rule(457).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v1), scc(v0, v1), Rule(458).
+scc(v0, v1) :- edge(v1, v0), scc(v2, v1), scc(v0, v2), Rule(459).
+scc(v0, v1) :- scc(v1, v0), scc(v1, v2), scc(v1, v2), Rule(460).
+inv(v0, v1) :- edge(v0, v1), inv(v1, v0), Rule(461).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v0, v2), invent_path(v1, v2), Rule(462).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v0), invent_path(v2, v0), Rule(463).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), invent_path(v2, v0), Rule(464).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v1, v0), invent_path(v0, v1), Rule(465).
+scc(v0, v1) :- invent_path(v2, v0), scc(v2, v1), scc(v2, v0), Rule(466).
+scc(v0, v1) :- scc(v1, v0), scc(v0, v1), scc(v0, v1), Rule(467).
+scc(v0, v1) :- scc(v2, v0), scc(v0, v2), scc(v1, v2), Rule(468).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), scc(v1, v2), Rule(469).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v0, v1), invent_path(v2, v1), Rule(470).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v0), scc(v1, v2), Rule(471).
+scc(v0, v1) :- edge(v0, v1), invent_path(v1, v2), scc(v2, v0), Rule(472).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v0, v2), invent_path(v0, v1), Rule(473).
+scc(v0, v1) :- inv(v0, v1), inv(v0, v2), Rule(474).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v1), edge(v2, v0), Rule(475).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v0), edge(v1, v2), Rule(476).
+scc(v0, v1) :- inv(v0, v1), inv(v1, v0), Rule(477).
+scc(v0, v1) :- scc(v1, v0), scc(v0, v2), scc(v1, v2), Rule(478).
+scc(v0, v1) :- invent_path(v2, v1), scc(v2, v1), scc(v1, v0), Rule(479).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), Rule(480).
+path(x, z) :- path(x, y), edge(y, z), Rule(481).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), scc(v2, v1), Rule(482).
+inv(v1, v2) :- scc(v0, v1), inv(v0, v2), Rule(483).
+inv(v1, v2) :- edge(v0, v1), scc(v1, v2), Rule(484).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), invent_path(v0, v2), Rule(485).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v0), scc(v1, v2), Rule(486).
+scc(v0, v1) :- scc(v2, v1), scc(v0, v2), scc(v0, v2), Rule(487).
+inv(v0, v2) :- scc(v0, v1), scc(v2, v1), Rule(488).
+invent_path(v0, v1) :- edge(v2, v1), edge(v0, v2), invent_path(v0, v1), Rule(489).
+scc(v0, v1) :- edge(v1, v2), scc(v2, v1), scc(v0, v1), Rule(490).
+scc(v0, v1) :- scc(v1, v2), scc(v0, v2), scc(v1, v0), Rule(491).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v0), invent_path(v2, v1), Rule(492).
+scc(v0, v1) :- scc(v1, v0), scc(v1, v0), Rule(493).
+scc(v2, v1) :- edge(v0, v1), scc(v2, v0), Rule(494).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), invent_path(v1, v0), Rule(495).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v2), edge(v0, v2), Rule(496).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v1), scc(v2, v1), Rule(497).
+inv(v1, v0) :- scc(v0, v1), inv(v1, v2), Rule(498).
+invent_path(v0, v1) :- invent_path(v1, v0), invent_path(v2, v1), invent_path(v1, v2), Rule(499).
+scc(v0, v1) :- edge(v2, v0), scc(v2, v1), scc(v2, v0), Rule(500).
+inv(v2, v0) :- edge(v0, v1), edge(v2, v0), Rule(501).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v2), edge(v2, v1), Rule(502).
+scc(v0, v1) :- scc(v1, v2), scc(v1, v2), scc(v0, v1), Rule(503).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), invent_path(v0, v2), Rule(504).
+inv(v1, v0) :- scc(v0, v1), scc(v2, v0), Rule(505).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v0, v1), invent_path(v0, v2), Rule(506).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v1), edge(v0, v2), Rule(507).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v1), scc(v0, v2), Rule(508).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v1), scc(v1, v2), Rule(509).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), Rule(510).
+scc(v0, v1) :- edge(v2, v1), scc(v0, v2), scc(v1, v0), Rule(511).
+inv(v0, v1) :- edge(v0, v1), edge(v1, v0), Rule(512).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v0), invent_path(v0, v1), Rule(513).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v1), edge(v0, v1), Rule(514).
+scc(v0, v1) :- invent_path(v1, v2), scc(v1, v0), scc(v1, v2), Rule(515).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v2, v1), invent_path(v1, v2), Rule(516).
+scc(v0, v1) :- scc(v0, v1), Rule(517).
+scc(v1, v2) :- edge(v0, v1), edge(v0, v2), Rule(518).
+inv(v2, v1) :- scc(v0, v1), inv(v0, v2), Rule(519).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v1), invent_path(v2, v0), Rule(520).
+scc(v0, v1) :- inv(v0, v1), Rule(521).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v0), Rule(522).
+scc(v1, v0) :- scc(v0, v1), inv(v1, v2), Rule(523).
+inv(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(524).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), invent_path(v0, v2), Rule(525).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), scc(v2, v1), Rule(526).
+scc(v0, v1) :- edge(v2, v1), scc(v2, v0), scc(v0, v2), Rule(527).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v2, v1), invent_path(v0, v2), Rule(528).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v1), invent_path(v0, v1), Rule(529).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v0, v1), invent_path(v0, v1), Rule(530).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), invent_path(v2, v1), Rule(531).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v0, v1), invent_path(v1, v2), Rule(532).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v2), edge(v1, v2), Rule(533).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v0, v2), invent_path(v2, v1), Rule(534).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v2, v0), invent_path(v0, v1), Rule(535).
+inv(v1, v2) :- edge(v0, v1), scc(v0, v2), Rule(536).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v1, v2), Rule(537).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v1), scc(v1, v2), Rule(538).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v2, v0), invent_path(v2, v1), Rule(539).
+scc(v0, v1) :- scc(v0, v2), scc(v2, v1), scc(v2, v1), Rule(540).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), scc(v1, v2), Rule(541).
+scc(v1, v0) :- edge(v0, v1), Rule(542).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), scc(v1, v0), Rule(543).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v1, v0), invent_path(v0, v2), Rule(544).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v2, v1), invent_path(v0, v1), Rule(545).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v1, v0), scc(v2, v1), Rule(546).
+scc(v0, v1) :- edge(v0, v1), edge(v1, v0), Rule(547).
+invent_path(v0, v1) :- edge(v2, v1), edge(v2, v1), invent_path(v0, v2), Rule(548).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v0), scc(v2, v1), Rule(549).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v0), invent_path(v0, v2), Rule(550).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v0), edge(v2, v1), Rule(551).
+scc(v0, v1) :- edge(v0, v1), inv(v1, v0), Rule(552).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), Rule(553).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v2), scc(v2, v1), Rule(554).
+scc(v0, v1) :- edge(v0, v1), scc(v0, v2), scc(v1, v2), Rule(555).
+invent_path(v0, v1) :- edge(v1, v0), Rule(556).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v0), invent_path(v0, v1), Rule(557).
+inv(v0, v1) :- scc(v0, v1), inv(v0, v2), Rule(558).
+scc(v0, v1) :- scc(v2, v0), scc(v2, v0), scc(v1, v2), Rule(559).
+inv(v1, v2) :- edge(v0, v1), scc(v2, v0), Rule(560).
+scc(v0, v2) :- scc(v0, v1), inv(v1, v2), Rule(561).
+scc(v0, v1) :- scc(v0, v2), scc(v1, v0), scc(v1, v2), Rule(562).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v1), scc(v2, v0), Rule(563).
+inv(v0, v1) :- edge(v0, v1), inv(v0, v2), Rule(564).
+scc(v0, v1) :- edge(v1, v0), invent_path(v0, v2), scc(v1, v2), Rule(565).
+inv(v0, v1) :- edge(v0, v1), scc(v0, v2), Rule(566).
+scc(v0, v1) :- edge(v1, v0), scc(v0, v1), scc(v1, v0), Rule(567).
+scc(v0, v1) :- edge(v1, v2), scc(v2, v0), scc(v2, v0), Rule(568).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), edge(v1, v0), Rule(569).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v2), invent_path(v2, v1), Rule(570).
+inv(v1, v2) :- edge(v0, v1), inv(v2, v0), Rule(571).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), invent_path(v0, v1), Rule(572).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v0, v1), scc(v2, v0), Rule(573).
+scc(v0, v1) :- edge(v1, v0), invent_path(v0, v1), scc(v0, v1), Rule(574).
+scc(v0, v1) :- edge(v0, v1), Rule(575).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v2), scc(v0, v1), Rule(576).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v1, v2), invent_path(v1, v0), Rule(577).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v0), edge(v0, v2), Rule(578).
+scc(v0, v1) :- scc(v1, v0), scc(v1, v2), scc(v2, v1), Rule(579).
+scc(v0, v1) :- invent_path(v2, v0), scc(v0, v1), scc(v0, v2), Rule(580).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v0), invent_path(v1, v2), Rule(581).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v1, v2), invent_path(v0, v2), Rule(582).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v0), invent_path(v0, v1), Rule(583).
+scc(v0, v1) :- edge(v0, v1), edge(v1, v0), edge(v0, v1), Rule(584).
+scc(v0, v1) :- invent_path(v2, v1), scc(v1, v0), scc(v2, v0), Rule(585).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), invent_path(v2, v1), Rule(586).
+scc(v0, v1) :- invent_path(v2, v1), scc(v0, v2), scc(v1, v0), Rule(587).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), invent_path(v2, v1), Rule(588).
+inv(v0, v2) :- edge(v0, v1), scc(v0, v2), Rule(589).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v1, v0), invent_path(v0, v2), Rule(590).
+invent_path(v0, v1) :- edge(v0, v1), edge(v1, v2), edge(v2, v1), Rule(591).
+scc(v1, v2) :- scc(v0, v1), scc(v2, v0), Rule(592).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v1), scc(v0, v2), Rule(593).
+invent_path(v0, v1) :- edge(v2, v0), edge(v2, v0), invent_path(v0, v1), Rule(594).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v1, v2), invent_path(v2, v0), Rule(595).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v0), invent_path(v1, v2), Rule(596).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v2, v1), invent_path(v2, v0), Rule(597).
+scc(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(598).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v2), edge(v2, v1), Rule(599).
+inv(v0, v1) :- edge(v0, v1), inv(v2, v0), Rule(600).
+inv(v0, v1) :- scc(v0, v1), scc(v0, v2), Rule(601).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), Rule(602).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v1, v2), invent_path(v2, v1), Rule(603).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), invent_path(v2, v1), Rule(604).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v2), edge(v2, v1), Rule(605).
+scc(v0, v1) :- edge(v0, v2), invent_path(v0, v2), scc(v1, v2), Rule(606).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v1), edge(v1, v0), Rule(607).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v1, v2), invent_path(v0, v2), Rule(608).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v2), invent_path(v2, v1), Rule(609).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v1), invent_path(v1, v0), Rule(610).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(611).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v1), scc(v1, v2), Rule(612).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v2), invent_path(v2, v1), Rule(613).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v0), scc(v0, v2), Rule(614).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), invent_path(v2, v0), Rule(615).
+invent_path(v0, v1) :- edge(v0, v1), edge(v1, v0), invent_path(v0, v1), Rule(616).
+inv(v1, v0) :- edge(v0, v1), scc(v1, v2), Rule(617).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v2, v1), invent_path(v1, v2), Rule(618).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v2), invent_path(v1, v2), Rule(619).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v0, v1), Rule(620).
+scc(v1, v2) :- edge(v0, v1), edge(v2, v0), Rule(621).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v1), edge(v2, v1), Rule(622).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), scc(v0, v1), Rule(623).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), scc(v2, v0), Rule(624).
+invent_path(v0, v1) :- edge(v0, v1), edge(v1, v0), edge(v0, v1), Rule(625).
+scc(v0, v1) :- invent_path(v0, v2), scc(v0, v2), scc(v2, v1), Rule(626).
+scc(v0, v1) :- invent_path(v2, v0), scc(v1, v0), scc(v2, v0), Rule(627).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v1), edge(v0, v2), Rule(628).
+scc(v0, v1) :- invent_path(v0, v2), scc(v1, v2), scc(v2, v1), Rule(629).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v1, v0), invent_path(v2, v0), Rule(630).
+inv(v2, v0) :- scc(v0, v1), inv(v1, v2), Rule(631).
+inv(v2, v0) :- scc(v0, v1), scc(v2, v0), Rule(632).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v0), invent_path(v2, v1), Rule(633).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v1, v2), scc(v0, v2), Rule(634).
+inv(v0, v1) :- edge(v0, v1), scc(v1, v0), Rule(635).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v0), edge(v0, v2), Rule(636).
+scc(v0, v2) :- edge(v0, v1), scc(v1, v2), Rule(637).
+scc(v0, v1) :- invent_path(v1, v0), Rule(638).
+scc(v0, v1) :- edge(v2, v1), scc(v2, v1), scc(v0, v2), Rule(639).
+scc(v2, v0) :- edge(v0, v1), scc(v2, v1), Rule(640).
+scc(v0, v1) :- scc(v1, v2), scc(v0, v1), scc(v1, v2), Rule(641).
+invent_path(v0, v1) :- edge(v2, v0), edge(v1, v2), edge(v2, v1), Rule(642).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), invent_path(v1, v2), Rule(643).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v2), scc(v2, v1), Rule(644).
+scc(v0, v1) :- scc(v2, v0), scc(v2, v1), scc(v0, v2), Rule(645).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v1), invent_path(v0, v2), Rule(646).
+scc(v1, v2) :- edge(v0, v1), scc(v0, v2), Rule(647).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v1), edge(v2, v1), Rule(648).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v0), invent_path(v0, v1), Rule(649).
+scc(v0, v1) :- invent_path(v0, v2), scc(v1, v2), scc(v1, v2), Rule(650).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v2, v0), invent_path(v0, v1), Rule(651).
+inv(v2, v0) :- edge(v0, v1), scc(v1, v2), Rule(652).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), invent_path(v1, v0), Rule(653).
+scc(v2, v0) :- edge(v0, v1), scc(v1, v2), Rule(654).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v1), invent_path(v0, v2), Rule(655).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v0), edge(v1, v2), Rule(656).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), scc(v0, v2), Rule(657).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v0, v2), invent_path(v1, v0), Rule(658).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v1, v0), invent_path(v0, v2), Rule(659).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v0, v2), invent_path(v2, v0), Rule(660).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v1), edge(v2, v1), Rule(661).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v1), invent_path(v2, v0), Rule(662).
+scc(v1, v2) :- edge(v0, v1), inv(v0, v2), Rule(663).
+invent_path(v0, v1) :- edge(v0, v1), Rule(664).
+invent_path(v0, v1) :- edge(v1, v2), edge(v2, v0), invent_path(v1, v0), Rule(665).
+scc(v0, v1) :- edge(v0, v2), scc(v1, v2), scc(v2, v0), Rule(666).
+scc(v0, v1) :- edge(v2, v0), scc(v2, v0), scc(v1, v0), Rule(667).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v2, v1), invent_path(v2, v1), Rule(668).
+scc(v0, v1) :- edge(v0, v2), scc(v1, v2), scc(v1, v0), Rule(669).
+scc(v0, v1) :- edge(v1, v0), invent_path(v0, v2), scc(v2, v0), Rule(670).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v1), invent_path(v1, v0), Rule(671).
+scc(v0, v1) :- edge(v0, v1), invent_path(v1, v2), invent_path(v0, v2), Rule(672).
+scc(v0, v1) :- edge(v1, v0), scc(v1, v0), scc(v0, v1), Rule(673).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v2), scc(v0, v2), Rule(674).
+scc(x, y) :- path(x, y), path(y, x), Rule(675).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v0), invent_path(v1, v2), Rule(676).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v2), invent_path(v1, v0), Rule(677).
+scc(v1, v2) :- scc(v0, v1), inv(v0, v2), Rule(678).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v1), invent_path(v2, v1), Rule(679).
+scc(v0, v1) :- invent_path(v2, v1), scc(v1, v2), scc(v2, v0), Rule(680).
+scc(v0, v1) :- scc(v0, v1), scc(v0, v2), scc(v2, v0), Rule(681).
+scc(v0, v2) :- edge(v0, v1), inv(v0, v2), Rule(682).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v1), edge(v0, v2), Rule(683).
+scc(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(684).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v0, v1), invent_path(v1, v2), Rule(685).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v0, v1), invent_path(v2, v1), Rule(686).
+scc(v0, v1) :- edge(v1, v2), scc(v2, v1), scc(v1, v0), Rule(687).
+scc(v0, v1) :- edge(v1, v0), invent_path(v1, v2), scc(v1, v2), Rule(688).
+scc(v0, v1) :- scc(v2, v1), scc(v2, v0), scc(v2, v1), Rule(689).
+scc(v1, v2) :- edge(v0, v1), inv(v1, v2), Rule(690).
+inv(v2, v0) :- edge(v0, v1), inv(v2, v1), Rule(691).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v0), invent_path(v2, v0), Rule(692).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), invent_path(v2, v0), Rule(693).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v2), Rule(694).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v0), invent_path(v2, v1), Rule(695).
+scc(v0, v1) :- edge(v2, v1), invent_path(v1, v0), invent_path(v1, v2), Rule(696).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), edge(v2, v0), Rule(697).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v1), scc(v0, v2), Rule(698).
+scc(v2, v0) :- edge(v0, v1), edge(v2, v0), Rule(699).
+scc(v0, v1) :- edge(v0, v2), scc(v2, v0), scc(v0, v1), Rule(700).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v1), invent_path(v1, v0), Rule(701).
+invent_path(v0, v1) :- edge(v1, v0), edge(v0, v1), Rule(702).
+scc(v0, v1) :- invent_path(v0, v1), scc(v2, v1), scc(v0, v2), Rule(703).
+scc(v0, v1) :- edge(v2, v1), scc(v0, v1), scc(v2, v1), Rule(704).
+scc(v0, v1) :- scc(v1, v0), scc(v1, v2), scc(v2, v0), Rule(705).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v1, v2), invent_path(v0, v1), Rule(706).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v2, v1), invent_path(v0, v1), Rule(707).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v1), invent_path(v1, v0), Rule(708).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v2, v0), scc(v2, v1), Rule(709).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), Rule(710).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v0), scc(v2, v1), Rule(711).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v0), scc(v1, v2), Rule(712).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v2), invent_path(v2, v0), Rule(713).
+scc(v2, v0) :- scc(v0, v1), inv(v2, v1), Rule(714).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), edge(v2, v1), Rule(715).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), invent_path(v1, v2), Rule(716).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v0), scc(v0, v1), Rule(717).
+inv(v1, v0) :- edge(v0, v1), scc(v2, v0), Rule(718).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), scc(v2, v1), Rule(719).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v2, v0), invent_path(v1, v2), Rule(720).
+scc(v0, v2) :- scc(v0, v1), scc(v2, v0), Rule(721).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v2), invent_path(v0, v1), Rule(722).
+scc(v0, v1) :- edge(v1, v0), scc(v0, v2), scc(v0, v2), Rule(723).
+invent_path(v0, v1) :- edge(v2, v1), edge(v2, v0), invent_path(v2, v0), Rule(724).
+inv(v2, v0) :- edge(v0, v1), inv(v1, v2), Rule(725).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), scc(v2, v0), Rule(726).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v2), invent_path(v2, v1), Rule(727).
+scc(v0, v1) :- edge(v0, v1), inv(v0, v2), Rule(728).
+scc(v0, v1) :- edge(v0, v1), scc(v2, v0), Rule(729).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v0, v1), scc(v2, v0), Rule(730).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), scc(v1, v0), Rule(731).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), scc(v1, v0), Rule(732).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v1), invent_path(v2, v0), Rule(733).
+invent_path(v0, v1) :- edge(v2, v1), edge(v2, v0), edge(v1, v2), Rule(734).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v0), invent_path(v0, v2), Rule(735).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v0), edge(v1, v2), Rule(736).
+scc(v0, v1) :- edge(v2, v1), edge(v0, v2), scc(v0, v1), Rule(737).
+scc(v2, v0) :- inv(v0, v1), inv(v2, v0), Rule(738).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v1), scc(v0, v1), Rule(739).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v1), scc(v2, v0), Rule(740).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v1, v0), invent_path(v2, v1), Rule(741).
+scc(v0, v1) :- invent_path(v2, v0), scc(v2, v0), scc(v0, v1), Rule(742).
+scc(v0, v1) :- scc(v0, v2), scc(v2, v1), scc(v0, v2), Rule(743).
+scc(v0, v1) :- invent_path(v0, v2), scc(v0, v1), scc(v1, v2), Rule(744).
+scc(v0, v1) :- scc(v2, v1), scc(v0, v1), scc(v2, v0), Rule(745).
+scc(v0, v1) :- scc(v2, v0), scc(v2, v1), scc(v1, v0), Rule(746).
+scc(v0, v1) :- scc(v1, v2), scc(v2, v0), scc(v2, v1), Rule(747).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), invent_path(v0, v2), Rule(748).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), scc(v2, v1), Rule(749).
+invent_path(v0, v1) :- edge(v2, v1), edge(v0, v2), invent_path(v2, v1), Rule(750).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v2, v1), scc(v2, v0), Rule(751).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), scc(v0, v2), Rule(752).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v2), scc(v2, v1), Rule(753).
+invent_path(v0, v1) :- invent_path(v0, v2), invent_path(v2, v0), invent_path(v1, v2), Rule(754).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v2, v1), invent_path(v0, v2), Rule(755).
+invent_path(v0, v1) :- edge(v1, v0), edge(v2, v0), edge(v2, v0), Rule(756).
+invent_path(v0, v1) :- edge(v0, v2), edge(v2, v1), edge(v1, v0), Rule(757).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v2, v1), invent_path(v0, v2), Rule(758).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v1), edge(v2, v0), Rule(759).
+scc(v0, v1) :- scc(v1, v2), scc(v2, v0), scc(v0, v2), Rule(760).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), edge(v1, v2), Rule(761).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v2), scc(v2, v1), Rule(762).
+scc(v0, v1) :- invent_path(v1, v2), scc(v0, v2), scc(v1, v2), Rule(763).
+scc(v0, v1) :- scc(v1, v2), scc(v2, v0), scc(v0, v1), Rule(764).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), invent_path(v1, v2), Rule(765).
+scc(v0, v1) :- edge(v1, v2), edge(v2, v1), edge(v1, v0), Rule(766).
+scc(v0, v2) :- scc(v0, v1), inv(v2, v0), Rule(767).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v2, v0), invent_path(v1, v2), Rule(768).
+invent_path(v0, v1) :- invent_path(v1, v0), invent_path(v2, v1), invent_path(v2, v1), Rule(769).
+invent_path(v0, v1) :- edge(v2, v0), edge(v1, v0), invent_path(v1, v2), Rule(770).
+scc(v1, v0) :- edge(v0, v1), edge(v2, v0), Rule(771).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v0), Rule(772).
+scc(v0, v1) :- edge(v0, v1), scc(v0, v2), Rule(773).
+scc(v0, v1) :- edge(v0, v1), invent_path(v2, v1), invent_path(v1, v2), Rule(774).
+scc(v0, v1) :- scc(v1, v0), scc(v0, v1), scc(v1, v0), Rule(775).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), invent_path(v1, v0), Rule(776).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v0, v1), invent_path(v0, v1), Rule(777).
+scc(v0, v1) :- edge(v0, v1), scc(v1, v0), Rule(778).
+scc(v0, v1) :- edge(v2, v0), edge(v0, v1), scc(v0, v2), Rule(779).
+scc(v0, v2) :- edge(v0, v1), scc(v2, v0), Rule(780).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v1), scc(v2, v1), Rule(781).
+scc(v0, v1) :- edge(v0, v1), inv(v2, v0), Rule(782).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v1), invent_path(v2, v0), Rule(783).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v1, v2), invent_path(v1, v2), Rule(784).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v0), Rule(785).
+scc(v0, v1) :- scc(v0, v1), scc(v2, v1), scc(v2, v1), Rule(786).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), scc(v0, v2), Rule(787).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v1, v0), invent_path(v1, v0), Rule(788).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), edge(v1, v0), Rule(789).
+invent_path(v0, v1) :- edge(v2, v0), edge(v1, v0), edge(v1, v2), Rule(790).
+scc(v0, v1) :- scc(v1, v2), scc(v0, v1), scc(v0, v2), Rule(791).
+scc(v1, v0) :- inv(v0, v1), Rule(792).
+invent_path(v0, v1) :- edge(v1, v2), edge(v1, v2), edge(v1, v0), Rule(793).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v2), invent_path(v0, v1), Rule(794).
+invent_path(v0, v1) :- edge(v1, v0), edge(v0, v2), invent_path(v2, v0), Rule(795).
+inv(v0, v1) :- scc(v0, v1), inv(v1, v0), Rule(796).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v0, v1), invent_path(v0, v2), Rule(797).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v2), scc(v2, v0), Rule(798).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v1, v0), Rule(799).
+inv(v0, v1) :- scc(v0, v1), inv(v1, v2), Rule(800).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v2, v0), invent_path(v1, v0), Rule(801).
+inv(v2, v0) :- edge(v0, v1), scc(v2, v1), Rule(802).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v0), invent_path(v0, v2), Rule(803).
+scc(v0, v1) :- invent_path(v2, v0), scc(v2, v1), Rule(804).
+invent_path(v0, v1) :- edge(v2, v0), edge(v2, v1), edge(v2, v1), Rule(805).
+scc(v0, v1) :- edge(v0, v1), Rule(806).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v1), invent_path(v2, v0), Rule(807).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v0, v2), invent_path(v1, v2), Rule(808).
+scc(v0, v1) :- edge(v1, v2), scc(v1, v2), scc(v1, v0), Rule(809).
+scc(v1, v2) :- scc(v0, v1), inv(v1, v2), Rule(810).
+scc(v2, v1) :- scc(v0, v1), inv(v0, v2), Rule(811).
+scc(v0, v1) :- edge(v0, v2), invent_path(v0, v1), scc(v0, v2), Rule(812).
+invent_path(v0, v1) :- edge(v0, v1), edge(v0, v2), edge(v0, v2), Rule(813).
+scc(v0, v1) :- edge(v2, v1), edge(v2, v1), scc(v0, v1), Rule(814).
+scc(v0, v1) :- edge(v0, v1), invent_path(v0, v1), invent_path(v0, v1), Rule(815).
+inv(v2, v0) :- scc(v0, v1), inv(v2, v1), Rule(816).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v1, v0), Rule(817).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v1), invent_path(v1, v2), Rule(818).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v2, v1), invent_path(v0, v2), Rule(819).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v1), scc(v2, v0), Rule(820).
+scc(v0, v2) :- scc(v0, v1), inv(v2, v1), Rule(821).
+scc(v0, v1) :- edge(v2, v0), scc(v0, v2), scc(v1, v0), Rule(822).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v1), scc(v0, v1), Rule(823).
+scc(v1, v0) :- edge(v0, v1), scc(v1, v2), Rule(824).
+scc(v0, v1) :- scc(v1, v0), scc(v1, v0), scc(v1, v0), Rule(825).
+scc(v0, v1) :- edge(v2, v1), edge(v1, v0), invent_path(v2, v1), Rule(826).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v1, v0), invent_path(v2, v0), Rule(827).
+scc(v0, v1) :- edge(v2, v0), scc(v1, v2), Rule(828).
+scc(v0, v1) :- edge(v2, v1), scc(v1, v2), scc(v0, v2), Rule(829).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v2), invent_path(v2, v0), Rule(830).
+scc(v2, v1) :- edge(v0, v1), scc(v1, v2), Rule(831).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v1), scc(v2, v1), Rule(832).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v2), edge(v1, v0), Rule(833).
+scc(v0, v1) :- edge(v2, v1), invent_path(v2, v0), scc(v2, v0), Rule(834).
+invent_path(v0, v1) :- edge(v0, v2), edge(v0, v2), invent_path(v1, v0), Rule(835).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v0), scc(v1, v0), Rule(836).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), invent_path(v2, v1), Rule(837).
+scc(v1, v0) :- inv(v0, v1), inv(v2, v0), Rule(838).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v1, v0), invent_path(v1, v2), Rule(839).
+scc(v0, v1) :- invent_path(v1, v0), scc(v0, v1), Rule(840).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v1), edge(v2, v0), Rule(841).
+inv(v0, v2) :- edge(v0, v1), inv(v1, v2), Rule(842).
+invent_path(v0, v1) :- edge(v0, v2), edge(v2, v1), invent_path(v2, v1), Rule(843).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v1), edge(v0, v2), Rule(844).
+scc(v0, v1) :- scc(v1, v2), scc(v2, v1), scc(v0, v2), Rule(845).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v0, v2), invent_path(v0, v2), Rule(846).
+scc(v0, v1) :- scc(v1, v0), scc(v1, v2), scc(v0, v2), Rule(847).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v2), edge(v0, v2), Rule(848).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), scc(v1, v2), Rule(849).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v1, v2), invent_path(v1, v0), Rule(850).
+invent_path(v0, v1) :- edge(v2, v1), edge(v2, v1), invent_path(v2, v0), Rule(851).
+scc(v0, v1) :- invent_path(v1, v2), scc(v0, v2), scc(v0, v2), Rule(852).
+scc(v0, v1) :- scc(v1, v0), scc(v2, v0), scc(v1, v2), Rule(853).
+scc(v0, v1) :- invent_path(v1, v0), scc(v1, v2), scc(v2, v1), Rule(854).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v2), scc(v1, v0), Rule(855).
+inv(v0, v1) :- scc(v0, v1), scc(v1, v0), Rule(856).
+scc(v1, v0) :- scc(v0, v1), scc(v2, v0), Rule(857).
+scc(v0, v1) :- scc(v0, v1), scc(v2, v0), scc(v1, v2), Rule(858).
+scc(v0, v1) :- edge(v1, v2), invent_path(v0, v2), invent_path(v1, v2), Rule(859).
+scc(v0, v1) :- invent_path(v1, v2), scc(v2, v1), scc(v2, v0), Rule(860).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), edge(v2, v1), Rule(861).
+scc(v0, v1) :- invent_path(v0, v2), scc(v2, v0), scc(v1, v0), Rule(862).
+invent_path(v0, v1) :- edge(v2, v0), edge(v0, v2), invent_path(v1, v0), Rule(863).
+scc(v0, v1) :- invent_path(v2, v0), invent_path(v0, v2), invent_path(v1, v0), Rule(864).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v2), invent_path(v0, v1), Rule(865).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v2), scc(v0, v1), Rule(866).
+inv(v1, v2) :- edge(v0, v1), edge(v2, v0), Rule(867).
+invent_path(v0, v1) :- edge(v0, v2), edge(v1, v0), edge(v2, v1), Rule(868).
+inv(v2, v1) :- scc(v0, v1), scc(v2, v0), Rule(869).
+scc(v2, v0) :- scc(v0, v1), inv(v2, v0), Rule(870).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v2, v1), scc(v2, v0), Rule(871).
+invent_path(v0, v1) :- edge(v0, v1), invent_path(v0, v2), invent_path(v2, v1), Rule(872).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v1), scc(v1, v2), Rule(873).
+scc(v0, v1) :- invent_path(v2, v0), scc(v1, v2), scc(v1, v0), Rule(874).
+scc(v2, v1) :- edge(v0, v1), scc(v0, v2), Rule(875).
+scc(v0, v1) :- invent_path(v2, v1), scc(v0, v1), scc(v1, v2), Rule(876).
+scc(v0, v1) :- invent_path(v0, v2), scc(v2, v1), scc(v2, v1), Rule(877).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), scc(v1, v2), Rule(878).
+scc(v0, v1) :- invent_path(v0, v1), scc(v1, v2), scc(v2, v0), Rule(879).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v0), invent_path(v0, v2), Rule(880).
+scc(v0, v1) :- scc(v2, v0), scc(v1, v0), scc(v1, v2), Rule(881).
+scc(v0, v1) :- edge(v0, v2), scc(v1, v0), scc(v2, v0), Rule(882).
+invent_path(v0, v1) :- edge(v1, v2), edge(v0, v2), invent_path(v1, v2), Rule(883).
+scc(v1, v2) :- edge(v0, v1), inv(v2, v0), Rule(884).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v1), invent_path(v0, v2), Rule(885).
+scc(v0, v1) :- invent_path(v2, v1), scc(v2, v0), scc(v1, v2), Rule(886).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v0, v2), invent_path(v1, v0), Rule(887).
+scc(v0, v1) :- edge(v2, v0), scc(v1, v0), scc(v1, v2), Rule(888).
+scc(v0, v1) :- edge(v2, v0), scc(v2, v0), scc(v0, v1), Rule(889).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), invent_path(v0, v1), Rule(890).
+scc(v0, v1) :- edge(v1, v2), edge(v0, v1), edge(v1, v2), Rule(891).
+inv(v0, v2) :- scc(v0, v1), inv(v1, v2), Rule(892).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v0), invent_path(v0, v1), Rule(893).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v1, v2), scc(v0, v1), Rule(894).
+scc(v0, v1) :- invent_path(v0, v2), scc(v1, v0), scc(v1, v2), Rule(895).
+scc(v0, v1) :- scc(v0, v1), scc(v1, v0), scc(v1, v0), Rule(896).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v0), edge(v1, v2), Rule(897).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v2, v1), invent_path(v0, v2), Rule(898).
+inv(v1, v2) :- scc(v0, v1), scc(v0, v2), Rule(899).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v0, v2), scc(v1, v2), Rule(900).
+invent_path(v0, v1) :- edge(v0, v1), edge(v2, v1), invent_path(v0, v2), Rule(901).
+inv(v1, v0) :- edge(v0, v1), inv(v2, v0), Rule(902).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v2), invent_path(v0, v1), Rule(903).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v0), invent_path(v1, v0), Rule(904).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v1, v2), invent_path(v1, v0), Rule(905).
+scc(v0, v1) :- edge(v1, v0), invent_path(v1, v2), invent_path(v2, v0), Rule(906).
+scc(v0, v1) :- invent_path(v1, v2), scc(v2, v0), Rule(907).
+scc(v0, v1) :- edge(v2, v0), edge(v1, v2), scc(v1, v2), Rule(908).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v1), invent_path(v0, v2), Rule(909).
+scc(v0, v1) :- scc(v0, v2), scc(v0, v2), scc(v0, v1), Rule(910).
+scc(v0, v1) :- edge(v0, v2), invent_path(v2, v1), scc(v1, v0), Rule(911).
+invent_path(v0, v1) :- edge(v0, v2), edge(v2, v1), edge(v0, v1), Rule(912).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v2), edge(v2, v0), Rule(913).
+scc(v0, v1) :- edge(v0, v2), edge(v1, v2), edge(v2, v0), Rule(914).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v0), invent_path(v2, v1), Rule(915).
+invent_path(v0, v1) :- invent_path(v2, v1), invent_path(v0, v1), invent_path(v2, v1), Rule(916).
+invent_path(v0, v1) :- edge(v1, v0), edge(v1, v0), edge(v0, v1), Rule(917).
+scc(v0, v2) :- edge(v0, v1), inv(v1, v2), Rule(918).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v1), edge(v0, v2), Rule(919).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v1), scc(v2, v0), Rule(920).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), invent_path(v1, v0), Rule(921).
+scc(v0, v1) :- edge(v0, v2), invent_path(v0, v2), invent_path(v2, v1), Rule(922).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v0), invent_path(v1, v2), Rule(923).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v0, v1), invent_path(v2, v0), Rule(924).
+inv(v0, v2) :- scc(v0, v1), inv(v2, v0), Rule(925).
+scc(v0, v2) :- scc(v0, v1), scc(v2, v1), Rule(926).
+scc(v0, v1) :- edge(v0, v2), invent_path(v0, v1), scc(v2, v1), Rule(927).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v1, v2), invent_path(v0, v2), Rule(928).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v1), invent_path(v2, v0), Rule(929).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v1, v2), invent_path(v2, v0), Rule(930).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v0, v2), invent_path(v1, v2), Rule(931).
+invent_path(v0, v1) :- edge(v2, v0), edge(v1, v0), invent_path(v2, v0), Rule(932).
+invent_path(v0, v1) :- edge(v0, v2), edge(v1, v2), invent_path(v0, v2), Rule(933).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v2, v1), invent_path(v2, v1), Rule(934).
+invent_path(v0, v1) :- edge(v2, v1), edge(v1, v0), edge(v0, v2), Rule(935).
+scc(v0, v1) :- invent_path(v1, v2), scc(v2, v0), scc(v1, v0), Rule(936).
+invent_path(v0, v1) :- edge(v2, v0), edge(v2, v1), Rule(937).
+scc(v0, v1) :- scc(v2, v1), scc(v0, v1), scc(v1, v2), Rule(938).
+scc(v0, v1) :- edge(v2, v0), invent_path(v1, v0), scc(v0, v2), Rule(939).
+invent_path(v0, v1) :- edge(v1, v0), edge(v0, v2), invent_path(v2, v1), Rule(940).
+invent_path(v0, v1) :- invent_path(v1, v2), invent_path(v1, v0), invent_path(v2, v1), Rule(941).
+scc(v0, v1) :- edge(v0, v1), invent_path(v1, v2), scc(v1, v2), Rule(942).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v1, v0), scc(v1, v0), Rule(943).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v0, v2), invent_path(v2, v0), Rule(944).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v0, v2), invent_path(v0, v1), Rule(945).
+scc(v0, v1) :- edge(v0, v2), edge(v0, v2), invent_path(v2, v1), Rule(946).
+invent_path(v0, v1) :- edge(v1, v0), invent_path(v0, v2), invent_path(v2, v0), Rule(947).
+scc(v0, v1) :- edge(v0, v1), edge(v0, v2), invent_path(v1, v2), Rule(948).
+scc(v0, v1) :- edge(v1, v0), scc(v1, v2), scc(v2, v0), Rule(949).
+scc(v0, v1) :- edge(v2, v0), invent_path(v0, v1), invent_path(v1, v2), Rule(950).
+scc(v0, v1) :- edge(v0, v1), scc(v1, v2), scc(v1, v2), Rule(951).
+inv(v1, v0) :- scc(v0, v1), inv(v2, v0), Rule(952).
+scc(v0, v1) :- edge(v0, v1), edge(v2, v0), edge(v2, v1), Rule(953).
+scc(v0, v1) :- edge(v0, v1), inv(v1, v2), Rule(954).
+scc(v0, v1) :- edge(v0, v2), edge(v2, v1), invent_path(v2, v0), Rule(955).
+scc(v0, v1) :- scc(v0, v2), scc(v0, v1), scc(v2, v1), Rule(956).
+invent_path(v0, v1) :- edge(v0, v2), invent_path(v2, v0), invent_path(v0, v1), Rule(957).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v0), scc(v0, v2), Rule(958).
+scc(v0, v1) :- edge(v1, v0), edge(v2, v1), scc(v2, v1), Rule(959).
+scc(v0, v1) :- invent_path(v0, v1), scc(v2, v1), scc(v2, v1), Rule(960).
+invent_path(v0, v1) :- invent_path(v2, v0), invent_path(v1, v0), invent_path(v1, v2), Rule(961).
+scc(v0, v1) :- edge(v2, v0), scc(v0, v2), scc(v1, v2), Rule(962).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), invent_path(v2, v0), Rule(963).
+scc(v0, v1) :- edge(v0, v2), invent_path(v1, v2), scc(v0, v2), Rule(964).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v1), scc(v2, v0), Rule(965).
+scc(v0, v1) :- edge(v2, v1), invent_path(v0, v2), scc(v0, v2), Rule(966).
+invent_path(v0, v1) :- edge(v1, v2), edge(v2, v0), edge(v2, v0), Rule(967).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v2), scc(v1, v2), Rule(968).
+invent_path(v0, v1) :- invent_path(v0, v1), invent_path(v0, v2), invent_path(v2, v1), Rule(969).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v0, v2), Rule(970).
+scc(v0, v1) :- edge(v2, v0), edge(v2, v1), invent_path(v0, v1), Rule(971).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v0, v1), scc(v2, v0), Rule(972).
+invent_path(v0, v1) :- edge(v1, v2), invent_path(v2, v0), Rule(973).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v1, v0), invent_path(v1, v0), Rule(974).
+scc(v0, v1) :- edge(v1, v0), scc(v1, v2), scc(v2, v1), Rule(975).
+scc(v0, v1) :- edge(v1, v0), invent_path(v0, v1), invent_path(v1, v0), Rule(976).
+invent_path(v0, v1) :- edge(v2, v1), invent_path(v1, v0), invent_path(v2, v0), Rule(977).
+inv(v2, v1) :- edge(v0, v1), scc(v0, v2), Rule(978).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v0), invent_path(v2, v0), Rule(979).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v2, v0), scc(v2, v1), Rule(980).
+scc(v0, v1) :- edge(v0, v2), scc(v0, v1), scc(v2, v0), Rule(981).
+scc(v0, v1) :- edge(v0, v2), scc(v2, v0), scc(v1, v0), Rule(982).
+scc(v0, v1) :- invent_path(v0, v2), scc(v2, v0), scc(v0, v1), Rule(983).
+scc(v0, v2) :- edge(v0, v1), inv(v2, v0), Rule(984).
+scc(v0, v1) :- edge(v1, v0), edge(v1, v0), edge(v1, v0), Rule(985).
+scc(v2, v0) :- edge(v0, v1), inv(v2, v0), Rule(986).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v2, v1), scc(v1, v0), Rule(987).
+scc(v0, v1) :- invent_path(v1, v0), invent_path(v1, v0), scc(v1, v0), Rule(988).
+scc(v1, v0) :- edge(v0, v1), scc(v2, v0), Rule(989).
+scc(v0, v1) :- edge(v1, v0), edge(v0, v1), Rule(990).
+scc(v0, v1) :- edge(v1, v2), edge(v1, v0), scc(v2, v1), Rule(991).
+scc(v0, v1) :- invent_path(v0, v1), invent_path(v0, v1), invent_path(v1, v0), Rule(992).
+scc(v0, v1) :- edge(v1, v0), invent_path(v2, v1), invent_path(v2, v1), Rule(993).
+scc(v0, v1) :- edge(v2, v1), scc(v1, v0), scc(v2, v0), Rule(994).
+scc(v0, v1) :- invent_path(v0, v1), scc(v2, v0), scc(v2, v0), Rule(995).
+scc(v0, v1) :- invent_path(v2, v1), invent_path(v2, v0), scc(v0, v2), Rule(996).
+scc(v0, v1) :- edge(v2, v0), invent_path(v2, v1), scc(v2, v1), Rule(997).
+invent_path(v0, v1) :- edge(v2, v0), invent_path(v1, v0), invent_path(v0, v2), Rule(998).
+scc(v0, v1) :- invent_path(v1, v2), invent_path(v1, v2), invent_path(v1, v0), Rule(999).
+scc(v0, v1) :- invent_path(v0, v2), invent_path(v1, v0), scc(v2, v0), Rule(1000).

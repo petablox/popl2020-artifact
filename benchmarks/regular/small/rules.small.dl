@@ -1,54 +1,1019 @@
 .type V
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
 .decl Mother(v0: V, v1: V)
 .input Mother
+
 .decl Father(v0: V, v1: V)
 .input Father
 
+.decl Parent(v0: V, v1: V)
+.output Parent
 
-.decl inv(v0: V, v1: V)
-.output inv
 .decl Ancestor(v0: V, v1: V)
 .output Ancestor
 
-Ancestor(v0, v1) :- Mother(v0, v1), Rule(1).
-Ancestor(v2, v1) :- Ancestor(v0, v1), Mother(v2, v0), Rule(34).
-Ancestor(v2, v1) :- Father(v0, v1), inv(v2, v0), Rule(12).
-inv(v0, v2) :- Mother(v0, v1), inv(v1, v2), Rule(10).
-Ancestor(v2, v1) :- Ancestor(v0, v1), inv(v2, v0), Rule(5).
-Ancestor(v0, v2) :- Ancestor(v0, v1), Mother(v1, v2), Rule(8).
-inv(v2, v1) :- Mother(v0, v1), inv(v2, v0), Rule(21).
-Ancestor(v2, v1) :- Ancestor(v0, v1), Father(v2, v0), Rule(28).
-inv(v2, v1) :- Ancestor(v0, v1), Mother(v2, v0), Rule(3).
-inv(v2, v1) :- Ancestor(v0, v1), inv(v2, v0), Rule(24).
-Ancestor(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(17).
-inv(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(36).
-Ancestor(v0, v2) :- Ancestor(v0, v1), Father(v1, v2), Rule(30).
-Ancestor(v0, v1) :- inv(v0, v1), Rule(6).
-Ancestor(v0, v2) :- Father(v0, v1), inv(v1, v2), Rule(33).
-Ancestor(v0, v2) :- Father(v0, v1), Father(v1, v2), Rule(37).
-inv(v0, v2) :- Ancestor(v0, v1), Ancestor(v1, v2), Rule(31).
-inv(v0, v2) :- Father(v0, v1), Father(v1, v2), Rule(26).
-inv(v2, v1) :- Father(v0, v1), Mother(v2, v0), Rule(20).
-Ancestor(v0, v2) :- Mother(v0, v1), Mother(v1, v2), Rule(27).
-Ancestor(v0, v2) :- Ancestor(v0, v1), Ancestor(v1, v2), Rule(13).
-Ancestor(v2, v1) :- Father(v0, v1), Mother(v2, v0), Rule(29).
-inv(v0, v2) :- Father(v0, v1), Mother(v1, v2), Rule(25).
-inv(v0, v2) :- Father(v0, v1), inv(v1, v2), Rule(19).
-Ancestor(v2, v1) :- Mother(v0, v1), inv(v2, v0), Rule(14).
-inv(v0, v2) :- Ancestor(v0, v1), Mother(v1, v2), Rule(4).
-inv(v0, v2) :- Ancestor(v0, v1), inv(v1, v2), Rule(16).
-inv(v0, v1) :- Ancestor(v0, v1), Rule(11).
-inv(v0, v2) :- Mother(v0, v1), Mother(v1, v2), Rule(0).
-inv(v0, v1) :- Father(v0, v1), Rule(15).
-Ancestor(v0, v2) :- Father(v0, v1), Mother(v1, v2), Rule(2).
-inv(v2, v1) :- Ancestor(v0, v1), Father(v2, v0), Rule(9).
-Ancestor(v0, v2) :- Ancestor(v0, v1), inv(v1, v2), Rule(32).
-inv(v0, v1) :- Mother(v0, v1), Rule(7).
-Ancestor(v0, v1) :- Father(v0, v1), Rule(35).
-Ancestor(v0, v2) :- Mother(v0, v1), inv(v1, v2), Rule(22).
-inv(v0, v2) :- Ancestor(v0, v1), Father(v1, v2), Rule(23).
-inv(v2, v1) :- Father(v0, v1), inv(v2, v0), Rule(18).
+
+
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Father(v0, v2), Rule(1).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v0, v2), Ancestor(v2, v1), Rule(2).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v1, v0), Parent(v1, v2), Rule(3).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v1, v2), Father(v2, v1), Rule(4).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v0), Parent(v1, v2), Rule(5).
+Ancestor(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(6).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Parent(v0, v2), Rule(7).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Father(v1, v0), Rule(8).
+Ancestor(v0, v1) :- Ancestor(v0, v1), Ancestor(v0, v1), Ancestor(v0, v1), Rule(9).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v2, v1), Mother(v2, v0), Rule(10).
+Parent(v0, v1) :- Father(v1, v2), Parent(v0, v2), Parent(v2, v0), Rule(11).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v0, v1), Ancestor(v2, v0), Rule(12).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Mother(v0, v2), Rule(13).
+Parent(v0, v1) :- Father(v1, v2), Father(v2, v1), Father(v1, v0), Rule(14).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v2, v1), Parent(v0, v1), Rule(15).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v0), Father(v1, v0), Rule(16).
+Ancestor(v0, v1) :- Father(v0, v2), Ancestor(v0, v1), Ancestor(v1, v2), Rule(17).
+Parent(v0, v1) :- Father(v0, v2), Father(v2, v1), Parent(v2, v1), Rule(18).
+Parent(v0, v1) :- Father(v2, v1), Parent(v2, v0), Parent(v1, v0), Rule(19).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v1), Ancestor(v2, v1), Rule(20).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Ancestor(v1, v0), Rule(21).
+Parent(v0, v1) :- Parent(v2, v1), Parent(v0, v2), Parent(v0, v1), Rule(22).
+Ancestor(v0, v1) :- Mother(v0, v2), Ancestor(v0, v1), Ancestor(v1, v2), Rule(23).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v1, v0), Father(v1, v0), Rule(24).
+Parent(v0, v1) :- Father(v1, v2), Father(v0, v1), Father(v1, v2), Rule(25).
+Parent(v0, v1) :- Father(v0, v1), Parent(v2, v1), Parent(v0, v2), Rule(26).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v0), Father(v0, v2), Rule(27).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v0, v1), Parent(v2, v1), Rule(28).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v0, v2), Rule(29).
+inv(v2, v1) :- Father(v0, v1), Mother(v2, v0), Rule(30).
+Parent(v0, v1) :- Mother(v2, v1), Parent(v0, v1), Parent(v2, v0), Rule(31).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v2, v0), Parent(v0, v2), Rule(32).
+Parent(v0, v1) :- Mother(v2, v1), Father(v0, v2), Parent(v0, v2), Rule(33).
+Parent(v0, v1) :- Father(v2, v1), Father(v1, v0), Father(v1, v2), Rule(34).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v2, v0), Ancestor(v0, v2), Rule(35).
+Parent(v0, v1) :- Father(v0, v1), Father(v0, v2), Parent(v2, v1), Rule(36).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v1, v2), Ancestor(v2, v0), Rule(37).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Mother(v2, v0), Rule(38).
+Parent(v0, v1) :- Parent(v2, v1), Parent(v2, v1), Parent(v0, v2), Rule(39).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v1), Ancestor(v2, v0), Rule(40).
+Parent(v0, v1) :- Mother(v2, v1), Parent(v2, v0), Parent(v1, v2), Rule(41).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v1), Father(v2, v0), Rule(42).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v1, v2), Ancestor(v1, v0), Rule(43).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Mother(v2, v1), Rule(44).
+Parent(v0, v1) :- Father(v1, v2), Father(v2, v1), Father(v0, v2), Rule(45).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v0, v2), Ancestor(v1, v2), Rule(46).
+Parent(v0, v1) :- Father(v2, v0), Father(v2, v0), Parent(v1, v2), Rule(47).
+Parent(v0, v1) :- Father(v1, v2), Father(v2, v0), Rule(48).
+Ancestor(v0, v1) :- Father(v2, v0), Ancestor(v2, v1), Ancestor(v0, v1), Rule(49).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v1, v0), Ancestor(v1, v2), Rule(50).
+Parent(v0, v1) :- Mother(v1, v0), Father(v2, v1), Father(v0, v2), Rule(51).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Mother(v0, v2), Rule(52).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Father(v2, v0), Rule(53).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Mother(v0, v2), Rule(54).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v0, v2), Parent(v2, v0), Rule(55).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v0, v1), Ancestor(v1, v2), Rule(56).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Mother(v0, v1), Rule(57).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v1), Parent(v0, v1), Rule(58).
+Parent(v0, v1) :- Father(v1, v2), Father(v1, v2), Parent(v2, v0), Rule(59).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v1, v2), Parent(v2, v0), Rule(60).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Mother(v1, v2), Rule(61).
+Ancestor(v0, v1) :- Ancestor(v1, v0), Ancestor(v0, v2), Ancestor(v2, v0), Rule(62).
+Parent(v0, v1) :- Mother(v2, v1), Parent(v2, v0), Parent(v0, v2), Rule(63).
+Ancestor(v0, v1) :- Parent(v2, v0), Ancestor(v0, v1), Ancestor(v2, v1), Rule(64).
+Ancestor(v0, v2) :- Father(v0, v1), Mother(v1, v2), Rule(65).
+Parent(v0, v1) :- Father(v2, v0), Parent(v2, v0), Parent(v2, v1), Rule(66).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v1, v2), Father(v2, v0), Rule(67).
+Parent(v0, v1) :- Father(v1, v2), Father(v0, v2), Parent(v2, v0), Rule(68).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Mother(v1, v0), Rule(69).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v0, v2), Ancestor(v2, v1), Rule(70).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v2), Father(v2, v0), Rule(71).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Parent(v0, v1), Rule(72).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v0, v1), Parent(v2, v1), Rule(73).
+Ancestor(v0, v2) :- Father(v0, v1), inv(v1, v2), Rule(74).
+Parent(v0, v1) :- Father(v0, v2), Father(v2, v1), Father(v2, v1), Rule(75).
+Parent(v0, v1) :- Parent(v2, v1), Parent(v2, v1), Parent(v1, v0), Rule(76).
+inv(v0, v2) :- Mother(v0, v1), Mother(v1, v2), Rule(77).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v0), Parent(v2, v1), Rule(78).
+Parent(v0, v1) :- Father(v0, v1), Parent(v1, v0), Parent(v0, v1), Rule(79).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v2, v1), Ancestor(v0, v2), Rule(80).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v1, v2), Ancestor(v0, v2), Rule(81).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v0), Parent(v1, v2), Rule(82).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v0), Ancestor(v2, v0), Rule(83).
+Parent(v0, v1) :- Mother(v1, v0), Father(v0, v2), Father(v0, v2), Rule(84).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v0), Ancestor(v2, v1), Rule(85).
+Ancestor(v0, v1) :- Ancestor(v0, v2), Ancestor(v0, v2), Ancestor(v0, v1), Rule(86).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Mother(v0, v2), Rule(87).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v0, v2), Mother(v2, v0), Rule(88).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v1), Parent(v1, v2), Rule(89).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v0, v2), Parent(v1, v0), Rule(90).
+Ancestor(v0, v1) :- Parent(v2, v1), Ancestor(v2, v1), Ancestor(v0, v1), Rule(91).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Parent(v0, v1), Rule(92).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v1), Ancestor(v0, v1), Rule(93).
+inv(v0, v2) :- Ancestor(v0, v1), Ancestor(v1, v2), Rule(94).
+Parent(v0, v1) :- Father(v1, v0), Father(v1, v2), Father(v1, v2), Rule(95).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v2, v1), Ancestor(v2, v1), Rule(96).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Father(v2, v0), Rule(97).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v2, v1), Parent(v0, v1), Rule(98).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v0), Father(v2, v0), Rule(99).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Parent(v1, v2), Rule(100).
+Parent(v0, v1) :- Mother(v1, v2), Father(v1, v0), Parent(v1, v2), Rule(101).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v0, v1), Parent(v2, v0), Rule(102).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v1, v0), Parent(v0, v1), Rule(103).
+inv(v0, v2) :- Father(v0, v1), Father(v1, v2), Rule(104).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v1), Parent(v1, v2), Rule(105).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v1), Father(v1, v0), Rule(106).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Mother(v2, v1), Rule(107).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Parent(v1, v0), Rule(108).
+Parent(v0, v1) :- Mother(v2, v0), Father(v1, v0), Parent(v2, v0), Rule(109).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Father(v2, v0), Rule(110).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Father(v0, v1), Rule(111).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v2, v1), Ancestor(v2, v1), Rule(112).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v1), Father(v0, v2), Rule(113).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Mother(v2, v1), Rule(114).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v0), Father(v0, v2), Rule(115).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v0, v2), Father(v1, v0), Rule(116).
+Ancestor(v0, v1) :- Ancestor(v0, v1), Ancestor(v0, v2), Ancestor(v1, v2), Rule(117).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v2, v0), Ancestor(v0, v2), Rule(118).
+Parent(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Parent(v1, v2), Rule(119).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v0), Father(v2, v1), Rule(120).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v0), Father(v1, v0), Rule(121).
+inv(v0, v1) :- Father(v0, v1), Rule(122).
+Ancestor(v0, v2) :- Ancestor(v0, v1), Mother(v1, v2), Rule(123).
+inv(v2, v1) :- Father(v0, v1), inv(v2, v0), Rule(124).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Father(v2, v0), Rule(125).
+inv(v0, v2) :- inv(v0, v1), inv(v1, v2), Rule(126).
+Parent(v0, v1) :- Parent(v0, v1), Parent(v1, v2), Parent(v1, v2), Rule(127).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v1), Ancestor(v1, v2), Rule(128).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Ancestor(v2, v0), Rule(129).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v1, v0), Ancestor(v1, v0), Rule(130).
+Parent(v0, v1) :- Father(v1, v0), Father(v2, v1), Father(v1, v2), Rule(131).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v1), Ancestor(v1, v2), Rule(132).
+Ancestor(v0, v1) :- Parent(v1, v0), Ancestor(v2, v0), Ancestor(v0, v2), Rule(133).
+Ancestor(v0, v1) :- inv(v0, v1), Rule(134).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v1, v2), Ancestor(v1, v0), Rule(135).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v0, v2), Ancestor(v1, v2), Rule(136).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v2), Father(v1, v0), Rule(137).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v0, v2), Parent(v1, v0), Rule(138).
+Parent(v0, v1) :- Mother(v0, v1), Parent(v2, v1), Parent(v1, v2), Rule(139).
+Parent(v0, v1) :- Father(v2, v1), Parent(v1, v0), Parent(v1, v2), Rule(140).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Father(v2, v1), Rule(141).
+Parent(v0, v1) :- Mother(v1, v2), Father(v2, v1), Father(v0, v2), Rule(142).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Mother(v2, v0), Rule(143).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v0, v1), Mother(v0, v2), Rule(144).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v2), Rule(145).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v1, v2), Ancestor(v2, v0), Rule(146).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Parent(v0, v1), Rule(147).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Father(v2, v0), Rule(148).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v0, v1), Parent(v2, v0), Rule(149).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v2, v0), Rule(150).
+Parent(v0, v1) :- Mother(v1, v0), Father(v0, v1), Parent(v0, v1), Rule(151).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Father(v0, v2), Rule(152).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Father(v1, v2), Rule(153).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v0, v2), Rule(154).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v1, v2), Ancestor(v1, v0), Rule(155).
+Ancestor(v0, v1) :- Ancestor(v2, v1), Ancestor(v1, v2), Ancestor(v0, v1), Rule(156).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v1, v2), Ancestor(v2, v1), Rule(157).
+Ancestor(v0, v1) :- Ancestor(v1, v0), Ancestor(v2, v1), Ancestor(v2, v1), Rule(158).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v2, v0), Parent(v1, v2), Rule(159).
+Ancestor(v2, v1) :- Mother(v0, v1), inv(v2, v0), Rule(160).
+Parent(v0, v1) :- Parent(v2, v0), Parent(v0, v2), Parent(v1, v0), Rule(161).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Parent(v1, v2), Rule(162).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v1), Parent(v0, v2), Rule(163).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v1), Parent(v1, v0), Rule(164).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Parent(v2, v0), Rule(165).
+Ancestor(v2, v1) :- Ancestor(v0, v1), Mother(v2, v0), Rule(166).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Parent(v2, v0), Rule(167).
+Ancestor(v0, v1) :- Father(v1, v2), Ancestor(v0, v2), Ancestor(v2, v1), Rule(168).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v1), Parent(v2, v0), Rule(169).
+Parent(v0, v1) :- Father(v1, v0), Parent(v2, v0), Parent(v2, v0), Rule(170).
+Parent(v0, v1) :- Mother(v1, v0), Parent(v1, v0), Rule(171).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v0, v2), Father(v0, v1), Rule(172).
+Ancestor(v0, v1) :- Mother(v1, v2), Ancestor(v0, v1), Ancestor(v2, v0), Rule(173).
+Parent(v0, v1) :- Father(v1, v0), Parent(v1, v0), Parent(v0, v1), Rule(174).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v0, v1), Ancestor(v2, v0), Rule(175).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Ancestor(v1, v2), Rule(176).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v0, v2), Ancestor(v1, v2), Rule(177).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v1, v0), Ancestor(v1, v2), Rule(178).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v2, v0), Ancestor(v0, v1), Rule(179).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v1, v2), Parent(v1, v0), Rule(180).
+Parent(v0, v1) :- Father(v1, v2), Parent(v2, v0), Rule(181).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Father(v2, v0), Rule(182).
+Ancestor(v0, v1) :- Father(v2, v0), Ancestor(v0, v1), Ancestor(v2, v1), Rule(183).
+Parent(v0, v1) :- Father(v2, v1), Father(v1, v0), Parent(v1, v2), Rule(184).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v0, v2), Ancestor(v2, v0), Rule(185).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v0), Parent(v2, v0), Rule(186).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v1, v0), Parent(v2, v1), Rule(187).
+Parent(v0, v1) :- Parent(v2, v1), Parent(v2, v0), Parent(v1, v2), Rule(188).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v1, v2), Father(v2, v0), Rule(189).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v0, v1), Ancestor(v2, v1), Rule(190).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v2, v0), Ancestor(v2, v0), Rule(191).
+Parent(v0, v1) :- Mother(v1, v0), Parent(v0, v2), Parent(v1, v2), Rule(192).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v0, v2), Ancestor(v0, v1), Rule(193).
+Ancestor(v0, v1) :- Father(v2, v1), Parent(v0, v1), Parent(v2, v1), Rule(194).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Father(v2, v0), Rule(195).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v1, v0), Parent(v1, v0), Rule(196).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v2, v1), Parent(v1, v0), Rule(197).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v2, v0), Rule(198).
+Parent(v0, v1) :- Father(v0, v2), Father(v2, v1), Father(v2, v0), Rule(199).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Father(v1, v0), Rule(200).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v0, v2), Ancestor(v0, v2), Rule(201).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v1, v0), Parent(v0, v1), Rule(202).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Ancestor(v0, v2), Rule(203).
+Parent(v0, v1) :- Father(v2, v0), Father(v1, v2), Rule(204).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v2, v1), Ancestor(v0, v1), Rule(205).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v0), Mother(v0, v2), Rule(206).
+Ancestor(v0, v2) :- Mother(v0, v1), inv(v1, v2), Rule(207).
+Parent(v0, v1) :- Father(v2, v1), Parent(v2, v1), Parent(v0, v1), Rule(208).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v0), Parent(v1, v2), Rule(209).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v2, v0), Father(v2, v1), Rule(210).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v1, v0), Father(v0, v1), Rule(211).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v2), Ancestor(v2, v1), Rule(212).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v1), Ancestor(v1, v0), Rule(213).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Father(v1, v2), Rule(214).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Parent(v1, v0), Rule(215).
+Parent(v0, v1) :- Mother(v1, v0), Father(v0, v2), Father(v1, v2), Rule(216).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v0), Ancestor(v2, v1), Rule(217).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Father(v2, v1), Rule(218).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v1, v2), Ancestor(v1, v0), Rule(219).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v0, v1), Father(v2, v0), Rule(220).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v1), Parent(v2, v1), Rule(221).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v1), Ancestor(v2, v0), Rule(222).
+Ancestor(v0, v1) :- Parent(v0, v1), Ancestor(v2, v1), Ancestor(v2, v1), Rule(223).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v2), Ancestor(v0, v1), Rule(224).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v1, v2), Parent(v0, v2), Rule(225).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Rule(226).
+Parent(v0, v1) :- Father(v1, v2), Father(v1, v2), Parent(v0, v2), Rule(227).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Parent(v2, v1), Rule(228).
+Parent(v0, v1) :- Mother(v0, v2), Father(v0, v1), Father(v2, v0), Rule(229).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Father(v1, v0), Rule(230).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v1, v2), Ancestor(v0, v2), Rule(231).
+Ancestor(v0, v1) :- Parent(v0, v1), Ancestor(v0, v2), Ancestor(v1, v2), Rule(232).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v0), Parent(v2, v1), Rule(233).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v1, v2), Ancestor(v1, v0), Rule(234).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v2, v0), Ancestor(v2, v1), Rule(235).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v0, v2), Parent(v1, v0), Rule(236).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v1, v0), Ancestor(v1, v2), Rule(237).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Parent(v1, v0), Rule(238).
+Parent(v0, v1) :- Mother(v0, v1), Father(v2, v1), Father(v2, v1), Rule(239).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v1), Father(v2, v1), Rule(240).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Ancestor(v2, v0), Rule(241).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v0), Rule(242).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Mother(v2, v1), Rule(243).
+Parent(v0, v1) :- Father(v0, v2), Parent(v2, v0), Parent(v1, v0), Rule(244).
+Parent(v0, v1) :- Mother(v1, v0), Parent(v1, v0), Parent(v0, v1), Rule(245).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v0, v1), Father(v2, v1), Rule(246).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v1, v2), Rule(247).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v1, v0), Parent(v2, v0), Rule(248).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Parent(v2, v1), Rule(249).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v1, v2), Parent(v0, v1), Rule(250).
+Ancestor(v0, v1) :- Ancestor(v0, v1), Ancestor(v2, v0), Ancestor(v2, v1), Rule(251).
+Parent(v0, v1) :- Father(v0, v1), Parent(v0, v2), Parent(v1, v2), Rule(252).
+Parent(v0, v1) :- Mother(v0, v1), Father(v1, v2), Parent(v2, v1), Rule(253).
+Parent(v0, v1) :- Mother(v1, v0), Parent(v0, v2), Parent(v0, v2), Rule(254).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Father(v2, v0), Rule(255).
+Ancestor(v0, v1) :- Parent(v1, v0), Ancestor(v0, v2), Ancestor(v0, v2), Rule(256).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v0), Rule(257).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v0), Ancestor(v0, v1), Rule(258).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v0, v2), Father(v0, v1), Rule(259).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v0), Parent(v1, v0), Rule(260).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v0, v1), Ancestor(v2, v1), Rule(261).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v2), Parent(v2, v0), Rule(262).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v1), Father(v2, v0), Rule(263).
+Parent(v0, v1) :- Father(v2, v1), Father(v0, v2), Father(v2, v1), Rule(264).
+Parent(v0, v1) :- Mother(v2, v0), Father(v0, v2), Parent(v1, v2), Rule(265).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v1, v2), Mother(v0, v1), Rule(266).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v1, v2), Parent(v0, v2), Rule(267).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v2, v0), Ancestor(v2, v0), Rule(268).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v2, v0), Mother(v1, v2), Rule(269).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v0, v1), Ancestor(v0, v2), Rule(270).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v2, v0), Rule(271).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v2), Ancestor(v1, v0), Rule(272).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v2, v1), Mother(v0, v2), Rule(273).
+Ancestor(v0, v1) :- Ancestor(v2, v1), Ancestor(v0, v2), Ancestor(v1, v0), Rule(274).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v0, v1), Rule(275).
+Parent(v0, v1) :- Father(v1, v0), Parent(v2, v0), Parent(v0, v2), Rule(276).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v2, v0), Parent(v2, v0), Rule(277).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v1, v2), Parent(v0, v2), Rule(278).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v1, v0), Parent(v1, v0), Rule(279).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v2, v0), Mother(v2, v1), Rule(280).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v0, v2), Father(v2, v0), Rule(281).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v1), Ancestor(v2, v0), Rule(282).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v2), Father(v0, v2), Rule(283).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v2, v0), Ancestor(v2, v1), Rule(284).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v0, v1), Ancestor(v2, v1), Rule(285).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v0), Ancestor(v2, v0), Rule(286).
+Parent(v0, v1) :- Mother(v0, v1), Father(v0, v1), Father(v1, v0), Rule(287).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v2, v1), Ancestor(v2, v0), Rule(288).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Mother(v0, v2), Rule(289).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Parent(v2, v0), Rule(290).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v1, v2), Ancestor(v1, v2), Rule(291).
+Ancestor(v0, v1) :- Mother(v1, v2), Ancestor(v0, v2), Ancestor(v0, v2), Rule(292).
+Parent(v0, v1) :- Mother(v1, v2), Father(v2, v1), Parent(v2, v0), Rule(293).
+Ancestor(v0, v1) :- Parent(v2, v0), Ancestor(v2, v0), Ancestor(v2, v1), Rule(294).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v1, v2), Parent(v0, v1), Rule(295).
+Parent(v0, v1) :- Parent(v1, v0), Parent(v0, v1), Parent(v1, v0), Rule(296).
+Parent(v0, v1) :- Father(v2, v1), Parent(v1, v2), Parent(v2, v0), Rule(297).
+Parent(x, y) :- Mother(x, y), Rule(298).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Ancestor(v2, v0), Rule(299).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v1, v2), Parent(v2, v1), Rule(300).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v2, v1), Parent(v0, v2), Rule(301).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v0, v2), Father(v2, v1), Rule(302).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v2, v1), Ancestor(v1, v2), Rule(303).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Mother(v1, v0), Rule(304).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v2, v1), Father(v2, v1), Rule(305).
+Ancestor(v0, v1) :- Parent(v0, v1), Ancestor(v2, v0), Ancestor(v1, v2), Rule(306).
+Parent(v0, v1) :- Mother(v0, v1), Father(v0, v1), Rule(307).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Parent(v1, v0), Rule(308).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v1, v0), Ancestor(v2, v0), Rule(309).
+Parent(v0, v1) :- Father(v1, v2), Father(v1, v0), Parent(v0, v2), Rule(310).
+Parent(v0, v1) :- Mother(v0, v1), Father(v0, v2), Father(v1, v2), Rule(311).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v1), Ancestor(v0, v2), Rule(312).
+Parent(v0, v1) :- Mother(v0, v2), Parent(v2, v0), Parent(v2, v1), Rule(313).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v1, v0), Parent(v0, v2), Rule(314).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Ancestor(v2, v1), Rule(315).
+Ancestor(v0, v1) :- Parent(v0, v1), Rule(316).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Father(v2, v1), Rule(317).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v0, v2), Rule(318).
+Parent(v0, v1) :- Mother(v1, v2), Father(v0, v1), Parent(v1, v2), Rule(319).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Ancestor(v0, v2), Rule(320).
+Ancestor(v0, v1) :- Ancestor(v1, v0), Ancestor(v2, v1), Ancestor(v0, v2), Rule(321).
+inv(v2, v1) :- Ancestor(v0, v1), Mother(v2, v0), Rule(322).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Mother(v1, v2), Rule(323).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Ancestor(v1, v0), Rule(324).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v2), Parent(v1, v0), Rule(325).
+Parent(v0, v1) :- Father(v2, v0), Father(v1, v2), Father(v0, v1), Rule(326).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v1), Father(v0, v1), Rule(327).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v0, v2), Ancestor(v1, v2), Rule(328).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Father(v1, v2), Rule(329).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v2, v0), Parent(v2, v0), Rule(330).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v1), Ancestor(v0, v1), Rule(331).
+Parent(v0, v1) :- Mother(v0, v2), Father(v2, v1), Father(v0, v2), Rule(332).
+Parent(v0, v1) :- Father(v1, v0), Father(v1, v0), Father(v0, v1), Rule(333).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Parent(v2, v0), Rule(334).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v1, v2), Ancestor(v0, v2), Rule(335).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v1, v0), Ancestor(v0, v2), Rule(336).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v1, v2), Ancestor(v1, v0), Rule(337).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v2, v0), Ancestor(v2, v0), Rule(338).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v1, v2), Ancestor(v2, v0), Rule(339).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Ancestor(v2, v1), Rule(340).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v1), Mother(v2, v0), Rule(341).
+Ancestor(v0, v1) :- Parent(v0, v1), Ancestor(v0, v2), Ancestor(v2, v0), Rule(342).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v2, v0), Rule(343).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v2, v1), Ancestor(v1, v2), Rule(344).
+Ancestor(v0, v1) :- Father(v2, v0), Ancestor(v1, v0), Ancestor(v0, v2), Rule(345).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v1, v2), Ancestor(v1, v2), Rule(346).
+inv(v0, v2) :- Ancestor(v0, v1), inv(v1, v2), Rule(347).
+Ancestor(v0, v1) :- Mother(v1, v2), Ancestor(v2, v0), Ancestor(v2, v0), Rule(348).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v0, v1), Parent(v2, v1), Rule(349).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Mother(v0, v2), Rule(350).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Parent(v2, v1), Rule(351).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v2, v0), Ancestor(v0, v2), Rule(352).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v2, v1), Parent(v0, v2), Rule(353).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v0, v2), Parent(v0, v1), Rule(354).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v1, v2), Mother(v2, v0), Rule(355).
+Ancestor(v0, v1) :- Father(v2, v1), Parent(v2, v1), Ancestor(v0, v1), Rule(356).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Mother(v2, v0), Rule(357).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v0, v2), Ancestor(v2, v0), Rule(358).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v2), Ancestor(v1, v0), Rule(359).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v1), Ancestor(v2, v1), Rule(360).
+Parent(v0, v1) :- Parent(v1, v0), Parent(v2, v1), Parent(v1, v2), Rule(361).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v2, v1), Ancestor(v0, v2), Rule(362).
+Parent(v0, v1) :- Mother(v2, v0), Father(v0, v1), Father(v1, v2), Rule(363).
+Parent(v0, v1) :- Mother(v0, v1), Parent(v0, v1), Parent(v1, v0), Rule(364).
+Parent(v0, v1) :- Father(v2, v1), Father(v1, v0), Parent(v0, v2), Rule(365).
+Ancestor(v2, v1) :- Ancestor(v0, v1), inv(v2, v0), Rule(366).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v2, v1), Parent(v2, v1), Rule(367).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v1, v0), Ancestor(v1, v0), Rule(368).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v1, v2), Ancestor(v2, v1), Rule(369).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v2, v1), Ancestor(v2, v0), Rule(370).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v0, v2), Ancestor(v0, v1), Rule(371).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v0, v1), Ancestor(v0, v2), Rule(372).
+Parent(v0, v1) :- Mother(v1, v2), Father(v2, v0), Parent(v2, v1), Rule(373).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v2), Rule(374).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Ancestor(v2, v0), Rule(375).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Father(v0, v1), Rule(376).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v0), Father(v0, v2), Rule(377).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v0), Ancestor(v0, v1), Rule(378).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v0), Rule(379).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v1, v0), Ancestor(v2, v0), Rule(380).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v0), Ancestor(v1, v2), Rule(381).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Rule(382).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v2, v1), Ancestor(v2, v0), Rule(383).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v0, v2), Parent(v1, v0), Rule(384).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v0, v2), Parent(v0, v1), Rule(385).
+Parent(v0, v1) :- Mother(v2, v0), Father(v2, v0), Parent(v0, v1), Rule(386).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Father(v0, v1), Rule(387).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v0, v1), Rule(388).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v2, v1), Ancestor(v0, v2), Rule(389).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Ancestor(v0, v2), Rule(390).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v1), Father(v0, v1), Rule(391).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v0, v2), Father(v2, v1), Rule(392).
+Ancestor(v0, v1) :- Parent(v2, v0), Parent(v0, v2), Parent(v1, v0), Rule(393).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v2), Rule(394).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Mother(v2, v1), Rule(395).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v1), Ancestor(v1, v0), Rule(396).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v2), Parent(v1, v2), Rule(397).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v1, v2), Ancestor(v2, v0), Rule(398).
+Parent(v0, v1) :- Father(v2, v0), Father(v0, v1), Parent(v0, v2), Rule(399).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v1, v2), Rule(400).
+inv(v2, v1) :- Mother(v0, v1), inv(v2, v0), Rule(401).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v2, v0), Parent(v1, v0), Rule(402).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v1, v0), Mother(v0, v2), Rule(403).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v2, v1), Rule(404).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v2), Ancestor(v0, v1), Rule(405).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v1, v2), Ancestor(v0, v2), Rule(406).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v0), Mother(v2, v0), Rule(407).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v2, v1), Parent(v0, v1), Rule(408).
+Parent(v0, v1) :- Father(v0, v1), Father(v0, v2), Parent(v1, v2), Rule(409).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v0, v1), Parent(v0, v1), Rule(410).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Parent(v0, v1), Rule(411).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v1, v2), Parent(v0, v2), Rule(412).
+Parent(v0, v1) :- Father(v1, v0), Father(v2, v1), Parent(v2, v1), Rule(413).
+Parent(v0, v1) :- Father(v0, v2), Father(v1, v2), Rule(414).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v0, v1), Mother(v1, v2), Rule(415).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Parent(v1, v0), Rule(416).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v0), Father(v1, v2), Rule(417).
+Parent(v0, v1) :- Mother(v0, v1), Father(v1, v2), Parent(v2, v0), Rule(418).
+Ancestor(v0, v1) :- Father(v1, v0), Ancestor(v0, v1), Ancestor(v0, v1), Rule(419).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v0), Parent(v2, v0), Rule(420).
+Parent(v0, v1) :- Parent(v2, v0), Parent(v2, v0), Parent(v0, v1), Rule(421).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v1, v2), Father(v2, v1), Rule(422).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Father(v1, v2), Rule(423).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v1, v2), Ancestor(v1, v2), Rule(424).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v2, v1), Rule(425).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Parent(v2, v1), Rule(426).
+Parent(v0, v1) :- Father(v1, v2), Father(v1, v2), Father(v0, v2), Rule(427).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v1, v2), Father(v2, v0), Rule(428).
+Parent(v0, v1) :- Father(v0, v1), Parent(v2, v0), Parent(v0, v2), Rule(429).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v0), Parent(v2, v1), Rule(430).
+Ancestor(v0, v1) :- Ancestor(v0, v2), Ancestor(v2, v0), Ancestor(v2, v1), Rule(431).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v0, v2), Ancestor(v0, v2), Rule(432).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v1), Mother(v2, v0), Rule(433).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v0, v2), Parent(v2, v0), Rule(434).
+Ancestor(v0, v1) :- Ancestor(v0, v2), Ancestor(v2, v1), Ancestor(v0, v1), Rule(435).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Ancestor(v1, v0), Rule(436).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Parent(v2, v0), Rule(437).
+Parent(v0, v1) :- Father(v2, v0), Father(v2, v1), Parent(v2, v0), Rule(438).
+Parent(v0, v1) :- Father(v2, v1), Father(v2, v0), Parent(v0, v2), Rule(439).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v1, v2), Ancestor(v2, v1), Rule(440).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v0), Father(v0, v2), Rule(441).
+Parent(v0, v1) :- Mother(v1, v2), Father(v0, v2), Rule(442).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v0), Parent(v2, v0), Rule(443).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v0, v2), Ancestor(v2, v1), Rule(444).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v0, v2), Rule(445).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v1, v2), Parent(v2, v1), Rule(446).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v2, v1), Parent(v0, v1), Rule(447).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Parent(v1, v0), Rule(448).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v0, v2), Ancestor(v1, v0), Rule(449).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v2, v0), Rule(450).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Father(v1, v2), Rule(451).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v2, v1), Parent(v0, v1), Rule(452).
+inv(v0, v2) :- Father(v0, v1), Mother(v1, v2), Rule(453).
+Parent(v0, v1) :- Father(v1, v2), Parent(v0, v1), Parent(v2, v0), Rule(454).
+Parent(v0, v1) :- Mother(v2, v0), Father(v0, v1), Father(v2, v0), Rule(455).
+Parent(v0, v1) :- Mother(v1, v0), Father(v0, v2), Parent(v2, v1), Rule(456).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v2, v0), Ancestor(v1, v2), Rule(457).
+inv(v2, v1) :- Ancestor(v0, v1), inv(v2, v0), Rule(458).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v0, v1), Parent(v1, v2), Rule(459).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v1, v0), Parent(v0, v1), Rule(460).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v0, v2), Parent(v2, v1), Rule(461).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Rule(462).
+Parent(v0, v1) :- Father(v1, v2), Father(v1, v0), Father(v2, v0), Rule(463).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Ancestor(v0, v2), Rule(464).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v0, v2), Parent(v2, v1), Rule(465).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v1, v0), Ancestor(v1, v2), Rule(466).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v2), Father(v0, v1), Rule(467).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Mother(v2, v0), Rule(468).
+Parent(v0, v1) :- Mother(v2, v1), Father(v0, v2), Father(v1, v0), Rule(469).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v2, v0), Parent(v2, v0), Rule(470).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v1, v0), Parent(v1, v0), Rule(471).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v2, v0), Parent(v2, v1), Rule(472).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Parent(v1, v2), Rule(473).
+Parent(v0, v1) :- Father(v0, v2), Father(v1, v2), Parent(v2, v1), Rule(474).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v2, v0), Mother(v1, v0), Rule(475).
+Parent(v0, v1) :- Mother(v2, v0), Father(v1, v0), Parent(v0, v2), Rule(476).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v1, v0), Ancestor(v0, v1), Rule(477).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v2), Ancestor(v0, v1), Rule(478).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v1, v2), Rule(479).
+Ancestor(v0, v1) :- Father(v1, v2), Ancestor(v0, v1), Ancestor(v2, v0), Rule(480).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v1, v2), Ancestor(v0, v1), Rule(481).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v0, v2), Ancestor(v2, v1), Rule(482).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v1), Father(v0, v1), Rule(483).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Parent(v1, v0), Rule(484).
+Parent(v0, v1) :- Father(v0, v1), Parent(v1, v2), Parent(v1, v2), Rule(485).
+inv(v2, v1) :- Ancestor(v0, v1), Father(v2, v0), Rule(486).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Parent(v2, v1), Rule(487).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v1), Ancestor(v0, v2), Rule(488).
+Parent(v0, v1) :- Mother(v2, v0), Father(v0, v1), Parent(v2, v1), Rule(489).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Father(v1, v2), Rule(490).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v1, v0), Ancestor(v0, v2), Rule(491).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v2, v0), Ancestor(v2, v0), Rule(492).
+Parent(v0, v1) :- Father(v1, v2), Father(v2, v0), Father(v0, v1), Rule(493).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v1, v2), Ancestor(v0, v1), Rule(494).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v1), Father(v1, v0), Rule(495).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Parent(v0, v1), Rule(496).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v1, v0), Ancestor(v1, v0), Rule(497).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v1, v0), Parent(v2, v0), Rule(498).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v2, v1), Ancestor(v2, v1), Rule(499).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v1, v2), Parent(v0, v2), Rule(500).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v0, v2), Parent(v2, v1), Rule(501).
+Ancestor(v0, v1) :- Ancestor(v0, v1), Ancestor(v1, v2), Ancestor(v1, v2), Rule(502).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v2), Ancestor(v2, v1), Rule(503).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Ancestor(v2, v0), Rule(504).
+inv(v0, v2) :- Mother(v0, v1), inv(v1, v2), Rule(505).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Parent(v0, v2), Rule(506).
+Parent(v0, v1) :- Mother(v2, v1), Father(v1, v0), Parent(v2, v1), Rule(507).
+inv(v0, v2) :- Ancestor(v0, v1), Father(v1, v2), Rule(508).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v0, v1), Ancestor(v0, v2), Rule(509).
+Parent(v0, v1) :- Father(v1, v2), Parent(v2, v1), Parent(v2, v0), Rule(510).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v0), Parent(v0, v2), Rule(511).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v2, v0), Ancestor(v1, v0), Rule(512).
+Parent(v0, v1) :- Father(v1, v2), Parent(v0, v2), Parent(v1, v2), Rule(513).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v0, v2), Ancestor(v0, v2), Rule(514).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v2, v1), Rule(515).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v1, v2), Ancestor(v2, v0), Rule(516).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v0, v1), Ancestor(v2, v1), Rule(517).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v1, v2), Father(v2, v0), Rule(518).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v2), Parent(v0, v1), Rule(519).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Mother(v2, v1), Rule(520).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Parent(v2, v0), Rule(521).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v2, v1), Ancestor(v0, v2), Rule(522).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v1), Parent(v0, v1), Rule(523).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v0, v1), Parent(v2, v1), Rule(524).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v2, v0), Father(v0, v1), Rule(525).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v1, v2), Mother(v0, v2), Rule(526).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v2, v1), Father(v0, v2), Rule(527).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v0, v1), Parent(v1, v2), Rule(528).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v2), Father(v2, v1), Rule(529).
+Parent(v0, v1) :- Mother(v0, v2), Parent(v2, v1), Parent(v0, v1), Rule(530).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v1), Ancestor(v0, v2), Rule(531).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v0, v1), Ancestor(v0, v1), Rule(532).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Mother(v2, v1), Rule(533).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v1), Parent(v2, v1), Rule(534).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v0, v1), Ancestor(v1, v2), Rule(535).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v1, v0), Parent(v0, v1), Rule(536).
+Parent(v0, v1) :- Father(v2, v0), Father(v0, v1), Father(v2, v0), Rule(537).
+Ancestor(v0, v1) :- Father(v0, v2), Ancestor(v0, v2), Ancestor(v1, v2), Rule(538).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v2), Parent(v0, v2), Rule(539).
+Ancestor(v0, v2) :- Ancestor(v0, v1), Ancestor(v1, v2), Rule(540).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v0), Ancestor(v1, v2), Rule(541).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v0), Ancestor(v0, v2), Rule(542).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v1, v2), Ancestor(v1, v0), Rule(543).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v1, v0), Ancestor(v2, v0), Rule(544).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v0, v2), Parent(v1, v0), Rule(545).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v2, v1), Parent(v0, v1), Rule(546).
+Ancestor(v0, v1) :- Father(v2, v0), Ancestor(v2, v0), Ancestor(v2, v1), Rule(547).
+Parent(v0, v1) :- Father(v1, v2), Father(v0, v1), Parent(v2, v0), Rule(548).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Mother(v1, v2), Rule(549).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v0, v2), Parent(v1, v2), Rule(550).
+Ancestor(v0, v1) :- Ancestor(v2, v1), Ancestor(v1, v2), Ancestor(v1, v0), Rule(551).
+Parent(v0, v1) :- Mother(v2, v0), Father(v1, v2), Parent(v2, v0), Rule(552).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v2, v0), Ancestor(v1, v0), Rule(553).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v0, v1), Parent(v0, v2), Rule(554).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Parent(v0, v2), Rule(555).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v1, v0), Ancestor(v2, v0), Rule(556).
+Ancestor(v0, v1) :- Ancestor(v0, v1), Ancestor(v2, v0), Ancestor(v0, v2), Rule(557).
+Ancestor(v0, v1) :- Mother(v0, v2), Ancestor(v0, v2), Ancestor(v1, v2), Rule(558).
+Parent(v0, v1) :- Mother(v1, v0), Father(v1, v0), Father(v0, v1), Rule(559).
+Parent(v0, v1) :- Father(v0, v1), Father(v2, v1), Father(v0, v2), Rule(560).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Father(v0, v2), Rule(561).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Mother(v2, v0), Rule(562).
+Parent(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Parent(v1, v0), Rule(563).
+Parent(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Parent(v2, v1), Rule(564).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Parent(v0, v2), Rule(565).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Father(v2, v1), Rule(566).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Ancestor(v2, v1), Rule(567).
+Ancestor(v0, v2) :- Father(v0, v1), Father(v1, v2), Rule(568).
+Parent(v0, v1) :- Father(v0, v2), Father(v0, v2), Parent(v1, v2), Rule(569).
+inv(v0, v1) :- Mother(v0, v1), Rule(570).
+Parent(v0, v1) :- Father(v0, v1), Father(v2, v0), Father(v2, v1), Rule(571).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v2, v1), Ancestor(v1, v2), Rule(572).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Ancestor(v1, v0), Rule(573).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v1, v2), Parent(v2, v0), Rule(574).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v0, v2), Parent(v1, v2), Rule(575).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Ancestor(v1, v0), Rule(576).
+Parent(v0, v1) :- Mother(v2, v1), Father(v1, v2), Father(v0, v1), Rule(577).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v1, v2), Ancestor(v2, v1), Rule(578).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v1, v2), Father(v0, v2), Rule(579).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v1), Ancestor(v0, v1), Rule(580).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v0, v2), Parent(v0, v1), Rule(581).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v0, v2), Parent(v1, v0), Rule(582).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v2), Father(v0, v1), Rule(583).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v2, v0), Father(v0, v2), Rule(584).
+Ancestor(v0, v1) :- Parent(v2, v0), Ancestor(v0, v1), Ancestor(v1, v2), Rule(585).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v1, v0), Father(v2, v1), Rule(586).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v2), Parent(v1, v2), Rule(587).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v1), Mother(v2, v1), Rule(588).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v0, v1), Ancestor(v0, v1), Rule(589).
+Parent(v0, v1) :- Father(v0, v1), Father(v1, v0), Parent(v1, v0), Rule(590).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Ancestor(v0, v1), Rule(591).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v0, v2), Ancestor(v2, v1), Rule(592).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v0), Ancestor(v0, v1), Rule(593).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v0, v1), Parent(v0, v2), Rule(594).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v2, v0), Parent(v2, v1), Rule(595).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v1, v2), Ancestor(v0, v2), Rule(596).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v0, v1), Rule(597).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v0), Ancestor(v2, v1), Rule(598).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Parent(v1, v2), Rule(599).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v0), Parent(v1, v0), Rule(600).
+Ancestor(v2, v1) :- Father(v0, v1), inv(v2, v0), Rule(601).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v0, v2), Mother(v1, v2), Rule(602).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v1, v2), Parent(v2, v1), Rule(603).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v1, v2), Parent(v0, v2), Rule(604).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v0, v1), Ancestor(v2, v0), Rule(605).
+Parent(v0, v1) :- Father(v1, v2), Parent(v0, v2), Parent(v2, v1), Rule(606).
+Parent(v0, v1) :- Mother(v1, v0), Parent(v0, v2), Parent(v2, v1), Rule(607).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v2, v1), Mother(v0, v2), Rule(608).
+Parent(v0, v1) :- Father(v2, v1), Parent(v2, v0), Parent(v0, v1), Rule(609).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Father(v1, v0), Rule(610).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v2, v0), Father(v1, v2), Rule(611).
+Parent(v0, v1) :- Father(v0, v1), Parent(v2, v0), Parent(v2, v0), Rule(612).
+Ancestor(v0, v2) :- Mother(v0, v1), Mother(v1, v2), Rule(613).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v2, v0), Parent(v1, v2), Rule(614).
+Ancestor(v0, v1) :- Ancestor(v0, v2), Ancestor(v2, v1), Ancestor(v1, v2), Rule(615).
+Ancestor(v0, v1) :- Parent(v1, v0), Ancestor(v1, v2), Ancestor(v1, v2), Rule(616).
+Ancestor(v0, v1) :- Father(v2, v1), Parent(v2, v0), Rule(617).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v0, v1), Parent(v1, v0), Rule(618).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Parent(v1, v2), Rule(619).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v1), Rule(620).
+Ancestor(v0, v1) :- Mother(v0, v2), Ancestor(v2, v0), Ancestor(v2, v1), Rule(621).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v0, v1), Parent(v2, v1), Rule(622).
+Ancestor(v0, v1) :- Parent(v2, v0), Parent(v2, v1), Ancestor(v0, v2), Rule(623).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v2), Father(v2, v0), Rule(624).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Mother(v2, v0), Rule(625).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v0, v1), Ancestor(v1, v0), Rule(626).
+Parent(v0, v1) :- Mother(v0, v2), Father(v1, v0), Parent(v0, v2), Rule(627).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v0, v2), Ancestor(v2, v1), Rule(628).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v0, v2), Ancestor(v2, v1), Rule(629).
+Parent(v0, v1) :- Father(v2, v0), Father(v0, v2), Father(v1, v2), Rule(630).
+Parent(v0, v1) :- Father(v2, v0), Father(v1, v0), Father(v1, v2), Rule(631).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v2, v1), Ancestor(v2, v1), Rule(632).
+Ancestor(v0, v2) :- Ancestor(v0, v1), Father(v1, v2), Rule(633).
+Ancestor(v2, v1) :- Ancestor(v0, v1), Father(v2, v0), Rule(634).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Parent(v0, v1), Rule(635).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v1, v0), Parent(v2, v1), Rule(636).
+Parent(v0, v1) :- Parent(v1, v0), Parent(v2, v1), Parent(v0, v2), Rule(637).
+inv(v0, v2) :- Father(v0, v1), inv(v1, v2), Rule(638).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v2, v0), Father(v1, v2), Rule(639).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v2, v1), Ancestor(v2, v0), Rule(640).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v1), Parent(v2, v0), Rule(641).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Ancestor(v2, v0), Rule(642).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v2, v1), Rule(643).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v1), Parent(v0, v2), Rule(644).
+Parent(v0, v1) :- Mother(v1, v2), Father(v2, v0), Parent(v1, v2), Rule(645).
+Ancestor(v0, v1) :- Parent(v2, v1), Ancestor(v2, v1), Ancestor(v2, v0), Rule(646).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Mother(v1, v2), Rule(647).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v2), Parent(v0, v1), Rule(648).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v2, v1), Parent(v2, v0), Rule(649).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v2), Ancestor(v1, v2), Rule(650).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v1, v2), Parent(v1, v0), Rule(651).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v1), Ancestor(v0, v2), Rule(652).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v0), Father(v1, v2), Rule(653).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v1), Parent(v2, v0), Rule(654).
+Parent(v0, v1) :- Father(v2, v0), Father(v0, v2), Father(v2, v1), Rule(655).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v1, v0), Rule(656).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v2, v0), Parent(v1, v2), Rule(657).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v2, v0), Parent(v2, v0), Rule(658).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v2, v1), Ancestor(v1, v0), Rule(659).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v2, v1), Ancestor(v1, v0), Rule(660).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Mother(v0, v2), Rule(661).
+Parent(v0, v1) :- Father(v1, v2), Father(v2, v0), Parent(v2, v1), Rule(662).
+Ancestor(v0, v1) :- Father(v1, v2), Ancestor(v0, v1), Ancestor(v2, v1), Rule(663).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v2, v1), Ancestor(v2, v1), Rule(664).
+Parent(v0, v1) :- Father(v0, v2), Father(v2, v0), Parent(v0, v1), Rule(665).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v1, v2), Parent(v0, v2), Rule(666).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v2, v1), Father(v2, v1), Rule(667).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v2, v1), Parent(v1, v2), Rule(668).
+Parent(v0, v1) :- Father(v2, v0), Parent(v1, v0), Parent(v2, v0), Rule(669).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v1, v2), Parent(v0, v2), Rule(670).
+Ancestor(v0, v1) :- Mother(v1, v2), Ancestor(v1, v2), Ancestor(v0, v2), Rule(671).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v2), Parent(v2, v0), Rule(672).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v1, v0), Ancestor(v2, v0), Rule(673).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v2), Parent(v1, v0), Rule(674).
+Parent(v0, v1) :- Father(v0, v1), Father(v1, v0), Rule(675).
+Parent(v0, v1) :- Father(v2, v0), Father(v1, v2), Father(v2, v0), Rule(676).
+Ancestor(v0, v1) :- Mother(v1, v2), Ancestor(v2, v0), Ancestor(v0, v2), Rule(677).
+Parent(v0, v1) :- Father(v2, v0), Parent(v0, v2), Parent(v1, v0), Rule(678).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v0, v1), Ancestor(v0, v2), Rule(679).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v2, v1), Parent(v1, v0), Rule(680).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v2, v1), Parent(v2, v1), Rule(681).
+Parent(v0, v1) :- Mother(v2, v0), Father(v1, v2), Parent(v0, v2), Rule(682).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v2, v0), Parent(v2, v1), Rule(683).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v0, v2), Ancestor(v0, v2), Rule(684).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v1, v0), Ancestor(v0, v2), Rule(685).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v1, v2), Father(v0, v2), Rule(686).
+Parent(v0, v1) :- Mother(v0, v2), Father(v0, v2), Parent(v2, v1), Rule(687).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v0, v1), Parent(v0, v1), Rule(688).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v2, v1), Mother(v1, v2), Rule(689).
+Parent(v0, v1) :- Father(v2, v0), Parent(v0, v1), Parent(v2, v0), Rule(690).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v0, v1), Ancestor(v2, v0), Rule(691).
+Ancestor(v0, v1) :- Ancestor(v0, v2), Ancestor(v1, v0), Ancestor(v2, v0), Rule(692).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Parent(v0, v1), Rule(693).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v0, v2), Ancestor(v1, v0), Rule(694).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v0, v1), Ancestor(v1, v0), Rule(695).
+Parent(v0, v1) :- Father(v2, v0), Father(v2, v0), Parent(v2, v1), Rule(696).
+Ancestor(v0, v1) :- Parent(v2, v0), Ancestor(v2, v1), Ancestor(v0, v1), Rule(697).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v0, v2), Ancestor(v2, v1), Rule(698).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Rule(699).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v1), Father(v2, v1), Rule(700).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Father(v2, v0), Rule(701).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Mother(v2, v0), Rule(702).
+Parent(v0, v1) :- Father(v2, v0), Father(v0, v2), Father(v1, v0), Rule(703).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Mother(v1, v0), Rule(704).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v2, v1), Ancestor(v0, v1), Rule(705).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v1, v0), Rule(706).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v2, v0), Parent(v2, v1), Rule(707).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Father(v0, v2), Rule(708).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v2, v0), Mother(v2, v1), Rule(709).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v1, v2), Parent(v0, v2), Rule(710).
+Parent(v0, v1) :- Parent(v0, v1), Parent(v2, v1), Parent(v2, v1), Rule(711).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v0, v2), Parent(v2, v1), Rule(712).
+Ancestor(v0, v1) :- Father(v1, v0), Ancestor(v0, v2), Ancestor(v2, v1), Rule(713).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v0), Rule(714).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v0, v2), Ancestor(v2, v1), Rule(715).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v0, v2), Ancestor(v2, v0), Rule(716).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v1, v2), Ancestor(v2, v0), Rule(717).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v2, v0), Ancestor(v2, v1), Rule(718).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Father(v1, v2), Rule(719).
+Ancestor(v0, v1) :- Ancestor(v1, v0), Ancestor(v0, v2), Ancestor(v0, v2), Rule(720).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v1, v0), Parent(v0, v2), Rule(721).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Ancestor(v1, v0), Rule(722).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v2, v0), Ancestor(v1, v0), Rule(723).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v0), Parent(v2, v1), Rule(724).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v0, v1), Parent(v1, v0), Rule(725).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v2, v1), Parent(v1, v2), Rule(726).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v0, v2), Ancestor(v1, v0), Rule(727).
+Ancestor(v0, v1) :- Parent(v2, v1), Ancestor(v1, v0), Ancestor(v0, v2), Rule(728).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Parent(v2, v1), Rule(729).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Mother(v0, v1), Rule(730).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v1), Parent(v1, v2), Rule(731).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v1, v2), Parent(v0, v1), Rule(732).
+Parent(v0, v1) :- Father(v2, v0), Parent(v2, v0), Parent(v0, v1), Rule(733).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v1, v0), Rule(734).
+Ancestor(v2, v1) :- Father(v0, v1), Mother(v2, v0), Rule(735).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Parent(v2, v1), Rule(736).
+Ancestor(v0, v1) :- Father(v2, v1), Parent(v0, v2), Ancestor(v0, v1), Rule(737).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Parent(v2, v1), Rule(738).
+Parent(v0, v1) :- Mother(v2, v0), Father(v2, v1), Parent(v1, v0), Rule(739).
+Parent(v0, v1) :- Father(v0, v1), Father(v1, v2), Father(v1, v2), Rule(740).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v0), Father(v2, v0), Rule(741).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v0, v2), Ancestor(v0, v2), Rule(742).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v0, v2), Ancestor(v1, v0), Rule(743).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v1, v2), Ancestor(v1, v2), Rule(744).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Parent(v2, v0), Rule(745).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v2, v1), Ancestor(v0, v1), Rule(746).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v2), Father(v1, v0), Rule(747).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v0), Ancestor(v1, v2), Rule(748).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v2, v1), Ancestor(v2, v0), Rule(749).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v0), Parent(v2, v1), Rule(750).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v2), Parent(v0, v2), Rule(751).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v2, v0), Parent(v2, v1), Rule(752).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v2), Ancestor(v0, v2), Rule(753).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v1), Ancestor(v2, v0), Rule(754).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v1, v2), Father(v0, v2), Rule(755).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Father(v1, v2), Rule(756).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v2, v0), Ancestor(v1, v0), Rule(757).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v0, v2), Father(v1, v0), Rule(758).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Mother(v1, v2), Rule(759).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v1), Ancestor(v0, v2), Rule(760).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v1), Ancestor(v2, v0), Rule(761).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v2, v0), Parent(v2, v0), Rule(762).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v2, v0), Father(v0, v1), Rule(763).
+Ancestor(v0, v1) :- Parent(v2, v0), Parent(v1, v0), Ancestor(v1, v2), Rule(764).
+Ancestor(v0, v1) :- Mother(v1, v2), Ancestor(v0, v2), Ancestor(v0, v1), Rule(765).
+Ancestor(v0, v1) :- Ancestor(v2, v0), Ancestor(v0, v2), Ancestor(v0, v1), Rule(766).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v2, v0), Father(v2, v1), Rule(767).
+Parent(v0, v1) :- Mother(v1, v2), Father(v0, v1), Parent(v0, v2), Rule(768).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Father(v2, v1), Rule(769).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Father(v0, v1), Rule(770).
+Ancestor(v0, v1) :- Mother(v0, v1), Ancestor(v1, v2), Ancestor(v2, v1), Rule(771).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v0), Parent(v0, v2), Rule(772).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v2, v0), Ancestor(v0, v1), Rule(773).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v1, v2), Ancestor(v2, v0), Rule(774).
+Parent(v0, v1) :- Parent(v0, v1), Parent(v0, v1), Parent(v0, v1), Rule(775).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v2), Ancestor(v2, v1), Rule(776).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v0, v2), Ancestor(v2, v1), Rule(777).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Ancestor(v2, v0), Rule(778).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v0, v2), Father(v1, v2), Rule(779).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v2, v1), Ancestor(v0, v1), Rule(780).
+Ancestor(v0, v1) :- Mother(v0, v1), Ancestor(v0, v2), Ancestor(v2, v0), Rule(781).
+Parent(v0, v1) :- Father(v1, v2), Parent(v1, v0), Parent(v2, v0), Rule(782).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Parent(v2, v0), Rule(783).
+Parent(v0, v1) :- Mother(v0, v1), Father(v2, v1), Parent(v0, v2), Rule(784).
+Parent(v0, v1) :- Father(v2, v0), Father(v0, v2), Parent(v0, v1), Rule(785).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v1, v0), Ancestor(v0, v2), Rule(786).
+Parent(v0, v1) :- Mother(v2, v1), Father(v1, v0), Parent(v1, v2), Rule(787).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v0, v1), Parent(v1, v2), Rule(788).
+Parent(v0, v1) :- Mother(v0, v2), Father(v2, v1), Father(v1, v0), Rule(789).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v1, v0), Rule(790).
+Ancestor(v0, v1) :- Parent(v0, v1), Parent(v0, v2), Ancestor(v0, v2), Rule(791).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Mother(v0, v1), Rule(792).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v2, v1), Parent(v1, v2), Rule(793).
+Parent(v0, v1) :- Parent(v2, v0), Parent(v1, v2), Parent(v0, v2), Rule(794).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v0, v1), Parent(v2, v0), Rule(795).
+inv(v0, v2) :- Ancestor(v0, v1), Mother(v1, v2), Rule(796).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Rule(797).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v2, v1), Parent(v2, v0), Rule(798).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Parent(v1, v2), Rule(799).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v1), Parent(v2, v0), Rule(800).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v2, v0), Father(v1, v0), Rule(801).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v0, v1), Parent(v1, v2), Rule(802).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v2, v1), Ancestor(v0, v2), Rule(803).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v0, v2), Ancestor(v0, v2), Rule(804).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v2, v0), Parent(v1, v2), Rule(805).
+Parent(v0, v1) :- Mother(v0, v2), Father(v2, v1), Parent(v0, v1), Rule(806).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v0, v2), Father(v0, v2), Rule(807).
+Parent(v0, v1) :- Mother(v0, v1), Father(v1, v2), Father(v0, v2), Rule(808).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v1, v2), Ancestor(v1, v0), Rule(809).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v0, v1), Rule(810).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v0, v1), Parent(v0, v2), Rule(811).
+Parent(v0, v1) :- Father(v0, v2), Parent(v2, v1), Parent(v0, v2), Rule(812).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v0, v2), Ancestor(v1, v2), Rule(813).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v2, v1), Ancestor(v0, v2), Rule(814).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v1), Father(v0, v2), Rule(815).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v1, v2), Parent(v0, v2), Rule(816).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v2, v0), Parent(v0, v1), Rule(817).
+Ancestor(v0, v2) :- Ancestor(v0, v1), inv(v1, v2), Rule(818).
+Parent(v0, v1) :- Father(v2, v0), Parent(v2, v1), Parent(v2, v1), Rule(819).
+Ancestor(v0, v1) :- Mother(v0, v1), Mother(v1, v0), Mother(v1, v0), Rule(820).
+Parent(v0, v1) :- Mother(v0, v1), Father(v2, v1), Parent(v1, v2), Rule(821).
+Parent(v0, v1) :- Mother(v1, v0), Father(v2, v1), Father(v2, v1), Rule(822).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Parent(v2, v1), Rule(823).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v2, v0), Ancestor(v1, v2), Rule(824).
+Parent(v0, v1) :- Father(v1, v2), Father(v2, v1), Parent(v2, v0), Rule(825).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v0, v2), Parent(v2, v1), Rule(826).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Ancestor(v1, v2), Rule(827).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v1, v0), Parent(v2, v1), Rule(828).
+Parent(v0, v1) :- Mother(v2, v0), Parent(v0, v1), Parent(v2, v1), Rule(829).
+Ancestor(v0, v1) :- Parent(v2, v1), Ancestor(v1, v2), Ancestor(v2, v0), Rule(830).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v2, v0), Parent(v0, v2), Rule(831).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v0, v1), Rule(832).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v1, v2), Ancestor(v2, v0), Rule(833).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v2), Ancestor(v0, v1), Rule(834).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v2), Ancestor(v2, v1), Rule(835).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Father(v0, v1), Rule(836).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v0), Parent(v2, v0), Rule(837).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v0), Father(v0, v2), Rule(838).
+Ancestor(v0, v1) :- Ancestor(v0, v1), Ancestor(v0, v2), Ancestor(v0, v2), Rule(839).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v2, v1), Parent(v0, v1), Rule(840).
+Ancestor(v0, v1) :- Father(v1, v0), Ancestor(v1, v2), Ancestor(v2, v0), Rule(841).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v2), Ancestor(v0, v1), Rule(842).
+Ancestor(v0, v1) :- Father(v1, v2), Ancestor(v2, v0), Ancestor(v2, v1), Rule(843).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v1, v0), Ancestor(v2, v0), Rule(844).
+inv(v0, v1) :- Ancestor(v0, v1), Rule(845).
+Ancestor(v0, v1) :- Parent(v1, v0), Parent(v1, v2), Parent(v1, v2), Rule(846).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v1, v2), Parent(v2, v1), Rule(847).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v0, v2), Ancestor(v2, v1), Rule(848).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v0, v2), Ancestor(v1, v2), Rule(849).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v0, v2), Parent(v0, v1), Rule(850).
+Ancestor(v0, v1) :- Father(v1, v2), Parent(v1, v0), Ancestor(v2, v1), Rule(851).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v0), Parent(v2, v1), Rule(852).
+Ancestor(v0, v1) :- Ancestor(v2, v1), Ancestor(v2, v1), Ancestor(v2, v0), Rule(853).
+Parent(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Parent(v0, v2), Rule(854).
+Parent(v0, v1) :- Father(v0, v1), Father(v0, v1), Rule(855).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v2, v1), Parent(v0, v1), Rule(856).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v1), Father(v1, v2), Rule(857).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Ancestor(v1, v2), Rule(858).
+Ancestor(v0, v1) :- Father(v2, v0), Parent(v2, v1), Ancestor(v0, v1), Rule(859).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v1, v2), Ancestor(v2, v1), Rule(860).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v0, v2), Mother(v1, v2), Rule(861).
+Ancestor(v0, v1) :- Father(v2, v0), Ancestor(v1, v0), Ancestor(v1, v2), Rule(862).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v1, v0), Ancestor(v2, v1), Rule(863).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v1), Ancestor(v2, v1), Rule(864).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v0), Father(v0, v1), Rule(865).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v1), Mother(v1, v0), Rule(866).
+Parent(x, y) :- Father(x, y), Rule(867).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v2), Parent(v2, v1), Rule(868).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v2, v1), Father(v1, v0), Rule(869).
+Ancestor(v0, v1) :- Father(v1, v0), Father(v1, v2), Ancestor(v0, v2), Rule(870).
+Parent(v0, v1) :- Father(v1, v0), Father(v2, v0), Parent(v2, v0), Rule(871).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v2, v0), Ancestor(v1, v2), Rule(872).
+Parent(v0, v1) :- Father(v2, v1), Father(v2, v0), Parent(v2, v0), Rule(873).
+Ancestor(v0, v1) :- Parent(v2, v0), Parent(v2, v1), Ancestor(v0, v1), Rule(874).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v1, v0), Father(v0, v2), Rule(875).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v2, v1), Parent(v1, v0), Rule(876).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Ancestor(v0, v2), Rule(877).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v1, v0), Father(v2, v0), Rule(878).
+Ancestor(v0, v1) :- Father(v2, v1), Parent(v1, v2), Parent(v0, v2), Rule(879).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v0, v1), Ancestor(v2, v1), Rule(880).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v2, v0), Parent(v1, v2), Rule(881).
+Parent(v0, v1) :- Father(v0, v2), Father(v1, v2), Parent(v0, v2), Rule(882).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v2, v1), Ancestor(v0, v1), Rule(883).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Mother(v0, v1), Rule(884).
+Parent(v0, v1) :- Father(v1, v0), Father(v2, v1), Father(v2, v0), Rule(885).
+Ancestor(v0, v1) :- Parent(v2, v0), Ancestor(v1, v0), Ancestor(v2, v0), Rule(886).
+Parent(v0, v1) :- Parent(v0, v1), Rule(887).
+Parent(v0, v1) :- Father(v2, v1), Father(v2, v1), Parent(v2, v0), Rule(888).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Father(v1, v0), Rule(889).
+Ancestor(v0, v1) :- Parent(v2, v0), Parent(v2, v1), Parent(v1, v0), Rule(890).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v2, v1), Mother(v1, v2), Rule(891).
+Parent(v0, v1) :- Mother(v1, v0), Mother(v1, v0), Father(v1, v0), Rule(892).
+Parent(v0, v1) :- Mother(v0, v1), Father(v0, v2), Father(v2, v0), Rule(893).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v2, v1), Parent(v2, v1), Rule(894).
+Parent(v0, v1) :- Parent(v1, v0), Parent(v0, v2), Parent(v1, v2), Rule(895).
+Parent(v0, v1) :- Parent(v0, v1), Parent(v0, v2), Parent(v0, v2), Rule(896).
+Parent(v0, v1) :- Father(v1, v2), Parent(v0, v2), Rule(897).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v0), Father(v2, v1), Rule(898).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v2, v0), Parent(v1, v2), Rule(899).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Father(v2, v1), Rule(900).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v0), Mother(v2, v1), Rule(901).
+Ancestor(v0, v1) :- Mother(v1, v2), Father(v2, v0), Ancestor(v0, v2), Rule(902).
+Parent(v0, v1) :- Father(v1, v2), Father(v0, v2), Parent(v1, v2), Rule(903).
+Parent(v0, v1) :- Father(v1, v2), Father(v1, v2), Parent(v0, v1), Rule(904).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Mother(v1, v0), Rule(905).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v1, v2), Parent(v2, v1), Rule(906).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v1, v2), Ancestor(v0, v1), Rule(907).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v0, v2), Parent(v2, v1), Rule(908).
+Ancestor(v0, v1) :- Mother(v1, v0), Mother(v0, v1), Parent(v1, v0), Rule(909).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v1, v2), Ancestor(v1, v0), Rule(910).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Mother(v2, v1), Rule(911).
+Ancestor(v0, v1) :- Mother(v0, v1), Ancestor(v1, v0), Ancestor(v0, v1), Rule(912).
+Parent(v0, v1) :- Mother(v0, v2), Parent(v1, v0), Parent(v2, v1), Rule(913).
+Ancestor(v0, v1) :- Mother(v2, v1), Ancestor(v1, v2), Ancestor(v2, v0), Rule(914).
+Ancestor(v0, v1) :- Mother(v0, v2), Father(v1, v2), Ancestor(v2, v1), Rule(915).
+Ancestor(v0, v1) :- Mother(v0, v1), Parent(v1, v2), Ancestor(v0, v2), Rule(916).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v1, v0), Parent(v2, v0), Rule(917).
+Ancestor(v0, v1) :- Parent(v2, v1), Ancestor(v0, v2), Ancestor(v2, v0), Rule(918).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Parent(v0, v2), Rule(919).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v1, v0), Ancestor(v1, v2), Rule(920).
+Ancestor(v0, v1) :- Mother(v1, v0), Parent(v2, v0), Parent(v0, v2), Rule(921).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v0, v2), Ancestor(v1, v2), Rule(922).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v1, v2), Parent(v1, v0), Rule(923).
+Parent(v0, v1) :- Mother(v0, v2), Parent(v2, v1), Parent(v0, v2), Rule(924).
+Ancestor(v0, v1) :- Father(v0, v2), Parent(v0, v1), Ancestor(v0, v2), Rule(925).
+Ancestor(v0, v1) :- Father(v2, v0), Father(v2, v0), Parent(v0, v1), Rule(926).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v1, v2), Parent(v2, v0), Rule(927).
+Ancestor(v0, v1) :- Father(v2, v1), Ancestor(v1, v0), Ancestor(v0, v2), Rule(928).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v0, v2), Parent(v0, v1), Rule(929).
+Parent(v0, v1) :- Father(v2, v1), Father(v1, v2), Father(v0, v2), Rule(930).
+Parent(v0, v1) :- Parent(v1, v0), Parent(v1, v2), Parent(v2, v0), Rule(931).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v1, v2), Parent(v2, v1), Rule(932).
+Parent(v0, v1) :- Father(v2, v1), Parent(v0, v2), Rule(933).
+Ancestor(v0, v1) :- Parent(v0, v2), Ancestor(v2, v1), Ancestor(v1, v0), Rule(934).
+Ancestor(x, y) :- Parent(x, z), Ancestor(z, y).Ancestor(v0, v1) :- Mother(v0, v1), Rule(935).
+Ancestor(v0, v1) :- Parent(v0, v2), Parent(v1, v2), Parent(v2, v1), Rule(936).
+Ancestor(v0, v1) :- Mother(v2, v0), Father(v1, v0), Parent(v1, v2), Rule(937).
+Parent(v0, v1) :- Parent(v2, v0), Parent(v2, v0), Parent(v1, v2), Rule(938).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v1, v0), Father(v0, v2), Rule(939).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v2), Father(v1, v0), Rule(940).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v1, v2), Mother(v2, v0), Rule(941).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v1, v0), Rule(942).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v0, v1), Parent(v1, v2), Rule(943).
+Ancestor(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Ancestor(v0, v1), Rule(944).
+Parent(v0, v1) :- Mother(v1, v2), Mother(v0, v1), Father(v2, v1), Rule(945).
+Parent(v0, v1) :- Mother(v0, v1), Mother(v0, v2), Father(v0, v2), Rule(946).
+Parent(v0, v1) :- Mother(v1, v2), Father(v1, v2), Father(v0, v2), Rule(947).
+Ancestor(v0, v1) :- Ancestor(v1, v2), Ancestor(v1, v0), Ancestor(v2, v1), Rule(948).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v0, v2), Parent(v1, v0), Rule(949).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v1, v2), Ancestor(v1, v0), Rule(950).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v0, v2), Father(v2, v0), Rule(951).
+Ancestor(v0, v1) :- Mother(v2, v1), Mother(v2, v0), Parent(v2, v0), Rule(952).
+Ancestor(v0, v1) :- Parent(v1, v2), Ancestor(v0, v1), Ancestor(v2, v0), Rule(953).
+Ancestor(v0, v1) :- Father(v0, v1), Ancestor(v1, v0), Ancestor(v1, v0), Rule(954).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v2, v0), Ancestor(v0, v1), Rule(955).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v2, v0), Ancestor(v1, v2), Rule(956).
+Ancestor(v0, v1) :- Mother(v2, v0), Parent(v0, v2), Parent(v0, v1), Rule(957).
+Ancestor(v0, v1) :- Father(v2, v1), Father(v2, v1), Father(v0, v2), Rule(958).
+Ancestor(v0, v1) :- Father(v0, v1), Rule(959).
+Ancestor(v0, v1) :- Mother(v1, v0), Father(v0, v2), Parent(v2, v1), Rule(960).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v1, v2), Ancestor(v0, v2), Rule(961).
+Ancestor(v0, v1) :- Mother(v2, v1), Parent(v1, v2), Ancestor(v2, v0), Rule(962).
+Ancestor(v0, v1) :- Ancestor(v1, v0), Ancestor(v2, v1), Ancestor(v2, v0), Rule(963).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v1, v2), Parent(v1, v0), Rule(964).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v2, v0), Ancestor(v1, v2), Rule(965).
+Parent(v0, v1) :- Parent(v2, v0), Parent(v0, v1), Parent(v1, v2), Rule(966).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v0), Ancestor(v1, v2), Rule(967).
+Parent(v0, v1) :- Parent(v0, v2), Parent(v1, v2), Parent(v1, v0), Rule(968).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v1, v0), Ancestor(v0, v1), Rule(969).
+Ancestor(v0, v1) :- Father(v1, v2), Father(v0, v1), Ancestor(v1, v2), Rule(970).
+Ancestor(v0, v1) :- Mother(v1, v0), Ancestor(v0, v2), Ancestor(v0, v2), Rule(971).
+Ancestor(v0, v1) :- Father(v1, v2), Ancestor(v0, v1), Ancestor(v0, v2), Rule(972).
+Parent(v0, v1) :- Mother(v0, v2), Mother(v0, v1), Father(v1, v2), Rule(973).
+Parent(v0, v1) :- Parent(v1, v2), Parent(v2, v0), Parent(v2, v1), Rule(974).
+Ancestor(v0, v1) :- Father(v0, v1), Father(v2, v1), Father(v2, v1), Rule(975).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v2, v1), Father(v0, v1), Rule(976).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v0, v2), Mother(v1, v2), Rule(977).
+Ancestor(v0, v1) :- Mother(v2, v0), Mother(v0, v2), Mother(v1, v2), Rule(978).
+Ancestor(v0, v1) :- Father(v0, v2), Father(v0, v1), Ancestor(v2, v0), Rule(979).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v2, v0), Ancestor(v0, v2), Rule(980).
+Ancestor(v0, v1) :- Father(v2, v1), Parent(v2, v0), Parent(v2, v1), Rule(981).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v2, v1), Parent(v2, v0), Rule(982).
+Ancestor(v0, v1) :- Mother(v1, v2), Mother(v1, v2), Father(v0, v2), Rule(983).
+Ancestor(v0, v1) :- Father(v1, v2), Ancestor(v2, v1), Ancestor(v0, v1), Rule(984).
+Ancestor(v0, v1) :- Mother(v0, v2), Parent(v2, v1), Ancestor(v1, v2), Rule(985).
+Parent(v0, v1) :- Mother(v2, v0), Mother(v2, v0), Parent(v1, v2), Rule(986).
+Parent(v0, v1) :- Mother(v2, v1), Father(v2, v0), Father(v2, v0), Rule(987).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v2, v0), Parent(v1, v2), Rule(988).
+Parent(v0, v1) :- Mother(v2, v1), Mother(v1, v2), Parent(v1, v0), Rule(989).
+Ancestor(v0, v1) :- Father(v0, v1), Parent(v0, v1), Parent(v0, v1), Rule(990).
+Ancestor(v0, v1) :- Mother(v2, v1), Father(v2, v0), Parent(v2, v1), Rule(991).
+Ancestor(v0, v1) :- Father(v1, v0), Parent(v2, v0), Parent(v2, v1), Rule(992).
+Ancestor(v0, v1) :- Mother(v0, v2), Mother(v1, v2), Mother(v1, v0), Rule(993).
+Ancestor(x, y) :- Parent(x, y), Rule(994).
+Ancestor(v0, v1) :- Mother(v0, v1), Father(v1, v0), Ancestor(v0, v1), Rule(995).
+Ancestor(v0, v1) :- Parent(v2, v1), Parent(v2, v0), Parent(v2, v0), Rule(996).
+Ancestor(v0, v1) :- Mother(v1, v2), Parent(v0, v2), Parent(v2, v0), Rule(997).
+Parent(v0, v1) :- Mother(v2, v1), Parent(v0, v1), Parent(v2, v1), Rule(998).
+Ancestor(v0, v1) :- Mother(v2, v0), Ancestor(v2, v0), Ancestor(v2, v1), Rule(999).
+Parent(v0, v1) :- Father(v0, v1), Father(v2, v0), Parent(v2, v1), Rule(1000).

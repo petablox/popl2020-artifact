@@ -1,80 +1,1022 @@
-.type V
+.type H
+.type C
+.type N
+.type P
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
-.decl CustomerCity(v0: V, v1: V)
-.input CustomerCity
-.decl HasOrdered(v0: V, v1: V)
-.input HasOrdered
-.decl ProductName(v0: V, v1: V)
+.decl ProductName(v0: N, v1: P)
 .input ProductName
 
+.decl CustomerCity(v0: H, v1: C)
+.input CustomerCity
 
-.decl ShipTo(v0: V, v1: V)
+.decl HasOrdered(v0: H, v1: N)
+.input HasOrdered
+
+.decl ShipTo(v0: P, v1: C)
 .output ShipTo
 
-ShipTo(v3, v1) :- ProductName(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(59).
-ShipTo(v1, v3) :- HasOrdered(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(55).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), HasOrdered(v2, v3), Rule(43).
-ShipTo(v2, v3) :- HasOrdered(v0, v1), HasOrdered(v1, v2), ProductName(v0, v3), Rule(21).
-ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ProductName(v1, v3), Rule(37).
-ShipTo(v3, v2) :- HasOrdered(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(56).
-ShipTo(v3, v1) :- ProductName(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(18).
-ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), ProductName(v0, v3), Rule(16).
-ShipTo(v3, v2) :- HasOrdered(v0, v1), ProductName(v0, v2), ProductName(v1, v3), Rule(31).
-ShipTo(v2, v3) :- HasOrdered(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(30).
-ShipTo(v1, v3) :- HasOrdered(v0, v1), ProductName(v2, v0), ProductName(v2, v3), Rule(40).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), ShipTo(v2, v3), Rule(26).
-ShipTo(v2, v3) :- CustomerCity(v0, v1), HasOrdered(v1, v2), ProductName(v0, v3), Rule(4).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), HasOrdered(v2, v3), Rule(29).
-ShipTo(v3, v2) :- CustomerCity(v0, v1), ProductName(v0, v2), ProductName(v1, v3), Rule(46).
-ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ShipTo(v1, v3), Rule(9).
-ShipTo(v2, v3) :- CustomerCity(v0, v1), HasOrdered(v1, v2), ShipTo(v0, v3), Rule(42).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), ProductName(v2, v3), Rule(27).
-ShipTo(v3, v2) :- HasOrdered(v0, v1), ProductName(v0, v2), ShipTo(v1, v3), Rule(49).
-ShipTo(v3, v2) :- CustomerCity(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(11).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), HasOrdered(v2, v3), Rule(62).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), HasOrdered(v2, v3), Rule(6).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), CustomerCity(v2, v3), Rule(12).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), ProductName(v2, v3), Rule(50).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), HasOrdered(v2, v3), Rule(38).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ShipTo(v2, v3), Rule(1).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ProductName(v2, v3), Rule(25).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), CustomerCity(v2, v3), Rule(0).
-ShipTo(v3, v2) :- ProductName(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(45).
-ShipTo(v2, v3) :- ProductName(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(63).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(52).
-ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), ShipTo(v0, v3), Rule(58).
-ShipTo(v2, v3) :- HasOrdered(v0, v1), HasOrdered(v1, v2), ShipTo(v0, v3), Rule(23).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(34).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), ProductName(v2, v3), Rule(39).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), ShipTo(v2, v3), Rule(7).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), ShipTo(v2, v3), Rule(47).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(32).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(33).
-ShipTo(v1, v3) :- HasOrdered(v0, v1), ShipTo(v2, v0), ProductName(v2, v3), Rule(17).
-ShipTo(v3, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(2).
-ShipTo(v3, v1) :- ProductName(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(28).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), HasOrdered(v2, v3), Rule(3).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(10).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), CustomerCity(v2, v3), Rule(41).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(48).
-ShipTo(v2, v3) :- CustomerCity(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(53).
-ShipTo(v3, v1) :- ProductName(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(60).
-ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), HasOrdered(v1, v3), Rule(35).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(20).
-ShipTo(v3, v2) :- CustomerCity(v0, v1), ProductName(v0, v2), ShipTo(v1, v3), Rule(61).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), ProductName(v2, v3), Rule(44).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), HasOrdered(v2, v3), Rule(51).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), ShipTo(v2, v3), Rule(57).
-ShipTo(v1, v3) :- ProductName(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(5).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(36).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), ProductName(v2, v3), Rule(8).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(22).
-ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), HasOrdered(v0, v3), Rule(19).
-ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), HasOrdered(v2, v3), Rule(24).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), HasOrdered(v2, v3), Rule(15).
-ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), HasOrdered(v2, v3), Rule(13).
-ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), CustomerCity(v2, v3), Rule(54).
-ShipTo(v1, v3) :- HasOrdered(v0, v1), ProductName(v2, v0), ShipTo(v2, v3), Rule(14).
+
+
+ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), ShipTo(v2, v3), Rule(1).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(2).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(3).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(4).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(5).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(6).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(7).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(8).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(9).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(10).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(11).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(12).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(13).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(14).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(15).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(16).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(17).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(18).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(19).
+ShipTo(v3, v2) :- HasOrdered(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(20).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(21).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(22).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(23).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(24).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(25).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(26).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(27).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(28).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(29).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(30).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(31).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(32).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(33).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(34).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(35).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(36).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(37).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(38).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(39).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(40).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(41).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(42).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(43).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(44).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(45).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(46).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(47).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(48).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(49).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(50).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(51).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(52).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(53).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(54).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(55).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(56).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(57).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(58).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(59).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(60).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(61).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(62).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(63).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(64).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(65).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(66).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(67).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(68).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(69).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(70).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(71).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(72).
+ShipTo(v2, v3) :- HasOrdered(v0, v1), HasOrdered(v1, v2), ShipTo(v0, v3), Rule(73).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(74).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(75).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(76).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(77).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(78).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(79).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(80).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(81).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), ProductName(v2, v3), Rule(82).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(83).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), ProductName(v0, v2), ProductName(v1, v3), Rule(84).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(85).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(86).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(87).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(88).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(89).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(90).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(91).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(92).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(93).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(94).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(95).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(96).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(97).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(98).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), CustomerCity(v2, v3), Rule(99).
+ShipTo(v2, v3) :- ProductName(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(100).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(101).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(102).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(103).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(104).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(105).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(106).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(107).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ShipTo(v1, v3), Rule(108).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(109).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(110).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(111).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(112).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(113).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(114).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(115).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(116).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(117).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(118).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(119).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(120).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(121).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(122).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(123).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(124).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(125).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(126).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(127).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(128).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(129).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(130).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(131).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(132).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(133).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(134).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(135).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(136).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(137).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(138).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(139).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(140).
+ShipTo(v1, v3) :- ProductName(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(141).
+ShipTo(v3, v2) :- HasOrdered(v0, v1), ProductName(v0, v2), ShipTo(v1, v3), Rule(142).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(143).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(144).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), HasOrdered(v2, v3), Rule(145).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(146).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(147).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(148).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(149).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(150).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(151).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(152).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(153).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(154).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ProductName(v2, v3), Rule(155).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(156).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(157).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(158).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(159).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(160).
+ShipTo(v3, v2) :- HasOrdered(v0, v1), ProductName(v0, v2), ProductName(v1, v3), Rule(161).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(162).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(163).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(164).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(165).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(166).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(167).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(168).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(169).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(170).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(171).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(172).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(173).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(174).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(175).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(176).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(177).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(178).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(179).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(180).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(181).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(182).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(183).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(184).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(185).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(186).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(187).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(188).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(189).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(190).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(191).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(192).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(193).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), HasOrdered(v1, v3), Rule(194).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(195).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(196).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(197).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(198).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(199).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(200).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(201).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(202).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(203).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(204).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(205).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(206).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(207).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(208).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(209).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(210).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(211).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(212).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(213).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(214).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(215).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(216).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(217).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(218).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(219).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), CustomerCity(v2, v3), Rule(220).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(221).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(222).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(223).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(224).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(225).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(226).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(227).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(228).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(229).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(230).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(231).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(232).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(233).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), ShipTo(v2, v3), Rule(234).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(235).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(236).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(237).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(238).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(239).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(240).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(241).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(242).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(243).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(244).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(245).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(246).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(247).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(248).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(249).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(250).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(251).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ShipTo(v2, v0), ProductName(v2, v3), Rule(252).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(253).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(254).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(255).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(256).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(257).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(258).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(259).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(260).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(261).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(262).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(263).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(264).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(265).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(266).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(267).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(268).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(269).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(270).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(271).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(272).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(273).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(274).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(275).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(276).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(277).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(278).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(279).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(280).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(281).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(282).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(283).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), ProductName(v0, v2), ShipTo(v1, v3), Rule(284).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(285).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(286).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(287).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(288).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(289).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(290).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(291).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(292).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(293).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(294).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(295).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(296).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(297).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(298).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(299).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), HasOrdered(v2, v3), Rule(300).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(301).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(302).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(303).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(304).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(305).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(306).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(307).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(308).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(309).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(310).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(311).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(312).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(313).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(314).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(315).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(316).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(317).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(318).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(319).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(320).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(321).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(322).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(323).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(324).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(325).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(326).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(327).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(328).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(329).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(330).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(331).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(332).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(333).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(334).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(335).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(336).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(337).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(338).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(339).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(340).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(341).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(342).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(343).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(344).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(345).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(346).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(347).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(348).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), Rule(349).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(350).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(351).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(352).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(353).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(354).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(355).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), ProductName(v2, v3), Rule(356).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(357).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(358).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(359).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(360).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(361).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(362).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(363).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(364).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(365).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(366).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(367).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(368).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(369).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(370).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(371).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(372).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(373).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(374).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(375).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(376).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(377).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(378).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(379).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(380).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(381).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(382).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(383).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(384).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(385).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(386).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(387).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(388).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(389).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(390).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(391).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(392).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(393).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(394).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(395).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(396).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(397).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(398).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(399).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(400).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(401).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(402).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(403).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(404).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(405).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(406).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(407).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(408).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(409).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(410).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(411).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(412).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(413).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(414).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(415).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(416).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(417).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(418).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(419).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(420).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(421).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), HasOrdered(v2, v3), Rule(422).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(423).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(424).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(425).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(426).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), HasOrdered(v2, v3), Rule(427).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(428).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(429).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), HasOrdered(v2, v3), Rule(430).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(431).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(432).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(433).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(434).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(435).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(436).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(437).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), CustomerCity(v2, v3), Rule(438).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(439).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(440).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(441).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(442).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(443).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(444).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(445).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(446).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(447).
+ShipTo(ProdName, City) :- HasOrdered(CustNo, ProdNo), CustomerCity(CustNo, City), ProductName(ProdNo, ProdName), Rule(448).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(449).
+ShipTo(v3, v1) :- ProductName(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(450).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(451).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(452).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(453).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(454).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(455).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(456).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(457).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(458).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(459).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(460).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(461).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(462).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(463).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(464).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(465).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(466).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(467).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(468).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(469).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(470).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(471).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(472).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(473).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(474).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(475).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(476).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(477).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(478).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(479).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(480).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(481).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(482).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(483).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(484).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(485).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(486).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(487).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(488).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(489).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(490).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(491).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), ProductName(v0, v3), Rule(492).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(493).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(494).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(495).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(496).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(497).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(498).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(499).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(500).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(501).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(502).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(503).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(504).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(505).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(506).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(507).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(508).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(509).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(510).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(511).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(512).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(513).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(514).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(515).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(516).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), HasOrdered(v2, v3), Rule(517).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(518).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(519).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(520).
+ShipTo(v3, v2) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ProductName(v1, v3), Rule(521).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(522).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(523).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(524).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(525).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(526).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(527).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(528).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(529).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(530).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(531).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(532).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(533).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(534).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(535).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(536).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(537).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(538).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(539).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(540).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(541).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), HasOrdered(v0, v2), HasOrdered(v2, v3), Rule(542).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(543).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(544).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(545).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(546).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(547).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(548).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(549).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(550).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(551).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(552).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(553).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(554).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(555).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(556).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(557).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(558).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(559).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(560).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(561).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(562).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(563).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(564).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(565).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), ProductName(v2, v3), Rule(566).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(567).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(568).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(569).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(570).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(571).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(572).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(573).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(574).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(575).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(576).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(577).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(578).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(579).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(580).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(581).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(582).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(583).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(584).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(585).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(586).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(587).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), ShipTo(v0, v3), Rule(588).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(589).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(590).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(591).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(592).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(593).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(594).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(595).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(596).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(597).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(598).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(599).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(600).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(601).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(602).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(603).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(604).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(605).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(606).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(607).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(608).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(609).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(610).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), HasOrdered(v2, v3), Rule(611).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(612).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(613).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(614).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(615).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(616).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(617).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(618).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(619).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(620).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(621).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(622).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(623).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(624).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(625).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(626).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(627).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), HasOrdered(v2, v3), Rule(628).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(629).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(630).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(631).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(632).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(633).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(634).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(635).
+ShipTo(v3, v1) :- HasOrdered(v0, v1), ShipTo(v0, v2), HasOrdered(v2, v3), Rule(636).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(637).
+ShipTo(v3, v1) :- ProductName(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(638).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(639).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(640).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(641).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(642).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(643).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(644).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ProductName(v2, v0), ShipTo(v2, v3), Rule(645).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(646).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(647).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(648).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(649).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(650).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(651).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(652).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(653).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(654).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(655).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(656).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(657).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(658).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(659).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(660).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(661).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(662).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ProductName(v2, v0), ShipTo(v2, v3), Rule(663).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(664).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(665).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(666).
+ShipTo(v3, v1) :- ProductName(v0, v1), ShipTo(v0, v2), ProductName(v2, v3), Rule(667).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(668).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(669).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(670).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(671).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(672).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(673).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(674).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(675).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), ProductName(v2, v3), Rule(676).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(677).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(678).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(679).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(680).
+ShipTo(v2, v3) :- HasOrdered(v0, v1), ProductName(v1, v2), ShipTo(v0, v3), Rule(681).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(682).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(683).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(684).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(685).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(686).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(687).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(688).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(689).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(690).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(691).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(692).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(693).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(694).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(695).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(696).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(697).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(698).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(699).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(700).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(701).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(702).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(703).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(704).
+ShipTo(v3, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v2, v3), Rule(705).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(706).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(707).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(708).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(709).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(710).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(711).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(712).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(713).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(714).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(715).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(716).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(717).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(718).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(719).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(720).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(721).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(722).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(723).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(724).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(725).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(726).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(727).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(728).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(729).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(730).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(731).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(732).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(733).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(734).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(735).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(736).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(737).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(738).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(739).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(740).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(741).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(742).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(743).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(744).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(745).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(746).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(747).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(748).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(749).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(750).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(751).
+ShipTo(v1, v3) :- HasOrdered(v0, v1), ProductName(v2, v0), ProductName(v2, v3), Rule(752).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(753).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(754).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(755).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(756).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(757).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(758).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(759).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(760).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(761).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(762).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(763).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(764).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(765).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(766).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(767).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(768).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(769).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(770).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(771).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(772).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), HasOrdered(v2, v0), ProductName(v2, v3), Rule(773).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(774).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(775).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(776).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(777).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(778).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(779).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(780).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(781).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(782).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(783).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(784).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(785).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(786).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(787).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(788).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(789).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(790).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(791).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(792).
+ShipTo(v0, v1) :- ShipTo(v0, v1), Rule(793).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(794).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(795).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(796).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(797).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(798).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(799).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(800).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(801).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(802).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(803).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(804).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(805).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(806).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(807).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(808).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(809).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(810).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(811).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(812).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(813).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(814).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(815).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(816).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(817).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(818).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(819).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(820).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), HasOrdered(v1, v2), ProductName(v0, v3), Rule(821).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(822).
+ShipTo(v1, v3) :- CustomerCity(v0, v1), ShipTo(v2, v0), ShipTo(v2, v3), Rule(823).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(824).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(825).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(826).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(827).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(828).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(829).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(830).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(831).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(832).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(833).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(834).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(835).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(836).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(837).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(838).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(839).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(840).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(841).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(842).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(843).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(844).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(845).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(846).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(847).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(848).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(849).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(850).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(851).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(852).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(853).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(854).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(855).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(856).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(857).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(858).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(859).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(860).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), ShipTo(v2, v3), Rule(861).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(862).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(863).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(864).
+ShipTo(v2, v3) :- HasOrdered(v0, v1), HasOrdered(v1, v2), ProductName(v0, v3), Rule(865).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(866).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(867).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(868).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(869).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(870).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(871).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), CustomerCity(v1, v2), HasOrdered(v0, v3), Rule(872).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(873).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(874).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(875).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(876).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(877).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(878).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(879).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(880).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(881).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(882).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(883).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(884).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(885).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(886).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(887).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(888).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(889).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(890).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(891).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), Rule(892).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(893).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(894).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(895).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(896).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(897).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(898).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(899).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), CustomerCity(v0, v2), ShipTo(v2, v3), Rule(900).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(901).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(902).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(903).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(904).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), ProductName(v0, v2), ProductName(v2, v3), Rule(905).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), Rule(906).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(907).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(908).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(909).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(910).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(911).
+ShipTo(v3, v2) :- ProductName(v0, v1), ShipTo(v0, v2), ShipTo(v1, v3), Rule(912).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(913).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(914).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(915).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(916).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(917).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), Rule(918).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(919).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(920).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(921).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), Rule(922).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(923).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(924).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(925).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(926).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v0, v2), Rule(927).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(928).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(929).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(930).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(931).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(932).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(933).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(934).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(935).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(936).
+ShipTo(v2, v3) :- CustomerCity(v0, v1), HasOrdered(v1, v2), ShipTo(v0, v3), Rule(937).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(938).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(939).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(940).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(941).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(942).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(943).
+ShipTo(v3, v1) :- CustomerCity(v0, v1), HasOrdered(v0, v2), CustomerCity(v2, v3), Rule(944).
+ShipTo(v3, v1) :- ProductName(v0, v1), ProductName(v0, v2), ShipTo(v2, v3), Rule(945).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(946).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(947).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(948).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), Rule(949).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), Rule(950).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(951).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(952).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(953).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(954).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), Rule(955).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(956).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(957).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(958).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), Rule(959).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), Rule(960).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(961).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(962).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), Rule(963).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), Rule(964).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(965).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v1), Rule(966).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(967).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(968).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(969).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(970).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(971).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), Rule(972).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), Rule(973).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(974).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(975).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(976).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), Rule(977).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), Rule(978).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(979).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(980).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(981).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v3, v2), Rule(982).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), Rule(983).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(984).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v1), Rule(985).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), Rule(986).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), Rule(987).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), Rule(988).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(989).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), Rule(990).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v1), Rule(991).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v0, v1), ShipTo(v3, v2), Rule(992).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v0, v2), Rule(993).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(994).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), Rule(995).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(996).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), Rule(997).
+ShipTo(v0, v1) :- ShipTo(v0, v1), ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v0, v1), ShipTo(v3, v2), ShipTo(v3, v2), Rule(998).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v0, v2), ShipTo(v0, v2), ShipTo(v0, v1), Rule(999).
+ShipTo(v0, v1) :- ShipTo(v0, v2), ShipTo(v3, v1), ShipTo(v3, v2), ShipTo(v3, v1), ShipTo(v3, v1), ShipTo(v3, v2), Rule(1000).

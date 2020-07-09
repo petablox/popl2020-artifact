@@ -1,199 +1,1026 @@
 .type B
 .type D
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
 .decl cont(v0: D)
 .input cont
+
 .decl offset(v0: D)
 .input offset
+
 .decl fetch(v0: D, v1: B)
 .input fetch
+
 .decl putOn(v0: B, v1: D)
 .input putOn
 
-.decl inv(v0: D, v1: D)
-.output inv
+.decl invent_2(v0: D, v1: D)
+.output invent_2
 
 .decl buildWall(v0: D, v1: D)
 .output buildWall
 
-buildWall(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(9).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v2), Rule(59).
-inv(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v0), Rule(53).
-inv(v1, v0) :- buildWall(v0, v1), putOn(v2, v0), Rule(107).
-inv(v0, v1) :- buildWall(v0, v1), inv(v2, v1), Rule(159).
-inv(v2, v0) :- buildWall(v0, v1), offset(v1), buildWall(v2, v0), Rule(154).
-buildWall(v0, v2) :- cont(v0), fetch(v0, v1), putOn(v1, v2), Rule(102).
-inv(v0, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(24).
-inv(v1, v2) :- inv(v0, v1), offset(v0), buildWall(v1, v2), Rule(162).
-buildWall(v1, v0) :- cont(v0), inv(v1, v0), Rule(83).
-inv(v2, v0) :- buildWall(v0, v1), buildWall(v2, v0), Rule(35).
-inv(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v1), Rule(111).
-buildWall(v2, v1) :- inv(v0, v1), inv(v2, v1), Rule(173).
-buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), offset(v0), Rule(29).
-inv(v0, v2) :- buildWall(v0, v1), offset(v1), buildWall(v0, v2), Rule(122).
-inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), offset(v1), Rule(62).
-buildWall(v1, v2) :- buildWall(v0, v1), inv(v0, v2), Rule(148).
-inv(v0, v2) :- inv(v0, v1), inv(v1, v2), offset(v0), Rule(7).
-inv(v2, v1) :- buildWall(v0, v1), buildWall(v1, v2), Rule(30).
-buildWall(v0, v2) :- fetch(v0, v1), putOn(v1, v2), Rule(70).
-inv(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(36).
-buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v0), Rule(89).
-inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v0), Rule(124).
-inv(v0, v1) :- buildWall(v0, v1), cont(v1), Rule(25).
-buildWall(v0, v2) :- fetch(v0, v1), inv(v2, v0), Rule(135).
-inv(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v1, v2), Rule(84).
-buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), cont(v1), Rule(19).
-inv(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v1), Rule(163).
-inv(v0, v2) :- fetch(v0, v1), putOn(v1, v2), offset(v2), Rule(40).
-inv(v0, v1) :- buildWall(v0, v1), offset(v0), Rule(136).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(11).
-buildWall(v1, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(99).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v1), Rule(110).
-buildWall(v1, v2) :- buildWall(v0, v1), offset(v0), inv(v1, v2), Rule(22).
-inv(v2, v1) :- inv(v0, v1), inv(v2, v0), offset(v1), Rule(139).
-buildWall(v1, v2) :- buildWall(v0, v1), buildWall(v0, v2), Rule(146).
-inv(v1, v2) :- buildWall(v0, v1), offset(v0), buildWall(v1, v2), Rule(140).
-buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v1), Rule(133).
-buildWall(v1, v2) :- inv(v0, v1), offset(v0), inv(v1, v2), Rule(160).
-inv(v0, v1) :- buildWall(v0, v1), cont(v0), Rule(129).
-inv(v0, v1) :- buildWall(v0, v1), fetch(v1, v2), Rule(6).
-inv(v1, v2) :- buildWall(v0, v1), inv(v0, v2), Rule(145).
-inv(v0, v2) :- inv(v0, v1), offset(v1), buildWall(v0, v2), Rule(77).
-inv(v1, v0) :- buildWall(v0, v1), fetch(v1, v2), Rule(75).
-buildWall(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(15).
-inv(v1, v2) :- cont(v0), inv(v1, v0), buildWall(v1, v2), Rule(121).
-inv(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v0), Rule(42).
-inv(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v1, v2), Rule(44).
-buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(17).
-inv(v0, v1) :- buildWall(v0, v1), putOn(v2, v0), Rule(137).
-buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v2), Rule(119).
-buildWall(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v0, v2), Rule(39).
-buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), cont(v2), Rule(134).
-buildWall(v2, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(172).
-inv(v0, v2) :- fetch(v0, v1), putOn(v1, v2), Rule(56).
-buildWall(v1, v0) :- buildWall(v0, v1), fetch(v1, v2), Rule(46).
-buildWall(v1, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(45).
-buildWall(v2, v0) :- inv(v0, v1), offset(v1), inv(v2, v0), Rule(142).
-inv(v0, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(118).
-buildWall(v2, v1) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(117).
-inv(v0, v2) :- fetch(v0, v1), inv(v2, v0), Rule(54).
-inv(v2, v1) :- inv(v0, v1), offset(v0), buildWall(v2, v1), Rule(50).
-buildWall(v1, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(123).
-buildWall(v0, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(114).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(106).
-buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v0), Rule(141).
-buildWall(v2, v1) :- inv(v0, v1), inv(v1, v2), Rule(103).
-buildWall(v1, v0) :- inv(v0, v1), putOn(v2, v0), Rule(128).
-inv(v0, v2) :- cont(v0), fetch(v0, v1), putOn(v1, v2), Rule(55).
-buildWall(v0, v2) :- fetch(v0, v1), putOn(v1, v2), offset(v2), Rule(61).
-buildWall(v1, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(125).
-inv(v1, v2) :- cont(v0), inv(v0, v1), buildWall(v1, v2), Rule(51).
-inv(v0, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(138).
-inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(66).
-inv(v2, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(28).
-inv(v0, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(82).
-buildWall(v2, v0) :- fetch(v0, v1), inv(v2, v0), Rule(73).
-inv(v1, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(12).
-inv(v0, v2) :- buildWall(v0, v1), inv(v2, v1), Rule(152).
-inv(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v0), Rule(5).
-inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v1), Rule(60).
-buildWall(v0, v1) :- inv(v0, v1), offset(v0), Rule(100).
-buildWall(v0, v2) :- fetch(v0, v1), fetch(v2, v1), Rule(85).
-inv(v1, v2) :- putOn(v0, v1), putOn(v0, v2), Rule(176).
-buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v0), Rule(14).
-buildWall(v2, v1) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(27).
-inv(v2, v1) :- inv(v0, v1), inv(v1, v2), Rule(177).
-inv(v2, v0) :- cont(v0), putOn(v1, v0), fetch(v2, v1), Rule(108).
-buildWall(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(132).
-buildWall(v0, v2) :- inv(v0, v1), inv(v1, v2), offset(v0), Rule(90).
-inv(v2, v1) :- buildWall(v0, v1), inv(v0, v2), Rule(87).
-inv(v0, v2) :- fetch(v0, v1), offset(v0), putOn(v1, v2), Rule(151).
-inv(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), cont(v0), Rule(1).
-inv(v2, v1) :- cont(v0), inv(v0, v1), buildWall(v2, v1), Rule(131).
-inv(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v0), Rule(88).
-buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v2, v1), Rule(65).
-inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v1), Rule(63).
-inv(v1, v0) :- inv(v0, v1), putOn(v2, v0), Rule(76).
-inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), Rule(0).
-buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v0), Rule(16).
-buildWall(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v1, v2), Rule(112).
-inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(37).
-inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v2), Rule(156).
-buildWall(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(113).
-buildWall(v0, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(34).
-inv(v2, v0) :- buildWall(v0, v1), cont(v1), buildWall(v2, v0), Rule(155).
-inv(v1, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(33).
-buildWall(v2, v0) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(150).
-buildWall(v1, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(157).
-inv(v2, v0) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(116).
-inv(v1, v2) :- buildWall(v0, v1), buildWall(v1, v2), Rule(174).
-buildWall(v2, v0) :- fetch(v0, v1), putOn(v1, v2), Rule(147).
-inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), cont(v1), Rule(58).
-inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), cont(v2), Rule(8).
-inv(v2, v1) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(48).
-inv(v1, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(13).
-buildWall(v0, v1) :- inv(v0, v1), offset(v1), Rule(78).
-inv(v0, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(170).
-buildWall(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v1, v2), Rule(165).
-buildWall(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v0), Rule(64).
-buildWall(v1, v0) :- buildWall(v0, v1), putOn(v2, v0), Rule(79).
-inv(v2, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(158).
-inv(v2, v0) :- buildWall(v0, v1), inv(v2, v1), Rule(32).
-inv(v0, v2) :- buildWall(v0, v1), buildWall(v2, v1), Rule(105).
-inv(v2, v0) :- inv(v0, v1), offset(v1), buildWall(v2, v0), Rule(115).
-inv(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), offset(v0), Rule(74).
-inv(v0, v1) :- buildWall(v0, v1), putOn(v2, v1), Rule(69).
-buildWall(v0, v1) :- inv(v0, v1), putOn(v2, v0), Rule(3).
-inv(v0, v1) :- buildWall(v0, v1), offset(v1), Rule(10).
-buildWall(v0, v2) :- buildWall(v0, v1), inv(v2, v1), Rule(126).
-inv(v1, v2) :- buildWall(v0, v1), buildWall(v0, v2), Rule(20).
-inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(175).
-inv(v0, v2) :- buildWall(v0, v1), cont(v1), buildWall(v0, v2), Rule(23).
-buildWall(v1, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(153).
-buildWall(v2, v1) :- inv(v0, v1), inv(v2, v0), offset(v1), Rule(127).
-buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), cont(v0), Rule(52).
-buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v1), Rule(161).
-buildWall(v0, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(169).
-buildWall(v1, v2) :- inv(v0, v1), inv(v1, v2), Rule(96).
-buildWall(v2, v0) :- inv(v0, v1), inv(v2, v0), Rule(97).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v1), Rule(94).
-inv(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(95).
-buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v1, v2), Rule(101).
-inv(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(167).
-buildWall(v2, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(49).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), cont(v2), Rule(67).
-buildWall(v0, v2) :- inv(v0, v1), offset(v1), inv(v0, v2), Rule(57).
-buildWall(v0, v1) :- cont(v0), inv(v0, v1), Rule(47).
-buildWall(v0, v2) :- fetch(v0, v1), offset(v0), putOn(v1, v2), Rule(86).
-inv(v0, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(68).
-inv(v2, v1) :- cont(v0), inv(v1, v0), buildWall(v2, v1), Rule(109).
-buildWall(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v0), Rule(26).
-buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v0), Rule(98).
-buildWall(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(81).
-buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(2).
-buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), offset(v1), Rule(31).
-inv(v1, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(168).
-inv(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v0), Rule(93).
-buildWall(v2, v0) :- buildWall(v0, v1), inv(v2, v1), Rule(164).
-buildWall(v0, v1) :- inv(v0, v1), putOn(v2, v1), Rule(18).
-inv(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(171).
-inv(v0, v2) :- fetch(v0, v1), fetch(v2, v1), Rule(41).
-buildWall(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v1), Rule(144).
-buildWall(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v1), Rule(71).
-buildWall(v1, v2) :- putOn(v0, v1), putOn(v0, v2), Rule(143).
-inv(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v0), Rule(21).
-buildWall(v2, v1) :- buildWall(v0, v1), inv(v0, v2), Rule(92).
-buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), Rule(166).
-inv(v2, v0) :- fetch(v0, v1), putOn(v1, v2), Rule(38).
-buildWall(v2, v0) :- cont(v0), putOn(v1, v0), fetch(v2, v1), Rule(104).
-buildWall(v1, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(130).
-inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), cont(v2), Rule(149).
-buildWall(v1, v2) :- cont(v0), inv(v1, v0), inv(v1, v2), Rule(80).
-inv(v1, v2) :- buildWall(v0, v1), cont(v0), buildWall(v1, v2), Rule(43).
-inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v2), Rule(72).
-buildWall(v2, v0) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(91).
-buildWall(v2, v0) :- buildWall(v0, v1), offset(v1), inv(v2, v0), Rule(120).
-buildWall(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v0, v2), Rule(4).
+
+
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v2, v1), Rule(1).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v2, v1), buildWall(v0, v1), Rule(2).
+buildWall(v0, v1) :- cont(v0), invent_2(v1, v2), buildWall(v0, v2), Rule(3).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v0, v1), Rule(4).
+buildWall(v0, v1) :- cont(v1), buildWall(v0, v1), buildWall(v1, v0), Rule(5).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v2, v1), Rule(6).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v2, v0), buildWall(v2, v0), Rule(7).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v0), invent_2(v1, v2), Rule(8).
+inv(v2, v0) :- inv(v0, v1), offset(v1), buildWall(v2, v0), Rule(9).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v2, v0), buildWall(v0, v2), Rule(10).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(11).
+invent_2(v0, v1) :- offset(v0), offset(v1), offset(v0), Rule(12).
+invent_2(v0, v1) :- offset(v1), offset(v1), invent_2(v1, v0), Rule(13).
+inv(v1, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(14).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v0), invent_2(v2, v1), Rule(15).
+buildWall(v0, v1) :- cont(v0), offset(v2), invent_2(v2, v1), Rule(16).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v1, v2), buildWall(v1, v0), Rule(17).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v0, v2), buildWall(v2, v0), Rule(18).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v1, v0), buildWall(v2, v0), Rule(19).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), invent_2(v1, v2), Rule(20).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v0, v2), buildWall(v1, v0), Rule(21).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), buildWall(v2, v0), Rule(22).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v2), Rule(23).
+buildWall(v0, v2) :- fetch(v0, v1), offset(v0), putOn(v1, v2), Rule(24).
+buildWall(v0, v1) :- cont(v0), buildWall(v0, v1), buildWall(v1, v0), Rule(25).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v2), Rule(26).
+inv(v1, v2) :- buildWall(v0, v1), cont(v0), buildWall(v1, v2), Rule(27).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v0, v2), Rule(28).
+inv(v2, v0) :- buildWall(v0, v1), buildWall(v2, v0), Rule(29).
+inv(v0, v2) :- fetch(v0, v1), offset(v0), putOn(v1, v2), Rule(30).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v1), invent_2(v0, v1), Rule(31).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), buildWall(v2, v0), Rule(32).
+buildWall(v0, v1) :- offset(v2), offset(v1), buildWall(v0, v2), Rule(33).
+invent_2(v0, v1) :- cont(v0), offset(v0), invent_2(v0, v1), Rule(34).
+buildWall(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v0, v2), Rule(35).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), buildWall(v1, v2), Rule(36).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(37).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v1, v0), Rule(38).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), invent_2(v2, v1), Rule(39).
+buildWall(v2, v1) :- inv(v0, v1), inv(v1, v2), Rule(40).
+invent_2(v0, v1) :- cont(v0), cont(v0), offset(v1), Rule(41).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), offset(v0), Rule(42).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), buildWall(v0, v2), Rule(43).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), invent_2(v1, v2), Rule(44).
+invent_2(v0, v1) :- cont(v2), invent_2(v1, v2), invent_2(v0, v2), Rule(45).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v0, v2), buildWall(v0, v1), Rule(46).
+buildWall(v0, v1) :- cont(v0), offset(v0), invent_2(v0, v1), Rule(47).
+invent_2(v0, v1) :- cont(v0), invent_2(v2, v1), invent_2(v2, v0), Rule(48).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v0), invent_2(v2, v1), Rule(49).
+buildWall(v0, v1) :- cont(v0), invent_2(v0, v2), invent_2(v1, v2), Rule(50).
+buildWall(v1, v2) :- buildWall(v0, v1), offset(v0), inv(v1, v2), Rule(51).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v2, v1), buildWall(v1, v2), Rule(52).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v0, v1), invent_2(v2, v0), Rule(53).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v1), buildWall(v1, v2), Rule(54).
+buildWall(v0, v1) :- inv(v0, v1), putOn(v2, v0), Rule(55).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v0), buildWall(v0, v2), Rule(56).
+buildWall(v0, v1) :- cont(v0), cont(v2), invent_2(v1, v2), Rule(57).
+buildWall(v0, v1) :- cont(v2), invent_2(v0, v1), buildWall(v1, v2), Rule(58).
+buildWall(v0, v1) :- offset(v2), buildWall(v2, v0), buildWall(v0, v1), Rule(59).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), buildWall(v2, v0), Rule(60).
+buildWall(v0, v1) :- offset(v1), buildWall(v0, v1), Rule(61).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v0, v2), Rule(62).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v0, v2), buildWall(v2, v0), Rule(63).
+inv(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(64).
+invent_2(v0, v1) :- cont(v0), invent_2(v1, v0), invent_2(v0, v1), Rule(65).
+buildWall(v0, v1) :- offset(v1), buildWall(v2, v1), buildWall(v2, v0), Rule(66).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), buildWall(v2, v1), Rule(67).
+buildWall(v0, v1) :- offset(v0), invent_2(v1, v2), buildWall(v2, v1), Rule(68).
+buildWall(v0, v1) :- cont(v1), offset(v1), buildWall(v0, v1), Rule(69).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v0, v2), buildWall(v1, v0), Rule(70).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v2, v0), buildWall(v1, v2), Rule(71).
+buildWall(v0, v1) :- buildWall(v1, v0), Rule(72).
+buildWall(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v1), Rule(73).
+inv(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v1), Rule(74).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v0, v1), buildWall(v0, v2), Rule(75).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v1, v0), Rule(76).
+invent_2(v0, v1) :- cont(v1), offset(v1), invent_2(v1, v0), Rule(77).
+buildWall(v0, v1) :- cont(v2), buildWall(v2, v1), buildWall(v2, v0), Rule(78).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v1, v2), Rule(79).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(80).
+buildWall(v0, v1) :- cont(v2), offset(v2), buildWall(v1, v0), Rule(81).
+buildWall(v0, v1) :- cont(v2), buildWall(v0, v2), buildWall(v1, v0), Rule(82).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v1), buildWall(v0, v2), Rule(83).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v0, v2), buildWall(v2, v0), Rule(84).
+buildWall(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v0), Rule(85).
+invent_2(v0, v1) :- cont(v1), offset(v0), invent_2(v1, v0), Rule(86).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), invent_2(v0, v1), Rule(87).
+buildWall(v0, v1) :- cont(v1), buildWall(v0, v2), buildWall(v1, v2), Rule(88).
+inv(v1, v2) :- buildWall(v0, v1), inv(v0, v2), Rule(89).
+buildWall(v0, v1) :- cont(v2), invent_2(v0, v1), buildWall(v2, v1), Rule(90).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v2), Rule(91).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v2), buildWall(v0, v1), Rule(92).
+invent_2(v0, v1) :- offset(v0), invent_2(v1, v0), invent_2(v1, v0), Rule(93).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v2), buildWall(v0, v1), Rule(94).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v1), invent_2(v0, v1), Rule(95).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v2), Rule(96).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), buildWall(v2, v1), Rule(97).
+inv(v2, v0) :- buildWall(v0, v1), cont(v1), buildWall(v2, v0), Rule(98).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v2, v0), Rule(99).
+buildWall(v0, v1) :- cont(v1), cont(v1), invent_2(v0, v1), Rule(100).
+inv(v2, v1) :- cont(v0), inv(v0, v1), buildWall(v2, v1), Rule(101).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), buildWall(v0, v2), Rule(102).
+buildWall(v0, v1) :- cont(v0), offset(v1), Rule(103).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), buildWall(v1, v2), Rule(104).
+buildWall(v0, v1) :- cont(v1), buildWall(v2, v0), buildWall(v0, v2), Rule(105).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), buildWall(v2, v0), Rule(106).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v0), invent_2(v2, v1), Rule(107).
+buildWall(v0, v2) :- inv(v0, v1), inv(v1, v2), offset(v0), Rule(108).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v0), invent_2(v0, v2), Rule(109).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v2, v0), buildWall(v2, v1), Rule(110).
+invent_2(v0, v1) :- cont(v0), invent_2(v0, v2), invent_2(v1, v2), Rule(111).
+buildWall(v1, v0) :- buildWall(v0, v1), fetch(v1, v2), Rule(112).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v1, v2), buildWall(v1, v2), Rule(113).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v2, v0), Rule(114).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), invent_2(v0, v2), Rule(115).
+inv(v1, v2) :- cont(v0), inv(v1, v0), buildWall(v1, v2), Rule(116).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v0, v2), buildWall(v1, v2), Rule(117).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v1, v2), buildWall(v1, v2), Rule(118).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), buildWall(v1, v2), Rule(119).
+invent_2(v0, v1) :- offset(v2), invent_2(v1, v2), invent_2(v0, v1), Rule(120).
+buildWall(v0, v2) :- inv(v0, v1), offset(v1), inv(v0, v2), Rule(121).
+buildWall(v1, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(122).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v2, v0), Rule(123).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v1), buildWall(v0, v1), Rule(124).
+invent_2(v0, v1) :- cont(v0), invent_2(v0, v2), invent_2(v2, v1), Rule(125).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v1, v0), buildWall(v0, v1), Rule(126).
+inv(v0, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(127).
+buildWall(v0, v1) :- cont(v0), invent_2(v1, v0), invent_2(v1, v0), Rule(128).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v0, v2), buildWall(v0, v2), Rule(129).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v0, v2), buildWall(v0, v1), Rule(130).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v1), Rule(131).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), buildWall(v1, v0), Rule(132).
+invent_2(v0, v1) :- offset(v1), invent_2(v2, v1), invent_2(v0, v2), Rule(133).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v0), buildWall(v2, v1), Rule(134).
+invent_2(v0, v1) :- cont(v2), invent_2(v2, v0), invent_2(v1, v2), Rule(135).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v2, v1), buildWall(v1, v2), Rule(136).
+buildWall(v0, v1) :- offset(v1), offset(v0), offset(v1), Rule(137).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v1), invent_2(v2, v0), Rule(138).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v1, v2), Rule(139).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v0), buildWall(v1, v0), Rule(140).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v0, v2), Rule(141).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v1), buildWall(v2, v0), Rule(142).
+buildWall(v0, v1) :- cont(v0), invent_2(v2, v1), invent_2(v1, v2), Rule(143).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), buildWall(v0, v1), Rule(144).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v1, v2), buildWall(v1, v0), Rule(145).
+buildWall(v0, v1) :- offset(v2), invent_2(v1, v2), buildWall(v2, v0), Rule(146).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v1), invent_2(v0, v2), Rule(147).
+buildWall(v0, v1) :- cont(v1), cont(v1), cont(v0), Rule(148).
+invent_2(v0, v1) :- offset(v2), invent_2(v2, v1), invent_2(v0, v1), Rule(149).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), invent_2(v0, v2), Rule(150).
+buildWall(v0, v1) :- cont(v1), cont(v0), invent_2(v1, v0), Rule(151).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), invent_2(v1, v2), Rule(152).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v2), buildWall(v2, v1), Rule(153).
+invent_2(v0, v1) :- offset(v2), invent_2(v1, v0), invent_2(v2, v1), Rule(154).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v0), buildWall(v0, v2), Rule(155).
+invent_2(v0, v1) :- cont(v2), invent_2(v1, v0), invent_2(v0, v2), Rule(156).
+invent_2(v0, v1) :- cont(v1), cont(v2), invent_2(v2, v0), Rule(157).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v0), buildWall(v2, v1), Rule(158).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v0, v2), Rule(159).
+buildWall(v0, v1) :- offset(v1), buildWall(v0, v2), buildWall(v2, v1), Rule(160).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), invent_2(v1, v2), Rule(161).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v1), buildWall(v0, v2), Rule(162).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v2, v1), Rule(163).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v0), invent_2(v2, v1), Rule(164).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v2, v0), invent_2(v2, v0), Rule(165).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), buildWall(v2, v0), Rule(166).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), invent_2(v2, v1), Rule(167).
+buildWall(v0, v1) :- cont(v1), buildWall(v1, v0), Rule(168).
+buildWall(v0, v1) :- offset(v0), buildWall(v1, v2), buildWall(v1, v2), Rule(169).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v0), invent_2(v1, v0), Rule(170).
+buildWall(v0, v1) :- cont(v1), cont(v0), cont(v0), Rule(171).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), buildWall(v0, v1), Rule(172).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v2, v1), Rule(173).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v0, v1), invent_2(v0, v2), Rule(174).
+buildWall(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v0, v2), Rule(175).
+inv(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v0), Rule(176).
+buildWall(v1, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(177).
+inv(v2, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(178).
+buildWall(v0, v1) :- offset(v0), buildWall(v1, v0), buildWall(v0, v1), Rule(179).
+invent_2(v0, v1) :- offset(v0), offset(v1), offset(v1), Rule(180).
+invent_2(v0, v1) :- offset(v2), invent_2(v0, v1), invent_2(v2, v1), Rule(181).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), cont(v0), Rule(182).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), cont(v2), Rule(183).
+inv(v0, v1) :- buildWall(v0, v1), inv(v2, v1), Rule(184).
+buildWall(v0, v1) :- offset(v0), offset(v1), buildWall(v1, v0), Rule(185).
+inv(v2, v0) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(186).
+buildWall(v0, v2) :- fetch(v0, v1), putOn(v1, v2), Rule(187).
+invent_2(v0, v1) :- cont(v0), offset(v2), invent_2(v2, v1), Rule(188).
+inv(v0, v2) :- inv(v0, v1), inv(v1, v2), offset(v0), Rule(189).
+buildWall(v0, v1) :- offset(v0), invent_2(v0, v2), buildWall(v2, v1), Rule(190).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), cont(v0), Rule(191).
+invent_2(v0, v1) :- offset(v2), invent_2(v1, v2), invent_2(v1, v0), Rule(192).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), invent_2(v1, v0), Rule(193).
+buildWall(v0, v1) :- cont(v2), buildWall(v1, v0), buildWall(v1, v2), Rule(194).
+buildWall(v0, v1) :- offset(v1), offset(v1), invent_2(v1, v0), Rule(195).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v2, v0), Rule(196).
+invent_2(v0, v1) :- cont(v0), cont(v0), invent_2(v0, v1), Rule(197).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v1, v2), buildWall(v2, v0), Rule(198).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v2), buildWall(v0, v1), Rule(199).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v2, v0), buildWall(v2, v0), Rule(200).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), Rule(201).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v1, v2), invent_2(v2, v0), Rule(202).
+buildWall(v0, v1) :- cont(v0), cont(v0), offset(v1), Rule(203).
+buildWall(v0, v1) :- cont(v1), offset(v0), invent_2(v1, v0), Rule(204).
+buildWall(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(205).
+buildWall(v2, v0) :- buildWall(v0, v1), inv(v2, v1), Rule(206).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v1, v2), offset(v0), Rule(207).
+buildWall(v0, v1) :- offset(v2), buildWall(v1, v2), buildWall(v0, v1), Rule(208).
+buildWall(v0, v1) :- cont(v1), cont(v0), buildWall(v0, v1), Rule(209).
+invent_2(v0, v1) :- cont(v1), offset(v2), invent_2(v2, v0), Rule(210).
+invent_2(v0, v1) :- cont(v1), cont(v1), cont(v0), Rule(211).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), invent_2(v0, v2), Rule(212).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v0, v1), buildWall(v0, v1), Rule(213).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v1, v2), Rule(214).
+inv(v0, v1) :- buildWall(v0, v1), offset(v0), Rule(215).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v2, v0), Rule(216).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v0), buildWall(v2, v1), Rule(217).
+buildWall(v1, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(218).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v0, v2), buildWall(v1, v0), Rule(219).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), invent_2(v0, v2), Rule(220).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v2, v0), buildWall(v2, v1), Rule(221).
+buildWall(v0, v1) :- cont(v0), buildWall(v2, v1), buildWall(v0, v2), Rule(222).
+buildWall(v0, v1) :- cont(v2), offset(v1), invent_2(v2, v0), Rule(223).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v0), Rule(224).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v0), buildWall(v2, v1), Rule(225).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v2, v1), Rule(226).
+invent_2(v0, v1) :- cont(v1), cont(v0), Rule(227).
+buildWall(v0, v1) :- cont(v2), offset(v2), invent_2(v0, v1), Rule(228).
+buildWall(v0, v1) :- cont(v1), offset(v0), invent_2(v0, v1), Rule(229).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v2, v0), buildWall(v0, v2), Rule(230).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v2, v1), buildWall(v0, v2), Rule(231).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v1, v0), Rule(232).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v0), Rule(233).
+buildWall(v0, v1) :- offset(v2), offset(v1), invent_2(v0, v2), Rule(234).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v0, v2), Rule(235).
+buildWall(v0, v1) :- offset(v2), buildWall(v0, v2), buildWall(v1, v2), Rule(236).
+buildWall(v0, v1) :- cont(v2), invent_2(v0, v2), invent_2(v0, v1), Rule(237).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), buildWall(v0, v2), Rule(238).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v2, v0), Rule(239).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), cont(v1), Rule(240).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v0, v2), buildWall(v0, v2), Rule(241).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v0, v2), Rule(242).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v2, v0), Rule(243).
+buildWall(v0, v1) :- cont(v2), cont(v2), invent_2(v0, v1), Rule(244).
+buildWall(v0, v1) :- cont(v2), buildWall(v2, v1), buildWall(v0, v2), Rule(245).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v0), invent_2(v2, v1), Rule(246).
+invent_2(v0, v1) :- cont(v0), offset(v1), offset(v0), Rule(247).
+buildWall(v0, v1) :- buildWall(v0, v1), Rule(248).
+inv(v0, v2) :- inv(v0, v1), offset(v1), buildWall(v0, v2), Rule(249).
+buildWall(v0, v1) :- offset(v1), invent_2(v1, v2), buildWall(v2, v0), Rule(250).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v0), invent_2(v0, v2), Rule(251).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v2, v0), invent_2(v2, v0), Rule(252).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), buildWall(v1, v0), Rule(253).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v0), buildWall(v1, v2), Rule(254).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), invent_2(v0, v1), Rule(255).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v1), invent_2(v2, v0), Rule(256).
+invent_2(v0, v1) :- offset(v2), invent_2(v1, v2), invent_2(v2, v0), Rule(257).
+buildWall(v0, v1) :- cont(v2), cont(v1), buildWall(v0, v2), Rule(258).
+buildWall(v0, v1) :- cont(v0), buildWall(v1, v2), buildWall(v2, v1), Rule(259).
+buildWall(v0, v1) :- offset(v1), offset(v0), offset(v0), Rule(260).
+buildWall(v0, v1) :- offset(v1), buildWall(v1, v0), buildWall(v0, v1), Rule(261).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v0), invent_2(v0, v2), Rule(262).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v1, v0), Rule(263).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(264).
+invent_2(v0, v1) :- offset(v1), invent_2(v0, v1), invent_2(v1, v0), Rule(265).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v2, v0), buildWall(v1, v2), Rule(266).
+buildWall(v2, v0) :- fetch(v0, v1), putOn(v1, v2), Rule(267).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), invent_2(v2, v1), Rule(268).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v0), buildWall(v0, v2), Rule(269).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), Rule(270).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), buildWall(v2, v0), Rule(271).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v0), buildWall(v1, v2), Rule(272).
+buildWall(v0, v1) :- invent_2(v0, v1), Rule(273).
+buildWall(v0, v1) :- offset(v2), buildWall(v1, v2), buildWall(v1, v0), Rule(274).
+invent_2(v0, v1) :- offset(v1), offset(v0), Rule(275).
+buildWall(v1, v2) :- buildWall(v0, v1), buildWall(v0, v2), Rule(276).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), Rule(277).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v1), buildWall(v0, v2), Rule(278).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v2), invent_2(v2, v1), Rule(279).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v1, v0), buildWall(v1, v0), Rule(280).
+inv(v2, v1) :- cont(v0), inv(v1, v0), buildWall(v2, v1), Rule(281).
+invent_2(v0, v1) :- offset(v2), offset(v0), invent_2(v2, v1), Rule(282).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v1, v2), Rule(283).
+invent_2(v0, v1) :- offset(v2), invent_2(v0, v1), invent_2(v2, v0), Rule(284).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v0), buildWall(v1, v2), Rule(285).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v0, v2), buildWall(v2, v0), Rule(286).
+buildWall(v0, v1) :- cont(v0), cont(v0), buildWall(v1, v0), Rule(287).
+invent_2(v0, v1) :- cont(v0), cont(v2), invent_2(v1, v2), Rule(288).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v2), buildWall(v1, v0), Rule(289).
+inv(v1, v2) :- inv(v0, v1), offset(v0), buildWall(v1, v2), Rule(290).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v1, v2), Rule(291).
+buildWall(v1, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(292).
+inv(v0, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(293).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), buildWall(v0, v2), Rule(294).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), invent_2(v1, v2), Rule(295).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v0, v2), buildWall(v1, v2), Rule(296).
+buildWall(v0, v1) :- cont(v2), buildWall(v0, v2), buildWall(v2, v1), Rule(297).
+invent_2(v0, v1) :- offset(v2), invent_2(v2, v0), invent_2(v0, v1), Rule(298).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v2, v1), invent_2(v2, v1), Rule(299).
+buildWall(v1, v2) :- putOn(v0, v1), putOn(v0, v2), Rule(300).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), invent_2(v0, v2), Rule(301).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v2, v1), invent_2(v2, v0), Rule(302).
+buildWall(v1, v2) :- inv(v0, v1), inv(v2, v0), Rule(303).
+buildWall(v0, v1) :- cont(v1), cont(v0), offset(v0), Rule(304).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), buildWall(v0, v1), Rule(305).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v2), buildWall(v0, v2), Rule(306).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v1), invent_2(v0, v2), Rule(307).
+buildWall(v0, v1) :- cont(v2), buildWall(v0, v1), buildWall(v2, v1), Rule(308).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v0, v2), buildWall(v2, v1), Rule(309).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v2), buildWall(v2, v0), Rule(310).
+buildWall(v0, v1) :- cont(v2), offset(v0), buildWall(v2, v1), Rule(311).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v0, v2), buildWall(v1, v2), Rule(312).
+buildWall(v0, v1) :- offset(v1), buildWall(v1, v0), Rule(313).
+buildWall(v0, v1) :- cont(v0), buildWall(v0, v2), buildWall(v1, v2), Rule(314).
+invent_2(v0, v1) :- cont(v0), invent_2(v0, v1), Rule(315).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v0, v2), buildWall(v1, v2), Rule(316).
+buildWall(v0, v1) :- offset(v1), offset(v2), buildWall(v0, v2), Rule(317).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v2, v1), buildWall(v1, v2), Rule(318).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v2, v0), Rule(319).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v1, v2), Rule(320).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), buildWall(v2, v1), Rule(321).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v0, v1), buildWall(v0, v1), Rule(322).
+inv(v2, v1) :- inv(v0, v1), inv(v1, v2), Rule(323).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v0), buildWall(v2, v0), Rule(324).
+invent_2(v0, v1) :- offset(v0), offset(v2), invent_2(v2, v1), Rule(325).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v1, v2), buildWall(v0, v2), Rule(326).
+invent_2(v0, v1) :- offset(v0), invent_2(v2, v1), invent_2(v2, v1), Rule(327).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v2), buildWall(v1, v0), Rule(328).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v0), buildWall(v1, v0), Rule(329).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v0, v2), buildWall(v2, v1), Rule(330).
+invent_2(v0, v1) :- offset(v2), invent_2(v1, v0), invent_2(v1, v2), Rule(331).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v2, v0), buildWall(v1, v0), Rule(332).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), Rule(333).
+buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v1), Rule(334).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v1, v0), Rule(335).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v1), buildWall(v1, v2), Rule(336).
+buildWall(v0, v1) :- offset(v1), offset(v0), buildWall(v0, v1), Rule(337).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v1), Rule(338).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), invent_2(v2, v1), Rule(339).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v1, v2), Rule(340).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v2), invent_2(v1, v2), Rule(341).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), buildWall(v1, v0), Rule(342).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v0), buildWall(v2, v1), Rule(343).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v1, v0), Rule(344).
+buildWall(v0, v1) :- cont(v1), invent_2(v1, v0), invent_2(v1, v0), Rule(345).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v1, v0), Rule(346).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v1, v2), buildWall(v0, v2), Rule(347).
+buildWall(v0, v1) :- cont(v1), invent_2(v1, v2), buildWall(v0, v2), Rule(348).
+inv(v0, v1) :- buildWall(v0, v1), offset(v1), Rule(349).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v1), invent_2(v2, v0), Rule(350).
+buildWall(v2, v1) :- inv(v0, v1), inv(v2, v1), Rule(351).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v1, v0), Rule(352).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v2, v1), Rule(353).
+buildWall(v0, v1) :- offset(v1), offset(v2), invent_2(v0, v2), Rule(354).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v2, v1), buildWall(v0, v2), Rule(355).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v1, v2), buildWall(v2, v0), Rule(356).
+buildWall(v0, v1) :- offset(v0), invent_2(v1, v2), buildWall(v2, v0), Rule(357).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v2, v0), Rule(358).
+buildWall(v0, v1) :- offset(v0), offset(v1), Rule(359).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), invent_2(v0, v1), Rule(360).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), buildWall(v0, v2), Rule(361).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v2), buildWall(v0, v2), Rule(362).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v1), Rule(363).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v1), invent_2(v2, v0), Rule(364).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v2, v0), invent_2(v0, v2), Rule(365).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), buildWall(v1, v2), Rule(366).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v2, v0), Rule(367).
+buildWall(v2, v0) :- inv(v0, v1), inv(v2, v0), Rule(368).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v1), Rule(369).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v0), invent_2(v2, v1), Rule(370).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), offset(v1), Rule(371).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), buildWall(v1, v2), Rule(372).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v2), buildWall(v0, v2), Rule(373).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v0), buildWall(v2, v0), Rule(374).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v0, v1), buildWall(v2, v0), Rule(375).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), Rule(376).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v0, v2), invent_2(v1, v2), Rule(377).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v2, v0), invent_2(v1, v0), Rule(378).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v0), buildWall(v0, v1), Rule(379).
+buildWall(v0, v1) :- cont(v2), offset(v1), buildWall(v2, v0), Rule(380).
+buildWall(v0, v1) :- cont(v0), offset(v0), buildWall(v1, v0), Rule(381).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v1), invent_2(v0, v2), Rule(382).
+buildWall(v0, v2) :- inv(v0, v1), inv(v2, v0), Rule(383).
+inv(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v0), Rule(384).
+invent_2(v0, v1) :- cont(v0), invent_2(v2, v1), invent_2(v2, v1), Rule(385).
+buildWall(v0, v1) :- offset(v2), invent_2(v1, v2), buildWall(v0, v2), Rule(386).
+buildWall(v0, v1) :- cont(v0), cont(v0), buildWall(v0, v1), Rule(387).
+buildWall(v0, v1) :- cont(v1), invent_2(v2, v0), buildWall(v1, v2), Rule(388).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v0), invent_2(v2, v0), Rule(389).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v1), invent_2(v2, v1), Rule(390).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v2, v0), buildWall(v1, v0), Rule(391).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v0), buildWall(v1, v0), Rule(392).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v0, v1), Rule(393).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v2), buildWall(v1, v2), Rule(394).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v1), buildWall(v1, v0), Rule(395).
+buildWall(v0, v1) :- cont(v1), cont(v2), buildWall(v0, v2), Rule(396).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v1, v2), buildWall(v1, v0), Rule(397).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v0, v2), buildWall(v0, v1), Rule(398).
+invent_2(v0, v1) :- offset(v0), offset(v1), invent_2(v1, v0), Rule(399).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), cont(v1), Rule(400).
+buildWall(v0, v1) :- cont(v1), cont(v0), invent_2(v0, v1), Rule(401).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v0), Rule(402).
+invent_2(v0, v1) :- cont(v0), cont(v2), invent_2(v2, v1), Rule(403).
+buildWall(v0, v1) :- cont(v2), buildWall(v2, v1), buildWall(v1, v0), Rule(404).
+invent_2(v0, v1) :- offset(v2), offset(v1), invent_2(v2, v0), Rule(405).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v2), buildWall(v0, v1), Rule(406).
+invent_2(v0, v1) :- cont(v2), invent_2(v2, v1), invent_2(v1, v0), Rule(407).
+invent_2(v0, v1) :- cont(v2), invent_2(v1, v0), invent_2(v2, v0), Rule(408).
+buildWall(v0, v1) :- cont(v0), buildWall(v0, v1), Rule(409).
+inv(v2, v1) :- buildWall(v0, v1), inv(v0, v2), Rule(410).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v2, v0), Rule(411).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v0), buildWall(v2, v0), Rule(412).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), cont(v2), Rule(413).
+inv(v0, v2) :- cont(v0), fetch(v0, v1), putOn(v1, v2), Rule(414).
+buildWall(v0, v1) :- cont(v2), offset(v1), buildWall(v0, v2), Rule(415).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v1, v2), buildWall(v1, v0), Rule(416).
+buildWall(v0, v2) :- fetch(v0, v1), inv(v2, v0), Rule(417).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), invent_2(v2, v1), Rule(418).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), buildWall(v2, v1), Rule(419).
+buildWall(v0, v1) :- offset(v1), invent_2(v2, v1), invent_2(v2, v0), Rule(420).
+buildWall(v0, v1) :- cont(v0), invent_2(v2, v0), buildWall(v1, v2), Rule(421).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v0), buildWall(v0, v1), Rule(422).
+invent_2(v0, v1) :- cont(v1), invent_2(v0, v2), invent_2(v2, v1), Rule(423).
+inv(x2, x1) :- buildWall(x0, x1), inv(x2, x0), Rule(424).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), buildWall(v0, v2), Rule(425).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v1, v0), buildWall(v1, v2), Rule(426).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), Rule(427).
+buildWall(v0, v1) :- offset(v1), buildWall(v0, v2), buildWall(v1, v2), Rule(428).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), invent_2(v2, v0), Rule(429).
+buildWall(v0, v1) :- cont(v1), offset(v2), buildWall(v0, v2), Rule(430).
+buildWall(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v0), Rule(431).
+invent_2(v0, v1) :- offset(v1), invent_2(v0, v2), invent_2(v0, v2), Rule(432).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), invent_2(v2, v0), Rule(433).
+inv(v0, v2) :- fetch(v0, v1), fetch(v2, v1), Rule(434).
+buildWall(v0, v1) :- cont(v0), cont(v2), buildWall(v2, v1), Rule(435).
+buildWall(v0, v1) :- cont(v0), buildWall(v1, v0), buildWall(v1, v0), Rule(436).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v2), buildWall(v1, v2), Rule(437).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), buildWall(v0, v2), Rule(438).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v1, v2), Rule(439).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v2, v0), buildWall(v1, v2), Rule(440).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v2, v0), buildWall(v0, v2), Rule(441).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v1), Rule(442).
+invent_2(v0, v1) :- offset(v0), invent_2(v2, v1), invent_2(v2, v0), Rule(443).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v1, v2), buildWall(v2, v0), Rule(444).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), invent_2(v0, v1), Rule(445).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v0, v2), invent_2(v2, v1), Rule(446).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), invent_2(v2, v1), Rule(447).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v1), buildWall(v2, v1), Rule(448).
+buildWall(v0, v1) :- offset(v1), buildWall(v0, v2), buildWall(v2, v0), Rule(449).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), invent_2(v0, v1), Rule(450).
+buildWall(v0, v1) :- cont(v0), invent_2(v1, v2), buildWall(v2, v1), Rule(451).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v0, v1), Rule(452).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v0), invent_2(v1, v2), Rule(453).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v2, v0), buildWall(v2, v1), Rule(454).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), invent_2(v2, v0), Rule(455).
+buildWall(v0, v1) :- offset(v1), invent_2(v2, v0), buildWall(v2, v0), Rule(456).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v0), buildWall(v2, v0), Rule(457).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v1), invent_2(v1, v2), Rule(458).
+buildWall(x1, x0) :- inv(x1, x0), offset(x0), Rule(459).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v0, v1), buildWall(v2, v1), Rule(460).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v2), invent_2(v2, v1), Rule(461).
+buildWall(v0, v1) :- cont(v1), cont(v2), buildWall(v2, v0), Rule(462).
+buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v0), Rule(463).
+buildWall(v0, v1) :- cont(v2), cont(v1), invent_2(v2, v0), Rule(464).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v2), Rule(465).
+buildWall(v0, v1) :- cont(v0), invent_2(v0, v2), invent_2(v2, v1), Rule(466).
+invent_2(v0, v1) :- offset(v0), invent_2(v1, v2), invent_2(v2, v0), Rule(467).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v1), buildWall(v0, v1), Rule(468).
+inv(v2, v0) :- cont(v0), putOn(v1, v0), fetch(v2, v1), Rule(469).
+invent_2(v0, v1) :- cont(v1), offset(v0), offset(v1), Rule(470).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v2, v1), buildWall(v0, v2), Rule(471).
+buildWall(v0, v1) :- offset(v2), offset(v2), invent_2(v0, v1), Rule(472).
+buildWall(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v1), Rule(473).
+buildWall(v0, v2) :- cont(v0), fetch(v0, v1), putOn(v1, v2), Rule(474).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v2), Rule(475).
+invent_2(v0, v1) :- cont(v2), invent_2(v1, v2), invent_2(v1, v0), Rule(476).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), buildWall(v1, v2), Rule(477).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v2), buildWall(v2, v1), Rule(478).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v2, v1), buildWall(v2, v0), Rule(479).
+inv(v2, v0) :- buildWall(v0, v1), inv(v2, v1), Rule(480).
+inv(v0, v1) :- buildWall(v0, v1), cont(v1), Rule(481).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), buildWall(v0, v2), Rule(482).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v0, v1), invent_2(v2, v1), Rule(483).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v1), Rule(484).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v0), buildWall(v2, v1), Rule(485).
+buildWall(v0, v1) :- offset(v2), invent_2(v1, v2), invent_2(v0, v2), Rule(486).
+buildWall(v0, v1) :- offset(v2), buildWall(v2, v1), buildWall(v2, v0), Rule(487).
+invent_2(v0, v1) :- cont(v2), offset(v0), invent_2(v2, v1), Rule(488).
+invent_2(v0, v1) :- offset(v2), invent_2(v0, v2), invent_2(v0, v1), Rule(489).
+buildWall(v0, v1) :- cont(v2), buildWall(v1, v2), buildWall(v2, v0), Rule(490).
+inv(v1, v0) :- buildWall(v0, v1), putOn(v2, v0), Rule(491).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v0, v1), buildWall(v1, v2), Rule(492).
+buildWall(v0, v1) :- cont(v0), invent_2(v1, v0), buildWall(v1, v0), Rule(493).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), invent_2(v0, v1), Rule(494).
+buildWall(v0, v1) :- offset(v1), offset(v0), buildWall(v1, v0), Rule(495).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), buildWall(v2, v1), Rule(496).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v2, v0), buildWall(v1, v2), Rule(497).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v2, v1), Rule(498).
+buildWall(v0, v1) :- offset(v1), invent_2(v1, v0), invent_2(v0, v1), Rule(499).
+inv(v0, v2) :- fetch(v0, v1), inv(v2, v0), Rule(500).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), cont(v2), Rule(501).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v0, v1), Rule(502).
+inv(x2, x1) :- cont(x1), fetch(x2, x0), putOn(x0, x1), Rule(503).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v2, v0), buildWall(v0, v2), Rule(504).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v1), buildWall(v2, v1), Rule(505).
+buildWall(v0, v1) :- cont(v1), cont(v1), buildWall(v0, v1), Rule(506).
+inv(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), offset(v1), Rule(507).
+buildWall(v0, v1) :- offset(v2), invent_2(v1, v2), invent_2(v0, v1), Rule(508).
+buildWall(v0, v1) :- cont(v2), cont(v2), invent_2(v1, v0), Rule(509).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), buildWall(v2, v1), Rule(510).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), offset(v1), Rule(511).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v2, v1), invent_2(v0, v1), Rule(512).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v1, v2), buildWall(v2, v0), Rule(513).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v0), buildWall(v2, v1), Rule(514).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), invent_2(v1, v0), Rule(515).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v2, v0), buildWall(v1, v0), Rule(516).
+invent_2(v0, v1) :- offset(v0), offset(v0), offset(v1), Rule(517).
+buildWall(v0, v1) :- offset(v2), buildWall(v1, v0), buildWall(v2, v0), Rule(518).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v1), buildWall(v1, v2), Rule(519).
+invent_2(v0, v1) :- cont(v0), invent_2(v1, v2), invent_2(v0, v2), Rule(520).
+buildWall(v0, v1) :- offset(v0), offset(v2), invent_2(v1, v2), Rule(521).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v2, v0), buildWall(v0, v1), Rule(522).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v2), buildWall(v2, v0), Rule(523).
+buildWall(v0, v1) :- cont(v0), invent_2(v2, v1), buildWall(v2, v1), Rule(524).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), buildWall(v2, v1), Rule(525).
+invent_2(v0, v1) :- offset(v2), invent_2(v2, v1), invent_2(v2, v0), Rule(526).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v0), buildWall(v1, v0), Rule(527).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), invent_2(v0, v2), Rule(528).
+buildWall(v0, v1) :- cont(v0), buildWall(v1, v2), buildWall(v1, v2), Rule(529).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v2), buildWall(v2, v0), Rule(530).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v0), buildWall(v1, v2), Rule(531).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v2), buildWall(v2, v0), Rule(532).
+buildWall(v2, v0) :- buildWall(v0, v1), offset(v1), inv(v2, v0), Rule(533).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v2, v0), invent_2(v0, v2), Rule(534).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v1), invent_2(v0, v1), Rule(535).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v0), invent_2(v1, v2), Rule(536).
+buildWall(v0, v1) :- cont(v0), buildWall(v0, v1), buildWall(v0, v1), Rule(537).
+buildWall(v0, v1) :- cont(v0), invent_2(v0, v1), Rule(538).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), invent_2(v1, v0), Rule(539).
+buildWall(v2, v1) :- inv(v0, v1), offset(v0), inv(v2, v0), Rule(540).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), buildWall(v0, v2), Rule(541).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v1, v2), Rule(542).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(543).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v0, v2), buildWall(v2, v0), Rule(544).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v2, v0), buildWall(v1, v0), Rule(545).
+invent_2(v0, v1) :- cont(v0), invent_2(v2, v0), invent_2(v2, v1), Rule(546).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v1, v0), buildWall(v0, v2), Rule(547).
+buildWall(v0, v1) :- offset(v1), offset(v0), invent_2(v1, v0), Rule(548).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v2), buildWall(v0, v1), Rule(549).
+buildWall(v0, v1) :- cont(v1), invent_2(v1, v2), invent_2(v2, v0), Rule(550).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v0), buildWall(v2, v1), Rule(551).
+inv(v0, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(552).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v1, v0), invent_2(v2, v1), Rule(553).
+inv(v0, v1) :- buildWall(v0, v1), fetch(v1, v2), Rule(554).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), invent_2(v0, v2), Rule(555).
+invent_2(v0, v1) :- cont(v2), invent_2(v2, v0), invent_2(v2, v1), Rule(556).
+buildWall(v0, v1) :- offset(v0), invent_2(v0, v2), invent_2(v1, v2), Rule(557).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v1), buildWall(v2, v0), Rule(558).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v2, v1), buildWall(v0, v2), Rule(559).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v1, v2), Rule(560).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v0, v1), buildWall(v1, v0), Rule(561).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v0), invent_2(v1, v2), Rule(562).
+buildWall(v1, v2) :- buildWall(v0, v1), inv(v0, v2), Rule(563).
+buildWall(v0, v1) :- cont(v1), offset(v0), offset(v0), Rule(564).
+buildWall(v0, v1) :- offset(v0), invent_2(v1, v0), Rule(565).
+invent_2(v0, v1) :- cont(v2), invent_2(v1, v2), invent_2(v2, v0), Rule(566).
+inv(v2, v1) :- inv(v0, v1), offset(v0), buildWall(v2, v1), Rule(567).
+invent_2(v0, v1) :- offset(v0), offset(v1), Rule(568).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v2), invent_2(v2, v0), Rule(569).
+buildWall(v0, v1) :- cont(v0), buildWall(v2, v0), buildWall(v2, v1), Rule(570).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v0, v1), buildWall(v1, v2), Rule(571).
+buildWall(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(572).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v0), invent_2(v0, v1), Rule(573).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v0), buildWall(v2, v0), Rule(574).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v1), buildWall(v0, v1), Rule(575).
+buildWall(v0, v1) :- cont(v2), cont(v0), invent_2(v1, v2), Rule(576).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v1, v0), buildWall(v2, v1), Rule(577).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v1, v2), Rule(578).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v2, v0), buildWall(v1, v2), Rule(579).
+inv(v1, v2) :- buildWall(v0, v1), offset(v0), buildWall(v1, v2), Rule(580).
+invent_2(v0, v1) :- cont(v2), invent_2(v2, v1), invent_2(v0, v2), Rule(581).
+buildWall(v0, v1) :- cont(v0), offset(v1), buildWall(v1, v0), Rule(582).
+inv(v1, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(583).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), buildWall(v1, v2), Rule(584).
+invent_2(v0, v1) :- offset(v1), invent_2(v0, v1), invent_2(v0, v1), Rule(585).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v0), invent_2(v0, v1), Rule(586).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v1, v2), buildWall(v0, v1), Rule(587).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v2, v0), invent_2(v2, v1), Rule(588).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), buildWall(v1, v2), Rule(589).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v1), buildWall(v2, v0), Rule(590).
+buildWall(v0, v1) :- cont(v0), invent_2(v2, v1), invent_2(v0, v2), Rule(591).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v0), Rule(592).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v0, v2), buildWall(v1, v0), Rule(593).
+buildWall(v0, v1) :- offset(v0), buildWall(v2, v0), buildWall(v1, v2), Rule(594).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v2), invent_2(v0, v1), Rule(595).
+buildWall(v0, v1) :- offset(v0), buildWall(v1, v2), buildWall(v0, v2), Rule(596).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v1, v2), Rule(597).
+buildWall(v0, v1) :- cont(v2), buildWall(v1, v2), buildWall(v0, v1), Rule(598).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v0), buildWall(v2, v1), Rule(599).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), invent_2(v0, v2), Rule(600).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), invent_2(v1, v2), Rule(601).
+inv(v2, v0) :- buildWall(v0, v1), offset(v1), buildWall(v2, v0), Rule(602).
+inv(v0, v2) :- fetch(v0, v1), putOn(v1, v2), offset(v2), Rule(603).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v2, v0), invent_2(v1, v2), Rule(604).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v0), invent_2(v2, v0), Rule(605).
+buildWall(v0, v1) :- cont(v0), cont(v0), invent_2(v0, v1), Rule(606).
+buildWall(v0, v1) :- cont(v0), offset(v2), buildWall(v2, v1), Rule(607).
+buildWall(v0, v1) :- offset(v2), offset(v1), invent_2(v2, v0), Rule(608).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), buildWall(v0, v1), Rule(609).
+inv(v0, v2) :- fetch(v0, v1), putOn(v1, v2), Rule(610).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v1), buildWall(v0, v1), Rule(611).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v0, v1), buildWall(v1, v2), Rule(612).
+buildWall(v0, v1) :- offset(v0), offset(v2), buildWall(v2, v1), Rule(613).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(614).
+buildWall(v0, v1) :- offset(v0), buildWall(v1, v2), buildWall(v2, v1), Rule(615).
+inv(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v0), Rule(616).
+invent_2(v0, v1) :- cont(v0), offset(v1), offset(v1), Rule(617).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), invent_2(v2, v0), Rule(618).
+buildWall(v1, v2) :- inv(v0, v1), offset(v0), inv(v1, v2), Rule(619).
+buildWall(v0, v1) :- cont(v0), invent_2(v2, v0), invent_2(v2, v1), Rule(620).
+buildWall(v0, v1) :- cont(v1), cont(v0), Rule(621).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), Rule(622).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v2, v1), buildWall(v1, v2), Rule(623).
+buildWall(v0, v1) :- offset(v1), invent_2(v2, v1), invent_2(v0, v2), Rule(624).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), invent_2(v0, v2), Rule(625).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v0, v1), buildWall(v1, v0), Rule(626).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), invent_2(v2, v0), Rule(627).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v0), buildWall(v0, v2), Rule(628).
+buildWall(v2, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(629).
+inv(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v1, v2), Rule(630).
+buildWall(v0, v1) :- offset(v0), offset(v0), invent_2(v0, v1), Rule(631).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), buildWall(v1, v0), Rule(632).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v2, v1), buildWall(v2, v1), Rule(633).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v0, v1), Rule(634).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v0), Rule(635).
+buildWall(v0, v2) :- fetch(v0, v1), putOn(v1, v2), offset(v2), Rule(636).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), invent_2(v2, v1), Rule(637).
+buildWall(v0, v1) :- offset(v2), buildWall(v0, v2), buildWall(v1, v0), Rule(638).
+inv(v2, v1) :- cont(v0), inv(v0, v1), inv(v2, v0), Rule(639).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v1, v2), buildWall(v0, v1), Rule(640).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v1, v2), buildWall(v0, v2), Rule(641).
+buildWall(v0, v1) :- offset(v0), buildWall(v2, v1), buildWall(v1, v2), Rule(642).
+buildWall(v0, v1) :- cont(v0), cont(v1), cont(v1), Rule(643).
+invent_2(v0, v1) :- cont(v2), offset(v1), invent_2(v2, v0), Rule(644).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), buildWall(v2, v1), Rule(645).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v1), buildWall(v2, v0), Rule(646).
+inv(v1, v0) :- inv(v0, v1), putOn(v2, v0), Rule(647).
+buildWall(v1, v0) :- inv(v0, v1), putOn(v2, v0), Rule(648).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v0, v2), buildWall(v1, v2), Rule(649).
+invent_2(v0, v1) :- cont(v0), invent_2(v1, v2), invent_2(v1, v2), Rule(650).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), buildWall(v1, v0), Rule(651).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v2), invent_2(v0, v2), Rule(652).
+inv(v2, v1) :- buildWall(v0, v1), offset(v0), buildWall(v2, v0), Rule(653).
+buildWall(v0, v1) :- offset(v1), offset(v0), invent_2(v0, v1), Rule(654).
+invent_2(v0, v1) :- cont(v1), offset(v2), invent_2(v0, v2), Rule(655).
+invent_2(v0, v1) :- offset(v2), offset(v2), invent_2(v1, v0), Rule(656).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v2, v1), buildWall(v0, v1), Rule(657).
+inv(v2, v1) :- buildWall(v0, v1), cont(v0), inv(v2, v0), Rule(658).
+buildWall(v0, v1) :- offset(v1), invent_2(v2, v0), invent_2(v1, v2), Rule(659).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v0, v2), buildWall(v2, v0), Rule(660).
+buildWall(v0, v1) :- offset(v1), buildWall(v2, v0), buildWall(v1, v2), Rule(661).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v0, v2), Rule(662).
+buildWall(v0, v1) :- offset(v0), buildWall(v1, v0), Rule(663).
+buildWall(v0, v1) :- cont(v0), invent_2(v0, v1), invent_2(v0, v1), Rule(664).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v2, v1), invent_2(v2, v0), Rule(665).
+inv(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(666).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v1), invent_2(v0, v2), Rule(667).
+inv(v1, v2) :- cont(v0), inv(v0, v1), buildWall(v1, v2), Rule(668).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v1, v0), buildWall(v0, v2), Rule(669).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v0), buildWall(v2, v0), Rule(670).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), buildWall(v0, v2), Rule(671).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v0, v1), Rule(672).
+buildWall(v0, v1) :- cont(v1), invent_2(v2, v0), buildWall(v0, v2), Rule(673).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v0, v2), invent_2(v2, v1), Rule(674).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v1), invent_2(v0, v2), Rule(675).
+buildWall(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v1, v2), Rule(676).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v1, v0), Rule(677).
+buildWall(v0, v1) :- offset(v0), invent_2(v1, v2), invent_2(v0, v2), Rule(678).
+inv(v0, v1) :- buildWall(v0, v1), cont(v0), Rule(679).
+invent_2(v0, v1) :- cont(v2), cont(v2), invent_2(v1, v0), Rule(680).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v0), buildWall(v1, v2), Rule(681).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v1, v0), invent_2(v2, v1), Rule(682).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v1, v0), buildWall(v1, v2), Rule(683).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v0, v2), buildWall(v2, v1), Rule(684).
+buildWall(v0, v1) :- cont(v1), offset(v2), buildWall(v2, v0), Rule(685).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), invent_2(v2, v1), Rule(686).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v1), buildWall(v1, v2), Rule(687).
+buildWall(v0, v1) :- offset(v1), buildWall(v1, v2), buildWall(v2, v0), Rule(688).
+buildWall(v0, v1) :- cont(v2), invent_2(v0, v2), invent_2(v1, v0), Rule(689).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v1, v0), buildWall(v2, v0), Rule(690).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v2, v0), buildWall(v0, v2), Rule(691).
+inv(v0, v2) :- buildWall(v0, v1), cont(v1), buildWall(v0, v2), Rule(692).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), invent_2(v0, v2), Rule(693).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v0, v2), buildWall(v1, v2), Rule(694).
+invent_2(v0, v1) :- cont(v2), invent_2(v0, v1), invent_2(v2, v1), Rule(695).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v2, v0), Rule(696).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v0, v2), buildWall(v2, v1), Rule(697).
+buildWall(v1, v2) :- cont(v0), inv(v1, v0), inv(v1, v2), Rule(698).
+buildWall(v0, v1) :- cont(v1), offset(v1), invent_2(v0, v1), Rule(699).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), buildWall(v2, v0), Rule(700).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v2), buildWall(v1, v2), Rule(701).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v0), buildWall(v2, v0), Rule(702).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), buildWall(v2, v0), Rule(703).
+buildWall(v1, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(704).
+inv(v1, v0) :- buildWall(v0, v1), fetch(v1, v2), Rule(705).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), buildWall(v1, v2), Rule(706).
+invent_2(v0, v1) :- cont(v0), offset(v0), invent_2(v1, v0), Rule(707).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), invent_2(v0, v2), Rule(708).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v2, v1), Rule(709).
+buildWall(v0, v1) :- cont(v0), cont(v1), invent_2(v1, v0), Rule(710).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), invent_2(v1, v0), Rule(711).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v2), buildWall(v1, v2), Rule(712).
+buildWall(v2, v0) :- inv(v0, v1), offset(v1), inv(v2, v0), Rule(713).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), invent_2(v0, v2), Rule(714).
+invent_2(v0, v1) :- offset(v1), offset(v2), invent_2(v0, v2), Rule(715).
+inv(v2, v1) :- buildWall(v0, v1), cont(v0), buildWall(v2, v1), Rule(716).
+inv(v2, v1) :- inv(v0, v1), inv(v2, v0), Rule(717).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v0, v1), Rule(718).
+buildWall(v0, v1) :- cont(v2), cont(v0), buildWall(v1, v2), Rule(719).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), buildWall(v1, v0), Rule(720).
+buildWall(v0, v1) :- cont(v0), offset(v1), offset(v1), Rule(721).
+buildWall(v0, v1) :- offset(v1), buildWall(v2, v0), buildWall(v0, v2), Rule(722).
+buildWall(v0, v1) :- cont(v0), invent_2(v2, v1), buildWall(v0, v2), Rule(723).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v2, v0), Rule(724).
+buildWall(v2, v1) :- inv(v0, v1), inv(v2, v0), offset(v1), Rule(725).
+invent_2(v0, v1) :- cont(v1), invent_2(v2, v1), invent_2(v0, v2), Rule(726).
+buildWall(v0, v1) :- cont(v0), cont(v1), buildWall(v1, v0), Rule(727).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v1), buildWall(v0, v2), Rule(728).
+inv(v0, v2) :- buildWall(v0, v1), offset(v1), buildWall(v0, v2), Rule(729).
+buildWall(v0, v1) :- cont(v0), cont(v2), buildWall(v1, v2), Rule(730).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v2, v1), buildWall(v1, v2), Rule(731).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v0), invent_2(v1, v0), Rule(732).
+inv(v2, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(733).
+buildWall(v0, v1) :- cont(v1), invent_2(v2, v1), invent_2(v0, v2), Rule(734).
+buildWall(v0, v1) :- offset(v0), offset(v2), invent_2(v2, v1), Rule(735).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), buildWall(v0, v2), Rule(736).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v0, v2), buildWall(v2, v1), Rule(737).
+invent_2(v0, v1) :- offset(v2), offset(v1), invent_2(v0, v2), Rule(738).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), buildWall(v2, v0), Rule(739).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v2), buildWall(v1, v0), Rule(740).
+buildWall(v1, v0) :- buildWall(v0, v1), inv(v1, v2), Rule(741).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v1), buildWall(v2, v0), Rule(742).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v0), invent_2(v2, v1), Rule(743).
+invent_2(v0, v1) :- cont(v0), cont(v1), offset(v1), Rule(744).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(745).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), invent_2(v2, v0), Rule(746).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v2), buildWall(v1, v2), Rule(747).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v1), buildWall(v0, v2), Rule(748).
+buildWall(v0, v2) :- fetch(v0, v1), fetch(v2, v1), Rule(749).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v1, v0), buildWall(v2, v1), Rule(750).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v2, v1), invent_2(v2, v0), Rule(751).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v0, v2), buildWall(v2, v0), Rule(752).
+invent_2(v0, v1) :- cont(v2), invent_2(v2, v0), invent_2(v0, v1), Rule(753).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v0, v2), Rule(754).
+buildWall(v0, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(755).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v0, v1), buildWall(v2, v0), Rule(756).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v2, v1), buildWall(v1, v0), Rule(757).
+inv(v1, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(758).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v0, v1), buildWall(v1, v2), Rule(759).
+buildWall(v0, v1) :- offset(v1), invent_2(v1, v2), buildWall(v0, v2), Rule(760).
+invent_2(v0, v1) :- cont(v2), invent_2(v1, v2), invent_2(v0, v1), Rule(761).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v2, v0), Rule(762).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v0), invent_2(v0, v1), Rule(763).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), buildWall(v0, v2), Rule(764).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v0, v2), buildWall(v0, v2), Rule(765).
+invent_2(v0, v1) :- cont(v1), cont(v0), invent_2(v0, v1), Rule(766).
+invent_2(v0, v1) :- offset(v1), offset(v2), invent_2(v2, v0), Rule(767).
+invent_2(v0, v1) :- cont(v0), cont(v0), cont(v1), Rule(768).
+buildWall(v0, v1) :- cont(v1), buildWall(v2, v0), buildWall(v1, v2), Rule(769).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v2, v1), Rule(770).
+inv(v0, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(771).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v0), buildWall(v1, v2), Rule(772).
+buildWall(v0, v2) :- buildWall(v0, v1), cont(v1), inv(v1, v2), Rule(773).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v0, v2), invent_2(v2, v1), Rule(774).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v0, v2), Rule(775).
+inv(v2, v1) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(776).
+buildWall(v0, v1) :- cont(v1), cont(v2), invent_2(v0, v2), Rule(777).
+inv(v1, v2) :- putOn(v0, v1), putOn(v0, v2), Rule(778).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v1), buildWall(v0, v2), Rule(779).
+buildWall(v0, v1) :- cont(v0), inv(v0, v1), Rule(780).
+inv(v1, v2) :- buildWall(v0, v1), buildWall(v2, v0), Rule(781).
+inv(v0, v2) :- buildWall(v0, v1), inv(v2, v1), Rule(782).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v0), invent_2(v1, v2), Rule(783).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v2), buildWall(v0, v2), Rule(784).
+invent_2(v0, v1) :- offset(v0), invent_2(v0, v2), invent_2(v1, v2), Rule(785).
+inv(v0, v1) :- buildWall(v0, v1), inv(v1, v2), Rule(786).
+buildWall(v0, v1) :- cont(v1), offset(v2), invent_2(v2, v0), Rule(787).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v1, v0), buildWall(v1, v0), Rule(788).
+buildWall(v2, v0) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(789).
+invent_2(v0, v1) :- cont(v0), invent_2(v1, v0), Rule(790).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v2), buildWall(v1, v0), Rule(791).
+buildWall(v0, v1) :- offset(v1), invent_2(v2, v0), buildWall(v0, v2), Rule(792).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), buildWall(v2, v0), Rule(793).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v2, v1), Rule(794).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v0), invent_2(v0, v2), Rule(795).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v0, v1), buildWall(v0, v1), Rule(796).
+buildWall(v2, v0) :- buildWall(v0, v1), cont(v1), inv(v2, v0), Rule(797).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v2), invent_2(v1, v0), Rule(798).
+invent_2(v0, v1) :- cont(v1), offset(v1), offset(v0), Rule(799).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v2), invent_2(v2, v0), Rule(800).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v2, v0), Rule(801).
+buildWall(v0, v1) :- offset(v1), buildWall(v2, v0), buildWall(v2, v0), Rule(802).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v1, v2), buildWall(v2, v0), Rule(803).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v0), buildWall(v0, v1), Rule(804).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v1, v2), buildWall(v0, v1), Rule(805).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v0, v2), Rule(806).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v1, v2), buildWall(v2, v0), Rule(807).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v2, v1), Rule(808).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v0), buildWall(v0, v1), Rule(809).
+invent_2(v0, v1) :- cont(v0), invent_2(v0, v1), invent_2(v0, v1), Rule(810).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v1, v0), invent_2(v2, v0), Rule(811).
+invent_2(v0, v1) :- offset(v0), invent_2(v1, v2), invent_2(v0, v2), Rule(812).
+buildWall(v0, v1) :- inv(v0, v1), putOn(v2, v1), Rule(813).
+invent_2(v0, v1) :- cont(v2), invent_2(v2, v1), invent_2(v0, v1), Rule(814).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v1), buildWall(v1, v2), Rule(815).
+buildWall(v0, v1) :- cont(v1), buildWall(v2, v1), buildWall(v0, v2), Rule(816).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v2, v1), Rule(817).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), buildWall(v0, v1), Rule(818).
+buildWall(v0, v1) :- inv(v0, v1), offset(v1), Rule(819).
+buildWall(v0, v1) :- inv(v0, v1), offset(v0), Rule(820).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v1), invent_2(v0, v2), Rule(821).
+buildWall(v0, v2) :- buildWall(v0, v1), buildWall(v2, v1), Rule(822).
+buildWall(v0, v1) :- cont(v0), buildWall(v0, v2), buildWall(v2, v1), Rule(823).
+buildWall(v0, v1) :- offset(v1), buildWall(v0, v2), buildWall(v0, v2), Rule(824).
+invent_2(v0, v1) :- offset(v1), invent_2(v2, v0), invent_2(v2, v1), Rule(825).
+inv(v0, v2) :- buildWall(v0, v1), buildWall(v2, v1), Rule(826).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), buildWall(v0, v1), Rule(827).
+buildWall(v0, v1) :- offset(v1), invent_2(v1, v0), invent_2(v1, v0), Rule(828).
+invent_2(v0, v1) :- offset(v1), offset(v0), offset(v0), Rule(829).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v0, v2), buildWall(v1, v2), Rule(830).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v0, v2), Rule(831).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), offset(v1), Rule(832).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v1, v0), invent_2(v1, v0), Rule(833).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v0, v2), Rule(834).
+buildWall(v0, v1) :- offset(v0), buildWall(v2, v1), buildWall(v2, v0), Rule(835).
+buildWall(v0, v2) :- buildWall(v0, v1), cont(v0), inv(v1, v2), Rule(836).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v0, v2), buildWall(v2, v1), Rule(837).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), invent_2(v1, v0), Rule(838).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v0), buildWall(v1, v0), Rule(839).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v2, v1), Rule(840).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v2, v1), buildWall(v0, v2), Rule(841).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v2), buildWall(v1, v0), Rule(842).
+buildWall(v0, v1) :- offset(v0), invent_2(v2, v1), invent_2(v2, v1), Rule(843).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v1), buildWall(v0, v2), Rule(844).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v0, v1), Rule(845).
+buildWall(v2, v1) :- cont(v0), inv(v1, v0), inv(v2, v1), Rule(846).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v1, v0), buildWall(v1, v2), Rule(847).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v1, v0), invent_2(v2, v0), Rule(848).
+invent_2(v0, v1) :- offset(v2), invent_2(v2, v0), invent_2(v1, v0), Rule(849).
+buildWall(v2, v0) :- cont(v0), putOn(v1, v0), fetch(v2, v1), Rule(850).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v0, v1), buildWall(v0, v2), Rule(851).
+invent_2(v0, v1) :- cont(v2), offset(v0), invent_2(v1, v2), Rule(852).
+inv(v0, v2) :- buildWall(v0, v1), offset(v1), inv(v1, v2), Rule(853).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v0, v2), buildWall(v0, v2), Rule(854).
+inv(v1, v2) :- buildWall(v0, v1), buildWall(v0, v2), Rule(855).
+buildWall(v0, v1) :- cont(v2), buildWall(v1, v2), buildWall(v1, v0), Rule(856).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v2, v1), buildWall(v2, v0), Rule(857).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v0, v1), Rule(858).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v2, v0), Rule(859).
+buildWall(v0, v1) :- offset(v0), offset(v1), buildWall(v0, v1), Rule(860).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v0), invent_2(v1, v2), Rule(861).
+buildWall(v0, v1) :- cont(v0), cont(v1), cont(v0), Rule(862).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v0), invent_2(v1, v2), Rule(863).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v0, v1), buildWall(v2, v1), Rule(864).
+invent_2(v0, v1) :- cont(v2), invent_2(v0, v1), invent_2(v2, v0), Rule(865).
+invent_2(v0, v1) :- cont(v1), invent_2(v1, v0), invent_2(v1, v0), Rule(866).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v0, v1), invent_2(v2, v0), Rule(867).
+buildWall(v0, v1) :- cont(v1), invent_2(v0, v2), buildWall(v2, v0), Rule(868).
+inv(v0, v1) :- buildWall(v0, v1), putOn(v2, v1), Rule(869).
+inv(v0, v2) :- inv(v0, v1), inv(v2, v1), Rule(870).
+invent_2(v0, v1) :- invent_2(v1, v2), invent_2(v0, v2), invent_2(v2, v0), Rule(871).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), invent_2(v0, v1), Rule(872).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v2, v1), invent_2(v2, v0), Rule(873).
+buildWall(v0, v1) :- offset(v2), invent_2(v0, v1), invent_2(v2, v1), Rule(874).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v1, v0), buildWall(v0, v2), Rule(875).
+invent_2(v0, v1) :- cont(v1), cont(v0), cont(v1), Rule(876).
+buildWall(v0, v1) :- buildWall(v2, v0), buildWall(v1, v0), buildWall(v0, v2), Rule(877).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v0, v1), Rule(878).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), invent_2(v1, v0), Rule(879).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), invent_2(v2, v1), Rule(880).
+buildWall(v0, v1) :- offset(v2), offset(v0), buildWall(v2, v1), Rule(881).
+invent_2(v0, v1) :- offset(v2), invent_2(v2, v0), invent_2(v2, v1), Rule(882).
+buildWall(v0, v1) :- cont(v0), cont(v1), invent_2(v0, v1), Rule(883).
+invent_2(v0, v1) :- cont(v1), invent_2(v0, v2), invent_2(v0, v2), Rule(884).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v0, v1), invent_2(v0, v2), Rule(885).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v0), buildWall(v0, v1), Rule(886).
+buildWall(v0, v1) :- cont(v1), buildWall(v0, v2), buildWall(v2, v1), Rule(887).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), buildWall(v1, v0), Rule(888).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), invent_2(v2, v1), Rule(889).
+buildWall(v0, v1) :- invent_2(v1, v2), buildWall(v2, v0), buildWall(v2, v1), Rule(890).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v0, v1), Rule(891).
+buildWall(v0, v1) :- offset(v0), buildWall(v2, v0), buildWall(v2, v1), Rule(892).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), invent_2(v2, v1), Rule(893).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v2), invent_2(v2, v1), Rule(894).
+buildWall(v0, v1) :- offset(v1), buildWall(v1, v0), buildWall(v1, v0), Rule(895).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v0, v2), buildWall(v0, v2), Rule(896).
+invent_2(v0, v1) :- cont(v2), cont(v1), invent_2(v0, v2), Rule(897).
+buildWall(v0, v1) :- cont(v1), offset(v0), buildWall(v0, v1), Rule(898).
+buildWall(v0, v1) :- cont(v2), invent_2(v1, v0), buildWall(v2, v1), Rule(899).
+buildWall(v0, v1) :- offset(v2), invent_2(v1, v0), buildWall(v2, v0), Rule(900).
+inv(v1, v2) :- buildWall(v0, v1), buildWall(v1, v2), Rule(901).
+buildWall(v0, v1) :- cont(v2), invent_2(v2, v0), invent_2(v1, v0), Rule(902).
+invent_2(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), invent_2(v1, v2), Rule(903).
+buildWall(v2, v1) :- buildWall(v0, v1), offset(v0), inv(v2, v0), Rule(904).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v2, v1), buildWall(v2, v0), Rule(905).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v1), buildWall(v0, v2), Rule(906).
+buildWall(v0, v1) :- offset(v2), buildWall(v1, v2), buildWall(v2, v0), Rule(907).
+invent_2(v0, v1) :- cont(v0), invent_2(v0, v1), invent_2(v1, v0), Rule(908).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v2), buildWall(v1, v0), Rule(909).
+buildWall(v0, v1) :- cont(v1), invent_2(v2, v1), buildWall(v2, v0), Rule(910).
+buildWall(v0, v1) :- offset(v0), buildWall(v0, v2), buildWall(v1, v2), Rule(911).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), invent_2(v0, v2), Rule(912).
+buildWall(v0, v1) :- cont(v0), invent_2(v0, v1), buildWall(v0, v1), Rule(913).
+buildWall(v0, v1) :- offset(v0), invent_2(v1, v2), invent_2(v2, v1), Rule(914).
+buildWall(v2, v0) :- fetch(v0, v1), inv(v2, v0), Rule(915).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v0, v1), Rule(916).
+buildWall(v0, v1) :- cont(v2), buildWall(v2, v0), buildWall(v1, v2), Rule(917).
+buildWall(v0, v1) :- offset(v1), offset(v2), buildWall(v2, v0), Rule(918).
+buildWall(v0, v1) :- invent_2(v0, v2), buildWall(v1, v0), buildWall(v2, v1), Rule(919).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v1, v0), buildWall(v2, v1), Rule(920).
+invent_2(v0, v1) :- invent_2(v1, v0), invent_2(v0, v1), invent_2(v1, v0), Rule(921).
+invent_2(v0, v1) :- cont(v2), invent_2(v0, v2), invent_2(v0, v1), Rule(922).
+buildWall(v1, v2) :- inv(v0, v1), inv(v1, v2), Rule(923).
+inv(v2, v1) :- buildWall(v0, v1), inv(v2, v0), Rule(924).
+invent_2(v0, v1) :- cont(v1), invent_2(v2, v0), invent_2(v1, v2), Rule(925).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v2, v1), buildWall(v2, v1), Rule(926).
+inv(v0, v2) :- buildWall(v0, v1), inv(v1, v2), offset(v2), Rule(927).
+invent_2(v0, v1) :- cont(v1), invent_2(v2, v0), invent_2(v0, v2), Rule(928).
+buildWall(v0, v1) :- buildWall(v1, v0), buildWall(v1, v0), buildWall(v0, v1), Rule(929).
+buildWall(v0, v1) :- invent_2(v1, v0), buildWall(v1, v2), buildWall(v2, v1), Rule(930).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), invent_2(v1, v2), Rule(931).
+invent_2(v0, v1) :- invent_2(v0, v1), Rule(932).
+buildWall(v0, v1) :- invent_2(v2, v1), buildWall(v2, v0), buildWall(v2, v1), Rule(933).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v2, v0), buildWall(v1, v2), Rule(934).
+invent_2(v0, v1) :- offset(v2), invent_2(v2, v1), invent_2(v0, v2), Rule(935).
+invent_2(v0, v1) :- invent_2(v0, v2), invent_2(v2, v0), invent_2(v1, v0), Rule(936).
+buildWall(v0, v1) :- cont(v0), buildWall(v2, v1), buildWall(v1, v2), Rule(937).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), buildWall(v1, v0), Rule(938).
+buildWall(v0, v1) :- offset(v1), invent_2(v1, v0), Rule(939).
+buildWall(v2, v0) :- buildWall(v0, v1), inv(v2, v0), Rule(940).
+buildWall(v0, v1) :- cont(v0), invent_2(v1, v0), Rule(941).
+buildWall(v0, v1) :- offset(v2), invent_2(v2, v1), buildWall(v1, v0), Rule(942).
+buildWall(v1, v2) :- inv(v0, v1), inv(v0, v2), Rule(943).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v0), invent_2(v0, v2), Rule(944).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v2, v1), invent_2(v2, v0), Rule(945).
+buildWall(v0, v1) :- buildWall(v2, v1), buildWall(v1, v2), buildWall(v0, v2), Rule(946).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v1, v2), buildWall(v2, v1), Rule(947).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), buildWall(v0, v2), Rule(948).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v1, v2), invent_2(v0, v2), Rule(949).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v0, v1), buildWall(v0, v2), Rule(950).
+buildWall(v0, v1) :- cont(v1), invent_2(v1, v2), buildWall(v2, v0), Rule(951).
+buildWall(v0, v1) :- invent_2(v2, v0), buildWall(v1, v0), buildWall(v1, v2), Rule(952).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v2, v1), buildWall(v1, v2), Rule(953).
+invent_2(v0, v1) :- offset(v2), offset(v0), invent_2(v1, v2), Rule(954).
+buildWall(v0, v1) :- offset(v2), invent_2(v1, v2), invent_2(v2, v0), Rule(955).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), invent_2(v2, v1), Rule(956).
+buildWall(v0, v1) :- cont(v1), invent_2(v2, v1), buildWall(v0, v2), Rule(957).
+buildWall(v0, v1) :- cont(v0), invent_2(v1, v2), invent_2(v2, v0), Rule(958).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), buildWall(v2, v1), Rule(959).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v2, v1), buildWall(v2, v0), Rule(960).
+buildWall(v0, v1) :- cont(v0), offset(v1), buildWall(v0, v1), Rule(961).
+buildWall(v0, v1) :- buildWall(v0, v1), buildWall(v0, v1), Rule(962).
+buildWall(v0, v1) :- offset(v2), offset(v1), buildWall(v2, v0), Rule(963).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), buildWall(v2, v1), Rule(964).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v2), buildWall(v1, v2), Rule(965).
+buildWall(v0, v1) :- offset(v0), buildWall(v2, v1), buildWall(v0, v2), Rule(966).
+buildWall(v0, v1) :- invent_2(v0, v1), buildWall(v1, v2), buildWall(v0, v2), Rule(967).
+buildWall(v0, v1) :- offset(v1), invent_2(v1, v2), invent_2(v0, v2), Rule(968).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v1), buildWall(v0, v1), Rule(969).
+buildWall(v0, v1) :- offset(v2), offset(v2), invent_2(v1, v0), Rule(970).
+invent_2(v0, v1) :- invent_2(v0, v1), invent_2(v0, v2), invent_2(v2, v0), Rule(971).
+buildWall(v0, v2) :- buildWall(v0, v1), inv(v1, v2), Rule(972).
+buildWall(v0, v1) :- offset(v1), invent_2(v2, v0), invent_2(v0, v2), Rule(973).
+buildWall(v0, v1) :- cont(v0), offset(v1), invent_2(v0, v1), Rule(974).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v0, v2), invent_2(v1, v0), Rule(975).
+buildWall(v0, v1) :- invent_2(v0, v1), invent_2(v1, v2), buildWall(v2, v1), Rule(976).
+buildWall(v0, v1) :- offset(v1), invent_2(v0, v1), Rule(977).
+inv(v2, v0) :- fetch(v0, v1), putOn(v1, v2), Rule(978).
+buildWall(v1, v0) :- cont(v0), inv(v1, v0), Rule(979).
+buildWall(v0, v1) :- invent_2(v2, v0), invent_2(v1, v2), buildWall(v0, v2), Rule(980).
+invent_2(v0, v1) :- cont(v1), offset(v1), invent_2(v0, v1), Rule(981).
+buildWall(v0, v1) :- offset(v2), buildWall(v0, v1), buildWall(v2, v0), Rule(982).
+invent_2(v0, v1) :- offset(v1), offset(v0), offset(v1), Rule(983).
+buildWall(v0, v1) :- cont(v2), invent_2(v0, v2), buildWall(v1, v2), Rule(984).
+buildWall(v2, v1) :- buildWall(v0, v1), inv(v2, v0), cont(v2), Rule(985).
+invent_2(v0, v1) :- invent_2(v2, v1), invent_2(v0, v2), Rule(986).
+buildWall(v0, v1) :- buildWall(v0, v2), buildWall(v0, v2), buildWall(v0, v1), Rule(987).
+inv(v0, v1) :- buildWall(v0, v1), putOn(v2, v0), Rule(988).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v0, v2), Rule(989).
+buildWall(v0, v1) :- invent_2(v1, v2), invent_2(v2, v1), invent_2(v1, v0), Rule(990).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v1, v0), buildWall(v0, v2), Rule(991).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v0, v1), invent_2(v1, v0), Rule(992).
+buildWall(v1, v0) :- buildWall(v0, v1), putOn(v2, v0), Rule(993).
+buildWall(v1, v2) :- cont(v0), inv(v0, v1), inv(v1, v2), Rule(994).
+buildWall(v0, v1) :- invent_2(v0, v2), invent_2(v0, v2), buildWall(v2, v1), Rule(995).
+buildWall(v0, v1) :- buildWall(v1, v2), buildWall(v2, v1), buildWall(v2, v0), Rule(996).
+invent_2(v0, v1) :- cont(v0), cont(v1), invent_2(v0, v1), Rule(997).
+buildWall(v2, v1) :- buildWall(v0, v1), buildWall(v1, v2), Rule(998).
+buildWall(v0, v1) :- invent_2(v1, v0), invent_2(v1, v2), buildWall(v0, v2), Rule(999).
+buildWall(v0, v1) :- invent_2(v2, v1), invent_2(v0, v1), invent_2(v1, v2), Rule(1000).

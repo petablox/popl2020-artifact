@@ -1,94 +1,1035 @@
-.type L
 .type X
+.type L
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
 .decl Certificate(v0: X, v1: L)
 .input Certificate
+
 .decl Verify(v0: X, v1: L)
 .input Verify
+
 .decl Check(v0: X, v1: L)
 .input Check
+
 .decl opSucc(v0: L, v1: L)
 .input opSucc
 
-.decl inv1(v0: X, v1: L)
-.output inv1
-.decl inv2(v0: L)
-.output inv2
-.decl inv3(v0: X, v1: L)
-.output inv3
-.decl inv4(v0: L)
-.output inv4
+.decl invent_CertFlow(v0: X, v1: L)
+.output invent_CertFlow
+
+.decl invent_CertCheck(v0: L)
+.output invent_CertCheck
+
+.decl invent_VeriFlow(v0: X, v1: L)
+.output invent_VeriFlow
+
+.decl invent_VeriCheck(v0: L)
+.output invent_VeriCheck
 
 .decl Correct(v0: L)
 .output Correct
 
-inv4(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(21).
-Correct(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(29).
-inv4(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(51).
-inv4(v0) :- inv2(v0), Rule(64).
-inv4(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(39).
-inv4(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(66).
-Correct(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(40).
-inv4(v0) :- Correct(v0), Rule(58).
-inv2(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(2).
-Correct(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(52).
-inv4(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(34).
-Correct(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(44).
-Correct(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(6).
-inv2(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(5).
-inv2(v0) :- Correct(v0), Rule(45).
-inv2(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(36).
-Correct(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(25).
-Correct(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(28).
-inv4(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(56).
-inv1(v0, v2) :- Check(v0, v1), opSucc(v1, v2), Rule(20).
-Correct(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(38).
-inv4(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(30).
-Correct(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(12).
-Correct(v0) :- inv4(v0), Rule(43).
-inv2(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(62).
-inv4(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(47).
-inv1(v0, v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(53).
-inv2(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(11).
-inv4(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(22).
-Correct(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(19).
-inv1(v0, v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(54).
-inv2(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(42).
-inv2(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(14).
-inv3(v0, v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(1).
-Correct(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(16).
-inv2(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(63).
-inv2(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(41).
-inv3(v0, v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(7).
-Correct(v0) :- inv2(v0), inv4(v0), Rule(10).
-inv2(v0) :- inv4(v0), Rule(59).
-inv2(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(57).
-inv2(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(18).
-inv4(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(15).
-Correct(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(37).
-inv3(v0, v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(48).
-inv2(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(13).
-Correct(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(23).
-inv4(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(3).
-inv4(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(49).
-inv1(v0, v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(55).
-Correct(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(27).
-Correct(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(65).
-Correct(v0) :- inv2(v0), Rule(46).
-inv4(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(60).
-Correct(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(35).
-inv4(v0) :- Correct(v0), inv2(v0), Rule(0).
-inv3(v0, v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(26).
-inv4(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(8).
-inv3(v0, v2) :- Check(v0, v1), opSucc(v1, v2), Rule(50).
-inv4(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(33).
-inv1(v0, v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(32).
-inv2(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(4).
-inv2(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(31).
-inv2(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(9).
-inv4(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(61).
-inv2(v0) :- Correct(v0), inv4(v0), Rule(24).
-inv2(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(17).
+
+
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v3), invent_CertFlow(v0, v3), Rule(1).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), Verify(v2, v3), Rule(2).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(3).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v2, v1), Check(v2, v1), Rule(4).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), invent_CertCheck(v0), Rule(5).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_CertCheck(v0), Rule(6).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_VeriCheck(v0), Rule(7).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(8).
+invent_CertFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(9).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertCheck(v1), invent_VeriFlow(v0, v1), Rule(10).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(11).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), Verify(v0, v1), Rule(12).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v0, v2), opSucc(v1, v2), Rule(13).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Check(v2, v3), Check(v0, v1), Rule(14).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(15).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v3), invent_CertFlow(v0, v1), Rule(16).
+invent_CertFlow(v0, v1) :- Check(v2, v1), Check(v0, v1), Check(v2, v1), Rule(17).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v2, v3), Check(v2, v3), Rule(18).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), invent_CertFlow(v0, v1), Rule(19).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), invent_CertFlow(v0, v1), Rule(20).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_VeriCheck(v0), Rule(21).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v2, v0), Rule(22).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v0, v1), Rule(23).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), invent_CertFlow(v2, v3), Rule(24).
+inv2(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(25).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_VeriCheck(v0), Rule(26).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(27).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), invent_CertFlow(v2, v3), Rule(28).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v2, v3), invent_CertFlow(v0, v1), Rule(29).
+invent_CertFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v0, v1), Rule(30).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v0), invent_CertCheck(v1), Rule(31).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v0), opSucc(v2, v1), Rule(32).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Rule(33).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v2), opSucc(v2, v1), Rule(34).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v2), opSucc(v1, v2), Rule(35).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v1), invent_VeriFlow(v0, v3), Rule(36).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), invent_CertFlow(v2, v3), Rule(37).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v1), invent_CertFlow(v2, v1), Rule(38).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), Certificate(v0, v1), Rule(39).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), Check(v0, v1), Rule(40).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), Rule(41).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(42).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), Verify(v2, v1), Rule(43).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v0, v1), invent_CertCheck(v1), Rule(44).
+Correct(v0) :- invent_CertCheck(v1), invent_VeriCheck(v0), invent_VeriCheck(v1), Rule(45).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(46).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), Rule(47).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v2, v1), Rule(48).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v2, v3), Check(v0, v3), Rule(49).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), invent_VeriCheck(v2), Rule(50).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v2, v1), Check(v2, v1), Rule(51).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v2, v1), invent_CertFlow(v2, v1), Rule(52).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), opSucc(v0, v1), Rule(53).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v1, v2), Rule(54).
+Correct(v0) :- invent_CertCheck(v0), invent_VeriCheck(v0), Correct(v0), Rule(55).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v2), invent_VeriCheck(v0), Rule(56).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), invent_VeriFlow(v0, v1), Rule(57).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), invent_CertCheck(v2), Rule(58).
+invent_VeriFlow(v0, v1) :- invent_CertCheck(v1), invent_VeriFlow(v0, v1), Rule(59).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v3), Check(v2, v3), Rule(60).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v0, v1), Rule(61).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), invent_VeriCheck(v2), Rule(62).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(63).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v0, v3), invent_CertFlow(v2, v3), Rule(64).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v1, v0), Rule(65).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v1), invent_VeriCheck(v2), Rule(66).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), invent_CertFlow(v2, v1), Rule(67).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(68).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v1, v0), Rule(69).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v3), invent_CertFlow(v0, v1), Rule(70).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), invent_VeriFlow(v2, v3), Rule(71).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(72).
+inv3(v0, v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(73).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), Rule(74).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v2, v1), Rule(75).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_CertCheck(v0), Rule(76).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v1, v2), Rule(77).
+inv4(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(78).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v0, v1), invent_VeriFlow(v2, v1), Rule(79).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_CertCheck(v0), Rule(80).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), opSucc(v0, v1), Rule(81).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v3), Check(v2, v3), Rule(82).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_VeriCheck(v1), Rule(83).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(84).
+inv4(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(85).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v3), Check(v2, v1), Rule(86).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v1, v2), Rule(87).
+Correct(v0) :- opSucc(v0, v1), invent_VeriCheck(v0), invent_VeriCheck(v1), Rule(88).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), Check(v2, v1), Rule(89).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), Rule(90).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(91).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v2, v3), invent_VeriFlow(v0, v1), Rule(92).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v0, v1), Rule(93).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v3), Check(v0, v1), Rule(94).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v0, v2), Rule(95).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v0), opSucc(v1, v2), Rule(96).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v0, v2), Rule(97).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v2, v0), Rule(98).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v3), invent_CertFlow(v0, v1), Rule(99).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_VeriCheck(v0), Rule(100).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), opSucc(v1, v0), Rule(101).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v1), invent_CertCheck(v2), Rule(102).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), Rule(103).
+invent_VeriCheck(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v0), Rule(104).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v2), opSucc(v1, v2), Rule(105).
+Correct(v0) :- invent_CertCheck(v1), invent_VeriCheck(v0), Correct(v1), Rule(106).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v2, v0), Rule(107).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(108).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v2, v1), invent_CertFlow(v0, v1), Rule(109).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v2, v0), Rule(110).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v2, v1), invent_CertFlow(v2, v1), Rule(111).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), Rule(112).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), invent_VeriFlow(v0, v1), Rule(113).
+Correct(v0) :- invent_CertCheck(v0), invent_VeriCheck(v0), Rule(114).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), Check(v0, v1), Rule(115).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v1), invent_CertFlow(v0, v3), Rule(116).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v3), Check(v2, v1), Rule(117).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Check(v0, v3), Check(v2, v1), Rule(118).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_VeriCheck(v1), Rule(119).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), Verify(v0, v3), Rule(120).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v3), invent_VeriFlow(v0, v3), Rule(121).
+invent_VeriCheck(v0) :- invent_CertCheck(v1), invent_CertCheck(v1), invent_VeriCheck(v0), Rule(122).
+invent_CertFlow(v0, v1) :- Check(v2, v1), Check(v2, v3), Check(v0, v3), Rule(123).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), invent_CertFlow(v0, v1), Rule(124).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), opSucc(v0, v1), Rule(125).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(126).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(127).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), Check(v0, v1), Rule(128).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v0, v1), Rule(129).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_VeriCheck(v0), Rule(130).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v1, v2), Rule(131).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v1, v2), Rule(132).
+invent_CertCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_CertCheck(v0), Rule(133).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v0, v2), Rule(134).
+invent_VeriCheck(v0) :- invent_VeriCheck(v0), Rule(135).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_CertCheck(v0), Rule(136).
+Correct(v0) :- invent_CertCheck(v1), invent_CertCheck(v1), invent_CertCheck(v0), Rule(137).
+Correct(v0) :- inv4(v0), Rule(138).
+Correct(v0) :- invent_VeriCheck(v1), invent_VeriCheck(v1), Correct(v0), Rule(139).
+Correct(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), Rule(140).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v2, v1), Check(v0, v1), Rule(141).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v2, v3), invent_CertFlow(v2, v3), Rule(142).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), invent_CertFlow(v0, v1), Rule(143).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v1, v2), Rule(144).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v1, v2), Rule(145).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(146).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(147).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v1), invent_CertFlow(v2, v1), Rule(148).
+Correct(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(149).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v3), invent_CertFlow(v2, v3), Rule(150).
+Correct(v0) :- invent_CertCheck(v0), invent_CertCheck(v1), invent_VeriCheck(v1), Rule(151).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v3), Verify(v0, v1), Rule(152).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), Certificate(v2, v1), Rule(153).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_CertCheck(v0), Rule(154).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v0, v1), invent_VeriFlow(v2, v3), Rule(155).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v1), Check(v2, v1), Rule(156).
+inv4(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(157).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v2, v3), invent_CertFlow(v0, v1), Rule(158).
+inv4(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(159).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), Certificate(v2, v3), Rule(160).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertCheck(v1), invent_VeriFlow(v0, v1), Rule(161).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_CertCheck(v1), Rule(162).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v0), opSucc(v1, v2), Rule(163).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v0, v1), Rule(164).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(165).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), invent_CertFlow(v2, v1), Rule(166).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v2), invent_VeriCheck(v2), Rule(167).
+inv3(v0, v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(168).
+inv2(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(169).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v2, v1), Rule(170).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), Rule(171).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v0), Correct(v2), Rule(172).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(173).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(174).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), invent_VeriFlow(v0, v3), Rule(175).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), invent_CertFlow(v2, v3), Rule(176).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_VeriCheck(v1), Rule(177).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v0, v3), Check(v2, v3), Rule(178).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_CertCheck(v0), Rule(179).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v0, v2), Rule(180).
+Correct(v0) :- invent_CertCheck(v0), invent_VeriCheck(v1), Correct(v1), Rule(181).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(182).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v3), invent_CertFlow(v2, v1), Rule(183).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), invent_CertFlow(v2, v3), Rule(184).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v2, v1), invent_CertFlow(v0, v3), Rule(185).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v1, v2), Rule(186).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v2), invent_VeriCheck(v2), Rule(187).
+inv3(v0, v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(188).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v2, v3), invent_CertFlow(v0, v3), Rule(189).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(190).
+Correct(v0) :- invent_CertCheck(v1), invent_CertCheck(v0), invent_VeriCheck(v1), Rule(191).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), invent_VeriCheck(v0), Rule(192).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), invent_CertCheck(v2), Rule(193).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(194).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_VeriCheck(v0), Rule(195).
+invent_CertCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), Rule(196).
+Correct(v0) :- invent_CertCheck(v1), invent_CertCheck(v1), Correct(v0), Rule(197).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Rule(198).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), Check(v0, v1), Rule(199).
+Correct(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(200).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), Rule(201).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), Certificate(v2, v1), Rule(202).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v2, v1), Rule(203).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(204).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v2, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(205).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(206).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_CertCheck(v1), Rule(207).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v3), Check(v0, v1), Rule(208).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), Rule(209).
+Correct(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(210).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v3), Certificate(v2, v3), Rule(211).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_CertCheck(v0), Rule(212).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v3), Verify(v0, v3), Rule(213).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v1), invent_CertFlow(v0, v3), Rule(214).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v0), opSucc(v2, v1), Rule(215).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v0, v3), Check(v2, v1), Rule(216).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), opSucc(v0, v1), Rule(217).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), invent_CertCheck(v2), Rule(218).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v1), Check(v2, v1), Rule(219).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(220).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v2, v3), Check(v2, v3), Rule(221).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v1), Check(v2, v3), Rule(222).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), invent_VeriFlow(v0, v1), Rule(223).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(224).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v3), invent_CertFlow(v0, v3), Rule(225).
+Correct(v0) :- opSucc(v1, v0), Correct(v1), Rule(226).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), Check(v2, v1), Rule(227).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), invent_CertFlow(v2, v1), Rule(228).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v1, v2), Rule(229).
+invent_VeriCheck(l2) :- invent_VeriFlow(x, l1), Check(x, l1), OpSucc(l1, l2), Rule(230).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v3), Check(v2, v3), Rule(231).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v3), Check(v0, v3), Rule(232).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), Verify(v2, v1), Rule(233).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v3), invent_CertFlow(v0, v1), Rule(234).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), Check(v0, v1), Rule(235).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v0, v2), Rule(236).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(237).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v1), invent_VeriFlow(v2, v3), Rule(238).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v3), Verify(v0, v3), Rule(239).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), Verify(v2, v1), Rule(240).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(241).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), Rule(242).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), invent_VeriCheck(v2), Rule(243).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), invent_CertFlow(v2, v3), Rule(244).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), invent_CertFlow(v0, v1), Rule(245).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(246).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_CertCheck(v0), Rule(247).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v0, v3), invent_CertFlow(v2, v3), Rule(248).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v2, v1), Rule(249).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v1, v2), Rule(250).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(251).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v1), Verify(v2, v1), Rule(252).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_VeriCheck(v0), Rule(253).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(254).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(255).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v2, v0), Rule(256).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v1), invent_VeriCheck(v0), Rule(257).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v0, v2), Rule(258).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Rule(259).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), Check(v2, v1), Rule(260).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), opSucc(v0, v1), Rule(261).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), Rule(262).
+Correct(v0) :- invent_CertCheck(v0), invent_CertCheck(v0), Correct(v0), Rule(263).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v3), invent_CertFlow(v2, v3), Rule(264).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), Verify(v2, v1), Rule(265).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v1), Check(v2, v1), Rule(266).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v1), Check(v2, v3), Rule(267).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v0), invent_VeriCheck(v1), Rule(268).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v0, v1), Rule(269).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), Rule(270).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), Verify(v2, v3), Rule(271).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_VeriFlow(v0, v1), Rule(272).
+invent_VeriFlow(x, l2) :- Verify(x, l1), OpSucc(l1, l2), Rule(273).
+Correct(v0) :- invent_CertCheck(v0), Rule(274).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), invent_CertCheck(v1), Rule(275).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertCheck(v1), Rule(276).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Check(v2, v1), invent_CertFlow(v0, v3), Rule(277).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), Correct(v1), Rule(278).
+Correct(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v0), Rule(279).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), Check(v2, v1), Rule(280).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_VeriCheck(v1), Rule(281).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), Verify(v2, v1), Rule(282).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(283).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v1), invent_VeriFlow(v2, v3), Rule(284).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), invent_CertFlow(v2, v3), Rule(285).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v3), invent_VeriFlow(v2, v3), Rule(286).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), invent_CertFlow(v2, v1), Rule(287).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), Certificate(v0, v1), Rule(288).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), Verify(v2, v1), Rule(289).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), Rule(290).
+inv2(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(291).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v3), Check(v0, v3), Rule(292).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(293).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v0, v1), Rule(294).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v0, v3), Check(v2, v3), Rule(295).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), Rule(296).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), invent_CertFlow(v0, v1), Rule(297).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v1), Check(v0, v1), Rule(298).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), Verify(v2, v3), Rule(299).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v2, v1), invent_VeriFlow(v0, v1), Rule(300).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v2, v3), Check(v0, v3), Rule(301).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(302).
+Correct(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(303).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v0, v3), invent_CertFlow(v2, v3), Rule(304).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), Check(v0, v1), Rule(305).
+Correct(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(306).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v3), Check(v0, v3), Rule(307).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v1), Correct(v0), Rule(308).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), opSucc(v0, v1), Rule(309).
+inv4(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(310).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v2, v0), Rule(311).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v3), Verify(v0, v1), Rule(312).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v1, v2), Rule(313).
+invent_CertFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(314).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v3), Verify(v2, v1), Rule(315).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(316).
+Correct(v0) :- Correct(v0), Correct(v0), Rule(317).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v1), Check(v0, v3), Rule(318).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(319).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), Check(v0, v1), Rule(320).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), invent_VeriCheck(v2), Rule(321).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(322).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(323).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v0, v2), opSucc(v1, v2), Rule(324).
+inv2(v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(325).
+invent_CertCheck(v0) :- invent_CertCheck(v0), invent_CertCheck(v0), invent_CertCheck(v0), Rule(326).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v0, v1), Rule(327).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), Rule(328).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(329).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v1), Verify(v2, v3), Rule(330).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), opSucc(v0, v1), Rule(331).
+inv2(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(332).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), Check(v0, v1), Rule(333).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v2, v1), Rule(334).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v3), Check(v0, v3), Rule(335).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(336).
+inv4(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(337).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v0, v2), Rule(338).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), Verify(v2, v3), Rule(339).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v1), Check(v2, v1), Rule(340).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v1), Correct(v2), Rule(341).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v2, v3), invent_CertFlow(v2, v3), Rule(342).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v1), Check(v2, v1), Rule(343).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), Verify(v0, v1), Rule(344).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v1), Check(v2, v1), Rule(345).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v1), invent_VeriCheck(v2), Rule(346).
+invent_CertFlow(v0, v1) :- Check(v2, v1), Check(v0, v3), invent_CertFlow(v2, v3), Rule(347).
+inv2(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(348).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v3), invent_VeriFlow(v0, v1), Rule(349).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(350).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(351).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v2, v3), Check(v2, v3), Rule(352).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(353).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v1), Verify(v2, v1), Rule(354).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v3), Certificate(v2, v3), Rule(355).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v1), invent_CertFlow(v2, v1), Rule(356).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(357).
+invent_CertCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v0), invent_CertCheck(v1), Rule(358).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(359).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v1), Check(v2, v3), Rule(360).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), Rule(361).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_CertCheck(v0), Rule(362).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), Certificate(v2, v1), Rule(363).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), invent_CertFlow(v0, v1), Rule(364).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), Rule(365).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertCheck(v1), invent_CertCheck(v1), Rule(366).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v3), Check(v0, v3), Rule(367).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(368).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v1), Check(v0, v3), Rule(369).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_CertCheck(v1), Rule(370).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), invent_CertFlow(v0, v1), Rule(371).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v2, v1), Rule(372).
+Correct(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(373).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v0, v1), invent_CertCheck(v1), Rule(374).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), Verify(v0, v1), Rule(375).
+Correct(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(376).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), Verify(v2, v3), Rule(377).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v0, v3), Check(v2, v1), Rule(378).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(379).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v1), Check(v2, v3), Rule(380).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), opSucc(v0, v1), Rule(381).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v0), opSucc(v1, v2), Rule(382).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), Check(v2, v1), Rule(383).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v2, v3), invent_VeriFlow(v2, v3), Rule(384).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v2, v1), invent_VeriFlow(v2, v1), Rule(385).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v2, v0), Rule(386).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), opSucc(v1, v0), Rule(387).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v2), opSucc(v1, v2), Rule(388).
+Correct(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), Correct(v0), Rule(389).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_CertCheck(v1), Rule(390).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), invent_CertCheck(v1), invent_CertCheck(v1), Rule(391).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(392).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v3), invent_VeriFlow(v0, v1), Rule(393).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(394).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v2), Correct(v2), Rule(395).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v3), Check(v2, v3), Rule(396).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_CertCheck(v0), Rule(397).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), Rule(398).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), Rule(399).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), Verify(v2, v1), Rule(400).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), Verify(v0, v1), Rule(401).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v0), opSucc(v2, v1), Rule(402).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_VeriCheck(v1), Rule(403).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), Verify(v0, v1), Rule(404).
+Correct(v0) :- opSucc(v0, v1), opSucc(v2, v1), Correct(v2), Rule(405).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_CertCheck(v0), Rule(406).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v2), Correct(v2), Rule(407).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), invent_CertFlow(v2, v1), Rule(408).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v1), invent_CertFlow(v0, v3), Rule(409).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v3), Check(v0, v1), Rule(410).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(411).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), Verify(v2, v1), Rule(412).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v3), invent_VeriFlow(v2, v3), Rule(413).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), Rule(414).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v0, v1), Check(v2, v3), Rule(415).
+Correct(v0) :- opSucc(v0, v1), Correct(v1), Correct(v1), Rule(416).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), invent_CertCheck(v1), Rule(417).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), invent_CertFlow(v2, v1), Rule(418).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), Check(v0, v1), Rule(419).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_VeriFlow(v0, v1), Rule(420).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(421).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), Rule(422).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v3), invent_CertFlow(v0, v3), Rule(423).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v0, v1), invent_CertFlow(v2, v3), Rule(424).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(425).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v3), invent_CertFlow(v2, v3), Rule(426).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(427).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), Verify(v2, v1), Rule(428).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), invent_VeriCheck(v1), Rule(429).
+Correct(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(430).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_CertCheck(v1), Rule(431).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), invent_CertFlow(v0, v1), Rule(432).
+inv2(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(433).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v3), invent_CertFlow(v2, v1), Rule(434).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), Verify(v0, v1), Rule(435).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), invent_CertCheck(v0), Rule(436).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v2, v1), Rule(437).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v0), invent_CertCheck(v1), Rule(438).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v2, v0), opSucc(v1, v2), Rule(439).
+inv4(v2) :- Certificate(v0, v1), Check(v0, v1), opSucc(v1, v2), Rule(440).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v2, v3), Check(v0, v1), Rule(441).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), invent_CertFlow(v0, v1), Rule(442).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), Certificate(v2, v1), Rule(443).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), Rule(444).
+Correct(v0) :- Correct(v0), Correct(v1), Correct(v1), Rule(445).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v1), invent_VeriFlow(v2, v1), Rule(446).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v3), Check(v0, v1), Rule(447).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v0, v3), invent_CertFlow(v2, v1), Rule(448).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v1), invent_CertFlow(v2, v3), Rule(449).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_CertCheck(v1), Rule(450).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v3), invent_CertFlow(v2, v3), Rule(451).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v3), invent_CertFlow(v2, v1), Rule(452).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), invent_CertFlow(v0, v1), Rule(453).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(454).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(455).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v0), invent_VeriCheck(v1), Rule(456).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), invent_VeriFlow(v2, v3), Rule(457).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(458).
+invent_VeriCheck(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v0), invent_VeriCheck(v0), Rule(459).
+Correct(v0) :- invent_CertCheck(v0), invent_CertCheck(v0), invent_CertCheck(v0), Rule(460).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v2), opSucc(v2, v1), Rule(461).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(462).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v3), invent_CertFlow(v2, v3), Rule(463).
+invent_VeriCheck(v0) :- invent_CertCheck(v1), invent_CertCheck(v0), invent_CertCheck(v1), Rule(464).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v2, v1), Rule(465).
+invent_VeriFlow(v0, v1) :- invent_CertCheck(v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(466).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v1), Check(v2, v1), Rule(467).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), invent_CertCheck(v0), Rule(468).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), Correct(v0), Rule(469).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v3), Verify(v0, v1), Rule(470).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(471).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), Rule(472).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), Check(v2, v1), Rule(473).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v1), invent_CertFlow(v2, v3), Rule(474).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v2, v1), invent_CertFlow(v0, v1), Rule(475).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), opSucc(v1, v0), Rule(476).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), Rule(477).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v0), Correct(v1), Rule(478).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v1), Check(v2, v3), Rule(479).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(480).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), invent_VeriFlow(v0, v1), Rule(481).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v2, v1), Rule(482).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), Rule(483).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v1), Rule(484).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_VeriCheck(v1), Rule(485).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), invent_CertFlow(v0, v1), Rule(486).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(487).
+invent_CertFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(488).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v1, v2), Rule(489).
+inv2(v0) :- inv4(v0), Rule(490).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(491).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), Verify(v0, v1), Rule(492).
+inv2(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(493).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v1, v2), Rule(494).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v1), Verify(v0, v3), Rule(495).
+inv4(v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(496).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(497).
+inv1(v0, v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(498).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v1, v2), Rule(499).
+Correct(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(500).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), invent_CertCheck(v1), Rule(501).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), invent_CertCheck(v0), invent_VeriCheck(v0), Rule(502).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v1, v2), Rule(503).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(504).
+inv2(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(505).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), Rule(506).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v3), Check(v2, v3), Rule(507).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v2, v3), invent_CertFlow(v0, v3), Rule(508).
+Correct(v0) :- Correct(v0), Rule(509).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(510).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), Check(v0, v1), Rule(511).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), Check(v2, v1), Rule(512).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), invent_CertCheck(v1), Rule(513).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), Check(v2, v3), Rule(514).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), Verify(v0, v1), Rule(515).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), Certificate(v0, v3), Rule(516).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v0, v2), Rule(517).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v2, v1), Rule(518).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), invent_CertCheck(v2), Rule(519).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_VeriFlow(v0, v1), Rule(520).
+Correct(v0) :- invent_CertCheck(v1), Correct(v0), Correct(v1), Rule(521).
+invent_CertCheck(v0) :- invent_CertCheck(v1), invent_CertCheck(v1), invent_CertCheck(v0), Rule(522).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), invent_CertFlow(v0, v1), Rule(523).
+invent_CertCheck(l2) :- invent_CertFlow(x, l1), Check(x, l1), OpSucc(l1, l2), Rule(524).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v0), invent_VeriCheck(v1), Rule(525).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(526).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), invent_CertFlow(v2, v1), Rule(527).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v2, v3), invent_VeriFlow(v0, v3), Rule(528).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v2, v1), Rule(529).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), Rule(530).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), opSucc(v1, v0), Rule(531).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v1, v0), Rule(532).
+invent_VeriCheck(v0) :- invent_CertCheck(v1), invent_VeriCheck(v0), invent_VeriCheck(v1), Rule(533).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), Verify(v2, v1), Rule(534).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), Check(v2, v3), Rule(535).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), invent_CertCheck(v2), Rule(536).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), invent_CertFlow(v0, v1), Rule(537).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v1, v0), Rule(538).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(539).
+invent_CertFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(540).
+Correct(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(541).
+Correct(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v0), invent_VeriCheck(v0), Rule(542).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), invent_CertCheck(v2), Rule(543).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v3), Check(v2, v3), Rule(544).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(545).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v3), Check(v2, v3), Rule(546).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), Correct(v2), Rule(547).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v1, v2), Rule(548).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), opSucc(v0, v1), Rule(549).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_VeriCheck(v1), Rule(550).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), Certificate(v2, v3), Rule(551).
+invent_CertCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v0), invent_CertCheck(v1), Rule(552).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), invent_CertCheck(v1), Rule(553).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v3), invent_CertFlow(v0, v1), Rule(554).
+inv2(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(555).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), Rule(556).
+Correct(v0) :- opSucc(v0, v1), invent_VeriCheck(v1), Correct(v0), Rule(557).
+Correct(v0) :- opSucc(v1, v0), Correct(v0), Correct(v1), Rule(558).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v2, v3), invent_CertFlow(v0, v3), Rule(559).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), invent_VeriCheck(v0), Rule(560).
+Correct(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(561).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v1), invent_VeriFlow(v2, v3), Rule(562).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), invent_CertCheck(v2), Rule(563).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(564).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), invent_CertCheck(v2), Rule(565).
+Correct(v0) :- invent_VeriCheck(v1), invent_VeriCheck(v1), invent_VeriCheck(v0), Rule(566).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v2, v1), invent_VeriFlow(v0, v3), Rule(567).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), Check(v0, v1), Rule(568).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v0), invent_CertCheck(v1), Rule(569).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v0, v1), Rule(570).
+Correct(v0) :- invent_VeriCheck(v1), invent_VeriCheck(v0), invent_VeriCheck(v1), Rule(571).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_VeriCheck(v1), Rule(572).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v2, v3), Check(v0, v3), Rule(573).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), invent_VeriFlow(v2, v3), Rule(574).
+Correct(v0) :- opSucc(v0, v1), Correct(v0), Correct(v1), Rule(575).
+Correct(v0) :- invent_CertCheck(v1), invent_VeriCheck(v1), invent_VeriCheck(v0), Rule(576).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), Check(v0, v1), Rule(577).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(578).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(579).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(580).
+Correct(v0) :- opSucc(v0, v1), Correct(v1), Correct(v0), Rule(581).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), invent_CertCheck(v1), invent_VeriCheck(v1), Rule(582).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(583).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v0, v1), Rule(584).
+inv1(v0, v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(585).
+Correct(v0) :- opSucc(v0, v1), invent_VeriCheck(v1), Rule(586).
+Correct(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), invent_VeriCheck(v0), Rule(587).
+inv1(v0, v2) :- Check(v0, v1), opSucc(v1, v2), Rule(588).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v2, v0), Rule(589).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(590).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v2, v1), Check(v0, v1), Rule(591).
+invent_VeriCheck(v0) :- invent_VeriCheck(v1), invent_VeriCheck(v1), invent_VeriCheck(v0), Rule(592).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), invent_VeriFlow(v2, v1), Rule(593).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v3), Check(v2, v3), Rule(594).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v0, v1), invent_CertFlow(v2, v3), Rule(595).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), invent_CertFlow(v0, v1), Rule(596).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(597).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v2, v0), Rule(598).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_CertFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(599).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(600).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v2, v3), Check(v0, v1), Rule(601).
+invent_CertCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_CertCheck(v1), Rule(602).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v2, v1), Check(v0, v3), Rule(603).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_CertCheck(v1), Rule(604).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(605).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v2, v1), Check(v0, v1), Rule(606).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v3), invent_CertFlow(v2, v3), Rule(607).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_CertCheck(v1), Rule(608).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v0), invent_VeriCheck(v1), Rule(609).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v0, v3), Check(v2, v1), Rule(610).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(611).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), Correct(v1), Rule(612).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(613).
+inv2(v2) :- Check(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(614).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), Check(v0, v1), Rule(615).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), Verify(v2, v3), Rule(616).
+inv2(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(617).
+Correct(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v1, v2), Rule(618).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v3), Check(v0, v1), Rule(619).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v2, v0), Rule(620).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v2, v1), invent_CertFlow(v0, v3), Rule(621).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(622).
+Correct(v0) :- invent_CertCheck(v0), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(623).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), Rule(624).
+Correct(v0) :- Correct(v0), Correct(v0), Correct(v0), Rule(625).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v1, v2), Rule(626).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), Rule(627).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), invent_CertCheck(v2), Rule(628).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(629).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), opSucc(v1, v0), Rule(630).
+Correct(v0) :- inv2(v0), Rule(631).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v0, v2), Rule(632).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), Check(v0, v1), Rule(633).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v1, v0), Rule(634).
+Correct(v0) :- invent_VeriCheck(v0), Rule(635).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v3), Certificate(v0, v3), Rule(636).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_CertCheck(v0), Rule(637).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v1), Verify(v2, v3), Rule(638).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_VeriCheck(v0), Rule(639).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), invent_CertCheck(v1), Rule(640).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(641).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v2), opSucc(v2, v1), Rule(642).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v3), invent_CertFlow(v2, v3), Rule(643).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v2, v1), Rule(644).
+inv4(v2) :- inv1(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(645).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v2), invent_CertCheck(v2), Rule(646).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(647).
+Correct(v0) :- opSucc(v1, v0), Correct(v1), Correct(v1), Rule(648).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(649).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), invent_CertFlow(v2, v1), Rule(650).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v1), Check(v0, v3), Rule(651).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v0, v1), invent_CertCheck(v1), Rule(652).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertCheck(v1), Rule(653).
+invent_VeriCheck(v0) :- invent_CertCheck(v1), invent_CertCheck(v1), invent_CertCheck(v0), Rule(654).
+inv2(v2) :- Verify(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(655).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v2, v0), opSucc(v2, v1), Rule(656).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), Check(v2, v3), Rule(657).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v0, v3), Check(v2, v3), Rule(658).
+Correct(v0) :- invent_CertCheck(v0), invent_CertCheck(v1), Correct(v1), Rule(659).
+inv2(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(660).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v2, v1), Rule(661).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v1), Verify(v2, v3), Rule(662).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v0, v1), Rule(663).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v3), Check(v0, v3), Rule(664).
+invent_CertFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(665).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(666).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_CertCheck(v0), Rule(667).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_VeriCheck(v0), invent_VeriCheck(v1), Rule(668).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Check(v2, v3), Check(v2, v3), Rule(669).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), Correct(v0), Rule(670).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v2, v0), Rule(671).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), Rule(672).
+invent_CertFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), Rule(673).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), Check(v0, v1), Rule(674).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v3), Check(v0, v3), Rule(675).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v1, v0), Rule(676).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v1), invent_CertFlow(v2, v1), Rule(677).
+inv4(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(678).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v1, v0), Rule(679).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(680).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v1, v0), Rule(681).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), Correct(v1), Rule(682).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v2, v1), Rule(683).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v3), invent_CertFlow(v0, v3), Rule(684).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v1), invent_CertFlow(v0, v3), Rule(685).
+Correct(v0) :- opSucc(v1, v0), invent_VeriCheck(v0), invent_VeriCheck(v1), Rule(686).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v0, v1), invent_CertFlow(v2, v3), Rule(687).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v0, v1), invent_CertFlow(v2, v1), Rule(688).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Check(v2, v1), invent_CertFlow(v2, v1), Rule(689).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v0, v1), Rule(690).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_CertCheck(v1), Rule(691).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v0, v3), invent_VeriFlow(v2, v3), Rule(692).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(693).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), invent_VeriCheck(v0), Rule(694).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), Certificate(v2, v3), Rule(695).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), invent_VeriFlow(v0, v1), Rule(696).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), Rule(697).
+invent_CertCheck(v0) :- invent_CertCheck(v0), invent_CertCheck(v1), invent_CertCheck(v1), Rule(698).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Check(v0, v1), invent_CertFlow(v2, v3), Rule(699).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v1), invent_VeriFlow(v0, v1), Rule(700).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v1), Check(v0, v3), Rule(701).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v1), invent_CertFlow(v0, v3), Rule(702).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v1, v0), Rule(703).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), invent_VeriFlow(v2, v1), Rule(704).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), Check(v0, v1), Rule(705).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), Rule(706).
+invent_CertFlow(v0, v1) :- Check(v2, v1), Check(v2, v3), invent_CertFlow(v0, v3), Rule(707).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_VeriCheck(v0), Rule(708).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v2, v1), Check(v0, v3), Rule(709).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v2, v0), Rule(710).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v2, v0), Rule(711).
+Correct(v0) :- Correct(v1), Correct(v1), Correct(v0), Rule(712).
+Correct(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_CertCheck(v0), Rule(713).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), invent_CertFlow(v0, v1), Rule(714).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v2, v1), Check(v0, v3), Rule(715).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), Verify(v0, v1), Rule(716).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v0, v1), invent_CertFlow(v2, v1), Rule(717).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), Verify(v2, v3), Rule(718).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), invent_VeriCheck(v2), Rule(719).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), invent_CertFlow(v0, v1), Rule(720).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), invent_VeriCheck(v1), Rule(721).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v1), Check(v0, v1), Rule(722).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v1), invent_CertFlow(v0, v1), Rule(723).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v0, v1), Rule(724).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v1), invent_VeriFlow(v0, v3), Rule(725).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(726).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v2, v1), Rule(727).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), opSucc(v1, v0), Rule(728).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(729).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v2), opSucc(v2, v1), Rule(730).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(731).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), Verify(v0, v1), Rule(732).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), invent_CertCheck(v2), Rule(733).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), Check(v2, v3), Rule(734).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v3), invent_VeriFlow(v2, v3), Rule(735).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v0, v2), Rule(736).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), invent_VeriCheck(v2), Rule(737).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), Rule(738).
+Correct(v0) :- invent_CertCheck(v0), invent_VeriCheck(v0), invent_VeriCheck(v0), Rule(739).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(740).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v1), invent_CertFlow(v2, v3), Rule(741).
+invent_CertFlow(x, l2) :- Certificate(x, l1), OpSucc(l1, l2), Rule(742).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v2, v0), Rule(743).
+inv2(v0) :- Correct(v0), Rule(744).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v2, v1), invent_CertFlow(v2, v1), Rule(745).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), invent_VeriCheck(v2), Rule(746).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), invent_VeriFlow(v2, v1), Rule(747).
+invent_CertFlow(v0, v1) :- Check(v2, v1), Check(v2, v1), invent_CertFlow(v0, v1), Rule(748).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), Check(v2, v1), Rule(749).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v1, v2), Rule(750).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Check(v2, v1), Check(v0, v3), Rule(751).
+Correct(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v0), Correct(v0), Rule(752).
+Correct(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(753).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), invent_CertFlow(v2, v1), Rule(754).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(755).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v1, v0), Rule(756).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_VeriCheck(v0), Rule(757).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v2, v3), invent_VeriFlow(v0, v1), Rule(758).
+Correct(l) :- invent_CertCheck(l), invent_VeriCheck(l), Rule(759).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v3), Verify(v2, v3), Rule(760).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v2, v0), Rule(761).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(762).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), Rule(763).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(764).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v1), Correct(v0), Rule(765).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Rule(766).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v3), invent_CertFlow(v0, v3), Rule(767).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(768).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(769).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_VeriCheck(v0), Rule(770).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v2, v1), Check(v0, v1), Rule(771).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v2, v3), invent_CertFlow(v2, v3), Rule(772).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v1), Verify(v2, v3), Rule(773).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), Correct(v1), Rule(774).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v1), Check(v0, v3), Rule(775).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v2, v3), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(776).
+invent_VeriFlow(v0, v1) :- Check(v2, v3), Check(v0, v3), invent_VeriFlow(v2, v1), Rule(777).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), invent_VeriFlow(v0, v1), Rule(778).
+invent_CertFlow(v0, v1) :- Check(v2, v1), invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), Rule(779).
+Correct(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(780).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v2, v1), Rule(781).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), Correct(v1), Rule(782).
+inv4(v0) :- Correct(v0), inv2(v0), Rule(783).
+Correct(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_VeriCheck(v1), Rule(784).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), invent_CertFlow(v0, v3), Rule(785).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(786).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v2, v3), invent_VeriFlow(v2, v3), Rule(787).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v3), invent_CertFlow(v2, v3), Rule(788).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertCheck(v1), invent_VeriFlow(v0, v1), Rule(789).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), Rule(790).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Rule(791).
+Correct(v0) :- opSucc(v1, v0), invent_CertCheck(v0), invent_CertCheck(v1), Rule(792).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(793).
+Correct(v0) :- inv2(v0), inv4(v0), Rule(794).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v1), invent_CertFlow(v2, v3), Rule(795).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v1), Verify(v0, v3), Rule(796).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_VeriCheck(v1), invent_VeriCheck(v0), Rule(797).
+Correct(v2) :- Certificate(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(798).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v0, v1), Rule(799).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(800).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), invent_CertCheck(v0), Rule(801).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), invent_CertFlow(v0, v1), Rule(802).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(803).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v0, v1), Rule(804).
+Correct(v0) :- invent_VeriCheck(v1), Correct(v1), Correct(v0), Rule(805).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(806).
+invent_VeriFlow(v0, v1) :- Check(v2, v1), Check(v0, v1), Check(v2, v1), Rule(807).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v0, v2), Rule(808).
+Correct(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(809).
+inv4(v2) :- opSucc(v0, v1), opSucc(v1, v2), Rule(810).
+invent_CertFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(811).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v0, v3), invent_VeriFlow(v2, v3), Rule(812).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), Verify(v2, v1), Verify(v0, v3), Rule(813).
+Correct(v0) :- invent_CertCheck(v1), invent_VeriCheck(v1), Correct(v0), Rule(814).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v2), invent_CertCheck(v1), Rule(815).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v2, v0), Rule(816).
+inv2(v0) :- Correct(v0), inv4(v0), Rule(817).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Check(v2, v1), Check(v2, v1), Rule(818).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), Check(v0, v3), Rule(819).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v0), opSucc(v1, v2), Rule(820).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v3), Check(v2, v3), Rule(821).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v1, v2), Rule(822).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v0, v2), Rule(823).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v2, v3), Check(v0, v1), Rule(824).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(825).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v2, v1), Rule(826).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v2, v1), invent_CertFlow(v0, v1), Rule(827).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(828).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), invent_CertCheck(v1), Rule(829).
+invent_CertFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(830).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertCheck(v1), Rule(831).
+Correct(v0) :- invent_CertCheck(v1), invent_CertCheck(v0), Correct(v1), Rule(832).
+inv2(v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(833).
+invent_VeriCheck(v0) :- invent_CertCheck(v0), invent_CertCheck(v0), Rule(834).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(835).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v0, v1), Check(v2, v1), Rule(836).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), Check(v0, v1), Rule(837).
+Correct(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(838).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(839).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_CertFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(840).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_VeriCheck(v1), Rule(841).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_VeriFlow(v2, v3), invent_VeriFlow(v0, v1), Rule(842).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), invent_CertCheck(v1), Rule(843).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(844).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), Verify(v2, v1), Rule(845).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_VeriFlow(v2, v1), invent_VeriFlow(v0, v1), Rule(846).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v2, v3), invent_CertFlow(v0, v1), Rule(847).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), Rule(848).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), Check(v2, v1), Rule(849).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v2, v1), invent_CertFlow(v0, v1), Rule(850).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), Rule(851).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Verify(v0, v1), invent_VeriFlow(v0, v1), Rule(852).
+invent_VeriFlow(v0, v1) :- invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v3), invent_VeriFlow(v2, v3), Rule(853).
+invent_CertCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_CertCheck(v1), Rule(854).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v0, v2), Rule(855).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Check(v0, v1), Check(v2, v3), Rule(856).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v0), invent_CertCheck(v2), Rule(857).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), opSucc(v1, v0), Rule(858).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), invent_CertFlow(v2, v1), Rule(859).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(860).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(861).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), invent_VeriFlow(v2, v1), Rule(862).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), invent_VeriFlow(v0, v1), Rule(863).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), invent_CertCheck(v1), Rule(864).
+invent_VeriCheck(v0) :- opSucc(v1, v0), invent_CertCheck(v1), invent_VeriCheck(v0), Rule(865).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), invent_VeriFlow(v0, v1), Rule(866).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v2, v0), Rule(867).
+Correct(v0) :- invent_CertCheck(v1), invent_CertCheck(v1), invent_VeriCheck(v0), Rule(868).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Check(v2, v3), invent_VeriFlow(v2, v3), Rule(869).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v3), Verify(v2, v3), Rule(870).
+Correct(v0) :- invent_CertCheck(v1), invent_CertCheck(v0), invent_CertCheck(v1), Rule(871).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v1), Check(v2, v1), Rule(872).
+Correct(v0) :- Correct(v1), Correct(v0), Correct(v1), Rule(873).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v1), Rule(874).
+inv2(v2) :- Certificate(v0, v1), opSucc(v1, v2), Rule(875).
+inv4(v2) :- Certificate(v0, v1), inv1(v0, v1), opSucc(v1, v2), Rule(876).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v0, v1), invent_CertCheck(v1), Rule(877).
+Correct(v2) :- Check(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(878).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_VeriFlow(v0, v3), invent_VeriFlow(v2, v3), Rule(879).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), Verify(v0, v1), Rule(880).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v1), Rule(881).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v0, v1), invent_VeriFlow(v2, v1), Rule(882).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v0, v3), invent_VeriFlow(v2, v1), Rule(883).
+Correct(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(884).
+invent_CertFlow(v0, v1) :- Check(v2, v3), invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), Rule(885).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), invent_CertFlow(v0, v1), Rule(886).
+inv3(v0, v2) :- Check(v0, v1), opSucc(v1, v2), Rule(887).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v0, v1), invent_CertFlow(v2, v1), Rule(888).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(889).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), opSucc(v2, v1), Rule(890).
+Correct(v0) :- invent_VeriCheck(v0), Correct(v0), Correct(v0), Rule(891).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertCheck(v1), invent_CertCheck(v1), Rule(892).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(893).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v1), invent_CertFlow(v2, v3), Rule(894).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v0, v2), Rule(895).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v1), invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), Rule(896).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v0, v3), invent_CertFlow(v2, v1), Rule(897).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(898).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), Verify(v0, v3), Rule(899).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v2), Correct(v0), Rule(900).
+inv4(v2) :- Check(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(901).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(902).
+Correct(v0) :- opSucc(v0, v1), opSucc(v0, v1), Correct(v1), Rule(903).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v0, v1), invent_CertCheck(v1), Rule(904).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), invent_CertCheck(v2), Rule(905).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), invent_CertFlow(v0, v1), invent_VeriFlow(v2, v3), Rule(906).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), Rule(907).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), Check(v2, v3), Rule(908).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Check(v2, v3), invent_VeriFlow(v0, v3), Rule(909).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v3), Check(v2, v3), Rule(910).
+invent_CertFlow(v0, v1) :- Check(v2, v1), Check(v2, v1), Check(v0, v1), Rule(911).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v1, v0), opSucc(v0, v1), Rule(912).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), invent_CertCheck(v2), Rule(913).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), invent_CertFlow(v0, v3), invent_CertFlow(v2, v3), Rule(914).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v2, v0), Rule(915).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v2, v1), Verify(v0, v1), Rule(916).
+Correct(v0) :- invent_CertCheck(v0), invent_CertCheck(v0), invent_VeriCheck(v0), Rule(917).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertCheck(v1), invent_VeriFlow(v0, v1), Rule(918).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v1), invent_CertFlow(v2, v1), Rule(919).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v0, v1), invent_VeriFlow(v0, v1), Rule(920).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_VeriFlow(v0, v1), invent_VeriFlow(v2, v1), Rule(921).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Check(v0, v1), invent_VeriFlow(v2, v1), Rule(922).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v3), Verify(v2, v3), Rule(923).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v1), invent_VeriFlow(v2, v1), Rule(924).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), invent_CertFlow(v2, v1), Rule(925).
+inv4(v2) :- Certificate(v0, v1), Verify(v0, v1), opSucc(v1, v2), Rule(926).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v3), Certificate(v0, v1), Rule(927).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_CertCheck(v1), Rule(928).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v1), invent_VeriFlow(v2, v1), Rule(929).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v1), Verify(v2, v3), Rule(930).
+Correct(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v0, v1), Rule(931).
+invent_VeriFlow(v0, v1) :- invent_CertCheck(v1), invent_CertCheck(v1), invent_VeriFlow(v0, v1), Rule(932).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), Rule(933).
+invent_CertFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), Check(v2, v3), Rule(934).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), Check(v0, v1), invent_CertCheck(v1), Rule(935).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v1), opSucc(v2, v0), Rule(936).
+invent_VeriCheck(v0) :- invent_VeriCheck(v0), invent_VeriCheck(v1), invent_VeriCheck(v1), Rule(937).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v1, v2), opSucc(v0, v1), Rule(938).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Verify(v2, v1), Verify(v2, v1), Rule(939).
+invent_CertFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(940).
+invent_VeriFlow(v0, v1) :- Check(v0, v1), invent_CertFlow(v2, v1), invent_CertFlow(v2, v1), Rule(941).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v1, v2), opSucc(v2, v0), Rule(942).
+inv4(v0) :- Correct(v0), Rule(943).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), invent_CertFlow(v2, v3), invent_CertFlow(v2, v3), Rule(944).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v0, v1), invent_CertCheck(v1), invent_CertCheck(v1), Rule(945).
+invent_CertFlow(v0, v1) :- Verify(v0, v1), Verify(v2, v1), Check(v2, v1), Rule(946).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v3), Check(v2, v1), Rule(947).
+invent_CertFlow(v0, v1) :- Certificate(v2, v3), Certificate(v2, v1), invent_CertFlow(v0, v3), Rule(948).
+invent_CertCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), Rule(949).
+inv4(v2) :- Verify(v0, v1), inv3(v0, v1), opSucc(v1, v2), Rule(950).
+inv1(v0, v2) :- Verify(v0, v1), opSucc(v1, v2), Rule(951).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v0, v1), Check(v0, v1), Rule(952).
+invent_VeriCheck(v0) :- opSucc(v1, v2), opSucc(v0, v2), invent_VeriCheck(v1), Rule(953).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v1), Correct(v1), Rule(954).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Certificate(v0, v3), invent_VeriFlow(v2, v1), Rule(955).
+invent_CertCheck(v0) :- opSucc(v1, v2), opSucc(v2, v0), opSucc(v2, v1), Rule(956).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), invent_CertFlow(v2, v1), Rule(957).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v2, v3), invent_CertFlow(v0, v3), Rule(958).
+Correct(v0) :- invent_CertCheck(v0), Correct(v0), Correct(v0), Rule(959).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), invent_VeriFlow(v0, v1), Rule(960).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Certificate(v0, v1), Certificate(v0, v1), Rule(961).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Check(v0, v1), Check(v2, v1), Rule(962).
+invent_CertFlow(v0, v1) :- Certificate(v0, v1), Check(v0, v1), invent_CertFlow(v0, v1), Rule(963).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v2, v1), Check(v2, v1), Rule(964).
+invent_VeriFlow(v0, v1) :- Verify(v2, v1), invent_CertFlow(v2, v3), invent_VeriFlow(v0, v3), Rule(965).
+invent_CertFlow(v0, v1) :- Verify(v2, v3), invent_CertFlow(v2, v1), invent_CertFlow(v0, v3), Rule(966).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_VeriCheck(v1), Rule(967).
+invent_VeriCheck(v0) :- opSucc(v1, v0), opSucc(v1, v0), invent_CertCheck(v1), Rule(968).
+inv3(v0, v2) :- inv3(v0, v1), opSucc(v1, v2), Rule(969).
+invent_CertFlow(v0, v1) :- Check(v0, v1), Check(v2, v1), invent_CertFlow(v2, v1), Rule(970).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v0), opSucc(v1, v2), Rule(971).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Check(v2, v1), invent_CertFlow(v0, v3), Rule(972).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v2, v0), Rule(973).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v0), opSucc(v2, v1), Rule(974).
+invent_CertCheck(v0) :- opSucc(v0, v1), opSucc(v0, v2), opSucc(v2, v1), Rule(975).
+invent_VeriCheck(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_VeriCheck(v1), Rule(976).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Verify(v0, v3), Check(v2, v3), Rule(977).
+Correct(v0) :- invent_VeriCheck(v0), Correct(v0), Rule(978).
+invent_VeriFlow(v0, v1) :- invent_CertFlow(v2, v3), invent_CertFlow(v2, v1), invent_VeriFlow(v0, v3), Rule(979).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v2, v1), Verify(v0, v1), Rule(980).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v1), invent_CertCheck(v2), Rule(981).
+invent_VeriCheck(v0) :- opSucc(v0, v1), opSucc(v2, v1), opSucc(v1, v2), Rule(982).
+inv4(v0) :- inv2(v0), Rule(983).
+Correct(v0) :- opSucc(v0, v1), Correct(v1), Rule(984).
+invent_CertCheck(v0) :- opSucc(v1, v0), opSucc(v1, v2), opSucc(v0, v2), Rule(985).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v3), Verify(v0, v3), Verify(v2, v1), Rule(986).
+invent_VeriFlow(v0, v1) :- Verify(v0, v1), invent_CertFlow(v0, v1), invent_CertFlow(v0, v1), Rule(987).
+invent_CertFlow(v0, v1) :- Check(v2, v3), Check(v0, v1), Check(v2, v3), Rule(988).
+inv1(v0, v2) :- inv1(v0, v1), opSucc(v1, v2), Rule(989).
+invent_VeriFlow(v0, v1) :- Certificate(v2, v1), Certificate(v0, v1), Check(v2, v1), Rule(990).
+Correct(v0) :- invent_VeriCheck(v0), Correct(v1), Correct(v1), Rule(991).
+inv4(v2) :- Check(v0, v1), opSucc(v1, v2), Rule(992).
+invent_CertFlow(v0, v1) :- Verify(v2, v1), Verify(v0, v3), invent_CertFlow(v2, v3), Rule(993).
+invent_VeriFlow(v0, v1) :- Certificate(v0, v1), Verify(v0, v1), Rule(994).
+Correct(v0) :- invent_CertCheck(v0), Correct(v0), Rule(995).
+Correct(v0) :- opSucc(v1, v2), opSucc(v0, v1), opSucc(v2, v0), Rule(996).
+Correct(v0) :- opSucc(v0, v1), invent_CertCheck(v1), invent_VeriCheck(v1), Rule(997).
+Correct(v0) :- opSucc(v1, v2), opSucc(v2, v0), invent_VeriCheck(v1), Rule(998).
+Correct(v0) :- opSucc(v1, v0), opSucc(v2, v1), opSucc(v0, v2), Rule(999).
+invent_VeriFlow(v0, v1) :- Verify(v2, v3), Verify(v0, v3), invent_VeriFlow(v2, v1), Rule(1000).

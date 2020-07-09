@@ -1,76 +1,548 @@
-.type H
 .type F
-.type M
+.type Z
+.type H
 .type T
 .type V
-.type Z
+.type M
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
-.decl invocation(v0: H, v1: M)
-.input invocation
-.decl store(v0: V, v1: F, v2: V)
-.input store
-.decl actual(v0: H, v1: Z, v2: V)
-.input actual
-.decl points_initial(v0: V, v1: H)
-.input points_initial
-.decl formal(v0: M, v1: Z, v2: V)
-.input formal
-.decl assign(v0: T, v1: V, v2: T, v3: V)
-.input assign
 .decl enclosing_type(v0: V, v1: T)
 .input enclosing_type
-.decl receiver_formal(v0: H, v1: V)
-.input receiver_formal
-.decl receiver_actual(v0: M, v1: V)
-.input receiver_actual
+
+.decl points_initial(v0: V, v1: H)
+.input points_initial
+
+.decl store(v0: V, v1: F, v2: V)
+.input store
+
 .decl load(v0: V, v1: F, v2: V)
 .input load
 
+.decl invocation(v0: H, v1: M)
+.input invocation
+
+.decl receiver_actual(v0: M, v1: V)
+.input receiver_actual
+
+.decl receiver_formal(v0: H, v1: V)
+.input receiver_formal
+
+.decl formal(v0: M, v1: Z, v2: V)
+.input formal
+
+.decl actual(v0: H, v1: Z, v2: V)
+.input actual
+
+.decl assign(v0: T, v1: V, v2: T, v3: V)
+.input assign
 
 .decl pointsto(v0: T, v1: V, v2: H)
 .output pointsto
+
 .decl heappointsto(v0: H, v1: F, v2: H)
 .output heappointsto
 
-pointsto(v1, v0, v3) :- enclosing_type(v0, v1), pointsto(v1, v2, v3), Rule(29).
-heappointsto(v3, v4, v2) :- heappointsto(v0, v1, v2), heappointsto(v3, v4, v0), Rule(3).
-pointsto(v0, v4, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(18).
-pointsto(v0, v3, v4) :- assign(v0, v1, v2, v3), receiver_formal(v4, v1), Rule(10).
-pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), receiver_formal(v4, v1), Rule(32).
-pointsto(v0, v3, v4) :- assign(v0, v1, v2, v3), points_initial(v3, v4), Rule(20).
-pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v1, v5), Rule(16).
-heappointsto(v0, v1, v4) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), Rule(21).
-heappointsto(v3, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v3, v4, v0), Rule(24).
-pointsto(v2, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(37).
-pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(34).
-pointsto(v4, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(33).
-pointsto(v0, v3, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(7).
-pointsto(v0, v3, v2) :- pointsto(v0, v1, v2), receiver_formal(v2, v3), Rule(0).
-pointsto(v2, v0, v1) :- points_initial(v0, v1), pointsto(v2, v0, v3), Rule(27).
-heappointsto(v0, v4, v2) :- heappointsto(v0, v1, v2), heappointsto(v3, v4, v0), Rule(35).
-pointsto(v2, v0, v1) :- points_initial(v0, v1), pointsto(v2, v3, v1), Rule(22).
-pointsto(v3, v4, v2) :- pointsto(v0, v1, v2), assign(v3, v4, v0, v1), Rule(9).
-pointsto(v3, v5, v2) :- heappointsto(v0, v1, v2), pointsto(v3, v4, v0), store(v4, v1, v5), Rule(36).
-pointsto(v3, v0, v4) :- load(v0, v1, v2), pointsto(v3, v2, v4), Rule(26).
-pointsto(v0, v1, v4) :- pointsto(v0, v1, v2), pointsto(v3, v1, v4), Rule(11).
-pointsto(v5, v4, v2) :- heappointsto(v0, v1, v2), load(v3, v1, v4), pointsto(v5, v3, v0), Rule(6).
-pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v0, v4, v5), Rule(15).
-pointsto(v0, v3, v4) :- assign(v0, v1, v2, v3), points_initial(v1, v4), Rule(2).
-pointsto(v2, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v1, v4), Rule(19).
-pointsto(v1, v0, v2) :- enclosing_type(v0, v1), points_initial(v0, v2), Rule(13).
-heappointsto(v0, v1, v4) :- heappointsto(v0, v1, v2), heappointsto(v3, v1, v4), Rule(23).
-pointsto(v3, v4, v2) :- heappointsto(v0, v1, v2), pointsto(v3, v4, v0), Rule(28).
-heappointsto(v4, v1, v5) :- load(v0, v1, v2), pointsto(v3, v0, v4), pointsto(v3, v2, v5), Rule(14).
-pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v3, v4), Rule(17).
-pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v1, v4), Rule(1).
-pointsto(v0, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(30).
-pointsto(v0, v3, v5) :- assign(v0, v1, v2, v3), pointsto(v4, v3, v5), Rule(38).
-pointsto(v2, v1, v5) :- assign(v0, v1, v2, v3), pointsto(v2, v4, v5), Rule(5).
-pointsto(v0, v1, v4) :- assign(v0, v1, v2, v3), receiver_formal(v4, v3), Rule(4).
-pointsto(v2, v1, v4) :- assign(v0, v1, v2, v3), points_initial(v3, v4), Rule(8).
-pointsto(v0, v1, v4) :- pointsto(v0, v1, v2), pointsto(v0, v3, v4), Rule(25).
-heappointsto(v2, v5, v4) :- pointsto(v0, v1, v2), pointsto(v0, v3, v4), store(v1, v5, v3), Rule(12).
-pointsto(v0, v3, v2) :- pointsto(v0, v1, v2), store(v3, v4, v1), Rule(31).
+
+
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), Rule(1).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), Rule(2).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), enclosing_type(v1, v0), points_initial(v3, v2), points_initial(v3, v2), Rule(3).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v4, v3, v2), heappointsto(v2, v3, v4), Rule(4).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), Rule(5).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v3, v4), pointsto(v0, v1, v2), pointsto(v5, v3, v4), Rule(6).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v4, v3, v0), heappointsto(v0, v3, v2), Rule(7).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), Rule(8).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), Rule(9).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v2, v3, v4), Rule(10).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v3, v4), receiver_formal(v2, v3), pointsto(v0, v1, v4), Rule(11).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), Rule(12).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), Rule(13).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), Rule(14).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), Rule(15).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), Rule(16).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), Rule(17).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), Rule(18).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), points_initial(v3, v4), receiver_formal(v2, v3), pointsto(v0, v3, v4), Rule(19).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), Rule(20).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), Rule(21).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), points_initial(v3, v2), receiver_formal(v2, v3), receiver_formal(v2, v1), Rule(22).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), Rule(23).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), Rule(24).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), Rule(25).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(26).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v2, v1, v4), Rule(27).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(28).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), Rule(29).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v2, v3), pointsto(v0, v1, v2), pointsto(v0, v3, v2), Rule(30).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v2), heappointsto(v0, v1, v4), Rule(31).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v4, v1), pointsto(v0, v3, v4), pointsto(v0, v1, v2), Rule(32).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), Rule(33).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), Rule(34).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v1, v4), pointsto(v0, v1, v2), pointsto(v5, v3, v4), Rule(35).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), Rule(36).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), Rule(37).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v2), points_initial(v1, v2), points_initial(v3, v2), Rule(38).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), Rule(39).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), Rule(40).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v4, v3, v0), Rule(41).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v0, v3, v4), pointsto(v5, v3, v4), pointsto(v5, v1, v2), Rule(42).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v1, v0), Rule(43).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v4), Rule(44).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), Rule(45).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), Rule(46).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), heappointsto(v4, v1, v0), Rule(47).
+pointsto(v0, v1, v2) :- pointsto(v0, v1, v2), pointsto(v0, v3, v4), pointsto(v0, v3, v4), pointsto(v0, v1, v4), Rule(48).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), Rule(49).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), enclosing_type(v1, v0), enclosing_type(v3, v0), points_initial(v3, v2), Rule(50).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), Rule(51).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), pointsto(v0, v3, v2), pointsto(v0, v1, v4), pointsto(v0, v3, v4), Rule(52).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), Rule(53).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), Rule(54).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), heappointsto(v2, v1, v4), heappointsto(v2, v3, v4), Rule(55).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v2, v3), receiver_formal(v2, v1), Rule(56).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), Rule(57).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v1, v0), Rule(58).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), Rule(59).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v1, v0), heappointsto(v4, v3, v0), Rule(60).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), Rule(61).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), Rule(62).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), Rule(63).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v2, v3, v4), Rule(64).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v1, v2), pointsto(v0, v3, v4), pointsto(v5, v1, v2), Rule(65).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), Rule(66).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), Rule(67).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), Rule(68).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(69).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v0, v1, v4), Rule(70).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), heappointsto(v2, v1, v4), Rule(71).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), Rule(72).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v4, v3, v2), heappointsto(v0, v3, v4), Rule(73).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v3), pointsto(v0, v1, v4), pointsto(v0, v1, v4), pointsto(v0, v3, v4), Rule(74).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v0, v1, v2), heappointsto(v4, v1, v2), Rule(75).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v1, v4), points_initial(v3, v2), pointsto(v0, v3, v4), Rule(76).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v2, v3, v0), Rule(77).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), Rule(78).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), Rule(79).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), Rule(80).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), points_initial(v3, v2), points_initial(v3, v2), pointsto(v0, v3, v2), Rule(81).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), Rule(82).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v4), Rule(83).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), pointsto(v0, v3, v4), pointsto(v5, v1, v4), pointsto(v5, v3, v4), Rule(84).
+pointsto(x0, x1, x5) :- assign(x0, x1, x2, x3), pointsto(x4, x3, x5), Rule(85).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), Rule(86).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), Rule(87).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v4, v1, v0), Rule(88).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), Rule(89).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(90).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v3, v4), receiver_formal(v4, v1), receiver_formal(v2, v3), Rule(91).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), Rule(92).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), Rule(93).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v1, v2), Rule(94).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), Rule(95).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), Rule(96).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v1), pointsto(v0, v3, v4), pointsto(v5, v3, v2), pointsto(v5, v1, v4), Rule(97).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v3, v2), Rule(98).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v3, v4), pointsto(v5, v1, v2), pointsto(v5, v3, v4), Rule(99).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v1, v2), Rule(100).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v1, v2), Rule(101).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v2), pointsto(v0, v1, v2), pointsto(v0, v3, v4), pointsto(v0, v3, v4), Rule(102).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v2, v3), receiver_formal(v4, v1), pointsto(v0, v1, v4), Rule(103).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(104).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), Rule(105).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v2), receiver_formal(v2, v1), pointsto(v0, v1, v4), Rule(106).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v2, v1, v0), Rule(107).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v4), pointsto(v5, v3, v4), pointsto(v5, v3, v2), Rule(108).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), Rule(109).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), Rule(110).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), Rule(111).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), heappointsto(v4, v1, v0), heappointsto(v2, v3, v4), Rule(112).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), Rule(113).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(114).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), points_initial(v3, v4), pointsto(v0, v3, v4), pointsto(v0, v1, v2), Rule(115).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), Rule(116).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), enclosing_type(v3, v0), points_initial(v1, v2), pointsto(v0, v3, v2), Rule(117).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), Rule(118).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), Rule(119).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), Rule(120).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), Rule(121).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), Rule(122).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), Rule(123).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v1, v2), Rule(124).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v4, v1), pointsto(v5, v3, v4), pointsto(v5, v3, v2), Rule(125).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), Rule(126).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v0, v1, v2), Rule(127).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v1, v0), Rule(128).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), receiver_formal(v4, v1), receiver_formal(v2, v3), pointsto(v0, v3, v4), Rule(129).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), Rule(130).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), Rule(131).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), Rule(132).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), Rule(133).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v3, v2), points_initial(v3, v2), points_initial(v1, v2), Rule(134).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), Rule(135).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), heappointsto(v4, v3, v2), Rule(136).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), points_initial(v3, v4), receiver_formal(v4, v3), pointsto(v0, v3, v2), Rule(137).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(138).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), Rule(139).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(140).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), pointsto(v0, v3, v4), pointsto(v5, v3, v4), pointsto(v5, v3, v2), Rule(141).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), Rule(142).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v3, v4), pointsto(v0, v1, v4), pointsto(v5, v3, v2), Rule(143).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v2), Rule(144).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v0, v3, v2), pointsto(v5, v1, v4), pointsto(v5, v1, v4), Rule(145).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), Rule(146).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), Rule(147).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v2), heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), Rule(148).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v4), receiver_formal(v4, v1), pointsto(v0, v3, v2), Rule(149).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), receiver_formal(v2, v1), receiver_formal(v4, v3), pointsto(v0, v1, v4), Rule(150).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v3, v4), pointsto(v5, v1, v4), pointsto(v0, v3, v2), Rule(151).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v3, v2), pointsto(v5, v3, v4), pointsto(v5, v1, v2), Rule(152).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v4, v3), pointsto(v0, v1, v4), pointsto(v0, v1, v2), Rule(153).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), heappointsto(v0, v3, v4), Rule(154).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v1, v0), Rule(155).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v3), receiver_formal(v2, v1), pointsto(v0, v3, v2), Rule(156).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), Rule(157).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), Rule(158).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v1, v0), heappointsto(v4, v1, v0), Rule(159).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v2, v3, v4), Rule(160).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), Rule(161).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v3), receiver_formal(v4, v1), receiver_formal(v4, v3), pointsto(v0, v1, v2), Rule(162).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), Rule(163).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), Rule(164).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), Rule(165).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v1, v2), Rule(166).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v1, v2), heappointsto(v2, v3, v4), Rule(167).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), heappointsto(v2, v1, v4), Rule(168).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), receiver_formal(v4, v1), pointsto(v0, v3, v4), pointsto(v0, v1, v2), Rule(169).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), Rule(170).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), Rule(171).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), Rule(172).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), Rule(173).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v0, v1, v2), Rule(174).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), Rule(175).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), pointsto(v0, v3, v4), pointsto(v0, v3, v4), pointsto(v0, v1, v2), Rule(176).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v4), receiver_formal(v2, v3), pointsto(v0, v1, v4), Rule(177).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), points_initial(v3, v4), pointsto(v0, v1, v4), pointsto(v0, v3, v2), Rule(178).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), Rule(179).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), Rule(180).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), Rule(181).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), Rule(182).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v0, v1, v4), Rule(183).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(184).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), Rule(185).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(186).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), points_initial(v3, v2), pointsto(v0, v1, v4), pointsto(v0, v1, v4), Rule(187).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v1, v0), Rule(188).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v3), receiver_formal(v4, v3), receiver_formal(v4, v1), pointsto(v0, v3, v2), Rule(189).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), enclosing_type(v3, v0), points_initial(v1, v2), pointsto(v0, v3, v2), Rule(190).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), Rule(191).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v0, v1, v4), heappointsto(v0, v3, v4), Rule(192).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), Rule(193).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), Rule(194).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), Rule(195).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), Rule(196).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), Rule(197).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v4, v3, v2), heappointsto(v4, v3, v0), Rule(198).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), pointsto(v0, v3, v2), pointsto(v0, v3, v2), Rule(199).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v3, v0), Rule(200).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), Rule(201).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), enclosing_type(v3, v0), receiver_formal(v2, v3), pointsto(v0, v1, v2), Rule(202).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), enclosing_type(v3, v0), pointsto(v0, v1, v2), pointsto(v0, v3, v2), Rule(203).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v1, v0), Rule(204).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), Rule(205).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), heappointsto(v0, v1, v4), Rule(206).
+pointsto(x0, x1, x2) :- heappointsto(x5, x4, x2), load(x3, x4, x1), pointsto(x0, x3, x5), Rule(207).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), Rule(208).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), points_initial(v1, v2), pointsto(v0, v3, v4), pointsto(v0, v3, v4), Rule(209).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v3, v4), Rule(210).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(211).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), Rule(212).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v1, v4), heappointsto(v2, v1, v4), Rule(213).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), Rule(214).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v4, v3, v2), heappointsto(v4, v1, v2), Rule(215).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), Rule(216).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v4), Rule(217).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), Rule(218).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), Rule(219).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(220).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), Rule(221).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v0, v1, v4), Rule(222).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), heappointsto(v4, v3, v0), Rule(223).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), Rule(224).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), Rule(225).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), Rule(226).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), Rule(227).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v3, v0), Rule(228).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v0, v1, v4), heappointsto(v0, v1, v4), Rule(229).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v2), points_initial(v3, v4), pointsto(v0, v1, v2), Rule(230).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v2), heappointsto(v4, v3, v0), Rule(231).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v4), pointsto(v5, v1, v4), pointsto(v5, v3, v2), Rule(232).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v4), points_initial(v1, v2), pointsto(v0, v3, v4), Rule(233).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), points_initial(v4, v5), assign(v6, v4, v0, v1), pointsto(v6, v3, v5), Rule(234).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v1, v0), Rule(235).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), heappointsto(v0, v3, v2), Rule(236).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), Rule(237).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), Rule(238).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v4, v1), receiver_formal(v4, v3), receiver_formal(v2, v1), Rule(239).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v1, v2), Rule(240).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v3, v4), pointsto(v5, v1, v2), pointsto(v0, v3, v4), Rule(241).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), heappointsto(v0, v3, v4), Rule(242).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), Rule(243).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), Rule(244).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v1, v2), Rule(245).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(246).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), Rule(247).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), Rule(248).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v2), receiver_formal(v2, v1), receiver_formal(v2, v3), Rule(249).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), Rule(250).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v1, v2), pointsto(v5, v3, v4), pointsto(v5, v3, v2), Rule(251).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v3, v4), pointsto(v5, v1, v2), pointsto(v5, v3, v4), Rule(252).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), Rule(253).
+pointsto(x1, x0, x2) :- enclosing_type(x0, x1), points_initial(x0, x2)., Rule(254).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), Rule(255).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), heappointsto(v4, v3, v0), Rule(256).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v4, v3, v0), Rule(257).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), Rule(258).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), Rule(259).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v2), receiver_formal(v4, v1), pointsto(v0, v3, v2), Rule(260).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), heappointsto(v0, v3, v2), Rule(261).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), Rule(262).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v1, v0), heappointsto(v0, v3, v2), Rule(263).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v3, v2), Rule(264).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), Rule(265).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v4), Rule(266).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), Rule(267).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), Rule(268).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), heappointsto(v2, v1, v4), Rule(269).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), Rule(270).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v1, v0), Rule(271).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), Rule(272).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v3, v4), pointsto(v0, v1, v2), pointsto(v5, v3, v2), Rule(273).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v4), points_initial(v3, v2), pointsto(v0, v1, v2), Rule(274).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), pointsto(v0, v3, v4), pointsto(v5, v3, v2), pointsto(v5, v1, v4), Rule(275).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), heappointsto(v2, v1, v0), Rule(276).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v0, v1, v2), Rule(277).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v4), Rule(278).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), Rule(279).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), Rule(280).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), Rule(281).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), Rule(282).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), Rule(283).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v4), receiver_formal(v2, v3), pointsto(v0, v1, v2), Rule(284).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(285).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), Rule(286).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), Rule(287).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), Rule(288).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), points_initial(v3, v4), points_initial(v1, v4), pointsto(v0, v3, v4), Rule(289).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v1, v4), points_initial(v3, v2), pointsto(v0, v3, v2), Rule(290).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), Rule(291).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v1, v0), heappointsto(v0, v3, v4), Rule(292).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), Rule(293).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), Rule(294).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v3), receiver_formal(v4, v1), pointsto(v0, v1, v4), pointsto(v0, v3, v2), Rule(295).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), Rule(296).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v2, v1, v0), Rule(297).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), Rule(298).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v1, v2), Rule(299).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v0, v1, v4), Rule(300).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v3, v2), pointsto(v0, v1, v4), pointsto(v5, v3, v2), Rule(301).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), Rule(302).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), receiver_formal(v2, v3), receiver_formal(v4, v3), pointsto(v0, v1, v4), Rule(303).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), Rule(304).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v4), pointsto(v0, v1, v2), pointsto(v0, v1, v2), Rule(305).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v3, v2), pointsto(v0, v1, v4), pointsto(v5, v3, v4), Rule(306).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), Rule(307).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), Rule(308).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v4), points_initial(v1, v2), pointsto(v0, v1, v4), Rule(309).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), Rule(310).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), Rule(311).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), enclosing_type(v1, v0), enclosing_type(v3, v0), pointsto(v0, v1, v2), Rule(312).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(313).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), pointsto(v0, v3, v4), pointsto(v0, v3, v2), pointsto(v0, v3, v4), Rule(314).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), Rule(315).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v4, v1, v2), Rule(316).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), heappointsto(v2, v3, v0), Rule(317).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v2), heappointsto(v4, v3, v2), Rule(318).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v0, v3, v2), Rule(319).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), heappointsto(v4, v3, v0), Rule(320).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), Rule(321).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v2, v1, v4), Rule(322).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v4), Rule(323).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), Rule(324).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v2), pointsto(v0, v3, v4), pointsto(v0, v1, v4), pointsto(v0, v3, v2), Rule(325).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v1, v2), heappointsto(v4, v3, v0), Rule(326).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), Rule(327).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), Rule(328).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v0, v1, v4), pointsto(v0, v3, v2), pointsto(v0, v3, v4), Rule(329).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v2, v1, v4), Rule(330).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), Rule(331).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), Rule(332).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), Rule(333).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v0, v3, v4), pointsto(v0, v3, v4), pointsto(v0, v1, v2), Rule(334).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), Rule(335).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), Rule(336).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), Rule(337).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), heappointsto(v4, v1, v0), Rule(338).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v4), Rule(339).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), Rule(340).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(341).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), Rule(342).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(343).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v3, v2), receiver_formal(v2, v1), Rule(344).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v0, v1, v2), Rule(345).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), Rule(346).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v3, v2), heappointsto(v4, v1, v0), Rule(347).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v3, v2), receiver_formal(v2, v1), pointsto(v0, v3, v4), Rule(348).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), Rule(349).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), Rule(350).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), pointsto(v0, v1, v4), pointsto(v5, v3, v4), pointsto(v5, v1, v4), Rule(351).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), Rule(352).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), Rule(353).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v1, v2), pointsto(v5, v1, v2), pointsto(v0, v3, v4), Rule(354).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), Rule(355).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), Rule(356).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v4, v3, v0), heappointsto(v0, v1, v2), Rule(357).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v2), heappointsto(v2, v1, v4), Rule(358).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v2), heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), Rule(359).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v4, v3, v0), heappointsto(v0, v1, v4), Rule(360).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v4), heappointsto(v0, v3, v2), Rule(361).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), heappointsto(v0, v1, v4), Rule(362).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v1, v2), Rule(363).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v3, v4), receiver_formal(v2, v1), receiver_formal(v4, v3), Rule(364).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), receiver_formal(v4, v1), receiver_formal(v2, v3), pointsto(v0, v3, v2), Rule(365).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v0, v3, v4), Rule(366).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), Rule(367).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), Rule(368).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v4, v3, v2), heappointsto(v4, v1, v2), Rule(369).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), Rule(370).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), Rule(371).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), Rule(372).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), Rule(373).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v0), heappointsto(v2, v1, v4), heappointsto(v2, v3, v0), Rule(374).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v4, v1, v2), Rule(375).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v4), heappointsto(v0, v1, v2), heappointsto(v4, v3, v2), Rule(376).
+heappointsto(x0, x1, x2) :- pointsto(x5, x3, x0), pointsto(x5, x4, x2), store(x3, x1, x4), Rule(377).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), Rule(378).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v2, v3, v4), Rule(379).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), points_initial(v3, v2), points_initial(v3, v2), points_initial(v1, v2), Rule(380).
+pointsto(v0, v1, v2) :- points_initial(v1, v2), points_initial(v3, v4), pointsto(v0, v3, v4), Rule(381).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), heappointsto(v0, v3, v2), Rule(382).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), Rule(383).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), Rule(384).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), Rule(385).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v2), heappointsto(v0, v3, v2), Rule(386).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v2, v1, v4), Rule(387).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v4, v3, v2), heappointsto(v4, v3, v0), Rule(388).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(389).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(390).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), Rule(391).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), Rule(392).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), Rule(393).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v0, v3, v4), Rule(394).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(395).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), Rule(396).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), Rule(397).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v2, v1, v4), Rule(398).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v4, v1, v0), Rule(399).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), Rule(400).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), heappointsto(v2, v1, v4), heappointsto(v2, v3, v0), Rule(401).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), pointsto(v0, v3, v4), pointsto(v5, v1, v2), pointsto(v5, v1, v4), Rule(402).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v1, v4), pointsto(v5, v3, v4), pointsto(v0, v1, v2), Rule(403).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), heappointsto(v2, v1, v4), Rule(404).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), points_initial(v1, v2), pointsto(v0, v3, v4), pointsto(v0, v3, v4), Rule(405).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), Rule(406).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v2, v3, v0), Rule(407).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(408).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v0, v3, v2), pointsto(v0, v3, v2), pointsto(v0, v1, v4), Rule(409).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), points_initial(v1, v2), receiver_formal(v2, v1), receiver_formal(v2, v1), Rule(410).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), Rule(411).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v2, v1, v0), Rule(412).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(413).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v1), pointsto(v0, v3, v2), pointsto(v0, v3, v2), pointsto(v0, v3, v2), Rule(414).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), Rule(415).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v2, v3), receiver_formal(v2, v1), pointsto(v0, v1, v2), Rule(416).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), Rule(417).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), heappointsto(v4, v3, v2), Rule(418).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), heappointsto(v4, v1, v2), Rule(419).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v1, v0), Rule(420).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), Rule(421).
+pointsto(v0, v1, v2) :- pointsto(v0, v1, v2), pointsto(v0, v3, v2), pointsto(v0, v3, v2), pointsto(v0, v1, v2), Rule(422).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v2, v1, v0), heappointsto(v0, v1, v2), Rule(423).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v1, v2), Rule(424).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v4, v3, v0), heappointsto(v4, v3, v2), Rule(425).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(426).
+pointsto(v0, v1, v2) :- pointsto(v0, v1, v2), pointsto(v0, v3, v4), pointsto(v0, v1, v4), pointsto(v0, v3, v2), Rule(427).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(428).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), Rule(429).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v1, v4), Rule(430).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v1, v0), heappointsto(v2, v1, v0), heappointsto(v2, v1, v0), Rule(431).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), Rule(432).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v4, v1, v0), Rule(433).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(434).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), enclosing_type(v3, v0), enclosing_type(v1, v0), points_initial(v3, v2), Rule(435).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), Rule(436).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), Rule(437).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), Rule(438).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v3, v2), Rule(439).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), heappointsto(v0, v1, v4), Rule(440).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v3, v2), heappointsto(v2, v1, v0), heappointsto(v4, v1, v0), Rule(441).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), Rule(442).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), Rule(443).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), Rule(444).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), Rule(445).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), heappointsto(v0, v3, v2), Rule(446).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), Rule(447).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v2, v3, v0), heappointsto(v4, v3, v2), Rule(448).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), receiver_formal(v4, v3), receiver_formal(v2, v1), pointsto(v0, v3, v4), Rule(449).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v4), Rule(450).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v0, v1, v2), Rule(451).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), points_initial(v1, v4), points_initial(v1, v2), pointsto(v0, v3, v4), Rule(452).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), heappointsto(v0, v1, v2), Rule(453).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v0, v1, v2), Rule(454).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v4), Rule(455).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(456).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v3, v4), heappointsto(v2, v1, v0), heappointsto(v0, v1, v4), Rule(457).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v1, v0), Rule(458).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v4, v1, v0), heappointsto(v0, v1, v2), Rule(459).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v4), points_initial(v3, v2), receiver_formal(v4, v1), Rule(460).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v0, v1, v4), heappointsto(v0, v1, v2), Rule(461).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), enclosing_type(v3, v0), enclosing_type(v3, v0), points_initial(v1, v2), Rule(462).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(463).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v3, v4), pointsto(v5, v3, v2), pointsto(v0, v1, v4), Rule(464).
+pointsto(v0, v1, v2) :- points_initial(v3, v2), points_initial(v1, v2), receiver_formal(v2, v1), pointsto(v0, v3, v2), Rule(465).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), enclosing_type(v3, v0), receiver_formal(v2, v3), pointsto(v0, v3, v2), Rule(466).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), Rule(467).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v3, v0), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), Rule(468).
+pointsto(v0, v1, v2) :- enclosing_type(v1, v0), points_initial(v3, v4), points_initial(v1, v2), pointsto(v0, v3, v4), Rule(469).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), Rule(470).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v0), Rule(471).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v3, v4), heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), Rule(472).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v1, v4), Rule(473).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v0), heappointsto(v2, v1, v0), Rule(474).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v1, v0), heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(475).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v2), heappointsto(v0, v1, v2), Rule(476).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), Rule(477).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v0, v3, v2), heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), Rule(478).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v4), heappointsto(v4, v1, v0), heappointsto(v2, v3, v0), Rule(479).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), Rule(480).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v0), heappointsto(v4, v3, v2), Rule(481).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), Rule(482).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v4), heappointsto(v4, v1, v2), heappointsto(v2, v1, v0), heappointsto(v0, v3, v4), Rule(483).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v2, v1, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), Rule(484).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v0, v1, v4), heappointsto(v2, v1, v4), heappointsto(v2, v3, v4), Rule(485).
+pointsto(v0, v1, v2) :- receiver_formal(v2, v1), pointsto(v0, v1, v2), pointsto(v0, v1, v2), pointsto(v0, v1, v2), Rule(486).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), heappointsto(v4, v3, v2), heappointsto(v2, v1, v4), Rule(487).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v2), pointsto(v0, v3, v4), pointsto(v5, v3, v4), pointsto(v5, v1, v2), Rule(488).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v0, v1, v4), heappointsto(v4, v3, v2), Rule(489).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v0), heappointsto(v2, v1, v0), heappointsto(v0, v3, v2), Rule(490).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v1, v2), heappointsto(v2, v1, v0), heappointsto(v0, v1, v2), heappointsto(v0, v1, v2), Rule(491).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v4, v1, v0), heappointsto(v4, v1, v2), heappointsto(v0, v3, v2), Rule(492).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v2, v3, v0), Rule(493).
+pointsto(v0, v1, v2) :- points_initial(v3, v4), pointsto(v5, v1, v2), pointsto(v0, v3, v4), pointsto(v5, v3, v2), Rule(494).
+pointsto(v0, v1, v2) :- enclosing_type(v3, v0), points_initial(v1, v2), pointsto(v0, v1, v4), pointsto(v0, v3, v4), Rule(495).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v3, v4), Rule(496).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v2), heappointsto(v2, v3, v4), heappointsto(v0, v1, v4), heappointsto(v0, v1, v4), Rule(497).
+heappointsto(v0, v1, v2) :- heappointsto(v2, v3, v0), heappointsto(v2, v1, v0), heappointsto(v4, v3, v0), heappointsto(v4, v3, v0), Rule(498).
+pointsto(v0, v1, v2) :- pointsto(v0, v3, v4), pointsto(v5, v1, v2), pointsto(v5, v3, v2), pointsto(v5, v3, v4), Rule(499).
+heappointsto(v0, v1, v2) :- heappointsto(v0, v3, v4), heappointsto(v4, v3, v2), heappointsto(v2, v3, v0), heappointsto(v4, v1, v2), Rule(500).

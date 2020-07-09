@@ -1,21 +1,518 @@
+.type Company
 .type Inv
 .type Demand
-.type Company
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
 .decl In(v0: Inv, v1: Demand, v2: Company, v3: Company)
 .input In
+
 .decl not_null(v0: Company)
 .input not_null
-
 
 .decl Out(v0: Company, v1: Demand)
 .output Out
 
-Out(v2, v1) :- In(v0, v1, v2, v3), not_null(v2), Rule(1).
-Out(v2, v1) :- In(v0, v1, v2, v3), Rule(2).
-Out(v3, v2) :- not_null(v0), In(v1, v2, v3, v0), Rule(4).
-Out(v3, v1) :- In(v0, v1, v2, v3), not_null(v3), Rule(0).
-Out(v3, v1) :- In(v0, v1, v2, v3), Rule(3).
+
+
+	).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(1).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(2).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(3).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(4).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v0), Out(v2, v1), Out(v2, v1), Rule(5).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v3), Out(v2, v3), Rule(6).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(7).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v0), not_null(v0), Out(v2, v1), Rule(8).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v2), Out(v0, v1), Out(v2, v1), Rule(9).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(10).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(11).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v1), Out(v2, v1), Out(v0, v1), Rule(12).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(13).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(14).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(15).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(16).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(17).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v1), Rule(18).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(19).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(20).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v1), Out(v2, v1), Rule(21).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(22).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(23).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(24).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(25).
+Out(v0, v1) :- not_null(v0), not_null(v0), Out(v2, v1), Out(v2, v1), Rule(26).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(27).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v1), Out(v2, v3), Out(v0, v1), Rule(28).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v2, v3), Rule(29).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(30).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Rule(31).
+Out(v0, v1) :- not_null(v0), not_null(v0), not_null(v0), not_null(v0), Out(v0, v1), Rule(32).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(33).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v1), Rule(34).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(35).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v2, v1), Rule(36).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(37).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(38).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(39).
+Out(v0, v1) :- not_null(v0), not_null(v0), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(40).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(41).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(42).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(43).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v1), Rule(44).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(45).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(46).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(47).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(48).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v0, v1), Rule(49).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v1), Rule(50).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(51).
+out(company, demand) :- In(inv, demand, company, x), not_null(company), Rule(52).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v0, v1), Rule(53).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(54).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v0, v3), Rule(55).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(56).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(57).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(58).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Out(v0, v1), Rule(59).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v1), Rule(60).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v3), Out(v2, v3), Rule(61).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v0, v3), Rule(62).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v1), Rule(63).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v0, v1), Rule(64).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v3), Rule(65).
+Out(v0, v1) :- not_null(v0), not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(66).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(67).
+Out(v0, v1) :- not_null(v0), not_null(v0), not_null(v0), not_null(v2), Out(v2, v1), Rule(68).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(69).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(70).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(71).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(72).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v3), Rule(73).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v1), Rule(74).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v2, v3), Out(v2, v1), Rule(75).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(76).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(77).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v3), Rule(78).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(79).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v2, v1), Out(v2, v3), Rule(80).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(81).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(82).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v0, v3), Rule(83).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v0, v3), Rule(84).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(85).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v1), Rule(86).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v2, v1), Rule(87).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(88).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v2, v1), Rule(89).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v0, v3), Rule(90).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(91).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(92).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(93).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(94).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(95).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(96).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(97).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(98).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(99).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v1), Rule(100).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(101).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(102).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(103).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v3), Out(v0, v1), Out(v0, v1), Rule(104).
+Out(v0, v1) :- not_null(v0), not_null(v0), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(105).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(106).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(107).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(108).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(109).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v2, v1), Rule(110).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v3), Rule(111).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(112).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(113).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(114).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(115).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(116).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(117).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Rule(118).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(119).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(120).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v1), Rule(121).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(122).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(123).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v2, v3), Rule(124).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(125).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(126).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(127).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(128).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(129).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v1), Rule(130).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Out(v0, v1), Rule(131).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(132).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(133).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(134).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(135).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(136).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(137).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(138).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v1), Rule(139).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(140).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v0, v1), Rule(141).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(142).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(143).
+Out(v0, v1) :- not_null(v0), not_null(v0), not_null(v2), Out(v2, v1), Rule(144).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v1), Rule(145).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(146).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(147).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(148).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(149).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v1), Rule(150).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(151).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v0), not_null(v2), Out(v0, v1), Rule(152).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(153).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Rule(154).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v3), Rule(155).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v0, v3), Rule(156).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v1), Rule(157).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(158).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v0), Out(v0, v1), Out(v0, v1), Rule(159).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v1), Out(v0, v1), Out(v2, v1), Rule(160).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v1), Out(v2, v1), Out(v0, v1), Rule(161).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(162).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(163).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(164).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(165).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(166).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(167).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(168).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v1), Out(v2, v1), Rule(169).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Rule(170).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Out(v0, v3), Rule(171).
+Out(v0, v1) :- Out(v0, v1), Rule(172).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(173).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(174).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(175).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v0, v3), Out(v2, v1), Rule(176).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(177).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(178).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(179).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(180).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(181).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v0, v1), Out(v0, v3), Rule(182).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(183).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(184).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(185).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(186).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(187).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(188).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(189).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(190).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v1), Out(v2, v1), Out(v0, v3), Rule(191).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(192).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(193).
+Out(v0, v1) :- not_null(v0), not_null(v0), Out(v0, v1), Out(v0, v1), Rule(194).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(195).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(196).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v2, v1), Rule(197).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(198).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(199).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v2), Out(v2, v1), Out(v2, v1), Rule(200).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v0), Out(v2, v1), Out(v0, v1), Rule(201).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(202).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(203).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v0, v3), Out(v2, v3), Rule(204).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(205).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(206).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(207).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v0, v1), Rule(208).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(209).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v1), Rule(210).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v1), Out(v2, v1), Rule(211).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(212).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v0, v3), Rule(213).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v2, v3), Rule(214).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(215).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(216).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(217).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v1), Rule(218).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v1), Rule(219).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Rule(220).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v2), Out(v0, v1), Out(v0, v1), Rule(221).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(222).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(223).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(224).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(225).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(226).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(227).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(228).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(229).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(230).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(231).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(232).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Out(v0, v3), Rule(233).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(234).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(235).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(236).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v1), Rule(237).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v1), Out(v2, v3), Rule(238).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v1), Rule(239).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v1), Out(v0, v3), Rule(240).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(241).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(242).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(243).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v2, v3), Rule(244).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(245).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(246).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v3), Out(v0, v1), Out(v2, v1), Rule(247).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(248).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(249).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v2, v1), Rule(250).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v2), Out(v2, v1), Out(v0, v1), Rule(251).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(252).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v3), Rule(253).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v0, v3), Out(v0, v1), Rule(254).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(255).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(256).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(257).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v1), Rule(258).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(259).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(260).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(261).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(262).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(263).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v0), not_null(v2), Out(v2, v1), Rule(264).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(265).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v0), Out(v0, v1), Rule(266).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(267).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(268).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v1), Rule(269).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(270).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(271).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(272).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(273).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(274).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(275).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(276).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(277).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(278).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v0, v1), Rule(279).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(280).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(281).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(282).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v1), Rule(283).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(284).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(285).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v2), Out(v0, v1), Rule(286).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(287).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(288).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(289).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(290).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(291).
+	).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(292).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(293).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(294).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(295).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(296).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(297).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v0, v1), Rule(298).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v2), Out(v2, v1), Rule(299).
+Out(v0, v1) :- not_null(v0), not_null(v0), not_null(v0), Out(v0, v1), Out(v0, v1), Rule(300).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(301).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(302).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(303).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v1), Rule(304).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(305).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(306).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v0, v3), Out(v0, v3), Out(v2, v3), Rule(307).
+Out(v0, v1) :- not_null(v0), not_null(v0), not_null(v2), not_null(v0), Out(v2, v1), Rule(308).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(309).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(310).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(311).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Rule(312).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v1), Rule(313).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(314).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v1), Rule(315).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(316).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(317).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(318).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(319).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v2), not_null(v0), Out(v0, v1), Rule(320).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v0, v3), Rule(321).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(322).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v2), Out(v0, v1), Out(v0, v1), Rule(323).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v0), Out(v2, v1), Rule(324).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(325).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(326).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(327).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v0), Out(v2, v1), Out(v2, v1), Rule(328).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v3), Rule(329).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(330).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v0, v3), Rule(331).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(332).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(333).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(334).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v2), not_null(v2), Out(v2, v1), Rule(335).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(336).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(337).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v0, v1), Out(v2, v1), Out(v0, v1), Rule(338).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(339).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v0, v3), Rule(340).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(341).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(342).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Out(v2, v1), Rule(343).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(344).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v2, v3), Rule(345).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(346).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v2), not_null(v0), Out(v2, v1), Rule(347).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Rule(348).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(349).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v1), Rule(350).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v1), Rule(351).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Rule(352).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(353).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(354).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(355).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v0, v1), Rule(356).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(357).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(358).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(359).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Rule(360).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(361).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(362).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(363).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v2), not_null(v2), Out(v0, v1), Rule(364).
+out(company, demand) :- In(inv, demand, x, company), not_null(company), Rule(365).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v2, v3), Rule(366).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(367).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(368).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(369).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v2, v1), Rule(370).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v2, v3), Rule(371).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v2, v3), Rule(372).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v0, v3), Rule(373).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Rule(374).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(375).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(376).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v3), Out(v2, v1), Rule(377).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v2, v1), Rule(378).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v2, v3), Rule(379).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Rule(380).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v0, v3), Rule(381).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v0, v1), Out(v0, v3), Rule(382).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v2, v1), Out(v2, v1), Out(v2, v1), Rule(383).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v0), not_null(v2), Out(v0, v1), Rule(384).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v0, v3), Rule(385).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(386).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Rule(387).
+Out(v0, v1) :- not_null(v2), not_null(v0), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(388).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v3), Out(v2, v1), Out(v2, v1), Rule(389).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v1), Rule(390).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(391).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v0, v1), Out(v2, v1), Rule(392).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(393).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v1), Rule(394).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v0, v3), Rule(395).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(396).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(397).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(398).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(399).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(400).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(401).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(402).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v0, v1), Rule(403).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(404).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v1), Rule(405).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v2), not_null(v0), Out(v2, v1), Rule(406).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(407).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(408).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v0, v3), Rule(409).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(410).
+Out(v0, v1) :- not_null(v2), Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v2, v3), Rule(411).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Out(v2, v1), Rule(412).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v2, v3), Rule(413).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(414).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v3), Rule(415).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(416).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v2, v1), Out(v2, v3), Rule(417).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Out(v0, v1), Rule(418).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(419).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v2, v3), Rule(420).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v0, v3), Rule(421).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v1), Out(v0, v1), Rule(422).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(423).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(424).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(425).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(426).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v2, v3), Rule(427).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v1), Rule(428).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(429).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(430).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v3), Rule(431).
+Out(v0, v1) :- not_null(v2), not_null(v2), not_null(v0), not_null(v2), Out(v2, v1), Rule(432).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(433).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(434).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v0, v1), Rule(435).
+Out(v0, v1) :- not_null(v0), not_null(v0), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(436).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Rule(437).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Out(v2, v1), Rule(438).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(439).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v2, v3), Rule(440).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v1), Out(v0, v3), Rule(441).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v2, v3), Rule(442).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v2, v1), Out(v2, v1), Out(v0, v3), Rule(443).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(444).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v1), Rule(445).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(446).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(447).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(448).
+Out(v0, v1) :- not_null(v0), not_null(v2), not_null(v0), Out(v2, v1), Out(v0, v1), Rule(449).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v2, v1), Rule(450).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(451).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Rule(452).
+Out(v0, v1) :- not_null(v2), Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(453).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v3), Out(v2, v3), Out(v0, v1), Rule(454).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v0, v3), Rule(455).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(456).
+Out(v0, v1) :- not_null(v0), Out(v2, v3), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(457).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(458).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(459).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v1), Out(v2, v1), Rule(460).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v2, v1), Rule(461).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v1), Out(v0, v1), Out(v0, v3), Out(v2, v3), Rule(462).
+Out(v0, v1) :- Out(v2, v3), Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v3), Rule(463).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v2, v1), Out(v2, v3), Out(v2, v3), Rule(464).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(465).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v3), Rule(466).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v0, v3), Rule(467).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v1), Out(v0, v1), Out(v0, v1), Rule(468).
+Out(v0, v1) :- not_null(v0), Out(v2, v1), Out(v2, v1), Out(v2, v3), Out(v0, v3), Rule(469).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v0, v1), Out(v0, v1), Rule(470).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(471).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v3), Out(v2, v3), Out(v0, v3), Rule(472).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Rule(473).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v3), Out(v0, v1), Out(v0, v1), Rule(474).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(475).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Rule(476).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v2, v1), Out(v0, v3), Rule(477).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v0, v1), Rule(478).
+Out(v0, v1) :- not_null(v0), Out(v0, v1), Out(v2, v1), Out(v2, v1), Out(v0, v1), Rule(479).
+Out(v0, v1) :- not_null(v2), Out(v0, v3), Out(v0, v1), Out(v2, v1), Out(v2, v3), Rule(480).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v1), Out(v0, v3), Out(v2, v1), Out(v0, v3), Rule(481).
+Out(v0, v1) :- not_null(v2), not_null(v0), not_null(v0), Out(v0, v1), Out(v2, v1), Rule(482).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v1), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(483).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v2, v3), Out(v2, v1), Rule(484).
+Out(v0, v1) :- Out(v0, v1), Out(v2, v3), Out(v0, v3), Out(v2, v1), Out(v2, v1), Rule(485).
+Out(v0, v1) :- not_null(v0), not_null(v2), Out(v2, v3), Out(v0, v3), Out(v2, v1), Rule(486).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v0, v1), Out(v2, v3), Rule(487).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v1), Out(v2, v1), Out(v0, v1), Out(v2, v1), Rule(488).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v3), Out(v2, v1), Out(v2, v3), Rule(489).
+Out(v0, v1) :- Out(v0, v1), Out(v0, v1), Out(v0, v1), Out(v0, v1), Rule(490).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v3), Out(v2, v3), Out(v2, v3), Rule(491).
+Out(v0, v1) :- not_null(v2), not_null(v2), Out(v0, v1), Out(v2, v1), Rule(492).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v1), Out(v2, v3), Out(v0, v1), Out(v2, v1), Rule(493).
+Out(v0, v1) :- not_null(v2), Out(v2, v3), Out(v0, v3), Out(v0, v3), Out(v2, v1), Rule(494).
+Out(v0, v1) :- Out(v2, v1), Out(v0, v3), Out(v0, v1), Out(v2, v3), Out(v0, v3), Rule(495).
+Out(v0, v1) :- Out(v2, v3), Out(v0, v3), Out(v0, v1), Out(v2, v3), Out(v2, v1), Rule(496).
+Out(v0, v1) :- Out(v2, v1), Out(v2, v3), Out(v0, v1), Out(v0, v1), Out(v0, v3), Rule(497).
+Out(v0, v1) :- not_null(v0), not_null(v0), not_null(v2), not_null(v2), Out(v2, v1), Rule(498).

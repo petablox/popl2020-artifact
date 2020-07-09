@@ -1,82 +1,1022 @@
 .type V
 
-.decl Rule(v0: number)
+.decl Rule(n: number)
 .input Rule
 
 .decl addr(v0: V, v1: V)
 .input addr
+
 .decl assgn(v0: V, v1: V)
 .input assgn
+
 .decl store(v0: V, v1: V)
 .input store
+
 .decl load(v0: V, v1: V)
 .input load
-
 
 .decl pt(v0: V, v1: V)
 .output pt
 
-pt(v2, v1) :- load(v0, v1), store(v2, v0), Rule(10).
-pt(v2, v1) :- load(v0, v1), pt(v2, v0), Rule(53).
-pt(v1, v3) :- pt(v0, v1), store(v0, v2), pt(v2, v3), Rule(3).
-pt(v2, v1) :- pt(v0, v1), store(v2, v0), Rule(49).
-pt(v0, v1) :- assgn(v0, v1), pt(v1, v0), Rule(55).
-pt(v0, v1) :- store(v0, v1), Rule(22).
-pt(v0, v2) :- addr(v0, v1), assgn(v1, v2), Rule(1).
-pt(v0, v1) :- addr(v0, v1), Rule(45).
-pt(v0, v2) :- assgn(v0, v1), assgn(v2, v1), Rule(15).
-pt(v3, v2) :- pt(v0, v1), pt(v1, v2), store(v3, v0), Rule(35).
-pt(v0, v1) :- load(v0, v1), store(v1, v0), Rule(50).
-pt(v0, v1) :- assgn(v0, v1), load(v1, v0), Rule(9).
-pt(v0, v2) :- pt(v0, v1), pt(v1, v2), Rule(20).
-pt(v0, v2) :- load(v0, v1), pt(v1, v2), Rule(40).
-pt(v1, v3) :- pt(v0, v1), pt(v0, v2), pt(v2, v3), Rule(23).
-pt(v0, v2) :- load(v0, v1), store(v1, v2), Rule(16).
-pt(v2, v1) :- assgn(v0, v1), store(v2, v0), Rule(48).
-pt(v0, v2) :- load(v0, v1), load(v2, v1), Rule(62).
-pt(v0, v1) :- load(v0, v1), load(v1, v0), Rule(41).
-pt(v1, v0) :- assgn(v0, v1), load(v1, v0), Rule(13).
-pt(v1, v0) :- pt(v0, v1), store(v1, v0), Rule(28).
-pt(v0, v3) :- load(v0, v1), pt(v1, v2), pt(v2, v3), Rule(37).
-pt(v0, v2) :- addr(v0, v1), pt(v1, v2), Rule(42).
-pt(v2, v1) :- addr(v0, v1), store(v2, v0), Rule(0).
-pt(v1, v0) :- assgn(v0, v1), store(v1, v0), Rule(56).
-pt(v0, v2) :- pt(v0, v1), store(v1, v2), Rule(26).
-pt(v2, v1) :- addr(v0, v1), load(v2, v0), Rule(5).
-pt(v1, v0) :- addr(v0, v1), assgn(v1, v0), Rule(54).
-pt(v1, v0) :- addr(v0, v1), load(v1, v0), Rule(18).
-pt(v2, v3) :- load(v0, v1), pt(v0, v2), pt(v1, v3), Rule(33).
-pt(v0, v2) :- addr(v0, v1), load(v1, v2), Rule(52).
-pt(v0, v3) :- addr(v0, v1), pt(v1, v2), pt(v2, v3), Rule(31).
-pt(v1, v0) :- addr(v0, v1), store(v1, v0), Rule(46).
-pt(v2, v3) :- assgn(v0, v1), pt(v0, v2), pt(v1, v3), Rule(57).
-pt(v0, v2) :- assgn(v0, v1), pt(v1, v2), Rule(44).
-pt(v0, v1) :- load(v0, v1), Rule(51).
-pt(v1, v0) :- load(v0, v1), store(v1, v0), Rule(6).
-pt(v0, v2) :- assgn(v0, v1), assgn(v1, v2), Rule(27).
-pt(v0, v3) :- assgn(v0, v1), pt(v1, v2), pt(v2, v3), Rule(17).
-pt(v0, v2) :- addr(v0, v1), store(v1, v2), Rule(36).
-pt(v2, v1) :- addr(v0, v1), assgn(v2, v0), Rule(4).
-pt(v0, v2) :- store(v0, v1), store(v1, v2), Rule(58).
-pt(v2, v1) :- addr(v0, v1), pt(v2, v0), Rule(21).
-pt(v0, v3) :- pt(v0, v1), pt(v1, v2), pt(v2, v3), Rule(29).
-pt(v0, v1) :- assgn(v0, v1), assgn(v1, v0), Rule(24).
-pt(v0, v1) :- addr(v0, v1), assgn(v1, v0), Rule(30).
-pt(v2, v1) :- assgn(v0, v1), pt(v2, v0), Rule(38).
-pt(v0, v2) :- load(v0, v1), load(v1, v2), Rule(59).
-pt(v0, v2) :- assgn(v0, v1), store(v1, v2), Rule(47).
-pt(v0, v2) :- addr(v0, v1), addr(v2, v1), Rule(43).
-pt(v0, v1) :- assgn(v0, v1), store(v1, v0), Rule(61).
-pt(v0, v1) :- load(v0, v1), pt(v1, v0), Rule(12).
-pt(v0, v2) :- assgn(v0, v1), load(v1, v2), Rule(14).
-pt(v0, v1) :- addr(v0, v1), load(v1, v0), Rule(7).
-pt(v0, v1) :- store(v0, v1), store(v1, v0), Rule(25).
-pt(v0, v1) :- addr(v0, v1), store(v1, v0), Rule(2).
-pt(v0, v2) :- store(v0, v1), store(v2, v1), Rule(60).
-pt(v0, v1) :- addr(v0, v1), addr(v1, v0), Rule(11).
-pt(v0, v2) :- addr(v0, v1), addr(v1, v2), Rule(63).
-pt(v0, v1) :- addr(v0, v1), pt(v1, v0), Rule(34).
-pt(v2, v1) :- assgn(v0, v1), load(v2, v0), Rule(32).
-pt(v0, v1) :- assgn(v0, v1), Rule(19).
-pt(v0, v2) :- pt(v0, v1), pt(v2, v1), Rule(39).
-pt(v2, v3) :- addr(v0, v1), pt(v0, v2), pt(v1, v3), Rule(8).
+
+
+pt(v0, v1) :- load(v1, v0), load(v1, v0), load(v0, v1), Rule(1).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v0), pt(v0, v2), Rule(2).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v2), assgn(v0, v2), Rule(3).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v2), load(v1, v0), Rule(4).
+pt(v0, v1) :- load(v1, v2), load(v2, v1), load(v0, v1), Rule(5).
+pt(v0, v1) :- load(v1, v0), load(v2, v0), load(v0, v2), Rule(6).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v0), pt(v0, v1), Rule(7).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v1), addr(v1, v2), Rule(8).
+pt(v0, v1) :- addr(v2, v1), addr(v0, v1), addr(v0, v2), Rule(9).
+pt(v0, v1) :- addr(v2, v0), store(v0, v1), store(v2, v1), Rule(10).
+pt(v0, v1) :- store(v1, v0), store(v2, v0), load(v0, v2), Rule(11).
+pt(v0, v1) :- load(v2, v0), pt(v1, v2), pt(v1, v0), Rule(12).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v0), pt(v0, v1), Rule(13).
+pt(v0, v1) :- addr(v2, v0), pt(v1, v0), pt(v2, v1), Rule(14).
+pt(v0, v1) :- addr(v2, v1), assgn(v0, v1), load(v2, v1), Rule(15).
+pt(v0, v1) :- load(v2, v1), pt(v1, v0), pt(v2, v1), Rule(16).
+pt(v0, v1) :- addr(v1, v2), assgn(v1, v2), store(v1, v0), Rule(17).
+pt(v0, v1) :- assgn(v1, v2), assgn(v2, v1), pt(v1, v0), Rule(18).
+pt(v1, v0) :- addr(v0, v1), assgn(v1, v0), Rule(19).
+pt(v0, v1) :- addr(v1, v0), load(v2, v0), load(v2, v0), Rule(20).
+pt(v0, v1) :- store(v2, v0), load(v2, v0), pt(v2, v1), Rule(21).
+pt(v0, v1) :- addr(v2, v1), store(v0, v1), store(v1, v2), Rule(22).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), addr(v1, v0), Rule(23).
+pt(v0, v1) :- load(v2, v0), load(v1, v0), load(v0, v2), Rule(24).
+pt(v0, v1) :- store(v2, v0), store(v0, v1), pt(v1, v2), Rule(25).
+pt(v0, v1) :- store(v0, v2), store(v2, v1), store(v0, v2), Rule(26).
+pt(v0, v1) :- store(v2, v1), store(v2, v0), store(v2, v1), Rule(27).
+pt(v0, v1) :- assgn(v0, v2), assgn(v0, v1), assgn(v1, v2), Rule(28).
+pt(v0, v1) :- assgn(v2, v1), store(v0, v1), store(v2, v1), Rule(29).
+pt(v0, v1) :- assgn(v1, v0), pt(v0, v1), Rule(30).
+pt(v0, v1) :- assgn(v2, v1), assgn(v1, v2), assgn(v2, v0), Rule(31).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v1), assgn(v1, v2), Rule(32).
+pt(v0, v1) :- addr(v0, v2), store(v1, v0), pt(v0, v2), Rule(33).
+pt(v0, v1) :- load(v0, v1), load(v2, v0), load(v0, v2), Rule(34).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), store(v0, v1), Rule(35).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v0), pt(v1, v0), Rule(36).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v2), assgn(v0, v1), Rule(37).
+pt(v0, v1) :- load(v1, v2), pt(v0, v1), pt(v2, v0), Rule(38).
+pt(x0, x1) :- assgn(x0, x2), pt(x2, x1), Rule(39).
+pt(v0, v1) :- pt(v2, v0), pt(v1, v2), pt(v2, v0), Rule(40).
+pt(v0, v1) :- pt(v2, v0), pt(v0, v2), pt(v0, v1), Rule(41).
+pt(v0, v1) :- addr(v1, v2), load(v2, v0), load(v2, v0), Rule(42).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v2), assgn(v0, v2), Rule(43).
+pt(v0, v1) :- addr(v1, v0), assgn(v2, v0), store(v0, v2), Rule(44).
+pt(v0, v2) :- load(v0, v1), load(v1, v2), Rule(45).
+pt(v0, v1) :- assgn(v0, v2), load(v0, v2), pt(v2, v1), Rule(46).
+pt(v0, v1) :- store(v0, v1), store(v2, v0), store(v0, v2), Rule(47).
+pt(v0, v1) :- addr(v0, v2), store(v2, v0), load(v1, v0), Rule(48).
+pt(v0, v1) :- store(v1, v2), store(v1, v2), store(v2, v0), Rule(49).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v0), load(v1, v0), Rule(50).
+pt(v0, v1) :- store(v0, v1), load(v1, v2), pt(v2, v1), Rule(51).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v0), store(v0, v2), Rule(52).
+pt(v0, v1) :- store(v1, v2), pt(v1, v2), pt(v0, v2), Rule(53).
+pt(v0, v1) :- assgn(v0, v2), pt(v2, v1), pt(v1, v0), Rule(54).
+pt(v0, v1) :- store(v1, v2), load(v0, v2), load(v0, v2), Rule(55).
+pt(v0, v1) :- assgn(v1, v2), load(v0, v2), load(v2, v0), Rule(56).
+pt(v0, v1) :- store(v2, v1), load(v1, v2), load(v2, v0), Rule(57).
+pt(v0, v1) :- assgn(v1, v2), assgn(v1, v0), load(v2, v1), Rule(58).
+pt(v0, v1) :- load(v0, v2), pt(v0, v2), pt(v1, v0), Rule(59).
+pt(v0, v1) :- addr(v2, v1), store(v0, v2), pt(v1, v0), Rule(60).
+pt(v0, v1) :- store(v0, v1), store(v1, v0), Rule(61).
+pt(v0, v1) :- addr(v0, v2), assgn(v2, v1), store(v1, v0), Rule(62).
+pt(v0, v1) :- addr(v0, v1), load(v1, v2), load(v2, v1), Rule(63).
+pt(v0, v1) :- assgn(v1, v0), pt(v1, v2), pt(v1, v2), Rule(64).
+pt(v0, v1) :- addr(v1, v2), addr(v0, v1), load(v1, v2), Rule(65).
+pt(v0, v1) :- store(v2, v0), load(v1, v0), load(v1, v2), Rule(66).
+pt(v0, v1) :- addr(v0, v2), assgn(v0, v2), pt(v1, v0), Rule(67).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v0), assgn(v0, v1), Rule(68).
+pt(v0, v1) :- store(v0, v2), store(v1, v2), pt(v1, v0), Rule(69).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v2), addr(v2, v1), Rule(70).
+pt(v0, v1) :- addr(v0, v1), assgn(v0, v2), store(v0, v2), Rule(71).
+pt(v0, v1) :- assgn(v1, v0), assgn(v1, v2), store(v1, v2), Rule(72).
+pt(v0, v1) :- addr(v1, v2), load(v0, v1), pt(v1, v2), Rule(73).
+pt(v0, v1) :- addr(v0, v2), load(v2, v1), load(v0, v1), Rule(74).
+pt(v0, v1) :- assgn(v0, v1), load(v2, v0), pt(v1, v2), Rule(75).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v0), addr(v2, v0), Rule(76).
+pt(v0, v1) :- addr(v2, v1), addr(v2, v0), assgn(v1, v0), Rule(77).
+pt(v0, v1) :- store(v0, v1), store(v0, v2), load(v0, v2), Rule(78).
+pt(v0, v1) :- addr(v1, v0), load(v2, v0), pt(v2, v0), Rule(79).
+pt(v0, v1) :- addr(v2, v1), assgn(v0, v2), assgn(v1, v2), Rule(80).
+pt(v0, v1) :- assgn(v2, v1), load(v2, v1), load(v0, v2), Rule(81).
+pt(v0, v1) :- addr(v0, v2), assgn(v2, v1), store(v2, v0), Rule(82).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v0), addr(v1, v2), Rule(83).
+pt(v0, v1) :- addr(v2, v0), load(v1, v2), pt(v2, v1), Rule(84).
+pt(v0, v1) :- load(v2, v0), pt(v2, v1), pt(v1, v2), Rule(85).
+pt(v0, v1) :- addr(v1, v2), addr(v0, v1), load(v2, v0), Rule(86).
+pt(v0, v1) :- assgn(v2, v0), load(v2, v1), Rule(87).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v1), assgn(v2, v0), Rule(88).
+pt(v0, v1) :- addr(v0, v2), assgn(v0, v2), pt(v2, v1), Rule(89).
+pt(v0, v1) :- addr(v1, v0), assgn(v2, v0), load(v2, v1), Rule(90).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v0), assgn(v2, v1), Rule(91).
+pt(v0, v1) :- addr(v0, v1), assgn(v2, v1), pt(v1, v2), Rule(92).
+pt(v0, v1) :- addr(v1, v0), store(v0, v2), pt(v2, v1), Rule(93).
+pt(v0, v1) :- load(v2, v0), load(v1, v2), load(v2, v0), Rule(94).
+pt(v0, v1) :- assgn(v1, v0), store(v2, v0), load(v1, v2), Rule(95).
+pt(v1, v0) :- addr(v0, v1), store(v1, v0), Rule(96).
+pt(v0, v1) :- assgn(v0, v1), load(v0, v2), pt(v2, v1), Rule(97).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v2), assgn(v0, v1), Rule(98).
+pt(v0, v1) :- addr(v0, v1), addr(v1, v2), pt(v2, v0), Rule(99).
+pt(v0, v1) :- assgn(v2, v1), assgn(v1, v2), store(v1, v0), Rule(100).
+pt(v0, v1) :- addr(v1, v0), load(v1, v0), pt(v0, v1), Rule(101).
+pt(v0, v1) :- assgn(v2, v0), load(v2, v1), pt(v0, v1), Rule(102).
+pt(v0, v1) :- assgn(v0, v2), load(v1, v2), pt(v2, v0), Rule(103).
+pt(v0, v1) :- store(v2, v1), store(v0, v2), pt(v0, v1), Rule(104).
+pt(v0, v1) :- store(v0, v2), store(v2, v1), load(v0, v1), Rule(105).
+pt(v0, v2) :- addr(v0, v1), assgn(v1, v2), Rule(106).
+pt(v0, v1) :- load(v2, v0), pt(v2, v0), pt(v2, v1), Rule(107).
+pt(v0, v1) :- store(v1, v2), store(v0, v2), Rule(108).
+pt(v0, v1) :- addr(v2, v0), load(v0, v1), load(v1, v2), Rule(109).
+pt(v0, v1) :- addr(v1, v2), assgn(v2, v1), assgn(v0, v2), Rule(110).
+pt(v0, v1) :- pt(v0, v1), pt(v0, v2), pt(v1, v2), Rule(111).
+pt(v0, v1) :- store(v0, v2), pt(v1, v2), pt(v2, v0), Rule(112).
+pt(v0, v1) :- addr(v1, v0), assgn(v2, v0), load(v0, v2), Rule(113).
+pt(v0, v1) :- load(v0, v1), store(v1, v0), Rule(114).
+pt(v0, v1) :- addr(v1, v2), load(v1, v0), load(v1, v2), Rule(115).
+pt(v0, v1) :- addr(v0, v2), pt(v0, v1), pt(v2, v0), Rule(116).
+pt(v0, v1) :- assgn(v2, v0), load(v2, v1), load(v2, v0), Rule(117).
+pt(v0, v1) :- load(v2, v0), pt(v0, v2), pt(v2, v1), Rule(118).
+pt(v0, v2) :- pt(v0, v1), pt(v2, v1), Rule(119).
+pt(v0, v1) :- store(v0, v2), load(v1, v2), load(v1, v2), Rule(120).
+pt(v0, v1) :- assgn(v0, v1), load(v1, v0), Rule(121).
+pt(v0, v1) :- assgn(v1, v0), assgn(v1, v0), load(v1, v0), Rule(122).
+pt(v0, v1) :- addr(v1, v2), pt(v0, v2), pt(v1, v2), Rule(123).
+pt(v0, v1) :- assgn(v2, v0), store(v1, v0), load(v1, v2), Rule(124).
+pt(v0, v1) :- store(v0, v2), store(v1, v2), load(v2, v1), Rule(125).
+pt(v0, v2) :- assgn(v0, v1), load(v1, v2), Rule(126).
+pt(v0, v1) :- store(v1, v0), pt(v1, v2), pt(v1, v2), Rule(127).
+pt(v0, v2) :- addr(v0, v1), load(v1, v2), Rule(128).
+pt(v0, v1) :- assgn(v0, v1), pt(v1, v0), Rule(129).
+pt(v0, v1) :- store(v0, v1), pt(v0, v2), pt(v2, v0), Rule(130).
+pt(v0, v1) :- store(v1, v2), pt(v0, v2), Rule(131).
+pt(v0, v1) :- addr(v0, v1), addr(v1, v0), Rule(132).
+pt(v0, v1) :- assgn(v0, v1), pt(v0, v2), pt(v2, v0), Rule(133).
+pt(v0, v1) :- assgn(v0, v2), assgn(v1, v2), store(v0, v2), Rule(134).
+pt(v0, v1) :- store(v0, v1), store(v0, v1), store(v0, v1), Rule(135).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v0), pt(v1, v2), Rule(136).
+pt(v0, v1) :- assgn(v1, v2), store(v0, v2), load(v0, v1), Rule(137).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v1), pt(v0, v2), Rule(138).
+pt(v0, v1) :- addr(v2, v0), load(v2, v0), pt(v2, v1), Rule(139).
+pt(v0, v3) :- assgn(v0, v1), pt(v1, v2), pt(v2, v3), Rule(140).
+pt(v0, v1) :- addr(v1, v2), load(v1, v2), pt(v0, v1), Rule(141).
+pt(v0, v1) :- load(v1, v0), pt(v2, v0), pt(v2, v0), Rule(142).
+pt(v0, v1) :- assgn(v2, v1), assgn(v1, v2), store(v2, v0), Rule(143).
+pt(v0, v1) :- store(v1, v2), load(v2, v0), pt(v0, v2), Rule(144).
+pt(v0, v1) :- assgn(v0, v2), store(v1, v2), load(v1, v2), Rule(145).
+pt(v0, v1) :- addr(v2, v0), store(v1, v2), pt(v2, v0), Rule(146).
+pt(v0, v1) :- addr(v2, v1), load(v0, v2), pt(v1, v2), Rule(147).
+pt(v0, v1) :- assgn(v0, v2), load(v2, v0), pt(v1, v2), Rule(148).
+pt(v0, v1) :- load(v0, v1), load(v0, v2), pt(v2, v0), Rule(149).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v0), assgn(v0, v1), Rule(150).
+pt(v0, v1) :- store(v2, v0), load(v2, v0), pt(v1, v2), Rule(151).
+pt(v0, v1) :- assgn(v2, v1), load(v2, v0), pt(v1, v0), Rule(152).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v2), pt(v0, v2), Rule(153).
+pt(v0, v1) :- store(v1, v0), load(v1, v0), pt(v0, v1), Rule(154).
+pt(v0, v1) :- store(v0, v2), store(v0, v2), pt(v2, v1), Rule(155).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v2), store(v0, v2), Rule(156).
+pt(v0, v1) :- store(v2, v1), load(v0, v1), pt(v2, v0), Rule(157).
+pt(v0, v1) :- pt(v1, v0), pt(v1, v2), pt(v2, v1), Rule(158).
+pt(v0, v1) :- addr(v1, v2), store(v2, v1), load(v0, v1), Rule(159).
+pt(v0, v1) :- assgn(v0, v2), assgn(v0, v1), store(v2, v0), Rule(160).
+pt(v0, v1) :- store(v1, v2), store(v0, v2), load(v2, v1), Rule(161).
+pt(v0, v1) :- addr(v1, v0), load(v2, v0), load(v0, v2), Rule(162).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), addr(v0, v1), Rule(163).
+pt(v0, v1) :- pt(v2, v1), pt(v1, v0), pt(v2, v0), Rule(164).
+pt(v0, v1) :- assgn(v0, v2), pt(v0, v1), pt(v0, v2), Rule(165).
+pt(v0, v1) :- assgn(v1, v2), store(v0, v2), store(v1, v2), Rule(166).
+pt(v0, v1) :- addr(v0, v2), load(v1, v2), pt(v0, v1), Rule(167).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v0), load(v2, v1), Rule(168).
+pt(v0, v1) :- addr(v2, v0), store(v1, v0), pt(v0, v2), Rule(169).
+pt(v0, v1) :- addr(v2, v1), addr(v2, v0), load(v1, v0), Rule(170).
+pt(v0, v1) :- pt(v1, v0), pt(v1, v0), pt(v1, v0), Rule(171).
+pt(v0, v1) :- store(v2, v1), store(v0, v2), load(v2, v1), Rule(172).
+pt(v0, v1) :- assgn(v0, v2), assgn(v1, v0), store(v0, v2), Rule(173).
+pt(v0, v1) :- assgn(v1, v2), store(v1, v0), pt(v2, v0), Rule(174).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), assgn(v2, v0), Rule(175).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), pt(v0, v2), Rule(176).
+pt(v0, v1) :- addr(v2, v1), store(v0, v2), load(v1, v2), Rule(177).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v2), load(v2, v1), Rule(178).
+pt(v0, v1) :- addr(v1, v2), store(v2, v0), pt(v0, v1), Rule(179).
+pt(x0, x1) :- addr(x0, x1), Rule(180).
+pt(v0, v1) :- addr(v1, v0), load(v0, v2), pt(v2, v0), Rule(181).
+pt(v0, v1) :- addr(v1, v0), assgn(v1, v2), store(v0, v2), Rule(182).
+pt(v0, v1) :- assgn(v0, v2), load(v0, v1), pt(v0, v2), Rule(183).
+pt(v0, v1) :- assgn(v2, v0), load(v0, v2), pt(v1, v2), Rule(184).
+pt(v0, v1) :- assgn(v1, v0), assgn(v0, v2), pt(v2, v1), Rule(185).
+pt(v0, v1) :- addr(v0, v1), pt(v2, v1), pt(v0, v2), Rule(186).
+pt(v0, v1) :- assgn(v2, v1), pt(v0, v1), pt(v2, v1), Rule(187).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v1), assgn(v2, v1), Rule(188).
+pt(v0, v1) :- store(v1, v2), store(v1, v0), load(v2, v1), Rule(189).
+pt(v0, v1) :- addr(v2, v0), assgn(v0, v1), load(v2, v0), Rule(190).
+pt(v0, v1) :- addr(v0, v1), pt(v0, v1), pt(v1, v0), Rule(191).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v0), assgn(v2, v1), Rule(192).
+pt(v0, v1) :- addr(v2, v1), load(v1, v2), load(v0, v2), Rule(193).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v0), load(v2, v1), Rule(194).
+pt(v0, v1) :- pt(v2, v1), pt(v2, v0), pt(v2, v1), Rule(195).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v2), addr(v2, v1), Rule(196).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v0), store(v1, v2), Rule(197).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v0), load(v1, v2), Rule(198).
+pt(v0, v1) :- assgn(v0, v1), assgn(v0, v2), store(v1, v2), Rule(199).
+pt(v0, v1) :- assgn(v2, v1), store(v0, v2), load(v2, v1), Rule(200).
+pt(v0, v3) :- addr(v0, v1), pt(v1, v2), pt(v2, v3), Rule(201).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v2), load(v1, v0), Rule(202).
+pt(v0, v1) :- store(v1, v2), store(v2, v1), pt(v2, v0), Rule(203).
+pt(v0, v1) :- addr(v2, v1), store(v0, v1), pt(v1, v2), Rule(204).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), store(v2, v0), Rule(205).
+pt(v0, v1) :- addr(v2, v0), load(v0, v1), pt(v2, v1), Rule(206).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v1), load(v2, v0), Rule(207).
+pt(v0, v1) :- pt(v2, v1), pt(v1, v2), pt(v2, v0), Rule(208).
+pt(v0, v1) :- addr(v0, v1), store(v2, v0), pt(v2, v0), Rule(209).
+pt(v0, v1) :- addr(v0, v2), pt(v0, v2), pt(v2, v1), Rule(210).
+pt(v0, v1) :- assgn(v2, v1), store(v1, v2), store(v0, v1), Rule(211).
+pt(v1, v3) :- pt(v0, v1), pt(v0, v2), pt(v2, v3), Rule(212).
+pt(v0, v1) :- addr(v2, v1), load(v0, v1), load(v2, v1), Rule(213).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v2), pt(v1, v2), Rule(214).
+pt(v0, v1) :- load(v2, v0), pt(v1, v2), pt(v0, v1), Rule(215).
+pt(v1, v0) :- load(v0, v1), store(v1, v0), Rule(216).
+pt(v0, v1) :- addr(v1, v2), pt(v1, v2), pt(v2, v0), Rule(217).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v1), addr(v1, v2), Rule(218).
+pt(v0, v1) :- load(v0, v2), load(v0, v2), load(v0, v1), Rule(219).
+pt(v0, v1) :- addr(v1, v0), pt(v0, v2), pt(v1, v2), Rule(220).
+pt(v0, v1) :- load(v1, v2), load(v0, v2), load(v2, v0), Rule(221).
+pt(v0, v1) :- addr(v0, v1), assgn(v2, v0), assgn(v2, v0), Rule(222).
+pt(v0, v1) :- addr(v1, v2), pt(v0, v2), pt(v0, v2), Rule(223).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v2), assgn(v2, v1), Rule(224).
+pt(v0, v1) :- assgn(v2, v0), store(v0, v2), load(v1, v0), Rule(225).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v1), assgn(v0, v1), Rule(226).
+pt(v0, v1) :- store(v0, v2), store(v1, v2), load(v0, v2), Rule(227).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v1), addr(v2, v1), Rule(228).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v0), store(v0, v2), Rule(229).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v2), pt(v2, v0), Rule(230).
+pt(v2, v1) :- assgn(v0, v1), load(v2, v0), Rule(231).
+pt(v0, v1) :- addr(v0, v1), pt(v2, v0), pt(v0, v2), Rule(232).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), pt(v2, v0), Rule(233).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v0), assgn(v1, v2), Rule(234).
+pt(v0, v1) :- addr(v1, v0), assgn(v2, v0), pt(v0, v2), Rule(235).
+pt(v0, v1) :- assgn(v1, v2), load(v2, v0), pt(v0, v1), Rule(236).
+pt(v0, v1) :- store(v0, v1), store(v2, v1), pt(v2, v0), Rule(237).
+pt(v0, v1) :- addr(v0, v2), assgn(v2, v1), load(v2, v1), Rule(238).
+pt(v0, v1) :- load(v0, v2), load(v1, v2), pt(v1, v0), Rule(239).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v1), pt(v2, v1), Rule(240).
+pt(v0, v1) :- assgn(v2, v0), store(v0, v1), pt(v2, v1), Rule(241).
+pt(v0, v2) :- addr(v0, v1), addr(v2, v1), Rule(242).
+pt(v0, v1) :- addr(v1, v2), assgn(v1, v0), pt(v1, v2), Rule(243).
+pt(v0, v1) :- load(v2, v0), pt(v1, v0), pt(v0, v2), Rule(244).
+pt(v0, v1) :- store(v1, v0), store(v2, v1), load(v2, v0), Rule(245).
+pt(v0, v1) :- addr(v0, v2), load(v2, v1), pt(v0, v2), Rule(246).
+pt(v0, v1) :- load(v2, v1), load(v2, v1), pt(v2, v0), Rule(247).
+pt(v0, v1) :- assgn(v2, v0), store(v1, v2), store(v1, v0), Rule(248).
+pt(v0, v1) :- store(v1, v2), store(v0, v2), store(v1, v2), Rule(249).
+pt(v0, v1) :- load(v2, v0), pt(v0, v1), pt(v0, v2), Rule(250).
+pt(v0, v1) :- store(v2, v1), load(v2, v1), pt(v0, v2), Rule(251).
+pt(v2, v3) :- addr(v0, v1), pt(v0, v2), pt(v1, v3), Rule(252).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v0), addr(v1, v0), Rule(253).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v1), assgn(v1, v2), Rule(254).
+pt(v0, v1) :- addr(v2, v1), load(v2, v1), load(v0, v2), Rule(255).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v2), store(v0, v2), Rule(256).
+pt(v0, v2) :- load(v0, v1), pt(v1, v2), Rule(257).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v2), load(v0, v1), Rule(258).
+pt(v0, v1) :- assgn(v2, v0), pt(v0, v2), pt(v2, v1), Rule(259).
+pt(v0, v1) :- addr(v2, v0), assgn(v0, v1), assgn(v0, v2), Rule(260).
+pt(v0, v1) :- pt(v0, v2), pt(v2, v0), pt(v2, v1), Rule(261).
+pt(v0, v1) :- store(v2, v1), pt(v0, v2), pt(v0, v2), Rule(262).
+pt(v0, v1) :- store(v2, v1), store(v0, v1), store(v0, v2), Rule(263).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v1), load(v2, v1), Rule(264).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v0), assgn(v0, v1), Rule(265).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v0), load(v1, v2), Rule(266).
+pt(v0, v1) :- store(v0, v1), load(v1, v2), load(v2, v0), Rule(267).
+pt(v0, v1) :- load(v1, v2), load(v0, v1), load(v0, v2), Rule(268).
+pt(v0, v1) :- assgn(v1, v0), store(v2, v0), load(v2, v0), Rule(269).
+pt(v0, v1) :- assgn(v2, v0), store(v1, v2), load(v1, v0), Rule(270).
+pt(v0, v1) :- assgn(v1, v2), load(v0, v1), load(v2, v0), Rule(271).
+pt(v0, v1) :- store(v2, v1), store(v2, v0), Rule(272).
+pt(v0, v1) :- store(v0, v2), store(v1, v0), load(v0, v2), Rule(273).
+pt(v0, v1) :- store(v1, v0), store(v0, v2), load(v2, v0), Rule(274).
+pt(v0, v1) :- assgn(v0, v2), assgn(v0, v1), load(v0, v2), Rule(275).
+pt(v0, v1) :- pt(v0, v1), pt(v1, v2), pt(v2, v1), Rule(276).
+pt(v0, v1) :- load(v1, v2), load(v2, v0), load(v0, v2), Rule(277).
+pt(v0, v1) :- store(v0, v2), store(v0, v2), pt(v0, v1), Rule(278).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v2), store(v2, v1), Rule(279).
+pt(v3, v2) :- pt(v0, v1), pt(v1, v2), store(v3, v0), Rule(280).
+pt(v0, v1) :- assgn(v1, v2), load(v1, v0), load(v0, v2), Rule(281).
+pt(v0, v1) :- addr(v0, v1), load(v2, v1), pt(v2, v1), Rule(282).
+pt(v0, v2) :- addr(v0, v1), addr(v1, v2), Rule(283).
+pt(v0, v1) :- store(v1, v0), store(v1, v2), load(v2, v1), Rule(284).
+pt(v0, v1) :- assgn(v0, v1), assgn(v1, v0), Rule(285).
+pt(v0, v1) :- assgn(v0, v2), store(v0, v1), store(v1, v2), Rule(286).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), load(v2, v0), Rule(287).
+pt(v0, v1) :- addr(v2, v0), store(v1, v2), store(v1, v0), Rule(288).
+pt(v0, v1) :- assgn(v1, v2), store(v2, v0), load(v0, v2), Rule(289).
+pt(v0, v1) :- addr(v0, v2), pt(v2, v1), pt(v0, v1), Rule(290).
+pt(v0, v1) :- assgn(v2, v1), pt(v2, v1), pt(v0, v1), Rule(291).
+pt(v0, v1) :- assgn(v1, v2), assgn(v1, v0), load(v2, v0), Rule(292).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v2), assgn(v2, v0), Rule(293).
+pt(v0, v1) :- addr(v0, v2), load(v1, v2), load(v0, v1), Rule(294).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v2), load(v2, v0), Rule(295).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v2), load(v0, v1), Rule(296).
+pt(v0, v1) :- addr(v1, v0), store(v2, v0), load(v2, v0), Rule(297).
+pt(v0, v1) :- assgn(v2, v0), store(v1, v0), pt(v1, v2), Rule(298).
+pt(v0, v2) :- load(v0, v1), store(v1, v2), Rule(299).
+pt(v0, v1) :- store(v1, v2), store(v2, v0), store(v1, v2), Rule(300).
+pt(v0, v1) :- pt(v1, v0), pt(v2, v0), pt(v0, v2), Rule(301).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v2), Rule(302).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v2), pt(v0, v2), Rule(303).
+pt(v0, v1) :- store(v0, v2), load(v2, v0), load(v1, v2), Rule(304).
+pt(v0, v1) :- pt(v1, v0), pt(v1, v0), Rule(305).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v2), store(v2, v1), Rule(306).
+pt(v0, v1) :- addr(v2, v0), store(v0, v2), pt(v1, v0), Rule(307).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v1), load(v2, v1), Rule(308).
+pt(v0, v1) :- addr(v0, v2), store(v2, v0), load(v1, v2), Rule(309).
+pt(v2, v1) :- addr(v0, v1), store(v2, v0), Rule(310).
+pt(v0, v1) :- addr(v2, v0), store(v1, v0), load(v2, v1), Rule(311).
+pt(v0, v1) :- assgn(v2, v0), load(v0, v2), load(v0, v1), Rule(312).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v2), store(v0, v2), Rule(313).
+pt(v0, v2) :- assgn(v0, v1), assgn(v1, v2), Rule(314).
+pt(v0, v1) :- assgn(v2, v1), load(v0, v1), pt(v2, v1), Rule(315).
+pt(v0, v1) :- load(v1, v0), pt(v2, v1), pt(v1, v2), Rule(316).
+pt(v0, v1) :- store(v2, v1), load(v0, v2), load(v1, v0), Rule(317).
+pt(v0, v1) :- assgn(v2, v1), load(v2, v1), pt(v2, v0), Rule(318).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v0), pt(v0, v2), Rule(319).
+pt(v0, v1) :- addr(v0, v1), pt(v2, v0), pt(v1, v2), Rule(320).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v2), pt(v1, v2), Rule(321).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v1), load(v1, v0), Rule(322).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v2), store(v1, v2), Rule(323).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v2), pt(v2, v0), Rule(324).
+pt(v0, v1) :- load(v0, v2), load(v1, v2), load(v1, v2), Rule(325).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v2), assgn(v0, v1), Rule(326).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v2), load(v0, v1), Rule(327).
+pt(v0, v1) :- addr(v2, v1), addr(v2, v1), addr(v2, v0), Rule(328).
+pt(v0, v1) :- store(v0, v1), pt(v0, v2), pt(v1, v2), Rule(329).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v1), pt(v2, v1), Rule(330).
+pt(v0, v1) :- store(v2, v1), store(v1, v2), store(v0, v1), Rule(331).
+pt(v0, v1) :- store(v0, v2), pt(v1, v0), pt(v0, v2), Rule(332).
+pt(v0, v1) :- addr(v1, v0), assgn(v1, v0), store(v0, v1), Rule(333).
+pt(v0, v1) :- load(v2, v0), load(v1, v2), load(v2, v1), Rule(334).
+pt(v0, v1) :- assgn(v0, v2), pt(v1, v2), pt(v0, v1), Rule(335).
+pt(v0, v1) :- addr(v1, v0), addr(v0, v1), pt(v0, v1), Rule(336).
+pt(v0, v1) :- store(v2, v1), store(v2, v1), store(v0, v1), Rule(337).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v1), pt(v2, v1), Rule(338).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v1), addr(v0, v1), Rule(339).
+pt(v0, v1) :- load(v2, v0), load(v2, v1), Rule(340).
+pt(v0, v1) :- load(v2, v1), pt(v2, v0), pt(v2, v0), Rule(341).
+pt(v0, v1) :- store(v1, v0), load(v1, v0), pt(v1, v0), Rule(342).
+pt(v0, v1) :- store(v1, v2), store(v2, v0), pt(v0, v2), Rule(343).
+pt(v0, v1) :- store(v2, v1), load(v1, v0), load(v2, v0), Rule(344).
+pt(v0, v1) :- assgn(v0, v1), load(v1, v0), Rule(345).
+pt(v0, v1) :- assgn(v2, v0), load(v0, v1), load(v2, v1), Rule(346).
+pt(v0, v1) :- addr(v2, v0), assgn(v0, v2), store(v2, v1), Rule(347).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v0), load(v2, v0), Rule(348).
+pt(v0, v1) :- assgn(v0, v1), assgn(v1, v2), load(v2, v0), Rule(349).
+pt(v0, v1) :- assgn(v0, v1), store(v0, v2), pt(v0, v2), Rule(350).
+pt(v2, v3) :- assgn(v0, v1), pt(v0, v2), pt(v1, v3), Rule(351).
+pt(v0, v1) :- assgn(v1, v2), pt(v0, v2), Rule(352).
+pt(v0, v1) :- addr(v0, v1), store(v0, v2), pt(v2, v0), Rule(353).
+pt(v0, v1) :- load(v1, v2), load(v2, v0), pt(v0, v1), Rule(354).
+pt(v0, v1) :- assgn(v0, v2), pt(v1, v0), pt(v2, v1), Rule(355).
+pt(v0, v1) :- assgn(v0, v2), store(v0, v2), store(v1, v0), Rule(356).
+pt(v0, v1) :- assgn(v0, v1), store(v2, v0), store(v0, v2), Rule(357).
+pt(v0, v1) :- store(v2, v0), store(v1, v0), store(v2, v0), Rule(358).
+pt(v0, v1) :- load(v0, v1), pt(v1, v0), Rule(359).
+pt(v0, v1) :- store(v1, v2), store(v2, v1), load(v2, v0), Rule(360).
+pt(v0, v1) :- addr(v1, v2), load(v2, v0), load(v2, v1), Rule(361).
+pt(v0, v1) :- assgn(v2, v1), load(v1, v2), load(v1, v0), Rule(362).
+pt(v0, v1) :- load(v0, v2), load(v2, v1), Rule(363).
+pt(v0, v1) :- assgn(v1, v0), store(v2, v0), store(v2, v0), Rule(364).
+pt(v0, v1) :- store(v0, v1), load(v0, v1), load(v0, v1), Rule(365).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v1), load(v0, v2), Rule(366).
+pt(v0, v1) :- store(v2, v0), load(v1, v0), load(v0, v2), Rule(367).
+pt(v0, v1) :- assgn(v1, v0), load(v1, v0), pt(v0, v1), Rule(368).
+pt(v0, v1) :- store(v1, v0), store(v1, v2), pt(v2, v0), Rule(369).
+pt(v0, v1) :- assgn(v1, v0), store(v0, v1), load(v1, v0), Rule(370).
+pt(v0, v1) :- addr(v1, v0), assgn(v1, v2), pt(v2, v0), Rule(371).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v2), load(v2, v0), Rule(372).
+pt(v0, v1) :- pt(v1, v2), pt(v1, v2), pt(v1, v0), Rule(373).
+pt(v0, v1) :- addr(v2, v0), store(v1, v2), load(v2, v1), Rule(374).
+pt(v0, v1) :- store(v2, v0), store(v2, v0), store(v0, v1), Rule(375).
+pt(v0, v1) :- assgn(v2, v1), store(v0, v1), store(v0, v2), Rule(376).
+pt(v0, v1) :- pt(v0, v1), pt(v1, v0), Rule(377).
+pt(v0, v1) :- store(v1, v2), load(v1, v0), load(v2, v0), Rule(378).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v0), assgn(v2, v1), Rule(379).
+pt(v0, v1) :- pt(v2, v0), pt(v1, v0), pt(v2, v1), Rule(380).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v0), pt(v2, v0), Rule(381).
+pt(v0, v1) :- store(v1, v2), load(v2, v1), pt(v1, v0), Rule(382).
+pt(v0, v1) :- store(v1, v2), store(v1, v2), store(v0, v1), Rule(383).
+pt(v0, v1) :- pt(v1, v2), pt(v2, v0), pt(v2, v0), Rule(384).
+pt(v0, v1) :- addr(v1, v0), addr(v0, v1), load(v1, v0), Rule(385).
+pt(v0, v1) :- pt(v0, v2), pt(v1, v2), pt(v1, v0), Rule(386).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v0), pt(v0, v1), Rule(387).
+pt(v0, v1) :- addr(v2, v0), pt(v0, v2), pt(v1, v2), Rule(388).
+pt(v0, v1) :- addr(v2, v1), addr(v2, v0), load(v0, v1), Rule(389).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v2), assgn(v1, v2), Rule(390).
+pt(v0, v1) :- assgn(v0, v2), store(v2, v1), pt(v1, v2), Rule(391).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), load(v1, v0), Rule(392).
+pt(v0, v1) :- assgn(v2, v1), load(v1, v0), pt(v1, v2), Rule(393).
+pt(v0, v1) :- store(v2, v1), load(v0, v1), load(v1, v2), Rule(394).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v2), store(v2, v0), Rule(395).
+pt(v0, v1) :- addr(v2, v1), addr(v2, v0), store(v1, v0), Rule(396).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v0), pt(v0, v2), Rule(397).
+pt(v0, v1) :- pt(v2, v1), pt(v0, v1), pt(v1, v2), Rule(398).
+pt(v0, v1) :- addr(v2, v1), store(v1, v2), load(v2, v0), Rule(399).
+pt(v0, v1) :- load(v0, v2), load(v2, v1), load(v0, v2), Rule(400).
+pt(v0, v1) :- addr(v2, v0), load(v0, v2), pt(v1, v2), Rule(401).
+pt(v0, v1) :- addr(v2, v0), store(v1, v2), store(v0, v2), Rule(402).
+pt(v0, v1) :- addr(v1, v2), addr(v0, v2), assgn(v0, v2), Rule(403).
+pt(v0, v1) :- assgn(v2, v1), assgn(v2, v0), Rule(404).
+pt(v0, v1) :- assgn(v1, v2), store(v2, v0), pt(v0, v2), Rule(405).
+pt(v0, v1) :- store(v1, v2), pt(v2, v1), pt(v0, v1), Rule(406).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v2), store(v1, v2), Rule(407).
+pt(v0, v2) :- addr(v0, v1), pt(v1, v2), Rule(408).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v1), load(v2, v0), Rule(409).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), pt(v1, v2), Rule(410).
+pt(v0, v1) :- store(v0, v1), store(v2, v1), pt(v1, v2), Rule(411).
+pt(v0, v1) :- store(v1, v0), store(v1, v2), store(v1, v2), Rule(412).
+pt(v0, v1) :- load(v1, v2), load(v1, v0), pt(v1, v2), Rule(413).
+pt(v0, v1) :- store(v2, v0), pt(v2, v1), pt(v2, v1), Rule(414).
+pt(v0, v1) :- addr(v2, v0), pt(v0, v1), pt(v0, v2), Rule(415).
+pt(v0, v1) :- addr(v1, v0), assgn(v0, v2), pt(v2, v1), Rule(416).
+pt(v0, v1) :- pt(v1, v2), pt(v2, v0), pt(v0, v1), Rule(417).
+pt(v0, v1) :- addr(v1, v2), store(v1, v2), load(v0, v1), Rule(418).
+pt(v0, v1) :- assgn(v0, v2), pt(v2, v0), pt(v1, v2), Rule(419).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v2), addr(v1, v2), Rule(420).
+pt(v0, v1) :- assgn(v2, v1), load(v2, v0), load(v2, v1), Rule(421).
+pt(v0, v1) :- addr(v2, v1), pt(v0, v2), pt(v0, v2), Rule(422).
+pt(v1, v0) :- assgn(v0, v1), load(v1, v0), Rule(423).
+pt(v0, v1) :- addr(v2, v0), pt(v2, v1), pt(v0, v1), Rule(424).
+pt(v0, v1) :- assgn(v0, v1), store(v0, v1), store(v0, v1), Rule(425).
+pt(v0, v1) :- store(v1, v2), load(v2, v1), pt(v2, v0), Rule(426).
+pt(v0, v1) :- assgn(v0, v1), assgn(v0, v2), load(v2, v1), Rule(427).
+pt(v0, v1) :- addr(v2, v1), load(v2, v0), load(v1, v2), Rule(428).
+pt(v0, v1) :- store(v1, v0), store(v0, v2), pt(v0, v2), Rule(429).
+pt(v0, v1) :- addr(v1, v2), store(v0, v2), store(v1, v2), Rule(430).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v0), store(v2, v0), Rule(431).
+pt(v0, v1) :- addr(v2, v0), store(v0, v1), load(v1, v2), Rule(432).
+pt(v0, v1) :- addr(v2, v1), addr(v0, v1), assgn(v2, v1), Rule(433).
+pt(v0, v1) :- addr(v0, v1), addr(v0, v2), store(v1, v2), Rule(434).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v0), pt(v0, v2), Rule(435).
+pt(v0, v1) :- addr(v2, v1), store(v1, v2), store(v1, v0), Rule(436).
+pt(v0, v1) :- pt(v1, v2), pt(v2, v1), pt(v1, v0), Rule(437).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v2), addr(v1, v0), Rule(438).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v1), load(v0, v2), Rule(439).
+pt(v0, v1) :- load(v0, v1), pt(v1, v0), pt(v1, v0), Rule(440).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v0), load(v2, v0), Rule(441).
+pt(v0, v1) :- assgn(v2, v1), load(v0, v1), pt(v1, v2), Rule(442).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v1), pt(v2, v0), Rule(443).
+pt(v0, v1) :- pt(v1, v2), pt(v0, v2), pt(v2, v0), Rule(444).
+pt(v0, v1) :- addr(v1, v2), addr(v0, v2), store(v0, v1), Rule(445).
+pt(v0, v1) :- store(v0, v1), store(v1, v2), store(v0, v2), Rule(446).
+pt(v0, v1) :- load(v0, v2), pt(v1, v0), pt(v2, v1), Rule(447).
+pt(v0, v1) :- addr(v2, v1), pt(v0, v2), pt(v0, v1), Rule(448).
+pt(v0, v1) :- assgn(v2, v0), store(v2, v1), pt(v0, v2), Rule(449).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v2), pt(v0, v2), Rule(450).
+pt(v0, v1) :- assgn(v1, v0), pt(v1, v0), pt(v1, v0), Rule(451).
+pt(v0, v1) :- load(v0, v1), Rule(452).
+pt(v0, v1) :- addr(v1, v2), load(v1, v2), pt(v0, v2), Rule(453).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v2), store(v0, v1), Rule(454).
+pt(v0, v1) :- addr(v0, v1), load(v2, v1), load(v2, v0), Rule(455).
+pt(v0, v1) :- assgn(v1, v2), assgn(v2, v0), load(v1, v0), Rule(456).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v2), pt(v1, v0), Rule(457).
+pt(v0, v1) :- assgn(v2, v1), pt(v2, v1), pt(v1, v0), Rule(458).
+pt(v0, v1) :- store(v0, v2), store(v1, v2), load(v1, v0), Rule(459).
+pt(v0, v1) :- addr(v1, v2), store(v0, v2), load(v2, v0), Rule(460).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v0), pt(v2, v0), Rule(461).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v0), store(v2, v0), Rule(462).
+pt(v0, v1) :- assgn(v1, v0), pt(v0, v2), pt(v1, v2), Rule(463).
+pt(v0, v1) :- pt(v0, v2), pt(v0, v2), pt(v1, v0), Rule(464).
+pt(v0, v1) :- addr(v1, v2), load(v0, v1), pt(v2, v0), Rule(465).
+pt(v0, v1) :- store(v1, v2), store(v0, v1), load(v2, v0), Rule(466).
+pt(v0, v1) :- store(v0, v1), Rule(467).
+pt(v2, v1) :- addr(v0, v1), assgn(v2, v0), Rule(468).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v1), assgn(v1, v2), Rule(469).
+pt(v0, v1) :- store(v2, v0), store(v0, v2), store(v2, v1), Rule(470).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v0), addr(v1, v2), Rule(471).
+pt(v0, v1) :- addr(v0, v2), pt(v1, v0), pt(v0, v2), Rule(472).
+pt(v0, v1) :- addr(v1, v2), load(v0, v2), pt(v1, v2), Rule(473).
+pt(v0, v1) :- addr(v2, v0), pt(v0, v1), pt(v1, v2), Rule(474).
+pt(v0, v1) :- load(v2, v1), load(v0, v1), load(v1, v2), Rule(475).
+pt(v0, v1) :- store(v2, v0), store(v2, v1), Rule(476).
+pt(v0, v1) :- assgn(v0, v2), pt(v2, v0), pt(v1, v0), Rule(477).
+pt(v0, v1) :- addr(v1, v2), load(v2, v0), load(v1, v2), Rule(478).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v0), assgn(v0, v2), Rule(479).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v2), pt(v1, v2), Rule(480).
+pt(v1, v3) :- pt(v0, v1), store(v0, v2), pt(v2, v3), Rule(481).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v2), assgn(v0, v1), Rule(482).
+pt(v0, v1) :- load(v2, v0), load(v0, v2), load(v0, v1), Rule(483).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), Rule(484).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v2), load(v0, v2), Rule(485).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v1), pt(v2, v1), Rule(486).
+pt(v0, v1) :- store(v1, v0), load(v2, v0), pt(v0, v2), Rule(487).
+pt(v0, v1) :- addr(v1, v0), load(v2, v0), load(v2, v1), Rule(488).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v0), pt(v2, v0), Rule(489).
+pt(v0, v1) :- store(v1, v0), pt(v0, v2), pt(v2, v1), Rule(490).
+pt(v0, v1) :- store(v2, v1), store(v0, v1), store(v1, v2), Rule(491).
+pt(v0, v1) :- assgn(v1, v0), store(v0, v2), load(v2, v0), Rule(492).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v0), store(v0, v2), Rule(493).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v0), store(v2, v1), Rule(494).
+pt(v0, v1) :- load(v2, v0), pt(v2, v0), pt(v1, v2), Rule(495).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v0), Rule(496).
+pt(v0, v1) :- load(v0, v1), load(v2, v1), pt(v0, v2), Rule(497).
+pt(v0, v1) :- assgn(v1, v2), load(v0, v2), load(v0, v1), Rule(498).
+pt(v0, v1) :- addr(v2, v1), load(v2, v1), pt(v1, v0), Rule(499).
+pt(v0, v1) :- assgn(v2, v1), load(v1, v2), pt(v0, v2), Rule(500).
+pt(v0, v1) :- load(v2, v0), load(v2, v1), load(v0, v2), Rule(501).
+pt(v0, v1) :- store(v1, v0), store(v0, v1), store(v0, v1), Rule(502).
+pt(v0, v1) :- assgn(v0, v2), load(v1, v2), load(v0, v2), Rule(503).
+pt(v0, v1) :- assgn(v0, v2), assgn(v0, v1), pt(v2, v1), Rule(504).
+pt(v0, v1) :- assgn(v1, v2), assgn(v2, v1), assgn(v2, v0), Rule(505).
+pt(v0, v1) :- assgn(v2, v0), store(v0, v2), store(v1, v2), Rule(506).
+pt(v0, v1) :- store(v2, v1), load(v0, v2), pt(v0, v1), Rule(507).
+pt(v2, v1) :- load(v0, v1), pt(v2, v0), Rule(508).
+pt(v0, v1) :- addr(v2, v1), pt(v2, v0), pt(v0, v2), Rule(509).
+pt(v0, v1) :- load(v1, v2), load(v1, v0), load(v0, v2), Rule(510).
+pt(v0, v1) :- load(v0, v1), pt(v0, v2), pt(v2, v0), Rule(511).
+pt(v0, v1) :- assgn(v0, v1), store(v0, v2), pt(v1, v2), Rule(512).
+pt(v0, v1) :- store(v2, v1), load(v2, v1), pt(v0, v1), Rule(513).
+pt(v0, v1) :- addr(v0, v2), pt(v2, v1), pt(v1, v0), Rule(514).
+pt(v0, v1) :- addr(v1, v0), assgn(v1, v2), store(v2, v0), Rule(515).
+pt(v0, v1) :- load(v1, v0), pt(v1, v2), pt(v0, v2), Rule(516).
+pt(v0, v1) :- addr(v0, v1), store(v0, v2), store(v0, v2), Rule(517).
+pt(v0, v1) :- load(v1, v0), pt(v2, v0), pt(v2, v1), Rule(518).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), pt(v0, v1), Rule(519).
+pt(v0, v1) :- assgn(v0, v1), store(v1, v0), Rule(520).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v2), assgn(v2, v1), Rule(521).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v2), store(v1, v2), Rule(522).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v1), pt(v0, v2), Rule(523).
+pt(v0, v1) :- store(v2, v1), pt(v1, v2), pt(v2, v0), Rule(524).
+pt(v0, v1) :- assgn(v2, v0), store(v1, v2), load(v2, v0), Rule(525).
+pt(v0, v1) :- load(v2, v1), pt(v2, v1), pt(v0, v2), Rule(526).
+pt(v0, v1) :- assgn(v1, v2), store(v1, v2), pt(v0, v1), Rule(527).
+pt(v0, v1) :- addr(v0, v1), assgn(v0, v2), store(v2, v0), Rule(528).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v2), load(v2, v0), Rule(529).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v1), store(v1, v2), Rule(530).
+pt(v0, v1) :- assgn(v0, v1), pt(v1, v2), pt(v1, v2), Rule(531).
+pt(v0, v1) :- assgn(v2, v1), assgn(v1, v2), load(v1, v0), Rule(532).
+pt(v0, v1) :- load(v0, v1), load(v1, v2), load(v2, v0), Rule(533).
+pt(v0, v1) :- assgn(v1, v2), assgn(v1, v2), load(v2, v0), Rule(534).
+pt(v0, v1) :- load(v2, v0), pt(v0, v1), pt(v1, v2), Rule(535).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v0), pt(v2, v1), Rule(536).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v0), addr(v1, v2), Rule(537).
+pt(v0, v1) :- addr(v1, v0), store(v0, v1), store(v1, v0), Rule(538).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v1), load(v2, v0), Rule(539).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v2), assgn(v1, v2), Rule(540).
+pt(v0, v1) :- store(v0, v2), store(v1, v2), store(v2, v0), Rule(541).
+pt(v0, v1) :- addr(v0, v2), load(v1, v2), load(v1, v0), Rule(542).
+pt(v0, v1) :- assgn(v0, v1), store(v2, v0), pt(v1, v2), Rule(543).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v2), pt(v0, v2), Rule(544).
+pt(v0, v1) :- assgn(v0, v2), store(v0, v2), store(v1, v2), Rule(545).
+pt(v0, v1) :- assgn(v1, v2), store(v2, v0), pt(v2, v1), Rule(546).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v2), assgn(v2, v1), Rule(547).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v1), load(v2, v1), Rule(548).
+pt(v0, v1) :- store(v2, v0), store(v0, v2), pt(v1, v0), Rule(549).
+pt(v0, v1) :- store(v1, v0), store(v2, v0), pt(v2, v1), Rule(550).
+pt(v0, v1) :- load(v2, v1), pt(v2, v0), pt(v1, v0), Rule(551).
+pt(v0, v1) :- load(v1, v0), pt(v2, v0), pt(v1, v2), Rule(552).
+pt(v0, v1) :- addr(v1, v2), pt(v0, v1), pt(v0, v2), Rule(553).
+pt(v0, v1) :- assgn(v1, v0), load(v1, v2), load(v1, v2), Rule(554).
+pt(v0, v1) :- load(v2, v1), pt(v1, v0), pt(v2, v0), Rule(555).
+pt(v0, v1) :- addr(v1, v2), assgn(v2, v0), load(v1, v2), Rule(556).
+pt(v0, v1) :- assgn(v0, v1), store(v2, v1), load(v0, v2), Rule(557).
+pt(v0, v1) :- assgn(v0, v1), assgn(v1, v2), assgn(v1, v2), Rule(558).
+pt(v0, v1) :- assgn(v1, v0), assgn(v0, v2), pt(v1, v2), Rule(559).
+pt(v0, v1) :- store(v0, v2), pt(v0, v2), pt(v1, v2), Rule(560).
+pt(v0, v1) :- load(v2, v0), load(v0, v2), pt(v1, v2), Rule(561).
+pt(v0, v1) :- load(v0, v1), load(v1, v0), pt(v1, v0), Rule(562).
+pt(v0, v1) :- addr(v0, v2), pt(v2, v0), pt(v0, v1), Rule(563).
+pt(v0, v1) :- addr(v2, v1), store(v1, v0), store(v1, v2), Rule(564).
+pt(v0, v1) :- addr(v1, v2), store(v0, v1), load(v2, v1), Rule(565).
+pt(v0, v1) :- store(v1, v0), store(v2, v1), store(v1, v2), Rule(566).
+pt(v0, v1) :- load(v2, v0), load(v0, v1), load(v0, v2), Rule(567).
+pt(v0, v1) :- load(v2, v0), load(v0, v2), pt(v0, v1), Rule(568).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v0), assgn(v2, v0), Rule(569).
+pt(v0, v1) :- store(v2, v0), store(v2, v0), pt(v1, v0), Rule(570).
+pt(v0, v1) :- assgn(v2, v0), store(v2, v1), Rule(571).
+pt(v0, v1) :- assgn(v0, v2), pt(v0, v1), pt(v2, v0), Rule(572).
+pt(v0, v1) :- load(v2, v0), pt(v2, v1), pt(v1, v0), Rule(573).
+pt(v0, v2) :- store(v0, v1), store(v1, v2), Rule(574).
+pt(v0, v1) :- addr(v1, v2), store(v1, v2), pt(v1, v0), Rule(575).
+pt(v0, v1) :- store(v2, v1), store(v1, v0), pt(v0, v2), Rule(576).
+pt(v0, v1) :- addr(v1, v0), store(v2, v0), load(v0, v2), Rule(577).
+pt(v0, v1) :- addr(v0, v1), pt(v0, v2), pt(v1, v2), Rule(578).
+pt(v0, v1) :- load(v2, v0), load(v1, v2), load(v1, v2), Rule(579).
+pt(v0, v1) :- addr(v2, v1), store(v1, v2), pt(v0, v1), Rule(580).
+pt(v0, v1) :- assgn(v0, v2), load(v1, v0), pt(v1, v2), Rule(581).
+pt(v0, v1) :- load(v1, v0), load(v1, v2), load(v2, v0), Rule(582).
+pt(v0, v1) :- assgn(v1, v0), pt(v0, v2), pt(v2, v1), Rule(583).
+pt(v0, v1) :- pt(v0, v2), pt(v0, v2), pt(v1, v2), Rule(584).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v2), store(v0, v1), Rule(585).
+pt(v0, v1) :- load(v2, v1), load(v0, v2), pt(v2, v0), Rule(586).
+pt(v0, v1) :- store(v1, v2), store(v1, v2), store(v0, v2), Rule(587).
+pt(v2, v1) :- pt(v0, v1), store(v2, v0), Rule(588).
+pt(v0, v1) :- addr(v0, v1), load(v2, v0), pt(v2, v1), Rule(589).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v0), store(v2, v1), Rule(590).
+pt(v0, v1) :- addr(v2, v1), assgn(v0, v1), store(v2, v0), Rule(591).
+pt(v0, v1) :- pt(v2, v0), pt(v0, v1), pt(v2, v0), Rule(592).
+pt(v0, v1) :- assgn(v2, v1), store(v0, v2), store(v2, v1), Rule(593).
+pt(v0, v1) :- addr(v1, v2), pt(v0, v2), pt(v0, v1), Rule(594).
+pt(v0, v1) :- pt(v1, v0), pt(v2, v1), pt(v2, v0), Rule(595).
+pt(v0, v1) :- store(v2, v1), store(v1, v2), load(v0, v2), Rule(596).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v1), assgn(v2, v0), Rule(597).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v0), store(v2, v1), Rule(598).
+pt(v0, v1) :- addr(v2, v1), addr(v0, v1), addr(v1, v2), Rule(599).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v2), assgn(v1, v0), Rule(600).
+pt(v0, v1) :- addr(v1, v2), load(v1, v2), load(v0, v2), Rule(601).
+pt(v0, v1) :- assgn(v0, v2), store(v2, v0), load(v1, v2), Rule(602).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), store(v1, v0), Rule(603).
+pt(v0, v1) :- assgn(v1, v2), assgn(v2, v1), store(v0, v2), Rule(604).
+pt(v0, v1) :- assgn(v2, v0), store(v2, v0), pt(v0, v1), Rule(605).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v0), load(v1, v0), Rule(606).
+pt(v0, v1) :- addr(v2, v1), load(v0, v2), pt(v0, v1), Rule(607).
+pt(v0, v1) :- addr(v1, v2), assgn(v1, v2), pt(v0, v2), Rule(608).
+pt(v0, v1) :- assgn(v1, v2), load(v2, v1), pt(v2, v0), Rule(609).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v1), store(v1, v2), Rule(610).
+pt(v0, v2) :- assgn(v0, v1), store(v1, v2), Rule(611).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), assgn(v0, v1), Rule(612).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v2), addr(v1, v2), Rule(613).
+pt(v0, v1) :- assgn(v0, v2), pt(v0, v2), pt(v1, v0), Rule(614).
+pt(v0, v1) :- addr(v1, v0), store(v2, v0), load(v1, v2), Rule(615).
+pt(v0, v1) :- assgn(v1, v2), pt(v0, v1), pt(v1, v2), Rule(616).
+pt(v0, v1) :- addr(v0, v2), assgn(v2, v1), assgn(v1, v2), Rule(617).
+pt(v0, v1) :- assgn(v1, v0), store(v2, v0), store(v1, v2), Rule(618).
+pt(v0, v1) :- load(v2, v1), load(v1, v0), load(v2, v1), Rule(619).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v2), pt(v1, v2), Rule(620).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v1), store(v1, v0), Rule(621).
+pt(v0, v1) :- store(v2, v0), store(v0, v1), pt(v0, v2), Rule(622).
+pt(v0, v1) :- addr(v0, v1), addr(v1, v0), load(v1, v0), Rule(623).
+pt(v0, v1) :- store(v2, v0), pt(v0, v2), pt(v1, v2), Rule(624).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v2), load(v0, v1), Rule(625).
+pt(v0, v1) :- assgn(v1, v2), assgn(v2, v0), assgn(v2, v1), Rule(626).
+pt(v0, v1) :- assgn(v1, v0), assgn(v0, v1), pt(v1, v0), Rule(627).
+pt(v0, v1) :- load(v0, v2), load(v2, v0), load(v2, v1), Rule(628).
+pt(v0, v1) :- store(v0, v2), load(v2, v1), pt(v1, v2), Rule(629).
+pt(v0, v1) :- addr(v0, v2), load(v2, v1), pt(v2, v0), Rule(630).
+pt(v0, v1) :- store(v2, v1), store(v0, v2), Rule(631).
+pt(v0, v1) :- store(v2, v0), load(v0, v1), pt(v0, v2), Rule(632).
+pt(v0, v1) :- load(v1, v0), pt(v0, v1), pt(v1, v0), Rule(633).
+pt(v0, v1) :- addr(v1, v2), pt(v0, v1), pt(v2, v0), Rule(634).
+pt(v1, v0) :- assgn(v0, v1), store(v1, v0), Rule(635).
+pt(v0, v1) :- addr(v2, v0), store(v0, v2), pt(v0, v1), Rule(636).
+pt(v0, v1) :- addr(v2, v0), store(v2, v0), store(v1, v0), Rule(637).
+pt(v0, v1) :- addr(v0, v1), addr(v0, v1), assgn(v0, v1), Rule(638).
+pt(v0, v1) :- assgn(v0, v1), store(v2, v1), store(v2, v0), Rule(639).
+pt(v0, v1) :- assgn(v1, v0), assgn(v1, v2), store(v2, v0), Rule(640).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v0), assgn(v0, v2), Rule(641).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), assgn(v1, v2), Rule(642).
+pt(v0, v1) :- load(v1, v0), load(v2, v1), pt(v0, v2), Rule(643).
+pt(v0, v1) :- load(v2, v1), load(v0, v2), pt(v0, v2), Rule(644).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v2), store(v2, v0), Rule(645).
+pt(v0, v1) :- addr(v2, v1), store(v0, v2), load(v2, v0), Rule(646).
+pt(v0, v1) :- assgn(v0, v1), assgn(v1, v2), pt(v0, v2), Rule(647).
+pt(v0, v1) :- store(v1, v0), load(v0, v1), pt(v0, v1), Rule(648).
+pt(v0, v1) :- assgn(v2, v0), load(v0, v2), pt(v2, v1), Rule(649).
+pt(v0, v1) :- store(v0, v2), store(v2, v1), load(v2, v1), Rule(650).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v2), assgn(v0, v1), Rule(651).
+pt(v0, v1) :- addr(v0, v1), addr(v1, v2), addr(v1, v2), Rule(652).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v2), addr(v1, v0), Rule(653).
+pt(v0, v1) :- assgn(v2, v1), store(v0, v1), store(v1, v2), Rule(654).
+pt(v0, v1) :- addr(v1, v2), assgn(v2, v0), load(v2, v1), Rule(655).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v1), pt(v2, v1), Rule(656).
+pt(v0, v1) :- store(v2, v1), pt(v0, v2), pt(v0, v1), Rule(657).
+pt(v0, v1) :- addr(v0, v2), pt(v0, v2), pt(v0, v1), Rule(658).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v1), assgn(v0, v2), Rule(659).
+pt(v0, v1) :- load(v0, v2), pt(v0, v1), pt(v0, v2), Rule(660).
+pt(v0, v1) :- assgn(v0, v1), assgn(v2, v0), assgn(v0, v2), Rule(661).
+pt(v0, v1) :- store(v1, v2), store(v0, v2), pt(v1, v2), Rule(662).
+pt(v0, v1) :- addr(v1, v2), store(v2, v1), store(v0, v2), Rule(663).
+pt(v0, v1) :- pt(v2, v1), pt(v2, v0), pt(v2, v0), Rule(664).
+pt(v0, v1) :- assgn(v0, v1), assgn(v1, v2), store(v2, v1), Rule(665).
+pt(v0, v1) :- addr(v2, v1), load(v2, v0), pt(v2, v1), Rule(666).
+pt(v0, v1) :- addr(v0, v1), addr(v0, v2), load(v2, v0), Rule(667).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v0), addr(v0, v1), Rule(668).
+pt(v1, v0) :- pt(v0, v1), store(v1, v0), Rule(669).
+pt(v0, v2) :- load(v0, v1), load(v2, v1), Rule(670).
+pt(v2, v1) :- load(v0, v1), store(v2, v0), Rule(671).
+pt(v0, v1) :- addr(v0, v1), store(v0, v2), load(v2, v0), Rule(672).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v0), load(v1, v0), Rule(673).
+pt(v0, v1) :- store(v0, v2), load(v1, v2), Rule(674).
+pt(v0, v1) :- assgn(v1, v0), load(v2, v1), load(v1, v2), Rule(675).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v1), pt(v0, v2), Rule(676).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v1), assgn(v2, v0), Rule(677).
+pt(v0, v1) :- load(v0, v1), pt(v2, v0), pt(v2, v0), Rule(678).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v1), store(v0, v2), Rule(679).
+pt(v0, v1) :- assgn(v1, v2), assgn(v1, v0), pt(v0, v2), Rule(680).
+pt(v0, v1) :- assgn(v1, v2), store(v0, v2), load(v1, v0), Rule(681).
+pt(v0, v1) :- assgn(v1, v0), pt(v1, v2), pt(v0, v2), Rule(682).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v0), assgn(v1, v0), Rule(683).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v0), pt(v1, v0), Rule(684).
+pt(v0, v1) :- addr(v2, v1), store(v0, v1), load(v1, v2), Rule(685).
+pt(v0, v1) :- assgn(v2, v0), store(v0, v2), pt(v0, v1), Rule(686).
+pt(v0, v1) :- addr(v0, v2), store(v2, v0), pt(v1, v0), Rule(687).
+pt(v0, v1) :- addr(v1, v0), store(v2, v1), load(v0, v2), Rule(688).
+pt(v0, v1) :- addr(v0, v2), assgn(v0, v1), store(v1, v2), Rule(689).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v2), Rule(690).
+pt(v0, v1) :- addr(v2, v0), load(v1, v0), load(v1, v2), Rule(691).
+pt(v0, v1) :- store(v2, v0), pt(v0, v2), pt(v1, v0), Rule(692).
+pt(v0, v1) :- addr(v2, v0), assgn(v0, v1), load(v1, v2), Rule(693).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v0), store(v1, v2), Rule(694).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v1), assgn(v0, v2), Rule(695).
+pt(x0, x1) :- load(x0, x2), pt(x2, x3), pt(x3, x1), Rule(696).
+pt(v0, v1) :- load(v1, v2), load(v1, v0), pt(v0, v2), Rule(697).
+pt(v0, v1) :- assgn(v0, v1), store(v1, v2), pt(v1, v2), Rule(698).
+pt(v0, v1) :- addr(v2, v0), addr(v0, v1), pt(v2, v0), Rule(699).
+pt(v0, v1) :- assgn(v0, v2), store(v2, v0), store(v1, v0), Rule(700).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), pt(v1, v2), Rule(701).
+pt(v0, v1) :- addr(v2, v1), store(v1, v2), store(v2, v0), Rule(702).
+pt(v0, v2) :- store(v0, v1), store(v2, v1), Rule(703).
+pt(v0, v1) :- addr(v1, v2), load(v2, v1), pt(v1, v0), Rule(704).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v2), assgn(v1, v2), Rule(705).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v2), store(v1, v0), Rule(706).
+pt(v0, v1) :- pt(v2, v1), pt(v0, v2), pt(v1, v2), Rule(707).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v1), addr(v1, v0), Rule(708).
+pt(v0, v1) :- store(v2, v1), load(v0, v2), pt(v2, v1), Rule(709).
+pt(v0, v1) :- store(v0, v2), store(v0, v1), pt(v1, v2), Rule(710).
+pt(v0, v1) :- assgn(v1, v0), load(v2, v0), pt(v0, v2), Rule(711).
+pt(v0, v1) :- assgn(v2, v0), load(v0, v1), pt(v1, v2), Rule(712).
+pt(v0, v1) :- addr(v2, v1), addr(v0, v2), assgn(v1, v2), Rule(713).
+pt(v0, v1) :- pt(v0, v2), pt(v2, v0), pt(v0, v1), Rule(714).
+pt(v0, v1) :- store(v2, v0), store(v0, v1), store(v2, v1), Rule(715).
+pt(v0, v1) :- addr(v1, v2), load(v2, v1), pt(v0, v2), Rule(716).
+pt(v0, v1) :- assgn(v0, v1), assgn(v0, v2), assgn(v0, v2), Rule(717).
+pt(v0, v1) :- assgn(v1, v2), load(v1, v2), load(v1, v0), Rule(718).
+pt(v0, v1) :- addr(v0, v1), load(v1, v0), Rule(719).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v0), addr(v2, v0), Rule(720).
+pt(v0, v1) :- addr(v0, v1), assgn(v1, v2), store(v0, v2), Rule(721).
+pt(v0, v1) :- load(v2, v0), load(v1, v2), pt(v1, v2), Rule(722).
+pt(v0, v1) :- store(v0, v1), pt(v0, v2), pt(v2, v1), Rule(723).
+pt(v0, v1) :- addr(v1, v2), store(v0, v2), load(v0, v2), Rule(724).
+pt(v0, v1) :- load(v1, v0), pt(v0, v2), pt(v0, v2), Rule(725).
+pt(v0, v1) :- pt(v2, v1), pt(v0, v2), Rule(726).
+pt(v0, v1) :- addr(v1, v2), addr(v0, v1), addr(v1, v2), Rule(727).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v0), load(v0, v1), Rule(728).
+pt(v0, v1) :- store(v1, v2), store(v2, v0), load(v0, v1), Rule(729).
+pt(v0, v1) :- pt(v2, v0), pt(v2, v1), pt(v2, v0), Rule(730).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v0), store(v2, v1), Rule(731).
+pt(v0, v1) :- addr(v1, v0), assgn(v1, v2), store(v1, v2), Rule(732).
+pt(v0, v1) :- addr(v2, v1), load(v0, v1), pt(v0, v2), Rule(733).
+pt(v0, v1) :- load(v2, v1), pt(v2, v0), Rule(734).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v1), store(v2, v0), Rule(735).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v2), assgn(v0, v2), Rule(736).
+pt(v0, v1) :- addr(v1, v0), store(v1, v0), store(v1, v0), Rule(737).
+pt(v0, v1) :- assgn(v1, v2), assgn(v0, v1), store(v2, v1), Rule(738).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v2), pt(v0, v2), Rule(739).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v0), pt(v1, v2), Rule(740).
+pt(v0, v1) :- addr(v0, v1), load(v2, v0), load(v1, v2), Rule(741).
+pt(v2, v1) :- assgn(v0, v1), store(v2, v0), Rule(742).
+pt(v0, v1) :- addr(v1, v2), store(v0, v1), load(v0, v2), Rule(743).
+pt(v0, v1) :- store(v1, v0), store(v2, v0), load(v2, v0), Rule(744).
+pt(v0, v1) :- addr(v1, v0), pt(v0, v2), pt(v2, v0), Rule(745).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v2), assgn(v0, v1), Rule(746).
+pt(v0, v1) :- assgn(v0, v2), assgn(v1, v0), assgn(v0, v2), Rule(747).
+pt(v0, v1) :- assgn(v2, v1), assgn(v2, v1), store(v2, v0), Rule(748).
+pt(v0, v1) :- assgn(v1, v0), load(v2, v0), pt(v2, v0), Rule(749).
+pt(v0, v1) :- assgn(v2, v0), store(v2, v1), load(v2, v0), Rule(750).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v2), pt(v2, v1), Rule(751).
+pt(v0, v1) :- assgn(v1, v2), store(v1, v0), store(v2, v0), Rule(752).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), store(v1, v0), Rule(753).
+pt(v0, v1) :- addr(v1, v2), store(v0, v1), load(v2, v0), Rule(754).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), assgn(v0, v2), Rule(755).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v2), store(v0, v2), Rule(756).
+pt(v0, v1) :- addr(v0, v2), load(v2, v1), load(v1, v2), Rule(757).
+pt(v0, v1) :- load(v2, v1), pt(v0, v2), pt(v2, v1), Rule(758).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v0), store(v2, v0), Rule(759).
+pt(v0, v1) :- addr(v1, v2), load(v0, v1), pt(v2, v1), Rule(760).
+pt(v0, v1) :- store(v1, v2), load(v2, v1), load(v1, v0), Rule(761).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v0), load(v1, v2), Rule(762).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v2), load(v0, v2), Rule(763).
+pt(v0, v1) :- load(v2, v1), load(v0, v2), pt(v1, v2), Rule(764).
+pt(v0, v1) :- assgn(v1, v0), store(v0, v1), Rule(765).
+pt(v0, v1) :- addr(v0, v2), assgn(v2, v1), assgn(v0, v2), Rule(766).
+pt(v0, v1) :- assgn(v2, v1), assgn(v2, v0), assgn(v0, v2), Rule(767).
+pt(v0, v1) :- store(v0, v1), load(v2, v1), pt(v0, v2), Rule(768).
+pt(v0, v1) :- assgn(v1, v0), assgn(v1, v2), load(v2, v0), Rule(769).
+pt(v0, v1) :- addr(v1, v0), assgn(v2, v0), pt(v2, v0), Rule(770).
+pt(v0, v1) :- load(v1, v0), load(v2, v1), load(v2, v1), Rule(771).
+pt(v0, v1) :- addr(v2, v0), load(v2, v0), pt(v0, v1), Rule(772).
+pt(v0, v1) :- assgn(v2, v0), store(v0, v1), store(v2, v1), Rule(773).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v2), store(v2, v0), Rule(774).
+pt(v0, v1) :- assgn(v0, v2), store(v0, v2), pt(v1, v2), Rule(775).
+pt(v1, v0) :- addr(v0, v1), load(v1, v0), Rule(776).
+pt(v0, v1) :- load(v0, v1), load(v1, v0), Rule(777).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v1), addr(v0, v2), Rule(778).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v1), assgn(v0, v2), Rule(779).
+pt(v0, v1) :- store(v0, v2), load(v1, v2), load(v1, v0), Rule(780).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v0), load(v2, v1), Rule(781).
+pt(v0, v1) :- store(v0, v1), store(v0, v1), Rule(782).
+pt(v0, v1) :- addr(v2, v1), addr(v0, v2), load(v1, v2), Rule(783).
+pt(v0, v1) :- addr(v2, v1), pt(v0, v2), pt(v1, v2), Rule(784).
+pt(v0, v1) :- addr(v2, v0), addr(v2, v1), addr(v2, v1), Rule(785).
+pt(v0, v1) :- addr(v1, v2), load(v0, v2), pt(v1, v0), Rule(786).
+pt(v0, v1) :- store(v0, v2), pt(v1, v2), pt(v0, v2), Rule(787).
+pt(v0, v1) :- addr(v1, v0), store(v0, v1), load(v0, v1), Rule(788).
+pt(v0, v1) :- assgn(v0, v2), load(v2, v0), load(v0, v1), Rule(789).
+pt(v0, v1) :- assgn(v0, v1), assgn(v0, v2), load(v2, v0), Rule(790).
+pt(v0, v1) :- addr(v0, v1), load(v0, v2), load(v2, v1), Rule(791).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v1), store(v1, v0), Rule(792).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v2), Rule(793).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v1), pt(v2, v0), Rule(794).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v2), pt(v1, v2), Rule(795).
+pt(v0, v1) :- store(v0, v1), store(v2, v1), store(v2, v0), Rule(796).
+pt(v0, v1) :- store(v1, v0), store(v0, v1), store(v1, v0), Rule(797).
+pt(v0, v1) :- addr(v2, v1), load(v2, v1), load(v1, v0), Rule(798).
+pt(v0, v1) :- addr(v1, v2), addr(v2, v0), assgn(v1, v0), Rule(799).
+pt(v0, v1) :- store(v0, v1), load(v1, v0), pt(v1, v0), Rule(800).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v0), store(v0, v2), Rule(801).
+pt(v0, v1) :- assgn(v1, v2), assgn(v1, v2), pt(v0, v2), Rule(802).
+pt(v0, v1) :- addr(v1, v0), store(v2, v0), load(v2, v1), Rule(803).
+pt(v0, v1) :- assgn(v1, v2), store(v2, v1), pt(v1, v0), Rule(804).
+pt(v0, v1) :- addr(v1, v2), store(v1, v2), load(v0, v2), Rule(805).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v2), store(v2, v0), Rule(806).
+pt(v0, v1) :- addr(v2, v0), pt(v1, v2), pt(v0, v2), Rule(807).
+pt(v0, v1) :- addr(v0, v1), load(v1, v2), pt(v2, v1), Rule(808).
+pt(v0, v1) :- addr(v2, v0), load(v2, v1), pt(v1, v2), Rule(809).
+pt(v0, v1) :- addr(v1, v2), assgn(v1, v2), load(v0, v2), Rule(810).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v0), load(v2, v0), Rule(811).
+pt(v0, v1) :- addr(v0, v1), store(v0, v2), pt(v0, v2), Rule(812).
+pt(v0, v1) :- assgn(v2, v1), store(v1, v2), store(v1, v0), Rule(813).
+pt(v0, v1) :- addr(v1, v2), load(v2, v1), load(v0, v1), Rule(814).
+pt(v0, v1) :- store(v2, v0), store(v2, v0), load(v1, v0), Rule(815).
+pt(v0, v1) :- store(v0, v1), store(v0, v1), store(v1, v0), Rule(816).
+pt(v0, v1) :- store(v0, v2), pt(v1, v0), pt(v1, v2), Rule(817).
+pt(v0, v1) :- addr(v2, v1), load(v0, v1), pt(v1, v2), Rule(818).
+pt(v0, v1) :- addr(v1, v0), assgn(v0, v2), assgn(v2, v0), Rule(819).
+pt(v0, v1) :- store(v1, v0), load(v2, v1), load(v0, v2), Rule(820).
+pt(v0, v1) :- assgn(v2, v1), assgn(v1, v0), load(v2, v1), Rule(821).
+pt(v0, v1) :- addr(v0, v2), store(v0, v2), pt(v2, v1), Rule(822).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v1), load(v2, v1), Rule(823).
+pt(v0, v1) :- store(v0, v1), load(v2, v0), pt(v2, v0), Rule(824).
+pt(v0, v1) :- addr(v0, v2), assgn(v1, v0), pt(v2, v1), Rule(825).
+pt(v0, v1) :- load(v1, v0), load(v1, v0), pt(v0, v1), Rule(826).
+pt(v0, v1) :- store(v0, v2), store(v0, v1), store(v2, v1), Rule(827).
+pt(v0, v1) :- store(v1, v2), store(v0, v2), store(v1, v0), Rule(828).
+pt(v0, v1) :- assgn(v1, v0), load(v0, v2), load(v0, v2), Rule(829).
+pt(x0, x1) :- pt(x2, x0), pt(x3, x1), store(x2, x3), Rule(830).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v2), pt(v1, v2), Rule(831).
+pt(v0, v1) :- addr(v2, v0), assgn(v0, v1), store(v0, v2), Rule(832).
+pt(v0, v1) :- store(v0, v1), store(v0, v2), load(v2, v0), Rule(833).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v2), pt(v1, v2), Rule(834).
+pt(v0, v1) :- assgn(v2, v0), load(v0, v1), load(v1, v2), Rule(835).
+pt(v0, v1) :- addr(v0, v2), load(v0, v2), pt(v2, v1), Rule(836).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v0), pt(v1, v2), Rule(837).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v2), assgn(v0, v2), Rule(838).
+pt(v0, v1) :- store(v2, v0), pt(v0, v2), pt(v0, v1), Rule(839).
+pt(v0, v1) :- addr(v2, v1), addr(v0, v1), pt(v0, v2), Rule(840).
+pt(v0, v1) :- addr(v1, v2), store(v0, v1), load(v1, v2), Rule(841).
+pt(v0, v2) :- pt(v0, v1), pt(v1, v2), Rule(842).
+pt(v0, v1) :- assgn(v2, v0), store(v2, v1), store(v0, v1), Rule(843).
+pt(v0, v1) :- addr(v2, v0), store(v2, v0), store(v2, v1), Rule(844).
+pt(v0, v1) :- assgn(v2, v1), pt(v0, v2), Rule(845).
+pt(v0, v1) :- addr(v1, v0), store(v0, v2), load(v0, v2), Rule(846).
+pt(v0, v1) :- addr(v1, v2), addr(v1, v0), store(v1, v2), Rule(847).
+pt(v0, v1) :- store(v2, v0), load(v2, v1), pt(v2, v0), Rule(848).
+pt(v0, v2) :- addr(v0, v1), store(v1, v2), Rule(849).
+pt(v0, v1) :- store(v0, v2), load(v1, v2), load(v2, v1), Rule(850).
+pt(v0, v1) :- load(v2, v1), load(v2, v0), pt(v2, v0), Rule(851).
+pt(v0, v1) :- addr(v2, v1), assgn(v2, v1), load(v0, v2), Rule(852).
+pt(v0, v1) :- assgn(v2, v1), store(v1, v0), pt(v1, v2), Rule(853).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v2), store(v0, v2), Rule(854).
+pt(v0, v1) :- assgn(v2, v0), assgn(v2, v1), store(v0, v1), Rule(855).
+pt(v0, v1) :- addr(v1, v2), load(v0, v2), load(v0, v2), Rule(856).
+pt(v0, v1) :- load(v2, v0), load(v2, v1), pt(v1, v2), Rule(857).
+pt(v0, v1) :- addr(v0, v2), pt(v2, v0), pt(v1, v2), Rule(858).
+pt(v0, v1) :- addr(v0, v1), store(v0, v1), store(v1, v0), Rule(859).
+pt(v0, v1) :- assgn(v1, v0), load(v2, v1), pt(v0, v2), Rule(860).
+pt(v0, v1) :- store(v2, v0), store(v2, v0), pt(v2, v1), Rule(861).
+pt(v0, v1) :- addr(v0, v1), store(v2, v1), pt(v2, v0), Rule(862).
+pt(v0, v1) :- addr(v1, v0), assgn(v2, v1), pt(v2, v0), Rule(863).
+pt(v0, v1) :- addr(v0, v2), addr(v1, v2), addr(v0, v2), Rule(864).
+pt(v0, v1) :- load(v1, v0), pt(v0, v1), Rule(865).
+pt(v0, v1) :- addr(v1, v0), assgn(v0, v2), assgn(v0, v2), Rule(866).
+pt(v2, v1) :- addr(v0, v1), load(v2, v0), Rule(867).
+pt(v0, v1) :- addr(v2, v1), addr(v2, v0), pt(v0, v1), Rule(868).
+pt(v0, v1) :- assgn(v2, v1), load(v0, v1), pt(v2, v0), Rule(869).
+pt(v0, v1) :- addr(v0, v2), store(v2, v1), Rule(870).
+pt(v0, v1) :- store(v2, v0), load(v0, v2), load(v1, v0), Rule(871).
+pt(v0, v1) :- addr(v2, v1), assgn(v0, v1), load(v0, v2), Rule(872).
+pt(v0, v1) :- store(v0, v2), store(v0, v2), load(v1, v0), Rule(873).
+pt(v0, v1) :- addr(v0, v2), addr(v0, v2), store(v1, v0), Rule(874).
+pt(v0, v1) :- load(v0, v1), load(v1, v2), load(v2, v1), Rule(875).
+pt(v0, v1) :- load(v1, v0), load(v1, v0), Rule(876).
+pt(v0, v1) :- load(v0, v1), load(v1, v0), load(v1, v0), Rule(877).
+pt(v0, v1) :- assgn(v1, v2), store(v2, v1), store(v1, v0), Rule(878).
+pt(v0, v1) :- load(v2, v1), load(v2, v0), pt(v1, v0), Rule(879).
+pt(v0, v1) :- assgn(v1, v0), load(v2, v1), load(v2, v1), Rule(880).
+pt(v0, v1) :- store(v2, v1), store(v2, v1), store(v0, v2), Rule(881).
+pt(v0, v1) :- load(v2, v1), pt(v0, v1), pt(v2, v0), Rule(882).
+pt(v0, v1) :- addr(v0, v1), load(v0, v1), load(v0, v1), Rule(883).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v0), store(v1, v2), Rule(884).
+pt(v0, v1) :- store(v1, v2), pt(v2, v0), pt(v0, v1), Rule(885).
+pt(v0, v1) :- store(v1, v0), pt(v1, v2), pt(v2, v0), Rule(886).
+pt(v0, v1) :- assgn(v1, v0), store(v0, v2), store(v0, v2), Rule(887).
+pt(v0, v1) :- assgn(v2, v1), pt(v0, v2), pt(v1, v0), Rule(888).
+pt(v0, v1) :- addr(v0, v1), store(v1, v0), Rule(889).
+pt(v0, v1) :- store(v0, v1), pt(v2, v0), pt(v2, v1), Rule(890).
+pt(v0, v1) :- addr(v0, v1), store(v1, v2), pt(v2, v0), Rule(891).
+pt(v0, v1) :- assgn(v0, v1), assgn(v0, v2), store(v2, v1), Rule(892).
+pt(v0, v1) :- addr(v1, v0), store(v0, v2), store(v0, v2), Rule(893).
+pt(v0, v1) :- store(v2, v0), load(v2, v1), load(v0, v1), Rule(894).
+pt(v0, v1) :- store(v1, v0), load(v2, v0), load(v1, v2), Rule(895).
+pt(v0, v1) :- assgn(v2, v1), pt(v1, v0), pt(v2, v1), Rule(896).
+pt(v0, v1) :- addr(v1, v2), assgn(v1, v2), store(v0, v1), Rule(897).
+pt(v0, v1) :- addr(v1, v0), addr(v1, v0), addr(v0, v1), Rule(898).
+pt(v0, v1) :- store(v2, v0), store(v2, v0), load(v0, v1), Rule(899).
+pt(v0, v1) :- addr(v1, v0), assgn(v0, v2), load(v2, v0), Rule(900).
+pt(v2, v1) :- addr(v0, v1), pt(v2, v0), Rule(901).
+pt(v0, v1) :- assgn(v0, v2), load(v0, v2), pt(v1, v2), Rule(902).
+pt(v0, v1) :- addr(v0, v1), store(v0, v1), load(v1, v0), Rule(903).
+pt(v0, v1) :- load(v2, v0), pt(v1, v2), pt(v0, v2), Rule(904).
+pt(v0, v1) :- addr(v1, v0), pt(v1, v0), Rule(905).
+pt(v0, v1) :- addr(v2, v1), pt(v1, v0), pt(v0, v2), Rule(906).
+pt(v0, v1) :- pt(v0, v2), pt(v1, v0), pt(v1, v2), Rule(907).
+pt(v0, v1) :- load(v2, v0), load(v2, v0), load(v1, v0), Rule(908).
+pt(v0, v1) :- addr(v0, v1), store(v2, v0), store(v0, v2), Rule(909).
+pt(v0, v1) :- store(v1, v2), store(v0, v2), pt(v0, v1), Rule(910).
+pt(v0, v1) :- assgn(v1, v2), store(v1, v0), pt(v0, v2), Rule(911).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), load(v0, v2), Rule(912).
+pt(v0, v1) :- addr(v1, v0), addr(v2, v1), assgn(v0, v2), Rule(913).
+pt(v0, v2) :- assgn(v0, v1), pt(v1, v2), Rule(914).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v1), pt(v0, v2), Rule(915).
+pt(v0, v1) :- assgn(v2, v0), assgn(v0, v1), store(v0, v2), Rule(916).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), pt(v0, v1), Rule(917).
+pt(v0, v1) :- assgn(v0, v2), assgn(v2, v1), assgn(v1, v0), Rule(918).
+pt(v0, v1) :- store(v0, v1), store(v1, v2), load(v2, v1), Rule(919).
+pt(v0, v1) :- assgn(v1, v0), store(v0, v2), load(v2, v1), Rule(920).
+pt(v0, v1) :- store(v0, v1), load(v0, v2), pt(v0, v2), Rule(921).
+pt(v0, v3) :- pt(v0, v1), pt(v1, v2), pt(v2, v3), Rule(922).
+pt(v0, v1) :- addr(v0, v1), assgn(v2, v1), store(v2, v0), Rule(923).
+pt(v0, v1) :- store(v0, v2), load(v1, v0), load(v2, v0), Rule(924).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v2), store(v1, v2), Rule(925).
+pt(v2, v3) :- load(v0, v1), pt(v0, v2), pt(v1, v3), Rule(926).
+pt(v0, v1) :- store(v1, v2), load(v2, v0), pt(v1, v2), Rule(927).
+pt(v0, v1) :- assgn(v0, v2), store(v2, v0), pt(v2, v1), Rule(928).
+pt(v0, v1) :- assgn(v1, v0), assgn(v0, v2), pt(v0, v2), Rule(929).
+pt(v0, v1) :- store(v2, v1), load(v2, v1), load(v2, v0), Rule(930).
+pt(v0, v1) :- addr(v0, v1), assgn(v2, v1), assgn(v2, v0), Rule(931).
+pt(v0, v1) :- addr(v1, v0), store(v1, v2), store(v0, v2), Rule(932).
+pt(v0, v1) :- addr(v1, v2), assgn(v1, v2), pt(v2, v0), Rule(933).
+pt(v0, v1) :- addr(v2, v0), assgn(v2, v0), store(v1, v0), Rule(934).
+pt(v0, v1) :- assgn(v1, v0), assgn(v2, v1), assgn(v0, v2), Rule(935).
+pt(v0, v1) :- addr(v0, v2), store(v1, v0), pt(v2, v1), Rule(936).
+pt(v0, v1) :- store(v2, v1), store(v0, v1), load(v2, v1), Rule(937).
+pt(v0, v1) :- store(v2, v1), load(v2, v1), load(v1, v0), Rule(938).
+pt(v0, v1) :- addr(v0, v1), Rule(939).
+pt(v0, v1) :- assgn(v2, v1), assgn(v0, v2), pt(v2, v0), Rule(940).
+pt(v0, v3) :- load(v0, v1), pt(v1, v2), pt(v2, v3), Rule(941).
+pt(v0, v1) :- load(v0, v1), load(v1, v2), pt(v2, v1), Rule(942).
+pt(v0, v1) :- addr(v1, v0), store(v1, v2), pt(v2, v1), Rule(943).
+pt(v0, v1) :- addr(v1, v0), pt(v2, v1), pt(v1, v2), Rule(944).
+pt(v0, v1) :- assgn(v0, v2), load(v0, v2), load(v0, v1), Rule(945).
+pt(v0, v1) :- load(v1, v2), pt(v0, v2), pt(v0, v2), Rule(946).
+pt(v0, v1) :- store(v1, v2), pt(v2, v0), pt(v2, v0), Rule(947).
+pt(v0, v1) :- assgn(v0, v1), store(v1, v0), pt(v0, v1), Rule(948).
+pt(v0, v1) :- assgn(v1, v0), store(v1, v2), load(v0, v2), Rule(949).
+pt(v0, v1) :- assgn(v2, v0), load(v1, v0), pt(v1, v2), Rule(950).
+pt(v0, v1) :- addr(v0, v1), pt(v1, v0), Rule(951).
+pt(v0, v1) :- assgn(v0, v2), store(v0, v2), store(v0, v1), Rule(952).
+pt(v0, v1) :- assgn(v0, v1), store(v2, v1), pt(v1, v2), Rule(953).
+pt(v0, v1) :- assgn(v2, v1), assgn(v1, v0), pt(v2, v1), Rule(954).
+pt(v0, v1) :- addr(v2, v1), addr(v1, v2), addr(v1, v0), Rule(955).
+pt(v0, v1) :- addr(v0, v1), assgn(v2, v1), pt(v0, v2), Rule(956).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v1), load(v2, v0), Rule(957).
+pt(v0, v1) :- addr(v2, v0), load(v1, v0), load(v2, v0), Rule(958).
+pt(v0, v1) :- addr(v1, v2), assgn(v0, v2), store(v2, v0), Rule(959).
+pt(v0, v1) :- assgn(v2, v1), store(v1, v0), load(v0, v2), Rule(960).
+pt(v0, v1) :- load(v1, v2), load(v2, v0), load(v2, v1), Rule(961).
+pt(v0, v1) :- store(v2, v0), load(v0, v1), pt(v2, v1), Rule(962).
+pt(v0, v1) :- assgn(v2, v0), store(v0, v1), load(v1, v2), Rule(963).
+pt(v0, v1) :- addr(v0, v2), addr(v2, v0), store(v0, v1), Rule(964).
+pt(v0, v1) :- addr(v2, v0), assgn(v1, v2), load(v1, v2), Rule(965).
+pt(v0, v1) :- assgn(v0, v1), load(v0, v1), pt(v1, v0), Rule(966).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v0), addr(v0, v2), Rule(967).
+pt(v0, v1) :- store(v2, v0), pt(v1, v2), pt(v2, v0), Rule(968).
+pt(v2, v1) :- assgn(v0, v1), pt(v2, v0), Rule(969).
+pt(v0, v1) :- addr(v2, v0), addr(v1, v0), pt(v2, v0), Rule(970).
+pt(v0, v2) :- assgn(v0, v1), assgn(v2, v1), Rule(971).
+pt(v0, v1) :- assgn(v1, v2), store(v2, v0), pt(v2, v0), Rule(972).
+pt(v0, v1) :- store(v0, v2), store(v2, v1), pt(v1, v0), Rule(973).
+pt(v0, v1) :- assgn(v0, v1), Rule(974).
+pt(v0, v1) :- pt(v2, v0), pt(v2, v0), pt(v0, v1), Rule(975).
+pt(v0, v1) :- assgn(v0, v1), store(v2, v0), pt(v2, v0), Rule(976).
+pt(v0, v1) :- addr(v0, v1), addr(v2, v0), load(v2, v0), Rule(977).
+pt(v0, v1) :- assgn(v1, v2), pt(v0, v2), pt(v0, v1), Rule(978).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v2), assgn(v1, v0), Rule(979).
+pt(v0, v1) :- load(v0, v2), pt(v1, v2), pt(v1, v0), Rule(980).
+pt(v0, v2) :- pt(v0, v1), store(v1, v2), Rule(981).
+pt(v0, v1) :- assgn(v0, v1), load(v2, v1), pt(v2, v1), Rule(982).
+pt(v0, v1) :- load(v1, v2), load(v1, v2), load(v1, v0), Rule(983).
+pt(v0, v1) :- assgn(v2, v1), load(v1, v2), load(v0, v1), Rule(984).
+pt(v0, v1) :- assgn(v1, v2), store(v0, v1), store(v2, v0), Rule(985).
+pt(v0, v1) :- addr(v2, v1), store(v2, v1), pt(v0, v2), Rule(986).
+pt(v0, v1) :- assgn(v2, v0), assgn(v1, v2), store(v1, v2), Rule(987).
+pt(v0, v1) :- load(v1, v0), load(v2, v0), pt(v0, v2), Rule(988).
+pt(v0, v1) :- assgn(v2, v1), store(v1, v0), pt(v0, v2), Rule(989).
+pt(v0, v1) :- store(v2, v1), store(v2, v1), load(v1, v0), Rule(990).
+pt(v0, v1) :- load(v1, v0), pt(v1, v2), pt(v1, v2), Rule(991).
+pt(v0, v1) :- assgn(v1, v0), pt(v2, v1), pt(v2, v0), Rule(992).
+pt(v0, v1) :- pt(v2, v1), pt(v0, v2), pt(v2, v0), Rule(993).
+pt(v0, v1) :- addr(v1, v2), load(v1, v0), pt(v0, v2), Rule(994).
+pt(v0, v1) :- assgn(v1, v0), assgn(v1, v2), pt(v0, v2), Rule(995).
+pt(v0, v1) :- store(v0, v2), load(v0, v2), pt(v1, v2), Rule(996).
+pt(v0, v1) :- addr(v0, v1), load(v1, v2), pt(v2, v0), Rule(997).
+pt(v0, v1) :- addr(v2, v1), assgn(v1, v0), assgn(v2, v0), Rule(998).
+pt(v0, v1) :- addr(v0, v1), assgn(v0, v2), assgn(v0, v2), Rule(999).
+pt(v0, v1) :- addr(v1, v2), store(v1, v0), pt(v0, v2), Rule(1000).
